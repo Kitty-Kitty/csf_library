@@ -1,0 +1,32 @@
+%if classStereotype == "enumeration"%
+%PI=""%
+m_%attName%
+%attInitial ? " = " value%
+%endTemplate%
+
+%PI=" "%
+%attStatic=="T" ? "static" : ""%
+%attConst=="T" ? "const" : ""%
+%attVolatile=="T" ? "volatile" : ""%
+%attTag:"mutable"=="true" ? "mutable" : ""%
+%attStereotype=="struct" ? "struct" : ""%
+$ptr = %attContainment=="By Reference" ? "*" : ""%
+%RESOLVE_QUALIFIED_TYPE("::", "int")%$ptr
+%PI=""%
+
+%if attStereotype != "alignment"%
+m_%attName%
+%endIf%
+
+%if attCollection == "T" and attContainerType != ""%
+%attContainerType%
+%endIf%
+%attTag:"bitfield" ? ":" value%
+
+%if attStatic != "T" and attInitial != ""%
+%if attTag:"uniform_initialized" != "true"%
+ =
+%endIf%
+ %attInitial%
+%endIf%
+;

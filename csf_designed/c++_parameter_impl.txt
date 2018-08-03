@@ -1,0 +1,8 @@
+%PI=" "%
+%paramFixed=="T" ? "const" : ""%
+%paramIsEnum=="T" ? "enum" : "" %
+%RESOLVE_QUALIFIED_TYPE("::", "int")%
+%PI=""%
+%if paramType != "void"%
+%paramName%
+%endIf%

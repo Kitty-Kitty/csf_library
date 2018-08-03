@@ -1,0 +1,25 @@
+/*******************************************************************************
+*
+*Copyright: %classAuthor%
+*
+*File name: %fileName%
+*
+*Author: %classAuthor%
+*
+*Version: 1.0
+*
+*Date: %eaDateTime%
+*
+*Description: %elemType%(%className%)
+*
+*Others:
+*
+*History:
+*******************************************************************************/\n
+
+$COMMENT="WARNING: DO NOT MODIFY THIS TEMPLATE BELOW THIS POINT"
+%ImportSectionImpl%
+%list="NamespaceImpl" @separator="\n\n\n"%
+%if easlRequired == "T"%
+%EASL_END()%
+%endIf%
