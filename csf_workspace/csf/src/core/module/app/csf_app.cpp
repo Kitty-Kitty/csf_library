@@ -51,13 +51,9 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 	/*		3、程序运行时自带的参数；											*/
 	/* 该优先级的定义主要是方便满足程序的维护需求       						*/
 	/************************************************************************/
-	//获取系统的工作根目录地址，并配置到日志系统中
-	get_attribute_manager().add("work_directory"
-		, csf_attribute_string(csf_list<csf_string>({ "configures", "work_directory" })));;
-
-	tmp_string_ret = get_attribute_manager().get_value<csf_attribute_string>("work_directory");
-	if (!tmp_string_ret.empty()) {
-		set_work_directory(tmp_string_ret);
+	tmp_bool_ret = init_work_directory(get_config_mg());
+	if (csf_false == tmp_bool_ret) {
+		return csf_failure;
 	}
 	
 	//加载启动日志系统，为程序提供日志服务
@@ -245,6 +241,44 @@ csf_bool csf_app::init_bootloader(csf::core::system::csf_configure_manager& conf
 		csf_log_ex(notice, csf_log_code_notice
 			, "app bootloader start succeed!");
 	}
+
+	return csf_true;
+}
+
+
+/**
+* 功能：该函数主要用于初始化app的当前工作目录
+* 返回：true表示初始化成功；false表示初始化失败。
+*
+* @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
+*/
+csf_bool csf_app::init_work_directory(csf::core::system::csf_configure_manager& configure_manager) {
+
+	csf_string							tmp_string_ret = "";
+
+
+	/************************************************************************/
+	/* 程序当前工作目录主要有三个方面数据来源，优先级依次如下：                 */
+	/*		1、环境变量获取；													*/
+	/*		2、配置文件获取；													*/
+	/*		3、程序运行时自带的参数；											*/
+	/* 该优先级的定义主要是方便满足程序的维护需求       						*/
+	/************************************************************************/
+	//获取系统的工作根目录地址，并配置到日志系统中
+	get_attribute_manager().add("work_directory"
+		, csf_attribute_string(csf_list<csf_string>({ "configures", "work_directory" })));;
+
+	tmp_string_ret = get_attribute_manager().get_value<csf_attribute_string>("work_directory");
+	if (!tmp_string_ret.empty()) {
+		set_work_directory(tmp_string_ret);
+	}
+	else {
+
+	}
+
+	csf_log_ex(notice, csf_log_code_notice
+		, "app set work_direction[ \"%s\" ] succeed!"
+		, get_work_directory().c_str());
 
 	return csf_true;
 }
