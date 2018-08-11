@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+/csf_workspace/csf/example/app/platform/win32/app/x64/Debug
+/csf_workspace/csf/platform/win32/.vs/libcsf/v14
+/csf_workspace/csf/platform/win32/libcsf/x64/Debug
+/csf_workspace/csf/platform/win32/modules/connect/csf_connect/x64/Debug
+/csf_workspace/csf/platform/win32/test_libcsf/x64/Debug
+/csf_workspace/csf/platform/win32/libcsf.VC.db
+/csf_workspace/csf/platform/win32/libcsf.VC.VC.opendb
