@@ -436,6 +436,14 @@ namespace csf
 				* @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
 				*/
 				csf_bool init_bootloader(csf::core::system::csf_configure_manager& configure_manager);
+				/**
+				* 功能：该函数主要用于初始化app的当前工作目录
+				* 返回：true表示初始化成功；false表示初始化失败。
+				*
+				* @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
+				*/
+				csf_bool init_work_directory(csf::core::system::csf_configure_manager& configure_manager);
+
 			private:
 				/**
 				 * 表示app的启动时间
