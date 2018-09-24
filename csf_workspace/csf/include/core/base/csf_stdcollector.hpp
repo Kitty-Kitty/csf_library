@@ -24,6 +24,12 @@
 
 #ifdef __cplusplus
 #include <iostream>
+#include <list>
+#include <stack>
+#include <queue>
+#include <set>
+#include <vector>
+#include <map>
 #include <unordered_map>
 #endif
 

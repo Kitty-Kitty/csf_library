@@ -483,6 +483,9 @@
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_deadline_timer.hpp">
       <Filter>include\core\module\device\connect</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\base\csf_atomic.h">
+      <Filter>include\core\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">

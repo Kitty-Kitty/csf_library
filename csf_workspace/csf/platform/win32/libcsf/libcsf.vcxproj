@@ -118,6 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\core\base\csf_atomic.h" />
     <ClInclude Include="..\..\..\include\core\base\csf_base_include.h" />
     <ClInclude Include="..\..\..\include\core\base\csf_buffer.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_chain.hpp" />
