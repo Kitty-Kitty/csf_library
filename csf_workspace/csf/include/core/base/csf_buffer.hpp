@@ -39,10 +39,10 @@ namespace csf
 
 			public:
 				inline explicit csf_buffer()
-				    : m_start(csf_null)
-					, m_end(csf_null)
-					, m_pos(csf_null)
-					, m_last(csf_null) {
+				    : m_start(csf_nullptr)
+					, m_end(csf_nullptr)
+					, m_pos(csf_nullptr)
+					, m_last(csf_nullptr) {
 
 				}
 				/**
@@ -52,10 +52,10 @@ namespace csf
 				 */
 				inline explicit csf_buffer(const csf_uint32 len) 
 					: csf_memblock(len)
-					, m_start(csf_null)
-					, m_end(csf_null)
-					, m_pos(csf_null)
-					, m_last(csf_null) {
+					, m_start(csf_nullptr)
+					, m_end(csf_nullptr)
+					, m_pos(csf_nullptr)
+					, m_last(csf_nullptr) {
 
 					reset();
 				}
@@ -66,10 +66,10 @@ namespace csf
 				 */
 				inline explicit csf_buffer(const csf_uchar* buf, const csf_uint32 len) 
 					: csf_memblock(buf, len)
-					, m_start(csf_null)
-					, m_end(csf_null)
-					, m_pos(csf_null)
-					, m_last(csf_null) {
+					, m_start(csf_nullptr)
+					, m_end(csf_nullptr)
+					, m_pos(csf_nullptr)
+					, m_last(csf_nullptr) {
 
 					reset();
 				}
@@ -117,15 +117,15 @@ namespace csf
 				* 表示buffer的使用终于地址。
 				* 返回：true表示成功；false表示失败。
 				*
-				* @param newVal    newVal
+				* @param new_value    new_value
 				*/
-				inline csf_bool set_last(const csf_uchar* newVal) {
+				inline csf_bool set_last(const csf_uchar* new_value) {
 
-					if (newVal < get_pos() || newVal > get_end()) {
+					if (new_value < get_pos() || new_value > get_end()) {
 						return csf_false;
 					}
 
-					m_last = (csf_uchar*)newVal;
+					m_last = (csf_uchar*)new_value;
 					return csf_true;
 				}
 				/**
@@ -341,15 +341,15 @@ namespace csf
 				* 表示buffer的当前地址。
 				* 返回：true表示成功；false表示失败。
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_bool set_pos(const csf_uchar* newVal) {
+				inline csf_bool set_pos(const csf_uchar* new_value) {
 
-					if (newVal < get_start() || newVal > get_last()) {
+					if (new_value < get_start() || new_value > get_last()) {
 						return csf_false;
 					}
 
-					m_pos = (csf_uchar*)newVal;
+					m_pos = (csf_uchar*)new_value;
 					return csf_true;
 				}
 				/**
@@ -364,37 +364,37 @@ namespace csf
 				/**
 				 * 表示buffer的起始地址
 				 */
-				csf_uchar* m_start = csf_null;
+				csf_uchar* m_start = csf_nullptr;
 				/**
 				 * 表示buffer的终于地址
 				 */
-				csf_uchar* m_end = csf_null;
+				csf_uchar* m_end = csf_nullptr;
 				/**
 				 * 表示buffer的当前地址
 				 */
-				csf_uchar* m_pos = csf_null;
+				csf_uchar* m_pos = csf_nullptr;
 				/**
 				 * 表示buffer的使用终于地址
 				 */
-				csf_uchar* m_last = csf_null;
+				csf_uchar* m_last = csf_nullptr;
 
 				/**
 				 * 表示buffer的起始地址
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_start(const csf_uchar* newVal) {
+				inline csf_void set_start(const csf_uchar* new_value) {
 
-					m_start = (csf_uchar*)newVal;
+					m_start = (csf_uchar*)new_value;
 				}
 				/**
 				 * 表示buffer的终于地址
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_end(const csf_uchar* newVal) {
+				inline csf_void set_end(const csf_uchar* new_value) {
 
-					m_end = (csf_uchar*)newVal;
+					m_end = (csf_uchar*)new_value;
 				}
 
 			};

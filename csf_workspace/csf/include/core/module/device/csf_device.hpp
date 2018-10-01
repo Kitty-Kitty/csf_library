@@ -124,11 +124,11 @@ namespace csf
 				/**
 				 * 表示device所属的app设备地址
 				 *
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_app(const csf_app* newVal) {
+				inline csf_void set_app(const csf_app* new_value) {
 
-					m_app = (csf_app*)newVal;
+					m_app = (csf_app*)new_value;
 				}
 				/**
 				* 表示设备所拥有的device_io对象地址

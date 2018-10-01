@@ -202,11 +202,11 @@ namespace csf
 				/**
 				* 表示模块工厂的存储列表
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_module_factories(csf_unordered_map<csf_string, csf_module_factory*>& newVal) {
+				inline csf_void set_module_factories(csf_unordered_map<csf_string, csf_module_factory*>& new_value) {
 
-					m_module_factories = newVal;
+					m_module_factories = new_value;
 				}
 			};
 

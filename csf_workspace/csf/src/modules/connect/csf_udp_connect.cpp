@@ -1,20 +1,21 @@
 /*******************************************************************************
 *
-*Copyright: armuxinxian@aliyun.com
-*
-*File name: csf_udp_connect.hpp
+*Copyright: f
 *
 *Author: f
 *
+*File name: csf_udp_connect.hpp
+*
 *Version: 1.0
 *
-*Date: 29-7月-2018 15:13:21
+*Date: 01-10月-2018 12:54:55
 *
-*Description: Class(csf_udp_connect) 表示udp连接
+*Description: Class(csf_udp_connect)
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
 #include "csf_udp_connect.hpp"

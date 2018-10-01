@@ -486,6 +486,9 @@
     <ClInclude Include="..\..\..\include\core\base\csf_atomic.h">
       <Filter>include\core\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\base\csf_stdcplusplus.hpp">
+      <Filter>include\core\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -667,5 +670,8 @@
     <Xml Include="..\..\..\config\csf_system.xml">
       <Filter>config</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

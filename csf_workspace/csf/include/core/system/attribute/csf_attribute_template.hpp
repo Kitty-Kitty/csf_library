@@ -166,11 +166,11 @@ namespace csf
 					/**
 					 * 表示异常处理处理对象内容
 					 *
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_exception(const csf::core::system::attribute::csf_attribute_exception& newVal) {
+					inline void set_exception(const csf::core::system::attribute::csf_attribute_exception& new_value) {
 
-						m_exception = newVal;
+						m_exception = new_value;
 					}
 					/**
 					 * 表示当前属性的数值内容。
@@ -182,11 +182,11 @@ namespace csf
 					/**
 					 * 表示当前属性的数值内容。
 					 *
-					 * @param newVal    表示需要设置的属性数值
+					 * @param new_value    表示需要设置的属性数值
 					 */
-					inline void set_value(const ValueType newVal) {
+					inline void set_value(const ValueType new_value) {
 
-						m_value = newVal;
+						m_value = new_value;
 					}
 					/**
 					* 表示去除字符串中的空白字符。

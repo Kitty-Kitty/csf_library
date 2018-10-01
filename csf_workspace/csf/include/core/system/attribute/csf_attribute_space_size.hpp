@@ -230,11 +230,11 @@ namespace csf
 					/**
 					 * 表示空间的单位
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_unit(csf_space_size_unit& newVal) {
+					inline void set_unit(csf_space_size_unit& new_value) {
 
-						m_unit = newVal;
+						m_unit = new_value;
 					}
 					/**
 					 * 从内容中解析需要的参数。
@@ -395,11 +395,11 @@ namespace csf
 					/**
 					 * 表示时间单位名称的对应列表
 					 * 
-					 * @param newVal    表示时间单位名称的对应列表
+					 * @param new_value    表示时间单位名称的对应列表
 					 */
-					inline csf_void set_unit_name(csf_unordered_map<csf_string, csf_space_size_unit>& newVal) {
+					inline csf_void set_unit_name(csf_unordered_map<csf_string, csf_space_size_unit>& new_value) {
 
-						m_unit_name = newVal;
+						m_unit_name = new_value;
 					}
 #endif
 					/**

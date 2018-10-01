@@ -50,7 +50,7 @@ namespace csf
 				/**
 				* 表示定义的一个空对象,作为该类型数据的默认空值。为减少指针的使用，满足判断空提供默认值。
 				*/
-				csf_csftype_template& operator = (const csf_csftype_template& newVal) const {
+				csf_csftype_template& operator = (const csf_csftype_template& new_value) const {
 					return (csf_csftype_template&)*this;
 				}
 
@@ -82,11 +82,11 @@ namespace csf
 				/**
 				 * 表示定义的一个空对象
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_null(const TypeName& newVal) {
+				inline csf_void set_null(const TypeName& new_value) {
 
-					m_null = newVal;
+					m_null = new_value;
 				}
 
 			private:

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_dgram_connect.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_dgram_connect_interface.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connnect.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connnect_factory.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_stream_connect.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_stream_connect_interface.hpp" />
@@ -31,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_dgram_connect.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connnect.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connnect_factory.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_stream_connect.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_tcp_connect.cpp" />

@@ -65,11 +65,11 @@ namespace csf
 				/**
 				 * 表示基础管理器
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_configure_manager(const csf_configure_manager* newVal) {
+				inline void set_configure_manager(const csf_configure_manager* new_value) {
 
-					m_configure_manager = (csf_configure_manager*)newVal;
+					m_configure_manager = (csf_configure_manager*)new_value;
 				}
 				/**
 				 * 模块初始化

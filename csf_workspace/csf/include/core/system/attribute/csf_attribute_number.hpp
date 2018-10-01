@@ -166,11 +166,11 @@ namespace csf
 					/**
 					 * 表示模块数据阈值核验对象
 					 *
-					 * @param newVal    表示需要设置的阈值内容
+					 * @param new_value    表示需要设置的阈值内容
 					 */
-					inline csf_void set_boundary(csf::core::system::attribute::csf_attribute_boundary& newVal) {
+					inline csf_void set_boundary(csf::core::system::attribute::csf_attribute_boundary& new_value) {
 
-						m_boundary = newVal;
+						m_boundary = new_value;
 					}
 				protected:
 					/**

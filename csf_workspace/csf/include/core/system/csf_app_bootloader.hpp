@@ -75,11 +75,11 @@ namespace csf
 				/**
 				 * 表示配置文件管理器地址信息
 				 * 
-				 * @param newVal    配置文件管理器地址信息
+				 * @param new_value    配置文件管理器地址信息
 				 */
-				inline void set_configure_manager(const csf_configure_manager* newVal) {
+				inline void set_configure_manager(const csf_configure_manager* new_value) {
 
-					m_configure_manager = (csf_configure_manager*)newVal;
+					m_configure_manager = (csf_configure_manager*)new_value;
 				}
 				/**
 				 * 表示当前的app_configure文件作用的app对象
@@ -152,12 +152,12 @@ namespace csf
 				/**
 				 * 表示当前的app_configure文件作用的app对象
 				 * 
-				 * @param newVal    表示当前的app_configure文件作用的app对象
+				 * @param new_value    表示当前的app_configure文件作用的app对象
 				 * 
 				 */
-				inline void set_app(const csf::core::module::csf_app* newVal) {
+				inline void set_app(const csf::core::module::csf_app* new_value) {
 
-					m_app = (csf::core::module::csf_app*)newVal;
+					m_app = (csf::core::module::csf_app*)new_value;
 				}
 			protected:
 				/**

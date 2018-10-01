@@ -129,11 +129,11 @@ namespace csf
 				/**
 				* 表示系统限制配置项目内容
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_measure_configure(csf::core::system::csf_measure_configure& newVal) {
+				inline void set_measure_configure(csf::core::system::csf_measure_configure& new_value) {
 
-					m_measure_configure = newVal;
+					m_measure_configure = new_value;
 				}
 				/**
 				* 功能：根据模块名称查询模块配置信息
@@ -209,11 +209,11 @@ namespace csf
 				/**
 				* 表示配置文件信息列表
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_configures(csf_map<csf_string, csf_configure>& newVal) {
+				inline csf_void set_configures(csf_map<csf_string, csf_configure>& new_value) {
 
-					m_configures = newVal;
+					m_configures = new_value;
 				}
 				/**
 				* 表示模块配置管理器
@@ -225,11 +225,11 @@ namespace csf
 				/**
 				* 表示模块配置管理器
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_module_configures(csf_map<csf_string, csf_module_configure>& newVal) {
+				inline csf_void set_module_configures(csf_map<csf_string, csf_module_configure>& new_value) {
 
-					m_module_configures = newVal;
+					m_module_configures = new_value;
 				}
 			private:
 				/**

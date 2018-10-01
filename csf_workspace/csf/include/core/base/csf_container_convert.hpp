@@ -106,11 +106,11 @@ namespace csf
 				/**
 				 * 表示转换器需要处理的目标对象。
 				 * 
-				 * @param newVal    表示目标容器对象
+				 * @param new_value    表示目标容器对象
 				 */
-				inline void set_container(const ContainerType& newVal) {
+				inline void set_container(const ContainerType& new_value) {
 
-					m_container = (ContainerType&)newVal;
+					m_container = (ContainerType&)new_value;
 				}
 
 			};

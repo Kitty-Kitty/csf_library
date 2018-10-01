@@ -128,11 +128,11 @@ namespace csf
 					/**
 					 * 表示任务的类型数值
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_type(const csf_task_type newVal) {
+					inline void set_type(const csf_task_type new_value) {
 
-						m_type = newVal;
+						m_type = new_value;
 					}
 					/**
 					 * 表示任务的状态数值
@@ -152,11 +152,11 @@ namespace csf
 					/**
 					 * 表示任务的状态数值
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_status(const csf::core::utils::task::csf_task::csf_task_status newVal) {
+					inline void set_status(const csf::core::utils::task::csf_task::csf_task_status new_value) {
 
-						m_status = newVal;
+						m_status = new_value;
 					}
 					/**
 					 * 表示任务的回调函数
@@ -172,11 +172,11 @@ namespace csf
 					/**
 					 * 表示任务的回调函数
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_callback(const csf::core::utils::task::csf_task_callback newVal) {
+					inline void set_callback(const csf::core::utils::task::csf_task_callback new_value) {
 
-						m_callback = newVal;
+						m_callback = new_value;
 					}
 					/**
 					 * 表示任务删除后的回调函数
@@ -188,11 +188,11 @@ namespace csf
 					/**
 					 * 表示任务删除后的回调函数
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_delete_callback(const csf::core::utils::task::csf_task_delete_callback newVal) {
+					inline void set_delete_callback(const csf::core::utils::task::csf_task_delete_callback new_value) {
 
-						m_delete_callback = newVal;
+						m_delete_callback = new_value;
 					}
 					/**
 					 * 表示当前的时间关键数值，即当前时间
@@ -204,11 +204,11 @@ namespace csf
 					/**
 					 * 表示当前的时间关键数值，即当前时间
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_time(const csf_uint64 newVal) {
+					inline void set_time(const csf_uint64 new_value) {
 
-						m_time = newVal;
+						m_time = new_value;
 					}
 					/**
 					 * 表示第一次执行的偏移时间
@@ -220,20 +220,20 @@ namespace csf
 					/**
 					 * 表示第一次执行的偏移时间
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_offset(const csf_uint64 newVal) {
+					inline void set_offset(const csf_uint64 new_value) {
 
-						m_offset = newVal;
+						m_offset = new_value;
 					}
 					/**
 					 * 指向一个任务对象
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_task(const csf_task* newVal) {
+					inline void set_task(const csf_task* new_value) {
 
-						m_task = newVal;
+						m_task = new_value;
 					}
 					/**
 					 * 指向一个装饰者对象
@@ -252,20 +252,20 @@ namespace csf
 					/**
 					 * 指向一个装饰者对象
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_decorator(const csf_task* newVal) {
+					inline void set_decorator(const csf_task* new_value) {
 
-						m_decorator = newVal;
+						m_decorator = new_value;
 					}
 					/**
 					 * 表示任务的执行间隔时间
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_interval(const csf_uint64 newVal) {
+					inline void set_interval(const csf_uint64 new_value) {
 
-						m_interval = newVal;
+						m_interval = new_value;
 					}
 					/**
 					 * 表示任务所属的任务管理器
@@ -274,9 +274,9 @@ namespace csf
 					/**
 					 * 表示任务所属的任务管理器
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					void set_task_manager(const csf_task_manager* newVal);
+					void set_task_manager(const csf_task_manager* new_value);
 					/**
 					 * 表示处理接口，当只有is_delete返回true后才能process_delete。
 					 */

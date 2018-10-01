@@ -65,11 +65,11 @@ namespace csf
 					/**
 					 * 表示开始时间
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_begin(csf_uint64 newVal) {
+					inline void set_begin(csf_uint64 new_value) {
 
-						m_begin = newVal;
+						m_begin = new_value;
 					}
 					/**
 					 * 表示停止时间
@@ -81,11 +81,11 @@ namespace csf
 					/**
 					 * 表示停止时间
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_end(csf_uint64 newVal) {
+					inline void set_end(csf_uint64 new_value) {
 
-						m_end = newVal;
+						m_end = new_value;
 					}
 
 				private:

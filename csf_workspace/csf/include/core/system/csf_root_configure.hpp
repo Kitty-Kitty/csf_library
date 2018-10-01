@@ -116,11 +116,11 @@ namespace csf
 				/**
 				 * 表示app的根配置文件信息，主要保存app的各种配置文件信息。
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_root_configure_file(csf_configure_file& newVal) {
+				inline csf_void set_root_configure_file(csf_configure_file& new_value) {
 
-					m_root_configure_file = newVal;
+					m_root_configure_file = new_value;
 				}
 				/**
 				 * 表示主配置文件文件列表节点的路径信息。

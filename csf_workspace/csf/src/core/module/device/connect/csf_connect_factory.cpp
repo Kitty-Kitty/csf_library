@@ -1,25 +1,40 @@
 /*******************************************************************************
 *
-*Copyright: armuxinxian@aliyun.com
-*
-*File name: csf_connect_factory.hpp
+*Copyright: f
 *
 *Author: f
 *
+*File name: csf_connect_factory.hpp
+*
 *Version: 1.0
 *
-*Date: 28-7月-2018 14:23:34
+*Date: 01-10月-2018 12:54:37
 *
-*Description: Class(csf_connect_factory) 
+*Description: Class(csf_connect_factory)
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
 #include "csf_connect_factory.hpp"
+#include "csf_connect.hpp"
 
+using namespace csf::core::module::connect;
 using csf::core::module::connect::csf_connect_factory;
+
+
+csf_connect_factory::csf_connect_factory() {
+
+}
+
+
+
+csf_connect_factory::~csf_connect_factory() {
+
+}
+
 
 
 
@@ -110,9 +125,9 @@ csf_int32 csf_connect_factory::add(csf_element& element, csf_device_operation_ca
  * 
  * @param type    表示连接类型
  */
-csf_connect* csf_connect_factory::create(const csf_connect::csf_connect_type type) {
+csf_connect_ptr csf_connect_factory::create(const csf_connect::csf_connect_type type) {
 
-	return  NULL;
+	return  m_null_connect_ptr;
 }
 
 
@@ -122,9 +137,9 @@ csf_connect* csf_connect_factory::create(const csf_connect::csf_connect_type typ
  * @param type    表示连接类型
  * @param local_url    表示连接打开的本地地址
  */
-csf_connect* csf_connect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url) {
+csf_connect_ptr csf_connect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url) {
 
-	return  NULL;
+	return  m_null_connect_ptr;
 }
 
 
@@ -135,9 +150,9 @@ csf_connect* csf_connect_factory::create(const csf_connect::csf_connect_type typ
  * @param local_url    表示连接打开的本地地址
  * @param remote_url    表示连接打开的远程地址
  */
-csf_connect* csf_connect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url, const csf_url& remote_url) {
+csf_connect_ptr csf_connect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url, const csf_url& remote_url) {
 
-	return  NULL;
+	return  m_null_connect_ptr;
 }
 
 
@@ -146,7 +161,7 @@ csf_connect* csf_connect_factory::create(const csf_connect::csf_connect_type typ
  * 
  * @param connect    表示需要销毁的连接
  */
-csf_int32 csf_connect_factory::destroy(const csf_connect* connect) {
+csf_int32 csf_connect_factory::destroy(const csf_connect_ptr connect) {
 
 	return 0;
 }

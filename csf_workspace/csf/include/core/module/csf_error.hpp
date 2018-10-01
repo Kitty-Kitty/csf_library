@@ -89,11 +89,11 @@ namespace csf
 				/**
 				 * 表示错误编号
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_code(const csf_int32 newVal) {
+				inline csf_void set_code(const csf_int32 new_value) {
 
-					m_code = newVal;
+					m_code = new_value;
 				}
 				/**
 				 * 表示错误原因描述信息
@@ -106,15 +106,15 @@ namespace csf
 				 * 表示错误原因描述信息
 				 * 返回：0表示成功；非0表示失败。
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_int32 set_description(const csf_char* newVal) {
+				inline csf_int32 set_description(const csf_char* new_value) {
 
-					if (!newVal || csf_strlen(newVal) > csf_errno_max_length) {
+					if (!new_value || csf_strlen(new_value) > csf_errno_max_length) {
 						return csf_failure;
 					}
 
-					csf_strcpy(m_descripion, newVal);
+					csf_strcpy(m_descripion, new_value);
 					return csf_success;
 				}
 				/**
@@ -128,11 +128,11 @@ namespace csf
 				 * 表示错误原因描述信息
 				 * 返回：0表示成功；非0表示失败。
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_int32 set_descripion(const csf_string& newVal) {
+				inline csf_int32 set_descripion(const csf_string& new_value) {
 
-					return set_description(newVal.c_str());
+					return set_description(new_value.c_str());
 				}
 				/**
 				* 表示根据错误码（code）和错误描述（description）设置一个csf_error。

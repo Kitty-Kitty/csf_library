@@ -292,11 +292,11 @@ namespace csf
 				/**
 				 * 表示缓存链表数据，保存所有buffer
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_bool set_chain(const csf_list<csf_buffer*>& newVal) {
+				inline csf_bool set_chain(const csf_list<csf_buffer*>& new_value) {
 
-					m_chain = newVal;
+					m_chain = new_value;
 				}
 
 			};

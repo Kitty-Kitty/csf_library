@@ -1,20 +1,21 @@
 /*******************************************************************************
 *
-*Copyright: armuxinxian@aliyun.com
-*
-*File name: csf_stream_connect.hpp
+*Copyright: fangzhenmu@aliyun.com
 *
 *Author: fangzhenmu@aliyun.com
 *
+*File name: csf_stream_connect.hpp
+*
 *Version: 1.0
 *
-*Date: 29-7月-2018 15:13:18
+*Date: 01-10月-2018 12:54:53
 *
-*Description: Class(csf_stream_connect) 表示通信库，流连接信息内容
+*Description: Class(csf_stream_connect)
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
 #include "csf_stream_connect.hpp"
@@ -152,13 +153,13 @@ csf_int32 csf_stream_connect::set_write_timeout(const csf_uint32 timeout_ms, con
 
 /**
  * 
- * @param newVal
+ * @param new_value
  */
-csf_int32 csf_stream_connect::set_remote_url(csf_url& newVal) {
+csf_int32 csf_stream_connect::set_remote_url(csf_url& new_value) {
 
-	m_remote_url = newVal;
+	m_remote_url = new_value;
 
-	return csf_success;
+	return 0;
 }
 
 
@@ -202,13 +203,13 @@ csf_int32 csf_stream_connect::write(const csf_buffer& buffer, const csf_connect_
 /**
  * 表示本地的主机地址
  * 
- * @param newVal
+ * @param new_value
  */
-csf_int32 csf_stream_connect::set_local_url(csf_url& newVal) {
+csf_int32 csf_stream_connect::set_local_url(csf_url& new_value) {
 
-	m_local_url = newVal;
+	m_local_url = new_value;
 
-	return csf_success;
+	return 0;
 }
 
 
@@ -350,11 +351,11 @@ csf_int32 csf_stream_connect::read(const csf_buffer& buffer, const csf_url& url,
 /**
  * 表示创建connect的工厂类地址
  * 
- * @param newVal
+ * @param new_value
  */
-csf_void csf_stream_connect::set_factory(csf_connect_factory* newVal) {
+csf_void csf_stream_connect::set_factory(csf_connect_factory* new_value) {
 
-	m_factory = newVal;
+	m_factory = new_value;
 }
 
 
@@ -394,11 +395,11 @@ csf_int32 csf_stream_connect::read(const csf_uchar* buf, const csf_uint32 len, c
 
 /**
  * 
- * @param newVal
+ * @param new_value
  */
-csf_void csf_stream_connect::set_read_timeout(csf_uint32 newVal) {
+csf_void csf_stream_connect::set_read_timeout(csf_uint32 new_value) {
 
-	m_read_timeout = newVal;
+	m_read_timeout = new_value;
 }
 
 
@@ -441,11 +442,11 @@ csf_int32 csf_stream_connect::read(const csf_csfstring& csfstr, const csf_url& u
 /**
  * 表示写超时时间，单位为毫秒。
  * 
- * @param newVal
+ * @param new_value
  */
-csf_void csf_stream_connect::set_write_timeout(csf_uint32 newVal) {
+csf_void csf_stream_connect::set_write_timeout(csf_uint32 new_value) {
 
-	m_write_timeout = newVal;
+	m_write_timeout = new_value;
 }
 
 

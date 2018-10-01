@@ -2,27 +2,26 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: f
+*Author: f
 *
-*Author: fz
+*File name: csf_url.hpp
 *
 *Version: 1.0
 *
-*Date: 28-7月-2018 14:23:50
+*Date: 01-10月-2018 12:54:56
 *
 *Description: Class(csf_url) url地址信息的基础类信息
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_URL_INCLUDED_)
-#define CSF_URL_INCLUDED_
+#if !defined(CSF_URL_H_INCLUDED_)
+#define CSF_URL_H_INCLUDED_
 
-#include "csf_typedef.h"
-
-using namespace csf::core::base;
+#include "csf_base_include.h"
 
 namespace csf
 {
@@ -36,7 +35,7 @@ namespace csf
 				 * url地址信息的基础类信息
 				 * @author f
 				 * @version 1.0
-				 * @created 28-7月-2018 14:23:50
+				 * @created 01-10月-2018 12:54:56
 				 */
 				class csf_url
 				{
@@ -46,9 +45,9 @@ namespace csf
 					 * 表示url类型
 					 * @author f
 					 * @version 1.0
-					 * @created 28-7月-2018 14:23:50
+					 * @created 01-10月-2018 12:54:56
 					 */
-					enum csf_url_type
+					typedef enum csf_url_type_enum
 					{
 						/**
 						 * 表示空地址
@@ -62,7 +61,7 @@ namespace csf
 						 * 表示串口地址
 						 */
 						csf_url_type_serial
-					};
+					} csf_url_type;
 
 
 					csf_url();
@@ -72,13 +71,13 @@ namespace csf
 					 * 
 					 * @param type    表示连接地址类型
 					 */
-					inline explicit csf_url(csf_url_type type) {
+					inline explicit csf_url(csf::core::module::connect::csf_url::csf_url_type type) {
 
 					}
 					/**
 					 * 表示url地址的类型信息
 					 */
-					inline csf_url_type get_type() {
+					inline csf::core::module::connect::csf_url::csf_url_type get_type() {
 
 						return m_type;
 					}
@@ -101,20 +100,20 @@ namespace csf
 					/**
 					 * 表示url的完整字符串数据
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline csf_void set_url(csf_string& newVal) {
+					inline csf_void set_url(csf_string& new_value) {
 
-						m_url = newVal;
+						m_url = new_value;
 					}
 					/**
 					 * 表示url的完整字符串数据
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline csf_void set_url(csf_char* newVal) {
+					inline csf_void set_url(csf_char* new_value) {
 
-						m_url = newVal;
+						m_url = new_value;
 					}
 					/**
 					 * 表示解析地址函数
@@ -130,11 +129,11 @@ namespace csf
 					/**
 					 * 表示url地址的类型信息
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline csf_void set_type(csf_url_type newVal) {
+					inline csf_void set_type(csf::core::module::connect::csf_url::csf_url_type new_value) {
 
-						m_type = newVal;
+						m_type = new_value;
 					}
 
 				private:
@@ -145,7 +144,7 @@ namespace csf
 					/**
 					 * 表示url地址的类型信息
 					 */
-					csf_url_type m_type = csf_url_type_none;
+					csf::core::module::connect::csf_url::csf_url_type m_type = csf_url_type_none;
 
 				};
 
@@ -156,4 +155,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_URL_INCLUDED_)
+#endif // !defined(CSF_URL_H_INCLUDED_)

@@ -145,6 +145,7 @@
     <ClInclude Include="..\..\..\include\core\base\csf_stack.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_stdbind.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_stdcollector.hpp" />
+    <ClInclude Include="..\..\..\include\core\base\csf_stdcplusplus.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_stddef.h" />
     <ClInclude Include="..\..\..\include\core\base\csf_time.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_typedef.h" />
@@ -302,6 +303,9 @@
     <Xml Include="..\..\..\config\csf_log.xml" />
     <Xml Include="..\..\..\config\csf_module.xml" />
     <Xml Include="..\..\..\config\csf_system.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

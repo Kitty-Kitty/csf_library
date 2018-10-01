@@ -1,20 +1,21 @@
 /*******************************************************************************
 *
-*Copyright: armuxinxian@aliyun.com
-*
-*File name: csf_tcp_connect.hpp
+*Copyright: f
 *
 *Author: f
 *
+*File name: csf_tcp_connect.hpp
+*
 *Version: 1.0
 *
-*Date: 29-7月-2018 15:13:20
+*Date: 01-10月-2018 12:54:54
 *
-*Description: Class(csf_tcp_connect) 表示tcp连接
+*Description: Class(csf_tcp_connect)
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
 #include "csf_tcp_connect.hpp"

@@ -2,23 +2,24 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: f
+*Author: f
 *
-*Author: fz
+*File name: csf_dgram_connect_interface.hpp
 *
 *Version: 1.0
 *
-*Date: 29-7月-2018 15:13:08
+*Date: 01-10月-2018 12:54:42
 *
 *Description: Interface(csf_dgram_connect_interface) 表示数据报文操作接口
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_DGRAM_CONNECT_INTERFACE_INCLUDED_)
-#define CSF_DGRAM_CONNECT_INTERFACE_INCLUDED_
+#if !defined(CSF_DGRAM_CONNECT_INTERFACE_H_INCLUDED_)
+#define CSF_DGRAM_CONNECT_INTERFACE_H_INCLUDED_
 
 namespace csf
 {
@@ -30,7 +31,7 @@ namespace csf
 			 * 表示数据报文操作接口
 			 * @author f
 			 * @version 1.0
-			 * @created 29-7月-2018 15:13:08
+			 * @created 01-10月-2018 12:54:42
 			 */
 			class csf_dgram_connect_interface
 			{
@@ -51,4 +52,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_DGRAM_CONNECT_INTERFACE_INCLUDED_)
+#endif // !defined(CSF_DGRAM_CONNECT_INTERFACE_H_INCLUDED_)

@@ -73,19 +73,19 @@ namespace csf
 				/**
 				 * 指定的配置文件信息，这里需要对设置的配置文件进行解析处理。 解析成功返回0，返回其他为错误。
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_int32 set_configure_file(csf_configure_file& newVal) {
+				inline csf_int32 set_configure_file(csf_configure_file& new_value) {
 
 					csf_configure_parser				tmp_config_parse;
 
 
 					//解析configure_file的文件内容
-					if (csf_failure == tmp_config_parse.parse(get_element(), newVal)) {
+					if (csf_failure == tmp_config_parse.parse(get_element(), new_value)) {
 						return csf_failure;
 					}
 
-					m_configure_file = newVal;
+					m_configure_file = new_value;
 					return csf_success;
 				}
 				/**
@@ -127,11 +127,11 @@ namespace csf
 				/**
 				 * 表示配置文件转换后的csf_element对象
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_element(csf_element& newVal) {
+				inline csf_void set_element(csf_element& new_value) {
 
-					m_element = newVal;
+					m_element = new_value;
 				}
 
 			};

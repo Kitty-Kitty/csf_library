@@ -76,11 +76,11 @@ namespace csf
 					/**
 					* 表示异常回调函数
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_callback(const csf::core::system::attribute::csf_attribute_exception_callback& newVal) {
+					inline void set_callback(const csf::core::system::attribute::csf_attribute_exception_callback& new_value) {
 
-						m_callback = newVal;
+						m_callback = new_value;
 					}
 					/**
 					* 表示判断是否为空。

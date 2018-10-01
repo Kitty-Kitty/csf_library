@@ -162,78 +162,78 @@ namespace csf
 			protected:
 				/**
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_build(csf::core::base::csf_string newVal) {
+				inline csf_void set_build(csf::core::base::csf_string new_value) {
 
 				}
 				/**
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_compile(csf_string newVal) {
+				inline csf_void set_compile(csf_string new_value) {
 
-					m_compile = newVal;
+					m_compile = new_value;
 				}
 				/**
 				 * 版本数字编码
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_version(csf_uint32 newVal) {
+				inline csf_void set_version(csf_uint32 new_value) {
 
-					m_version = newVal;
+					m_version = new_value;
 				}
 				/**
 				 * 模块的其他描述信息
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_description(csf_string newVal) {
+				inline csf_void set_description(csf_string new_value) {
 
-					m_description = newVal;
+					m_description = new_value;
 				}
 				/**
 				 * 模块的版本字符串信息
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_strver(csf_char* newVal) {
+				inline csf_void set_strver(csf_char* new_value) {
 
-					m_strver = newVal;
+					m_strver = new_value;
 				}
 				/**
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_build(csf_char* newVal) {
+				inline csf_void set_build(csf_char* new_value) {
 
-					m_build = newVal;
+					m_build = new_value;
 				}
 				/**
 				 * 版本字符串信息
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_strver(csf::core::base::csf_string& newVal) {
+				inline csf_void set_strver(csf::core::base::csf_string& new_value) {
 
 				}
 				/**
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_compile(csf_char* newVal) {
+				inline csf_void set_compile(csf_char* new_value) {
 
-					m_compile = newVal;
+					m_compile = new_value;
 				}
 				/**
 				 * 模块的其他描述信息
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_description(csf_char* newVal) {
+				inline csf_void set_description(csf_char* new_value) {
 
-					m_description = newVal;
+					m_description = new_value;
 				}
 
 			private:

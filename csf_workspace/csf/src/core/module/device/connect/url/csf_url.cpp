@@ -1,20 +1,21 @@
 /*******************************************************************************
 *
-*Copyright: armuxinxian@aliyun.com
-*
-*File name: csf_url.hpp
+*Copyright: f
 *
 *Author: f
 *
+*File name: csf_url.hpp
+*
 *Version: 1.0
 *
-*Date: 28-7月-2018 14:23:51
+*Date: 01-10月-2018 12:54:56
 *
-*Description: Class(csf_url) url地址信息的基础类信息
+*Description: Class(csf_url)
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
 #include "csf_url.hpp"

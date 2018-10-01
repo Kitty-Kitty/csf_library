@@ -57,11 +57,11 @@ namespace csf
 					virtual csf_bool is_process();
 					/**
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_times(csf_uint32 newVal) {
+					inline void set_times(csf_uint32 new_value) {
 
-						m_times = newVal;
+						m_times = new_value;
 					}
 					/**
 					 * 表示当前已经运行的次数计数
@@ -77,11 +77,11 @@ namespace csf
 					/**
 					 * 表示当前已经运行的次数计数
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_sequence(csf_uint32 newVal) {
+					inline void set_sequence(csf_uint32 new_value) {
 
-						m_sequence = newVal;
+						m_sequence = new_value;
 					}
 
 				private:

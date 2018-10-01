@@ -2,23 +2,24 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: f
+*Author: f
 *
-*Author: fz
+*File name: csf_stream_connect_interface.hpp
 *
 *Version: 1.0
 *
-*Date: 29-7月-2018 15:13:18
+*Date: 01-10月-2018 12:54:53
 *
 *Description: Interface(csf_stream_connect_interface) 表示数据流的操作接口
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_STREAM_CONNECT_INTERFACE_INCLUDED_)
-#define CSF_STREAM_CONNECT_INTERFACE_INCLUDED_
+#if !defined(CSF_STREAM_CONNECT_INTERFACE_H_INCLUDED_)
+#define CSF_STREAM_CONNECT_INTERFACE_H_INCLUDED_
 
 namespace csf
 {
@@ -30,7 +31,7 @@ namespace csf
 			 * 表示数据流的操作接口
 			 * @author f
 			 * @version 1.0
-			 * @created 29-7月-2018 15:13:19
+			 * @created 01-10月-2018 12:54:53
 			 */
 			class csf_stream_connect_interface
 			{
@@ -51,4 +52,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_STREAM_CONNECT_INTERFACE_INCLUDED_)
+#endif // !defined(CSF_STREAM_CONNECT_INTERFACE_H_INCLUDED_)

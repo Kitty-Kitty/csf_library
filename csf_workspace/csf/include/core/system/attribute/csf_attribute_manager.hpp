@@ -220,11 +220,11 @@ namespace csf
 					/**
 					 * 表示该属性管理器使用的配置管理器对象地址。
 					 *
-					 * @param newVal    表示配置管理器地址
+					 * @param new_value    表示配置管理器地址
 					 */
-					inline void set_configure_manager(const csf_configure_manager* newVal) {
+					inline void set_configure_manager(const csf_configure_manager* new_value) {
 
-						m_configure_manager = (csf_configure_manager*)newVal;
+						m_configure_manager = (csf_configure_manager*)new_value;
 					}
 					/**
 					 * 函数功能为：根据名称从attribute_manager中查询一个属性。
@@ -461,11 +461,11 @@ namespace csf
 					/**
 					 * 表示配置的属性列表，方便查找各个属性内容
 					 *
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_attributes(csf_unordered_map<csf_string, csf_attribute*>& newVal) {
+					inline void set_attributes(csf_unordered_map<csf_string, csf_attribute*>& new_value) {
 
-						m_attributes = newVal;
+						m_attributes = new_value;
 					}
 				};
 			}

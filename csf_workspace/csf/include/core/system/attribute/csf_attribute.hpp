@@ -186,20 +186,20 @@ namespace csf
 					/**
 					 * 表示属性名称信息
 					 *
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_name(const csf_string& newVal) {
+					inline void set_name(const csf_string& new_value) {
 
-						m_name = newVal;
+						m_name = new_value;
 					}
 					/**
 					 * 表示属性名称信息
 					 *
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_name(csf_char* newVal) {
+					inline void set_name(csf_char* new_value) {
 
-						m_name = newVal;
+						m_name = new_value;
 					}
 					/**
 					 * 表示判断是否为空。
@@ -308,11 +308,11 @@ namespace csf
 					/**
 					 * 表示该属性所对应的配置文件节点位置
 					 *
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_items(const csf_list<csf_string>& newVal) {
+					inline void set_items(const csf_list<csf_string>& new_value) {
 
-						m_items = newVal;
+						m_items = new_value;
 					}
 					/**
 					* 函数功能是将items列表中的字符串格式化为："{a, b, c}"。
@@ -323,29 +323,29 @@ namespace csf
 					/**
 					 * 表示属性类型描述信息
 					 *
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_type(const csf_attribute_type newVal) {
+					inline void set_type(const csf_attribute_type new_value) {
 
-						m_type = newVal;
+						m_type = new_value;
 					}
 					/**
 					* 表示从配置文件中读取的数值。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline csf_void set_content(const csf_string& newVal) {
+					inline csf_void set_content(const csf_string& new_value) {
 
-						m_content = newVal;
+						m_content = new_value;
 					}
 					/**
 					* 表示从配置文件中读取的数值。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline csf_void set_content(const csf_char* newVal) {
+					inline csf_void set_content(const csf_char* new_value) {
 
-						m_content = newVal;
+						m_content = new_value;
 					}
 				};
 

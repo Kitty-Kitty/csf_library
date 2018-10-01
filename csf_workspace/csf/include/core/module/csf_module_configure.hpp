@@ -92,11 +92,11 @@ namespace csf
 				/**
 				 * 表示模块的名称
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_name(const csf_string& newVal) {
+				inline csf_void set_name(const csf_string& new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				 * 表示子模块信息
@@ -108,11 +108,11 @@ namespace csf
 				/**
 				 * 表示子模块信息
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_child(const csf_char* newVal) {
+				inline csf_void set_child(const csf_char* new_value) {
 
-					m_child = newVal;
+					m_child = new_value;
 				}
 				/**
 				 * 表示设备信息
@@ -124,11 +124,11 @@ namespace csf
 				/**
 				 * 表示设备信息
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_device(const csf_char* newVal) {
+				inline csf_void set_device(const csf_char* new_value) {
 
-					m_device = newVal;
+					m_device = new_value;
 				}
 				/**
 				 * 表示模块的文件地址
@@ -140,47 +140,47 @@ namespace csf
 				/**
 				 * 表示模块的文件地址
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_file(const csf_char* newVal) {
+				inline csf_void set_file(const csf_char* new_value) {
 
-					m_file = newVal;
+					m_file = new_value;
 				}
 				/**
 				 * 表示模块的名称
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_name(const csf_char* newVal) {
+				inline csf_void set_name(const csf_char* new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				 * 表示模块的文件地址
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_file(const csf_string& newVal) {
+				inline csf_void set_file(const csf_string& new_value) {
 
-					m_file = newVal;
+					m_file = new_value;
 				}
 				/**
 				 * 表示设备信息
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_device(const csf_string& newVal) {
+				inline csf_void set_device(const csf_string& new_value) {
 
-					m_device = newVal;
+					m_device = new_value;
 				}
 				/**
 				 * 表示子模块信息
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_child(const csf_string& newVal) {
+				inline csf_void set_child(const csf_string& new_value) {
 
-					m_child = newVal;
+					m_child = new_value;
 				}
 				/**
 				* 表示判断是否为空。

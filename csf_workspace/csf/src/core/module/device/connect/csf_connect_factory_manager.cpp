@@ -1,20 +1,21 @@
 /*******************************************************************************
 *
-*Copyright: armuxinxian@aliyun.com
-*
-*File name: csf_connect_factory_manager.hpp
+*Copyright: f
 *
 *Author: f
 *
+*File name: csf_connect_factory_manager.hpp
+*
 *Version: 1.0
 *
-*Date: 28-7月-2018 14:23:34
+*Date: 01-10月-2018 12:54:38
 *
-*Description: Class(csf_connect_factory_manager) 表示连接工厂管理器
+*Description: Class(csf_connect_factory_manager)
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
 #include "csf_connect_factory_manager.hpp"
@@ -67,3 +68,4 @@ csf::core::base::csf_int32 csf_connect_factory_manager::stop(const csf_configure
 
 	return 0;
 }
+

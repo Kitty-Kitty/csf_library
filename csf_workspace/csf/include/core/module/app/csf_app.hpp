@@ -333,56 +333,56 @@ namespace csf
 				/**
 				* 表示app自身维持的时间
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_app_time(csf::core::base::csf_time newVal) {
+				inline void set_app_time(csf::core::base::csf_time new_value) {
 
-					m_app_time = newVal;
+					m_app_time = new_value;
 				}
 				/**
 				* 表示定时获取的系统时间
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_system_time(csf::core::base::csf_time newVal) {
+				inline void set_system_time(csf::core::base::csf_time new_value) {
 
-					m_system_time = newVal;
+					m_system_time = new_value;
 				}
 				/**
 				* 表示app的启动时间
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_start_time(csf::core::base::csf_time newVal) {
+				inline void set_start_time(csf::core::base::csf_time new_value) {
 
-					m_start_time = newVal;
+					m_start_time = new_value;
 				}
 				/**
 				* 表示当前的工作目录地址
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_work_directory(csf_string& newVal) {
+				inline void set_work_directory(csf_string& new_value) {
 
-					m_work_directory = newVal;
+					m_work_directory = new_value;
 				}
 				/**
 				* 表示系统app所拥有的device列表，个个device都属于app，都共享app的资源。
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_devices(csf_unordered_map<csf_string, csf_device*>& newVal) {
+				inline void set_devices(csf_unordered_map<csf_string, csf_device*>& new_value) {
 
-					m_devices = newVal;
+					m_devices = new_value;
 				}
 				/**
 				* 表示系统总的配置管理器，一个系统存在至少一个该配置管理器
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_config_mg(const csf::core::system::csf_configure_manager& newVal) {
+				inline void set_config_mg(const csf::core::system::csf_configure_manager& new_value) {
 
-					m_config_mg = newVal;
+					m_config_mg = new_value;
 				}
 				/**
 				* 该函数主要用于初始化app的配置文件，获取配置文件中保存的属性信息。
@@ -408,11 +408,11 @@ namespace csf
 				/**
 				* 表示app的根配置文件信息，主要保存app的各种配置文件信息。
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_root_configure_file(csf_configure_file& newVal) {
+				inline csf_void set_root_configure_file(csf_configure_file& new_value) {
 
-					m_root_configure_file = newVal;
+					m_root_configure_file = new_value;
 				}
 				/**
 				* 该函数主要用于初始化app的日志系统。

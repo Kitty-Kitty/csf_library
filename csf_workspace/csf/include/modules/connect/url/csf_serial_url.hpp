@@ -2,23 +2,24 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: f
+*Author: f
 *
-*Author: fz
+*File name: csf_serial_url.hpp
 *
 *Version: 1.0
 *
-*Date: 29-7月-2018 15:13:17
+*Date: 01-10月-2018 12:54:51
 *
 *Description: Class(csf_serial_url) 表示串口地址信息
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_SERIAL_URL_INCLUDED_)
-#define CSF_SERIAL_URL_INCLUDED_
+#if !defined(CSF_SERIAL_URL_H_INCLUDED_)
+#define CSF_SERIAL_URL_H_INCLUDED_
 
 #include "csf_url.hpp"
 
@@ -32,7 +33,7 @@ namespace csf
 			 * 表示串口地址信息
 			 * @author f
 			 * @version 1.0
-			 * @created 29-7月-2018 15:13:17
+			 * @created 01-10月-2018 12:54:51
 			 */
 			class csf_serial_url : public csf::core::module::connect::csf_url
 			{
@@ -42,9 +43,9 @@ namespace csf
 				 * 表示串口的流控制类型
 				 * @author f
 				 * @version 1.0
-				 * @created 29-7月-2018 15:13:17
+				 * @created 01-10月-2018 12:54:51
 				 */
-				enum csf_serial_flow_control_type
+				typedef enum csf_serial_flow_control_type_enum
 				{
 					/**
 					 * 表示未知的串口流控制类型
@@ -58,15 +59,15 @@ namespace csf
 					 * 表示硬控制
 					 */
 					csf_serial_flow_control_type_hardware
-				};
+				} csf_serial_flow_control_type;
 
 				/**
 				 * 表示奇遇校验类型
 				 * @author f
 				 * @version 1.0
-				 * @created 29-7月-2018 15:13:17
+				 * @created 01-10月-2018 12:54:51
 				 */
-				enum csf_serial_parity_type
+				typedef enum csf_serial_parity_type_enum
 				{
 					/**
 					 * 表示未知的奇遇校验
@@ -80,15 +81,15 @@ namespace csf
 					 * 表示未知的遇校验
 					 */
 					csf_serial_parity_type_even
-				};
+				} csf_serial_parity_type;
 
 				/**
 				 * 表示停止位类型
 				 * @author f
 				 * @version 1.0
-				 * @created 29-7月-2018 15:13:17
+				 * @created 01-10月-2018 12:54:51
 				 */
-				enum csf_serial_stop_bits_type
+				typedef enum csf_serial_stop_bits_type_enum
 				{
 					/**
 					 * 表示未知的停止位
@@ -106,22 +107,11 @@ namespace csf
 					 * 表示2位停止位
 					 */
 					csf_serial_stop_bits_type_two
-				};
+				}csf_serial_stop_bits_type;
 
-				inline explicit csf_serial_url()
-					: csf_url(csf_url_type_serial)
-					, m_baud_rate(0)
-					, m_character_size(0)
-					, m_flow_control(csf_serial_flow_control_type_none)
-					, m_dev("")
-					, m_parity(csf_serial_parity_type_none)
-					, m_stop_bits(csf_serial_stop_bits_type_none)
-					, m_port(0) {
-				}
 
-				inline virtual ~csf_serial_url() {
-
-				}
+				csf_serial_url();
+				virtual ~csf_serial_url();
 
 				/**
 				 * 表示串口的波特数值
@@ -140,20 +130,20 @@ namespace csf
 				/**
 				 * 表示串口的波特数值
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_baud_rate(const csf_int32 newVal) {
+				inline void set_baud_rate(const csf_int32 new_value) {
 
-					m_baud_rate = newVal;
+					m_baud_rate = new_value;
 				}
 				/**
 				 * 表示字符的长度
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_character_size(const csf_uchar newVal) {
+				inline void set_character_size(const csf_uchar new_value) {
 
-					m_character_size = newVal;
+					m_character_size = new_value;
 				}
 				/**
 				 * 表示串口设备
@@ -174,59 +164,59 @@ namespace csf
 				/**
 				 * 表示串口设备
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_dev(const csf_char* newVal) {
+				inline void set_dev(const csf_char* new_value) {
 
-					m_dev = newVal;
+					m_dev = new_value;
 				}
 				/**
 				 * 表示流控类型
 				 */
-				inline csf_serial_flow_control_type get_flow_control() {
+				inline csf::modules::connect::csf_serial_url::csf_serial_flow_control_type get_flow_control() {
 
 					return m_flow_control;
 				}
 				/**
 				 * 表示流控类型
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_flow_control(const csf_serial_flow_control_type newVal) {
+				inline void set_flow_control(const csf::modules::connect::csf_serial_url::csf_serial_flow_control_type new_value) {
 
-					m_flow_control = newVal;
+					m_flow_control = new_value;
 				}
 				/**
 				 * 表示奇偶校验类型
 				 */
-				inline csf_serial_parity_type get_parity() {
+				inline csf::modules::connect::csf_serial_url::csf_serial_parity_type get_parity() {
 
 					return m_parity;
 				}
 				/**
 				 * 表示奇偶校验类型
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_parity(const csf_serial_parity_type newVal) {
+				inline void set_parity(const csf::modules::connect::csf_serial_url::csf_serial_parity_type new_value) {
 
-					m_parity = newVal;
+					m_parity = new_value;
 				}
 				/**
 				 * 表示停止位类型
 				 */
-				inline csf_serial_stop_bits_type get_stop_bits() {
+				inline csf::modules::connect::csf_serial_url::csf_serial_stop_bits_type get_stop_bits() {
 
 					return m_stop_bits;
 				}
 				/**
 				 * 表示停止位类型
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_stop_bits(const csf_serial_stop_bits_type newVal) {
+				inline void set_stop_bits(const csf::modules::connect::csf_serial_url::csf_serial_stop_bits_type new_value) {
 
-					m_stop_bits = newVal;
+					m_stop_bits = new_value;
 				}
 				/**
 				 * 表示串口的端口号
@@ -238,20 +228,20 @@ namespace csf
 				/**
 				 * 表示串口的端口号
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_port(const csf_uint32 newVal) {
+				inline void set_port(const csf_uint32 new_value) {
 
-					m_port = newVal;
+					m_port = new_value;
 				}
 				/**
 				 * 表示串口设备
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_dev(csf_string& newVal) {
+				inline void set_dev(csf_string& new_value) {
 
-					m_dev = newVal;
+					m_dev = new_value;
 				}
 				/**
 				 * 表示解析地址函数
@@ -275,7 +265,7 @@ namespace csf
 				/**
 				 * 表示流控类型
 				 */
-				csf_serial_flow_control_type m_flow_control = csf_serial_flow_control_type_none;
+				csf::modules::connect::csf_serial_url::csf_serial_flow_control_type m_flow_control = csf_serial_flow_control_type_none;
 				/**
 				 * 表示串口设备
 				 */
@@ -283,11 +273,11 @@ namespace csf
 				/**
 				 * 表示奇偶校验类型
 				 */
-				csf_serial_parity_type m_parity = csf_serial_parity_type_none;
+				csf::modules::connect::csf_serial_url::csf_serial_parity_type m_parity = csf_serial_parity_type_none;
 				/**
 				 * 表示停止位类型
 				 */
-				csf_serial_stop_bits_type m_stop_bits = csf_serial_stop_bits_type_none;
+				csf::modules::connect::csf_serial_url::csf_serial_stop_bits_type m_stop_bits = csf_serial_stop_bits_type_none;
 				/**
 				 * 表示串口的端口号
 				 */
@@ -300,4 +290,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_SERIAL_URL_INCLUDED_)
+#endif // !defined(CSF_SERIAL_URL_H_INCLUDED_)

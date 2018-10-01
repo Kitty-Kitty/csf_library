@@ -2,23 +2,24 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: f
+*Author: f
 *
-*Author: fz
+*File name: csf_tcp_connect.hpp
 *
 *Version: 1.0
 *
-*Date: 29-7月-2018 15:13:20
+*Date: 01-10月-2018 12:54:54
 *
 *Description: Class(csf_tcp_connect) 表示tcp连接
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_TCP_CONNECT_INCLUDED_)
-#define CSF_TCP_CONNECT_INCLUDED_
+#if !defined(CSF_TCP_CONNECT_H_INCLUDED_)
+#define CSF_TCP_CONNECT_H_INCLUDED_
 
 #include "csf_stream_connect.hpp"
 
@@ -32,7 +33,7 @@ namespace csf
 			 * 表示tcp连接
 			 * @author f
 			 * @version 1.0
-			 * @created 29-7月-2018 15:13:20
+			 * @created 01-10月-2018 12:54:54
 			 */
 			class csf_tcp_connect : public csf::modules::connect::csf_stream_connect
 			{
@@ -48,4 +49,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_TCP_CONNECT_INCLUDED_)
+#endif // !defined(CSF_TCP_CONNECT_H_INCLUDED_)

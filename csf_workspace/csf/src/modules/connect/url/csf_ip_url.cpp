@@ -1,25 +1,41 @@
 /*******************************************************************************
 *
-*Copyright: armuxinxian@aliyun.com
-*
-*File name: csf_ip_url.hpp
+*Copyright: f
 *
 *Author: f
 *
+*File name: csf_ip_url.hpp
+*
 *Version: 1.0
 *
-*Date: 29-7ÔÂ-2018 15:13:09
+*Date: 01-10ÔÂ-2018 12:54:43
 *
-*Description: Class(csf_ip_url) 
+*Description: Class(csf_ip_url)
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
 #include "csf_ip_url.hpp"
 
 using csf::modules::connect::csf_ip_url;
+
+
+csf_ip_url::csf_ip_url()
+	: m_ip("")
+	, m_port(0) {
+
+}
+
+
+
+csf_ip_url::~csf_ip_url() {
+
+}
+
+
 
 
 

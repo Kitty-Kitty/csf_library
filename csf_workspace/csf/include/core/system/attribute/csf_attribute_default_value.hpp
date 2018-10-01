@@ -72,11 +72,11 @@ namespace csf
 					/**
 					* 表示默认的数值类型
 					*
-					* @param newVal    表示默认的数值
+					* @param new_value    表示默认的数值
 					*/
-					inline csf_void set_value(const ValueType& newVal) {
+					inline csf_void set_value(const ValueType& new_value) {
 
-						m_value = newVal;
+						m_value = new_value;
 					}
 
 				private:

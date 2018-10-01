@@ -60,11 +60,11 @@ namespace csf
 					/**
 					 * 表示保存的线程集合
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline csf_void set_threads(const csf_set<csf_thread*>& newVal) {
+					inline csf_void set_threads(const csf_set<csf_thread*>& new_value) {
 
-						m_threads = newVal;
+						m_threads = new_value;
 					}
 					/**
 					 * 表示获取线程组中的线程数量

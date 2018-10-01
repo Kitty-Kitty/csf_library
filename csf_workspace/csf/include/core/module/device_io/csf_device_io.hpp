@@ -99,10 +99,10 @@ namespace csf
 				/**
 				 * 表示device_io所属的app地址
 				 *
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_app(const csf::core::module::csf_app* newVal) {
-					m_app = (csf::core::module::csf_app*)newVal;
+				inline void set_app(const csf::core::module::csf_app* new_value) {
+					m_app = (csf::core::module::csf_app*)new_value;
 				}
 				/**
 				 * 表示设备io所属的device地址信息
@@ -114,11 +114,11 @@ namespace csf
 				/**
 				 * 表示设备io所属的device地址信息
 				 *
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_device(const csf::core::module::csf_device* newVal) {
+				inline void set_device(const csf::core::module::csf_device* new_value) {
 
-					m_device = (csf::core::module::csf_device*)newVal;
+					m_device = (csf::core::module::csf_device*)new_value;
 				}
 				inline csf::core::module::csf_app* get_app() {
 

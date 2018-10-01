@@ -86,11 +86,11 @@ namespace csf
 				/**
 				 * 表示配置文件的目录地址
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_file_path(csf_string& newVal) {
+				inline csf_void set_file_path(csf_string& new_value) {
 
-					m_file_path = newVal;
+					m_file_path = new_value;
 				}
 				/**
 				 * 表示配置文件的格式
@@ -102,11 +102,11 @@ namespace csf
 				/**
 				 * 表示配置文件的格式
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_format(csf_string& newVal) {
+				inline csf_void set_format(csf_string& new_value) {
 
-					m_format = newVal;
+					m_format = new_value;
 				}
 				/**
 				 * 表示配置文件的命名，用于丰富配置文件的处理
@@ -118,38 +118,38 @@ namespace csf
 				/**
 				 * 表示配置文件的命名，用于丰富配置文件的处理
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_name(csf_string& newVal) {
+				inline csf_void set_name(csf_string& new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				 * 表示配置文件的命名，用于丰富配置文件的处理
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_name(csf_char* newVal) {
+				inline csf_void set_name(csf_char* new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				 * 表示配置文件的格式
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_format(csf_char* newVal) {
+				inline csf_void set_format(csf_char* new_value) {
 
-					m_format = newVal;
+					m_format = new_value;
 				}
 				/**
 				 * 表示配置文件的目录地址
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_file_path(csf_char* newVal) {
+				inline csf_void set_file_path(csf_char* new_value) {
 
-					m_file_path = newVal;
+					m_file_path = new_value;
 				}
 				/**
 				* 表示判断是否为空。

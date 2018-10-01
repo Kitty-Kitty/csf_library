@@ -156,30 +156,30 @@ namespace csf
 				* 表示设备的唯一编码id，其中id最大长度256字节。
 				* 返回：true表示设置成功；false表示设置失败。
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_bool set_mid(const csf_string& newVal) {
+				inline csf_bool set_mid(const csf_string& new_value) {
 
-					if (newVal.empty() || newVal.length() >= csf_device_id_length) {
+					if (new_value.empty() || new_value.length() >= csf_device_id_length) {
 						return csf_false;
 					}
 
-					return set_mid(newVal.c_str());
+					return set_mid(new_value.c_str());
 				}
 				/**
 				* 表示设备的唯一编码id，其中id最大长度256字节。
 				* 返回：true表示设置成功；false表示设置失败。
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_bool set_mid(const csf_char* newVal) {
+				inline csf_bool set_mid(const csf_char* new_value) {
 
-					if (!newVal || csf_strlen(newVal) >= csf_device_id_length) {
+					if (!new_value || csf_strlen(new_value) >= csf_device_id_length) {
 						return csf_false;
 					}
 
 					csf_memset(m_mid, 0, csf_sizeof(m_mid));
-					csf_strcpy(m_mid, newVal);
+					csf_strcpy(m_mid, new_value);
 					
 					return csf_true;
 				}
@@ -201,11 +201,11 @@ namespace csf
 				/**
 				* 表示设备所属的父设备的节点名称
 				*
-				* @param newVal    表示父设备节点
+				* @param new_value    表示父设备节点
 				*/
-				inline virtual csf_void set_parent(const csf_device_base* newVal) {
+				inline virtual csf_void set_parent(const csf_device_base* new_value) {
 
-					m_parent = (csf_device_base*)newVal;
+					m_parent = (csf_device_base*)new_value;
 				}
 				/**
 				* 表示设备所属的父设备的节点名称

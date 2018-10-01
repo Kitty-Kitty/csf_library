@@ -209,9 +209,9 @@ namespace csf
 				/**
 				 * 表示配置文件地址
 				 *
-				 * @param newVal
+				 * @param new_value
 				 */
-				csf_void set_configure_manager(const csf_configure_manager* newVal);
+				csf_void set_configure_manager(const csf_configure_manager* new_value);
 				/**
 				 * 模块启动
 				 *
@@ -234,11 +234,11 @@ namespace csf
 				/**
 				 * 表示日志文件的回滚大小
 				 *
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_rotation_size(const csf_uint64 newVal) {
+				inline csf_void set_rotation_size(const csf_uint64 new_value) {
 
-					m_rotation_size = newVal;
+					m_rotation_size = new_value;
 				}
 				/**
 				 * 表示磁盘存储的最大大小
@@ -250,11 +250,11 @@ namespace csf
 				/**
 				 * 表示磁盘存储的最大大小
 				 *
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_stored_max_size(const csf_uint64 newVal) {
+				inline csf_void set_stored_max_size(const csf_uint64 new_value) {
 
-					m_stored_max_size = newVal;
+					m_stored_max_size = new_value;
 				}
 				/**
 				 * 表示磁盘的最小空间大小
@@ -266,11 +266,11 @@ namespace csf
 				/**
 				 * 表示磁盘的最小空间大小
 				 *
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_drive_min_free_size(const csf_uint64 newVal) {
+				inline csf_void set_drive_min_free_size(const csf_uint64 new_value) {
 
-					m_drive_min_free_size = newVal;
+					m_drive_min_free_size = new_value;
 				}
 				/**
 				* 表示当前系统的日志级别，默认notice级别
@@ -282,11 +282,11 @@ namespace csf
 				/**
 				* 表示当前系统的日志级别，默认notice级别
 				*
-				* @param newVal    表示配置的系统日志级别
+				* @param new_value    表示配置的系统日志级别
 				*/
-				inline static void set_level(csf_logger_level newVal) {
+				inline static void set_level(csf_logger_level new_value) {
 
-					m_level = newVal;
+					m_level = new_value;
 				}
 				/**
 				* 表示日志文件保存的目录
@@ -298,11 +298,11 @@ namespace csf
 				/**
 				* 表示日志文件保存的目录
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_path(const csf_string& newVal) {
+				inline csf_void set_path(const csf_string& new_value) {
 
-					m_path = newVal;
+					m_path = new_value;
 				}
 				/**
 				* 表示日志文件名格式
@@ -314,11 +314,11 @@ namespace csf
 				/**
 				* 表示日志文件名格式
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_file_name_format(const csf_string& newVal) {
+				inline csf_void set_file_name_format(const csf_string& new_value) {
 
-					m_file_name_format = newVal;
+					m_file_name_format = new_value;
 				}
 				/**
 				* 属性管理器，日志保存模块需要的配置属性内容
@@ -411,11 +411,11 @@ namespace csf
 				/**
 				* 表示控制台输出
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_text_sink_ptr(const boost::shared_ptr<text_sink> newVal) {
+				inline csf_void set_text_sink_ptr(const boost::shared_ptr<text_sink> new_value) {
 
-					m_text_sink_ptr = newVal;
+					m_text_sink_ptr = new_value;
 				}
 				/**
 				* 表示文件输出
@@ -427,20 +427,20 @@ namespace csf
 				/**
 				* 表示文件输出
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_file_sink_ptr(const boost::shared_ptr<file_sink> newVal) {
+				inline csf_void set_file_sink_ptr(const boost::shared_ptr<file_sink> new_value) {
 
-					m_file_sink_ptr = newVal;
+					m_file_sink_ptr = new_value;
 				}
 				/**
 				* 属性管理器，日志保存模块需要的配置属性内容
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_attribute_manager(csf_void* newVal) {
+				inline csf_void set_attribute_manager(csf_void* new_value) {
 
-					m_attribute_manager = newVal;
+					m_attribute_manager = new_value;
 				}
 			};
 

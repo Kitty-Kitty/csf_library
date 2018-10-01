@@ -304,13 +304,13 @@ csf::core::base::csf_int32 csf_logger::stop(const csf_configure_manager * conf_m
 /**
 * 表示配置文件地址
 *
-* @param newVal
+* @param new_value
 */
-csf_void csf_logger::set_configure_manager(const csf_configure_manager* newVal) {
+csf_void csf_logger::set_configure_manager(const csf_configure_manager* new_value) {
 
-	m_configure_manager = (csf_configure_manager*)newVal;
+	m_configure_manager = (csf_configure_manager*)new_value;
 
 	if (get_attribute_manager()) {
-		((csf_attribute_manager*)get_attribute_manager())->set_configure_manager(newVal);
+		((csf_attribute_manager*)get_attribute_manager())->set_configure_manager(new_value);
 	}
 }

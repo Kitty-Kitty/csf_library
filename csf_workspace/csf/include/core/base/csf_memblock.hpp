@@ -193,31 +193,31 @@ namespace csf
 				/**
 				 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_is_free(const csf_bool newVal) {
+				inline csf_void set_is_free(const csf_bool new_value) {
 
-					m_is_free = newVal;
+					m_is_free = new_value;
 				}
 
 			protected:
 				/**
 				* 表示保存内容的缓存长度
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_size(const csf_uint32 newVal) {
+				inline csf_void set_size(const csf_uint32 new_value) {
 
-					m_size = newVal;
+					m_size = new_value;
 				}
 				/**
 				* 表示保存内容的缓存地址
 				*
-				* @param newVal    newVal
+				* @param new_value    new_value
 				*/
-				inline void set_buffer(const csf_uchar* newVal) {
+				inline void set_buffer(const csf_uchar* new_value) {
 
-					m_buffer = (csf_uchar*)newVal;
+					m_buffer = (csf_uchar*)new_value;
 				}
 				/**
 				* 重新创建对象。根据长度申请一个内存，创建一个对象

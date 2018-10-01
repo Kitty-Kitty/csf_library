@@ -293,38 +293,38 @@ namespace csf
 				/**
 				 * 表示数据对象节点数据内容
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_content(csf_string& newVal) {
+				inline csf_void set_content(csf_string& new_value) {
 
-					m_content = newVal;
+					m_content = new_value;
 				}
 				/**
 				 * 表示数据对象节点名称
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_name(const csf_char* newVal) {
+				inline csf_void set_name(const csf_char* new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				 * 表示数据对象节点名称
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_name(const csf_string& newVal) {
+				inline csf_void set_name(const csf_string& new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				 * 表示数据对象节点数据内容
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_content(csf_char* newVal) {
+				inline csf_void set_content(csf_char* new_value) {
 
-					m_content = newVal;
+					m_content = new_value;
 				}
 				/**
 				* 表示子节点列表
@@ -385,20 +385,20 @@ namespace csf
 				/**
 				 * 表示属性信息内容
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_attributes(csf_map<csf_string, csf_string>& newVal) {
+				inline csf_void set_attributes(csf_map<csf_string, csf_string>& new_value) {
 
-					m_attributes = newVal;
+					m_attributes = new_value;
 				}
 				/**
 				 * 表示子节点列表
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_children(const csf_list<csf_element>& newVal) {
+				inline csf_void set_children(const csf_list<csf_element>& new_value) {
 
-					m_children = newVal;
+					m_children = new_value;
 				}
 			};
 

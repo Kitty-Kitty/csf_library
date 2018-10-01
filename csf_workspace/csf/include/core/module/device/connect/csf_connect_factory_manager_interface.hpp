@@ -2,28 +2,26 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: f
+*Author: f
 *
-*Author: fz
+*File name: csf_connect_factory_manager_interface.hpp
 *
 *Version: 1.0
 *
-*Date: 28-7月-2018 14:23:34
+*Date: 01-10月-2018 12:54:38
 *
 *Description: Interface(csf_connect_factory_manager_interface) 
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_CONNECT_FACTORY_MANAGER_INTERFACE_INCLUDED_)
-#define CSF_CONNECT_FACTORY_MANAGER_INTERFACE_INCLUDED_
+#if !defined(CSF_CONNECT_FACTORY_MANAGER_INTERFACE_H_INCLUDED_)
+#define CSF_CONNECT_FACTORY_MANAGER_INTERFACE_H_INCLUDED_
 
-#include "csf_typedef.h"
 #include "csf_configure_manager.hpp"
-
-using namespace csf::core::base;
 
 namespace csf
 {
@@ -36,7 +34,7 @@ namespace csf
 				/**
 				 * @author f
 				 * @version 1.0
-				 * @created 28-7月-2018 14:23:34
+				 * @created 01-10月-2018 12:54:38
 				 */
 				class csf_connect_factory_manager_interface
 				{
@@ -55,19 +53,19 @@ namespace csf
 					 * 
 					 * @param conf_mg    表示配置文件信息
 					 */
-					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null) =0;
+					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr) =0;
 					/**
 					 * 模块启动
 					 * 
 					 * @param conf_mg    表示配置文件信息
 					 */
-					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null) =0;
+					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr) =0;
 					/**
 					 * 模块停止
 					 * 
 					 * @param conf_mg    表示配置文件信息
 					 */
-					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null) =0;
+					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr) =0;
 
 				};
 
@@ -78,4 +76,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_CONNECT_FACTORY_MANAGER_INTERFACE_INCLUDED_)
+#endif // !defined(CSF_CONNECT_FACTORY_MANAGER_INTERFACE_H_INCLUDED_)

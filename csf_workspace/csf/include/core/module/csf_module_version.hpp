@@ -66,11 +66,11 @@ namespace csf
 				/**
 				 * 模块版本数字编码
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_version(const csf_uint32 newVal) {
+				inline csf_void set_version(const csf_uint32 new_value) {
 
-					m_version = newVal;
+					m_version = new_value;
 				}
 				/**
 				 * 模块的其他描述信息
@@ -93,72 +93,72 @@ namespace csf
 				/**
 				 * 模块的其他描述信息
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_description(const csf_string& newVal) {
+				inline csf_void set_description(const csf_string& new_value) {
 
-					m_description = newVal;
+					m_description = new_value;
 				}
 				/**
 				 * 模块的版本字符串信息
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_strver(const csf_char* newVal) {
+				inline csf_void set_strver(const csf_char* new_value) {
 
-					m_strver = newVal;
+					m_strver = new_value;
 				}
 				/**
 				 * 模块的版本字符串信息
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_strver(const csf_string& newVal) {
+				inline csf_void set_strver(const csf_string& new_value) {
 
-					m_strver = newVal;
+					m_strver = new_value;
 				}
 				/**
 				 * 模块的其他描述信息
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_description(const csf_char* newVal) {
+				inline csf_void set_description(const csf_char* new_value) {
 
-					m_description = newVal;
+					m_description = new_value;
 				}
 
 			protected:
 				/**
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_build(const csf_string& newVal) {
+				inline csf_void set_build(const csf_string& new_value) {
 
-					m_build = newVal;
+					m_build = new_value;
 				}
 				/**
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_compile(const csf_string& newVal) {
+				inline csf_void set_compile(const csf_string& new_value) {
 
-					m_compile = newVal;
+					m_compile = new_value;
 				}
 				/**
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_build(const csf_char* newVal) {
+				inline csf_void set_build(const csf_char* new_value) {
 
-					m_build = newVal;
+					m_build = new_value;
 				}
 				/**
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_compile(const csf_char* newVal) {
+				inline csf_void set_compile(const csf_char* new_value) {
 
-					m_compile = newVal;
+					m_compile = new_value;
 				}
 
 			private:

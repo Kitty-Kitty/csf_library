@@ -233,11 +233,11 @@ namespace csf
 					/**
 					 * 表示时间的单位
 					 *
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_unit(const csf_time_unit newVal) {
+					inline void set_unit(const csf_time_unit new_value) {
 
-						m_unit = newVal;
+						m_unit = new_value;
 					}
 					/**
 					* 表示时间单位名称的对应列表
@@ -400,11 +400,11 @@ namespace csf
 					/**
 					* 表示时间单位名称的对应列表
 					*
-					* @param newVal    表示时间单位名称的对应列表
+					* @param new_value    表示时间单位名称的对应列表
 					*/
-					inline void set_unit_name(const csf_unordered_map<csf_string, csf_time_unit>& newVal) {
+					inline void set_unit_name(const csf_unordered_map<csf_string, csf_time_unit>& new_value) {
 
-						m_unit_name = newVal;
+						m_unit_name = new_value;
 					}
 #endif
 					/**

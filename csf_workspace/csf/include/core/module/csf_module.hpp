@@ -157,11 +157,11 @@ namespace csf
 				/**
 				 * 表示模块的名称
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_name(const csf_string& newVal) {
+				inline csf_void set_name(const csf_string& new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				 * 表示模块的配置信息管理器
@@ -180,20 +180,20 @@ namespace csf
 				/**
 				 * 表示模块的配置信息管理器
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline virtual csf_void set_configure_manager(const csf::core::system::csf_configure_manager* newVal) {
+				inline virtual csf_void set_configure_manager(const csf::core::system::csf_configure_manager* new_value) {
 
-					m_configure_manager = (csf::core::system::csf_configure_manager*)newVal;
+					m_configure_manager = (csf::core::system::csf_configure_manager*)new_value;
 				}
 				/**
 				 * 表示装饰者指针
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_decorator(const csf_module* newVal) {
+				inline csf_void set_decorator(const csf_module* new_value) {
 
-					m_decorator = (csf_module*)newVal;
+					m_decorator = (csf_module*)new_value;
 				}
 				/**
 				 * 表示模块的版本信息
@@ -205,11 +205,11 @@ namespace csf
 				/**
 				 * 表示模块的版本信息
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_version(const csf::core::module::csf_module_version& newVal) {
+				inline csf_void set_version(const csf::core::module::csf_module_version& new_value) {
 
-					m_version = newVal;
+					m_version = new_value;
 				}
 				/**
 				 * 表示模块的错误信息
@@ -221,20 +221,20 @@ namespace csf
 				/**
 				 * 表示模块的错误信息
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_error(const csf::core::module::csf_error& newVal) {
+				inline csf_void set_error(const csf::core::module::csf_error& new_value) {
 
-					m_error = newVal;
+					m_error = new_value;
 				}
 				/**
 				 * 表示模块的名称
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_name(const csf_char* newVal) {
+				inline csf_void set_name(const csf_char* new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				* 模块包含一个属性管理器，统一保存模块所需要的配置属性内容
@@ -281,11 +281,11 @@ namespace csf
 				/**
 				* 模块包含一个属性管理器，统一保存模块所需要的配置属性内容
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_attribute_manager(csf::core::system::attribute::csf_attribute_manager& newVal) {
+				inline void set_attribute_manager(csf::core::system::attribute::csf_attribute_manager& new_value) {
 
-					m_attribute_manager = newVal;
+					m_attribute_manager = new_value;
 				}
 			};
 

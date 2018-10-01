@@ -56,28 +56,28 @@ namespace csf
 					 * 
 					 * @param conf_mg    表示配置文件信息
 					 */
-					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
+					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr);
 					/**
 					 * 表示配置信息
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline csf::core::base::csf_void set_configure_manager(const csf_configure_manager* newVal) {
+					inline csf::core::base::csf_void set_configure_manager(const csf_configure_manager* new_value) {
 
-						m_configure_manager = (csf_configure_manager*)newVal;
+						m_configure_manager = (csf_configure_manager*)new_value;
 					}
 					/**
 					 * 模块启动
 					 * 
 					 * @param conf_mg    表示配置文件信息
 					 */
-					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
+					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr);
 					/**
 					 * 模块停止
 					 * 
 					 * @param conf_mg    表示配置文件信息
 					 */
-					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
+					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
 					/**
 					 * 表示任务管理器的状态信息
 					 */
@@ -88,11 +88,11 @@ namespace csf
 					/**
 					 * 表示任务管理器的状态信息
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_status(const csf::core::utils::task::csf_task::csf_task_status newVal) {
+					inline void set_status(const csf::core::utils::task::csf_task::csf_task_status new_value) {
 
-						m_status = newVal;
+						m_status = new_value;
 					}
 
 				private:

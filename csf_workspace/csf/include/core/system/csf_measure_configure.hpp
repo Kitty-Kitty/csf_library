@@ -69,11 +69,11 @@ namespace csf
 				/**
 				 * 表示设备device的最大数量
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_device_limit(const csf_uint32 newVal) {
+				inline csf_void set_device_limit(const csf_uint32 new_value) {
 
-					m_device_limit = newVal;
+					m_device_limit = new_value;
 				}
 				/**
 				 * 表示设备device_io的最大数量
@@ -85,11 +85,11 @@ namespace csf
 				/**
 				 * 表示设备device_io的最大数量
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_device_io_limit(const csf_uint32 newVal) {
+				inline csf_void set_device_io_limit(const csf_uint32 new_value) {
 
-					m_device_io_limit = newVal;
+					m_device_io_limit = new_value;
 				}
 				/**
 				 * 表示定时器的时间精度，就是定时器每一次查询的间隔
@@ -101,11 +101,11 @@ namespace csf
 				/**
 				 * 表示定时器的时间精度，就是定时器每一次查询的间隔
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_timer_resolution(const csf_uint64 newVal) {
+				inline csf_void set_timer_resolution(const csf_uint64 new_value) {
 
-					m_timer_resolution = newVal;
+					m_timer_resolution = new_value;
 				}
 				/**
 				 * 表示系统时间的时间精度，主要是用于系统自身维护的时间内容
@@ -117,11 +117,11 @@ namespace csf
 				/**
 				 * 表示系统时间的时间精度，主要是用于系统自身维护的时间内容
 				 * 
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf_void set_time_resolution(const csf_uint64 newVal) {
+				inline csf_void set_time_resolution(const csf_uint64 new_value) {
 
-					m_time_resolution = newVal;
+					m_time_resolution = new_value;
 				}
 				/**
 				 * 表示连接的极限数据
@@ -133,11 +133,11 @@ namespace csf
 				/**
 				 * 表示连接的极限数据
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline csf_void set_connect_limit(const csf_uint32 newVal) {
+				inline csf_void set_connect_limit(const csf_uint32 new_value) {
 
-					m_connect_limit = newVal;
+					m_connect_limit = new_value;
 				}
 				/**
 				* 表示将负载信息格式化输出

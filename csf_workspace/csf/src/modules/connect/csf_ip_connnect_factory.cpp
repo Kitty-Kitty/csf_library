@@ -1,25 +1,42 @@
 /*******************************************************************************
 *
-*Copyright: armuxinxian@aliyun.com
-*
-*File name: csf_ip_connnect_factory.hpp
+*Copyright: f
 *
 *Author: f
 *
+*File name: csf_ip_connnect_factory.hpp
+*
 *Version: 1.0
 *
-*Date: 29-7月-2018 15:13:09
+*Date: 01-10月-2018 12:54:43
 *
-*Description: Class(csf_ip_connnect_factory) 表示ip网络通信连接工厂类
+*Description: Class(csf_ip_connnect_factory)
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
 #include "csf_ip_connnect_factory.hpp"
+#include "csf_tcp_connect.hpp"
+#include "csf_udp_connect.hpp"
+
 
 using csf::modules::connect::csf_ip_connnect_factory;
+
+
+csf_ip_connnect_factory::csf_ip_connnect_factory() {
+
+}
+
+
+
+csf_ip_connnect_factory::~csf_ip_connnect_factory() {
+
+}
+
+
 
 
 
@@ -28,9 +45,9 @@ using csf::modules::connect::csf_ip_connnect_factory;
  * 
  * @param type    表示连接类型
  */
-csf_connect* csf_ip_connnect_factory::create(const csf::core::module::connect::csf_connect::csf_connect_type type) {
+csf_connect_ptr csf_ip_connnect_factory::create(const csf_connect::csf_connect_type type) {
 
-	return  NULL;
+	return  m_null_connect_ptr;
 }
 
 
@@ -63,9 +80,22 @@ csf::core::base::csf_int32 csf_ip_connnect_factory::init(const csf_configure_man
  * @param type    表示连接类型
  * @param local_url    表示连接打开的本地地址
  */
-csf_connect* csf_ip_connnect_factory::create(const csf::core::module::connect::csf_connect::csf_connect_type type, const csf_url& local_url) {
+csf_connect_ptr csf_ip_connnect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url) {
 
-	return  NULL;
+	if (type & csf_connect::csf_connect_type::csf_connect_type_tcp) {
+		csf_tcp_connect		*tmp_tcp_connect = new csf_tcp_connect();
+
+		if (tmp_tcp_connect->set_local_url((csf_url&)local_url)) {
+			delete tmp_tcp_connect;
+			return m_null_connect_ptr;
+		}
+		else {
+			csf_connect_ptr tmp_tcp_connect_ptr(tmp_tcp_connect);
+
+			
+		}
+	}
+	return  m_null_connect_ptr;
 }
 
 
@@ -99,9 +129,9 @@ csf::core::base::csf_int32 csf_ip_connnect_factory::start(const csf_configure_ma
  * @param local_url    表示连接打开的本地地址
  * @param remote_url    表示连接打开的远程地址
  */
-csf_connect* csf_ip_connnect_factory::create(const csf::core::module::connect::csf_connect::csf_connect_type type, const csf_url& local_url, const csf_url& remote_url) {
+csf_connect_ptr csf_ip_connnect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url, const csf_url& remote_url) {
 
-	return  NULL;
+	return  m_null_connect_ptr;
 }
 
 
@@ -145,7 +175,7 @@ csf_int32 csf_ip_connnect_factory::add(csf_element& element, csf_device_operatio
  * 
  * @param connect    表示需要销毁的连接
  */
-csf_int32 csf_ip_connnect_factory::destroy(const csf_connect* connect) {
+csf_int32 csf_ip_connnect_factory::destroy(const csf_connect_ptr connect) {
 
 	return 0;
 }

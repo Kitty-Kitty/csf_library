@@ -1,24 +1,26 @@
 /*******************************************************************************
 *
-*Copyright: armuxinxian@aliyun.com
-*
-*File name: csf_connect.hpp
+*Copyright: fangzhenmu@aliyun.com
 *
 *Author: fangzhenmu@aliyun.com
 *
+*File name: csf_connect.hpp
+*
 *Version: 1.0
 *
-*Date: 28-7月-2018 14:23:33
+*Date: 01-10月-2018 12:54:37
 *
-*Description: Class(csf_connect) 表示通信库内容
+*Description: Class(csf_connect)
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
 #include "csf_connect.hpp"
 
+using namespace csf::core::module::connect;
 using csf::core::module::connect::csf_connect;
 
 
@@ -27,8 +29,7 @@ csf_connect::csf_connect()
 	, m_sync(csf_false)
 	, m_status(0)
 	, m_factory(csf_nullptr)
-	, m_read_timeout(0)
-	, m_write_timeout(0) {
+	, m_configure_manager(csf_nullptr) {
 
 }
 
@@ -37,6 +38,9 @@ csf_connect::csf_connect()
 csf_connect::~csf_connect() {
 
 }
+
+
+
 
 
 /**
@@ -80,13 +84,13 @@ csf_url& csf_connect::get_remote_url() {
 
 /**
  * 
- * @param newVal
+ * @param new_value
  */
-csf_int32 csf_connect::set_remote_url(csf_url& newVal) {
+csf_int32 csf_connect::set_remote_url(csf_url& new_value) {
 
-	m_remote_url = newVal;
+	m_remote_url = new_value;
 
-	return csf_success;
+	return 0;
 }
 
 
@@ -102,13 +106,13 @@ csf_url& csf_connect::get_local_url() {
 /**
  * 表示本地的主机地址
  * 
- * @param newVal
+ * @param new_value
  */
-csf_int32 csf_connect::set_local_url(csf_url& newVal) {
+csf_int32 csf_connect::set_local_url(csf_url& new_value) {
 
-	m_local_url = newVal;
+	m_local_url = new_value;
 
-	return csf_success;
+	return 0;
 }
 
 
@@ -124,63 +128,29 @@ csf_connect_factory* csf_connect::get_factory() {
 /**
  * 表示创建connect的工厂类地址
  * 
- * @param newVal
+ * @param new_value
  */
-csf_void csf_connect::set_factory(csf_connect_factory* newVal) {
+csf_void csf_connect::set_factory(csf_connect_factory* new_value) {
 
-	m_factory = newVal;
-}
-
-
-csf_uint32 csf_connect::get_read_timeout() {
-
-	return m_read_timeout;
+	m_factory = new_value;
 }
 
 
 /**
- * 
- * @param newVal
- */
-csf_void csf_connect::set_read_timeout(csf_uint32 newVal) {
-
-	m_read_timeout = newVal;
-}
-
-
-/**
- * 表示写超时时间，单位为毫秒。
- */
-csf_uint32 csf_connect::get_write_timeout() {
-
-	return m_write_timeout;
-}
-
-
-/**
- * 表示写超时时间，单位为毫秒。
- * 
- * @param newVal
- */
-csf_void csf_connect::set_write_timeout(csf_uint32 newVal) {
-
-	m_write_timeout = newVal;
-}
-
-
-/**
- * 表示打开连接信息
+ * 表示打开连接信息.
+ * 返回：0表示成功；非0表示失败；
  * 
  * @param url    表示连接地址
  */
 csf_int32 csf_connect::open(const csf_url& url) {
 
-	return csf_success;
+	return 0;
 }
 
 
 /**
- * 表示关闭连接
+ * 表示关闭连接.
+ * 返回：0表示成功；非0表示失败；
  */
 csf_int32 csf_connect::close() {
 
@@ -189,20 +159,28 @@ csf_int32 csf_connect::close() {
 
 
 /**
- * 表示读取数据并存在指定缓存链表中
- * 
- * @param chain    表示读取数据存在的csf_csfstring
- * @param url    表示发送数据的远端地址
- * @param callback    表示读取的回调函数
+ * 表示设置连接的属性项目信息。
+ * 返回：0表示成功；非0表示失败。
  */
-csf_int32 csf_connect::read(const csf_chain& chain, const csf_url& url, const csf_connect_callback callback) {
+csf_int32 csf_connect::set_option() {
 
 	return 0;
 }
 
 
 /**
- * 表示写入指定缓存的内容
+ * 表示获取连接的属性项目信息。
+ * 返回：0表示成功；非0表示失败。
+ */
+csf_int32 csf_connect::get_option() {
+
+	return 0;
+}
+
+
+/**
+ * 表示写入指定缓存的内容。
+ * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
  * 
  * @param buf    表示内容的缓存地址
  * @param len    表示内容缓存的长度
@@ -216,27 +194,8 @@ csf_int32 csf_connect::write(const csf_uchar* buf, const csf_uint32 len, const c
 
 
 /**
-* 表示设置连接的属性项目信息。
-* 返回：0表示成功；非0表示失败。
-*/
-csf_int32 csf_connect::set_option() {
-
-	return csf_success;
-}
-
-
-/**
-* 表示获取连接的属性项目信息。
-* 返回：0表示成功；非0表示失败。
-*/
-csf_int32 csf_connect::get_option() {
-
-	return csf_success;
-}
-
-
-/**
- * 表示写入csf_buffer内容
+ * 表示写入csf_buffer内容。
+ * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
  * 
  * @param buffer    表示需要写入的csf_buffer内容
  * @param callback    表示需要返回的回调函数
@@ -248,7 +207,8 @@ csf_int32 csf_connect::write(const csf_buffer& buffer, const csf_connect_callbac
 
 
 /**
- * 表示发送csf_csfstring内容
+ * 表示发送csf_csfstring内容。
+ * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
  * 
  * @param csfstr    表示csf_csfstring的内容
  * @param callback    表示需要返回的回调函数
@@ -260,7 +220,8 @@ csf_int32 csf_connect::write(const csf_csfstring& csfstr, const csf_connect_call
 
 
 /**
- * 表示发送csf_csfstring内容
+ * 表示发送csf_csfstring内容。
+ * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
  * 
  * @param chain    表示csf_chain的内容
  * @param url    表示需要发送数据的目的地址
@@ -273,7 +234,8 @@ csf_int32 csf_connect::write(const csf_chain& chain, const csf_url& url, const c
 
 
 /**
- * 表示写入csf_buffer内容
+ * 表示写入csf_buffer内容。
+ * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
  * 
  * @param buffer    表示需要写入的csf_buffer内容
  * @param url    表示需要发送数据的目的地址
@@ -286,7 +248,8 @@ csf_int32 csf_connect::write(const csf_buffer& buffer, const csf_url& url, const
 
 
 /**
- * 表示写入指定缓存的内容
+ * 表示写入指定缓存的内容。
+ * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
  * 
  * @param buf    表示内容的缓存地址
  * @param len    表示内容缓存的长度
@@ -299,7 +262,35 @@ csf_int32 csf_connect::write(const csf_uchar* buf, const csf_uint32 len, const c
 
 
 /**
- * 表示读取数据并存在指定缓存位置
+ * 表示发送csf_csfstring内容。
+ * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
+ * 
+ * @param csfstr    表示csf_csfstring的内容
+ * @param url    表示需要发送数据的目的地址
+ * @param callback    表示需要返回的回调函数
+ */
+csf_int32 csf_connect::write(const csf_csfstring& csfstr, const csf_url& url, const csf_connect_callback callback) {
+
+	return 0;
+}
+
+
+/**
+ * 表示发送csf_csfstring内容。
+ * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
+ * 
+ * @param chain    表示csf_chain的内容
+ * @param callback    表示需要返回的回调函数
+ */
+csf_int32 csf_connect::write(const csf_chain& chain, const csf_connect_callback callback) {
+
+	return 0;
+}
+
+
+/**
+ * 表示读取数据并存在指定缓存位置。
+ * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
  * 
  * @param buf    表示读取数据存在的指定缓存地址
  * 
@@ -314,7 +305,22 @@ csf_int32 csf_connect::read(const csf_uchar* buf, const csf_uint32 len, const cs
 
 
 /**
- * 表示读取数据并存在指定缓存位置
+ * 表示读取数据并存在指定缓存链表中。
+ * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
+ * 
+ * @param chain    表示读取数据存在的csf_csfstring
+ * @param url    表示发送数据的远端地址
+ * @param callback    表示读取的回调函数
+ */
+csf_int32 csf_connect::read(const csf_chain& chain, const csf_url& url, const csf_connect_callback callback) {
+
+	return 0;
+}
+
+
+/**
+ * 表示读取数据并存在指定缓存位置。
+ * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
  * 
  * @param buffer    表示读取数据存在的csf_buffer
  * @param url    表示发送数据的远端地址
@@ -327,7 +333,8 @@ csf_int32 csf_connect::read(const csf_buffer& buffer, const csf_url& url, const 
 
 
 /**
- * 表示读取数据并存在指定缓存位置
+ * 表示读取数据并存在指定缓存位置。
+ * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
  * 
  * @param buffer    表示读取数据存在的csf_buffer
  * @param callback    表示读取的回调函数
@@ -339,7 +346,8 @@ csf_int32 csf_connect::read(const csf_buffer& buffer, const csf_connect_callback
 
 
 /**
- * 表示读取数据并存在指定缓存位置
+ * 表示读取数据并存在指定缓存位置。
+ * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
  * 
  * @param buf    表示读取数据存在的指定缓存地址
  * 
@@ -353,7 +361,8 @@ csf_int32 csf_connect::read(const csf_uchar* buf, const csf_uint32 len, const cs
 
 
 /**
- * 表示读取数据并存在指定缓存位置
+ * 表示读取数据并存在指定缓存位置。
+ * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
  * 
  * @param csfstr    表示读取数据存在的csf_csfstring
  * @param callback    表示读取的回调函数
@@ -365,56 +374,8 @@ csf_int32 csf_connect::read(const csf_csfstring& csfstr, const csf_connect_callb
 
 
 /**
- * 表示发送csf_csfstring内容
- * 
- * @param csfstr    表示csf_csfstring的内容
- * @param url    表示需要发送数据的目的地址
- * @param callback    表示需要返回的回调函数
- */
-csf_int32 csf_connect::write(const csf_csfstring& csfstr, const csf_url& url, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
- * 表示设置读超时时间
- * 
- * @param timeout_ms
- * @param callback    表示超时回调函数。
- */
-csf_int32 csf_connect::set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
- * 表示发送csf_csfstring内容
- * 
- * @param chain    表示csf_chain的内容
- * @param callback    表示需要返回的回调函数
- */
-csf_int32 csf_connect::write(const csf_chain& chain, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
- * 表示设置写超时时间
- * 
- * @param timeout_ms
- * @param callback    表示超时回调函数。
- */
-csf_int32 csf_connect::set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
- * 表示读取数据并存在指定缓存位置
+ * 表示读取数据并存在指定缓存位置。
+ * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
  * 
  * @param csfstr    表示读取数据存在的csf_csfstring
  * @param url    表示发送数据的远端地址
@@ -427,7 +388,8 @@ csf_int32 csf_connect::read(const csf_csfstring& csfstr, const csf_url& url, con
 
 
 /**
- * 表示读取数据并存在指定缓存链表中
+ * 表示读取数据并存在指定缓存链表中。
+ * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
  * 
  * @param chain    表示读取数据存在的csf_csfstring
  * @param callback    表示读取的回调函数

@@ -136,7 +136,7 @@ namespace csf
 				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
-				virtual csf::core::base::csf_int32 init(const csf_configure_manager* conf_mg = csf_null);
+				virtual csf::core::base::csf_int32 init(const csf_configure_manager* conf_mg = csf_nullptr);
 				/**
 				 * 销毁模块操作。 返回：0表示正确；<0表示错误码；
 				 *
@@ -169,18 +169,18 @@ namespace csf
 				/**
 				 * 表示配置管理器
 				 *
-				 * @param newVal    newVal
+				 * @param new_value    new_value
 				 */
-				inline csf::core::base::csf_void set_configure_manager(const csf_configure_manager* newVal) {
+				inline csf::core::base::csf_void set_configure_manager(const csf_configure_manager* new_value) {
 
-					m_configure_manager = (csf_configure_manager*)newVal;
+					m_configure_manager = (csf_configure_manager*)new_value;
 				}
 				/**
 				 * 模块启动
 				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
-				virtual csf::core::base::csf_int32 start(const csf_configure_manager* conf_mg = csf_null);
+				virtual csf::core::base::csf_int32 start(const csf_configure_manager* conf_mg = csf_nullptr);
 				/**
 				 * 创建模块操作。 返回：非空表示创建的模块地址；空表示错误；
 				 *
@@ -197,7 +197,7 @@ namespace csf
 				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
-				virtual csf::core::base::csf_int32 stop(const csf_configure_manager* conf_mg = csf_null);
+				virtual csf::core::base::csf_int32 stop(const csf_configure_manager* conf_mg = csf_nullptr);
 				inline const csf_string& get_name() {
 
 					return m_name;
@@ -251,71 +251,71 @@ namespace csf
 				}
 				/**
 				*
-				* @param newVal    newVal
+				* @param new_value    new_value
 				*/
-				inline csf_void set_count(const csf_int32 newVal) {
+				inline csf_void set_count(const csf_int32 new_value) {
 
-					m_count = newVal;
+					m_count = new_value;
 				}
 				/**
 				*
-				* @param newVal    newVal
+				* @param new_value    new_value
 				*/
-				inline csf_void set_name(const csf_string& newVal) {
+				inline csf_void set_name(const csf_string& new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				* 表示模块的文件目录
 				*
-				* @param newVal    newVal
+				* @param new_value    new_value
 				*/
-				inline csf_void set_symbol_path(const csf_string& newVal) {
+				inline csf_void set_symbol_path(const csf_string& new_value) {
 
-					m_symbol_path = newVal;
+					m_symbol_path = new_value;
 				}
 				/**
 				* 设备模块的名称
 				*
-				* @param newVal    表示模块的名称
+				* @param new_value    表示模块的名称
 				*/
-				inline csf_void set_name(const csf_char* newVal) {
+				inline csf_void set_name(const csf_char* new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 				/**
 				* 表示模块的文件目录
 				*
-				* @param newVal    表示设置的模块动态库的文件路径
+				* @param new_value    表示设置的模块动态库的文件路径
 				*/
-				inline csf_void set_symbol_path(const csf_char* newVal) {
+				inline csf_void set_symbol_path(const csf_char* new_value) {
 
-					m_symbol_path = newVal;
+					m_symbol_path = new_value;
 				}
 				/**
 				* 表示模块创建句柄
 				*
-				* @param newVal    newVal
+				* @param new_value    new_value
 				*/
-				inline csf::core::base::csf_void set_create_handle(const csf::core::module::csf_module_create_handle newVal) {
-					m_create_handle = newVal;
+				inline csf::core::base::csf_void set_create_handle(const csf::core::module::csf_module_create_handle new_value) {
+					m_create_handle = new_value;
 				}
 				/**
 				* 表示模块销毁句柄
 				*
-				* @param newVal    newVal
+				* @param new_value    new_value
 				*/
-				inline csf::core::base::csf_void set_destroy_handle(const csf::core::module::csf_module_destroy_handle newVal) {
-					m_destroy_handle = newVal;
+				inline csf::core::base::csf_void set_destroy_handle(const csf::core::module::csf_module_destroy_handle new_value) {
+					m_destroy_handle = new_value;
 				}
 				/**
 				* 打开动态链接库后返回的指针
 				*
-				* @param newVal    newVal
+				* @param new_value    new_value
 				*/
-				inline csf::core::base::csf_void set_symbol_handle(const csf_void* newVal) {
+				inline csf::core::base::csf_void set_symbol_handle(const csf_void* new_value) {
 
-					m_symbol_handle = (csf_void*)newVal;
+					m_symbol_handle = (csf_void*)new_value;
 				}
 				/**
 				* 表示加载动态库模块。 返回：非空（csf_null）表示成功；空(csf_null)表示错误；
@@ -408,20 +408,20 @@ namespace csf
 				/**
 				* 模块类型
 				*
-				* @param newVal    模块类型
+				* @param new_value    模块类型
 				*/
-				inline csf_void set_type(const csf::core::module::csf_module::csf_module_type newVal) {
+				inline csf_void set_type(const csf::core::module::csf_module::csf_module_type new_value) {
 
-					m_type = newVal;
+					m_type = new_value;
 				}
 				/**
 				* 表示模块工厂所属的工厂管理器
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_module_factory_manager(csf_module_factory_manager* newVal) {
+				inline void set_module_factory_manager(csf_module_factory_manager* new_value) {
 
-					m_module_factory_manager = newVal;
+					m_module_factory_manager = new_value;
 				}
 			private:
 				/**

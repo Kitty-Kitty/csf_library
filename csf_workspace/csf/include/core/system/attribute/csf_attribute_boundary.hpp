@@ -118,11 +118,11 @@ namespace csf
 					/**
 					* 表示阈值的最小值。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline csf_void set_lower_bound(csf_int64 newVal) {
+					inline csf_void set_lower_bound(csf_int64 new_value) {
 
-						m_lower_bound = newVal;
+						m_lower_bound = new_value;
 					}
 					/**
 					* 表示阈值的最大值。
@@ -134,11 +134,11 @@ namespace csf
 					/**
 					* 表示阈值的最大值。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline csf_void set_upper_bound(csf_int64 newVal) {
+					inline csf_void set_upper_bound(csf_int64 new_value) {
 
-						m_upper_bound = newVal;
+						m_upper_bound = new_value;
 					}
 					
 					/**
@@ -151,20 +151,20 @@ namespace csf
 					/**
 					* 表示阈值描述字符串内容
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_boundary(const csf_string& newVal) {
+					inline void set_boundary(const csf_string& new_value) {
 
-						m_boundary = newVal;
+						m_boundary = new_value;
 					}
 					/**
 					* 表示阈值描述字符串内容
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_boundary(const csf_char* newVal) {
+					inline void set_boundary(const csf_char* new_value) {
 
-						m_boundary = newVal;
+						m_boundary = new_value;
 					}
 					/**
 					* 表示boundary使用方式的描述信息。
@@ -279,11 +279,11 @@ namespace csf
 					/**
 					* 表示核验处理函数对应表
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline csf_void set_functions(std::map<std::string, std::function<csf_bool(const csf_int64, const csf_int64, const csf_int64)>>& newVal) {
+					inline csf_void set_functions(std::map<std::string, std::function<csf_bool(const csf_int64, const csf_int64, const csf_int64)>>& new_value) {
 
-						m_functions = newVal;
+						m_functions = new_value;
 					}
 #endif
 					/**
@@ -296,11 +296,11 @@ namespace csf
 					/**
 					* 表示当前核验处理函数句柄
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline csf_void set_function(std::function<csf_bool(const csf_int64, const csf_int64, const csf_int64)>& newVal) {
+					inline csf_void set_function(std::function<csf_bool(const csf_int64, const csf_int64, const csf_int64)>& new_value) {
 
-						m_function = newVal;
+						m_function = new_value;
 					}
 					/**
 					* 表示根据限制字符串创建校验对象。
@@ -345,11 +345,11 @@ namespace csf
 					/**
 					* 表示boundary使用方式的描述信息。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_usage(csf_string& newVal) {
+					inline void set_usage(csf_string& new_value) {
 
-						m_usage = newVal;
+						m_usage = new_value;
 					}
 #endif
 				};
