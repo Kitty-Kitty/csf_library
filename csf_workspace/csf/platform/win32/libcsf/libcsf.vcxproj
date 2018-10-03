@@ -175,6 +175,8 @@
     <ClInclude Include="..\..\..\include\core\module\csf_module_version.hpp" />
     <ClInclude Include="..\..\..\include\core\module\csf_vm.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_callback.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_error.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_factory.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_factory_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_factory_manager.hpp" />
@@ -266,6 +268,7 @@
     <ClCompile Include="..\..\..\src\core\module\csf_module_version.cpp" />
     <ClCompile Include="..\..\..\src\core\module\csf_vm.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_error.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_factory.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_factory_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\url\csf_url.cpp" />

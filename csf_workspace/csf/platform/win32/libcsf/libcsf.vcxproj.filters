@@ -489,6 +489,12 @@
     <ClInclude Include="..\..\..\include\core\base\csf_stdcplusplus.hpp">
       <Filter>include\core\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_callback.hpp">
+      <Filter>include\core\module\device\connect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_error.hpp">
+      <Filter>include\core\module\device\connect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -652,6 +658,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\module\device\connect\url\csf_url.cpp">
       <Filter>src\core\module\device\connect\url</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_error.cpp">
+      <Filter>src\core\module\device\connect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

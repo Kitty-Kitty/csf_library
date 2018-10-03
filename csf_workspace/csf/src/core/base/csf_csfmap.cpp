@@ -21,13 +21,3 @@
 
 using csf::core::base::csf_csfmap;
 
-
-csf_csfmap::csf_csfmap() {
-
-}
-
-
-
-csf_csfmap::~csf_csfmap() {
-
-}

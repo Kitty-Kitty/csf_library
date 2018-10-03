@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-10月-2018 12:54:42
+*Date: 02-10月-2018 14:17:45
 *
 *Description: Class(csf_dgram_connect)
 *
@@ -21,19 +21,6 @@
 #include "csf_dgram_connect.hpp"
 
 using csf::modules::connect::csf_dgram_connect;
-
-
-csf_dgram_connect::csf_dgram_connect()
-	: m_type(csf_connect_type_none)
-	, m_sync(csf_false)
-	, m_status(0)
-	, m_factory(csf_nullptr)
-	, m_read_timeout(0)
-	, m_write_timeout(0)
-	, m_configure_manager(csf_nullptr) {
-
-}
-
 
 
 csf_dgram_connect::~csf_dgram_connect() {
@@ -132,12 +119,6 @@ csf_int32 csf_dgram_connect::set_read_timeout(const csf_uint32 timeout_ms, const
 }
 
 
-csf_url& csf_dgram_connect::get_remote_url() {
-
-	return m_remote_url;
-}
-
-
 /**
  * 表示设置写超时时间。
  * 返回：0表示成功；非0表示失败；
@@ -146,18 +127,6 @@ csf_url& csf_dgram_connect::get_remote_url() {
  * @param callback    表示超时回调函数。
  */
 csf_int32 csf_dgram_connect::set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
- * 
- * @param new_value
- */
-csf_int32 csf_dgram_connect::set_remote_url(csf_url& new_value) {
-
-	m_remote_url = new_value;
 
 	return 0;
 }
@@ -179,15 +148,6 @@ csf_int32 csf_dgram_connect::write(const csf_uchar* buf, const csf_uint32 len, c
 
 
 /**
- * 表示本地的主机地址
- */
-csf_url& csf_dgram_connect::get_local_url() {
-
-	return m_local_url;
-}
-
-
-/**
  * 表示写入csf_buffer内容。
  * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
  * 
@@ -195,19 +155,6 @@ csf_url& csf_dgram_connect::get_local_url() {
  * @param callback    表示需要返回的回调函数
  */
 csf_int32 csf_dgram_connect::write(const csf_buffer& buffer, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
- * 表示本地的主机地址
- * 
- * @param new_value
- */
-csf_int32 csf_dgram_connect::set_local_url(csf_url& new_value) {
-
-	m_local_url = new_value;
 
 	return 0;
 }
@@ -312,15 +259,6 @@ csf_int32 csf_dgram_connect::read(const csf_uchar* buf, const csf_uint32 len, co
 
 
 /**
- * 表示创建connect的工厂类地址
- */
-csf_connect_factory* csf_dgram_connect::get_factory() {
-
-	return m_factory;
-}
-
-
-/**
  * 表示读取数据并存在指定缓存链表中。
  * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
  * 
@@ -345,23 +283,6 @@ csf_int32 csf_dgram_connect::read(const csf_chain& chain, const csf_url& url, co
 csf_int32 csf_dgram_connect::read(const csf_buffer& buffer, const csf_url& url, const csf_connect_callback callback) {
 
 	return 0;
-}
-
-
-/**
- * 表示创建connect的工厂类地址
- * 
- * @param new_value
- */
-csf_void csf_dgram_connect::set_factory(csf_connect_factory* new_value) {
-
-	m_factory = new_value;
-}
-
-
-csf_uint32 csf_dgram_connect::get_read_timeout() {
-
-	return m_read_timeout;
 }
 
 
@@ -394,25 +315,6 @@ csf_int32 csf_dgram_connect::read(const csf_uchar* buf, const csf_uint32 len, co
 
 
 /**
- * 
- * @param new_value
- */
-csf_void csf_dgram_connect::set_read_timeout(csf_uint32 new_value) {
-
-	m_read_timeout = new_value;
-}
-
-
-/**
- * 表示写超时时间，单位为毫秒。
- */
-csf_uint32 csf_dgram_connect::get_write_timeout() {
-
-	return m_write_timeout;
-}
-
-
-/**
  * 表示读取数据并存在指定缓存位置。
  * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
  * 
@@ -436,17 +338,6 @@ csf_int32 csf_dgram_connect::read(const csf_csfstring& csfstr, const csf_connect
 csf_int32 csf_dgram_connect::read(const csf_csfstring& csfstr, const csf_url& url, const csf_connect_callback callback) {
 
 	return 0;
-}
-
-
-/**
- * 表示写超时时间，单位为毫秒。
- * 
- * @param new_value
- */
-csf_void csf_dgram_connect::set_write_timeout(csf_uint32 new_value) {
-
-	m_write_timeout = new_value;
 }
 
 

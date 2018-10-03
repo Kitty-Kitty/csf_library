@@ -21,9 +21,6 @@
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_dgram_connect_interface.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connnect_factory.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_stream_connect.hpp">
       <Filter>include</Filter>
     </ClInclude>
@@ -42,15 +39,21 @@
     <ClInclude Include="..\..\..\..\..\include\modules\connect\url\csf_serial_url.hpp">
       <Filter>include\url</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connnect.hpp">
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_boost_asio.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_factory.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_error.hpp">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_dgram_connect.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connnect_factory.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_stream_connect.cpp">
@@ -68,7 +71,13 @@
     <ClCompile Include="..\..\..\..\..\src\modules\connect\url\csf_serial_url.cpp">
       <Filter>src\url</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connnect.cpp">
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_error.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_factory.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

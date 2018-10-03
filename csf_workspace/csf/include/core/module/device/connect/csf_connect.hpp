@@ -35,14 +35,6 @@ namespace csf
 			namespace connect
 			{
 				/**
-				* 表示定义一个网络连接工厂类
-				* @author fangzhenmu@aliyun.com
-				* @version 1.0
-				* @created 01-10月-2018 12:54:36
-				*/
-				class csf_connect_factory;
-
-				/**
 				 * 表示通信库，网络连接信息内容
 				 * @author fangzhenmu@aliyun.com
 				 * @version 1.0
@@ -420,14 +412,6 @@ namespace csf
 					csf::core::module::connect::csf_connect_factory *m_connect_factory = csf_nullptr;
 
 				};
-
-				/**
-				* 表示定义一个网络连接智能指针
-				* @author fangzhenmu@aliyun.com
-				* @version 1.0
-				* @created 01-10月-2018 12:54:36
-				*/
-				typedef	csf_shared_ptr<csf_connect>				csf_connect_ptr;
 
 				/**
 				* 表示一个空的网络连接智能指针

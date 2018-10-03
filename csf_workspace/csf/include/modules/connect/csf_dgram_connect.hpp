@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-10月-2018 12:54:42
+*Date: 02-10月-2018 14:17:45
 *
 *Description: Class(csf_dgram_connect) 表示通信库，网络报文连接信息内容
 *
@@ -21,8 +21,7 @@
 #if !defined(CSF_DGRAM_CONNECT_H_INCLUDED_)
 #define CSF_DGRAM_CONNECT_H_INCLUDED_
 
-#include "csf_url.hpp"
-#include "csf_ip_connnect.hpp"
+#include "csf_ip_connect.hpp"
 
 namespace csf
 {
@@ -34,9 +33,9 @@ namespace csf
 			 * 表示通信库，网络报文连接信息内容
 			 * @author fangzhenmu@aliyun.com
 			 * @version 1.0
-			 * @created 01-10月-2018 12:54:42
+			 * @created 02-10月-2018 14:17:45
 			 */
-			class csf_dgram_connect : public csf::modules::connect::csf_ip_connnect
+			class csf_dgram_connect : public csf::modules::connect::csf_ip_connect
 			{
 
 			public:
@@ -48,7 +47,8 @@ namespace csf
 				 * 
 				 * @param factory    表示需要创建connect的工厂类
 				 */
-				inline explicit csf_dgram_connect(csf_connect_factory* factory) {
+				inline explicit csf_dgram_connect(csf_ip_connect_factory& factory)
+					: csf_ip_connect(factory) {
 
 				}
 				/**
@@ -56,7 +56,7 @@ namespace csf
 				 * 
 				 * @param conf_mg    表示配置文件信息
 				 */
-				virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr);
+				virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
 				/**
 				 * 表示打开连接信息.
 				 * 返回：0表示成功；非0表示失败；
@@ -74,7 +74,7 @@ namespace csf
 				 * 
 				 * @param conf_mg    表示配置文件信息
 				 */
-				virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr);
+				virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
 				/**
 				 * 表示设置连接的属性项目信息。
 				 * 返回：0表示成功；非0表示失败。
@@ -85,19 +85,12 @@ namespace csf
 				 * 
 				 * @param conf_mg    表示配置文件信息
 				 */
-				virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
+				virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 				/**
 				 * 表示获取连接的属性项目信息。
 				 * 返回：0表示成功；非0表示失败。
 				 */
 				virtual csf_int32 get_option();
-				/**
-				 * 表示连接的类型
-				 */
-				inline csf_connect::csf_connect_type get_type() {
-
-					return m_type;
-				}
 				/**
 				 * 表示设置读超时时间.
 				 * 返回：0表示成功；非0表示失败；
@@ -107,16 +100,6 @@ namespace csf
 				 */
 				virtual csf_int32 set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback = csf_nullptr);
 				/**
-				 * 表示连接的类型
-				 * 
-				 * @param new_value
-				 */
-				inline csf_int32 set_type(csf_connect::csf_connect_type new_value) {
-
-					m_type = new_value;
-				}
-				csf_url& get_remote_url();
-				/**
 				 * 表示设置写超时时间。
 				 * 返回：0表示成功；非0表示失败；
 				 * 
@@ -124,11 +107,6 @@ namespace csf
 				 * @param callback    表示超时回调函数。
 				 */
 				virtual csf_int32 set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 
-				 * @param new_value
-				 */
-				csf_int32 set_remote_url(csf_url& new_value);
 				/**
 				 * 表示写入指定缓存的内容。
 				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -140,10 +118,6 @@ namespace csf
 				 */
 				virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
 				/**
-				 * 表示本地的主机地址
-				 */
-				csf_url& get_local_url();
-				/**
 				 * 表示写入csf_buffer内容。
 				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
 				 * 
@@ -151,12 +125,6 @@ namespace csf
 				 * @param callback    表示需要返回的回调函数
 				 */
 				virtual csf_int32 write(const csf_buffer& buffer, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示本地的主机地址
-				 * 
-				 * @param new_value
-				 */
-				csf_int32 set_local_url(csf_url& new_value);
 				/**
 				 * 表示发送csf_csfstring内容。
 				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -184,13 +152,6 @@ namespace csf
 				 */
 				virtual csf_int32 write(const csf_buffer& buffer, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
 				/**
-				 * 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
-				 */
-				inline csf_bool get_sync() {
-
-					return m_sync;
-				}
-				/**
 				 * 表示写入指定缓存的内容。
 				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
 				 * 
@@ -200,15 +161,6 @@ namespace csf
 				 */
 				virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback callback = csf_nullptr);
 				/**
-				 * 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
-				 * 
-				 * @param new_value
-				 */
-				inline csf_void set_sync(csf_bool new_value) {
-
-					m_sync = new_value;
-				}
-				/**
 				 * 表示发送csf_csfstring内容。
 				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
 				 * 
@@ -217,13 +169,6 @@ namespace csf
 				 * @param callback    表示需要返回的回调函数
 				 */
 				virtual csf_int32 write(const csf_csfstring& csfstr, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示网络的状态信息
-				 */
-				inline csf_uint32 get_status() {
-
-					return m_status;
-				}
 				/**
 				 * 表示发送csf_csfstring内容。
 				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -244,19 +189,6 @@ namespace csf
 				 */
 				virtual csf_int32 read(const csf_uchar* buf, const csf_uint32 len, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
 				/**
-				 * 表示网络的状态信息
-				 * 
-				 * @param new_value
-				 */
-				inline csf_void set_status(csf_uint32 new_value) {
-
-					m_status = new_value;
-				}
-				/**
-				 * 表示创建connect的工厂类地址
-				 */
-				csf_connect_factory* get_factory();
-				/**
 				 * 表示读取数据并存在指定缓存链表中。
 				 * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
 				 * 
@@ -274,13 +206,6 @@ namespace csf
 				 * @param callback    表示读取的回调函数
 				 */
 				virtual csf_int32 read(const csf_buffer& buffer, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示创建connect的工厂类地址
-				 * 
-				 * @param new_value
-				 */
-				csf_void set_factory(csf_connect_factory* new_value);
-				csf_uint32 get_read_timeout();
 				/**
 				 * 表示读取数据并存在指定缓存位置。
 				 * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -300,15 +225,6 @@ namespace csf
 				 */
 				virtual csf_int32 read(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback callback = csf_nullptr);
 				/**
-				 * 
-				 * @param new_value
-				 */
-				csf_void set_read_timeout(csf_uint32 new_value);
-				/**
-				 * 表示写超时时间，单位为毫秒。
-				 */
-				csf_uint32 get_write_timeout();
-				/**
 				 * 表示读取数据并存在指定缓存位置。
 				 * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
 				 * 
@@ -326,12 +242,6 @@ namespace csf
 				 */
 				virtual csf_int32 read(const csf_csfstring& csfstr, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
 				/**
-				 * 表示写超时时间，单位为毫秒。
-				 * 
-				 * @param new_value
-				 */
-				csf_void set_write_timeout(csf_uint32 new_value);
-				/**
 				 * 表示读取数据并存在指定缓存链表中。
 				 * 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
 				 * 
@@ -339,52 +249,6 @@ namespace csf
 				 * @param callback    表示读取的回调函数
 				 */
 				virtual csf_int32 read(const csf_chain& chain, const csf_connect_callback callback = csf_null);
-
-			private:
-				/**
-				 * 表示连接的类型
-				 */
-				csf_connect::csf_connect_type m_type = csf_connect_type_none;
-				/**
-				 * 表示远端的主机地址
-				 */
-				csf::core::module::connect::csf_url m_remote_url;
-				/**
-				 * 表示本地的主机地址
-				 */
-				csf::core::module::connect::csf_url m_local_url;
-				/**
-				 * 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
-				 */
-				csf_bool m_sync = csf_false;
-				/**
-				 * 表示网络的状态信息
-				 */
-				csf_uint32 m_status = 0;
-				/**
-				 * 表示创建connect的工厂类地址
-				 */
-				csf_connect_factory* m_factory = csf_nullptr;
-				/**
-				 * 表示读超时时间，单位为毫秒。
-				 */
-				csf_uint32 m_read_timeout = 0;
-				/**
-				 * 表示写超时时间，单位为毫秒。
-				 */
-				csf_uint32 m_write_timeout = 0;
-				/**
-				 * 表示读超时定时器。
-				 */
-				csf_deadline_timer m_read_timer;
-				/**
-				 * 表示写超时定时器。
-				 */
-				csf_deadline_timer m_write_timer;
-				/**
-				 * 表示配置文件管理器
-				 */
-				csf::core::system::csf_configure_manager* m_configure_manager = csf_nullptr;
 
 			};
 
