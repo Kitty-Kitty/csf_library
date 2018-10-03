@@ -237,6 +237,14 @@ namespace csf
 					*/
 					csf_bool get_configure(csf_configure_manager& configure_manager);
 					/**
+					* 表示从配置管理器中获取配置项内容。
+					* 返回：true表示获取到指定配置项数值；false表示没有获取到配置项数值。
+					*
+					* @param element    表示保存配置的属性对象
+					* @param items    表示配置项的路径信息
+					*/
+					csf_bool get_configure(csf_element& element, csf_list<csf_string>& items);
+					/**
 					* 表示从配置文件中读取的数值。
 					*/
 					inline csf_string& get_content() {
@@ -267,9 +275,39 @@ namespace csf
 					* @param configure_manager    表示保存配置管理器对象
 					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
 					*/
-					virtual csf_bool process(const csf_configure_manager& configure_manager, const csf_string& alias) {
+					virtual csf_bool process(const csf_configure_manager& configure_manager
+						, const csf_string& alias) {
 						return csf_false;
 					};
+					/**
+					* 表示处理csf_attribute属性操作。主要为满足不同子类的多态现实。
+					* 返回：true表示失败；false表示成功。
+					*
+					* @param configure_manager    表示保存配置管理器对象
+					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
+					* @param root_items    表示属性管理器中根路径信息
+					*/
+					inline virtual csf_bool process(const csf_configure_manager& configure_manager
+						, const csf_string& alias
+						, const csf_list<csf_string> root_items) {
+
+						return csf_true;
+					}
+					/**
+					* 表示处理csf_attribute属性操作。主要为满足不同子类的多态现实。
+					* 返回：true表示失败；false表示成功。
+					*
+					* @param element    表示配置项的根节点对象。该配置信息优先与"csf_configure_manager*
+					* m_configure_manager"配置信息。如果配置了该对象，则优先采用该信息。所有配置项都出该对象中获取
+					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
+					* @param root_items    表示属性管理器中根路径信息
+					*/
+					inline virtual csf_bool process(const csf_element& element
+						, const csf_string& alias
+						, csf_list<csf_string> root_items = std::list<csf_string>()) {
+
+						return csf_true;
+					}
 				protected:
 					/**
 					* 表示初始化csf_attribute。
@@ -279,40 +317,38 @@ namespace csf
 					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
 					*/
 					csf_bool virtual init(const csf_configure_manager& configure_manager, const csf_string& alias) final;
-
-				private:
 					/**
-					 * 表示属性名称信息
-					 */
-					csf_string m_name = "";
-					/**
-					 * 表示属性类型描述信息
-					 */
-					csf_attribute_type m_type = csf_attribute_type_none;
-					/**
-					 * 表示该属性所对应的配置文件节点位置
-					 */
-					csf_list<csf_string> m_items;
-					/**
-					* 表示从配置文件中读取的数值。
+					* 表示该属性所对应的配置文件节点位置
 					*/
-					csf_string m_content = "";
-
-					/**
-					 * 表示该属性所对应的配置文件节点位置
-					 */
 					inline csf_list<csf_string>& get_items() {
 
 						return m_items;
 					}
 					/**
-					 * 表示该属性所对应的配置文件节点位置
-					 *
-					 * @param new_value
-					 */
+					* 表示该属性所对应的配置文件节点位置
+					*
+					* @param new_value
+					*/
 					inline void set_items(const csf_list<csf_string>& new_value) {
 
 						m_items = new_value;
+					}
+					/**
+					* 表示该属性所对应的配置文件节点位置
+					*
+					* @param root_items    表示属性管理器中根路径信息
+					* @param items
+					*/
+					inline csf_void set_items(const csf_list<csf_string>& root_items
+						, const csf_list<csf_string>& items) {
+
+						csf_list<csf_string>			tmp_items = root_items;
+
+						for (csf_string& tmp_item : (csf_list<csf_string>&)items) {
+							tmp_items.push_back(tmp_item);
+						}
+
+						set_items(tmp_items);
 					}
 					/**
 					* 函数功能是将items列表中的字符串格式化为："{a, b, c}"。
@@ -321,10 +357,10 @@ namespace csf
 						return csf_container_convert<csf_list<csf_string>>(get_items()).to_string();
 					}
 					/**
-					 * 表示属性类型描述信息
-					 *
-					 * @param new_value
-					 */
+					* 表示属性类型描述信息
+					*
+					* @param new_value
+					*/
 					inline void set_type(const csf_attribute_type new_value) {
 
 						m_type = new_value;
@@ -347,6 +383,24 @@ namespace csf
 
 						m_content = new_value;
 					}
+				private:
+					/**
+					 * 表示属性名称信息
+					 */
+					csf_string m_name = "";
+					/**
+					 * 表示属性类型描述信息
+					 */
+					csf_attribute_type m_type = csf_attribute_type_none;
+					/**
+					 * 表示该属性所对应的配置文件节点位置
+					 */
+					csf_list<csf_string> m_items;
+					/**
+					* 表示从配置文件中读取的数值。
+					*/
+					csf_string m_content = "";
+					
 				};
 
 			}

@@ -144,7 +144,17 @@ namespace csf
 					 * @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
 					 */
 					csf_bool process_attribute(const csf_configure_manager& configure_manager, const csf_string& alias);
-
+					/**
+					* 表示处理csf_attribute属性操作。这里与csf_attribute中不同的是，这里添加一层process_attribute函数主要是为了实现异常（e
+					* xception）的统一处理。当异常出现时，直接根据返回错误，调用异常处理函数。
+					* 返回：true表示失败；false表示成功。
+					*
+					* @param element    表示保存配置对象
+					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
+					*/
+					inline virtual csf_bool process_attribute(const csf_element& element, const csf_string& alias) final {
+						return process_attribute(csf_configure_manager(), alias);
+					}
 				};
 
 			}

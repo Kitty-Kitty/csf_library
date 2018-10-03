@@ -311,6 +311,6 @@ csf_void csf_logger::set_configure_manager(const csf_configure_manager* new_valu
 	m_configure_manager = (csf_configure_manager*)new_value;
 
 	if (get_attribute_manager()) {
-		((csf_attribute_manager*)get_attribute_manager())->set_configure_manager(new_value);
+		((csf_attribute_manager*)get_attribute_manager())->set_configure_manager(new_value, std::list<csf_string>());
 	}
 }

@@ -20,6 +20,7 @@
 #if !defined(CSF_ATTRIBUTE_TEMPLATE_INCLUDED_)
 #define CSF_ATTRIBUTE_TEMPLATE_INCLUDED_
 
+#include "csf_attribute_printf.h"
 #include "csf_attribute_exception.hpp"
 #include "csf_attribute.hpp"
 
@@ -242,9 +243,94 @@ namespace csf
 					* @param configure_manager    表示保存配置管理器对象
 					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
 					*/
-					inline virtual csf_bool process(const csf_configure_manager& configure_manager, const csf_string& alias) final {
+					inline virtual csf_bool process(const csf_configure_manager& configure_manager
+						, const csf_string& alias) final {
+
+						//如果属性自己的名称为空，则要采用该别名作为属性名称
+						if (get_name().empty()) {
+							if (alias.empty()) {
+								csf_attribute_log(warning, csf_logger_level_warning,
+									"items and alias is null.");
+								return csf_false;
+							}
+							else {
+								set_name(alias);
+							}
+						}
+
+						//从配置管理中获取配置项数值
+						if (!get_configure((csf_configure_manager&)configure_manager)) {
+							csf_attribute_log(warning, csf_logger_level_warning,
+								"get attribute[%s] content from configure_manager[0x%x] error."
+								, alias.c_str()
+								, &configure_manager);
+							return csf_false;
+						}
 
 						if (csf_false == process_attribute(configure_manager, alias)) {
+							return exception_run();
+						}
+						else {
+							return csf_true;
+						}
+					}
+					/**
+					* 表示处理csf_attribute属性操作。主要为满足不同子类的多态现实。
+					* 返回：true表示失败；false表示成功。
+					*
+					* @param configure_manager    表示保存配置管理器对象
+					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
+					* @param root_items    表示属性管理器中根路径信息
+					*/
+					inline virtual csf_bool process(const csf_configure_manager& configure_manager
+						, const csf_string& alias
+						, const csf_list<csf_string> root_items) final {
+
+						if (!root_items.empty()) {
+							set_items(root_items, get_items());
+						}
+
+						return process(configure_manager, alias);
+					}
+					/**
+					* 表示处理csf_attribute属性操作。主要为满足不同子类的多态现实。
+					* 返回：true表示失败；false表示成功。
+					*
+					* @param element    表示配置项的根节点对象。该配置信息优先与"csf_configure_manager*
+					* m_configure_manager"配置信息。如果配置了该对象，则优先采用该信息。所有配置项都出该对象中获取
+					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
+					* @param root_items    表示属性管理器中根路径信息
+					*/
+					inline virtual csf_bool process(const csf_element& element
+						, const csf_string& alias
+						, csf_list<csf_string> root_items = csf_list<csf_string>()) final {
+
+						if (!root_items.empty()) {
+							set_items(root_items, get_items());
+						}
+
+						//如果属性自己的名称为空，则要采用该别名作为属性名称
+						if (get_name().empty()) {
+							if (alias.empty()) {
+								csf_attribute_log(warning, csf_logger_level_warning,
+									"items and alias is null.");
+								return csf_false;
+							}
+							else {
+								set_name(alias);
+							}
+						}
+
+						//从配置管理中获取配置项数值
+						if (!get_configure((csf_element&)element, get_items())) {
+							csf_attribute_log(warning, csf_logger_level_warning,
+								"get attribute[%s] content from element[0x%x] error."
+								, alias.c_str()
+								, &element);
+							return csf_false;
+						}
+
+						if (csf_false == process_attribute(element, alias)) {
 							return exception_run();
 						}
 						else {
@@ -260,6 +346,15 @@ namespace csf
 					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
 					*/
 					virtual csf_bool process_attribute(const csf_configure_manager& configure_manager, const csf_string& alias) = 0;
+					/**
+					* 表示处理csf_attribute属性操作。这里与csf_attribute中不同的是，这里添加一层process_attribute函数主要是为了实现异常（e
+					* xception）的统一处理。当异常出现时，直接根据返回错误，调用异常处理函数。
+					* 返回：true表示失败；false表示成功。
+					*
+					* @param element    表示保存配置对象
+					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
+					*/
+					virtual csf_bool process_attribute(const csf_element& element, const csf_string& alias) = 0;
 				private:
 					/**
 					 * 表示异常处理处理对象内容

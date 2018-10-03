@@ -11,6 +11,13 @@
 *Date: 06-7月-2018 19:29:31
 *
 *Description: Class(csf_attribute_manager) 表示模块的属性管理器，主要提供模块配置属性统一管理，包括增、删、查、改等。
+* 表示模块的属性管理器，主要提供模块配置属性统一管理，包括增、删、查、改等。
+* 该模块主要为方便配置项的管理，引入了三部分信息，包括：主配置管理器(m_configure_manager*)、根属性对象(m_root_element*)、根
+* 路径信息(m_root_items)。
+* 处理流程为：
+*   1、所有属性路径相对于m_root_items所指定的路径;
+*   2、root_element优先级高于configure_manager;如果存在m_root_element*则从root_element*中查找属性值;
+*   3、如果不存在root_element*则从configure_manager*中查找属性值;
 *
 *Others:
 *
@@ -39,17 +46,24 @@ namespace csf
 			namespace attribute
 			{
 				/**
-				 * 表示模块的属性管理器
-				 * @author Administrator
-				 * @version 1.0
-				 * @created 06-7月-2018 19:29:31
-				 */
-				class csf_attribute_manager : public csf::core::module::csf_manager, public csf::core::system::attribute::csf_attribute_manager_interface
+				* 表示模块的属性管理器，主要提供模块配置属性统一管理，包括增、删、查、改等。
+				* 该模块主要为方便配置项的管理，引入了三部分信息，包括：主配置管理器(m_configure_manager*)、根属性对象(m_root_element*)、根
+				* 路径信息(m_root_items)。
+				* 处理流程为：
+				*   1、所有属性路径相对于m_root_items所指定的路径;
+				*   2、root_element优先级高于configure_manager;如果存在m_root_element*则从root_element*中查找属性值;
+				*   3、如果不存在root_element*则从configure_manager*中查找属性值;
+				* @author fz
+				* @version 1.0
+				* @updated 03-10月-2018 15:04:13
+				*/
+				class csf_attribute_manager : public csf::core::module::csf_manager
+					, public csf::core::system::attribute::csf_attribute_manager_interface
 				{
 
 				public:
 					inline explicit csf_attribute_manager()
-						: m_configure_manager(csf_nullptr) {
+						: m_root_element(csf_nullptr) {
 
 					}
 
@@ -62,10 +76,40 @@ namespace csf
 					 *
 					 * @param configure_manager    表示配置管理器地址
 					 */
-					inline explicit csf_attribute_manager(const csf_configure_manager* configure_manager)
-						: m_configure_manager((csf_configure_manager*)configure_manager) {
+					inline explicit csf_attribute_manager(const csf::core::system::csf_configure_manager* configure_manager)
+						: csf_manager((csf::core::system::csf_configure_manager*)configure_manager)
+						, m_root_element(csf_nullptr) {
 
 					}
+
+					/**
+					* 表创建的时候赋值配置管理器
+					*
+					* @param configure_manager    表示配置管理器地址
+					* @param root_items    表示属性管理器中根路径信息
+					*/
+					inline explicit csf_attribute_manager(const csf::core::system::csf_configure_manager* configure_manager
+						, const std::list<csf_string> root_items)
+						: csf_manager((csf::core::system::csf_configure_manager*)configure_manager)
+						, m_root_element(csf_nullptr)
+						, m_root_items(root_items) {
+
+					}
+					/**
+					* 表创建的时候赋值配置管理器
+					*
+					* @param root_element    表示配置项的根节点对象。该配置信息优先与"csf_configure_manager*
+					* m_configure_manager"配置信息。如果配置了该对象，则优先采用该信息。所有配置项都出该对象中获取。
+					*
+					* @param root_items    表示属性管理器中根路径信息
+					*/
+					inline explicit csf_attribute_manager(const csf_element* root_element
+						, const std::list<csf_string> root_items = std::list<csf_string>())
+						: m_root_element((csf_element*)root_element)
+						, m_root_items(root_items) {
+
+					}
+
 					/**
 					 * 函数功能为：向attribute_manager中添加一个属性。
 					 * 注意：表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复，否则操作失败。
@@ -197,13 +241,6 @@ namespace csf
 					 */
 					virtual csf_bool del(const csf_char* name);
 					/**
-					 * 表示该属性管理器使用的配置管理器对象地址。
-					 */
-					inline csf_configure_manager* get_configure_manager() {
-
-						return m_configure_manager;
-					}
-					/**
 					 * 函数功能为：根据名称从attribute_manager中查询一个属性。
 					 * 返回：一个属性对象。
 					 *
@@ -216,15 +253,6 @@ namespace csf
 						}
 
 						return find(name.c_str());
-					}
-					/**
-					 * 表示该属性管理器使用的配置管理器对象地址。
-					 *
-					 * @param new_value    表示配置管理器地址
-					 */
-					inline void set_configure_manager(const csf_configure_manager* new_value) {
-
-						m_configure_manager = (csf_configure_manager*)new_value;
 					}
 					/**
 					 * 函数功能为：根据名称从attribute_manager中查询一个属性。
@@ -439,6 +467,62 @@ namespace csf
 
 						return csf_true;
 					}
+					/**
+					* 表示配置项的根节点对象
+					*/
+					inline csf_element* get_root_element() {
+
+						return m_root_element;
+					}
+					/**
+					* 表示配置项的根节点对象
+					*
+					* @param newVal
+					*/
+					inline void set_root_element(csf_element* newVal) {
+
+						m_root_element = newVal;
+					}
+					/**
+					* 表示模块指定的items所相对的根路径信息。如果指定该信息，则该模块的配置信息都是相对该路径信息。
+					*/
+					inline std::list<csf_string>& get_root_items() {
+
+						return m_root_items;
+					}
+					/**
+					* 表示模块指定的items所相对的根路径信息。如果指定该信息，则该模块的配置信息都是相对该路径信息。
+					*
+					* @param newVal
+					*/
+					inline void set_root_items(const std::list<csf_string>& newVal) {
+
+						m_root_items = newVal;
+					}
+					/**
+					*
+					* @param cm    表示基础配置管理信息对象
+					* @param root_items    表示属性管理器中根路径信息
+					*/
+					inline void set_configure_manager(const csf::core::system::csf_configure_manager* cm
+						, const std::list<csf_string> root_items) {
+
+						csf::core::module::csf_manager::set_configure_manager(cm);
+						set_root_items(root_items);
+					}
+					/**
+					*
+					* @param root_element    表示配置项的根节点对象。该配置信息优先与"csf_configure_manager*
+					* m_configure_manager"配置信息。如果配置了该对象，则优先采用该信息。所有配置项都出该对象中获取。
+					*
+					* @param root_items    表示属性管理器中根路径信息
+					*/
+					inline void set_root_element(const csf_element* root_element
+						, const std::list<csf_string> root_items = std::list<csf_string>()) {
+
+						set_root_element(root_element);
+						set_root_items(root_items);
+					}
 				protected:
 					/**
 					 * 表示配置的属性列表，方便查找各个属性内容
@@ -454,10 +538,14 @@ namespace csf
 					 */
 					csf_unordered_map<csf_string, csf_attribute*> m_attributes;
 					/**
-					 * 表示该属性管理器使用的配置管理器对象地址。
-					 */
-					csf_configure_manager* m_configure_manager = csf_nullptr;
-
+					* 表示配置项的根节点对象。该配置信息优先与"csf_configure_manager*
+					* m_configure_manager"配置信息。如果配置了该对象，则优先采用该信息。所有配置项都出该对象中获取。
+					*/
+					csf_element* m_root_element = csf_nullptr;
+					/**
+					* 表示模块指定的items所相对的根路径信息。如果指定该信息，则该模块的配置信息都是相对该路径信息。
+					*/
+					std::list<csf_string> m_root_items;
 					/**
 					 * 表示配置的属性列表，方便查找各个属性内容
 					 *
