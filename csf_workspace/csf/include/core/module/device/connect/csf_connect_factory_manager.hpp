@@ -21,6 +21,7 @@
 #if !defined(CSF_CONNECT_FACTORY_MANAGER_H_INCLUDED_)
 #define CSF_CONNECT_FACTORY_MANAGER_H_INCLUDED_
 
+#include "csf_connect.hpp"
 #include "csf_connect_factory_manager_interface.hpp"
 #include "csf_manager.hpp"
 
@@ -38,7 +39,8 @@ namespace csf
 				 * @version 1.0
 				 * @created 01-10月-2018 12:54:37
 				 */
-				class csf_connect_factory_manager : public csf::core::module::csf_manager, public csf::core::module::connect::csf_connect_factory_manager_interface
+				class csf_connect_factory_manager : public csf::core::module::csf_manager
+					, public csf::core::module::connect::csf_connect_factory_manager_interface
 				{
 
 				public:
@@ -63,6 +65,29 @@ namespace csf
 					 * @param conf_mg    表示配置文件信息
 					 */
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
+					/**
+					* 表示连接工厂管理器保存的对象列表
+					*/
+					inline csf_unordered_map<csf_string, csf_connect_factory_ptr>& get_factories() {
+
+						return m_factories;
+					}
+					/**
+					* 表示通过配置文件创建的连接对象保存的对象列表
+					*/
+					inline csf_unordered_map<csf_string, csf_connect_ptr>& get_connectes() {
+
+						return m_connectes;
+					}
+				private:
+					/**
+					* 表示连接工厂管理器保存的对象列表
+					*/
+					csf_unordered_map<csf_string, csf_connect_factory_ptr> m_factories;
+					/**
+					* 表示通过配置文件创建的连接对象保存的对象列表
+					*/
+					csf_unordered_map<csf_string, csf_connect_ptr> m_connectes;
 				};
 
 			}

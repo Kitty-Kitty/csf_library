@@ -179,6 +179,32 @@ csf_int32 csf_connect::get_option() {
 
 
 /**
+* 主要功能是：打开一个监听地址。
+* 返回：0表示成功；非0表示失败；
+*
+* @param url    表示需要监听的地址
+* @param callback    表示需要返回的回调函数
+*/
+csf_int32 csf_connect::listen(const csf_url& url, const csf_connect_callback callback) {
+
+	return 0;
+}
+
+
+/**
+* 主要功能是：需要连接一个地址。
+* 返回：0表示成功；非0表示失败；
+*
+* @param url    表示需要监听的地址
+* @param callback    表示需要返回的回调函数
+*/
+csf_int32 csf_connect::connect(const csf_url& url, const csf_connect_callback callback) {
+
+	return 0;
+}
+
+
+/**
  * 表示写入指定缓存的内容。
  * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
  * 

@@ -53,7 +53,14 @@ namespace csf
 				* @version 1.0
 				* @created 01-10月-2018 12:54:36
 				*/
-				typedef	csf_shared_ptr<csf_connect>		csf_connect_ptr;
+				typedef	csf_shared_ptr<csf_connect>				csf_connect_ptr;
+				/**
+				* 表示定义一个网络连接工厂类智能指针
+				* @author fangzhenmu@aliyun.com
+				* @version 1.0
+				* @created 01-10月-2018 12:54:36
+				*/
+				typedef	csf_shared_ptr<csf_connect_factory>		csf_connect_factory_ptr;
 				/**
 				 * 表示连接的返回函数
 				 * @author f
