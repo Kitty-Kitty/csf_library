@@ -85,6 +85,9 @@
       <SubType>Designer</SubType>
     </Xml>
     <Xml Include="..\..\..\config\csf_configs.xml" />
+    <Xml Include="..\..\..\config\csf_connect.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="..\..\..\config\csf_log.xml" />
     <Xml Include="..\..\..\config\csf_module.xml" />
     <Xml Include="..\..\..\config\csf_system.xml" />

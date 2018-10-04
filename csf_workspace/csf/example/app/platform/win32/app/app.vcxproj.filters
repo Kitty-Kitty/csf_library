@@ -40,5 +40,8 @@
     <Xml Include="..\..\..\config\csf_system.xml">
       <Filter>config</Filter>
     </Xml>
+    <Xml Include="..\..\..\config\csf_connect.xml">
+      <Filter>config</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
