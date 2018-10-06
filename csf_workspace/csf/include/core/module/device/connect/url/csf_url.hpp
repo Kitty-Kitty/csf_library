@@ -71,8 +71,38 @@ namespace csf
 					 * 
 					 * @param type    表示连接地址类型
 					 */
-					inline explicit csf_url(csf::core::module::connect::csf_url::csf_url_type type) {
+					inline explicit csf_url(const csf::core::module::connect::csf_url::csf_url_type type) {
 
+					}
+					/**
+					* 主要功能是：通过url字符串数据设置url对象
+					* 返回：无异常表示成功；抛出异常表示错误
+					*
+					* @param url    表示url字符串数据
+					*/
+					inline csf_url& operator =(const csf_string url) {
+
+						return  *this;
+					}
+					/**
+					* 主要功能是：通过url字符串数据设置url对象
+					* 返回：无异常表示成功；抛出异常表示错误
+					*
+					* @param url    表示url字符串数据
+					*/
+					inline csf_url& operator =(const csf_string& url) {
+
+						return  *this;
+					}
+					/**
+					* 主要功能是：通过url字符串数据设置url对象
+					* 返回：无异常表示成功；抛出异常表示错误
+					*
+					* @param url    表示url字符串数据
+					*/
+					inline csf_url& operator =(const csf_char* url) {
+
+						return  *this;
 					}
 					/**
 					 * 表示url地址的类型信息
@@ -81,15 +111,7 @@ namespace csf
 
 						return m_type;
 					}
-					/**
-					 * 表示解析地址函数
-					 * 
-					 * @param url    表示url地址字符串数据
-					 */
-					inline virtual csf_int32 parse(csf_string& url) {
-
-						return 0;
-					}
+					
 					/**
 					 * 表示url的完整字符串数据
 					 */
@@ -98,29 +120,64 @@ namespace csf
 						return m_url;
 					}
 					/**
-					 * 表示url的完整字符串数据
-					 * 
-					 * @param new_value
-					 */
-					inline csf_void set_url(csf_string& new_value) {
+					* 主要功能是：表示url的完整字符串数据
+					* 返回：0表示成功；非0表示错误
+					*
+					* @param newVal
+					*/
+					inline csf_int32 set_url(const csf_string newVal) {
 
-						m_url = new_value;
+						m_url = newVal;
+
+						return csf_success;
 					}
 					/**
 					 * 表示url的完整字符串数据
 					 * 
 					 * @param new_value
 					 */
-					inline csf_void set_url(csf_char* new_value) {
+					inline csf_int32 set_url(const csf_string& new_value) {
 
 						m_url = new_value;
+
+						return csf_success;
+					}
+					/**
+					 * 表示url的完整字符串数据
+					 * 
+					 * @param new_value
+					 */
+					inline csf_int32 set_url(const csf_char* new_value) {
+
+						m_url = new_value;
+
+						return csf_success;
+					}
+					/**
+					* 主要功能是：表示解析地址函数
+					* 返回：0表示成功；非0表示错误
+					*
+					* @param url    表示url地址字符串数据
+					*/
+					inline virtual csf_int32 parse(const csf_string url) {
+
+						return 0;
+					}
+					/**
+					* 表示解析地址函数
+					*
+					* @param url    表示url地址字符串数据
+					*/
+					inline virtual csf_int32 parse(const csf_string& url) {
+
+						return 0;
 					}
 					/**
 					 * 表示解析地址函数
 					 * 
 					 * @param url    表示url地址字符串数据
 					 */
-					inline virtual csf_int32 parse(csf_char* url) {
+					inline virtual csf_int32 parse(const csf_char* url) {
 
 						return 0;
 					}
@@ -131,7 +188,7 @@ namespace csf
 					 * 
 					 * @param new_value
 					 */
-					inline csf_void set_type(csf::core::module::connect::csf_url::csf_url_type new_value) {
+					inline csf_void set_type(const csf::core::module::connect::csf_url::csf_url_type new_value) {
 
 						m_type = new_value;
 					}

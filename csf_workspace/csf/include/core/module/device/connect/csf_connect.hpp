@@ -161,6 +161,17 @@ namespace csf
 					 */
 					csf_int32 set_remote_url(csf_url& new_value);
 					/**
+					* 表示远程的主机地址
+					*
+					* @param newVal    表示url字符串内容
+					*/
+					inline csf_int32 set_remote_url(csf_string newVal) {
+
+						//m_remote_url = newVal;
+						return csf_success;
+					}
+					
+					/**
 					 * 表示本地的主机地址
 					 */
 					csf_url& get_local_url();
@@ -170,6 +181,17 @@ namespace csf
 					 * @param new_value
 					 */
 					csf_int32 set_local_url(csf_url& new_value);
+					/**
+					* 表示本地的主机地址
+					*
+					* @param newVal    表示url字符串内容
+					*/
+					inline csf_int32 set_local_url(csf_string newVal) {
+
+						//m_local_url = newVal;
+
+						return csf_success;
+					}
 					/**
 					 * 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
 					 */
@@ -212,6 +234,13 @@ namespace csf
 					 * @param new_value
 					 */
 					csf_void set_factory(csf_connect_factory* new_value);
+					/**
+					* 表示网络连接类型名称映射表
+					*/
+					inline static const csf_unordered_map<csf_connect::csf_connect_type, csf_string>& get_connect_type_name() {
+
+						return m_connect_type_name;
+					}
 					/**
 					 * 表示打开连接信息.
 					 * 返回：0表示成功；非0表示失败；
@@ -426,6 +455,10 @@ namespace csf
 					 * 表示连接的工厂对象
 					 */
 					csf::core::module::connect::csf_connect_factory *m_connect_factory = csf_nullptr;
+					/**
+					* 表示网络连接类型名称映射表
+					*/
+					static const csf_unordered_map<csf_connect::csf_connect_type, csf_string> m_connect_type_name;
 
 				};
 

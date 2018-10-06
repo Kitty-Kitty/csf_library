@@ -156,6 +156,7 @@
     <ClInclude Include="..\..\..\include\core\module\app\csf_app.hpp" />
     <ClInclude Include="..\..\..\include\core\module\app\csf_app_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\csf_device_base.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\csf_device_configure_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\csf_device_operation_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\csf_error.hpp" />
     <ClInclude Include="..\..\..\include\core\module\csf_interface.hpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="..\..\..\include\core\system\csf_configure_file.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_configure_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_configure_manager.hpp" />
+    <ClInclude Include="..\..\..\include\core\system\csf_configure_module.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_configure_parser.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_element.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_element_interface.hpp" />
@@ -288,6 +290,7 @@
     <ClCompile Include="..\..\..\src\core\system\csf_app_bootloader.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_configure.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_configure_manager.cpp" />
+    <ClCompile Include="..\..\..\src\core\system\csf_configure_module.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_configure_parser.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_element.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_logger.cpp" />

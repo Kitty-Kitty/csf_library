@@ -23,6 +23,17 @@
 using namespace csf::core::module::connect;
 using csf::core::module::connect::csf_connect;
 
+/**
+* 表示网络连接类型映射表
+*/
+const csf_unordered_map<csf_connect::csf_connect_type, csf_string> m_connect_type_name = {
+	{ csf_connect::csf_connect_type::csf_connect_type_none, "none"},
+	{ csf_connect::csf_connect_type::csf_connect_type_tcp, "tcp" },
+	{ csf_connect::csf_connect_type::csf_connect_type_udp, "udp" },
+	{ csf_connect::csf_connect_type::csf_connect_type_multicast, "multicast" },
+	{ csf_connect::csf_connect_type::csf_connect_type_broadcast, "broadcast" }
+};
+
 
 csf_connect::csf_connect()
 	: m_type(csf_connect_type_none)

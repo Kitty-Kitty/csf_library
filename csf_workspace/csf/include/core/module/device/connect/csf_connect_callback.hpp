@@ -25,6 +25,8 @@
 #include "csf_stdbind.hpp"
 #include "csf_connect_error.hpp"
 
+using namespace csf::core::module::connect;
+
 namespace csf
 {
 	namespace core
@@ -47,6 +49,13 @@ namespace csf
 				* @created 01-10月-2018 12:54:36
 				*/
 				class csf_connect_factory;
+				/**
+				* 表示定义一个网络连接工厂类管理器
+				* @author fangzhenmu@aliyun.com
+				* @version 1.0
+				* @created 01-10月-2018 12:54:36
+				*/
+				class csf_connect_factory_manager;
 				/**
 				* 表示定义一个网络连接智能指针
 				* @author fangzhenmu@aliyun.com

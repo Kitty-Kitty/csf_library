@@ -21,7 +21,7 @@
 #if !defined(CSF_CONNECT_FACTORY_H_INCLUDED_)
 #define CSF_CONNECT_FACTORY_H_INCLUDED_
 
-#include "csf_connect_factory_manager.hpp"
+//#include "csf_connect_factory_manager.hpp"
 #include "csf_connect_factory_interface.hpp"
 #include "csf_device.hpp"
 
