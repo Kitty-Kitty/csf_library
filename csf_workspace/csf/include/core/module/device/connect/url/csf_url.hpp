@@ -80,7 +80,7 @@ namespace csf
 					*
 					* @param url    表示url字符串数据
 					*/
-					inline csf_url& operator =(const csf_string url) {
+					inline virtual csf_url& operator =(const csf_string& url) {
 
 						return  *this;
 					}
@@ -90,17 +90,7 @@ namespace csf
 					*
 					* @param url    表示url字符串数据
 					*/
-					inline csf_url& operator =(const csf_string& url) {
-
-						return  *this;
-					}
-					/**
-					* 主要功能是：通过url字符串数据设置url对象
-					* 返回：无异常表示成功；抛出异常表示错误
-					*
-					* @param url    表示url字符串数据
-					*/
-					inline csf_url& operator =(const csf_char* url) {
+					inline virtual csf_url& operator =(const csf_char* url) {
 
 						return  *this;
 					}
@@ -118,18 +108,6 @@ namespace csf
 					inline csf_string & get_url() {
 
 						return m_url;
-					}
-					/**
-					* 主要功能是：表示url的完整字符串数据
-					* 返回：0表示成功；非0表示错误
-					*
-					* @param newVal
-					*/
-					inline csf_int32 set_url(const csf_string newVal) {
-
-						m_url = newVal;
-
-						return csf_success;
 					}
 					/**
 					 * 表示url的完整字符串数据
@@ -152,16 +130,6 @@ namespace csf
 						m_url = new_value;
 
 						return csf_success;
-					}
-					/**
-					* 主要功能是：表示解析地址函数
-					* 返回：0表示成功；非0表示错误
-					*
-					* @param url    表示url地址字符串数据
-					*/
-					inline virtual csf_int32 parse(const csf_string url) {
-
-						return 0;
 					}
 					/**
 					* 表示解析地址函数

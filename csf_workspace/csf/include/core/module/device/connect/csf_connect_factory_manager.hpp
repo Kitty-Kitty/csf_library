@@ -254,7 +254,9 @@ namespace csf
 					* @param handle    表示连接对象的回调句柄
 					* @param element    表示需要创建的连接对象配置信息
 					*/
-					csf::core::base::csf_int32 listen_connect(csf_connect_ptr& connect, csf_connect_callback handle, csf_element& element);
+					csf::core::base::csf_int32 listen_connect(csf_connect_ptr& connect
+						, csf_connect_callback handle
+						, csf_element& element);
 					/**
 					* 主要功能是：向连接列表中添加一个连接类对象
 					* 返回：true表示成功；false表示失败；

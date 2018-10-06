@@ -21,6 +21,7 @@
 #if !defined(CSF_IP_CONNNECT_H_INCLUDED_)
 #define CSF_IP_CONNNECT_H_INCLUDED_
 
+#include "csf_ip_url.hpp"
 #include "csf_connect.hpp"
 #include "csf_ip_connect_factory.hpp"
 #include "csf_ip_connect_error.hpp"
@@ -33,6 +34,12 @@ namespace csf
 	{
 		namespace connect
 		{
+			/**
+			* 表示离线定时器
+			* @author f
+			* @version 1.0
+			* @updated 01-10月-2018 15:12:05
+			*/
 			typedef boost::asio::deadline_timer			csf_deadline_timer;
 			/**
 			 * 表示IP类型的连接类
@@ -57,7 +64,6 @@ namespace csf
 
 				}
 				virtual ~csf_ip_connect();
-
 
 				/**
 				 * 表示读超时时间，单位为毫秒。
@@ -114,6 +120,43 @@ namespace csf
 					m_read_timeout = timeout_ms;
 
 					return 0;
+				}
+				virtual csf_url& get_remote_url();
+				/**
+				*
+				* @param new_value
+				*/
+				virtual csf_int32 set_remote_url(csf_url& new_value);
+				/**
+				* 表示远程的主机地址
+				*
+				* @param newVal    表示url字符串内容
+				*/
+				inline virtual csf_int32 set_remote_url(csf_string newVal) {
+
+					//m_remote_url = newVal;
+					return csf_success;
+				}
+				/**
+				* 表示本地的主机地址
+				*/
+				virtual csf_url& get_local_url();
+				/**
+				* 表示本地的主机地址
+				*
+				* @param new_value
+				*/
+				virtual csf_int32 set_local_url(csf_url& new_value);
+				/**
+				* 表示本地的主机地址
+				*
+				* @param newVal    表示url字符串内容
+				*/
+				inline virtual csf_int32 set_local_url(csf_string newVal) {
+
+					//m_local_url = newVal;
+
+					return csf_success;
 				}
 				/**
 				 * 表示写入指定缓存的内容。
@@ -326,6 +369,14 @@ namespace csf
 					, const boost::system::error_code& error_code
 					, csf_uint32 len);
 			private:
+				/**
+				* 表示远程网络地址
+				*/
+				csf::modules::connect::csf_ip_url m_remote_url;
+				/**
+				* 表示本地网络地址
+				*/
+				csf::modules::connect::csf_ip_url m_local_url;
 				/**
 				 * 表示读超时定时器。
 				 */

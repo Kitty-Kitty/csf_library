@@ -247,13 +247,30 @@ csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_fa
 	tmp_connect_ptr = create_connect(factory, element);
 	if (tmp_connect_ptr == m_null_connect_ptr) {
 		csf_log_ex(error, csf_log_code_error
-			, "create connect failed! name[%s]"
+			, "create connect[name:%s] failed!"
 			, tmp_string_name.c_str());
 		return csf_false;
 	}
 	else {
 		add_connect(tmp_string_name, tmp_connect_ptr);
 
+		//打开监听连接对象
+		if (csf_success != listen_connect(tmp_connect_ptr, tmp_handle, element)) {
+
+			//打开失败，则删除连接对象
+			remove_connect(tmp_string_name);
+
+			csf_log_ex(error, csf_log_code_error
+				, "listen connect[name:%s] failed!"
+				, tmp_string_name.c_str());
+
+			return csf_false;
+		}
+		else {
+			csf_log_ex(notice, csf_log_code_notice
+				, "listen connect[name:%s] succeed!"
+				, tmp_string_name.c_str());
+		}
 	}
 
 	return csf_true;
@@ -330,14 +347,12 @@ csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory&
 
 			return tmp_connect_ptr;
 		}
-
-		return tmp_connect_ptr;
 	}
 
 	csf_log_ex(error, csf_log_code_error
 		, "create connect failed! reason:not find connect by type!");
 
-	return m_null_connect_ptr;
+	return tmp_connect_ptr;
 }
 
 
@@ -349,11 +364,29 @@ csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory&
 * @param handle    表示连接对象的回调句柄
 * @param element    表示需要创建的连接对象配置信息
 */
-csf::core::base::csf_int32 csf_connect_factory_manager::listen_connect(csf_connect_ptr& connect, csf_connect_callback handle, csf_element& element) {
+csf::core::base::csf_int32 csf_connect_factory_manager::listen_connect(csf_connect_ptr& connect
+	, csf_connect_callback handle
+	, csf_element& element) {
+
+	csf_int32			tmp_int_value = 0;
 
 
+	tmp_int_value = connect->listen(connect->get_local_url(), handle);
+	if (tmp_int_value) {
 
+		csf_log_ex(error, csf_log_code_error
+			, "listen connect[0x%x url:%s] failed!"
+			, &connect
+			, connect->get_local_url().get_url().c_str());
 
+		return tmp_int_value;
+	}
+	else {
+		csf_log_ex(notice, csf_log_code_notice
+			, "listen connect[0x%x url:%s] succeed!"
+			, &connect
+			, connect->get_local_url().get_url().c_str());
+	}
 
-	return 0;
+	return csf_success;
 }

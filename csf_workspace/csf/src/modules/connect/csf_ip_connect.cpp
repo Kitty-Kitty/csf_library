@@ -29,6 +29,52 @@ csf_ip_connect::~csf_ip_connect() {
 }
 
 
+csf_url& csf_ip_connect::get_remote_url() {
+
+	return m_remote_url;
+}
+
+
+/**
+*
+* @param new_value
+*/
+csf_int32 csf_ip_connect::set_remote_url(csf_url& new_value) {
+
+	if (csf_ip_url::is_valid_type(new_value)) {
+		m_remote_url = (csf_ip_url&)new_value;
+		return csf_success;
+	}
+
+	return csf_failure;
+}
+
+
+/**
+* 表示本地的主机地址
+*/
+csf_url& csf_ip_connect::get_local_url() {
+
+	return m_local_url;
+}
+
+
+/**
+* 表示本地的主机地址
+*
+* @param new_value
+*/
+csf_int32 csf_ip_connect::set_local_url(csf_url& new_value) {
+
+	if (csf_ip_url::is_valid_type(new_value)) {
+		m_local_url = (csf_ip_url&)new_value;
+		return csf_success;
+	}
+
+	return csf_failure;
+}
+
+
 /**
  * 表示写入指定缓存的内容。
  * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；

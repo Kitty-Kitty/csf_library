@@ -154,18 +154,18 @@ namespace csf
 
 						m_type = new_value;
 					}
-					csf_url& get_remote_url();
+					virtual csf_url& get_remote_url();
 					/**
 					 * 
 					 * @param new_value
 					 */
-					csf_int32 set_remote_url(csf_url& new_value);
+					virtual csf_int32 set_remote_url(csf_url& new_value);
 					/**
 					* 表示远程的主机地址
 					*
 					* @param newVal    表示url字符串内容
 					*/
-					inline csf_int32 set_remote_url(csf_string newVal) {
+					inline virtual csf_int32 set_remote_url(csf_string newVal) {
 
 						//m_remote_url = newVal;
 						return csf_success;
@@ -174,19 +174,19 @@ namespace csf
 					/**
 					 * 表示本地的主机地址
 					 */
-					csf_url& get_local_url();
+					virtual csf_url& get_local_url();
 					/**
 					 * 表示本地的主机地址
 					 * 
 					 * @param new_value
 					 */
-					csf_int32 set_local_url(csf_url& new_value);
+					virtual csf_int32 set_local_url(csf_url& new_value);
 					/**
 					* 表示本地的主机地址
 					*
 					* @param newVal    表示url字符串内容
 					*/
-					inline csf_int32 set_local_url(csf_string newVal) {
+					inline virtual csf_int32 set_local_url(csf_string newVal) {
 
 						//m_local_url = newVal;
 
