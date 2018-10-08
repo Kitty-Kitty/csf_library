@@ -40,26 +40,10 @@
           <!--***该部分描述模块配置信息，是必须配置的数据内容***-->
           <module>
             <!--***表示device对应的模块名称信息，该需要从csf_module.xml中查找device_modules节点内容***-->
-            <name>csf_connection</name>
+            <name>test_connect_factory_manager</name>
             <!--***表示该设备模块的唯一标识字符串，该字符串长度应小于等于64字节***-->
             <mid>02000000-0000002</mid>
           </module>
-
-          <!--css项目配置信息-->
-          <css>
-            <!--表示服务器的名称-->
-            <server_name>aero_bus_analyzer</server_name>
-
-            <!--服务器TCP监听地址和端口-->
-            <listen_tcp>192.168.4.140:10035</listen_tcp>
-
-            <!--服务器UDP监听地址和端口-->
-            <listen_udp>192.168.4.140:10030</listen_udp>
-
-            <!--中心tcp通信的地址和端口-->
-            <center>192.168.1.175:10015</center>
-          </css>
-
         </device>
       </devices>
 

@@ -306,6 +306,9 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, csf_ele
 	}
 	else {
 
+		//设置设备的app属性
+		((csf::core::module::csf_device*)tmp_module)->set_app(&app);
+
 		//添加设备到app设备列表中
 		if (!add_device(app, tmp_string_mid, (csf::core::module::csf_device*)tmp_module)) {
 
@@ -521,6 +524,11 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 		tmp_device_io = create_device_io(device, tmp_string_name);
 		if (!tmp_device_io) {
 			return csf_false;
+		}
+		else {
+			tmp_device_io->set_device(&device);
+			tmp_device_io->set_parent(&device);
+			tmp_device_io->set_app(device.get_app());
 		}
 
 		//添加设备对象，如果成功则添加其子设备

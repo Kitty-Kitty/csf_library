@@ -77,22 +77,27 @@ namespace csf
 
 					}
 					/**
-					 * 模块初始化
-					 * 
-					 * @param conf_mg    表示配置文件信息
-					 */
-					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr);
+					* 主要功能是：初始化模块管理器
+					* 返回：0表示成功；非0表示失败；
+					*
+					* @param conf_mg    表示配置文件信息
+					* @param app    表示该模块所属的app对象地址
+					*/
+					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg, const csf_app* app);
 					/**
-					 * 模块启动
-					 * 
-					 * @param conf_mg    表示配置文件信息
-					 */
-					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr);
+					* 主要功能是：启动模块管理器
+					* 返回：0表示成功；非0表示失败；
+					*
+					* @param conf_mg    表示配置文件信息
+					* @param app    表示该模块所属的app对象地址
+					*/
+					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg, const csf_app* app);
 					/**
-					 * 模块停止
-					 * 
-					 * @param conf_mg    表示配置文件信息
-					 */
+					* 主要功能是：停止模块管理器
+					* 返回：0表示成功；非0表示失败；
+					*
+					* @param conf_mg    表示配置文件信息
+					*/
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
 					/**
 					* 主要功能是：创建所有的连接工厂类对象
@@ -140,9 +145,9 @@ namespace csf
 					*
 					* @param newVal
 					*/
-					inline void set_app(csf_app* newVal) {
+					inline void set_app(const csf_app* newVal) {
 
-						m_app = newVal;
+						m_app = (csf_app*)newVal;
 					}
 					/**
 					* 表示连接工厂管理器保存的对象列表

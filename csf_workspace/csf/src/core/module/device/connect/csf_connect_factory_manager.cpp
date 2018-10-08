@@ -25,33 +25,101 @@ using csf::core::module::connect::csf_connect_factory_manager;
 
 
 /**
- * 模块初始化
- *
- * @param conf_mg    表示配置文件信息
- */
-csf::core::base::csf_int32 csf_connect_factory_manager::init(const csf_configure_manager * conf_mg) {
+* 主要功能是：初始化模块管理器
+* 返回：0表示成功；非0表示失败；
+*
+* @param conf_mg    表示配置文件信息
+* @param app    表示该模块所属的app对象地址
+*/
+csf::core::base::csf_int32 csf_connect_factory_manager::init(const csf_configure_manager * conf_mg, const csf_app* app) {
+
+	//判断参数的合法性
+	if (csf_nullptr == conf_mg || csf_nullptr == app) {
+		csf_log_ex(warning, csf_log_code_warning
+			, "invalid parameters confmg[0x%x] or app[0x%x] is null."
+			, conf_mg
+			, app);
+		return csf_failure;
+	}
+
+	//设置各个参数信息
+	set_app(app);
+	set_configure_manager(conf_mg);
 
 	return 0;
 }
 
 
 /**
- * 模块启动
- *
- * @param conf_mg    表示配置文件信息
- */
-csf::core::base::csf_int32 csf_connect_factory_manager::start(const csf_configure_manager * conf_mg) {
+* 主要功能是：启动模块管理器
+* 返回：0表示成功；非0表示失败；
+*
+* @param conf_mg    表示配置文件信息
+* @param app    表示该模块所属的app对象地址
+*/
+csf::core::base::csf_int32 csf_connect_factory_manager::start(const csf_configure_manager * conf_mg, const csf_app* app) {
 
-	return 0;
+	//判断参数的合法性
+	if (csf_nullptr == conf_mg || csf_nullptr == app) {
+		csf_log_ex(warning, csf_log_code_warning
+			, "invalid parameters confmg[0x%x] or app[0x%x] is null."
+			, conf_mg
+			, app);
+		return csf_failure;
+	}
+
+	//根据配置文件信息，创建所有连接工厂对象
+	if (csf_false == create_connect_factories(*((csf_app*)app), *((csf_configure_manager*)conf_mg))) {
+		csf_log_ex(warning, csf_log_code_warning
+			, "create connect factories failed.");
+		return csf_failure;
+	}
+	else {
+		//设置各个参数信息
+		set_app(app);
+		set_configure_manager(conf_mg);
+
+		csf_log_ex(notice, csf_log_code_notice
+			, "create connect factories succeed.");
+
+		return csf_success;
+	}
+
+	return csf_success;
 }
 
 
 /**
- * 模块停止
- *
- * @param conf_mg    表示配置文件信息
- */
+* 主要功能是：停止模块管理器
+* 返回：0表示成功；非0表示失败；
+*
+* @param conf_mg    表示配置文件信息
+*/
 csf::core::base::csf_int32 csf_connect_factory_manager::stop(const csf_configure_manager * conf_mg) {
+
+	//销毁所有的连接对象
+	for (auto &tmp_iter : get_connectes()) {
+		if (m_null_connect_ptr != tmp_iter.second) {
+			tmp_iter.second->close();
+			tmp_iter.second->stop(conf_mg);
+		}
+	}
+	//清空所有连接对象
+	get_connectes().clear();
+
+	if (csf_nullptr != get_app()) {
+		//销毁所有连接工厂类对象
+		for (auto &tmp_iter : get_factories()) {
+			if (csf_nullptr != tmp_iter.second) {
+				get_app()->get_module_manager().destory(tmp_iter.second);
+			}
+		}
+		//清空所有连接工厂对象
+		get_factories().clear();
+	}
+
+	//清空所有处理句柄
+	get_handles().clear();
 
 	return 0;
 }
@@ -133,11 +201,40 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, csf_e
 	tmp_device_base = csf_configure_module::create_module(app.get_module_manager(), element);
 	if (csf_nullptr == tmp_device_base) {
 		csf_log_ex(error, csf_log_code_error
-			, "create module failed! name[%s]"
+			, "create factory module[name:%s] failed!"
 			, tmp_string_name.c_str());
 		return csf_false;
 	}
 	else {
+
+		//创建网络连接工厂类对象成功
+		csf_log_ex(notice, csf_log_code_notice
+			, "create factory module[name:%s] succeed!"
+			, tmp_string_name.c_str());
+
+		if (csf_success != tmp_device_base->configure(element)) {
+
+			csf_log_ex(error, csf_log_code_error
+				, "configure factory module[0x%s name:%s] failed!"
+				, tmp_string_name.c_str());
+
+			app.get_module_manager().destory(tmp_device_base);
+		}
+
+		//根据配置的监听列表信息，创建监听对象
+		if (!create_listen_list(app, *((csf_connect_factory*)tmp_device_base), element)) {
+
+			csf_log_ex(error, csf_log_code_error
+				, "create listen list failed!");
+
+			return csf_false;
+		}
+		else {
+			csf_log_ex(notice, csf_log_code_notice
+				, "create listen list succeed!");
+		}
+
+		//将工厂对象添加到列表中
 		add_factory(tmp_string_name, (csf_connect_factory*)tmp_device_base);
 	}
 

@@ -196,3 +196,13 @@ csf_int32 csf_ip_connect_factory::add(csf_element& element, csf_device_operation
 	return 0;
 }
 
+
+/*************************************************************************************/
+/* csf module symboy handle define                                                   */
+/* 表示模块的create 和 destroy 句柄定义。                                              */
+/* 每个需要通过模块工厂创建的模块都需要添加该宏定义。                                    */
+/* 其中module_type表示该模块的类名称，该类实现了构造方法为：                             */
+/* public:                                                                            */
+/*     module_type(const csf::core::system::csf_configure_manager* configure_manager) */
+/**************************************************************************************/
+CSF_MODULE_SYMBOY_DEFINE(csf_ip_connect_factory)

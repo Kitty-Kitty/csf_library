@@ -52,9 +52,8 @@ namespace csf
 				* @param configure_manager    表示配置文件内容
 				* @param type    表示模块的类型
 				*/
-				inline explicit csf_ip_connect_factory(const csf_configure_manager * configure_manager
-					, const csf_device_type type)
-					: csf_connect_factory(configure_manager, type) {
+				inline explicit csf_ip_connect_factory(const csf_configure_manager * configure_manager)
+					: csf_connect_factory(configure_manager, csf_device_type_connect_extend) {
 
 				}
 				/**
@@ -65,9 +64,8 @@ namespace csf
 				* @param cfm    表示网络工厂管理器的指针
 				*/
 				inline explicit csf_ip_connect_factory(const csf_configure_manager * configure_manager
-					, const csf_device_type type
 					, const csf_connect_factory_manager* cfm)
-					: csf_connect_factory(configure_manager, type, cfm) {
+					: csf_connect_factory(configure_manager, csf_device_type_connect_extend, cfm) {
 
 				}
 				/**
@@ -215,7 +213,6 @@ namespace csf
 				*/
 				boost::asio::io_service m_io_service;
 			};
-
 		}
 
 	}

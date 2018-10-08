@@ -12,6 +12,7 @@
     <module name="dev_client_background" file= "dev_client_background.dll"/>
     <module name="dev_player_background" file= "dev_player_background.dll"/>
     <module name="dev_aero_bus_analyzer" file= "dev_aero_bus_analyzer.dll"/>
+    <module name="test_connect_factory_manager" file= "D:\project_work\csf_library\csf_workspace\csf\platform\win32\Debug\test_connect_factory_manager.dll"/>
   </device_modules>
 
   <!--设备io模块-->

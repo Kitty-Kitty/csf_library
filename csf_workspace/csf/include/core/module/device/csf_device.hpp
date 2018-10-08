@@ -60,11 +60,11 @@ namespace csf
 					/**
 					* 表示数据库设备
 					*/
-					csf_device_type_database = csf_module_type_device | 0x00020000,
+					csf_device_type_database = csf_module_type_device | 0x00800000,
 					/**
-					* 表示进程处理设备
+					* 表示测试设备类型
 					*/
-					csf_device_type_process = csf_module_type_device | 0x00040000,
+					csf_device_type_test = csf_module_type_device | 0x00040000,
 					/**
 					* 表示网络连接设备扩展，用于第三方运用
 					*/
@@ -73,10 +73,6 @@ namespace csf
 					* 表示数据库设备扩展，用于第三方运用
 					*/
 					csf_device_type_database_extend = csf_device_type_database | 0x00000001,
-					/**
-					* 表示进程设备扩展，用于第三方运用
-					*/
-					csf_device_type_process_extend = csf_device_type_process | 0x00000001
 				};
 
 				inline explicit csf_device()
