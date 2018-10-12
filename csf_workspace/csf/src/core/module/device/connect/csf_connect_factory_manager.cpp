@@ -209,7 +209,8 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, csf_e
 
 		//创建网络连接工厂类对象成功
 		csf_log_ex(notice, csf_log_code_notice
-			, "create factory module[name:%s] succeed!"
+			, "create factory module[0x%x name:%s] succeed!"
+			, tmp_device_base
 			, tmp_string_name.c_str());
 
 		if (csf_success != tmp_device_base->configure(element)) {

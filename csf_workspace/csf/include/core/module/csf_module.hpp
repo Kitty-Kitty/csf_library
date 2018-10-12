@@ -71,7 +71,7 @@ namespace csf
 				};
 
 				inline explicit csf_module()
-				    : m_type(csf_module_type_none)
+					: m_type(csf_module_type_none)
 					, m_guid("")
 					, m_name("")
 					, m_decorator(csf_nullptr)
@@ -80,7 +80,7 @@ namespace csf
 				}
 				/**
 				 * 根据配置文件和类型创建一个模块。
-				 * 
+				 *
 				 * @param configure_manager    表示模块的配置文件
 				 * @param type    表示模块的类型
 				 */
@@ -100,7 +100,7 @@ namespace csf
 				}
 				/**
 				 * 模块初始化
-				 * 
+				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
 				inline virtual csf::core::base::csf_int32 init(const csf_configure_manager* conf_mg = csf_nullptr) {
@@ -109,7 +109,7 @@ namespace csf
 				}
 				/**
 				 * 模块启动
-				 * 
+				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
 				inline virtual csf::core::base::csf_int32 start(const csf_configure_manager* conf_mg = csf_nullptr) {
@@ -118,7 +118,7 @@ namespace csf
 				}
 				/**
 				 * 模块停止
-				 * 
+				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
 				inline virtual csf::core::base::csf_int32 stop(const csf_configure_manager* conf_mg = csf_nullptr) {
@@ -134,7 +134,7 @@ namespace csf
 				}
 				/**
 				 * 模块的类型
-				 * 
+				 *
 				 * @param new_value    new_value
 				 */
 				inline csf::core::base::csf_void set_type(const csf_module_type new_value) {
@@ -156,7 +156,7 @@ namespace csf
 				}
 				/**
 				 * 表示模块的名称
-				 * 
+				 *
 				 * @param new_value    new_value
 				 */
 				inline csf_void set_name(const csf_string& new_value) {
@@ -179,7 +179,7 @@ namespace csf
 				}
 				/**
 				 * 表示模块的配置信息管理器
-				 * 
+				 *
 				 * @param new_value    new_value
 				 */
 				inline virtual csf_void set_configure_manager(const csf::core::system::csf_configure_manager* new_value) {
@@ -188,7 +188,7 @@ namespace csf
 				}
 				/**
 				 * 表示装饰者指针
-				 * 
+				 *
 				 * @param new_value    new_value
 				 */
 				inline csf_void set_decorator(const csf_module* new_value) {
@@ -203,15 +203,6 @@ namespace csf
 					return m_version;
 				}
 				/**
-				 * 表示模块的版本信息
-				 * 
-				 * @param new_value
-				 */
-				inline csf_void set_version(const csf::core::module::csf_module_version& new_value) {
-
-					m_version = new_value;
-				}
-				/**
 				 * 表示模块的错误信息
 				 */
 				inline csf::core::module::csf_error& get_error() {
@@ -220,7 +211,7 @@ namespace csf
 				}
 				/**
 				 * 表示模块的错误信息
-				 * 
+				 *
 				 * @param new_value
 				 */
 				inline csf_void set_error(const csf::core::module::csf_error& new_value) {
@@ -229,7 +220,7 @@ namespace csf
 				}
 				/**
 				 * 表示模块的名称
-				 * 
+				 *
 				 * @param new_value    new_value
 				 */
 				inline csf_void set_name(const csf_char* new_value) {
@@ -243,7 +234,30 @@ namespace csf
 
 					return m_attribute_manager;
 				}
+			protected:
+				/**
+				* 主要功能是：设置模块的版本信息
+				* 返回：无
+				*
+				* @param version    模块的版本数值信息
+				* @param strver    模块的版本字符串信息
+				* @param description    模块的其他描述信息
+				*/
+				inline csf_void set_version(const csf_uint32 version
+					, const csf_string strver
+					, const csf_string description) {
+					
+					get_version().set_version(version, strver, description);
+				}
+				/**
+				* 表示模块的版本信息
+				*
+				* @param new_value
+				*/
+				inline csf_void set_version(const csf::core::module::csf_module_version& new_value) {
 
+					m_version = new_value;
+				}
 			private:
 				/**
 				 * 模块的类型

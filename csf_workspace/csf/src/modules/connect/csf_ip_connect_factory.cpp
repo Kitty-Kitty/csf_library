@@ -28,6 +28,11 @@ using csf::modules::connect::csf_ip_connect_factory;
 
 csf_ip_connect_factory::csf_ip_connect_factory() {
 
+// 	get_version().set_version(
+// 		csf_version
+// 		, CSF_VER
+// 		, 
+// 	);
 }
 
 

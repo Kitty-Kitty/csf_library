@@ -37,7 +37,7 @@
 
   <!--通信模块-->
   <connect_modules>
-    <module name="csf_connection" file = "D:\project_work\project\csf_library\csf_workspace\csf\platform\win32\Debug\csf_connect.dll"/>
+    <module name="csf_connection" file = "D:\project_work\csf_library\csf_workspace\csf\platform\win32\Debug\csf_connect.dll"/>
     <module name="local_connection" file = "local_socket.dll"/>
     <module name="socket_connection" file = "conn_socket.dll"/>
     <module name="socket_connection_media" file = "conn_socket_media.dll"/>
