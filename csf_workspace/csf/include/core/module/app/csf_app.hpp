@@ -329,6 +329,14 @@ namespace csf
 
 					return del_device(csf_string(mid));
 				}
+				/**
+				* 主要功能是：将模块信息格式化成字符串输出
+				* 返回：模块信息字符串
+				*/
+				inline virtual csf_string to_string() {
+
+					return "";
+				}
 			protected:
 				/**
 				* 表示app自身维持的时间

@@ -124,7 +124,14 @@ namespace csf
 
 					return  m_app;
 				}
+				/**
+				* 主要功能是：将模块信息格式化成字符串输出
+				* 返回：模块信息字符串
+				*/
+				inline virtual csf_string to_string() {
 
+					return "";
+				}
 			private:
 				/**
 				 * 表示设备io所属的device地址信息

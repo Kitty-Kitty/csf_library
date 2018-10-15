@@ -24,11 +24,6 @@
 using csf::example::test_connect_factory_manager;
 
 
-test_connect_factory_manager::test_connect_factory_manager() {
-
-}
-
-
 
 test_connect_factory_manager::~test_connect_factory_manager() {
 

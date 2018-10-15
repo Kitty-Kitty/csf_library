@@ -143,16 +143,16 @@ namespace csf
 				/**
 				 * 表示模块的uuid，用于唯一标识一个模块
 				 */
-				inline csf_string& get_guid() {
+				inline csf_string get_guid() {
 
-					return m_guid;
+					return csf_string(m_guid);
 				}
 				/**
 				 * 表示模块的名称
 				 */
-				inline csf_string& get_name() {
+				inline csf_string get_name() {
 
-					return m_name;
+					return csf_string(m_name);
 				}
 				/**
 				 * 表示模块的名称
@@ -161,7 +161,7 @@ namespace csf
 				 */
 				inline csf_void set_name(const csf_string& new_value) {
 
-					m_name = new_value;
+					set_name(new_value.c_str());
 				}
 				/**
 				 * 表示模块的配置信息管理器
@@ -225,7 +225,19 @@ namespace csf
 				 */
 				inline csf_void set_name(const csf_char* new_value) {
 
-					m_name = new_value;
+					csf_int32				tmp_length = csf_strlen(new_value);
+
+
+					if (tmp_length < csf_sizeof(m_name)) {
+						csf_strncpy(m_name
+							, new_value
+							, tmp_length);
+					}
+					else {
+						csf_strncpy(m_name
+							, new_value
+							, csf_sizeof(m_name));
+					}
 				}
 				/**
 				* 模块包含一个属性管理器，统一保存模块所需要的配置属性内容
@@ -233,6 +245,26 @@ namespace csf
 				inline csf::core::system::attribute::csf_attribute_manager& get_attribute_manager() {
 
 					return m_attribute_manager;
+				}
+				/**
+				* 主要功能是：将模块信息格式化成字符串输出
+				* 返回：模块信息字符串
+				*/
+				inline virtual csf_string to_string() {
+
+					if (csf_strlen(m_format) <= 0) {
+
+						csf_snprintf(m_format
+							, csf_sizeof(m_format)
+							, "module[%p name:%s guid:%s type:%d] version[%s]"
+							, this
+							, m_name
+							, m_guid
+							, get_type()
+							, get_version().to_string().c_str());
+					}
+
+					return csf_string(m_format);
 				}
 			protected:
 				/**
@@ -246,7 +278,7 @@ namespace csf
 				inline csf_void set_version(const csf_uint32 version
 					, const csf_string strver
 					, const csf_string description) {
-					
+
 					get_version().set_version(version, strver, description);
 				}
 				/**
@@ -258,19 +290,39 @@ namespace csf
 
 					m_version = new_value;
 				}
+				/**
+				* 表示模块信息的格式化字符串
+				*/
+				inline csf_char* get_format() {
+
+					return m_format;
+				}
+				/**
+				* 表示模块信息的格式化字符串
+				*
+				* @param newVal
+				*/
+				inline void set_format(csf_char* newVal) {
+
+					csf_strcpy(m_format, newVal);
+				}
 			private:
 				/**
 				 * 模块的类型
 				 */
 				csf_module_type m_type = csf_module_type_none;
 				/**
-				 * 表示模块的uuid，用于唯一标识一个模块
-				 */
-				csf_string m_guid = "";
+				* 表示模块的uuid，用于唯一标识一个模块
+				*/
+				csf_char m_guid[128] = { 0, };
 				/**
-				 * 表示模块的名称
-				 */
-				csf_string m_name = "";
+				* 表示模块的名称
+				*/
+				csf_char m_name[128] = { 0, };
+				/**
+				* 表示模块信息的格式化字符串
+				*/
+				csf_char m_format[256] = { 0, };
 				/**
 				 * 表示装饰者指针
 				 */

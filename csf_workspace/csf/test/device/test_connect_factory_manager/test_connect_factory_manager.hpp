@@ -18,8 +18,8 @@
 *
 *******************************************************************************/
 
-#if !defined(TEST_CONNECT_FACTORY_MANAGER_H_INCLUDED_)
-#define TEST_CONNECT_FACTORY_MANAGER_H_INCLUDED_
+#if !defined(TEST_TEST_FACTORY_MANAGER_H_INCLUDED_)
+#define TEST_TEST_FACTORY_MANAGER_H_INCLUDED_
 
 #include "csf_device.hpp"
 
@@ -27,6 +27,11 @@ namespace csf
 {
 	namespace example
 	{
+#define		csf_test_version				1000000
+#define		CSF_TEST_VERSION				"v1.0.0"
+#define		CSF_TEST_VAR					"csf_ip_connect_factory"
+#define		CSF_TEST_VER					CSF_TEST_VAR "/" CSF_TEST_VERSION
+
 		/**
 		 * 主要功能用于测试connect factory manager 中的自动配置功能
 		 * @author f
@@ -37,9 +42,6 @@ namespace csf
 		{
 
 		public:
-			test_connect_factory_manager();
-			virtual ~test_connect_factory_manager();
-
 			/**
 			* 表示根据配置文件和类型创建设备模块
 			*
@@ -49,7 +51,15 @@ namespace csf
 			inline explicit test_connect_factory_manager(const csf_configure_manager * configure_manager)
 				: csf_device(configure_manager, csf_device_type_test) {
 
+				set_version(
+					csf_test_version
+					, CSF_TEST_VER
+					, "test connect factory manager"
+				);
+
 			}
+
+			virtual ~test_connect_factory_manager();
 
 			/**
 			 * 模块初始化
@@ -75,4 +85,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(TEST_CONNECT_FACTORY_MANAGER_H_INCLUDED_)
+#endif // !defined(TEST_TEST_FACTORY_MANAGER_H_INCLUDED_)

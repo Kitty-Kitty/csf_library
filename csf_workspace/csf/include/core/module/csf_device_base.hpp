@@ -166,7 +166,7 @@ namespace csf
 				*/
 				inline csf_string get_mid() {
 
-					return m_mid;
+					return csf_string(m_mid);
 				}
 				/**
 				* 模块停止
@@ -239,7 +239,24 @@ namespace csf
 
 					return m_parent;
 				}
+				/**
+				* 主要功能是：将模块信息格式化成字符串输出
+				* 返回：模块信息字符串
+				*/
+				inline virtual csf_string to_string() {
 
+					csf_char				tmp_buf[512] = { 0, };
+
+
+					csf_snprintf(tmp_buf
+						, csf_sizeof(tmp_buf)
+						, "device_base[mid:%s parent:%p] %s"
+						, m_mid
+						, m_parent
+						, csf_module::to_string().c_str());
+
+					return csf_string(tmp_buf);
+				}
 			private:
 				/**
 				* 表示设备的唯一编码id

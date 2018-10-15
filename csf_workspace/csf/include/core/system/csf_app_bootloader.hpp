@@ -180,22 +180,9 @@ namespace csf
 				* 返回：true表示添加成功；false表示添加失败。
 				*
 				* @param app    表示目标app对象
-				* @param name    表示模块名称
-				* @param mid    表示模块创建的对象唯一ID
-				*/
-				csf_bool add_device(csf::core::module::csf_app& app
-					, const csf_string& name
-					, const csf_string& mid);
-				/**
-				* 该函数主要用于添加一个设备到app中。
-				* 返回：true表示添加成功；false表示添加失败。
-				*
-				* @param app    表示目标app对象
-				* @param mid    表示模块创建的对象唯一ID
 				* @param device    表示需添加的设备地址
 				*/
 				csf_bool add_device(csf::core::module::csf_app& app
-					, const csf_string& mid
 					, const csf::core::module::csf_device* device);
 				/**
 				* 功能：该函数主要用于创建一个设备对象。
@@ -261,7 +248,6 @@ namespace csf
 				* @param device_io    表示需添加的设备地址
 				*/
 				csf_bool add_device_io(csf::core::module::csf_device& device
-					, const csf_string& mid
 					, const csf::core::module::csf_device_io* device_io);
 				/**
 				* 功能：该函数初始化app中的所有设备。

@@ -198,6 +198,23 @@ namespace csf
 
 					return del_device_io(csf_string(mid));
 				}
+				/**
+				* 主要功能是：将模块信息格式化成字符串输出
+				* 返回：模块信息字符串
+				*/
+				inline virtual csf_string to_string() {
+
+					csf_char				tmp_buf[512] = { 0, };
+
+
+					csf_snprintf(tmp_buf
+						, csf_sizeof(tmp_buf)
+						, "device[app:%p] %s"
+						, get_app()
+						, csf_device_base::to_string().c_str());
+
+					return csf_string(tmp_buf);
+				}
 			private:
 				/**
 				 * 表示device所属的app设备地址

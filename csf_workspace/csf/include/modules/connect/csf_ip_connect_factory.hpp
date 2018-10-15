@@ -34,10 +34,10 @@ namespace csf
 	{
 		namespace connect
 		{
-#define		csf_version				1000000
-#define		CSF_VERSION				"v1.0.0"
-#define		CSF_VAR					"csf_ip_connect_factory"
-#define		CSF_VER					CSF_VAR	"/" CSS_VERSION
+#define		csf_connect_version				1000000
+#define		CSF_CONNECT_VERSION				"v1.0.0"
+#define		CSF_CONNECT_VAR					"csf_ip_connect_factory"
+#define		CSF_CONNECT_VER					CSF_CONNECT_VAR	"/" CSF_CONNECT_VERSION
 
 			/**
 			 * 表示ip网络通信连接工厂类

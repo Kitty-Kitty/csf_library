@@ -18,6 +18,7 @@
 *******************************************************************************/
 
 #include "csf_app_bootloader.hpp"
+#include "csf_configure_module.hpp"
 
 
 using csf::core::system::csf_app_bootloader;
@@ -253,71 +254,43 @@ csf_bool csf_app_bootloader::create_device_io(csf::core::module::csf_device& dev
 */
 csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, csf_element& element) {
 
-	csf_module					*tmp_module = csf_nullptr;
-	csf_string					tmp_string_name = "";
-	csf_string					tmp_string_mid = "";
+	csf_device_base				*tmp_device_base = csf_nullptr;
 
 
 	if (element.is_null()) {
 		return csf_false;
 	}
 
-	//判断当前是否为device节点，如果是则添加设备
-	tmp_string_name = ((csf_element&)(element.find_element(csf_list<csf_string>{"module", "name"}))).get_content();
-	tmp_string_mid = ((csf_element&)(element.find_element(csf_list<csf_string>{"module", "mid"}))).get_content();
-
-	if (tmp_string_name.empty() || tmp_string_mid.empty()) {
-
-		csf_log_ex(error, csf_log_code_error
-			, "add device failed! reason: module[name:\"%s\"] or mid[\"%s\"] is null!"
-			, tmp_string_name.c_str()
-			, tmp_string_mid.c_str());
-
+	tmp_device_base = csf_configure_module::create_module(app.get_module_manager(), element);
+	if (!tmp_device_base) {
 		return csf_false;
-	}
-
-	//根据名称创建模块对象
-	tmp_module = app.get_module_manager().create(tmp_string_name);
-	if (!tmp_module) {
-		csf_log_ex(error, csf_log_code_error
-			, "add device failed! reason: create module[name:\"%s\"] mid[\"%s\"] failed!"
-			, tmp_string_name.c_str()
-			, tmp_string_mid.c_str());
-		return csf_false;
-	}
-	else {
-		csf_log_ex(notice, csf_log_code_notice
-			, "create module[name:\"%s\"] mid[\"%s\"] succeed!"
-			, tmp_string_name.c_str()
-			, tmp_string_mid.c_str());
 	}
 
 	//校验该模块是否为device模块对象。如果是则添加；如果不是则模块是错误的，销毁；
-	if (!csf_device_base::is_device(tmp_module->get_type())) {
+	if (!csf_device_base::is_device(tmp_device_base->get_type())) {
 		csf_log_ex(error, csf_log_code_error
-			, "add device module[name:\"%s\"] mid[\"%s\"] failed! reason: module type[%d] faile!"
-			, tmp_string_name.c_str()
-			, tmp_string_mid.c_str()
-			, tmp_module->get_type());
+			, "add device failed! reason: module type[%d] faile!"
+			, tmp_device_base->get_type());
 
-		app.get_module_manager().destory(tmp_module);
+		app.get_module_manager().destory(tmp_device_base);
 
 		return csf_false;
 	}
 	else {
 
 		//设置设备的app属性
-		((csf::core::module::csf_device*)tmp_module)->set_app(&app);
+		//dynamic_cast<csf::core::module::csf_device*>(tmp_device_base)->set_app(&app);
+		((csf::core::module::csf_device*)tmp_device_base)->set_app(&app);
 
 		//添加设备到app设备列表中
-		if (!add_device(app, tmp_string_mid, (csf::core::module::csf_device*)tmp_module)) {
+		if (!add_device(app, ((const csf::core::module::csf_device*)tmp_device_base))) {
 
-			app.get_module_manager().destory(tmp_module);
+			app.get_module_manager().destory(tmp_device_base);
 
 			return csf_false;
 		}
 		else {
-			return create_device_ioes(*((csf::core::module::csf_device*)tmp_module), element, app.get_config_mg());
+			return create_device_ioes(*((csf::core::module::csf_device*)tmp_device_base), element, app.get_config_mg());
 		}
 	}
 
@@ -330,98 +303,31 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, csf_ele
 * 返回：true表示添加成功；false表示添加失败。
 *
 * @param app    表示目标app对象
-* @param name    表示模块名称
-* @param mid    表示模块创建的对象唯一ID
-*/
-csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app
-	, const csf_string& name
-	, const csf_string& mid) {
-
-	csf_module					*tmp_module = csf_nullptr;
-
-
-	//核验数据的合法性
-	if (name.empty() && mid.empty()) {
-		csf_log_ex(error, csf_log_code_error
-			, "add device failed! reason: module[name:\"%s\"] or mid[\"%s\"] is null!"
-			, name.c_str()
-			, mid.c_str());
-		return csf_false;
-	}
-
-	//根据名称创建模块对象
-	tmp_module = app.get_module_manager().create(name);
-	if (!tmp_module) {
-		csf_log_ex(error, csf_log_code_error
-			, "add device failed! reason: create module[name:\"%s\"] mid[\"%s\"] failed!"
-			, name.c_str()
-			, mid.c_str());
-		return csf_false;
-	}
-	else {
-		csf_log_ex(notice, csf_log_code_notice
-			, "create module[name:\"%s\"] mid[\"%s\"] succeed!"
-			, name.c_str()
-			, mid.c_str());
-	}
-
-	//校验该模块是否为device模块对象。如果是则添加；如果不是则模块是错误的，销毁；
-	if (!csf_device_base::is_device(tmp_module->get_type())) {
-		csf_log_ex(error, csf_log_code_error
-			, "add device module[name:\"%s\"] mid[\"%s\"] failed! reason: module type[%d] faile!"
-			, name.c_str()
-			, mid.c_str()
-			, tmp_module->get_type());
-
-		app.get_module_manager().destory(tmp_module);
-
-		return csf_false;
-	}
-	else {
-
-		//添加设备到设备列表中
-		return add_device(app, mid, (csf::core::module::csf_device*)tmp_module);
-	}
-
-	return csf_true;
-}
-
-
-/**
-* 该函数主要用于添加一个设备到app中。
-* 返回：true表示添加成功；false表示添加失败。
-*
-* @param app    表示目标app对象
-* @param mid    表示模块创建的对象唯一ID
 * @param device    表示需添加的设备地址
 */
 csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app
-	, const csf_string& mid
 	, const csf::core::module::csf_device* device) {
 
 
-	if (mid.empty() || !device) {
+	if (!device) {
 		return csf_false;
 	}
 
 	//添加设备到设备列表中
 
-	((csf::core::module::csf_device*)device)->set_mid(mid);
 	((csf::core::module::csf_device*)device)->set_parent(&app);
 
-	if (!app.add_device(mid, device)) {
+	if (!app.add_device(((csf::core::module::csf_device*)device)->get_mid(), device)) {
 		csf_log_ex(error, csf_log_code_error
-			, "add device module[name:\"%s\"] mid[\"%s\"] failed!"
-			, ((csf::core::module::csf_device*)device)->get_name().c_str()
-			, mid.c_str());
+			, "add %s failed!"
+			, ((csf::core::module::csf_device*)device)->to_string().c_str());
 
 		return csf_false;
 	}
 	else {
-		csf_log_ex(notice, csf_log_code_notice
-			, "add device module[name:\"%s\"] mid[\"%s\"] succeed!"
-			, ((csf::core::module::csf_device*)device)->get_name().c_str()
-			, mid.c_str());
+ 		csf_log_ex(notice, csf_log_code_notice
+ 			, "add %s succeed!"
+ 			, ((csf::core::module::csf_device*)device)->to_string().c_str());
 
 		return csf_true;
 	}
@@ -499,45 +405,28 @@ csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::modu
 csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 	, csf_element& element) {
 
-	csf_string										tmp_string_name = "";
-	csf_string										tmp_string_mid = "";
-	csf::core::module::csf_device_io		*tmp_device_io = csf_nullptr;
+	csf::core::module::csf_device_io				*tmp_device_io = csf_nullptr;
 
 
 	if (element.is_null()) {
 		return csf_false;
 	}
 
-	tmp_string_name = ((csf_element&)(element.find_element(csf_list<csf_string>{"module", "name"}))).get_content();
-	tmp_string_mid = ((csf_element&)(element.find_element(csf_list<csf_string>{"module", "mid"}))).get_content();
+	tmp_device_io = (csf_device_io*)csf_configure_module::create_module(device.get_app()->get_module_manager(), element);
+	if (!tmp_device_io) {
+		return csf_false;
+	}
 
-	if (tmp_string_name.empty() || tmp_string_mid.empty()) {
+	tmp_device_io->set_device(&device);
+	tmp_device_io->set_parent(&device);
+	tmp_device_io->set_app(device.get_app());
 
-		csf_log_ex(error, csf_log_code_error
-			, "add device_io failed! reason: module[name:\"%s\"] or mid[\"%s\"] is null!"
-			, tmp_string_name.c_str()
-			, tmp_string_mid.c_str());
-
+	//添加设备对象，如果成功则添加其子设备
+	if (!add_device_io(device, tmp_device_io)) {
 		return csf_false;
 	}
 	else {
-		tmp_device_io = create_device_io(device, tmp_string_name);
-		if (!tmp_device_io) {
-			return csf_false;
-		}
-		else {
-			tmp_device_io->set_device(&device);
-			tmp_device_io->set_parent(&device);
-			tmp_device_io->set_app(device.get_app());
-		}
-
-		//添加设备对象，如果成功则添加其子设备
-		if (!add_device_io(device, tmp_string_mid, tmp_device_io)) {
-			return csf_false;
-		}
-		else {
-			return csf_true;
-		}
+		return csf_true;
 	}
 
 	return csf_false;
@@ -549,23 +438,20 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 * 返回：true表示添加成功；false表示添加失败。
 *
 * @param device    表示目标aap对象
-* @param mid    表示模块创建的对象唯一ID
 * @param device_io    表示需添加的设备地址
 */
 csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
-	, const csf_string& mid
 	, const csf::core::module::csf_device_io* device_io) {
 
-	if (!device_io || mid.empty()) {
+	if (!device_io) {
 		return csf_false;
 	}
-	//添加设备到设备列表中
 
-	((csf::core::module::csf_device_io*)device_io)->set_mid(mid);
+	//添加设备到设备列表中
 	((csf::core::module::csf_device_io*)device_io)->set_app(get_app());
 	((csf::core::module::csf_device_io*)device_io)->set_device(&device);
 
-	return device.add_device_io(mid, device_io);
+	return device.add_device_io(((csf::core::module::csf_device_io*)device_io)->get_mid(), device_io);
 }
 
 
