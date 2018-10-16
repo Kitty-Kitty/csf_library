@@ -51,7 +51,8 @@ csf_int32 csf_ip_url::parse(const csf_string& url) {
 	/**
 	* 表示核验格式和截取字符串正则表达式
 	*/
-	std::regex					tmp_regex("(\\w+):([0-9]{0,5})");
+	//std::regex					tmp_regex("(\\w+):([0-9]{0,5})");
+	std::regex					tmp_regex("(\\d+.\\d+.\\d+.\\d+):([0-9]{0,5})");
 	std::smatch					tmp_match_result;
 	int							tmp_port = 0;
 
@@ -76,7 +77,6 @@ csf_int32 csf_ip_url::parse(const csf_string& url) {
 		if (tmp_port > csf_max_ushort || tmp_port < 0) {
 			return csf_failure;
 		}
-		set_port(tmp_port);
 
 		//校验ip地址的合法性
 		if (!check_ip(tmp_match_result[1].str())) {
@@ -85,6 +85,8 @@ csf_int32 csf_ip_url::parse(const csf_string& url) {
 		else {
 			set_ip(tmp_match_result[1].str());
 		}
+
+		set_port(tmp_port);
 
 		return csf_success;
 	}

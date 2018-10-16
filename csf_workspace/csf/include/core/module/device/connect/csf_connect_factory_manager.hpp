@@ -199,7 +199,7 @@ namespace csf
 							return csf_nullptr;
 						}
 						else {
-							tmp_iter->second;
+							return tmp_iter->second;
 						}
 						return  csf_nullptr;
 					}
@@ -291,7 +291,7 @@ namespace csf
 							return m_null_connect_ptr;
 						}
 						else {
-							tmp_iter->second;
+							return tmp_iter->second;
 						}
 						return m_null_connect_ptr;
 					}
@@ -356,7 +356,7 @@ namespace csf
 							return csf_nullptr;
 						}
 						else {
-							tmp_iter->second;
+							return tmp_iter->second;
 						}
 
 						return  csf_nullptr;

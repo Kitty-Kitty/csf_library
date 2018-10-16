@@ -104,7 +104,38 @@ csf::core::base::csf_int32 csf_tcp_connect::stop(const csf_configure_manager * c
 */
 csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback callback) {
 
-	return 0;
+	csf::modules::connect::csf_ip_url &ip_url = (csf::modules::connect::csf_ip_url&)url;
+
+	try {
+		//如果已经监听了，则
+		if (csf_nullptr != get_acceptor()) {
+
+			csf_log_ex(error, csf_log_code_error
+				, "listen[url:%s] failed! connect is listening."
+				, ip_url.get_url().c_str());
+
+			return csf_failure;
+		}
+
+		//创建一个acceptor，用于实现tcp监听
+		set_acceptor(new boost::asio::ip::tcp::acceptor(get_socket().get_io_service()
+			, boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(ip_url.get_ip())
+				, ip_url.get_port())));
+
+		async_accept(callback);
+	}
+	catch (boost::exception& e) {
+
+		csf_log_ex(error, csf_log_code_error
+			, "listen [url:%s] failed! reason:[%s -- %s]."
+			, ip_url.get_url().c_str()
+			, boost::current_exception_diagnostic_information().c_str()
+			, boost::diagnostic_information(e).c_str());
+
+		return csf_failure;
+	}
+
+	return csf_success;
 }
 
 
@@ -442,4 +473,135 @@ csf_int32 csf_tcp_connect::read(const csf_chain& chain
 	, const csf_connect_callback callback) {
 
 	return 0;
+}
+
+
+/**
+* 主要功能是：异步tcp监听的accept处理函数。
+* 返回：0表示成功；非0表示失败；
+*
+* @param callback    表示需要返回的回调函数
+*/
+csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callback callback) {
+
+	csf_tcp_connect		*tmp_connect = csf_nullptr;
+
+	while (csf_true) {
+		try	{
+			//这里主要解决有些时候new失败的问题
+			tmp_connect = new csf_tcp_connect(*((csf_ip_connect_factory*)(this->get_factory())));
+			if (tmp_connect) {
+				break;
+			}
+			else {
+				csf_log_ex(error
+					, csf_log_code_error
+					, "create csf_tcp_connect() instance failed!");
+			}
+		}
+		catch (boost::exception& e) {
+
+			csf_log_ex(error, csf_log_code_error
+				, "create csf_tcp_connect() instance exception! reason:[%s -- %s]."
+				, boost::current_exception_diagnostic_information().c_str()
+				, boost::diagnostic_information(e).c_str());
+
+			continue;
+		}
+	}
+
+	csf_tcp_connect_ptr connect_ptr(tmp_connect);
+
+	//为每个连接添加一个时间戳，主要为了方便超时、空连接等处理
+	//conn_socket_ptr->m_time = m_parking_p->m_current_millsec;
+	get_acceptor()->async_accept(connect_ptr->get_socket(),
+		boost::bind(&csf_tcp_connect::accept_handle, this, connect_ptr, callback, _1));
+
+	return csf_success;
+}
+
+
+/**
+* 主要功能是：异步tcp监听的accept回调处理函数。
+* 返回：无
+*
+* @param connect_ptr    表示当前网络通信连接对象
+* @param callback    表示需要返回的回调函数
+* @param ec    表示当前的错误信息
+*/
+csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
+	, const csf_connect_callback callback
+	, boost::system::error_code ec) {
+
+	csf_tcp_connect		*tmp_connect = csf_nullptr;
+
+
+	if (ec)	{
+
+		csf_log_ex(error
+			, csf_log_code_error
+			, "accept connect failed! reason:[%d] %s"
+			, ec.value()
+			, boost::system::system_error(ec).what());
+
+		return;
+	}
+
+	async_accept(callback);
+
+#if 0
+	if (connect_ptr->get_socket().is_open()) {
+		try	{
+			csf_ip_url	tmp_remote_url;
+			
+			
+			(tcp_socket->remote_endpoint().address().to_string(), (pc_int)(tcp_socket->remote_endpoint().port()));
+			pc_url	local_url(tcp_socket->local_endpoint().address().to_string(), (pc_int)(tcp_socket->local_endpoint().port()));
+			conn_socket_ptr->m_conn_set_local_addr_handle(conn_socket_ptr, local_url);
+			conn_socket_ptr->m_conn_set_remote_addr_handle(conn_socket_ptr, remote_url);
+			conn_socket_ptr->update_tcp_time_out();
+		}
+		catch (boost::exception& e)
+		{
+			write_log(PC_LOG_ERROR, PC_ERROR_MODULE_OPERATION,
+				"socket_manager accept_handle(). process remote_url or local_url error [%s -- %s].",
+				pc_cv_stoc(boost::current_exception_diagnostic_information()),
+				//boost::get_error_info<boost::errinfo_api_function>(e),
+				pc_cv_stoc(boost::diagnostic_information(e)));
+
+			m_conn_manager_error_handle(this, (pc_conn_ptr)conn_socket_ptr, (pc_void_p)&ec);
+
+			return;
+		}
+
+		//lock for insert m_conn_ptr_set
+		{
+			pc_scoped_lock lock(m_mutex);
+			m_conn_ptr_set.insert((pc_conn_ptr)conn_socket_ptr);
+		}
+	}
+	else
+	{
+		write_log(PC_LOG_ERROR, PC_ERROR, "tcp socket_manager not open.");
+		m_conn_manager_error_handle(this, (pc_conn_ptr)conn_socket_ptr, (pc_void_p)&ec);
+		return;
+	}
+
+
+	if (conn_socket_ptr->m_read_temp_buf_p)
+	{
+		tcp_socket->async_receive(pc_buffer(conn_socket_ptr->m_read_temp_buf_p->m_pos, PC_DEFAULT_BUF_SIZE),
+			pc_bind(&pc_conn_socket_media_manager_class::read,
+				this, conn_socket_ptr, pc_placeholders::error, pc_placeholders::bytes_transferred));
+
+		//设置超时处理
+		conn_socket_ptr->m_conn_read_time_out_handle(
+			conn_socket_ptr, conn_socket_ptr->m_read_time_out, conn_socket_ptr->m_conn_read_time_out_cb_handle);
+	}
+	else
+	{
+		write_log(PC_LOG_ERROR, PC_ERROR, "socket_manager null m_read_temp_buf_p.");
+		m_conn_manager_error_handle(this, (pc_conn_ptr)conn_socket_ptr, (pc_void_p)&ec);
+	}
+#endif
 }

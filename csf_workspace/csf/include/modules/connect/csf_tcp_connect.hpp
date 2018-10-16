@@ -21,6 +21,7 @@
 #if !defined(CSF_TCP_CONNECT_H_INCLUDED_)
 #define CSF_TCP_CONNECT_H_INCLUDED_
 
+#include "csf_ip_url.hpp"
 #include "csf_stream_connect.hpp"
 #include "csf_ip_connect_factory.hpp"
 
@@ -30,6 +31,7 @@ namespace csf
 	{
 		namespace connect
 		{
+
 			/**
 			 * 表示tcp连接
 			 * @author f
@@ -38,6 +40,14 @@ namespace csf
 			 */
 			class csf_tcp_connect : public csf::modules::connect::csf_stream_connect
 			{
+			public:
+				/**
+				* 表示定义一个tcp网络连接智能指针
+				* @author fangzhenmu@aliyun.com
+				* @version 1.0
+				* @created 01-10月-2018 12:54:36
+				*/
+				typedef	csf_shared_ptr<csf_tcp_connect>				csf_tcp_connect_ptr;
 
 			public:
 				/**
@@ -271,13 +281,51 @@ namespace csf
 
 					return m_socket;
 				}
+				/**
+				* 表示当前的tcp监听确认对象
+				*/
+				inline boost::asio::ip::tcp::acceptor* get_acceptor() {
+
+					return m_acceptor;
+				}
+				/**
+				* 表示当前的tcp监听确认对象
+				*
+				* @param newVal
+				*/
+				inline csf_void set_acceptor(boost::asio::ip::tcp::acceptor* newVal) {
+
+					m_acceptor = newVal;
+				}
+				/**
+				* 主要功能是：异步tcp监听的accept处理函数。
+				* 返回：0表示成功；非0表示失败；
+				*
+				* @param callback    表示需要返回的回调函数
+				*/
+				csf::core::base::csf_int32 async_accept(const csf_connect_callback callback);
+				/**
+				* 主要功能是：异步tcp监听的accept回调处理函数。
+				* 返回：无
+				*
+				* @param connect_ptr    表示当前网络通信连接对象
+				* @param callback    表示需要返回的回调函数
+				* @param ec    表示当前的错误信息
+				*/
+				csf_void accept_handle(csf_tcp_connect_ptr connect_ptr
+					, const csf_connect_callback callback
+					, boost::system::error_code ec);
+
 			private:
 				/**
 				* 表示网络连接套接字
 				*/
 				boost::asio::ip::tcp::socket m_socket;
+				/**
+				* 表示当前的tcp监听确认对象
+				*/
+				boost::asio::ip::tcp::acceptor* m_acceptor;
 			};
-
 		}
 
 	}

@@ -134,7 +134,8 @@ namespace csf
 				*/
 				inline virtual csf_int32 set_remote_url(csf_string newVal) {
 
-					//m_remote_url = newVal;
+					m_remote_url = newVal;
+
 					return csf_success;
 				}
 				/**
@@ -154,7 +155,7 @@ namespace csf
 				*/
 				inline virtual csf_int32 set_local_url(csf_string newVal) {
 
-					//m_local_url = newVal;
+					m_local_url = newVal;
 
 					return csf_success;
 				}

@@ -22,6 +22,7 @@
 #define CSF_CONNECT_ERROR_H_INCLUDED_
 
 #include "csf_error.hpp"
+#include "csf_logger.hpp"
 
 namespace csf
 {

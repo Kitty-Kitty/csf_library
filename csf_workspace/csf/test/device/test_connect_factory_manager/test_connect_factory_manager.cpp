@@ -41,6 +41,8 @@ test_connect_factory_manager::~test_connect_factory_manager() {
 csf::core::base::csf_int32 test_connect_factory_manager::init(const csf_configure_manager * conf_mg) {
 
 	csf_connect_factory_manager			cfm(conf_mg);
+	csf_connect							*tmp_connect = csf_nullptr;
+	csf_connect_error					tmp_error;
 
 
 	if (csf_success != cfm.init(conf_mg, get_app())) {
@@ -48,6 +50,9 @@ csf::core::base::csf_int32 test_connect_factory_manager::init(const csf_configur
 			, "init connect factory manager failed!");
 		return csf_failure;
 	}
+
+	cfm.add_handle("tcp_handle", csf_bind(&test_connect_factory_manager::tcp_handle, this, tmp_connect, tmp_error));
+	cfm.add_handle("udp_handle", csf_bind(&test_connect_factory_manager::udp_handle, this, tmp_connect, tmp_error));
 
 	if (csf_success != cfm.start(conf_mg, get_app())) {
 		csf_log_ex(warning, csf_log_code_warning
@@ -80,6 +85,37 @@ csf::core::base::csf_int32 test_connect_factory_manager::stop(const csf_configur
 
 	return 0;
 }
+
+
+/**
+* 主要功能是：tcp监听处理返回接口
+* 返回：0表示正常；非0表示错误
+*
+* @param connect    表示当前正在处理的连接对象
+* @param connect_error    表示当前处理的异常信息
+*/
+csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(const csf_connect* connect, const csf_connect_error& connect_error) {
+
+	return 0;
+}
+
+
+/**
+* 主要功能是：udp监听处理返回接口
+* 返回：0表示正常；非0表示错误
+*
+* @param connect    表示当前正在处理的连接对象
+* @param connect_error    表示当前处理的异常信息
+*/
+csf::core::base::csf_int32 test_connect_factory_manager::udp_handle(const csf_connect* connect, const csf_connect_error& connect_error) {
+
+	return 0;
+}
+
+
+
+
+
 
 
 /*************************************************************************************/

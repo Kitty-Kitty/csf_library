@@ -23,6 +23,7 @@
 
 
 #include <boost/asio.hpp>
+#include <boost/exception/diagnostic_information.hpp>
 
 
 #endif // !defined(CSF_BOOST_ASIO_H_INCLUDED_)

@@ -38,6 +38,14 @@ namespace csf
 			 */
 			class csf_udp_connect : public csf::modules::connect::csf_dgram_connect
 			{
+			public:
+				/**
+				* 表示定义一个tcp网络连接智能指针
+				* @author fangzhenmu@aliyun.com
+				* @version 1.0
+				* @created 01-10月-2018 12:54:36
+				*/
+				typedef	csf_shared_ptr<csf_udp_connect>				csf_udp_connect_ptr;
 
 			public:
 				/**
@@ -248,7 +256,6 @@ namespace csf
 				*/
 				boost::asio::ip::udp::socket m_socket;
 			};
-
 		}
 
 	}

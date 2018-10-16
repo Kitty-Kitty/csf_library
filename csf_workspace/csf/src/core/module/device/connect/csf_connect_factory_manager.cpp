@@ -420,7 +420,7 @@ csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory&
 				, tmp_iter.second.c_str()
 				, tmp_element->get_content().c_str());
 
-			return tmp_connect_ptr;
+			return m_null_connect_ptr;
 		}
 		else {
 			csf_log_ex(notice, csf_log_code_notice
@@ -443,14 +443,16 @@ csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory&
 				, tmp_iter.second.c_str()
 				, tmp_element->get_content().c_str());
 
-			return tmp_connect_ptr;
+			return m_null_connect_ptr;
 		}
+
+		return tmp_connect_ptr;
 	}
 
 	csf_log_ex(error, csf_log_code_error
 		, "create connect failed! reason:not find connect by type!");
 
-	return tmp_connect_ptr;
+	return m_null_connect_ptr;
 }
 
 
