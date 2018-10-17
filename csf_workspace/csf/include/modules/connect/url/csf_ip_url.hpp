@@ -33,6 +33,10 @@ namespace csf
 			/* 需要提取的参数个数														*/
 			/************************************************************************/
 			#define csf_ip_url_parametes_size						2		//表示需要提取的参数个数
+			/************************************************************************/
+			/* 表示ip url 数据默认的缓存大小											*/
+			/************************************************************************/
+			#define csf_ip_url_buffer_size							32		//表示ip url 数据默认的缓存大小
 			/**
 			 * @author f
 			 * @version 1.0
@@ -151,6 +155,14 @@ namespace csf
 					return set_url((csf_char*)(newVal.c_str()));
 				}
 				/**
+				* 主要功能是：根据ip和端口号设置url信息
+				* 返回：0表示成功；非0表示错误
+				*
+				* @param ip    表示ip字符串数据，地址格式为：xxx.xxx.xxx.xxxxt；例如:192.168.1.10
+				* @param port    表示端口数据
+				*/
+				csf_int32 set_url(const csf_string& ip, const csf_ushort port);
+				/**
 				* 表示解析地址函数
 				*
 				* @param url    表示url字符串数据，地址格式为：xxx.xxx.xxx.xxx；例如:192.168.1.10，地址格式为：ip:port；例如:192.168.1.10:80
@@ -187,7 +199,18 @@ namespace csf
 				* @param port    表示网络端口
 				*/
 				csf_bool check_port(const csf_string& port);
-				
+				/**
+				* 主要功能是：对port数值合法性校验
+				* 返回：true表示成功；false表示失败；
+				*
+				* @param port    表示需要被校验的数值
+				*/
+				inline csf_bool check_port(const csf_ushort port) {
+					if (port >= 0 && port <= csf_max_ushort ) {
+						return csf_true;
+					}
+					return csf_false;
+				}
 			private:
 				/**
 				 * 表示IP地址字符串

@@ -74,7 +74,7 @@ csf_int32 csf_ip_url::parse(const csf_string& url) {
 	else {
 		//校验端口的合法性
 		tmp_port = atoi(tmp_match_result[2].str().c_str());
-		if (tmp_port > csf_max_ushort || tmp_port < 0) {
+		if (!check_port(tmp_port)) {
 			return csf_failure;
 		}
 
@@ -91,6 +91,33 @@ csf_int32 csf_ip_url::parse(const csf_string& url) {
 		return csf_success;
 	}
 
+	return csf_failure;
+}
+
+
+/**
+* 主要功能是：根据ip和端口号设置url信息
+* 返回：0表示成功；非0表示错误
+*
+* @param ip    表示ip字符串数据，地址格式为：xxx.xxx.xxx.xxxxt；例如:192.168.1.10
+* @param port    表示端口数据
+*/
+csf_int32 csf_ip_url::set_url(const csf_string& ip, const csf_ushort port) {
+
+	if (check_ip(ip) && check_port(port)) {
+		set_ip(ip);
+		set_port(port);
+
+		csf_char			tmp_buf[csf_ip_url_buffer_size] = { 0, };
+
+		csf_snprintf(tmp_buf, csf_sizeof(tmp_buf)
+			, "%s:%d"
+			, ip.c_str()
+			, port);
+		set_url(tmp_buf);
+
+		return csf_success;
+	}
 	return csf_failure;
 }
 

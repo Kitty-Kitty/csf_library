@@ -351,128 +351,34 @@ csf_int32 csf_tcp_connect::write(const csf_chain& chain, const csf_connect_callb
 
 
 /**
-* 表示读取数据并存在指定缓存位置。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param buf    表示读取数据存在的指定缓存地址
-*
-* @param len    表示读取数据存在的指定缓存长度
-* @param url    表示发送数据的远端地址
-* @param callback    表示读取的回调函数
+* 表示远程的主机地址
 */
-csf_int32 csf_tcp_connect::read(const csf_uchar* buf
-	, const csf_uint32 len
-	, const csf_url& url
-	, const csf_connect_callback callback) {
+csf_url& csf_tcp_connect::get_remote_url() {
 
-	return 0;
+	//判断现在的地址是否存在，存在则直接返回
+	if (csf_ip_connect::get_remote_url().get_url().empty()) {
+
+		((csf_ip_url&)csf_ip_connect::get_remote_url()).set_url(
+			get_socket().remote_endpoint().address().to_string()
+			, get_socket().remote_endpoint().port());
+	}
+
+	return csf_ip_connect::get_remote_url();
 }
-
-
 /**
-* 表示读取数据并存在指定缓存链表中。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param chain    表示读取数据存在的csf_csfstring
-* @param url    表示发送数据的远端地址
-* @param callback    表示读取的回调函数
+* 表示本地的主机地址
 */
-csf_int32 csf_tcp_connect::read(const csf_chain& chain
-	, const csf_url& url
-	, const csf_connect_callback callback) {
+csf_url& csf_tcp_connect::get_local_url() {
 
-	return 0;
-}
+	//判断现在的地址是否存在，存在则直接返回
+	if (csf_ip_connect::get_local_url().get_url().empty()) {
 
+		((csf_ip_url&)csf_ip_connect::get_remote_url()).set_url(
+			get_socket().local_endpoint().address().to_string()
+			, get_socket().local_endpoint().port());
+	}
 
-/**
-* 表示读取数据并存在指定缓存位置。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param buffer    表示读取数据存在的csf_buffer
-* @param url    表示发送数据的远端地址
-* @param callback    表示读取的回调函数
-*/
-csf_int32 csf_tcp_connect::read(const csf_buffer& buffer
-	, const csf_url& url
-	, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
-* 表示读取数据并存在指定缓存位置。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param buffer    表示读取数据存在的csf_buffer
-* @param callback    表示读取的回调函数
-*/
-csf_int32 csf_tcp_connect::read(const csf_buffer& buffer
-	, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
-* 表示读取数据并存在指定缓存位置。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param buf    表示读取数据存在的指定缓存地址
-*
-* @param len    表示读取数据存在的指定缓存长度
-* @param callback    表示读取的回调函数
-*/
-csf_int32 csf_tcp_connect::read(const csf_uchar* buf
-	, const csf_uint32 len
-	, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
-* 表示读取数据并存在指定缓存位置。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param csfstr    表示读取数据存在的csf_csfstring
-* @param callback    表示读取的回调函数
-*/
-csf_int32 csf_tcp_connect::read(const csf_csfstring& csfstr
-	, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
-* 表示读取数据并存在指定缓存位置。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param csfstr    表示读取数据存在的csf_csfstring
-* @param url    表示发送数据的远端地址
-* @param callback    表示读取的回调函数
-*/
-csf_int32 csf_tcp_connect::read(const csf_csfstring& csfstr
-	, const csf_url& url
-	, const csf_connect_callback callback) {
-
-	return 0;
-}
-
-
-/**
-* 表示读取数据并存在指定缓存链表中。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param chain    表示读取数据存在的csf_csfstring
-* @param callback    表示读取的回调函数
-*/
-csf_int32 csf_tcp_connect::read(const csf_chain& chain
-	, const csf_connect_callback callback) {
-
-	return 0;
+	return csf_ip_connect::get_local_url();
 }
 
 
@@ -548,6 +454,11 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	}
 
 	async_accept(callback);
+
+	//如果有连接进入，则调用
+	if (csf_nullptr != callback) {
+		callback(connect_ptr.get(), csf_connect_error());
+	}
 
 #if 0
 	if (connect_ptr->get_socket().is_open()) {
