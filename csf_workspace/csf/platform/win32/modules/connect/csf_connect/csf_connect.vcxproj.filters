@@ -51,6 +51,9 @@
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_error.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_timeout.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_dgram_connect.cpp">
@@ -78,6 +81,9 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_factory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_timeout.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

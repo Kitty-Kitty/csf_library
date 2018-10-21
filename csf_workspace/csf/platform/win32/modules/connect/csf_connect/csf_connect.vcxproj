@@ -25,6 +25,7 @@
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_factory.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_error.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_timeout.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_stream_connect.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_stream_connect_interface.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_tcp_connect.hpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_error.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_factory.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_timeout.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_stream_connect.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_tcp_connect.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_udp_connect.cpp" />

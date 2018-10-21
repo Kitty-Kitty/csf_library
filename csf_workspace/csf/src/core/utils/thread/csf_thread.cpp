@@ -19,15 +19,16 @@
 
 #include "csf_thread.hpp"
 
-//using csf::core::utils::thread::csf_thread;
+using csf::core::utils::thread::csf_thread;
 
 
-csf::core::utils::thread::csf_thread::csf_thread() {
+csf_thread::csf_thread()
+	: m_status(csf_thread::csf_thread_status::csf_thread_status_none) {
 
 }
 
 
 
-csf::core::utils::thread::csf_thread::~csf_thread() {
+csf_thread::~csf_thread() {
 
 }

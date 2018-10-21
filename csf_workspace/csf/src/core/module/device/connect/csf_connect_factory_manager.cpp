@@ -423,6 +423,8 @@ csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory&
 			return m_null_connect_ptr;
 		}
 		else {
+			tmp_connect_ptr->set_factory(&factory);
+
 			csf_log_ex(notice, csf_log_code_notice
 				, "create connect[0x%x type:%d type_name:%s url:%s] succeed!"
 				, &tmp_connect_ptr

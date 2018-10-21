@@ -87,7 +87,7 @@ namespace csf
 			* @param connect    表示当前正在处理的连接对象
 			* @param connect_error    表示当前处理的异常信息
 			*/
-			csf::core::base::csf_int32 tcp_handle(const csf_connect* connect, const csf_connect_error& connect_error);
+			csf::core::base::csf_int32 tcp_handle(csf_connect* connect, csf_connect_error& connect_error);
 			/**
 			* 主要功能是：udp监听处理返回接口
 			* 返回：0表示正常；非0表示错误
@@ -95,7 +95,7 @@ namespace csf
 			* @param connect    表示当前正在处理的连接对象
 			* @param connect_error    表示当前处理的异常信息
 			*/
-			csf::core::base::csf_int32 udp_handle(const csf_connect* connect, const csf_connect_error& connect_error);
+			csf::core::base::csf_int32 udp_handle(csf_connect* connect, csf_connect_error& connect_error);
 		};
 
 	}

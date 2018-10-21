@@ -22,8 +22,10 @@
 #define CSF_CONNECT_CALLBACK_H_INCLUDED_
 
 #include "csf_base_include.h"
+#include "csf_stdcplusplus.hpp"
 #include "csf_stdbind.hpp"
 #include "csf_connect_error.hpp"
+#include "csf_connect_buffer.hpp"
 
 using namespace csf::core::module::connect;
 
@@ -76,8 +78,8 @@ namespace csf
 				 * @version 1.0
 				 * @created 01-10ÔÂ-2018 12:54:37
 				 */
-				typedef csf_function<csf_int32(const csf_connect*, const csf_connect_error&)> 	csf_connect_callback;
-
+				typedef csf_function<csf_int32(csf_connect*
+					, csf_connect_error&)> 	csf_connect_callback;
 			}
 
 		}

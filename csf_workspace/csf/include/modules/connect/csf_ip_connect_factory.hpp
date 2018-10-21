@@ -74,6 +74,27 @@ namespace csf
 
 				}
 				/**
+				* 主要功能是：主要实现模块的配置信息处理接口。
+				* 返回：0表示成功；非0表示失败；
+				*
+				* @param element    表示模块的配置信息
+				*
+				* 常用的配置信息保存结构为：
+				* <!--***该部分描述模块配置信息，是必须配置的数据内容***-->
+				* <module>
+				*        <!--***表示模块对应的模块名称信息***-->
+				*        <name>csf_connection</name>
+				*        <!--***表示该设备模块的唯一标识字符串，该字符串长度应小于等于64字节***-->
+				*        <mid>02000000-0000001</mid>
+				*        <!--表示该模块的配置信息，主要由模块的configure接口处理。该模块的配置项内容由模对应的模块确定-->
+				*        <configure>
+				*                <!--表示线程数量-->
+				*                <thread_number>4</thread_number>
+				*        </configure>
+				* </module>
+				*/
+				virtual csf_int32 configure(csf_element& element);
+				/**
 				 * 表示根据连接类型创建一个连接。成功返回非0，失败返回0。
 				 * 
 				 * @param type    表示连接类型
@@ -201,6 +222,13 @@ namespace csf
 
 					return csf_success;
 				}
+				/**
+				* 表示线程池
+				*/
+				inline csf::core::utils::thread::csf_thread_pool& get_thread_pool() {
+
+					return m_thread_pool;
+				}
 			private:
 				/**
 				* 表示网络连接管理器
@@ -217,6 +245,10 @@ namespace csf
 				* 表示boost的io_service对象
 				*/
 				boost::asio::io_service m_io_service;
+				/**
+				* 表示线程池
+				*/
+				csf::core::utils::thread::csf_thread_pool m_thread_pool;
 			};
 		}
 

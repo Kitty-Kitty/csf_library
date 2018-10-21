@@ -25,6 +25,7 @@
 #include "csf_connect.hpp"
 #include "csf_ip_connect_factory.hpp"
 #include "csf_ip_connect_error.hpp"
+#include "csf_ip_connect_timeout.hpp"
 
 using namespace csf::core::module::connect;
 
@@ -34,13 +35,6 @@ namespace csf
 	{
 		namespace connect
 		{
-			/**
-			* 表示离线定时器
-			* @author f
-			* @version 1.0
-			* @updated 01-10月-2018 15:12:05
-			*/
-			typedef boost::asio::deadline_timer			csf_deadline_timer;
 			/**
 			 * 表示IP类型的连接类
 			 * @author f
@@ -57,191 +51,78 @@ namespace csf
 				* @param factory    表示创建网络套接字的工厂类对象
 				*/
 				inline explicit csf_ip_connect(csf_ip_connect_factory& factory)
-					: m_read_timer(factory.get_io_service())
-					, m_write_timer(factory.get_io_service())
-					, m_read_timeout(0)
-					, m_write_timeout(0) {
+					: m_read_timeout(factory.get_io_service())
+					, m_write_timeout(factory.get_io_service()) {
 
 				}
 				virtual ~csf_ip_connect();
-
 				/**
-				 * 表示读超时时间，单位为毫秒。
-				 */
-				inline csf_uint32 get_read_timeout() {
+				* 主要功能是：设置读超时时间.
+				* 返回：0表示成功；非0表示失败；
+				*
+				* @param timeout_ms    表示超时的时间数值，单位：毫秒（ms）
+				* @param callback    表示超时回调函数。
+				*/
+				inline virtual csf_int32 set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback = csf_nullptr) {
 
-					return m_read_timeout;
+					return 0;
 				}
 				/**
-				 * 表示读超时时间，单位为毫秒。
-				 *
-				 * @param newVal
-				 */
-				inline csf_void set_read_timeout(csf_uint32 newVal) {
+				* 主要功能是：设置写超时时间。
+				* 返回：0表示成功；非0表示失败；
+				*
+				* @param timeout_ms    表示超时的时间数值，单位：毫秒（ms）
+				* @param callback    表示超时回调函数。
+				*/
+				inline virtual csf_int32 set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback = csf_nullptr) {
 
-					m_read_timeout = newVal;
+					return 0;
 				}
 				/**
-				 * 表示写超时时间，单位为毫秒。
-				 */
-				inline csf_uint32 get_write_timeout() {
+				* 表示写超时描述对象。
+				*/
+				inline csf::modules::connect::csf_ip_connect_timeout& get_write_timeout() {
 
 					return m_write_timeout;
 				}
 				/**
-				 * 表示写超时时间，单位为毫秒。
-				 *
-				 * @param newVal
-				 */
-				inline csf_void set_write_timeout(csf_uint32 newVal) {
-
-					m_write_timeout = newVal;
-				}
-				/**
-				 * 表示写超时时间，单位为毫秒。
-				 *
-				 * @param timeout_ms    表示超时数值，单位：毫秒(ms)
-				 * @param callback    表示超时回调函数
-				 */
-				inline csf_int32 set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback = csf_nullptr) {
-
-					m_write_timeout = timeout_ms;
-
-					return 0;
-				}
-				/**
-				 * 表示写超时时间，单位为毫秒。
-				 *
-				 * @param timeout_ms    表示超时数值，单位：毫秒(ms)
-				 * @param callback    表示超时回调函数
-				 */
-				inline csf_int32 set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback = csf_nullptr) {
-
-					m_read_timeout = timeout_ms;
-
-					return 0;
-				}
-				virtual csf_url& get_remote_url();
-				/**
-				*
-				* @param new_value
+				* 表示读超时超时描述对象。
 				*/
-				virtual csf_int32 set_remote_url(csf_url& new_value);
+				inline csf::modules::connect::csf_ip_connect_timeout& get_read_timeout() {
+
+					return m_read_timeout;
+				}
 				/**
-				* 表示远程的主机地址
+				* 表示远程网络地址
 				*
 				* @param newVal    表示url字符串内容
 				*/
-				inline virtual csf_int32 set_remote_url(csf_string newVal) {
+				inline void set_remote_url(csf::modules::connect::csf_ip_url& newVal) {
 
 					m_remote_url = newVal;
-
-					return csf_success;
 				}
 				/**
-				* 表示本地的主机地址
-				*/
-				virtual csf_url& get_local_url();
-				/**
-				* 表示本地的主机地址
-				*
-				* @param new_value
-				*/
-				virtual csf_int32 set_local_url(csf_url& new_value);
-				/**
-				* 表示本地的主机地址
+				* 表示本地网络地址
 				*
 				* @param newVal    表示url字符串内容
 				*/
-				inline virtual csf_int32 set_local_url(csf_string newVal) {
+				inline void set_local_url(csf::modules::connect::csf_ip_url& newVal) {
 
 					m_local_url = newVal;
-
-					return csf_success;
 				}
 				/**
-				 * 表示写入指定缓存的内容。
-				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-				 *
-				 * @param buf    表示内容的缓存地址
-				 * @param len    表示内容缓存的长度
-				 * @param url    表示需要发送数据的目的地址
-				 * @param callback    表示需要返回的回调函数
-				 */
-				virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示写入csf_buffer内容。
-				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-				 *
-				 * @param buffer    表示需要写入的csf_buffer内容
-				 * @param callback    表示需要返回的回调函数
-				 */
-				virtual csf_int32 write(const csf_buffer& buffer, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示发送csf_csfstring内容。
-				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-				 *
-				 * @param csfstr    表示csf_csfstring的内容
-				 * @param callback    表示需要返回的回调函数
-				 */
-				virtual csf_int32 write(const csf_csfstring& csfstr, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示发送csf_csfstring内容。
-				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-				 *
-				 * @param chain    表示csf_chain的内容
-				 * @param url    表示需要发送数据的目的地址
-				 * @param callback    表示需要返回的回调函数
-				 */
-				virtual csf_int32 write(const csf_chain& chain, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示写入csf_buffer内容。
-				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-				 *
-				 * @param buffer    表示需要写入的csf_buffer内容
-				 * @param url    表示需要发送数据的目的地址
-				 * @param callback    表示需要返回的回调函数
-				 */
-				virtual csf_int32 write(const csf_buffer& buffer, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示写入指定缓存的内容。
-				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-				 *
-				 * @param buf    表示内容的缓存地址
-				 * @param len    表示内容缓存的长度
-				 * @param callback    表示需要返回的回调函数
-				 */
-				virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示发送csf_csfstring内容。
-				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-				 *
-				 * @param csfstr    表示csf_csfstring的内容
-				 * @param url    表示需要发送数据的目的地址
-				 * @param callback    表示需要返回的回调函数
-				 */
-				virtual csf_int32 write(const csf_csfstring& csfstr, const csf_url& url, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示发送csf_csfstring内容。
-				 * 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-				 *
-				 * @param chain    表示csf_chain的内容
-				 * @param callback    表示需要返回的回调函数
-				 */
-				virtual csf_int32 write(const csf_chain& chain, const csf_connect_callback callback = csf_nullptr);
-				/**
-				* 表示读超时定时器。
+				* 表示远程网络地址
 				*/
-				inline csf_deadline_timer& get_read_timer() {
+				inline virtual csf_url& get_remote_url() {
 
-					return m_read_timer;
+					return m_remote_url;
 				}
 				/**
-				* 表示写超时定时器。
+				* 表示本地网络地址
 				*/
-				inline csf_deadline_timer& get_write_timer() {
+				inline virtual csf_url& get_local_url() {
 
-					return m_write_timer;
+					return m_local_url;
 				}
 			protected:
 				/**
@@ -254,7 +135,7 @@ namespace csf
 				*/
 				inline csf_int32 async_callback(csf_connect *connect
 					, const csf_connect_callback& callback
-					, const csf_ip_connect_error& error_code) {
+					, csf_ip_connect_error& error_code) {
 
 					if (csf_nullptr == connect || csf_nullptr == callback) {
 						return csf_failure;
@@ -280,24 +161,46 @@ namespace csf
 				}
 
 				/**
+				* 主要功能是：处理异步写处理回调函数
+				* 返回：0表示处理成功；非0表示处理失败
 				*
 				* @param callback    表示异常处理句柄信息
 				* @param error_code    表示boost的错误信息
 				* @param len    表示数据长度信息
 				*/
-				csf_bool csf_ip_connect::async_write_callback(const csf_connect_callback& callback
+				inline csf_bool csf_ip_connect::async_write_callback(const csf_connect_callback& callback
 					, const boost::system::error_code& error_code
-					, csf_uint32 len);
+					, csf_uint32 len) {
+
+					async_callback(this, callback, csf_ip_connect_error(error_code));
+
+					return csf_true;
+				}
 				/**
+				* 主要功能是：处理异步读处理回调函数
+				* 返回：0表示处理成功；非0表示处理失败
 				*
 				* @param callback    表示异常处理句柄信息
 				* @param error_code    表示boost的错误信息
 				* @param len    表示数据长度信息
 				*/
-				csf_bool csf_ip_connect::async_read_callback(const csf_connect_callback& callback
+				inline csf_bool csf_ip_connect::async_read_callback(const csf_connect_callback& callback
 					, const boost::system::error_code& error_code
-					, csf_uint32 len);
+					, csf_uint32 len) {
+
+					async_callback(this, callback, csf_ip_connect_error(error_code));
+
+					return csf_true;
+				}
 			private:
+				/**
+				* 表示读超时超时描述对象。
+				*/
+				csf::modules::connect::csf_ip_connect_timeout m_read_timeout;
+				/**
+				* 表示写超时描述对象。
+				*/
+				csf::modules::connect::csf_ip_connect_timeout m_write_timeout;
 				/**
 				* 表示远程网络地址
 				*/
@@ -306,22 +209,6 @@ namespace csf
 				* 表示本地网络地址
 				*/
 				csf::modules::connect::csf_ip_url m_local_url;
-				/**
-				 * 表示读超时定时器。
-				 */
-				csf_deadline_timer m_read_timer;
-				/**
-				 * 表示写超时定时器。
-				 */
-				csf_deadline_timer m_write_timer;
-				/**
-				 * 表示读超时时间，单位为毫秒。
-				 */
-				csf_uint32 m_read_timeout = 0;
-				/**
-				 * 表示写超时时间，单位为毫秒。
-				 */
-				csf_uint32 m_write_timeout = 0;
 
 			};
 

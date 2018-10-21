@@ -176,6 +176,7 @@
     <ClInclude Include="..\..\..\include\core\module\csf_module_version.hpp" />
     <ClInclude Include="..\..\..\include\core\module\csf_vm.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_buffer.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_callback.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_error.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_factory.hpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_factory_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_factory_manager_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_interface.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_timeout.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_deadline_timer.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\url\csf_url.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\csf_device.hpp" />
@@ -243,6 +245,7 @@
     <ClInclude Include="..\..\..\include\core\utils\thread\csf_shared_mutex.hpp" />
     <ClInclude Include="..\..\..\include\core\utils\thread\csf_thread.hpp" />
     <ClInclude Include="..\..\..\include\core\utils\thread\csf_thread_group.hpp" />
+    <ClInclude Include="..\..\..\include\core\utils\thread\csf_thread_pool.hpp" />
     <ClInclude Include="..\..\..\include\csf_include.h" />
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +276,7 @@
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_error.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_factory.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_factory_manager.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\url\csf_url.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\csf_device.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device_io\csf_device_io.cpp" />
@@ -302,6 +306,7 @@
     <ClCompile Include="..\..\..\src\core\utils\thread\csf_shared_mutex.cpp" />
     <ClCompile Include="..\..\..\src\core\utils\thread\csf_thread.cpp" />
     <ClCompile Include="..\..\..\src\core\utils\thread\csf_thread_group.cpp" />
+    <ClCompile Include="..\..\..\src\core\utils\thread\csf_thread_pool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\..\..\config\csf_app.xml" />

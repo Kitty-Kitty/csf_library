@@ -501,6 +501,15 @@
     <ClInclude Include="..\..\..\include\core\module\csf_device_configure_interface.hpp">
       <Filter>include\core\module</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_buffer.hpp">
+      <Filter>include\core\module\device\connect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_timeout.hpp">
+      <Filter>include\core\module\device\connect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\utils\thread\csf_thread_pool.hpp">
+      <Filter>include\core\utils\thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -670,6 +679,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\system\csf_configure_module.cpp">
       <Filter>src\core\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout.cpp">
+      <Filter>src\core\module\device\connect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\utils\thread\csf_thread_pool.cpp">
+      <Filter>src\core\utils\thread</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

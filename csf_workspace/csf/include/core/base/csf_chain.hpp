@@ -46,7 +46,15 @@ namespace csf
 			{
 
 			public:
-				csf_chain() 
+				inline explicit csf_chain()
+					: m_length(0) {
+
+				}
+				/**
+				*
+				* @param len    表示需要创建的chain的长度
+				*/
+				inline explicit csf_chain(const csf_uint32 len)
 					: m_length(0) {
 
 				}

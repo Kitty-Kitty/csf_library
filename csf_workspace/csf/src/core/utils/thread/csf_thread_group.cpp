@@ -22,14 +22,4 @@
 using csf::core::utils::thread::csf_thread_group;
 
 
-csf_thread_group::csf_thread_group() {
-
-}
-
-
-
-csf_thread_group::~csf_thread_group() {
-
-}
-
 
