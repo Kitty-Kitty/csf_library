@@ -25,6 +25,7 @@
 #include "csf_configure_manager.hpp"
 #include "csf_connect_factory.hpp"
 #include "csf_boost_asio.hpp"
+#include "csf_thread_pool.hpp"
 
 using namespace csf::core::module::connect;
 
