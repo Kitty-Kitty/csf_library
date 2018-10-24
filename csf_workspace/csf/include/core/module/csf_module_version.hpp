@@ -147,18 +147,21 @@ namespace csf
 				}
 				/**
 				* 主要功能是：设置模块的版本信息
-				* 返回：无
+				* 返回：无返回
 				*
 				* @param version    模块的版本数值信息
 				* @param strver    模块的版本字符串信息
+				* @param name			模块的名称
 				* @param description    模块的其他描述信息
 				*/
-				inline csf_void set_version(const csf_uint32 version
+				inline csf_void set_version(const csf_int32 version
 					, const csf_string strver
-					, const csf_string description) {
+					, const csf_string name
+					, const csf_string description = "") {
 
 					set_version(version);
 					set_strver(strver);
+					set_name(name);
 					set_description(description);
 				}
 				/**
@@ -167,22 +170,24 @@ namespace csf
 				*
 				* @param version    模块的版本数值信息
 				* @param strver    模块的版本字符串信息
+				* @param name    模块的名称
 				* @param compile    表示模块编译器信息
 				* @param build    模块编译相关信息，主要是时间信息
 				* @param description    模块的其他描述信息
 				*/
 				inline csf_void set_version(const csf_int32 version
 					, const csf_string strver
+					, const csf_string name
 					, const csf_string compile
 					, const csf_string build
 					, const csf_string description = "") {
 
 					set_version(version);
 					set_strver(strver);
+					set_name(name);
 					set_compile(compile);
 					set_build(build);
 					set_description(description);
-
 				}
 			protected:
 				/**
@@ -279,6 +284,22 @@ namespace csf
 // 					csf_strncpy(m_format, newVal
 // 						, csf_strlen(newVal) < csf_sizeof(m_format) ? csf_strlen(newVal) : csf_sizeof(m_format));
 				}
+				/**
+				* 模块的名称
+				*/
+				inline csf::core::base::csf_string get_name() {
+
+					return m_name;
+				}
+				/**
+				* 模块的名称
+				*
+				* @param newVal
+				*/
+				inline csf_void set_name(csf::core::base::csf_string newVal) {
+
+					m_name = newVal;
+				}
 			private:
 				/**
 				 * 模块版本数字编码
@@ -288,6 +309,10 @@ namespace csf
 				 * 模块的版本字符串信息
 				 */
 				csf::core::base::csf_string m_strver = "";
+				/**
+				* 模块的名称
+				*/
+				csf::core::base::csf_string m_name = "";
 				/**
 				 * 表示模块编译器信息
 				 */

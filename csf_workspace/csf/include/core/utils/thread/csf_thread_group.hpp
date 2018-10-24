@@ -120,7 +120,7 @@ namespace csf
 					template<typename TheadFunction>
 					csf_thread* create_thread(TheadFunction func) {
 
-						boost::csbl::unique_ptr<csf_thread*> new_thread(new csf_thread(func));
+						boost::csbl::unique_ptr<csf_thread> new_thread(new csf_thread(func));
 						add_thread(new_thread.get());
 
 						return new_thread.release();
@@ -200,13 +200,12 @@ namespace csf
 
 						for (auto &iter : get_threads()) {
 							if (iter->joinable()) {
-								if (!iter->timed_join(boost::posix_time::millisec(timeout_ms))) {
+								if (!iter->timed_join(timeout_ms)) {
 									iter->interrupt();
 								}
 							}
 						}
 					}
-#if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
 					/**
 					* 主要功能是：强制终止所有线程
 					* 返回：无
@@ -219,8 +218,6 @@ namespace csf
 							iter->interrupt();
 						}
 					}
-#endif
-
 				protected:
 					/**
 					* 主要功能是：获取保存的线程集合

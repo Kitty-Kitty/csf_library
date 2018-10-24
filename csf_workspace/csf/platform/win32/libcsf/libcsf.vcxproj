@@ -199,6 +199,7 @@
     <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_exception.hpp" />
     <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_exception_critical.hpp" />
     <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_exception_default_value.hpp" />
+    <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_exception_include.h" />
     <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_exception_warning.hpp" />
     <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_include.h" />
     <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_int.hpp" />

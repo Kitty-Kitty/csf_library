@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--表示-->
+<csf_ip_connect_factory>
+  <!--表示连接工厂所需要创建的线程数量，数值默认为：2-->
+  <thread_number>2</thread_number>
+  <!--表示时间间隔，数值默认为：2-->
+  <time_interval>1000</time_interval>
+</csf_ip_connect_factory>

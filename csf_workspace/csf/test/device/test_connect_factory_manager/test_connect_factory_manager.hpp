@@ -55,6 +55,7 @@ namespace csf
 				set_version(
 					csf_test_version
 					, CSF_TEST_VER
+					, CSF_TEST_VAR
 					, "test connect factory manager"
 				);
 

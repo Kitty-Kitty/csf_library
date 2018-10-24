@@ -19,31 +19,34 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_boost_asio.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_dgram_connect.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_dgram_connect_interface.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_factory.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_error.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect_timeout.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_stream_connect.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_stream_connect_interface.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_tcp_connect.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_udp_connect.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\url\csf_ip_url.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\url\csf_serial_url.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_boost_asio.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_dgram_connect.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_dgram_connect_interface.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_ip_connect.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_ip_connect_error.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_ip_connect_factory.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_ip_connect_timeout.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_stream_connect.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_stream_connect_interface.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_tcp_connect.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_udp_connect.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\url\csf_ip_url.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\url\csf_serial_url.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_dgram_connect.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_error.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_factory.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect_timeout.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_stream_connect.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_tcp_connect.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_udp_connect.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\url\csf_ip_url.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\url\csf_serial_url.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_dgram_connect.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_ip_connect.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_ip_connect_error.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_ip_connect_factory.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_ip_connect_timeout.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_stream_connect.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_tcp_connect.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_udp_connect.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\url\csf_ip_url.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\url\csf_serial_url.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\config\csf_module_configure.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F85FADD3-DDD5-49A7-A63D-A8923486D674}</ProjectGuid>
@@ -105,7 +108,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include\modules\connect;$(SolutionDir)..\..\include\modules\connect\url;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include\modules\connect\;$(SolutionDir)..\..\include\modules\connect\csf_ip_connect;$(SolutionDir)..\..\include\modules\connect\csf_ip_connect\url;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>libcsf.lib;%(AdditionalDependencies)</AdditionalDependencies>

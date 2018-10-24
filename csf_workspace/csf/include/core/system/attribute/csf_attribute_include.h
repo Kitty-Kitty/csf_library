@@ -23,7 +23,13 @@
 
 
 #include "csf_attribute_manager.hpp"
+#include "csf_attribute_exception_include.h"
 
+
+/**
+* 表示属性名称定义
+*/
+#define CSF_ATTRIBUTE_NAME(name)							#name
 
 using namespace csf::core::system;
 using namespace csf::core::system::attribute;

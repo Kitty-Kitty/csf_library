@@ -64,9 +64,9 @@ namespace csf
 					template<typename TheadFunction>
 					csf_int32 start(TheadFunction func) {
 
-						csf_thread				tmp_thread = csf_nullptr;
+						csf_thread				*tmp_thread = csf_nullptr;
 						csf_int32				tmp_thread_number = 0;
-						csf_int32				tmp_failure_times = 0;
+						csf_uint32				tmp_failure_times = 0;
 						csf_int32				i = 0;
 
 
@@ -109,6 +109,10 @@ namespace csf
 					template<typename TheadFunction>
 					inline csf_int32 start(const csf_uint32 thread_number, TheadFunction func) {
 
+						if (thread_number <= 0) {
+							return csf_failure;
+						}
+
 						set_thread_number(thread_number);
 
 						return start(func);
@@ -129,7 +133,7 @@ namespace csf
 					*
 					* @param timeout_ms    表示等待超时时间，单位毫秒
 					*/
-					inline csf_int32 stop(const csf_uint32 timeout_ms) {
+					inline csf_int32 stop(const csf_uint64 timeout_ms) {
 
 						if (timeout_ms <= 0) {
 							return -1;

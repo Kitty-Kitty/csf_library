@@ -18,6 +18,7 @@
 *
 *******************************************************************************/
 
+#include "csf_attribute_include.h"
 #include "csf_ip_connect_factory.hpp"
 #include "csf_tcp_connect.hpp"
 #include "csf_udp_connect.hpp"
@@ -26,11 +27,13 @@
 using csf::modules::connect::csf_ip_connect_factory;
 
 
-csf_ip_connect_factory::csf_ip_connect_factory() {
+csf_ip_connect_factory::csf_ip_connect_factory()
+	: m_timer_interval(csf_ip_connect_factory_timer_interval_ms) {
 
  	set_version(
  		csf_connect_version
  		, CSF_CONNECT_VER
+		, CSF_CONNECT_VAR
  		, "general ip connect"
  	);
 }
@@ -64,6 +67,15 @@ csf_ip_connect_factory::~csf_ip_connect_factory() {
 * </module>
 */
 csf_int32 csf_ip_connect_factory::configure(csf_element& element) {
+
+	//根配置信息
+	get_attribute_manager().set_root_element(&element);
+
+	//表示连接工厂所需要创建的线程数量，数值默认为：2
+	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(thread_number)
+		, csf_attribute_int(std::list<csf_string>{ "thread_number" }
+		, csf_attribute_boundary("[2, n)")
+		, csf_attribute_default_value<csf_attribute_int, csf_int32>(2)));
 
 	return 0;
 }
@@ -224,6 +236,41 @@ csf_int32 csf_ip_connect_factory::update(csf_element& element, csf_device_operat
 csf_int32 csf_ip_connect_factory::add(csf_element& element, csf_device_operation_callback callback) {
 
 	return 0;
+}
+
+
+/**
+* 主要功能是：启动线程池
+* 返回：无
+*/
+csf_int32 csf_ip_connect_factory::start_thread_pool() {
+
+	m_timer = boost::shared_ptr<boost::asio::deadline_timer>(new boost::asio::deadline_timer(m_io_service
+		, boost::posix_time::milliseconds(get_timer_interval())));
+	
+	get_thread_pool().start(2, csf_bind(&csf_ip_connect_factory::run_io_service, this));
+
+	return 0;
+}
+
+
+/**
+* 主要功能是：线程池启动的io_service任务
+* 返回：无
+*/
+csf_void csf_ip_connect_factory::run_io_service() {
+
+	try	{
+		get_io_service().run();
+	}
+	catch (boost::exception& e)	{
+		csf_log_ex(error, csf_log_code_error
+			, "io_service run() failed! reason:[%s -- %s]."
+			, boost::current_exception_diagnostic_information().c_str()
+			, boost::diagnostic_information(e).c_str());
+
+		get_thread_pool().stop();
+	}
 }
 
 

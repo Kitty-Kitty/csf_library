@@ -510,6 +510,9 @@
     <ClInclude Include="..\..\..\include\core\utils\thread\csf_thread_pool.hpp">
       <Filter>include\core\utils\thread</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_exception_include.h">
+      <Filter>include\core\system\attribute</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">

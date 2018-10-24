@@ -39,7 +39,10 @@ namespace csf
 #define		CSF_CONNECT_VERSION				"v1.0.0"
 #define		CSF_CONNECT_VAR					"csf_ip_connect_factory"
 #define		CSF_CONNECT_VER					CSF_CONNECT_VAR	"/" CSF_CONNECT_VERSION
-
+			/************************************************************************/
+			/* 表示默认的定时器间隔时间，单位：毫秒（ms）								*/
+			/************************************************************************/
+			#define csf_ip_connect_factory_timer_interval_ms						500		//表示默认的定时器间隔时间，单位：毫秒（ms）
 			/**
 			 * 表示ip网络通信连接工厂类
 			 * @author f
@@ -97,46 +100,46 @@ namespace csf
 				virtual csf_int32 configure(csf_element& element);
 				/**
 				 * 表示根据连接类型创建一个连接。成功返回非0，失败返回0。
-				 * 
+				 *
 				 * @param type    表示连接类型
 				 */
 				virtual csf_connect_ptr create(const csf_connect::csf_connect_type type);
 				/**
 				 * 表示设备的添加操作
-				 * 
+				 *
 				 * @param element    表示设备添加操作
 				 * @param callback    表示设备操作的回调函数
 				 */
 				virtual csf_int32 del(csf_element& element, csf_device_operation_callback callback);
 				/**
 				 * 模块初始化
-				 * 
+				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
 				virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr);
 				/**
 				 * 表示根据连接类型、本地地址创建一个连接。成功返回非0，失败返回0。
-				 * 
+				 *
 				 * @param type    表示连接类型
 				 * @param local_url    表示连接打开的本地地址
 				 */
 				virtual csf_connect_ptr create(const csf_connect::csf_connect_type type, const csf_url& local_url);
 				/**
 				 * 表示设备的添加操作
-				 * 
+				 *
 				 * @param element    表示设备添加操作
 				 * @param callback    表示设备操作的回调函数
 				 */
 				virtual csf_int32 ctrl(csf_element& element, csf_device_operation_callback callback);
 				/**
 				 * 模块启动
-				 * 
+				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
 				virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr);
 				/**
 				 * 表示根据连接类型、本地地址、远程地址创建一个连接。成功返回非0，失败返回0。
-				 * 
+				 *
 				 * @param type    表示连接类型
 				 * @param local_url    表示连接打开的本地地址
 				 * @param remote_url    表示连接打开的远程地址
@@ -144,27 +147,27 @@ namespace csf
 				virtual csf_connect_ptr create(const csf_connect::csf_connect_type type, const csf_url& local_url, const csf_url& remote_url);
 				/**
 				 * 模块停止
-				 * 
+				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
 				virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
 				/**
 				 * 表示设备的添加操作
-				 * 
+				 *
 				 * @param element    表示设备添加操作
 				 * @param callback    表示设备操作的回调函数
 				 */
 				virtual csf_int32 update(csf_element& element, csf_device_operation_callback callback);
 				/**
 				 * 表示设备的添加操作
-				 * 
+				 *
 				 * @param element    表示设备添加操作
 				 * @param callback    表示设备操作的回调函数
 				 */
 				virtual csf_int32 add(csf_element& element, csf_device_operation_callback callback);
 				/**
 				 * 表示销毁网络连接，销毁成功返回0，失败返回<0的数值。
-				 * 
+				 *
 				 * @param connect_ptr    表示需要销毁的连接
 				 */
 				inline virtual csf_int32 destroy(const csf_connect_ptr connect_ptr) {
@@ -230,6 +233,16 @@ namespace csf
 
 					return m_thread_pool;
 				}
+				/**
+				* 主要功能是：启动线程池
+				* 返回：无
+				*/
+				csf_int32 start_thread_pool();
+				/**
+				* 主要功能是：线程池启动的io_service任务
+				* 返回：无
+				*/
+				csf_void run_io_service();
 			private:
 				/**
 				* 表示网络连接管理器
@@ -250,6 +263,30 @@ namespace csf
 				* 表示线程池
 				*/
 				csf::core::utils::thread::csf_thread_pool m_thread_pool;
+				/**
+				* 表示工厂的定时器。主要目地：1.保持io_service中始终有任务；2.系统计时；
+				*/
+				boost::shared_ptr<boost::asio::deadline_timer> m_timer;
+				/**
+				* 表示定时器的时间间隔，单位：毫秒（ms）
+				*/
+				csf_uint64 m_timer_interval;
+				/**
+				* 表示定时器的时间间隔，单位：毫秒（ms）
+				*/
+				inline csf_uint64 get_timer_interval() {
+
+					return m_timer_interval;
+				}
+				/**
+				* 表示定时器的时间间隔，单位：毫秒（ms）
+				*
+				* @param newVal
+				*/
+				inline void set_timer_interval(csf_uint64 newVal) {
+					
+					m_timer_interval = newVal;
+				}
 			};
 		}
 

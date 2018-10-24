@@ -273,13 +273,15 @@ namespace csf
 				*
 				* @param version    模块的版本数值信息
 				* @param strver    模块的版本字符串信息
+				* @param name    表示模块的名称
 				* @param description    模块的其他描述信息
 				*/
 				inline csf_void set_version(const csf_uint32 version
 					, const csf_string strver
+					, const csf_string name
 					, const csf_string description) {
 
-					get_version().set_version(version, strver, description);
+					get_version().set_version(version, strver, name, description);
 				}
 				/**
 				* 表示模块的版本信息

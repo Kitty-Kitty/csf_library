@@ -86,13 +86,15 @@ namespace csf
 					ValueType m_value;
 				};
 
+#if 0
+
 				/**
 				* 表示csf_attribute_bool所使用的默认值类型。
 				* @author Administrator
 				* @version 1.0
 				* @created 08-7月-2018 22:21:47
 				*/
-				template <>
+				template <csf_attribute_bool>
 				class csf_attribute_default_value<csf_attribute_bool, csf_bool>
 				{
 
@@ -104,7 +106,7 @@ namespace csf
 				* @version 1.0
 				* @created 08-7月-2018 22:21:47
 				*/
-				template <>
+				template <csf_attribute_string>
 				class csf_attribute_default_value<csf_attribute_string, csf_string>
 				{
 
@@ -116,7 +118,7 @@ namespace csf
 				* @version 1.0
 				* @created 08-7月-2018 22:21:47
 				*/
-				template <>
+				template <csf_attribute_int>
 				class csf_attribute_default_value<csf_attribute_int, csf_int32>
 				{
 
@@ -128,7 +130,7 @@ namespace csf
 				* @version 1.0
 				* @created 08-7月-2018 22:21:47
 				*/
-				template <>
+				template <csf_attribute_time>
 				class csf_attribute_default_value<csf_attribute_time, csf_int64>
 				{
 
@@ -140,11 +142,14 @@ namespace csf
 				* @version 1.0
 				* @created 08-7月-2018 22:21:47
 				*/
-				template <>
+				template <csf_attribute_space_size>
 				class csf_attribute_default_value<csf_attribute_space_size, csf_int64>
 				{
 
 				};
+
+#endif
+
 			}
 
 		}
