@@ -139,10 +139,32 @@ namespace csf
 				*        </configure>
 				* </module>
 				*/
-				inline virtual csf_int32 configure(csf::core::system::csf_element& element) {
+				inline virtual csf_int32 configure(const csf::core::system::csf_element& element) {
 
 					return 0;
 				}
+				/**
+				* 主要功能是：根据配置文件内容，实现模块的配置信息处理接口；
+				*      注意：
+				*            1、该接口根据items获取根配置项后，调用configure(const
+				* csf_element&)实现具体的配置，所以该接口需要模块需要实现配置接口；
+				*            2、如果已经调用configure(const csf_element&)接口实现配置，则该函数无效；
+				* 返回：0表示成功；非0表示失败；
+				*
+				* @param conf_mg    表示配置文件信息
+				* @param items    表示items根属性路径
+				*/
+				csf_int32 configure(const csf_configure_manager * conf_mg, const csf_list<csf_string>& items) {
+
+					if (csf_nullptr != conf_mg
+						&& csf_false == get_attribute_manager().is_configured()) {
+
+						return configure(((csf_configure_manager *)conf_mg)->find_element(items));
+					}
+
+					return csf_failure;
+				}
+				/**
 				/**
 				* 模块初始化
 				*

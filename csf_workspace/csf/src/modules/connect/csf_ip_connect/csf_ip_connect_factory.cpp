@@ -27,8 +27,7 @@
 using csf::modules::connect::csf_ip_connect_factory;
 
 
-csf_ip_connect_factory::csf_ip_connect_factory()
-	: m_timer_interval(csf_ip_connect_factory_timer_interval_ms) {
+csf_ip_connect_factory::csf_ip_connect_factory() {
 
  	set_version(
  		csf_connect_version
@@ -66,7 +65,7 @@ csf_ip_connect_factory::~csf_ip_connect_factory() {
 *        </configure>
 * </module>
 */
-csf_int32 csf_ip_connect_factory::configure(csf_element& element) {
+csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 
 	//根配置信息
 	get_attribute_manager().set_root_element(&element);
@@ -75,7 +74,14 @@ csf_int32 csf_ip_connect_factory::configure(csf_element& element) {
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(thread_number)
 		, csf_attribute_int(std::list<csf_string>{ "thread_number" }
 		, csf_attribute_boundary("[2, n)")
-		, csf_attribute_default_value<csf_attribute_int, csf_int32>(2)));
+		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_thread_number)));
+
+	//表示定时器时间间隔，数值默认为：500ms
+	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(timer_interval)
+		, csf_attribute_time(std::list<csf_string>{ "timer_interval" }
+		, csf_attribute_time::csf_time_unit_ms
+		, csf_attribute_boundary("[10, n)")
+		, csf_attribute_default_value<csf_attribute_time, csf_int64>(csf_ip_connect_factory_timer_interval_ms)));
 
 	return 0;
 }
@@ -128,6 +134,9 @@ csf_int32 csf_ip_connect_factory::del(csf_element& element, csf_device_operation
  */
 csf::core::base::csf_int32 csf_ip_connect_factory::init(const csf_configure_manager * conf_mg) {
 
+	//更新配置项内容
+	csf_device_base::configure(conf_mg, std::list<csf_string>{ CSF_CONNECT_VAR });
+
 	return 0;
 }
 
@@ -174,6 +183,22 @@ csf_int32 csf_ip_connect_factory::ctrl(csf_element& element, csf_device_operatio
  * @param conf_mg    表示配置文件信息
  */
 csf::core::base::csf_int32 csf_ip_connect_factory::start(const csf_configure_manager * conf_mg) {
+
+	csf_int32				tmp_int_ret = csf_failure;
+
+
+	//更新配置项内容
+	csf_device_base::configure(conf_mg, std::list<csf_string>{ CSF_CONNECT_VAR });
+
+	//启动处理线程池
+	tmp_int_ret = start_thread_pool();
+	if (csf_failure == tmp_int_ret) {
+
+		csf_log_ex(error, csf_log_code_error
+			, "start thread pool failed!");
+
+		return csf_failure;
+	}
 
 	return 0;
 }
@@ -245,12 +270,36 @@ csf_int32 csf_ip_connect_factory::add(csf_element& element, csf_device_operation
 */
 csf_int32 csf_ip_connect_factory::start_thread_pool() {
 
-	m_timer = boost::shared_ptr<boost::asio::deadline_timer>(new boost::asio::deadline_timer(m_io_service
-		, boost::posix_time::milliseconds(get_timer_interval())));
-	
-	get_thread_pool().start(2, csf_bind(&csf_ip_connect_factory::run_io_service, this));
+	csf_int32				tmp_int_ret = csf_failure;
 
-	return 0;
+
+	//创建一个定时器，防止定时任务退出
+	m_timer = boost::shared_ptr<boost::asio::deadline_timer>(new boost::asio::deadline_timer(m_io_service
+		, boost::posix_time::milliseconds(
+			get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(timer_interval)))));
+	
+	//启动线程池，准备进行网络连接处理
+	tmp_int_ret = get_thread_pool().start(
+		(csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
+		, csf_bind(&csf_ip_connect_factory::run_io_service, this));
+
+	if (csf_failure == tmp_int_ret) {
+
+		csf_log_ex(error, csf_log_code_error
+			, "start thread pool failed! thread_number[%d], timer_interval[%ld]."
+			, get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
+			, get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(timer_interval)));
+
+		return csf_failure;
+	}
+	else {
+		csf_log_ex(notice, csf_log_code_notice
+			, "start thread pool succeed! thread_number[%d], timer_interval[%ld]."
+			, get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
+			, get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(timer_interval)));
+	}
+
+	return csf_success;
 }
 
 

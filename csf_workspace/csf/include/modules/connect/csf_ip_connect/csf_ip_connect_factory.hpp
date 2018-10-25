@@ -40,6 +40,10 @@ namespace csf
 #define		CSF_CONNECT_VAR					"csf_ip_connect_factory"
 #define		CSF_CONNECT_VER					CSF_CONNECT_VAR	"/" CSF_CONNECT_VERSION
 			/************************************************************************/
+			/* 表示表示连接工厂所需要创建的线程数量，数值默认为：2						*/
+			/************************************************************************/
+			#define csf_ip_connect_factory_thread_number							2		//表示连接工厂所需要创建的线程数量
+			/************************************************************************/
 			/* 表示默认的定时器间隔时间，单位：毫秒（ms）								*/
 			/************************************************************************/
 			#define csf_ip_connect_factory_timer_interval_ms						500		//表示默认的定时器间隔时间，单位：毫秒（ms）
@@ -97,7 +101,7 @@ namespace csf
 				*        </configure>
 				* </module>
 				*/
-				virtual csf_int32 configure(csf_element& element);
+				virtual csf_int32 configure(const csf_element& element);
 				/**
 				 * 表示根据连接类型创建一个连接。成功返回非0，失败返回0。
 				 *
@@ -267,26 +271,6 @@ namespace csf
 				* 表示工厂的定时器。主要目地：1.保持io_service中始终有任务；2.系统计时；
 				*/
 				boost::shared_ptr<boost::asio::deadline_timer> m_timer;
-				/**
-				* 表示定时器的时间间隔，单位：毫秒（ms）
-				*/
-				csf_uint64 m_timer_interval;
-				/**
-				* 表示定时器的时间间隔，单位：毫秒（ms）
-				*/
-				inline csf_uint64 get_timer_interval() {
-
-					return m_timer_interval;
-				}
-				/**
-				* 表示定时器的时间间隔，单位：毫秒（ms）
-				*
-				* @param newVal
-				*/
-				inline void set_timer_interval(csf_uint64 newVal) {
-					
-					m_timer_interval = newVal;
-				}
 			};
 		}
 

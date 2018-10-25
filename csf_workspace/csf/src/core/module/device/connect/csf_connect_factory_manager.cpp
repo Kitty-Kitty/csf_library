@@ -213,13 +213,17 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, csf_e
 			, tmp_device_base
 			, tmp_string_name.c_str());
 
-		if (csf_success != tmp_device_base->configure(element)) {
+		//启动运行网络连接对象
+		if (!start_connect_factory((csf_connect_factory*)tmp_device_base)) {
 
 			csf_log_ex(error, csf_log_code_error
-				, "configure factory module[0x%s name:%s] failed!"
+				, "start factory module[0x%x name:%s] failed!"
+				, tmp_device_base
 				, tmp_string_name.c_str());
 
 			app.get_module_manager().destory(tmp_device_base);
+
+			return csf_false;
 		}
 
 		//根据配置的监听列表信息，创建监听对象
@@ -237,6 +241,57 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, csf_e
 
 		//将工厂对象添加到列表中
 		add_factory(tmp_string_name, (csf_connect_factory*)tmp_device_base);
+	}
+
+	return csf_true;
+}
+
+
+/**
+* 主要功能是：启动网络连接工厂对象
+* 返回：0表示成功；非0表示失败；
+*
+* @param connect_factory    表示网络连接工厂对象
+*/
+csf_bool csf_connect_factory_manager::start_connect_factory(csf_connect_factory* connect_factory) {
+
+	csf_int32				tmp_int_ret = csf_failure;
+
+
+	if (csf_nullptr == connect_factory) {
+		return csf_false;
+	}
+
+	//初始化网络连接工厂类对象
+	tmp_int_ret = connect_factory->init(get_configure_manager());
+	if (csf_failure == tmp_int_ret) {
+
+		csf_log_ex(error, csf_log_code_error
+			, "init connect factory %s failed!"
+			, connect_factory->to_string().c_str());
+
+		return csf_false;
+	}
+	else {
+		csf_log_ex(notice, csf_log_code_notice
+			, "init connect factory %s succeed!"
+			, connect_factory->to_string().c_str());
+	}
+
+	//启动网络连接工厂类对象
+	tmp_int_ret = connect_factory->start(get_configure_manager());
+	if (csf_failure == tmp_int_ret) {
+
+		csf_log_ex(error, csf_log_code_error
+			, "start connect factory %s failed!"
+			, connect_factory->to_string().c_str());
+
+		return csf_false;
+	}
+	else {
+		csf_log_ex(notice, csf_log_code_notice
+			, "start connect factory %s succeed!"
+			, connect_factory->to_string().c_str());
 	}
 
 	return csf_true;

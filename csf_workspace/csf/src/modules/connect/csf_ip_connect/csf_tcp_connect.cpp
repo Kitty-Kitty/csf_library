@@ -107,7 +107,7 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 	csf::modules::connect::csf_ip_url &ip_url = (csf::modules::connect::csf_ip_url&)url;
 
 	try {
-		//如果已经监听了，则
+		//如果已经监听了，则返回失败
 		if (csf_nullptr != get_acceptor()) {
 
 			csf_log_ex(error, csf_log_code_error

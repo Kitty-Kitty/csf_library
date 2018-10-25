@@ -87,46 +87,6 @@ csf::core::base::csf_int32 csf_connect::stop(const csf_configure_manager * conf_
 }
 
 
-csf_url& csf_connect::get_remote_url() {
-
-	return m_remote_url;
-}
-
-
-/**
- * 
- * @param new_value
- */
-csf_int32 csf_connect::set_remote_url(csf_url& new_value) {
-
-	m_remote_url = new_value;
-
-	return 0;
-}
-
-
-/**
- * 表示本地的主机地址
- */
-csf_url& csf_connect::get_local_url() {
-
-	return m_local_url;
-}
-
-
-/**
- * 表示本地的主机地址
- * 
- * @param new_value
- */
-csf_int32 csf_connect::set_local_url(csf_url& new_value) {
-
-	m_local_url = new_value;
-
-	return 0;
-}
-
-
 /**
  * 表示创建connect的工厂类地址
  */

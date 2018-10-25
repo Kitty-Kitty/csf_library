@@ -116,6 +116,13 @@ namespace csf
 					*/
 					csf_bool create_connect_factory(csf_app& app, csf_element& element);
 					/**
+					* 主要功能是：启动网络连接工厂对象
+					* 返回：0表示成功；非0表示失败；
+					*
+					* @param connect_factory    表示网络连接工厂对象
+					*/
+					csf_bool start_connect_factory(csf_connect_factory* connect_factory);
+					/**
 					* 主要功能是：创建该连接工厂对象所包含的所有网络连接对象
 					* 返回：0表示成功；非0表示失败；
 					*

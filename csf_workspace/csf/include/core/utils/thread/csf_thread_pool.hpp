@@ -86,7 +86,7 @@ namespace csf
 								//如果错误超过了最大次数，则直接返回错误
 								if (++tmp_failure_times >= get_max_failure_times()) {
 									get_group().timed_join_all(csf_thread_pool_create_thread_interval_ms);
-									return -1;
+									return csf_failure;
 								}
 
 								continue;
@@ -97,7 +97,7 @@ namespace csf
 							}
 						}
 
-						return 0;
+						return csf_true;
 					}
 					/**
 					* 主要功能是：启动线程池，同时指定线程数量

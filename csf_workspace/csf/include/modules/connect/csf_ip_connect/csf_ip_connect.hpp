@@ -93,22 +93,48 @@ namespace csf
 					return m_read_timeout;
 				}
 				/**
+				* 表示远程的主机地址
+				*
+				* @param newVal    表示url字符串内容
+				*/
+				inline virtual csf_int32 set_remote_url(csf_string newVal) {
+
+					m_remote_url = newVal;
+
+					return csf_success;
+				}
+				/**
 				* 表示远程网络地址
 				*
 				* @param newVal    表示url字符串内容
 				*/
-				inline void set_remote_url(csf::modules::connect::csf_ip_url& newVal) {
+				inline virtual csf_int32 set_remote_url(csf::core::module::connect::csf_url& newVal) {
 
-					m_remote_url = newVal;
+					m_remote_url = (csf::modules::connect::csf_ip_url&)newVal;
+
+					return csf_success;
+				}
+				/**
+				* 表示本地的主机地址
+				*
+				* @param newVal    表示url字符串内容
+				*/
+				inline virtual csf_int32 set_local_url(csf_string newVal) {
+
+					m_local_url = newVal;
+
+					return csf_success;
 				}
 				/**
 				* 表示本地网络地址
 				*
 				* @param newVal    表示url字符串内容
 				*/
-				inline void set_local_url(csf::modules::connect::csf_ip_url& newVal) {
+				inline virtual csf_int32 set_local_url(csf::core::module::connect::csf_url& newVal) {
 
-					m_local_url = newVal;
+					m_local_url = (csf::modules::connect::csf_ip_url&)newVal;
+
+					return csf_success;
 				}
 				/**
 				* 表示远程网络地址

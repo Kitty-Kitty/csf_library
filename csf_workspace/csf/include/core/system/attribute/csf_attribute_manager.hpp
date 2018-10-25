@@ -479,9 +479,9 @@ namespace csf
 					*
 					* @param newVal
 					*/
-					inline void set_root_element(csf_element* newVal) {
+					inline void set_root_element(const csf_element* newVal) {
 
-						m_root_element = newVal;
+						m_root_element = (csf_element*)newVal;
 					}
 					/**
 					* 表示模块指定的items所相对的根路径信息。如果指定该信息，则该模块的配置信息都是相对该路径信息。
@@ -518,10 +518,22 @@ namespace csf
 					* @param root_items    表示属性管理器中根路径信息
 					*/
 					inline void set_root_element(const csf_element* root_element
-						, const std::list<csf_string> root_items = std::list<csf_string>()) {
+						, const std::list<csf_string> root_items) {
 
 						set_root_element(root_element);
 						set_root_items(root_items);
+					}
+					/**
+					* 主要功能是：根据属性列表中的数据判断该模块是否已经配置过
+					* 返回：true表示属性列表有数据，已经配置过；false表示属性列表没有参数，没有配置过
+					*/
+					inline csf_bool is_configured() {
+
+						if (get_attributes().empty()) {
+							return csf_false;
+						}
+
+						return csf_true;
 					}
 				protected:
 					/**

@@ -68,7 +68,7 @@ namespace csf
 				*        </configure>
 				* </module>
 				*/
-				virtual csf_int32 configure(csf::core::system::csf_element& element) = 0;
+				virtual csf_int32 configure(const csf::core::system::csf_element& element) = 0;
 
 			};
 

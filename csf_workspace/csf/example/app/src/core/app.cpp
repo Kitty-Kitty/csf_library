@@ -17,6 +17,7 @@
 *History:
 *******************************************************************************/
 
+#include <windows.h>
 #include "app.hpp"
 
 
@@ -43,6 +44,10 @@ int main(int argc, char** argv)
 	}
 	else {
 		csf_log(error, "app start succeed!");
+	}
+
+	while (csf_true) {
+		csf_msleep(10000);
 	}
 	printf("hello world!\r\n");
 	return 0;
