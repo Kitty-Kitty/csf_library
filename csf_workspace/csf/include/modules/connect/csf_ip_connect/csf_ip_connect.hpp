@@ -139,14 +139,14 @@ namespace csf
 				/**
 				* 表示远程网络地址
 				*/
-				inline virtual csf_url& get_remote_url() {
+				inline virtual const csf_url& get_remote_url() const {
 
 					return m_remote_url;
 				}
 				/**
 				* 表示本地网络地址
 				*/
-				inline virtual csf_url& get_local_url() {
+				inline virtual const csf_url& get_local_url() const {
 
 					return m_local_url;
 				}

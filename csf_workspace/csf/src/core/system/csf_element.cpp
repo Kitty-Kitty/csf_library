@@ -28,7 +28,7 @@ using csf::core::system::csf_element;
 *
 * @param name    表示需要查找的element名称
 */
-const csf_element& csf_element::find_element(const csf_string& name) {
+const csf_element& csf_element::find_element(const csf_string& name) const {
 
 	csf_element						*tmp_element = csf_nullptr;
 
@@ -41,7 +41,7 @@ const csf_element& csf_element::find_element(const csf_string& name) {
 	}
 
 	//从子模块中遍布查找子对象
-	for (csf_element &tmp_iter : get_children()) {
+	for (csf_element &tmp_iter : const_cast<csf_list<csf_element>&>(get_children())) {
 
 		tmp_element = (csf_element*)&tmp_iter.find_element(name);
 		if (tmp_element->not_null()) {
@@ -58,9 +58,9 @@ const csf_element& csf_element::find_element(const csf_string& name) {
 *
 * @param items    items属性路径
 */
-const csf_element& csf_element::find_element(const csf_list<csf_string>& items) {
+const csf_element& csf_element::find_element(const csf_list<csf_string>& items) const {
 
-	csf_element						*tmp_element = this;
+	csf_element						*tmp_element = const_cast<csf_element*>(this);
 
 
 	//如果请求的属性路径为空，则直接返回空

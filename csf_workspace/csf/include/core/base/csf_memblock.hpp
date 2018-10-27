@@ -59,7 +59,9 @@ namespace csf
 				 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 				 * 
 				 */
-				inline explicit csf_memblock(const csf_uchar* buf, const csf_int32 len, const csf_bool is_free = csf_false)
+				inline explicit csf_memblock(const csf_uchar* buf
+					, const csf_int32 len
+					, const csf_bool is_free = csf_false)
 					: m_buffer((csf_uchar*)buf)
 					, m_size(len)
 					, m_is_free(is_free) {
@@ -87,7 +89,7 @@ namespace csf
 				* 表示判断是否为空。
 				* 返回：true表示为空；false表示不为空。
 				*/
-				inline csf_bool is_null() {
+				inline csf_bool is_null() const {
 
 					return empty();
 				}
@@ -95,14 +97,14 @@ namespace csf
 				* 表示判断是否不为空。
 				* 返回：true表示不为空；false表示为空。
 				*/
-				inline csf_bool not_null() {
+				inline csf_bool not_null() const {
 
 					return !empty();
 				}
 				/**
 				 * 表示容器是否为空，为空返回true,否则返回false。长度为0或null为空，返回true。
 				 */
-				inline csf_bool empty() {
+				inline csf_bool empty() const {
 
 					if (!m_buffer || size() <= 0) {
 						return csf_true;
@@ -113,7 +115,7 @@ namespace csf
 				/**
 				 * 表示获取容器的实际内容长度，没有内容为0
 				 */
-				inline csf_uint32 length() {
+				inline csf_uint32 length() const {
 
 					return size();
 				}
@@ -121,7 +123,7 @@ namespace csf
 				 * 表示获取容器的空间长度。没有预分配内存的类，则size=length，例如csf_string中length=size。而预分配内存的类，size>=lengt
 				 * h，例如csf_buffer中size>=length。
 				 */
-				inline csf_uint32 size() {
+				inline csf_uint32 size() const {
 
 					return m_size;
 				}
@@ -150,7 +152,7 @@ namespace csf
 				/**
 				 * 表示保存内容的缓存地址
 				 */
-				inline csf_uchar* get_buffer() {
+				inline csf_uchar* get_buffer() const {
 
 					return m_buffer;
 				}
@@ -179,14 +181,14 @@ namespace csf
 				/**
 				* 表示保存内容的缓存长度
 				*/
-				inline csf_uint32 get_size() {
+				inline csf_uint32 get_size() const {
 
 					return m_size;
 				}
 				/**
 				 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 				 */
-				inline csf_bool get_is_free() {
+				inline csf_bool get_is_free() const {
 
 					return m_is_free;
 				}

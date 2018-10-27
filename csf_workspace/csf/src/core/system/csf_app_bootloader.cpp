@@ -137,11 +137,13 @@ csf_bool csf_app_bootloader::create_devices(csf::core::module::csf_app& app
 	csf_element				*tmp_element = csf_nullptr;
 
 
-	tmp_element = (csf_element *)&(configure_manager.find_element(csf_list<csf_string>{"device_configure", "devices"}));
+	tmp_element = const_cast<csf_element*>(
+		&(configure_manager.find_element(csf_list<csf_string>{"device_configure", "devices"})));
 	if (tmp_element->is_null()) {
 		csf_log_ex(warning, csf_log_code_warning
 			, "not found element[%s]"
-			, csf_container_convert<csf_list<csf_string>>(csf_list<csf_string>{"device_configure", "devices"}).to_string().c_str());
+			, csf_container_convert<csf_list<csf_string>>(
+				csf_list<csf_string>{"device_configure", "devices"}).to_string().c_str());
 		return csf_true;
 	}
 	else {
@@ -160,7 +162,7 @@ csf_bool csf_app_bootloader::create_devices(csf::core::module::csf_app& app
 * @param element    表示当前的device节点内容
 */
 csf_bool csf_app_bootloader::create_device(csf::core::module::csf_app& app
-	, csf_element& element) {
+	, const csf_element& element) {
 
 	if (element.is_null()) {
 		return csf_false;
@@ -196,14 +198,14 @@ csf_bool csf_app_bootloader::create_device(csf::core::module::csf_app& app
 * @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
 */
 csf_bool csf_app_bootloader::create_device_ioes(csf::core::module::csf_device& device
-	, csf_element& element
+	, const csf_element& element
 	, csf::core::system::csf_configure_manager& configure_manager) {
 
 	csf_element				*tmp_element = csf_nullptr;
 
 
-	tmp_element = (csf_element *)&(configure_manager.find_element(
-		csf_list<csf_string>{"device_io_configure", "device_ioes"}));
+	tmp_element = const_cast<csf_element*>(&(configure_manager.find_element(
+		csf_list<csf_string>{"device_io_configure", "device_ioes"})));
 	if (tmp_element->is_null()) {
 		csf_log_ex(warning, csf_log_code_warning
 			, "not found element[%s]"
@@ -230,7 +232,7 @@ csf_bool csf_app_bootloader::create_device_ioes(csf::core::module::csf_device& d
 * @param device    表示所属的device设备信息
 * @param element    表示当前的device节点内容
 */
-csf_bool csf_app_bootloader::create_device_io(csf::core::module::csf_device& device, csf_element& element) {
+csf_bool csf_app_bootloader::create_device_io(csf::core::module::csf_device& device, const csf_element& element) {
 
 	if (element.is_null()) {
 		return csf_false;
@@ -252,7 +254,7 @@ csf_bool csf_app_bootloader::create_device_io(csf::core::module::csf_device& dev
 * @param app    表示目标app对象
 * @param element    表示模块配置信息
 */
-csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, csf_element& element) {
+csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, const csf_element& element) {
 
 	csf_device_base				*tmp_device_base = csf_nullptr;
 
@@ -280,17 +282,18 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, csf_ele
 
 		//设置设备的app属性
 		//dynamic_cast<csf::core::module::csf_device*>(tmp_device_base)->set_app(&app);
-		((csf::core::module::csf_device*)tmp_device_base)->set_app(&app);
+		dynamic_cast<csf::core::module::csf_device*>(tmp_device_base)->set_app(&app);
 
 		//添加设备到app设备列表中
-		if (!add_device(app, ((const csf::core::module::csf_device*)tmp_device_base))) {
+		if (!add_device(app, dynamic_cast<csf::core::module::csf_device*>(tmp_device_base))) {
 
 			app.get_module_manager().destory(tmp_device_base);
 
 			return csf_false;
 		}
 		else {
-			return create_device_ioes(*((csf::core::module::csf_device*)tmp_device_base), element, app.get_config_mg());
+			return create_device_ioes(*(dynamic_cast<csf::core::module::csf_device*>(tmp_device_base))
+				, element, app.get_config_mg());
 		}
 	}
 
@@ -315,19 +318,19 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app
 
 	//添加设备到设备列表中
 
-	((csf::core::module::csf_device*)device)->set_parent(&app);
+	const_cast<csf::core::module::csf_device*>(device)->set_parent(&app);
 
-	if (!app.add_device(((csf::core::module::csf_device*)device)->get_mid(), device)) {
+	if (!app.add_device(const_cast<csf::core::module::csf_device*>(device)->get_mid(), device)) {
 		csf_log_ex(error, csf_log_code_error
 			, "add %s failed!"
-			, ((csf::core::module::csf_device*)device)->to_string().c_str());
+			, const_cast<csf::core::module::csf_device*>(device)->to_string().c_str());
 
 		return csf_false;
 	}
 	else {
  		csf_log_ex(notice, csf_log_code_notice
  			, "add %s succeed!"
- 			, ((csf::core::module::csf_device*)device)->to_string().c_str());
+ 			, const_cast<csf::core::module::csf_device*>(device)->to_string().c_str());
 
 		return csf_true;
 	}
@@ -386,7 +389,7 @@ csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::modu
 
 		//添加设备到设备列表中
 
-		((csf_device_base*)tmp_module)->set_parent(&app);
+		dynamic_cast<csf_device_base*>(tmp_module)->set_parent(&app);
 
 		return tmp_module;
 	}
@@ -403,7 +406,7 @@ csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::modu
 * @param element    表示模块配置信息
 */
 csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
-	, csf_element& element) {
+	, const csf_element& element) {
 
 	csf::core::module::csf_device_io				*tmp_device_io = csf_nullptr;
 
@@ -412,7 +415,8 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 		return csf_false;
 	}
 
-	tmp_device_io = (csf_device_io*)csf_configure_module::create_module(device.get_app()->get_module_manager(), element);
+	tmp_device_io = dynamic_cast<csf_device_io*>(
+		csf_configure_module::create_module(device.get_app()->get_module_manager(), element));
 	if (!tmp_device_io) {
 		return csf_false;
 	}
@@ -448,10 +452,12 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 	}
 
 	//添加设备到设备列表中
-	((csf::core::module::csf_device_io*)device_io)->set_app(get_app());
-	((csf::core::module::csf_device_io*)device_io)->set_device(&device);
+	const_cast<csf::core::module::csf_device_io*>(device_io)->set_app(get_app());
+	const_cast<csf::core::module::csf_device_io*>(device_io)->set_device(&device);
 
-	return device.add_device_io(((csf::core::module::csf_device_io*)device_io)->get_mid(), device_io);
+	return device.add_device_io(
+		const_cast<csf::core::module::csf_device_io*>(device_io)->get_mid()
+		, device_io);
 }
 
 
@@ -462,7 +468,8 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 * @param app    表示所属的app信息
 * @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
 */
-csf_bool csf_app_bootloader::init_devices(csf_app& app, csf::core::system::csf_configure_manager& configure_manager) {
+csf_bool csf_app_bootloader::init_devices(csf_app& app
+	, csf::core::system::csf_configure_manager& configure_manager) {
 
 	csf_int32					tmp_int_ret = csf_failure;
 
@@ -480,9 +487,6 @@ csf_bool csf_app_bootloader::init_devices(csf_app& app, csf::core::system::csf_c
 
 			return csf_false;
 		}
-		else {
-
-		}
 	}
 
 	return csf_true;
@@ -496,7 +500,8 @@ csf_bool csf_app_bootloader::init_devices(csf_app& app, csf::core::system::csf_c
 * @param app    表示所属的app信息
 * @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
 */
-csf_bool csf_app_bootloader::start_devices(csf_app& app, csf::core::system::csf_configure_manager& configure_manager) {
+csf_bool csf_app_bootloader::start_devices(csf_app& app
+	, csf::core::system::csf_configure_manager& configure_manager) {
 
 	csf_int32					tmp_int_ret = csf_failure;
 
@@ -514,9 +519,6 @@ csf_bool csf_app_bootloader::start_devices(csf_app& app, csf::core::system::csf_
 
 			return csf_false;
 		}
-		else {
-
-		}
 	}
 
 	return csf_true;
@@ -530,7 +532,8 @@ csf_bool csf_app_bootloader::start_devices(csf_app& app, csf::core::system::csf_
 * @param app    表示所属的app信息
 * @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
 */
-csf_bool csf_app_bootloader::stop_devices(csf_app& app, csf::core::system::csf_configure_manager& configure_manager) {
+csf_bool csf_app_bootloader::stop_devices(csf_app& app
+	, csf::core::system::csf_configure_manager& configure_manager) {
 
 	csf_int32					tmp_int_ret = csf_failure;
 

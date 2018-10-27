@@ -81,7 +81,7 @@ namespace csf
 				/**
 				 * ±íÊ¾IPµØÖ·×Ö·û´®
 				 */
-				inline csf_string & get_ip() {
+				inline const csf_string & get_ip() {
 
 					return m_ip;
 				}

@@ -61,8 +61,9 @@ csf_configure_module::~csf_configure_module() {
 *
 *
 */
-csf::core::module::csf_device_base* csf_configure_module::create_module(csf::core::module::csf_module_manager& module_manager
-	, csf::core::system::csf_element& element) {
+csf::core::module::csf_device_base* csf_configure_module::create_module(
+	csf::core::module::csf_module_manager& module_manager
+	, const csf::core::system::csf_element& element) {
 
 	csf_device_base				*tmp_device_base = csf_nullptr;
 	csf_int32					tmp_int_return = 0;
@@ -75,8 +76,8 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(csf::cor
 	}
 
 	//判断当前是否为device节点，如果是则添加设备
-	tmp_string_name = ((csf_element&)(element.find_element(csf_list<csf_string>{"module", "name"}))).get_content();
-	tmp_string_mid = ((csf_element&)(element.find_element(csf_list<csf_string>{"module", "mid"}))).get_content();
+	tmp_string_name = element.find_element(csf_list<csf_string>{"module", "name"}).get_content();
+	tmp_string_mid = element.find_element(csf_list<csf_string>{"module", "mid"}).get_content();
 
 	if (tmp_string_name.empty() || tmp_string_mid.empty()) {
 
@@ -89,7 +90,7 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(csf::cor
 	}
 
 	//根据名称创建模块对象
-	tmp_device_base = (csf_device_base*)module_manager.create(tmp_string_name);
+	tmp_device_base = dynamic_cast<csf_device_base*>(module_manager.create(tmp_string_name));
 	if (!tmp_device_base) {
 		csf_log_ex(error, csf_log_code_error
 			, "create module[name:\"%s\" mid:\"%s\"] failed!"
@@ -102,7 +103,7 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(csf::cor
 		tmp_device_base->set_name(tmp_string_name);
 		tmp_device_base->set_mid(tmp_string_mid);
 
-		if (((csf_element&)(element.find_element(csf_list<csf_string>{"module", "configure"}))).is_null()) {
+		if (element.find_element(csf_list<csf_string>{"module", "configure"}).is_null()) {
 
 			csf_log_ex(notice, csf_log_code_notice
 				, "create module[0x%x name:\"%s\" mid:\"%s\"] succeed!"

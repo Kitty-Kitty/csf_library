@@ -103,14 +103,14 @@ namespace csf
 				/**
 				* 表示远程的主机地址
 				*/
-				inline virtual csf_url& get_remote_url() {
+				inline virtual const csf_url& get_remote_url() const {
 
 					return csf_ip_connect::get_remote_url();
 				}
 				/**
 				* 表示本地的主机地址
 				*/
-				inline virtual csf_url& get_local_url() {
+				inline virtual const csf_url& get_local_url() const {
 
 					return csf_ip_connect::get_local_url();
 				}
@@ -118,7 +118,7 @@ namespace csf
 				/**
 				* 表示网络连接套接字
 				*/
-				inline boost::asio::ip::udp::socket& get_socket() {
+				inline const boost::asio::ip::udp::socket& get_socket() const {
 
 					return m_socket;
 				}

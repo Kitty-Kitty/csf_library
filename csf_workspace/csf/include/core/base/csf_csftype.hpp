@@ -45,7 +45,7 @@ namespace csf
 				 * 表示判断是否为空。
 				 * 返回：true表示为空；false表示不为空。
 				 */
-				inline virtual csf_bool is_null() {
+				inline virtual csf_bool is_null() const {
 
 					return csf_true;
 				}
@@ -53,7 +53,7 @@ namespace csf
 				 * 表示判断是否不为空。
 				 * 返回：true表示不为空；false表示为空。
 				 */
-				inline virtual csf_bool not_null() {
+				inline virtual csf_bool not_null() const {
 
 					return csf_true;
 				}

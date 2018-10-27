@@ -65,7 +65,7 @@ namespace csf
 				* 表示判断是否为空。
 				* 返回：true表示为空；false表示不为空。
 				*/
-				inline csf_bool is_null() {
+				inline csf_bool is_null() const {
 
 					return empty();
 				}
@@ -73,14 +73,14 @@ namespace csf
 				* 表示判断是否不为空。
 				* 返回：true表示不为空；false表示为空。
 				*/
-				inline csf_bool not_null() {
+				inline csf_bool not_null() const {
 
 					return !empty();
 				}
 				/**
 				 * 表示容器是否为空，为空返回true,否则返回false。长度为0或null都为空，返回true。
 				 */
-				inline csf_bool empty() {
+				inline csf_bool empty() const {
 
 					if (length() <= 0) {
 						return csf_true;
@@ -90,7 +90,7 @@ namespace csf
 				/**
 				 * 表示获取容器的实际内容长度，没有内容为0
 				 */
-				inline csf_uint32 length() {
+				inline csf_uint32 length() const {
 
 					return m_length;
 				}
@@ -98,7 +98,7 @@ namespace csf
 				 * 表示获取容器的空间长度。没有预分配内存的类，则size=length，例如csf_string中length=size。而预分配内存的类，size>=lengt
 				 * h，例如csf_buffer中size>=length。
 				 */
-				inline csf_uint32 size() {
+				inline csf_uint32 size() const {
 
 					return length();
 				}

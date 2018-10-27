@@ -67,8 +67,9 @@ namespace csf
 				*
 				*
 				*/
-				static csf::core::module::csf_device_base* create_module(csf::core::module::csf_module_manager& module_manager
-					, csf::core::system::csf_element& element);
+				static csf::core::module::csf_device_base* create_module(
+					csf::core::module::csf_module_manager& module_manager
+					, const csf::core::system::csf_element& element);
 
 			};
 

@@ -4,6 +4,6 @@
 <csf_ip_connect_factory>
   <!--[选配]表示连接工厂所需要创建的线程数量，数值默认为：2-->
   <thread_number>2</thread_number>
-  <!--[选配]表示定时器时间间隔，数值默认为：1s-->
-  <timer_interval>1s</timer_interval>
+  <!--[选配]表示系统的空休眠等待间隔时间，单位：毫秒（ms）.数值默认为：500ms-->
+  <idle_interval>500ms</idle_interval>
 </csf_ip_connect_factory>

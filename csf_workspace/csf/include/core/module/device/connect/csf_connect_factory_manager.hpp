@@ -114,7 +114,7 @@ namespace csf
 					* @param app    表示所属的app信息
 					* @param element    表示当前的device节点内容
 					*/
-					csf_bool create_connect_factory(csf_app& app, csf_element& element);
+					csf_bool create_connect_factory(csf_app& app, const csf_element& element);
 					/**
 					* 主要功能是：启动网络连接工厂对象
 					* 返回：0表示成功；非0表示失败；
@@ -130,7 +130,7 @@ namespace csf
 					* @param factory    表示当前处理的连接工厂类对象
 					* @param element    表示当前的device节点内容
 					*/
-					csf_bool create_listen_list(csf_app& app, csf_connect_factory& factory, csf_element& element);
+					csf_bool create_listen_list(csf_app& app, csf_connect_factory& factory, const csf_element& element);
 					/**
 					* 主要功能是：创建一个连接类对象
 					* 返回：0表示成功；非0表示失败
@@ -139,7 +139,7 @@ namespace csf
 					* @param factory    表示当前处理的连接工厂类对象
 					* @param element    表示当前的device节点内容
 					*/
-					csf_bool create_listen(csf_app& app, csf_connect_factory& factory, csf_element& element);
+					csf_bool create_listen(csf_app& app, csf_connect_factory& factory, const csf_element& element);
 					/**
 					* 表示该模块所属的app对象地址
 					*/
@@ -257,7 +257,7 @@ namespace csf
 					* @param factory    表示当前处理的连接工厂类对象
 					* @param element    表示需要创建的连接对象配置信息
 					*/
-					csf_connect_ptr create_connect(csf_connect_factory& factory, csf_element& element);
+					csf_connect_ptr create_connect(csf_connect_factory& factory, const csf_element& element);
 					/**
 					* 主要功能是：表示监听一个连接类对象
 					* 返回：0表示成功；非0表示失败错误码
@@ -268,7 +268,7 @@ namespace csf
 					*/
 					csf::core::base::csf_int32 listen_connect(csf_connect_ptr& connect
 						, csf_connect_callback handle
-						, csf_element& element);
+						, const csf_element& element);
 					/**
 					* 主要功能是：向连接列表中添加一个连接类对象
 					* 返回：true表示成功；false表示失败；

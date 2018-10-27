@@ -88,26 +88,6 @@ csf::core::base::csf_int32 csf_connect::stop(const csf_configure_manager * conf_
 
 
 /**
- * 表示创建connect的工厂类地址
- */
-csf_connect_factory* csf_connect::get_factory() {
-
-	return m_factory;
-}
-
-
-/**
- * 表示创建connect的工厂类地址
- * 
- * @param new_value
- */
-csf_void csf_connect::set_factory(csf_connect_factory* new_value) {
-
-	m_factory = new_value;
-}
-
-
-/**
  * 表示打开连接信息.
  * 返回：0表示成功；非0表示失败；
  * 

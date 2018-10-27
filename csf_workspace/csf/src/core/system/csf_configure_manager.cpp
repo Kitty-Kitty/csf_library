@@ -110,7 +110,8 @@ csf_bool csf_configure_manager::init_module_configures(csf_map<csf_string, csf_m
 
 
 	//开始初始化模块配置部分内容
-	tmp_bool_ret = add_module_configures(get_module_configures(), csf_list<csf_string>{CSF_CONFIGURE_STRING(modules_configure)});
+	tmp_bool_ret = add_module_configures(get_module_configures()
+		, csf_list<csf_string>{CSF_CONFIGURE_STRING(modules_configure)});
 	if (!tmp_bool_ret) {
 		csf_log_ex(warning, csf_log_code_warning, "add module configures failed!");
 		return csf_false;
@@ -173,9 +174,9 @@ csf_bool csf_configure_manager::init_measure_configure(csf_measure_configure& me
 * @param module_element    表示当前获取到的模块信息
 */
 csf_bool csf_configure_manager::add_module_configures(csf_map<csf_string, csf_module_configure>& module_configures
-	, csf_element& module_element) {
+	, const csf_element& module_element) {
 
-	csf_element						*tmp_element_ret = &module_element;
+	csf_element						*tmp_element_ret = const_cast<csf_element*>(&module_element);
 
 
 	//先判断自己是否为模块节点，如果是则添加
@@ -205,7 +206,7 @@ csf_bool csf_configure_manager::add_module_configures(csf_map<csf_string, csf_mo
 * @param module_element    表示当前获取到的模块信息
 */
 csf_bool csf_configure_manager::add_module_configure(csf_map<csf_string, csf_module_configure>& module_configures
-	, csf_element& module_element) {
+	, const csf_element& module_element) {
 
 	csf_string						tmp_string_name = "";
 	csf_string						tmp_string_file = "";

@@ -182,7 +182,7 @@ namespace csf
 				* @param module_configures    表示处理后保存输出的模块配置信息
 				* @param module_element    表示当前获取到的模块信息
 				*/
-				csf_bool add_module_configures(csf_map<csf_string, csf_module_configure>& module_configures, csf_element& module_element);
+				csf_bool add_module_configures(csf_map<csf_string, csf_module_configure>& module_configures, const csf_element& module_element);
 				/**
 				* 功能：向模块配置管理器中添加一个模块配置信息
 				* 返回：true表示初始化成功；false表示初始化失败
@@ -190,7 +190,7 @@ namespace csf
 				* @param module_configures    表示处理后保存输出的模块配置信息
 				* @param module_element    表示当前获取到的模块信息
 				*/
-				csf_bool add_module_configure(csf_map<csf_string, csf_module_configure>& module_configures, csf_element& module_element);
+				csf_bool add_module_configure(csf_map<csf_string, csf_module_configure>& module_configures, const csf_element& module_element);
 				/**
 				* 功能：向模块配置管理器中添加一个模块配置信息，同时遍历信息下的所有子模块信息
 				* 返回：true表示初始化成功；false表示初始化失败

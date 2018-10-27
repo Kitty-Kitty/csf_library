@@ -97,7 +97,7 @@ namespace csf
 					/**
 					 * 表示url地址的类型信息
 					 */
-					inline csf::core::module::connect::csf_url::csf_url_type get_type() {
+					inline const csf::core::module::connect::csf_url::csf_url_type get_type() const {
 
 						return m_type;
 					}
@@ -105,7 +105,7 @@ namespace csf
 					/**
 					 * 表示url的完整字符串数据
 					 */
-					inline csf_string & get_url() {
+					inline const csf_string & get_url() const {
 
 						return m_url;
 					}

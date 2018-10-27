@@ -49,16 +49,16 @@ namespace csf
 				/**
 				 * 表示容器是否为空，为空返回true,否则返回false。长度为0或null为空，返回true。
 				 */
-				virtual csf_bool empty() =0;
+				virtual csf_bool empty() const =0;
 				/**
 				 * 表示获取容器的实际内容长度，没有内容为0
 				 */
-				virtual csf_uint32 length() =0;
+				virtual csf_uint32 length() const =0;
 				/**
 				 * 表示获取容器的空间长度。没有预分配内存的类，则size=length，例如csf_string中length=size。而预分配内存的类，size>=lengt
 				 * h，例如csf_buffer中size>=length。
 				 */
-				virtual csf_uint32 size() =0;
+				virtual csf_uint32 size() const =0;
 				/**
 				 * 表示清空容器，有些类需要释放空间（例如：csf_chain），有些空间可重用的类则重置数据(例如：csf_buffer)。
 				 */

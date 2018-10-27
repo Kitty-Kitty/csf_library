@@ -118,8 +118,9 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 		}
 
 		//创建一个acceptor，用于实现tcp监听
-		set_acceptor(new boost::asio::ip::tcp::acceptor(get_socket().get_io_service()
-			, boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(ip_url.get_ip())
+		set_acceptor(new boost::asio::ip::tcp::acceptor(
+				get_socket().get_io_service()
+				, boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(ip_url.get_ip())
 				, ip_url.get_port())));
 
 		async_accept(callback);
@@ -500,7 +501,10 @@ csf_int32 csf_tcp_connect::sync_write(const csf_uchar* buf
 	//循环发送数据内容，直到数据发送完成为止
 	while (tmp_send_length < (csf_int32)len)
 	{
-		tmp_length = get_socket().send(boost::asio::buffer(buf + tmp_send_length, len - tmp_send_length), 0, tmp_error_code);
+		tmp_length = get_socket().send(
+			boost::asio::buffer(buf + tmp_send_length, len - tmp_send_length)
+			, 0
+			, tmp_error_code);
 		if (tmp_length <= 0 || tmp_error_code) {
 
 			exception_callback(this, callback, csf_ip_connect_error(tmp_error_code));
@@ -529,8 +533,8 @@ csf_int32 csf_tcp_connect::async_write(const csf_uchar* buf
 	, const csf_connect_callback callback) {
 
 	//这里主要是数据量一大，就发送不完全了。尤其在linux平台下更容易出现这个问题
-	get_socket().async_write_some(boost::asio::buffer(buf, len),
-		boost::bind(&csf_tcp_connect::async_write_callback
+	get_socket().async_write_some(boost::asio::buffer(buf, len)
+			, boost::bind(&csf_tcp_connect::async_write_callback
 			, this
 			, callback
 			, boost::asio::placeholders::error
@@ -543,7 +547,7 @@ csf_int32 csf_tcp_connect::async_write(const csf_uchar* buf
 /**
 * 表示远程的主机地址
 */
-csf_url& csf_tcp_connect::get_remote_url() {
+const csf_url& csf_tcp_connect::get_remote_url() const {
 
 	//判断现在的地址是否存在，存在则直接返回
 	if (csf_ip_connect::get_remote_url().get_url().empty()) {
@@ -560,7 +564,7 @@ csf_url& csf_tcp_connect::get_remote_url() {
 /**
 * 表示本地的主机地址
 */
-csf_url& csf_tcp_connect::get_local_url() {
+const csf_url& csf_tcp_connect::get_local_url() const {
 
 	//判断现在的地址是否存在，存在则直接返回
 	if (csf_ip_connect::get_local_url().get_url().empty()) {
@@ -587,7 +591,8 @@ csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callb
 	while (csf_true) {
 		try	{
 			//这里主要解决有些时候new失败的问题
-			tmp_connect = new csf_tcp_connect(*((csf_ip_connect_factory*)(this->get_factory())));
+			tmp_connect = new csf_tcp_connect(*const_cast<csf_ip_connect_factory*>(
+				(csf_ip_connect_factory*)this->get_factory()));
 			if (tmp_connect) {
 				break;
 			}
@@ -612,8 +617,9 @@ csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callb
 
 	//为每个连接添加一个时间戳，主要为了方便超时、空连接等处理
 	//conn_socket_ptr->m_time = m_parking_p->m_current_millsec;
-	get_acceptor()->async_accept(connect_ptr->get_socket(),
-		boost::bind(&csf_tcp_connect::accept_handle, this, connect_ptr, callback, _1));
+	get_acceptor()->async_accept(
+		connect_ptr->get_socket()
+		, boost::bind(&csf_tcp_connect::accept_handle, this, connect_ptr, callback, _1));
 
 	return csf_success;
 }

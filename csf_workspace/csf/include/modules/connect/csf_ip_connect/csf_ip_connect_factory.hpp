@@ -66,7 +66,8 @@ namespace csf
 				* @param type    表示模块的类型
 				*/
 				inline explicit csf_ip_connect_factory(const csf_configure_manager * configure_manager)
-					: csf_connect_factory(configure_manager, csf_device_type_connect_extend) {
+					: csf_connect_factory(configure_manager, csf_device_type_connect_extend)
+					, m_idle_interval(csf_ip_connect_factory_timer_interval_ms) {
 
 				}
 				/**
@@ -256,6 +257,22 @@ namespace csf
 					return m_connect_collector;
 				}
 				/**
+				* 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
+				*/
+				inline csf_uint64 get_idle_interval() const {
+
+					return m_idle_interval;
+				}
+				/**
+				* 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
+				*
+				* @param newVal
+				*/
+				inline void set_idle_interval(csf_uint64 newVal) {
+
+					m_idle_interval = newVal;
+				}
+				/**
 				* 表示网络连接管理器
 				*/
 				csf_csfmap<csf_connect*, csf_connect_ptr> m_connect_collector;
@@ -268,9 +285,9 @@ namespace csf
 				*/
 				csf::core::utils::thread::csf_thread_pool m_thread_pool;
 				/**
-				* 表示工厂的定时器。主要目地：1.保持io_service中始终有任务；2.系统计时；
+				* 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
 				*/
-				boost::shared_ptr<boost::asio::deadline_timer> m_timer;
+				csf_uint64 m_idle_interval = csf_ip_connect_factory_timer_interval_ms;
 			};
 		}
 

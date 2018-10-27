@@ -96,7 +96,7 @@ csf::core::base::csf_int32 test_connect_factory_manager::stop(const csf_configur
 */
 csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(csf_connect* connect, csf_connect_error& connect_error) {
 
-	connect->write(csf_connect_buffer<csf_buffer>(new csf_buffer(), 123), csf_nullptr);
+	//connect->write(csf_connect_buffer<csf_buffer>(new csf_buffer(), 123), csf_nullptr);
 	return 0;
 }
 

@@ -69,7 +69,8 @@ csf::core::base::csf_int32 csf_connect_factory_manager::start(const csf_configur
 	}
 
 	//根据配置文件信息，创建所有连接工厂对象
-	if (csf_false == create_connect_factories(*((csf_app*)app), *((csf_configure_manager*)conf_mg))) {
+	if (csf_false == create_connect_factories(*(const_cast<csf_app*>(app))
+		, *(const_cast<csf_configure_manager*>(conf_mg)))) {
 		csf_log_ex(warning, csf_log_code_warning
 			, "create connect factories failed.");
 		return csf_failure;
@@ -166,7 +167,7 @@ csf_bool csf_connect_factory_manager::create_connect_factories(csf_app& app, csf
 * @param app    表示所属的app信息
 * @param element    表示当前的device节点内容
 */
-csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, csf_element& element) {
+csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, const csf_element& element) {
 
 	csf_device_base				*tmp_device_base = csf_nullptr;
 	csf_string					tmp_string_name = "";
@@ -188,7 +189,7 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, csf_e
 	}
 
 	//获取name属性信息，判断是否有该属性。如果没有则表示错误，而不需要创建。
-	tmp_string_name = ((csf_element&)(element.find_element(csf_list<csf_string>{"name"}))).get_content();
+	tmp_string_name = element.find_element(csf_list<csf_string>{"name"}).get_content();
 	if (tmp_string_name.empty()) {
 		csf_log_ex(warning, csf_log_code_warning
 			, "element[%s] is null"
@@ -214,7 +215,7 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, csf_e
 			, tmp_string_name.c_str());
 
 		//启动运行网络连接对象
-		if (!start_connect_factory((csf_connect_factory*)tmp_device_base)) {
+		if (!start_connect_factory(dynamic_cast<csf_connect_factory*>(tmp_device_base))) {
 
 			csf_log_ex(error, csf_log_code_error
 				, "start factory module[0x%x name:%s] failed!"
@@ -227,7 +228,7 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, csf_e
 		}
 
 		//根据配置的监听列表信息，创建监听对象
-		if (!create_listen_list(app, *((csf_connect_factory*)tmp_device_base), element)) {
+		if (!create_listen_list(app, *(dynamic_cast<csf_connect_factory*>(tmp_device_base)), element)) {
 
 			csf_log_ex(error, csf_log_code_error
 				, "create listen list failed!");
@@ -240,7 +241,7 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, csf_e
 		}
 
 		//将工厂对象添加到列表中
-		add_factory(tmp_string_name, (csf_connect_factory*)tmp_device_base);
+		add_factory(tmp_string_name, dynamic_cast<csf_connect_factory*>(tmp_device_base));
 	}
 
 	return csf_true;
@@ -306,7 +307,9 @@ csf_bool csf_connect_factory_manager::start_connect_factory(csf_connect_factory*
 * @param factory    表示当前处理的连接工厂类对象
 * @param element    表示当前的device节点内容
 */
-csf_bool csf_connect_factory_manager::create_listen_list(csf_app& app, csf_connect_factory& factory, csf_element& element) {
+csf_bool csf_connect_factory_manager::create_listen_list(csf_app& app
+	, csf_connect_factory& factory
+	, const csf_element& element) {
 
 	csf_element				*tmp_element = csf_nullptr;
 
@@ -340,7 +343,7 @@ csf_bool csf_connect_factory_manager::create_listen_list(csf_app& app, csf_conne
 * @param factory    表示当前处理的连接工厂类对象
 * @param element    表示当前的device节点内容
 */
-csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_factory& factory, csf_element& element) {
+csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_factory& factory, const csf_element& element) {
 
 	csf_connect_ptr				tmp_connect_ptr = m_null_connect_ptr;
 	csf_connect_callback		tmp_handle = csf_nullptr;
@@ -364,7 +367,7 @@ csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_fa
 	}
 
 	//获取name属性信息，判断是否有该属性。如果没有则表示错误，而不需要创建。
-	tmp_string_name = ((csf_element&)(element.find_element(csf_list<csf_string>{"name"}))).get_content();
+	tmp_string_name = element.find_element(csf_list<csf_string>{"name"}).get_content();
 	if (tmp_string_name.empty()) {
 		csf_log_ex(warning, csf_log_code_warning
 			, "element[%s] is null"
@@ -374,7 +377,7 @@ csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_fa
 	}
 
 	//获取handle属性信息，判断是否有该属性。如果没有则表示错误，而不需要创建。
-	tmp_handle_name = ((csf_element&)(element.find_element(csf_list<csf_string>{"handle"}))).get_content();
+	tmp_handle_name = element.find_element(csf_list<csf_string>{"handle"}).get_content();
 	if (tmp_handle_name.empty()) {
 		csf_log_ex(warning, csf_log_code_warning
 			, "element[%s] is null"
@@ -437,7 +440,7 @@ csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_fa
 * @param factory    表示当前处理的连接工厂类对象
 * @param element    表示需要创建的连接对象配置信息
 */
-csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory& factory, csf_element& element) {
+csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory& factory, const csf_element& element) {
 
 	csf_connect_ptr						tmp_connect_ptr = m_null_connect_ptr;
 	csf_element							*tmp_element = csf_nullptr;
@@ -523,7 +526,7 @@ csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory&
 */
 csf::core::base::csf_int32 csf_connect_factory_manager::listen_connect(csf_connect_ptr& connect
 	, csf_connect_callback handle
-	, csf_element& element) {
+	, const csf_element& element) {
 
 	csf_int32			tmp_int_value = 0;
 

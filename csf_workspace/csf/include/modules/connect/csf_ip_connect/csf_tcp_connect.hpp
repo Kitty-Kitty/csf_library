@@ -343,22 +343,22 @@ namespace csf
 				/**
 				* 表示远程的主机地址
 				*/
-				virtual csf_url& get_remote_url();
+				virtual const csf_url& get_remote_url() const;
 				/**
 				* 表示本地的主机地址
 				*/
-				virtual csf_url& get_local_url();
+				virtual const csf_url& get_local_url() const;
 				/**
 				* 表示网络连接套接字
 				*/
-				inline boost::asio::ip::tcp::socket& get_socket() {
+				inline boost::asio::ip::tcp::socket& get_socket() const {
 
-					return m_socket;
+					return const_cast<boost::asio::ip::tcp::socket&>(m_socket);
 				}
 				/**
 				* 表示当前的tcp监听确认对象
 				*/
-				inline boost::asio::ip::tcp::acceptor* get_acceptor() {
+				inline boost::asio::ip::tcp::acceptor* get_acceptor() const {
 
 					return m_acceptor;
 				}

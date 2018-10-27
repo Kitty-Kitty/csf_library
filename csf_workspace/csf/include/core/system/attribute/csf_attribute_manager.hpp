@@ -429,7 +429,7 @@ namespace csf
 							return csf_false;
 						}
 						else {
-							val = ((AttributeType&)attr).get_value();
+							val = dynamic_cast<AttributeType&>(attr).get_value();
 						}
 						return csf_true;
 					}

@@ -52,7 +52,7 @@ namespace csf
 				 * 查询收集器的元素总个数。
 				 * 返回：>=0表示元素的总个数。
 				 */
-				virtual csf_int32 size() =0;
+				virtual csf_int32 size() const =0;
 				/**
 				 * 表示清空收集器中的所有元素
 				 */

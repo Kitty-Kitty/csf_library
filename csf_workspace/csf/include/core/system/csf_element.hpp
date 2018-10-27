@@ -62,7 +62,7 @@ namespace csf
 				/**
 				 * 表示数据对象节点名称
 				 */
-				inline csf_string& get_name() {
+				inline const csf_string& get_name() const {
 
 					return m_name;
 				}
@@ -73,13 +73,13 @@ namespace csf
 				 */
 				inline virtual csf_int32 add(const csf_element& element) {
 
-					get_children().push_back(element);
+					const_cast<csf_list<csf_element>&>(get_children()).push_back(element);
 					return csf_success;
 				}
 				/**
 				 * 表示数据对象节点数据内容
 				 */
-				inline csf_string& get_content() {
+				inline const csf_string& get_content() const {
 
 					return m_content;
 				}
@@ -103,7 +103,7 @@ namespace csf
 				 */
 				inline virtual csf_int32 add(const csf_string& parent, const csf_element& child) {
 
-					csf_element						&tmp_element = (csf_element&)get_null();
+					csf_element						&tmp_element = const_cast<csf_element&>(get_null());
 
 					tmp_element = find_element(parent);
 					if (tmp_element.not_null()) {
@@ -153,7 +153,7 @@ namespace csf
 						return csf_failure;
 					}
 
-					get_attributes().insert(csf_map<csf_string, csf_string>::value_type(name, val));
+					const_cast<csf_map<csf_string, csf_string>&>(get_attributes()).insert(csf_map<csf_string, csf_string>::value_type(name, val));
 					//m_attributes[name] = val;
 					return csf_success;
 				}
@@ -161,6 +161,7 @@ namespace csf
 				 * 表示清空内容
 				 */
 				inline virtual csf_void clear() {
+
 					*this = get_null();
 				}
 				/**
@@ -168,7 +169,7 @@ namespace csf
 				 * 
 				 * @param name    表示需要查找的属性名称
 				 */
-				inline virtual const csf_string& find(const csf_string& name) {
+				inline virtual const csf_string& find(const csf_string& name) const {
 
 					if (name.empty()) {
 						return  csf_string_null;
@@ -181,7 +182,7 @@ namespace csf
 				 * 
 				 * @param name    表示需要查找的属性名称
 				 */
-				inline virtual const csf_string& find(const csf_char* name) {
+				inline virtual const csf_string& find(const csf_char* name) const {
 
 					csf_map<csf_string, csf_string>::iterator			tmp_iter;
 
@@ -189,8 +190,8 @@ namespace csf
 						return csf_string_null;
 					}
 
-					tmp_iter = get_attributes().find(name);
-					if (tmp_iter != get_attributes().end()) {
+					tmp_iter = const_cast<csf_map<csf_string, csf_string>&>(get_attributes()).find(name);
+					if (tmp_iter != const_cast<csf_map<csf_string, csf_string>&>(get_attributes()).end()) {
 						return tmp_iter->second;
 					}
 
@@ -202,7 +203,7 @@ namespace csf
 				 * 
 				 * @param name    表示需要查找的element名称
 				 */
-				inline virtual const csf_element& find_child(const csf_string& name) {
+				inline virtual const csf_element& find_child(const csf_string& name) const {
 
 					//名称为空则返回空
 					if (name.empty()) {
@@ -215,7 +216,7 @@ namespace csf
 					}
 
 					//查找子模块列表
-					for (csf_element &tmp_iter : m_children) {
+					for (csf_element &tmp_iter : const_cast<csf_list<csf_element>&>(get_children())) {
 						if (tmp_iter.get_name() == name) {
 							return tmp_iter;
 						}
@@ -228,7 +229,7 @@ namespace csf
 				 * 
 				 * @param name    表示需要查找的element名称
 				 */
-				inline virtual const csf_element& find_child(const csf_char* name) {
+				inline virtual const csf_element& find_child(const csf_char* name) const {
 
 					if (!name || csf_strlen(name) <= 0) {
 						return get_null();
@@ -242,7 +243,7 @@ namespace csf
 				*
 				* @param name    表示需要查找的element名称
 				*/
-				virtual const csf_element& find_element(const csf_string& name);
+				virtual const csf_element& find_element(const csf_string& name) const;
 #if 0
 				/**
 				 * 表示查找一个element
@@ -276,7 +277,7 @@ namespace csf
 				 * 
 				 * @param name    表示需要查找的element名称
 				 */
-				inline virtual const csf_element& find_element(const csf_char* name) {
+				inline virtual const csf_element& find_element(const csf_char* name) const {
 
 					if (!name) {
 						return get_null();
@@ -289,7 +290,7 @@ namespace csf
 				*
 				* @param items    items属性路径
 				*/
-				virtual const csf_element& find_element(const csf_list<csf_string>& items);
+				virtual const csf_element& find_element(const csf_list<csf_string>& items) const;
 				/**
 				 * 表示数据对象节点数据内容
 				 * 
@@ -329,7 +330,7 @@ namespace csf
 				/**
 				* 表示子节点列表
 				*/
-				inline csf_list<csf_element>& get_children() {
+				inline const csf_list<csf_element>& get_children() const {
 
 					return m_children;
 				}
@@ -337,7 +338,7 @@ namespace csf
 				* 表示判断是否为空。
 				* 返回：true表示为空；false表示不为空。
 				*/
-				inline csf_bool is_null() {
+				inline csf_bool is_null() const {
 
 					if (get_name().empty()
 						&& get_content().empty()
@@ -352,7 +353,7 @@ namespace csf
 				* 表示判断是否不为空。
 				* 返回：true表示不为空；false表示为空。
 				*/
-				inline csf_bool not_null() {
+				inline csf_bool not_null() const {
 
 					return !is_null();
 				}
@@ -378,7 +379,7 @@ namespace csf
 				/**
 				 * 表示属性信息内容
 				 */
-				inline csf_map<csf_string, csf_string>& get_attributes() {
+				inline const csf_map<csf_string, csf_string>& get_attributes() const {
 
 					return m_attributes;
 				}

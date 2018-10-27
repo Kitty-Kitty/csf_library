@@ -27,7 +27,8 @@
 using csf::modules::connect::csf_ip_connect_factory;
 
 
-csf_ip_connect_factory::csf_ip_connect_factory() {
+csf_ip_connect_factory::csf_ip_connect_factory()
+	: m_idle_interval(csf_ip_connect_factory_timer_interval_ms) {
 
  	set_version(
  		csf_connect_version
@@ -77,11 +78,14 @@ csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_thread_number)));
 
 	//表示定时器时间间隔，数值默认为：500ms
-	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(timer_interval)
-		, csf_attribute_time(std::list<csf_string>{ "timer_interval" }
+	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(idle_interval)
+		, csf_attribute_time(std::list<csf_string>{ "idle_interval" }
 		, csf_attribute_time::csf_time_unit_ms
 		, csf_attribute_boundary("[10, n)")
 		, csf_attribute_default_value<csf_attribute_time, csf_int64>(csf_ip_connect_factory_timer_interval_ms)));
+
+	//更新系统的空闲间隔时间，单位：毫秒（ms）
+	set_idle_interval(get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(idle_interval)));
 
 	return 0;
 }
@@ -155,7 +159,7 @@ csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_ty
 		return m_null_connect_ptr;
 	}
 	else {
-		if (tmp_connect_ptr->set_local_url((csf_url&)local_url)) {
+		if (tmp_connect_ptr->set_local_url(const_cast<csf_url&>(local_url))) {
 			get_connect_collector().remove(tmp_connect_ptr.get());
 			return m_null_connect_ptr;
 		}
@@ -219,7 +223,7 @@ csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_ty
 		return m_null_connect_ptr;
 	}
 	else {
-		if (tmp_connect_ptr->set_remote_url((csf_url&)remote_url)) {
+		if (tmp_connect_ptr->set_remote_url(const_cast<csf_url&>(remote_url))) {
 			get_connect_collector().remove(tmp_connect_ptr.get());
 			return m_null_connect_ptr;
 		}
@@ -272,11 +276,6 @@ csf_int32 csf_ip_connect_factory::start_thread_pool() {
 
 	csf_int32				tmp_int_ret = csf_failure;
 
-
-	//创建一个定时器，防止定时任务退出
-	m_timer = boost::shared_ptr<boost::asio::deadline_timer>(new boost::asio::deadline_timer(m_io_service
-		, boost::posix_time::milliseconds(
-			get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(timer_interval)))));
 	
 	//启动线程池，准备进行网络连接处理
 	tmp_int_ret = get_thread_pool().start(
@@ -286,17 +285,17 @@ csf_int32 csf_ip_connect_factory::start_thread_pool() {
 	if (csf_failure == tmp_int_ret) {
 
 		csf_log_ex(error, csf_log_code_error
-			, "start thread pool failed! thread_number[%d], timer_interval[%ld]."
+			, "start thread pool failed! thread_number[%d], idle_interval[%d ms]."
 			, get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
-			, get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(timer_interval)));
+			, (csf_int32)get_idle_interval());
 
 		return csf_failure;
 	}
 	else {
 		csf_log_ex(notice, csf_log_code_notice
-			, "start thread pool succeed! thread_number[%d], timer_interval[%ld]."
+			, "start thread pool succeed! thread_number[%d], idle_interval[%d ms]."
 			, get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
-			, get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(timer_interval)));
+			, (csf_int32)get_idle_interval());
 	}
 
 	return csf_success;
@@ -310,7 +309,10 @@ csf_int32 csf_ip_connect_factory::start_thread_pool() {
 csf_void csf_ip_connect_factory::run_io_service() {
 
 	try	{
+
 		get_io_service().run();
+
+		csf_msleep((csf_uint32)get_idle_interval());
 	}
 	catch (boost::exception& e)	{
 		csf_log_ex(error, csf_log_code_error

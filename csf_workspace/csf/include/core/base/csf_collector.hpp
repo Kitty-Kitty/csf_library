@@ -38,18 +38,29 @@ namespace csf
 			{
 
 			public:
-				csf_collector();
-				virtual ~csf_collector();
+				csf_collector() {
+
+				}
+
+				virtual ~csf_collector() {
+
+				}
 
 				/**
 				 * 查询收集器的元素总个数。
 				 * 返回：>=0表示元素的总个数。
 				 */
-				virtual csf_int32 size();
+				virtual csf_int32 size() const {
+
+					return 0;
+				}
 				/**
 				 * 表示清空收集器中的所有元素
 				 */
-				virtual csf_bool clear();
+				virtual csf_bool clear() {
+
+					return csf_true;
+				}
 
 			};
 

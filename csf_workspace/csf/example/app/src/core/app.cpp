@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 		csf_log(error, "app init failed!");
 	}
 	else {
-		csf_log(error, "app init succeed!");
+		csf_log(notice, "app init succeed!");
 	}
 
 	tmp_bool = tmp_app.start(csf_nullptr);
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 		csf_log(error, "app start failed!");
 	}
 	else {
-		csf_log(error, "app start succeed!");
+		csf_log(notice, "app start succeed!");
 	}
 
 	while (csf_true) {

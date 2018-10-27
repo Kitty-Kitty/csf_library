@@ -95,21 +95,21 @@ namespace csf
 				/**
 				 * 表示buffer的起始地址
 				 */
-				inline csf_uchar* get_start() {
+				inline csf_uchar* get_start() const {
 
 					return m_start;
 				}
 				/**
 				 * 表示buffer的终于地址
 				 */
-				inline csf_uchar* get_end() {
+				inline csf_uchar* get_end() const {
 
 					return m_end;
 				}
 				/**
 				 * 表示buffer的使用终于地址
 				 */
-				inline csf_uchar* get_last() {
+				inline csf_uchar* get_last() const {
 
 					return m_last;
 				}
@@ -131,21 +131,21 @@ namespace csf
 				/**
 				* 表示保存内容的缓存地址
 				*/
-				inline csf_uchar* get_buffer() {
+				inline csf_uchar* get_buffer() const {
 
 					return get_pos();
 				}
 				/**
 				 * 表示获取buffer总缓存长度
 				 */
-				inline csf_uint32 size() {
+				inline csf_uint32 size() const {
 
 					return csf_memblock::size();
 				}
 				/**
 				 * 表示当前实际已经使用的缓存的长度
 				 */
-				inline csf_uint32 length() {
+				inline csf_uint32 length() const {
 
 					return (csf_uint32)(get_last() - get_pos());
 				}
@@ -175,7 +175,6 @@ namespace csf
 					csf_memblock::set_buffer(buf, len);
 					reset();
 				}
-				
 				/**
 				 * 获取buffer指定位置的内存地址
 				 * 
@@ -205,7 +204,7 @@ namespace csf
 				/**
 				 * 表示buffer是否为空，为空返回true,否则返回false。长度为0或null都为空，返回true。
 				 */
-				inline csf_bool empty() {
+				inline csf_bool empty() const {
 
 					if (csf_memblock::empty()) {
 						return csf_true;
@@ -323,7 +322,7 @@ namespace csf
 				/**
 				 * 表示buffer的当前地址
 				 */
-				inline csf_uchar* get_pos() {
+				inline csf_uchar* get_pos() const {
 
 					return m_pos;
 				}
@@ -355,7 +354,7 @@ namespace csf
 				/**
 				* 表示获取buffer未使用的空间长度
 				*/
-				inline csf_uint32 avail() {
+				inline csf_uint32 avail() const {
 
 					return (csf_uint32)(get_end() - get_last());
 				}

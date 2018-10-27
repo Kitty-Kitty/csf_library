@@ -21,35 +21,3 @@
 
 using csf::core::base::csf_collector;
 
-
-csf_collector::csf_collector() {
-
-}
-
-
-
-csf_collector::~csf_collector() {
-
-}
-
-
-
-
-
-/**
- * 查询收集器的元素总个数。
- * 返回：>=0表示元素的总个数。
- */
-csf_int32 csf_collector::size() {
-
-	return 0;
-}
-
-
-/**
- * 表示清空收集器中的所有元素
- */
-csf_bool csf_collector::clear() {
-
-	return csf_true;
-}
