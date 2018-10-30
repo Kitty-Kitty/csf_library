@@ -47,7 +47,7 @@ namespace csf
 				 * @param buf    buf
 				 */
 				inline explicit csf_csfstring(const csf_char* buf)
-					: csf_memblock((const csf_uchar*)buf, csf_strlen(buf)) {
+					: csf_memblock((const csf_uchar*)buf, (csf_uint32)csf_strlen(buf)) {
 
 				}
 				/**
@@ -66,7 +66,7 @@ namespace csf
 				 * @param str    表示需要被转换的string字符串
 				 */
 				inline explicit csf_csfstring(const csf_string& str) 
-					: csf_memblock(str.length()) {
+					: csf_memblock((csf_uint32)str.length()) {
 					csf_strcpy((csf_char*)get_buffer(), str.c_str());
 				}
 				/**

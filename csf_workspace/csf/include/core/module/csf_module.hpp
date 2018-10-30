@@ -225,7 +225,7 @@ namespace csf
 				 */
 				inline csf_void set_name(const csf_char* new_value) {
 
-					csf_int32				tmp_length = csf_strlen(new_value);
+					csf_int32				tmp_length = (csf_int32)csf_strlen(new_value);
 
 
 					if (tmp_length < csf_sizeof(m_name)) {

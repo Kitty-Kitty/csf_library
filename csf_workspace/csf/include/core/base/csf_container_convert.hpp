@@ -56,10 +56,10 @@ namespace csf
 				/**
 				 * 该函数主要实现将容器对象转换为字符串内容。
 				 */
-				csf_string to_string() {
+				csf_string to_string() const {
 
-					csf_int						i = 0;
-					csf_int						tmp_size = get_container().size();
+					csf_int32					i = 0;
+					csf_uint32					tmp_size = (csf_uint32)get_container().size();
 					csf_string					tmp_ret_string = csf_string_null;
 
 
@@ -91,7 +91,7 @@ namespace csf
 				/**
 				 * 表示转换器需要处理的目标对象。
 				 */
-				inline ContainerType& get_container() {
+				inline ContainerType& get_container() const {
 
 					return m_container;
 				}
