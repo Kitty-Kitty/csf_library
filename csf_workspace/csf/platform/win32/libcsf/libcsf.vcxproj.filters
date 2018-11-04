@@ -121,6 +121,12 @@
     <Filter Include="src\core\module\device\connect\url">
       <UniqueIdentifier>{70c46598-c45a-4376-a069-5ef8898ec983}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core\utils\time">
+      <UniqueIdentifier>{4c190fd3-737a-4b34-8f94-85f3c3cd82d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core\utils\time">
+      <UniqueIdentifier>{0850dcd1-4f11-4f53-85a7-72f7d5893626}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\core\base\csf_buffer.hpp">
@@ -513,6 +519,15 @@
     <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_exception_include.h">
       <Filter>include\core\system\attribute</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_timeout_manager.hpp">
+      <Filter>include\core\module\device\connect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\utils\time\system_time.hpp">
+      <Filter>include\core\utils\time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\utils\time\time_maker.hpp">
+      <Filter>include\core\utils\time</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -688,6 +703,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\utils\thread\csf_thread_pool.cpp">
       <Filter>src\core\utils\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout_manager.cpp">
+      <Filter>src\core\module\device\connect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\utils\time\system_time.cpp">
+      <Filter>src\core\utils\time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\utils\time\time_maker.cpp">
+      <Filter>src\core\utils\time</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -49,6 +49,7 @@ namespace csf
 			#define csf_set							std::set
 			#define csf_vector						std::vector
 			#define csf_map							std::map
+			#define csf_multimap					std::multimap 
 			#define csf_unordered_map				std::unordered_map
 #endif
 

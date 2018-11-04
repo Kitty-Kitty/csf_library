@@ -45,8 +45,8 @@ namespace csf
 				 * 
 				 * @param factory    表示需要创建connect的工厂类
 				 */
-				inline explicit csf_stream_connect(csf_ip_connect_factory& factory)
-					: csf_ip_connect(factory) {
+				inline explicit csf_stream_connect(csf_ip_connect_factory& factory, csf_connect_type type)
+					: csf_ip_connect(factory, type) {
 
 				}
 				/**

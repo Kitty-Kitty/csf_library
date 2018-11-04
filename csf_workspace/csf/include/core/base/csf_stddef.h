@@ -25,6 +25,13 @@
 #include <string.h>
 
 
+#ifdef WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#endif
+
+
 #ifdef __cplusplus
 namespace csf
 {
@@ -76,6 +83,9 @@ namespace csf
 #else
 #define csf_symbol_export					
 #endif
+
+#define csf_dec_abs(a, b)					((a) >= (b) ? ((a) - (b)) : ((b) - (a)))
+
 
 #ifdef __cplusplus
 		}

@@ -105,7 +105,7 @@ namespace csf
 				 */
 				inline virtual csf::core::base::csf_int32 init(const csf_configure_manager* conf_mg = csf_nullptr) {
 
-					return  csf_success;
+					return  csf_succeed;
 				}
 				/**
 				 * 模块启动
@@ -114,7 +114,7 @@ namespace csf
 				 */
 				inline virtual csf::core::base::csf_int32 start(const csf_configure_manager* conf_mg = csf_nullptr) {
 
-					return  csf_success;
+					return  csf_succeed;
 				}
 				/**
 				 * 模块停止
@@ -123,12 +123,12 @@ namespace csf
 				 */
 				inline virtual csf::core::base::csf_int32 stop(const csf_configure_manager* conf_mg = csf_nullptr) {
 
-					return  csf_success;
+					return  csf_succeed;
 				}
 				/**
 				 * 模块的类型
 				 */
-				inline csf_module_type get_type() {
+				inline csf_module_type get_type() const {
 
 					return m_type;
 				}
@@ -143,14 +143,14 @@ namespace csf
 				/**
 				 * 表示模块的uuid，用于唯一标识一个模块
 				 */
-				inline csf_string get_guid() {
+				inline csf_string get_guid() const {
 
 					return csf_string(m_guid);
 				}
 				/**
 				 * 表示模块的名称
 				 */
-				inline csf_string get_name() {
+				inline csf_string get_name() const {
 
 					return csf_string(m_name);
 				}
@@ -166,14 +166,14 @@ namespace csf
 				/**
 				 * 表示模块的配置信息管理器
 				 */
-				inline virtual csf::core::system::csf_configure_manager* get_configure_manager() {
+				inline virtual csf::core::system::csf_configure_manager* get_configure_manager() const {
 
 					return m_configure_manager;
 				}
 				/**
 				 * 表示装饰者指针
 				 */
-				inline csf_module* get_decorator() {
+				inline csf_module* get_decorator() const {
 
 					return m_decorator;
 				}
@@ -383,7 +383,7 @@ extern "C" csf_symbol_export csf::core::base::csf_int32 destroy(                
 		return csf_failure;                                                           \
 	}                                                                                 \
 	delete module;                                                                    \
-	return csf_success;                                                               \
+	return csf_succeed;                                                               \
 }
 
 

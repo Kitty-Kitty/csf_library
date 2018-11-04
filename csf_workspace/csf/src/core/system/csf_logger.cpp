@@ -199,7 +199,7 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 		, get_path().c_str());
 
 
-	return csf_success;
+	return csf_succeed;
 }
 
 
@@ -279,14 +279,14 @@ csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_
 		set_text_sink_ptr(tmp_text_sink_ptr);
 		set_file_sink_ptr(tmp_file_sink_ptr);
 
-		return csf_success;
+		return csf_succeed;
 	}
 	catch (std::exception& e) {
 		std::cout << "csf_logger start failure! reason:" << e.what() << std::endl;
 		return csf_failure;
 	}
 
-	return csf_success;
+	return csf_succeed;
 }
 
 

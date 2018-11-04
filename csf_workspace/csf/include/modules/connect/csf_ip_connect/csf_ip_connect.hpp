@@ -50,8 +50,9 @@ namespace csf
 				*
 				* @param factory    表示创建网络套接字的工厂类对象
 				*/
-				inline explicit csf_ip_connect(csf_ip_connect_factory& factory)
-					: m_read_timeout(factory.get_io_service())
+				inline explicit csf_ip_connect(csf_ip_connect_factory& factory, csf_connect_type type)
+					: csf_connect(factory, type)
+					, m_read_timeout(factory.get_io_service())
 					, m_write_timeout(factory.get_io_service()) {
 
 				}
@@ -101,7 +102,7 @@ namespace csf
 
 					m_remote_url = newVal;
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示远程网络地址
@@ -112,7 +113,7 @@ namespace csf
 
 					m_remote_url = (csf::modules::connect::csf_ip_url&)newVal;
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示本地的主机地址
@@ -123,7 +124,7 @@ namespace csf
 
 					m_local_url = newVal;
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示本地网络地址
@@ -134,7 +135,7 @@ namespace csf
 
 					m_local_url = (csf::modules::connect::csf_ip_url&)newVal;
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示远程网络地址
@@ -159,17 +160,18 @@ namespace csf
 				* @param callback    表示异常处理句柄信息
 				* @param error_code    表示异常信息内容
 				*/
-				inline csf_int32 async_callback(csf_connect *connect
+				inline csf_int32 async_callback(csf_connect_ptr connect_ptr
 					, const csf_connect_callback& callback
 					, csf_ip_connect_error& error_code) {
 
-					if (csf_nullptr == connect || csf_nullptr == callback) {
+					if (!connect_ptr) {
 						return csf_failure;
 					}
 					else {
-						return callback(connect, error_code);
+						return callback(connect_ptr, error_code);
 					}
-					return 0;
+
+					return csf_succeed;
 				}
 				/**
 				* 主要功能是：针对错误或异常的处理
@@ -179,11 +181,11 @@ namespace csf
 				* @param callback    表示异常处理句柄信息
 				* @param error_code    表示异常信息内容
 				*/
-				inline csf_int32 exception_callback(csf_connect *connect
+				inline csf_int32 exception_callback(csf_connect_ptr connect_ptr
 					, const csf_connect_callback& callback
 					, csf_ip_connect_error& error_code) {
 
-					return async_callback(connect, callback, error_code);
+					return async_callback(connect_ptr, callback, error_code);
 				}
 
 				/**
@@ -198,7 +200,7 @@ namespace csf
 					, const boost::system::error_code& error_code
 					, csf_uint32 len) {
 
-					async_callback(this, callback, csf_ip_connect_error(error_code));
+					async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 
 					return csf_true;
 				}
@@ -214,7 +216,7 @@ namespace csf
 					, const boost::system::error_code& error_code
 					, csf_uint32 len) {
 
-					async_callback(this, callback, csf_ip_connect_error(error_code));
+					async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 
 					return csf_true;
 				}

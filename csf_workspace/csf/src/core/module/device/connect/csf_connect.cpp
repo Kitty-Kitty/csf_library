@@ -19,6 +19,7 @@
 *******************************************************************************/
 
 #include "csf_connect.hpp"
+#include "csf_connect_factory.hpp"
 
 using namespace csf::core::module::connect;
 using csf::core::module::connect::csf_connect;
@@ -38,20 +39,31 @@ const csf_unordered_map<csf_connect::csf_connect_type, csf_string> csf_connect::
 csf_connect::csf_connect()
 	: m_type(csf_connect_type_none)
 	, m_is_sync(csf_false)
-	, m_status(0)
+	, m_status(csf_connect_status_none)
 	, m_factory(csf_nullptr)
 	, m_configure_manager(csf_nullptr) {
 
 }
 
 
-
-csf_connect::~csf_connect() {
+/**
+* 表示通过factory创建一个connect
+*
+* @param factory    表示需要创建connect的工厂类
+*/
+csf_connect::csf_connect(csf_connect_factory* factory, csf_connect_type type)
+	: m_type(type)
+	, m_is_sync(csf_false)
+	, m_status(csf_connect_status_none)
+	, m_factory(factory)
+	, m_configure_manager(factory->get_configure_manager()) {
 
 }
 
 
+csf_connect::~csf_connect() {
 
+}
 
 
 /**
@@ -141,7 +153,7 @@ csf_int32 csf_connect::set_read_timeout(const csf_uint32 timeout_ms, const csf_c
 	get_read_timeout().set_time(timeout_ms);
 	get_read_timeout().set_handle(callback);
 
-	return csf_success;
+	return csf_succeed;
 }
 
 

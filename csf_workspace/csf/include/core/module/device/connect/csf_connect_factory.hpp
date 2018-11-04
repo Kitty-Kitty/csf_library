@@ -23,6 +23,7 @@
 
 //#include "csf_connect_factory_manager.hpp"
 #include "csf_connect_factory_interface.hpp"
+#include "csf_connect_timeout_manager.hpp"
 #include "csf_device.hpp"
 
 namespace csf
@@ -39,7 +40,8 @@ namespace csf
 				 * @version 1.0
 				 * @created 01-10月-2018 12:54:37
 				 */
-				class csf_connect_factory : public csf::core::module::csf_device, public csf::core::module::connect::csf_connect_factory_interface
+				class csf_connect_factory : public csf::core::module::csf_device
+					, public csf::core::module::connect::csf_connect_factory_interface
 				{
 
 				public:
@@ -163,11 +165,22 @@ namespace csf
 
 						m_connect_factory_manager = newVal;
 					}
+					/**
+					* 表示连接超时管理器，主要处理各个连接对象的超时问题。
+					*/
+					inline csf::core::module::connect::csf_connect_timeout_manager& get_timeout_manager() {
+
+						return m_timeout_manager;
+					}
 				private:
 					/**
 					 * 表示连接工厂管理器对象地址
 					 */
 					csf::core::module::connect::csf_connect_factory_manager *m_connect_factory_manager = csf_nullptr;
+					/**
+					* 表示连接超时管理器，主要用于连接的超时处理。
+					*/
+					csf::core::module::connect::csf_connect_timeout_manager m_timeout_manager;
 				};
 
 			}

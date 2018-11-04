@@ -58,6 +58,8 @@ namespace csf
 
 					virtual ~csf_thread_group() {
 
+						join_all();
+						clear();
 					}
 
 					/**
@@ -218,6 +220,25 @@ namespace csf
 							iter->interrupt();
 						}
 					}
+					/**
+					* 主要功能是：清除线程组中的所有线程资源
+					* 返回：0表示成功；非0表示失败；
+					*/
+					inline csf_int32 clear() {
+
+						csf_unqiue_lock<decltype(m_mutex)> tmp_lock(m_mutex);
+
+						for (auto &iter : get_threads()) {
+							if (csf_nullptr != iter) {
+								delete iter;
+							}
+						}
+
+						get_threads().clear();
+
+						return csf_succeed;
+					}
+
 				protected:
 					/**
 					* 主要功能是：获取保存的线程集合

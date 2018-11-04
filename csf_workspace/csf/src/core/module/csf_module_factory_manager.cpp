@@ -28,7 +28,7 @@
 csf::core::base::csf_int32 csf::core::module::csf_module_factory_manager::init(const csf_configure_manager * conf_mg) {
 
 	set_configure_manager(conf_mg);
-	return csf_success;
+	return csf_succeed;
 }
 
 
@@ -40,7 +40,7 @@ csf::core::base::csf_int32 csf::core::module::csf_module_factory_manager::init(c
 csf::core::base::csf_int32 csf::core::module::csf_module_factory_manager::start(const csf_configure_manager * conf_mg) {
 
 	set_configure_manager(conf_mg);
-	return csf_success;
+	return csf_succeed;
 }
 
 

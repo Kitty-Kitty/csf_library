@@ -136,7 +136,7 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 		return csf_failure;
 	}
 
-	return csf_success;
+	return csf_succeed;
 }
 
 
@@ -507,14 +507,14 @@ csf_int32 csf_tcp_connect::sync_write(const csf_uchar* buf
 			, tmp_error_code);
 		if (tmp_length <= 0 || tmp_error_code) {
 
-			exception_callback(this, callback, csf_ip_connect_error(tmp_error_code));
+			exception_callback(shared_from_this(), callback, csf_ip_connect_error(tmp_error_code));
 
 			return csf_failure;
 		}
 		tmp_send_length += tmp_length;
 	}
 
-	exception_callback(this, callback, csf_ip_connect_error());
+	exception_callback(shared_from_this(), callback, csf_ip_connect_error());
 
 	return len;
 }
@@ -591,8 +591,7 @@ csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callb
 	while (csf_true) {
 		try	{
 			//这里主要解决有些时候new失败的问题
-			tmp_connect = new csf_tcp_connect(*const_cast<csf_ip_connect_factory*>(
-				(csf_ip_connect_factory*)this->get_factory()));
+			tmp_connect = new csf_tcp_connect(this);
 			if (tmp_connect) {
 				break;
 			}
@@ -621,7 +620,7 @@ csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callb
 		connect_ptr->get_socket()
 		, boost::bind(&csf_tcp_connect::accept_handle, this, connect_ptr, callback, _1));
 
-	return csf_success;
+	return csf_succeed;
 }
 
 
@@ -655,7 +654,7 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 
 	//如果有连接进入，则调用
 	if (csf_nullptr != callback) {
-		callback(connect_ptr.get(), csf_connect_error());
+		callback(connect_ptr, csf_connect_error());
 	}
 
 #if 0

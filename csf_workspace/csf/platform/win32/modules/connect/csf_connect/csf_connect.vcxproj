@@ -109,6 +109,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)..\..\include\modules\connect\;$(SolutionDir)..\..\include\modules\connect\csf_ip_connect;$(SolutionDir)..\..\include\modules\connect\csf_ip_connect\url;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>libcsf.lib;%(AdditionalDependencies)</AdditionalDependencies>

@@ -86,7 +86,7 @@ namespace csf
 					}
 
 					m_configure_file = new_value;
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示根据items属性路径查找一个element。

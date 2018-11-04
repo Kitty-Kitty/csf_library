@@ -180,7 +180,7 @@ namespace csf
 				 * 
 				 * @param len    表示获取缓存数据偏移length后的内存地址
 				 */
-				inline csf_uchar* position(const csf_uint32 len) {
+				inline csf_uchar* position(const csf_uint32 len) const {
 
 					if (length() < len) {
 						return csf_nullptr;
@@ -191,7 +191,7 @@ namespace csf
 				/**
 				 * 将buffer转换为string
 				 */
-				inline csf_string to_string() {
+				inline csf_string to_string() const {
 
 					return "";
 				}
@@ -286,7 +286,7 @@ namespace csf
 				 * 
 				 * @param buffer    表示需要被比较的csf_buffer对象
 				 */
-				inline bool operator ==(const csf_buffer& buffer) {
+				inline bool operator ==(const csf_buffer& buffer) const {
 
 					return false;
 				}

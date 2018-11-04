@@ -78,7 +78,7 @@ namespace csf
 				 * @version 1.0
 				 * @created 01-10ÔÂ-2018 12:54:37
 				 */
-				typedef csf_function<csf_int32(csf_connect*
+				typedef csf_function<csf_int32(csf_connect_ptr
 					, csf_connect_error&)> 	csf_connect_callback;
 			}
 

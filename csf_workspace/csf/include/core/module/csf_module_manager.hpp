@@ -107,7 +107,7 @@ namespace csf
 
 
 					tmp_int_ret = get_module_factory_manager().destory(module);
-					if (csf_success == tmp_int_ret) {
+					if (csf_succeed == tmp_int_ret) {
 						del(module);
 					}
 					return tmp_int_ret;

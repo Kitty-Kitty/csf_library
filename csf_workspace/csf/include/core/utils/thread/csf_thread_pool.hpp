@@ -124,6 +124,7 @@ namespace csf
 					inline csf_int32 stop() {
 
 						get_group().join_all();
+						get_group().clear();
 
 						return 0;
 					}

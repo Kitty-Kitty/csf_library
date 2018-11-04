@@ -83,10 +83,10 @@ csf::core::base::csf_int32 csf_connect_factory_manager::start(const csf_configur
 		csf_log_ex(notice, csf_log_code_notice
 			, "create connect factories succeed.");
 
-		return csf_success;
+		return csf_succeed;
 	}
 
-	return csf_success;
+	return csf_succeed;
 }
 
 
@@ -411,7 +411,7 @@ csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_fa
 		add_connect(tmp_string_name, tmp_connect_ptr);
 
 		//打开监听连接对象
-		if (csf_success != listen_connect(tmp_connect_ptr, tmp_handle, element)) {
+		if (csf_succeed != listen_connect(tmp_connect_ptr, tmp_handle, element)) {
 
 			//打开失败，则删除连接对象
 			remove_connect(tmp_string_name);
@@ -548,5 +548,5 @@ csf::core::base::csf_int32 csf_connect_factory_manager::listen_connect(csf_conne
 			, connect->get_local_url().get_url().c_str());
 	}
 
-	return csf_success;
+	return csf_succeed;
 }

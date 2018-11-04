@@ -30,7 +30,7 @@ csf::core::base::csf_int32 csf::core::module::csf_module_manager::init(const csf
 
 	set_configure_manager(conf_mg);
 
-	return csf_success;
+	return csf_succeed;
 }
 
 
@@ -66,7 +66,7 @@ csf::core::base::csf_int32 csf::core::module::csf_module_manager::start(const cs
 		csf_log_ex(notice, csf_log_code_notice, "start factory manager succeed!");
 	}
 
-	return csf_success;
+	return csf_succeed;
 }
 
 
@@ -77,7 +77,7 @@ csf::core::base::csf_int32 csf::core::module::csf_module_manager::start(const cs
  */
 csf::core::base::csf_int32 csf::core::module::csf_module_manager::stop(const csf_configure_manager * conf_mg) {
 
-	return csf_success;
+	return csf_succeed;
 }
 
 

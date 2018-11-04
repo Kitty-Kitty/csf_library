@@ -137,9 +137,9 @@ namespace csf
 				*/
 				inline csf_int32 set_url(const csf_char* newVal) {
 
-					if (csf_success == parse(newVal)) {
+					if (csf_succeed == parse(newVal)) {
 						csf_url::set_url(newVal);
-						return csf_success;
+						return csf_succeed;
 					}
 					
 					return csf_failure;

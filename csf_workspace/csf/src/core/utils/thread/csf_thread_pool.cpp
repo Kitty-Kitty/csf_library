@@ -32,5 +32,5 @@ csf_thread_pool::csf_thread_pool()
 
 
 csf_thread_pool::~csf_thread_pool() {
-
+	stop();
 }

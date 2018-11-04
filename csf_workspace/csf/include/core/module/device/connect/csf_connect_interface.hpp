@@ -48,7 +48,7 @@ namespace csf
 					* @version 1.0
 					* @created 01-10月-2018 12:54:37
 					*/
-					typedef csf_function<csf_int32(csf_connect*
+					typedef csf_function<csf_int32(csf_connect_ptr
 						, const csf_uchar*
 						, const csf_uint32
 						, csf_connect_error&)> 	csf_char_read_callback;
@@ -58,7 +58,7 @@ namespace csf
 					* @version 1.0
 					* @created 01-10月-2018 12:54:37
 					*/
-					typedef csf_function<csf_int32(csf_connect*
+					typedef csf_function<csf_int32(csf_connect_ptr
 						, csf_buffer& buffer
 						, const csf_uint32
 						, csf_connect_error&)> 	csf_buffer_read_callback;
@@ -68,7 +68,7 @@ namespace csf
 					* @version 1.0
 					* @created 01-10月-2018 12:54:37
 					*/
-					typedef csf_function<csf_int32(csf_connect*
+					typedef csf_function<csf_int32(csf_connect_ptr
 						, csf_csfstring& csfstr
 						, const csf_uint32
 						, csf_connect_error&)> 	csf_csfstr_read_callback;
@@ -78,7 +78,7 @@ namespace csf
 					* @version 1.0
 					* @created 01-10月-2018 12:54:37
 					*/
-					typedef csf_function<csf_int32(csf_connect*
+					typedef csf_function<csf_int32(csf_connect_ptr
 						, csf_chain& chain
 						, const csf_uint32
 						, csf_connect_error&)> 	csf_chain_read_callback;
@@ -88,7 +88,7 @@ namespace csf
 					* @version 1.0
 					* @created 01-10月-2018 12:54:37
 					*/
-					typedef csf_function<csf_int32(csf_connect*
+					typedef csf_function<csf_int32(csf_connect_ptr
 						, csf_connect_buffer<csf_uchar>&
 						, csf_connect_error&)> 	csf_char_buffer_read_callback;
 					/**
@@ -97,7 +97,7 @@ namespace csf
 					* @version 1.0
 					* @created 01-10月-2018 12:54:37
 					*/
-					typedef csf_function<csf_int32(csf_connect*
+					typedef csf_function<csf_int32(csf_connect_ptr
 						, csf_connect_buffer<csf_buffer>&
 						, csf_connect_error&)> 	csf_buffer_buffer_read_callback;
 					/**
@@ -106,7 +106,7 @@ namespace csf
 					* @version 1.0
 					* @created 01-10月-2018 12:54:37
 					*/
-					typedef csf_function<csf_int32(csf_connect*
+					typedef csf_function<csf_int32(csf_connect_ptr
 						, csf_connect_buffer<csf_csfstring>& csfstr
 						, csf_connect_error&)> 	csf_csfstr_buffer_read_callback;
 					/**
@@ -115,7 +115,7 @@ namespace csf
 					* @version 1.0
 					* @created 01-10月-2018 12:54:37
 					*/
-					typedef csf_function<csf_int32(csf_connect*
+					typedef csf_function<csf_int32(csf_connect_ptr
 						, csf_connect_buffer<csf_chain>& chain
 						, csf_connect_error&)> 	csf_chain_buffer_read_callback;
 				public:

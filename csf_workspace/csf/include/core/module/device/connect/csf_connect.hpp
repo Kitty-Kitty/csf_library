@@ -21,6 +21,7 @@
 #if !defined(CSF_CONNECT_H_INCLUDED_)
 #define CSF_CONNECT_H_INCLUDED_
 
+#include <memory>
 #include "csf_url.hpp"
 #include "csf_connect_timeout.hpp"
 #include "csf_connect_interface.hpp"
@@ -41,6 +42,7 @@ namespace csf
 				 * @created 01-10月-2018 12:54:36
 				 */
 				class csf_connect : public csf::core::module::connect::csf_connect_interface
+					, public std::enable_shared_from_this<csf_connect>
 				{
 				public:
 					/**
@@ -82,6 +84,10 @@ namespace csf
 					typedef enum csf_connect_status_enum
 					{
 						/**
+						* 表示未知状态，即初始状态
+						*/
+						csf_connect_status_none = 0x00000000,
+						/**
 						 * 表示打开关闭标识位。标识位为1表示打开；标识位为0表示关闭；
 						 */
 						csf_connect_status_open = 0x00000001,
@@ -109,21 +115,28 @@ namespace csf
 
 
 					csf_connect();
-					virtual ~csf_connect();
+					/**
+					* 根据csf_ip_connect_factory创建一个网络套接字
+					*
+					* @param factory    表示创建网络套接字的工厂类对象
+					*/
+					/**
+					* 根据csf_ip_connect_factory创建一个网络套接字
+					*
+					* @param factory    表示创建网络套接字的工厂类对象
+					*/
+					inline explicit csf_connect::csf_connect(csf_connect_factory& factory
+						, csf_connect_type type)
+						: csf_connect(&factory, type) {
 
+					}
 					/**
 					 * 表示通过factory创建一个connect
 					 *
 					 * @param factory    表示需要创建connect的工厂类
 					 */
-					inline explicit csf_connect(csf_connect_factory* factory)
-						: m_type(csf_connect_type_none)
-						, m_is_sync(csf_false)
-						, m_status(0)
-						, m_factory(csf_nullptr)
-						, m_configure_manager(csf_nullptr) {
-
-					}
+					explicit csf_connect(csf_connect_factory* factory, csf_connect_type type);
+					virtual ~csf_connect();
 					/**
 					 * 模块初始化
 					 *
@@ -169,7 +182,7 @@ namespace csf
 
 						m_remote_url = new_value;
 
-						return csf_success;
+						return csf_succeed;
 					}
 					/**
 					* 表示远程的主机地址
@@ -180,7 +193,7 @@ namespace csf
 
 						//m_remote_url = newVal;
 
-						return csf_success;
+						return csf_succeed;
 					}
 					/**
 					 * 表示本地的主机地址
@@ -198,7 +211,7 @@ namespace csf
 
 						m_local_url = new_value;
 
-						return csf_success;
+						return csf_succeed;
 					}
 					/**
 					* 表示本地的主机地址
@@ -209,7 +222,7 @@ namespace csf
 
 						//m_local_url = newVal;
 
-						return csf_success;
+						return csf_succeed;
 					}
 					/**
 					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
@@ -230,7 +243,7 @@ namespace csf
 					/**
 					 * 表示网络的状态信息
 					 */
-					inline csf_uint32 get_status() {
+					inline csf_connect_status get_status() {
 
 						return m_status;
 					}
@@ -239,7 +252,7 @@ namespace csf
 					 *
 					 * @param new_value
 					 */
-					inline csf_void set_status(csf_uint32 new_value) {
+					inline csf_void set_status(csf_connect_status new_value) {
 
 						m_status = new_value;
 					}
@@ -528,7 +541,13 @@ namespace csf
 					* @param callback    表示读取的回调函数
 					*/
 					virtual csf_int32 read(csf_connect_buffer<csf_chain>& buffer, const csf_chain_buffer_read_callback& callback = csf_nullptr);
-				protected:
+					/**
+					* 表示异步读超时对象
+					*/
+					inline virtual csf::core::module::connect::csf_connect_timeout& get_read_timeout() {
+
+						return m_read_timeout;
+					}
 					/**
 					* 表示异步写超时对象
 					*/
@@ -536,6 +555,7 @@ namespace csf
 
 						return m_write_timeout;
 					}
+				protected:
 					/**
 					* 表示异步写超时对象
 					*
@@ -544,13 +564,6 @@ namespace csf
 					inline virtual void set_write_timeout(csf::core::module::connect::csf_connect_timeout& newVal) {
 
 						m_write_timeout = newVal;
-					}
-					/**
-					* 表示异步读超时对象
-					*/
-					inline virtual csf::core::module::connect::csf_connect_timeout& get_read_timeout() {
-
-						return m_read_timeout;
 					}
 					/**
 					* 表示异步读超时对象
@@ -589,7 +602,7 @@ namespace csf
 					/**
 					 * 表示网络的状态信息
 					 */
-					csf_uint32 m_status = 0;
+					csf_connect_status m_status = csf_connect_status_none;
 					/**
 					 * 表示创建connect的工厂类地址
 					 */
@@ -598,10 +611,6 @@ namespace csf
 					 * 表示配置文件管理器
 					 */
 					csf::core::system::csf_configure_manager* m_configure_manager = csf_nullptr;
-					/**
-					 * 表示连接的工厂对象
-					 */
-					csf::core::module::connect::csf_connect_factory *m_connect_factory = csf_nullptr;
 					/**
 					* 表示网络连接类型名称映射表
 					*/

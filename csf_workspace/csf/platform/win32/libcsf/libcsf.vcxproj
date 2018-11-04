@@ -185,6 +185,7 @@
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_factory_manager_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_timeout.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_timeout_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_deadline_timer.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\url\csf_url.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\csf_device.hpp" />
@@ -247,6 +248,8 @@
     <ClInclude Include="..\..\..\include\core\utils\thread\csf_thread.hpp" />
     <ClInclude Include="..\..\..\include\core\utils\thread\csf_thread_group.hpp" />
     <ClInclude Include="..\..\..\include\core\utils\thread\csf_thread_pool.hpp" />
+    <ClInclude Include="..\..\..\include\core\utils\time\system_time.hpp" />
+    <ClInclude Include="..\..\..\include\core\utils\time\time_maker.hpp" />
     <ClInclude Include="..\..\..\include\csf_include.h" />
   </ItemGroup>
   <ItemGroup>
@@ -278,6 +281,7 @@
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_factory.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_factory_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\url\csf_url.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\csf_device.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device_io\csf_device_io.cpp" />
@@ -308,6 +312,8 @@
     <ClCompile Include="..\..\..\src\core\utils\thread\csf_thread.cpp" />
     <ClCompile Include="..\..\..\src\core\utils\thread\csf_thread_group.cpp" />
     <ClCompile Include="..\..\..\src\core\utils\thread\csf_thread_pool.cpp" />
+    <ClCompile Include="..\..\..\src\core\utils\time\system_time.cpp" />
+    <ClCompile Include="..\..\..\src\core\utils\time\time_maker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\..\..\config\csf_app.xml" />

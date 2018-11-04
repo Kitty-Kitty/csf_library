@@ -54,7 +54,7 @@ namespace csf
 				* @param factory    表示创建网络套接字的工厂类对象
 				*/
 				inline explicit csf_udp_connect(csf_ip_connect_factory& factory)
-					: csf_dgram_connect(factory)
+					: csf_dgram_connect(factory, csf_connect::csf_connect_type_udp)
 					, m_socket(factory.get_io_service()) {
 
 				}

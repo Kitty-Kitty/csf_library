@@ -44,14 +44,23 @@ namespace csf
 				{
 
 				public:
-					csf_connect_buffer()
+					inline explicit csf_connect_buffer()
 						: m_buffer(csf_nullptr)
 						, m_length(0)
 						, m_is_sync(csf_false)
 						, m_is_free(csf_false) {
 
 					}
+					/**
+					* 主要功能是：根据对应长度创建csf_connect_buffer
+					* 返回：无
+					*
+					* @param len    表示需要发送的缓存长度
+					*/
+					inline explicit csf_connect_buffer(const csf_uint32 len)
+						: csf_connect_buffer(new ValueType(len), len) {
 
+					}
 					/**
 					* 主要功能是：根据buufer对象和对应长度创建csf_connect_buffer
 					* 返回：无
@@ -59,7 +68,7 @@ namespace csf
 					* @param buffer    表示csf_connect_buffer的宿主对象地址
 					* @param len    表示需要发送的缓存长度
 					*/
-					csf_connect_buffer(ValueType* buffer, const csf_uint32 len)
+					inline explicit csf_connect_buffer(ValueType* buffer, const csf_uint32 len)
 						: m_buffer(buffer)
 						, m_length(len)
 						, m_is_sync(csf_false)

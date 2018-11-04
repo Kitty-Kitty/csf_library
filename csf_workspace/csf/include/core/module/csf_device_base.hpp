@@ -87,7 +87,7 @@ namespace csf
 				*/
 				inline virtual csf_int32 del(const csf_element& element, const csf_device_operation_callback callback) {
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示设备的添加操作
@@ -97,7 +97,7 @@ namespace csf
 				*/
 				inline virtual csf_int32 ctrl(const csf_element& element, const csf_device_operation_callback callback) {
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示设备的添加操作
@@ -107,7 +107,7 @@ namespace csf
 				*/
 				inline virtual csf_int32 update(const csf_element& element, const csf_device_operation_callback callback) {
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示设备的添加操作
@@ -117,7 +117,7 @@ namespace csf
 				*/
 				inline virtual csf_int32 add(const csf_element& element, const csf_device_operation_callback callback) {
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 主要功能是：主要实现模块的配置信息处理接口。
@@ -172,7 +172,7 @@ namespace csf
 				*/
 				inline virtual csf::core::base::csf_int32 init(const csf_configure_manager* conf_mg = csf_nullptr) {
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 模块启动
@@ -181,7 +181,7 @@ namespace csf
 				*/
 				inline virtual csf::core::base::csf_int32 start(const csf_configure_manager* conf_mg = csf_nullptr) {
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示设备的唯一编码id
@@ -197,7 +197,7 @@ namespace csf
 				*/
 				inline virtual csf::core::base::csf_int32 stop(const csf_configure_manager* conf_mg = csf_nullptr) {
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示设备的唯一编码id，其中id最大长度256字节。

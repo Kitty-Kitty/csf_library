@@ -22,6 +22,7 @@
 
 #include "csf_base_include.h"
 #include "csf_stdbind.hpp"
+#include "csf_logger.hpp"
 #include <boost/thread.hpp>
 
 namespace csf
@@ -81,18 +82,7 @@ namespace csf
 
 					}
 					virtual ~csf_thread() {
-						stop();
-					}
-					/**
-					* 主要功能是：启动运行线程
-					* 返回：无
-					*
-					* @param func    表示线程的运行函数
-					*/
-					void start(csf_thread_start_handle func) {
-
-						set_status(csf_thread_status_start);
-						cycle(func);
+						join();
 					}
 					/**
 					* 主要功能是：停止线程
@@ -135,23 +125,6 @@ namespace csf
 						}
 						return true;
 					}
-
-				protected:
-					/**
-					* 主要功能是：线程运行的循环函数
-					* 返回：无
-					*
-					* @param func    表示线程的运行函数
-					*/
-					template<typename TheadFunction>
-					inline void cycle(TheadFunction func) {
-						while (csf_true) {
-							if (csf_thread_status_start == m_status) {
-								func();
-							}
-						}
-					}
-					
 				private:
 					/**
 					* 表示线程状态信息
@@ -172,6 +145,40 @@ namespace csf
 					inline void set_status(csf_thread_status newVal) {
 
 						m_status = newVal;
+					}
+					/**
+					* 主要功能是：启动运行线程
+					* 返回：无
+					*
+					* @param func    表示线程的运行函数
+					*/
+					void start(csf_thread_start_handle func) {
+
+						set_status(csf_thread_status_start);
+						cycle(func);
+					}
+					/**
+					* 主要功能是：线程运行的循环函数
+					* 返回：无
+					*
+					* @param func    表示线程的运行函数
+					*/
+					template<typename TheadFunction>
+					inline void cycle(TheadFunction func) {
+						while (csf_true) {
+							if (csf_thread_status_start == m_status) {
+								try {
+									func();
+								}
+								catch (std::exception &e) {
+									csf_log_ex(error
+										, csf_log_code_error
+										, "thread[0x%x] exception[%s]"
+										, this
+										, e.what());
+								}
+							}
+						}
 					}
 				};
 			}

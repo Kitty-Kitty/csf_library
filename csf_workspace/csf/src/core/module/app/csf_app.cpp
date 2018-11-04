@@ -85,7 +85,7 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 
 #endif
 
-	return  csf_success;
+	return  csf_succeed;
 }
 
 
@@ -106,7 +106,7 @@ csf::core::base::csf_int32 csf_app::start(const csf_configure_manager* conf_mg) 
 		return csf_failure;
 	}
 
-	return  csf_success;
+	return  csf_succeed;
 }
 
 
@@ -117,7 +117,7 @@ csf::core::base::csf_int32 csf_app::start(const csf_configure_manager* conf_mg) 
 */
 csf::core::base::csf_int32 csf_app::stop(const csf_configure_manager* conf_mg) {
 
-	return  csf_success;
+	return  csf_succeed;
 }
 
 

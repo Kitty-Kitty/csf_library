@@ -40,6 +40,25 @@ namespace csf
 				 */
 				class csf_connect_error : public csf::core::module::csf_error
 				{
+				public:
+
+					/**
+					* 表示连接的错误编码
+					* @author f
+					* @version 1.0
+					* @updated 04-11月-2018 20:11:47
+					*/
+					typedef enum csf_connect_code_enum
+					{
+						/**
+						* 表示未知的错误编码
+						*/
+						csf_connect_code_none = 0x00000000,
+						/**
+						* 表示超时错误编码
+						*/
+						csf_connect_code_timeout = 0x00000010
+					} csf_connect_code;
 
 				public:
 					inline explicit csf_connect_error() {

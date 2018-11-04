@@ -68,7 +68,7 @@ namespace csf
 
 					//将csf_configure添加到列表中
 					m_configures[((csf_configure&)configure).get_configure_file().get_name()] = configure;
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				 * 添加一个csf_configure_file到configure_manager中。由于configure_manager不保存configure_file未解
@@ -110,7 +110,7 @@ namespace csf
 
 					//表示根据configure名称删除配置文件信息
 					get_configures().erase(((csf_configure_file&)configure_file).get_name());
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示根据items属性路径查找一个element。

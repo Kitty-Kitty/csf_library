@@ -298,7 +298,7 @@ csf_int32 csf_ip_connect_factory::start_thread_pool() {
 			, (csf_int32)get_idle_interval());
 	}
 
-	return csf_success;
+	return csf_succeed;
 }
 
 

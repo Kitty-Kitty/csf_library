@@ -56,9 +56,28 @@ namespace csf
 				* @param factory    表示创建网络套接字的工厂类对象
 				*/
 				inline explicit csf_tcp_connect(csf_ip_connect_factory& factory)
-					: csf_stream_connect(factory)
+					: csf_stream_connect(factory, csf_connect::csf_connect_type_tcp)
 					, m_socket(factory.get_io_service()) {
 
+				}
+				/**
+				* 根据csf_ip_connect_factory创建一个网络套接字
+				*
+				* @param factory    表示创建网络套接字的工厂类对象
+				*/
+				inline explicit csf_tcp_connect(csf_ip_connect_factory* factory)
+					: csf_stream_connect(*factory, csf_connect::csf_connect_type_tcp)
+					, m_socket(factory->get_io_service()) {
+
+				}
+				/**
+				* 根据csf_tco_connect创建一个网络套接字
+				*
+				* @param connect    表示创建已有的网络套接字对象
+				*/
+				inline explicit csf_tcp_connect(csf_tcp_connect* connect)
+					: csf_stream_connect(*((csf_ip_connect_factory*)(connect->get_factory())), csf_connect::csf_connect_type_tcp)
+					, m_socket(((csf_ip_connect_factory*)(connect->get_factory()))->get_io_service()) {
 				}
 				virtual ~csf_tcp_connect();
 

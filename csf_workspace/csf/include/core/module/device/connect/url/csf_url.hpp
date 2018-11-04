@@ -118,7 +118,7 @@ namespace csf
 
 						m_url = new_value;
 
-						return csf_success;
+						return csf_succeed;
 					}
 					/**
 					 * 表示url的完整字符串数据
@@ -129,7 +129,7 @@ namespace csf
 
 						m_url = new_value;
 
-						return csf_success;
+						return csf_succeed;
 					}
 					/**
 					* 表示解析地址函数

@@ -128,7 +128,7 @@ namespace csf
 
 					m_chain.push_back(new csf_buffer(buffer));
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示从chain中删除一个csf_buffer。
@@ -161,7 +161,7 @@ namespace csf
 					for (tmp_iter = m_chain.begin(); tmp_iter != m_chain.end(); tmp_iter++) {
 						if (*(*tmp_iter) == buffer) {
 							m_chain.erase(tmp_iter);
-							tmp_int_ret = csf_success;
+							tmp_int_ret = csf_succeed;
 						}
 					}
 

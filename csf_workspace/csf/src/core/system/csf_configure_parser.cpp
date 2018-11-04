@@ -72,7 +72,7 @@ csf_int32 csf_configure_parser::parse(csf_element& element, const csf_configure_
 		break;
 	}
 
-	return csf_success;
+	return csf_succeed;
 }
 
 
@@ -205,5 +205,5 @@ csf_int32 csf_configure_parser::parse(csf_element& element, CMarkup& markup) {
 		}
 	}
 
-	return csf_success;
+	return csf_succeed;
 }

@@ -108,7 +108,7 @@ namespace csf
 				 * @param configure    表示需要保存的配置信息
 				 */
 				inline csf_int32 save(const csf_configure& configure) {
-					return csf_success;
+					return csf_succeed;
 				}
 #endif
 				/**

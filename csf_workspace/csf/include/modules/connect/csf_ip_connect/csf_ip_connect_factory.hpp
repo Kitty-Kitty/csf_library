@@ -21,10 +21,10 @@
 #if !defined(CSF_IP_CONNNECT_FACTORY_H_INCLUDED_)
 #define CSF_IP_CONNNECT_FACTORY_H_INCLUDED_
 
+#include "csf_boost_asio.hpp"
 #include "csf_csfmap.hpp"
 #include "csf_configure_manager.hpp"
 #include "csf_connect_factory.hpp"
-#include "csf_boost_asio.hpp"
 #include "csf_thread_pool.hpp"
 
 using namespace csf::core::module::connect;
@@ -203,7 +203,7 @@ namespace csf
 
 					get_connect_collector().insert(connect_ptr.get(), connect_ptr);
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 主要功能是：表示往网络连接管理器中删除网络连接对象
@@ -219,7 +219,7 @@ namespace csf
 
 					get_connect_collector().erase(connect_ptr.get());
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 主要功能是：表示清除网络连接管理器中所有的网络连接对象
@@ -229,7 +229,7 @@ namespace csf
 
 					get_connect_collector().clear();
 
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				* 表示线程池

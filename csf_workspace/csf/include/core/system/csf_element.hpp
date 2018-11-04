@@ -74,7 +74,7 @@ namespace csf
 				inline virtual csf_int32 add(const csf_element& element) {
 
 					const_cast<csf_list<csf_element>&>(get_children()).push_back(element);
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				 * 表示数据对象节点数据内容
@@ -155,7 +155,7 @@ namespace csf
 
 					const_cast<csf_map<csf_string, csf_string>&>(get_attributes()).insert(csf_map<csf_string, csf_string>::value_type(name, val));
 					//m_attributes[name] = val;
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				 * 表示清空内容

@@ -115,7 +115,7 @@ namespace csf
 					}
 
 					csf_strcpy(m_descripion, new_value);
-					return csf_success;
+					return csf_succeed;
 				}
 				/**
 				 * 表示错误原因描述信息
