@@ -89,6 +89,7 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 	csf_connect_wrapper											tmp_wrapper(m_null_connect_ptr, tmp_timeout);
 	csf::core::module::connect::csf_connect_callback			tmp_callback = csf_nullptr;
 	csf_multimap<csf_uint64, csf_connect_wrapper>::iterator		tmp_iter;
+	csf_uint64													tmp_time = csf::core::utils::time::system_time::get_time();
 
 
 	//获取一个需要处理的connect_wrapper对象
@@ -108,7 +109,7 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 		if (0 == tmp_iter->second.get_timeout().get_time()) {
 
 			tmp_wrapper = tmp_iter->second;
-			tmp_wrapper.get_timeout().set_time(csf::core::utils::time::system_time::get_time());
+			tmp_wrapper.get_timeout().set_time(tmp_time);
 
 			get_connect_collector().erase(tmp_iter++);
 			get_connect_collector().insert(
@@ -119,10 +120,21 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 		}
 
 		//判断过期则对相应的连接对象进行处理
-		if (!tmp_iter->second.get_timeout().is_expired(csf::core::utils::time::system_time::get_time())) {
+		if (!tmp_iter->second.get_timeout().is_expired(tmp_time)) {
+
+			//如果当前队列的key值
+			if (tmp_iter->second.get_timeout().get_time() > tmp_time) {
+
+				tmp_wrapper = tmp_iter->second;
+
+				get_connect_collector().erase(tmp_iter++);
+				get_connect_collector().insert(
+					csf_multimap<csf_uint64, csf_connect_wrapper>::value_type(
+						tmp_wrapper.get_timeout().get_time(), tmp_wrapper));
+			}
 
 			csf_msleep((csf_uint32)get_idle_interval());
-
+			
 			return;
 		}
 		else {

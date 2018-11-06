@@ -78,7 +78,7 @@ namespace csf
 				 * @param buf    表示根据字符串创建buffer
 				 */
 				inline explicit csf_buffer(const csf_char* buf) 
-					: csf_buffer((const csf_uchar*) buf, csf_strlen(buf)) {
+					: csf_buffer((const csf_uchar*) buf, (csf_uint32)csf_strlen(buf)) {
 
 				}
 				/**
@@ -231,7 +231,7 @@ namespace csf
 				 */
 				inline csf_int32 cat(const csf_string& str) {
 
-					return cat((csf_uchar*)str.c_str(), str.length());
+					return cat((csf_uchar*)str.c_str(), (csf_uint32)str.length());
 				}
 				/**
 				 * 表示将一个char*字符串插入到buffer中。 返回：>=0表示实际添加的字符数量；<0表示错误码；
@@ -240,7 +240,7 @@ namespace csf
 				 */
 				inline csf_int32 cat(const csf_char* buf) {
 
-					return cat((csf_uchar*)buf, csf_strlen(buf));
+					return cat((csf_uchar*)buf, (csf_uint32)csf_strlen(buf));
 				}
 				/**
 				* 将内存数据添加到buffer中。 返回：>=0表示实际添加的字符数量；<0表示错误码；

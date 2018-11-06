@@ -34,9 +34,13 @@ namespace csf
 			namespace connect
 			{
 				/************************************************************************/
-				/* 表示默认的休闲间隔时间，和处理精度，单位：毫秒（ms）。默认为：1000ms					*/
+				/* 表示默认的休闲间隔时间，和处理精度，单位：毫秒（ms）。默认为：400ms		*/
 				/************************************************************************/
-				#define csf_connect_timeout_process_idle_interval_ms		1000		//表示默认的休闲间隔时间，和处理精度，单位：毫秒（ms）。默认为：1000ms
+				#define csf_connect_timeout_process_idle_interval_ms		400		    //表示默认的休闲间隔时间，和处理精度，单位：毫秒（ms）。默认为：400ms
+				/************************************************************************/
+				/* 表示默认的处理线程数量。默认为：2		                                */
+				/************************************************************************/
+				#define csf_connect_timeout_thread_number					2		    //表示默认的处理线程数量。默认为：2
 				/**
 				 * 表示连接超时管理器，主要用于连接的超时处理。其中处理过程大致是：1、调用连接的超时信息，判断是是否超时；2、如果超时则调用超时处理函数处理，无超时处理函数则直接
 				 * 关闭删除连接；3、连续多次超时，则采用默认的超时处理；
@@ -167,7 +171,8 @@ namespace csf
 					*
 					* @param thread_number    表示超时连接处理器启动的线程数量
 					*/
-					virtual csf::core::base::csf_int32 start(const csf_uint32 thread_number) {
+					virtual csf::core::base::csf_int32 start(
+						const csf_uint32 thread_number = csf_connect_timeout_thread_number) {
 
 						return get_thread_pool().start(thread_number
 							, csf_bind(&csf_connect_timeout_manager::expired_process_cycle, this));
@@ -237,7 +242,9 @@ namespace csf
 					 */
 					inline csf_void set_idle_interval(csf_uint64 newVal) {
 
-						m_idle_interval = newVal;
+						if (0 != newVal) {
+							m_idle_interval = newVal;
+						}
 					}
 
 				private:

@@ -1,0 +1,324 @@
+﻿  prot_gmp_alloc.c
+  prot_gmp_chain.c
+  prot_gmp_core.c
+  prot_gmp_gmdt.c
+  prot_gmp_gmf.c
+..\..\prot_gmp\prot_gmp_gmf.c(697): warning C4244: '=': conversion from 'gm_std_double' to 'gm_std_float', possible loss of data
+..\..\prot_gmp\prot_gmp_gmf.c(719): warning C4244: '=': conversion from 'gm_std_double' to 'gm_std_ufloat', possible loss of data
+..\..\prot_gmp\prot_gmp_gmf.c(496): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(523): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(546): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(569): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(592): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(615): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(633): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(651): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(669): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(687): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(709): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(731): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(749): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(767): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(789): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(812): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(833): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(853): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(870): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(887): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(905): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(922): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(942): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(967): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(1108): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(1115): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+..\..\prot_gmp\prot_gmp_gmf.c(1125): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(1132): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+..\..\prot_gmp\prot_gmp_gmf.c(1919): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+..\..\prot_gmp\prot_gmp_gmf.c(1923): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+..\..\prot_gmp\prot_gmp_gmf.c(1965): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+..\..\prot_gmp\prot_gmp_gmf.c(3404): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(3404): warning C4047: '=': 'gmp_gmdu_t *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(3375): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(3564): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+..\..\prot_gmp\prot_gmp_gmf.c(4201): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+..\..\prot_gmp\prot_gmp_gmf.c(4228): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+..\..\prot_gmp\prot_gmp_gmf.c(4283): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+..\..\prot_gmp\prot_gmp_gmf.c(4525): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(4576): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4576): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4582): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4582): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4588): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4588): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4645): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4645): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4667): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4667): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4694): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4694): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4707): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4707): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4728): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4728): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4665): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(4692): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(4742): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4742): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4868): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4868): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4872): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4872): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4890): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4890): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4899): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4899): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4897): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(4923): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4923): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4932): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4932): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4930): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(4956): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4956): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4965): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4965): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4963): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(4990): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4990): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4999): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(4999): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(4997): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5024): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5024): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5033): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5033): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5031): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5056): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5056): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5065): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5065): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5063): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5089): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5089): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5098): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5098): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5096): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5123): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5123): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5132): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5132): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5130): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5157): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5157): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5166): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5166): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5164): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5191): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5191): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5200): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5200): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5198): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5225): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5225): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5233): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5233): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5232): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5257): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5257): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5266): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5266): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5264): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5291): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5291): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5300): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5300): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5298): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5324): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5324): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5328): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5328): warning C4047: '=': 'gm_std_void *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5348): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5348): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5357): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5357): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5365): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5365): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5355): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5392): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5392): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5401): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5401): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5409): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5409): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5399): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5448): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5448): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5457): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5457): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5465): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5465): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5455): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5501): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5501): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5510): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5510): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5521): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5521): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5508): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5542): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5542): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5550): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5550): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5561): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5561): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5549): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5583): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5583): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5591): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5591): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5602): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5602): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5590): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5627): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5627): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5635): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5635): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5646): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5646): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5634): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5667): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5667): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5675): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5675): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5674): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+..\..\prot_gmp\prot_gmp_gmf.c(5702): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5702): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5710): error C2065: 'gmp_std_null': undeclared identifier
+..\..\prot_gmp\prot_gmp_gmf.c(5710): warning C4047: 'return': 'gm_std_uchar *' differs in levels of indirection from 'int'
+..\..\prot_gmp\prot_gmp_gmf.c(5709): error C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+  prot_gmp_gmph.c
+  prot_gmp_palloc.c
+  prot_gmp_print.c
+..\..\prot_gmp\prot_gmp_print.c(158): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+..\..\prot_gmp\prot_gmp_print.c(262): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+..\..\prot_gmp\prot_gmp_print.c(284): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(290): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(433): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(444): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(456): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(468): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(480): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(492): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(504): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(518): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(532): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(547): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(560): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(573): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(588): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(602): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(616): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(629): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(642): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(656): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(672): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(686): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(701): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(717): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(729): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\..\prot_gmp\prot_gmp_print.c(839): warning C4476: 'printf' : unknown type field character '6' in format specifier
+..\..\prot_gmp\prot_gmp_print.c(839): warning C4474: 'printf' : too many arguments passed for format string
+  ..\..\prot_gmp\prot_gmp_print.c(839): note: placeholders and their parameters expect 1 variadic arguments, but 2 were provided
+..\..\prot_gmp\prot_gmp_print.c(855): warning C4476: 'printf' : unknown type field character '6' in format specifier
+..\..\prot_gmp\prot_gmp_print.c(855): warning C4474: 'printf' : too many arguments passed for format string
+  ..\..\prot_gmp\prot_gmp_print.c(855): note: placeholders and their parameters expect 1 variadic arguments, but 2 were provided
+..\..\prot_gmp\prot_gmp_print.c(1095): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+  prot_gmp_std.c
+  prot_gmp_string.c

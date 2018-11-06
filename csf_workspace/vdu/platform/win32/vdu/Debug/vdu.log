@@ -1,0 +1,19 @@
+﻿  vdu_coordinate.cpp
+  Generating Code...
+  Compiling...
+  vdu_qt_panel.cpp
+  vdu_qt_canvas.cpp
+  cp_vdu_api.cpp
+  vdu_vm.cpp
+  vdu_panel_manager.cpp
+  vdu_panel.cpp
+  vdu_canvas.cpp
+  vdu_box.cpp
+  vdu_svg_convert.cpp
+  vdu_shape_svg.cpp
+  vdu_shape_convert.cpp
+  vdu_shape.cpp
+  vdu_rect.cpp
+  Generating Code...
+  vdu.vcxproj -> D:\project_work\csf_library\csf_workspace\csf\platform\win32\Debug\vdu.dll
+  vdu.vcxproj -> D:\project_work\csf_library\csf_workspace\csf\platform\win32\Debug\vdu.pdb (Partial PDB)

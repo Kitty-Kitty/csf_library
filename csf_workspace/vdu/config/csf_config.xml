@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--表示系统主配置信息-->
+<configures>
+  <!--表示配置文件列表-->
+  <files>
+    <file name="log" path="config\csf_log.xml" format="xml"/>
+    <file name="module" path="config\csf_module.xml" format="xml"/>
+    <file name="system" path="config\csf_system.xml" format="xml"/>
+    <file name="app" path="config\csf_app.xml" format="xml"/>
+  </files>
+</configures>

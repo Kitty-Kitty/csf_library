@@ -58,7 +58,7 @@ csf_int32 csf_connect_factory::del(csf_element& element, csf_device_operation_ca
  */
 csf::core::base::csf_int32 csf_connect_factory::init(const csf_configure_manager * conf_mg) {
 
-	return 0;
+	return get_timeout_manager().init();
 }
 
 
@@ -81,7 +81,7 @@ csf_int32 csf_connect_factory::ctrl(csf_element& element, csf_device_operation_c
  */
 csf::core::base::csf_int32 csf_connect_factory::start(const csf_configure_manager * conf_mg) {
 
-	return 0;
+	return get_timeout_manager().start();
 }
 
 

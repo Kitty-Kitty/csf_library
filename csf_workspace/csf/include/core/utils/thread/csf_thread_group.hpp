@@ -70,7 +70,7 @@ namespace csf
 
 						csf_shared_lock<decltype(m_mutex)> tmp_lock(m_mutex);
 
-						return get_threads().size();
+						return (csf_uint32)get_threads().size();
 					}
 					/**
 					* 主要功能是：当前线程是否在线程组中。

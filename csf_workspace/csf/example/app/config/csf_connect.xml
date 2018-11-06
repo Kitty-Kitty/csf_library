@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<connect_configure>
+  <!--表示网络连接工厂对象列表-->
+  <connect_factory_manager>
+    <connect_factory>
+      <!--表示连接工厂对象的名称-->
+      <name>master_connect_factory</name>
+      <!--***该部分描述模块配置信息，是必须配置的数据内容***-->
+      <module>
+        <!--***表示device对应的模块名称信息，该需要从csf_module.xml中查找device_modules节点内容***-->
+        <name>csf_connection</name>
+        <!--***表示该设备模块的唯一标识字符串，该字符串长度应小于等于64字节***-->
+        <mid>02000000-0000001</mid>
+        <!--表示该模块的配置信息，主要由模块的configure接口处理。该模块的配置项内容由模对应的模块确定-->
+        <configure>
+          <!--[选配]表示连接工厂所需要创建的线程数量，数值默认为：2-->
+          <thread_number>3</thread_number>
+          <!--[选配]表示系统的空休眠等待间隔时间，单位：毫秒（ms）.数值默认为：500ms-->
+          <idle_interval>500ms</idle_interval>
+        </configure>
+      </module>
+
+      <!--表示需要监听的连接列表-->
+      <listen_list>
+        <listen>
+          <!--表示连接对象的名称-->
+          <name>tcp_listen</name>
+          <!--表示需要监听的地址信息-->
+          <tcp>192.168.1.6:8080</tcp>
+          <!--表示打开监听句柄成功后回调的句柄名称-->
+          <handle>tcp_handle</handle>
+        </listen>
+        <listen>
+          <name>udp_listen</name>
+          <udp>192.168.1.6:8081</udp>
+          <handle>udp_handle</handle>
+        </listen>
+      </listen_list>
+    </connect_factory>
+  </connect_factory_manager>
+</connect_configure>

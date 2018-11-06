@@ -1,0 +1,6 @@
+﻿  gmf_parser.vcxproj -> E:\project_work\cp_player\third-party\src\gmf_parser\build\gmf_parser\..\..\build_lib\vs2013\lib\gmf_parser.lib
+  子目录或文件 E:\project_work\cp_player\platform\win32\\..\..\third-party\lib\Win32_x86\v140\Debug\gmf_parser\lib 已经存在。
+  E:\project_work\cp_player\third-party\src\gmf_parser\build\gmf_parser\..\..\build_lib\vs2013\lib\gmf_parser.lib
+  E:\project_work\cp_player\third-party\src\gmf_parser\build\gmf_parser\..\..\build_lib\vs2013\lib\gmf_parser.pdb
+  已复制         2 个文件。
+  "copy third_party[ gmf_parser : gmf_parser.lib ] to [ E:\project_work\cp_player\platform\win32\\..\..\third-party\lib\Win32_x86\v140\Debug\gmf_parser\lib ] successed"

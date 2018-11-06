@@ -20,9 +20,14 @@
 
 #include "time_maker.hpp"
 
-using csf::core::utils::time_maker;
+using csf::core::utils::time::time_maker;
 
 
+/**
+* 初始化time_maker的内部释放对象指针为空
+*/
+time_maker* time_maker::m_instance = csf_nullptr;
+csf::core::utils::thread::csf_shared_mutex time_maker::m_mutex;
 
 
 /**
