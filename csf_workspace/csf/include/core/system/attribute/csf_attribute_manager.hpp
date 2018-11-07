@@ -154,7 +154,8 @@ namespace csf
 								, "add name[ \"%s\" ] %s failed. reason: attribute existed!"
 								, name
 								, attribute.to_string().c_str());
-							return csf_false;
+
+							return attribute.exception_run();
 						}
 
 						//如果数值为空，则需要重新获取属性数值
@@ -164,7 +165,8 @@ namespace csf
 									, "add name[ \"%s\" ] %s failed. reason: configure manager is null!"
 									, name
 									, attribute.to_string().c_str());
-								return csf_false;
+								
+								return attribute.exception_run();
 							}
 
 							if (!attribute.process(*get_configure_manager(), name)) {
@@ -172,7 +174,8 @@ namespace csf
 									, "add name[ \"%s\" ] %s failed. reason: attribute process failed!"
 									, name
 									, attribute.to_string().c_str());
-								return csf_false;
+
+								return attribute.exception_run();
 							}
 						}
 
@@ -205,9 +208,9 @@ namespace csf
 					* @param name    表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复。
 					* @param attribute    表示添加的属性对象
 					*/
-					virtual csf_bool add(const csf_string& name, csf_attribute& attribute) {
-						return add(name.c_str(), attribute);
-					}
+ 					virtual csf_bool add(const csf_string& name, csf_attribute& attribute) {
+ 						return add(name.c_str(), attribute);
+ 					}
 					/**
 					* 函数功能为：向attribute_manager中添加一个属性。
 					* 注意：表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复，否则操作失败。
@@ -216,9 +219,9 @@ namespace csf
 					* @param name    表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复。
 					* @param attribute    表示添加的属性对象
 					*/
-					virtual csf_bool add(const csf_char* name, csf_attribute& attribute) {
-						return add<csf_attribute>(name, attribute);
-					}
+ 					virtual csf_bool add(const csf_char* name, csf_attribute& attribute) {
+ 						return add<csf_attribute>(name, attribute);
+ 					}
 					/**
 					 * 函数功能为：根据名称从attribute_manager中删除一个属性。
 					 * 返回：true表示删除成功（不存在该名称属性默认返回成功）；false表示失败。

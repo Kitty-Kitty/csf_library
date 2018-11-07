@@ -162,7 +162,7 @@ namespace csf
 						return configure(((csf_configure_manager *)conf_mg)->find_element(items));
 					}
 
-					return csf_failure;
+					return csf_succeed;
 				}
 				/**
 				/**

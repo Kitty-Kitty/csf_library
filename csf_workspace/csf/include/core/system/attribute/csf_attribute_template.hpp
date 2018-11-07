@@ -232,7 +232,7 @@ namespace csf
 					* 该函数实现异常运行，即属性异常出现时，调用异常对象实现异常处理。
 					* 返回：true表示异常处理对象处理成功；false表示异常处理对象处理失败。
 					*/
-					inline csf_bool exception_run() {
+					inline virtual csf_bool exception_run() {
 
 						return get_exception().run(*this);
 					}

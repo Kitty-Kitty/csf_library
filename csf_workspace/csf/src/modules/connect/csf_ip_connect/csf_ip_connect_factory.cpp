@@ -76,7 +76,11 @@ csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 		, csf_attribute_int(std::list<csf_string>{ "thread_number" }
 		, csf_attribute_boundary("[2, n)")
 		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_thread_number)));
-
+	//表示连接超时管理器需要创建的线程数量，数值默认为：2
+	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(timeout_manager_thread_number)
+		, csf_attribute_int(std::list<csf_string>{ "timeout_manager_thread_number" }
+		, csf_attribute_boundary("[1, n)")
+		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_thread_number)));
 	//表示定时器时间间隔，数值默认为：500ms
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(idle_interval)
 		, csf_attribute_time(std::list<csf_string>{ "idle_interval" }
@@ -138,10 +142,18 @@ csf_int32 csf_ip_connect_factory::del(csf_element& element, csf_device_operation
  */
 csf::core::base::csf_int32 csf_ip_connect_factory::init(const csf_configure_manager * conf_mg) {
 
-	//更新配置项内容
-	csf_device_base::configure(conf_mg, std::list<csf_string>{ CSF_CONNECT_VAR });
+	csf_int32				tmp_int_ret = csf_failure;
 
-	return 0;
+
+	//更新配置项内容
+	tmp_int_ret = csf_device_base::configure(conf_mg, std::list<csf_string>{ CSF_CONNECT_VAR });
+	if (csf_failure == tmp_int_ret) {
+		csf_log_ex(error, csf_log_code_error
+			, "configure failed!");
+		return csf_failure;
+	}
+
+	return csf_connect_factory::init(conf_mg);
 }
 
 
@@ -192,19 +204,31 @@ csf::core::base::csf_int32 csf_ip_connect_factory::start(const csf_configure_man
 
 
 	//更新配置项内容
-	csf_device_base::configure(conf_mg, std::list<csf_string>{ CSF_CONNECT_VAR });
+	tmp_int_ret = csf_device_base::configure(conf_mg, std::list<csf_string>{ CSF_CONNECT_VAR });
+	if (csf_failure == tmp_int_ret) {
+		csf_log_ex(error, csf_log_code_error
+			, "configure failed!");
+		return csf_failure;
+	}
+
+	//启动超时管理器
+	tmp_int_ret = csf_connect_factory::get_timeout_manager().start(
+		(csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(timeout_manager_thread_number)));
+	if (csf_failure == tmp_int_ret) {
+		csf_log_ex(error, csf_log_code_error
+			, "start timeout manager failed!");
+		return csf_failure;
+	}
 
 	//启动处理线程池
 	tmp_int_ret = start_thread_pool();
 	if (csf_failure == tmp_int_ret) {
-
 		csf_log_ex(error, csf_log_code_error
 			, "start thread pool failed!");
-
 		return csf_failure;
 	}
 
-	return 0;
+	return csf_succeed;
 }
 
 
