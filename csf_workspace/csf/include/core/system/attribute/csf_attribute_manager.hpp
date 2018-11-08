@@ -109,7 +109,6 @@ namespace csf
 						, m_root_items(root_items) {
 
 					}
-
 					/**
 					 * 函数功能为：向attribute_manager中添加一个属性。
 					 * 注意：表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复，否则操作失败。
@@ -138,9 +137,6 @@ namespace csf
 					template <class AttributeType>
 					csf_bool add(const csf_char* name, AttributeType& attribute) {
 
-						AttributeType			*tmp_new = csf_nullptr;
-
-
 						//核验名称数据的合法性
 						if (!name || csf_strlen(name) <= 0 || attribute.is_null()) {
 							csf_log_ex(warning, csf_log_code_warning
@@ -155,7 +151,7 @@ namespace csf
 								, name
 								, attribute.to_string().c_str());
 
-							return attribute.exception_run();
+							return exception_attribute(name, attribute);
 						}
 
 						//如果数值为空，则需要重新获取属性数值
@@ -166,7 +162,7 @@ namespace csf
 									, name
 									, attribute.to_string().c_str());
 								
-								return attribute.exception_run();
+								return exception_attribute(name, attribute);
 							}
 
 							if (!attribute.process(*get_configure_manager(), name)) {
@@ -175,31 +171,13 @@ namespace csf
 									, name
 									, attribute.to_string().c_str());
 
-								return attribute.exception_run();
+								return exception_attribute(name, attribute);
 							}
 						}
 
 						//创建一个新能对象，并将属性信息更新到属性列表中
-						tmp_new = new AttributeType(attribute);
-						if (!tmp_new) {
-							csf_log_ex(warning, csf_log_code_warning
-								, "add name[ \"%s\" ] %s failed. reason: new a instance failed!"
-								, name
-								, attribute.to_string().c_str());
-							return csf_false;
-						}
-						else {
-							get_attributes().insert(csf_unordered_map<csf_string, csf_attribute*>::value_type(name, tmp_new));
-
-							csf_log_ex(notice, csf_log_code_notice
-								, "add name[ \"%s\" ] %s succeed."
-								, name
-								, attribute.to_string().c_str());
-						}
-
-						return csf_true;
+						return insert_attribute(name, attribute);
 					}
-
 					/**
 					* 函数功能为：向attribute_manager中添加一个属性。
 					* 注意：表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复，否则操作失败。
@@ -360,8 +338,9 @@ namespace csf
 					* @param name    表示属性名称
 					*/
 					template <class AttributeType>
-					inline auto get_value(const csf_string& name) {
-						return get_value<AttributeType, ValueType>(name.c_str());
+					inline auto get_value(const csf_string& name) -> decltype(std::declval<AttributeType>().get_value()) {
+						return get_value<AttributeType
+							, decltype(std::declval<AttributeType>().get_value())>(name.c_str());
 					}
 					/**
 					* 函数功能为：根据名称从attribute_manager获取一个属性数值。
@@ -373,7 +352,7 @@ namespace csf
 					* @param name    表示属性名称
 					*/
 					template <class AttributeType>
-					inline auto get_value(const csf_char* name) {
+					inline auto get_value(const csf_char* name) -> decltype(std::declval<AttributeType>().get_value()) {
 
 						csf_attribute			&attr = (csf_attribute &)find(name);
 
@@ -398,43 +377,9 @@ namespace csf
 					* @param attribute    表示属性对象
 					*/
 					template <class AttributeType>
-					inline auto get_value(csf_attribute& attribute) {
-						return ((AttributeType&)attribute).get_value();
-					}
-					/**
-					* 函数功能为：根据名称从attribute_manager获取一个属性数值保存在val引用中。
-					*
-					* 返回：true表示获取成功；false表示获取失败，其中不存在该数值也返回失败。
-					*
-					* @param val    表示获取到的属性数值保存在val引用中
-					* @param name    表示属性名称
-					*/
-					template <class AttributeType, typename ValueType>
-					inline csf_bool get_value(ValueType& val, const csf_string& name) {
-
-						return get_value<AttributeType, ValueType>(val, name.c_str());
-					}
-					/**
-					* 函数功能为：根据名称从attribute_manager获取一个属性数值保存在val引用中。
-					*
-					* 返回：true表示获取成功；false表示获取失败，其中不存在该数值也返回失败。
-					*
-					* @param val    表示获取到的属性数值保存在val引用中
-					* @param name    表示属性名称
-					*/
-					template <class AttributeType, typename ValueType>
-					inline csf_bool get_value(ValueType& val, const csf_char* name) {
-
-						csf_attribute			&attr = find(name);
-
-
-						if (attr.is_null()) {
-							return csf_false;
-						}
-						else {
-							val = dynamic_cast<AttributeType&>(attr).get_value();
-						}
-						return csf_true;
+					inline auto get_value(csf_attribute& attribute) -> decltype(std::declval<AttributeType>().get_value()) {
+						//return ((AttributeType&)attribute).get_value();
+						return dynamic_cast<AttributeType&>(attribute).get_value();
 					}
 					/**
 					* 函数功能为：根据名称从attribute_manager中查询一个属性并返回属性内容。
@@ -569,6 +514,58 @@ namespace csf
 					inline void set_attributes(csf_unordered_map<csf_string, csf_attribute*>& new_value) {
 
 						m_attributes = new_value;
+					}
+					/**
+					* 函数功能为：向attribute_manager中添加一个属性。
+					* 注意：表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复，否则操作失败。
+					* 返回：true表示成功；false表示失败。
+					*
+					* @param name    表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复。
+					* @param attribute    表示添加的属性对象
+					*/
+					template <class AttributeType>
+					inline csf_bool exception_attribute(const csf_char* name, AttributeType& attribute) {
+
+						if (attribute.exception_run()) {
+							return insert_attribute(name, attribute);
+						}
+
+						return csf_false;
+					}
+
+
+					/**
+					* 函数功能为：向attribute_manager中添加一个属性。
+					* 注意：表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复，否则操作失败。
+					* 返回：true表示成功；false表示失败。
+					*
+					* @param name    表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复。
+					* @param attribute    表示添加的属性对象
+					*/
+					template <class AttributeType>
+					csf_bool csf_attribute_manager::insert_attribute(const csf_char* name, AttributeType& attribute) {
+
+						AttributeType			*tmp_new = csf_nullptr;
+
+
+						//创建一个新能对象，并将属性信息更新到属性列表中
+						tmp_new = new AttributeType(attribute);
+						if (!tmp_new) {
+							csf_log_ex(warning, csf_log_code_warning
+								, "add name[ \"%s\" ] %s failed. reason: new a instance failed!"
+								, name
+								, attribute.to_string().c_str());
+							return csf_false;
+						}
+						else {
+							get_attributes().insert(csf_unordered_map<csf_string, csf_attribute*>::value_type(name, tmp_new));
+
+							csf_log_ex(notice, csf_log_code_notice
+								, "add name[ \"%s\" ] %s succeed."
+								, name
+								, attribute.to_string().c_str());
+						}
+						return csf_true;
 					}
 				};
 			}

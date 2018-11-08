@@ -267,12 +267,7 @@ namespace csf
 							return csf_false;
 						}
 
-						if (csf_false == process_attribute(configure_manager, alias)) {
-							return exception_run();
-						}
-						else {
-							return csf_true;
-						}
+						return process_attribute(configure_manager, alias);
 					}
 					/**
 					* 表示处理csf_attribute属性操作。主要为满足不同子类的多态现实。
