@@ -91,22 +91,6 @@ namespace csf
 				 * 返回：0表示成功；非0表示失败。
 				 */
 				virtual csf_int32 get_option();
-				/**
-				 * 表示设置读超时时间.
-				 * 返回：0表示成功；非0表示失败；
-				 * 
-				 * @param timeout_ms
-				 * @param callback    表示超时回调函数。
-				 */
-				virtual csf_int32 set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback = csf_nullptr);
-				/**
-				 * 表示设置写超时时间。
-				 * 返回：0表示成功；非0表示失败；
-				 * 
-				 * @param timeout_ms
-				 * @param callback    表示超时回调函数。
-				 */
-				virtual csf_int32 set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback = csf_nullptr);
 
 			};
 

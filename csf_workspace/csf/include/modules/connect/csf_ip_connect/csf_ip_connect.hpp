@@ -25,7 +25,6 @@
 #include "csf_connect.hpp"
 #include "csf_ip_connect_factory.hpp"
 #include "csf_ip_connect_error.hpp"
-#include "csf_ip_connect_timeout.hpp"
 
 using namespace csf::core::module::connect;
 
@@ -51,48 +50,10 @@ namespace csf
 				* @param factory    表示创建网络套接字的工厂类对象
 				*/
 				inline explicit csf_ip_connect(csf_ip_connect_factory& factory, csf_connect_type type)
-					: csf_connect(factory, type)
-					, m_read_timeout(factory.get_io_service())
-					, m_write_timeout(factory.get_io_service()) {
+					: csf_connect(factory, type) {
 
 				}
 				virtual ~csf_ip_connect();
-				/**
-				* 主要功能是：设置读超时时间.
-				* 返回：0表示成功；非0表示失败；
-				*
-				* @param timeout_ms    表示超时的时间数值，单位：毫秒（ms）
-				* @param callback    表示超时回调函数。
-				*/
-				inline virtual csf_int32 set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback = csf_nullptr) {
-
-					return 0;
-				}
-				/**
-				* 主要功能是：设置写超时时间。
-				* 返回：0表示成功；非0表示失败；
-				*
-				* @param timeout_ms    表示超时的时间数值，单位：毫秒（ms）
-				* @param callback    表示超时回调函数。
-				*/
-				inline virtual csf_int32 set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback = csf_nullptr) {
-
-					return 0;
-				}
-				/**
-				* 表示写超时描述对象。
-				*/
-				inline csf::modules::connect::csf_ip_connect_timeout& get_write_timeout() {
-
-					return m_write_timeout;
-				}
-				/**
-				* 表示读超时超时描述对象。
-				*/
-				inline csf::modules::connect::csf_ip_connect_timeout& get_read_timeout() {
-
-					return m_read_timeout;
-				}
 				/**
 				* 表示远程的主机地址
 				*
@@ -221,14 +182,6 @@ namespace csf
 					return csf_true;
 				}
 			private:
-				/**
-				* 表示读超时超时描述对象。
-				*/
-				csf::modules::connect::csf_ip_connect_timeout m_read_timeout;
-				/**
-				* 表示写超时描述对象。
-				*/
-				csf::modules::connect::csf_ip_connect_timeout m_write_timeout;
 				/**
 				* 表示远程网络地址
 				*/

@@ -408,6 +408,8 @@ namespace csf
 				csf_void accept_handle(csf_tcp_connect_ptr connect_ptr
 					, const csf_connect_callback callback
 					, boost::system::error_code ec);
+
+				csf_bool read_handle(csf_tcp_connect_ptr connect_ptr, const boost::system::error_code ec, csf_uint32 str_len);
 			private:
 				/**
 				* 表示网络连接套接字

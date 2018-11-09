@@ -18,6 +18,7 @@
 *
 *******************************************************************************/
 
+#include "system_time.hpp"
 #include "csf_connect.hpp"
 #include "csf_connect_factory.hpp"
 
@@ -150,8 +151,10 @@ csf_int32 csf_connect::get_option() {
 */
 csf_int32 csf_connect::set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback) {
 
-	get_read_timeout().set_time(timeout_ms);
+	get_read_timeout().set_time(csf::core::utils::time::system_time::get_time());
+	get_read_timeout().set_timeout(timeout_ms);
 	get_read_timeout().set_handle(callback);
+	get_factory()->get_timeout_manager().insert(get_read_timeout(), shared_from_this());
 
 	return csf_succeed;
 }
@@ -166,8 +169,10 @@ csf_int32 csf_connect::set_read_timeout(const csf_uint32 timeout_ms, const csf_c
 */
 csf_int32 csf_connect::set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback) {
 
-	get_write_timeout().set_time(timeout_ms);
+	get_write_timeout().set_time(csf::core::utils::time::system_time::get_time());
+	get_write_timeout().set_timeout(timeout_ms);
 	get_write_timeout().set_handle(callback);
+	get_factory()->get_timeout_manager().insert(get_write_timeout(), shared_from_this());
 
 	return 0;
 }

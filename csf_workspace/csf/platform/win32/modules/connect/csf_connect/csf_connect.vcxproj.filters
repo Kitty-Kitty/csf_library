@@ -42,9 +42,6 @@
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_ip_connect_factory.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_ip_connect_timeout.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_stream_connect.hpp">
       <Filter>include</Filter>
     </ClInclude>
@@ -75,9 +72,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_ip_connect_factory.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_ip_connect_timeout.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_stream_connect.cpp">

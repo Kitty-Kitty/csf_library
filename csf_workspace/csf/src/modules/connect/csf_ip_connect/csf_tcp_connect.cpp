@@ -59,7 +59,34 @@ csf_int32 csf_tcp_connect::open(const csf_url& url) {
 */
 csf_int32 csf_tcp_connect::close() {
 
-	return 0;
+	if (get_socket().is_open()) {
+
+		try {
+			int									tmp_ret_int = 0;
+			struct linger						tmp_linger = { 0, 0 };
+			boost::system::error_code			tmp_error_code;
+
+
+			tmp_ret_int = setsockopt(get_socket().native()
+				, SOL_SOCKET
+				, SO_LINGER
+				, (char*)(&tmp_linger)
+				, sizeof(struct linger));
+
+			get_socket().cancel();
+			get_socket().shutdown(boost::asio::socket_base::shutdown_both, tmp_error_code);
+			get_socket().close();
+		}
+		catch (boost::exception& e)	{
+			csf_log_ex(error, csf_log_code_error
+				, "socket[0x%x url:%s] close failed! reason:[%s -- %s]."
+				, this
+				, get_local_url().get_url().c_str()
+				, boost::current_exception_diagnostic_information().c_str()
+				, boost::diagnostic_information(e).c_str());
+		}
+	}
+	return csf_succeed;
 }
 
 
@@ -636,9 +663,6 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	, const csf_connect_callback callback
 	, boost::system::error_code ec) {
 
-	csf_tcp_connect		*tmp_connect = csf_nullptr;
-
-
 	if (ec)	{
 
 		csf_log_ex(error
@@ -650,66 +674,27 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 		return;
 	}
 
+	set_read_timeout(csf_connect_timeout_default_ms, csf_nullptr);
+
 	async_accept(callback);
+
+	static csf_uchar  len[10] = { 0, };
+	static boost::system::error_code tmp_error;
+	static csf_buffer			tmp_buffer;
+	static csf_connect_callback tmp_callback = csf_nullptr;
+	//get_socket().receive(boost::asio::buffer(len, sizeof(len)), 0, tmp_error);
+	get_socket().async_receive(boost::asio::buffer(len, sizeof(len)),
+		boost::bind(&csf_tcp_connect::read_handle,
+			this, connect_ptr, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
 
 	//如果有连接进入，则调用
 	if (csf_nullptr != callback) {
 		callback(connect_ptr, csf_connect_error());
 	}
-
-#if 0
-	if (connect_ptr->get_socket().is_open()) {
-		try	{
-			csf_ip_url	tmp_remote_url;
-			
-			
-			(tcp_socket->remote_endpoint().address().to_string(), (pc_int)(tcp_socket->remote_endpoint().port()));
-			pc_url	local_url(tcp_socket->local_endpoint().address().to_string(), (pc_int)(tcp_socket->local_endpoint().port()));
-			conn_socket_ptr->m_conn_set_local_addr_handle(conn_socket_ptr, local_url);
-			conn_socket_ptr->m_conn_set_remote_addr_handle(conn_socket_ptr, remote_url);
-			conn_socket_ptr->update_tcp_time_out();
-		}
-		catch (boost::exception& e)
-		{
-			write_log(PC_LOG_ERROR, PC_ERROR_MODULE_OPERATION,
-				"socket_manager accept_handle(). process remote_url or local_url error [%s -- %s].",
-				pc_cv_stoc(boost::current_exception_diagnostic_information()),
-				//boost::get_error_info<boost::errinfo_api_function>(e),
-				pc_cv_stoc(boost::diagnostic_information(e)));
-
-			m_conn_manager_error_handle(this, (pc_conn_ptr)conn_socket_ptr, (pc_void_p)&ec);
-
-			return;
-		}
-
-		//lock for insert m_conn_ptr_set
-		{
-			pc_scoped_lock lock(m_mutex);
-			m_conn_ptr_set.insert((pc_conn_ptr)conn_socket_ptr);
-		}
-	}
-	else
-	{
-		write_log(PC_LOG_ERROR, PC_ERROR, "tcp socket_manager not open.");
-		m_conn_manager_error_handle(this, (pc_conn_ptr)conn_socket_ptr, (pc_void_p)&ec);
-		return;
-	}
+}
 
 
-	if (conn_socket_ptr->m_read_temp_buf_p)
-	{
-		tcp_socket->async_receive(pc_buffer(conn_socket_ptr->m_read_temp_buf_p->m_pos, PC_DEFAULT_BUF_SIZE),
-			pc_bind(&pc_conn_socket_media_manager_class::read,
-				this, conn_socket_ptr, pc_placeholders::error, pc_placeholders::bytes_transferred));
+csf_bool csf_tcp_connect::read_handle(csf_tcp_connect_ptr connect_ptr, const boost::system::error_code ec, csf_uint32 str_len) {
 
-		//设置超时处理
-		conn_socket_ptr->m_conn_read_time_out_handle(
-			conn_socket_ptr, conn_socket_ptr->m_read_time_out, conn_socket_ptr->m_conn_read_time_out_cb_handle);
-	}
-	else
-	{
-		write_log(PC_LOG_ERROR, PC_ERROR, "socket_manager null m_read_temp_buf_p.");
-		m_conn_manager_error_handle(this, (pc_conn_ptr)conn_socket_ptr, (pc_void_p)&ec);
-	}
-#endif
+	return csf_true;
 }

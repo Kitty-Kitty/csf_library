@@ -259,7 +259,7 @@ namespace csf
 					/**
 					 * 表示创建connect的工厂类地址
 					 */
-					inline const csf_connect_factory* get_factory() {
+					inline csf_connect_factory* get_factory() {
 
 						return m_factory;
 					}
