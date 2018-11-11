@@ -574,6 +574,24 @@ namespace csf
 
 						m_read_timeout = newVal;
 					}
+					/**
+					* 主要功能是：更新异步写超时对象
+					* 返回：0表示成功；非0表示失败；
+					*/
+					inline virtual void flush_write_timeout();
+					/**
+					* 主要功能是：更新异步读超时对象
+					* 返回：0表示成功；非0表示失败；
+					*/
+					inline virtual void flush_read_timeout();
+					/**
+					* 主要功能是：连接超时处理函数句柄
+					* 返回：0表示成功；非0表示失败；
+					*
+					* @param connect_ptr    表示连接对象
+					* @param connect_error    表示连接错误信息
+					*/
+					csf::core::base::csf_int32 timeout_handle(csf_connect_ptr connect_ptr, csf_connect_error connect_error);
 				private:
 					/**
 					 * 表示连接的类型

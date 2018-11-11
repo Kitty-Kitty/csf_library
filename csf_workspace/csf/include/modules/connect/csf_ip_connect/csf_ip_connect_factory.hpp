@@ -22,7 +22,6 @@
 #define CSF_IP_CONNNECT_FACTORY_H_INCLUDED_
 
 #include "csf_boost_asio.hpp"
-#include "csf_csfmap.hpp"
 #include "csf_configure_manager.hpp"
 #include "csf_connect_factory.hpp"
 #include "csf_thread_pool.hpp"
@@ -250,13 +249,6 @@ namespace csf
 				csf_void run_io_service();
 			private:
 				/**
-				* 表示网络连接管理器
-				*/
-				inline csf_csfmap<csf_connect*, csf_connect_ptr>& get_connect_collector() {
-
-					return m_connect_collector;
-				}
-				/**
 				* 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
 				*/
 				inline csf_uint64 get_idle_interval() const {
@@ -272,10 +264,6 @@ namespace csf
 
 					m_idle_interval = newVal;
 				}
-				/**
-				* 表示网络连接管理器
-				*/
-				csf_csfmap<csf_connect*, csf_connect_ptr> m_connect_collector;
 				/**
 				* 表示boost的io_service对象
 				*/

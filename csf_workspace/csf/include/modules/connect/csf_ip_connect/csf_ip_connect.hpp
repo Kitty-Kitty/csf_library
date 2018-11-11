@@ -121,11 +121,12 @@ namespace csf
 				* @param callback    表示异常处理句柄信息
 				* @param error_code    表示异常信息内容
 				*/
-				inline csf_int32 async_callback(csf_connect_ptr connect_ptr
+				inline csf_int32 async_callback(csf_connect_ptr& connect_ptr
 					, const csf_connect_callback& callback
 					, csf_ip_connect_error& error_code) {
 
-					if (!connect_ptr) {
+					if (!connect_ptr 
+						|| csf_nullptr == callback) {
 						return csf_failure;
 					}
 					else {
@@ -142,7 +143,7 @@ namespace csf
 				* @param callback    表示异常处理句柄信息
 				* @param error_code    表示异常信息内容
 				*/
-				inline csf_int32 exception_callback(csf_connect_ptr connect_ptr
+				inline csf_int32 exception_callback(csf_connect_ptr& connect_ptr
 					, const csf_connect_callback& callback
 					, csf_ip_connect_error& error_code) {
 

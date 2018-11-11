@@ -55,6 +55,26 @@ namespace csf
 					set_error_code(boost_error);
 				}
 				/**
+				* 表示根据错误码（code）和错误描述（description）创建一个csf_error。
+				*
+				* @param code    表示错误码编码
+				* @param description    表示错误描述信息
+				*/
+				inline explicit csf_ip_connect_error(const csf_int32 code, const csf_string& description)
+					: csf_connect_error(code, description) {
+
+				}
+				/**
+				* 表示根据错误码（code）和错误描述（description）创建一个csf_error。
+				*
+				* @param code    表示错误码编码
+				* @param description    表示错误描述信息
+				*/
+				inline explicit csf_ip_connect_error(const csf_int32 code, const csf_char* description)
+					: csf_connect_error(code, description) {
+
+				}
+				/**
 				 * 
 				 * @param boost_error    表示boost error_code错误
 				 */

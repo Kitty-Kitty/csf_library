@@ -57,7 +57,11 @@ namespace csf
 						/**
 						* 表示超时错误编码
 						*/
-						csf_connect_code_timeout = 0x00000010
+						csf_connect_code_timeout = 0x00000010,
+						/**
+						* 表示打开监听地址错误编码
+						*/
+						csf_connect_code_listen = 0x00000020
 					} csf_connect_code;
 
 				public:

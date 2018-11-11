@@ -25,7 +25,7 @@
 #include "csf_thread.hpp"
 
 #ifdef WIN32
-#include <windows.h>
+#include <sysinfoapi.h>
 typedef void						csf_timezone;
 #else
 #include <sys/time.h>

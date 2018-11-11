@@ -22,6 +22,7 @@
 #define CSF_CONNECT_FACTORY_H_INCLUDED_
 
 //#include "csf_connect_factory_manager.hpp"
+#include "csf_csfmap.hpp"
 #include "csf_connect_factory_interface.hpp"
 #include "csf_connect_timeout_manager.hpp"
 #include "csf_device.hpp"
@@ -172,6 +173,37 @@ namespace csf
 
 						return m_timeout_manager;
 					}
+					/**
+					* 表示保存所有创建的连接对象
+					*/
+					inline csf_csfmap<csf_connect*, csf_connect_ptr>& get_connect_collector() {
+
+						return m_connect_collector;
+					}
+					/**
+					* 主要功能是：添加一个连接对象
+					* 返回：0表示成功；非0表示失败；
+					*
+					* @param connect_ptr    表示连接对象
+					*/
+					inline csf::core::base::csf_int32 insert(csf_connect_ptr& connect_ptr) {
+
+						get_connect_collector().insert(connect_ptr.get(), connect_ptr);
+
+						return csf_succeed;
+					}
+					/**
+					* 主要功能是：删除一个连接对象
+					* 返回：0表示成功；非0表示失败；
+					*
+					* @param connect_ptr    表示连接对象
+					*/
+					inline csf::core::base::csf_int32 remove(csf_connect_ptr& connect_ptr) {
+
+						get_connect_collector().remove(connect_ptr.get());
+
+						return csf_succeed;
+					}
 				private:
 					/**
 					 * 表示连接工厂管理器对象地址
@@ -181,6 +213,10 @@ namespace csf
 					* 表示连接超时管理器，主要用于连接的超时处理。
 					*/
 					csf::core::module::connect::csf_connect_timeout_manager m_timeout_manager;
+					/**
+					* 表示保存所有创建的连接对象
+					*/
+					csf_csfmap<csf_connect*, csf_connect_ptr> m_connect_collector;
 				};
 
 			}

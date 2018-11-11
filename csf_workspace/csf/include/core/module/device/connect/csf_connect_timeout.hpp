@@ -200,7 +200,7 @@ namespace csf
 					*/
 					inline csf_bool is_expired(const csf_uint64& time) const {
 
-						if (get_timeout() >= expired_time(time)) {
+						if (expired_time(time) >= get_timeout()) {
 
 							return csf_true;
 						}

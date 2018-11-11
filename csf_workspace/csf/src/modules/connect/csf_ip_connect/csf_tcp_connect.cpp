@@ -25,6 +25,7 @@ using csf::modules::connect::csf_tcp_connect;
 
 csf_tcp_connect::~csf_tcp_connect() {
 
+	int abc = 1;
 }
 
 
@@ -86,7 +87,8 @@ csf_int32 csf_tcp_connect::close() {
 				, boost::diagnostic_information(e).c_str());
 		}
 	}
-	return csf_succeed;
+
+	return csf_connect::close();
 }
 
 
@@ -141,6 +143,12 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 				, "listen[url:%s] failed! connect is listening."
 				, ip_url.get_url().c_str());
 
+			exception_callback(shared_from_this()
+				, callback
+				, csf_ip_connect_error(
+					csf_connect_error::csf_connect_code::csf_connect_code_listen
+					, "is listening"));
+
 			return csf_failure;
 		}
 
@@ -159,6 +167,12 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 			, ip_url.get_url().c_str()
 			, boost::current_exception_diagnostic_information().c_str()
 			, boost::diagnostic_information(e).c_str());
+
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(
+				csf_connect_error::csf_connect_code::csf_connect_code_listen
+				, boost::diagnostic_information(e)));
 
 		return csf_failure;
 	}
@@ -615,6 +629,7 @@ csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callb
 
 	csf_tcp_connect		*tmp_connect = csf_nullptr;
 
+
 	while (csf_true) {
 		try	{
 			//这里主要解决有些时候new失败的问题
@@ -639,13 +654,14 @@ csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callb
 		}
 	}
 
-	csf_tcp_connect_ptr connect_ptr(tmp_connect);
-
 	//为每个连接添加一个时间戳，主要为了方便超时、空连接等处理
-	//conn_socket_ptr->m_time = m_parking_p->m_current_millsec;
 	get_acceptor()->async_accept(
-		connect_ptr->get_socket()
-		, boost::bind(&csf_tcp_connect::accept_handle, this, connect_ptr, callback, _1));
+		tmp_connect->get_socket()
+		, boost::bind(&csf_tcp_connect::accept_handle
+			, this
+			, csf_tcp_connect_ptr(tmp_connect)
+			, callback
+			, _1));
 
 	return csf_succeed;
 }
@@ -673,28 +689,13 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 
 		return;
 	}
-
-	set_read_timeout(csf_connect_timeout_default_ms, csf_nullptr);
-
+	
+	//继续等待下一个tcp连接请求
 	async_accept(callback);
 
-	static csf_uchar  len[10] = { 0, };
-	static boost::system::error_code tmp_error;
-	static csf_buffer			tmp_buffer;
-	static csf_connect_callback tmp_callback = csf_nullptr;
-	//get_socket().receive(boost::asio::buffer(len, sizeof(len)), 0, tmp_error);
-	get_socket().async_receive(boost::asio::buffer(len, sizeof(len)),
-		boost::bind(&csf_tcp_connect::read_handle,
-			this, connect_ptr, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
+	//设置空连接超时处理。如果超过该时间，则表示空连接，需要关闭处理。
+	connect_ptr->set_read_timeout(csf_connect_timeout_default_ms, csf_nullptr);
 
-	//如果有连接进入，则调用
-	if (csf_nullptr != callback) {
-		callback(connect_ptr, csf_connect_error());
-	}
-}
-
-
-csf_bool csf_tcp_connect::read_handle(csf_tcp_connect_ptr connect_ptr, const boost::system::error_code ec, csf_uint32 str_len) {
-
-	return csf_true;
+	//调用回调函数通知接收数据等各种处理
+	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
 }

@@ -18,9 +18,9 @@
 *
 *******************************************************************************/
 
-#include "system_time.hpp"
 #include "csf_connect.hpp"
 #include "csf_connect_factory.hpp"
+#include "system_time.hpp"
 
 using namespace csf::core::module::connect;
 using csf::core::module::connect::csf_connect;
@@ -118,7 +118,11 @@ csf_int32 csf_connect::open(const csf_url& url) {
  */
 csf_int32 csf_connect::close() {
 
-	return 0;
+	//设置读写超时
+	get_read_timeout().set_expired();
+	get_write_timeout().set_expired();
+
+	return csf_succeed;
 }
 
 
@@ -153,7 +157,17 @@ csf_int32 csf_connect::set_read_timeout(const csf_uint32 timeout_ms, const csf_c
 
 	get_read_timeout().set_time(csf::core::utils::time::system_time::get_time());
 	get_read_timeout().set_timeout(timeout_ms);
-	get_read_timeout().set_handle(callback);
+	if (csf_nullptr == callback) {
+		get_read_timeout().set_handle(
+			csf_bind(&csf_connect::timeout_handle
+				, this
+				, std::placeholders::_1
+				, std::placeholders::_2));
+	}
+	else {
+		get_read_timeout().set_handle(callback);
+	}
+	
 	get_factory()->get_timeout_manager().insert(get_read_timeout(), shared_from_this());
 
 	return csf_succeed;
@@ -171,10 +185,37 @@ csf_int32 csf_connect::set_write_timeout(const csf_uint32 timeout_ms, const csf_
 
 	get_write_timeout().set_time(csf::core::utils::time::system_time::get_time());
 	get_write_timeout().set_timeout(timeout_ms);
-	get_write_timeout().set_handle(callback);
+	if (csf_nullptr == callback) {
+		get_write_timeout().set_handle(
+			csf_bind(&csf_connect::timeout_handle
+				, this
+				, std::placeholders::_1
+				, std::placeholders::_2));
+	}
+	else {
+		get_write_timeout().set_handle(callback);
+	}
 	get_factory()->get_timeout_manager().insert(get_write_timeout(), shared_from_this());
 
 	return 0;
+}
+
+
+/**
+* 主要功能是：更新异步写超时对象
+* 返回：0表示成功；非0表示失败；
+*/
+inline void csf_connect::flush_write_timeout() {
+	get_write_timeout().set_time(csf::core::utils::time::system_time::get_time());
+}
+
+
+/**
+* 主要功能是：更新异步读超时对象
+* 返回：0表示成功；非0表示失败；
+*/
+inline void csf_connect::flush_read_timeout() {
+	get_read_timeout().set_time(csf::core::utils::time::system_time::get_time());
 }
 
 
@@ -527,6 +568,22 @@ csf_int32 csf_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf
 * @param callback    表示读取的回调函数
 */
 csf_int32 csf_connect::read(csf_connect_buffer<csf_chain>& buffer, const csf_chain_buffer_read_callback& callback) {
+
+	return 0;
+}
+
+
+/**
+* 主要功能是：连接超时处理函数句柄
+* 返回：0表示成功；非0表示失败；
+*
+* @param connect_ptr    表示连接对象
+* @param connect_error    表示连接错误信息
+*/
+csf::core::base::csf_int32 csf_connect::timeout_handle(csf_connect_ptr connect_ptr, csf_connect_error connect_error) {
+
+	connect_ptr->close();
+	get_factory()->remove(connect_ptr);
 
 	return 0;
 }
