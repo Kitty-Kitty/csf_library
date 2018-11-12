@@ -58,7 +58,8 @@ namespace csf
 					* @param len    表示需要发送的缓存长度
 					*/
 					inline explicit csf_connect_buffer(const csf_uint32 len)
-						: csf_connect_buffer(new ValueType(len), len) {
+						: csf_connect_buffer(new ValueType(len), len)
+						, m_is_free(csf_true) {
 
 					}
 					/**
@@ -160,7 +161,18 @@ namespace csf
 
 						m_is_free = newVal;
 					}
+					/**
+					* 主要功能是：清空所有缓存空间数据；
+					* 返回：无
+					*/
+					inline csf_void clear() {
 
+						if (get_is_free() && m_buffer) {
+							delete m_buffer;
+							set_is_free(csf_false);
+							m_buffer = csf_nullptr;
+						}
+					}
 				private:
 					/**
 					 * 表示是否采用同步的方式发送，false表示异步；true表示同步；默认为异步方式

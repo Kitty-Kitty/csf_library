@@ -28,7 +28,7 @@ using csf::core::module::connect::csf_connect;
 /**
 * 表示网络连接类型映射表
 */
-const csf_unordered_map<csf_connect::csf_connect_type, csf_string> csf_connect::m_connect_type_name = {
+const csf_map<csf_connect::csf_connect_type, csf_string> csf_connect::m_connect_type_name = {
 	{ csf_connect::csf_connect_type::csf_connect_type_none, "none"},
 	{ csf_connect::csf_connect_type::csf_connect_type_tcp, "tcp" },
 	{ csf_connect::csf_connect_type::csf_connect_type_udp, "udp" },
@@ -64,6 +64,9 @@ csf_connect::csf_connect(csf_connect_factory* factory, csf_connect_type type)
 
 csf_connect::~csf_connect() {
 
+	//销毁连接时，需要清空缓存内容
+	get_read_buffer().clear();
+	get_write_buffer().clear();
 }
 
 

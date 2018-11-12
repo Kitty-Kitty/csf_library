@@ -275,7 +275,7 @@ namespace csf
 					/**
 					* 表示网络连接类型名称映射表
 					*/
-					inline static const csf_unordered_map<csf_connect::csf_connect_type, csf_string>& get_connect_type_name() {
+					inline static const csf_map<csf_connect::csf_connect_type, csf_string>& get_connect_type_name() {
 
 						return m_connect_type_name;
 					}
@@ -555,6 +555,38 @@ namespace csf
 
 						return m_write_timeout;
 					}
+					/**
+					* 表示读取数据的缓存空间信息
+					*/
+					inline csf_connect_buffer<csf_buffer>& get_read_buffer() {
+
+						return m_read_buffer;
+					}
+					/**
+					* 表示读取数据的缓存空间信息
+					*
+					* @param newVal
+					*/
+					inline void set_read_buffer(csf_connect_buffer<csf_buffer>& newVal) {
+
+						m_read_buffer = newVal;
+					}
+					/**
+					* 表示写数据的缓存空间信息
+					*/
+					inline csf_connect_buffer<csf_buffer>& get_write_buffer() {
+
+						return m_write_buffer;
+					}
+					/**
+					* 表示写数据的缓存空间信息
+					*
+					* @param newVal
+					*/
+					inline void set_write_buffer(csf_connect_buffer<csf_buffer>& newVal) {
+
+						m_write_buffer = newVal;
+					}
 				protected:
 					/**
 					* 表示异步写超时对象
@@ -614,6 +646,14 @@ namespace csf
 					*/
 					csf::core::module::connect::csf_connect_timeout m_write_timeout;
 					/**
+					* 表示读取数据的缓存空间信息
+					*/
+					csf_connect_buffer<csf_buffer> m_read_buffer;
+					/**
+					* 表示写数据的缓存空间信息
+					*/
+					csf_connect_buffer<csf_buffer> m_write_buffer;
+					/**
 					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
 					*/
 					csf_bool m_is_sync = csf_false;
@@ -632,7 +672,7 @@ namespace csf
 					/**
 					* 表示网络连接类型名称映射表
 					*/
-					static const csf_unordered_map<csf_connect::csf_connect_type, csf_string> m_connect_type_name;
+					static const csf_map<csf_connect::csf_connect_type, csf_string> m_connect_type_name;
 
 				};
 
