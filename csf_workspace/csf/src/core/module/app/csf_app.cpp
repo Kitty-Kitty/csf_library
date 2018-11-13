@@ -266,7 +266,7 @@ csf_bool csf_app::init_work_directory(csf::core::system::csf_configure_manager& 
 	/************************************************************************/
 	//获取系统的工作根目录地址，并配置到日志系统中
 	get_attribute_manager().add("work_directory"
-		, csf_attribute_string(csf_list<csf_string>({ "configures", "work_directory" })));;
+		, csf_attribute_string(csf_list<csf_string>({ "configures", "work_directory" })));
 
 	tmp_string_ret = get_attribute_manager().get_value<csf_attribute_string>("work_directory");
 	if (!tmp_string_ret.empty()) {

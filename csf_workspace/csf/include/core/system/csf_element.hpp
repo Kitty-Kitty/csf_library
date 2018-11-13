@@ -296,7 +296,7 @@ namespace csf
 				 * 
 				 * @param new_value
 				 */
-				inline csf_void set_content(csf_string& new_value) {
+				inline csf_void set_content(const csf_string& new_value) {
 
 					m_content = new_value;
 				}
@@ -323,7 +323,7 @@ namespace csf
 				 * 
 				 * @param new_value
 				 */
-				inline csf_void set_content(csf_char* new_value) {
+				inline csf_void set_content(const csf_char* new_value) {
 
 					m_content = new_value;
 				}

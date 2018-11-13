@@ -121,9 +121,9 @@ namespace csf
 				* @param callback    表示异常处理句柄信息
 				* @param error_code    表示异常信息内容
 				*/
-				inline csf_int32 async_callback(csf_connect_ptr& connect_ptr
+				inline csf_int32 async_callback(csf_connect_ptr connect_ptr
 					, const csf_connect_callback& callback
-					, csf_ip_connect_error& error_code) {
+					, csf_ip_connect_error error_code) {
 
 					if (!connect_ptr 
 						|| csf_nullptr == callback) {
@@ -143,9 +143,9 @@ namespace csf
 				* @param callback    表示异常处理句柄信息
 				* @param error_code    表示异常信息内容
 				*/
-				inline csf_int32 exception_callback(csf_connect_ptr& connect_ptr
+				inline csf_int32 exception_callback(csf_connect_ptr connect_ptr
 					, const csf_connect_callback& callback
-					, csf_ip_connect_error& error_code) {
+					, csf_ip_connect_error error_code) {
 
 					return async_callback(connect_ptr, callback, error_code);
 				}
@@ -158,7 +158,7 @@ namespace csf
 				* @param error_code    表示boost的错误信息
 				* @param len    表示数据长度信息
 				*/
-				inline csf_bool csf_ip_connect::async_write_callback(const csf_connect_callback& callback
+				inline csf_bool async_write_callback(const csf_connect_callback& callback
 					, const boost::system::error_code& error_code
 					, csf_uint32 len) {
 
@@ -174,7 +174,7 @@ namespace csf
 				* @param error_code    表示boost的错误信息
 				* @param len    表示数据长度信息
 				*/
-				inline csf_bool csf_ip_connect::async_read_callback(const csf_connect_callback& callback
+				inline csf_bool async_read_callback(const csf_connect_callback& callback
 					, const boost::system::error_code& error_code
 					, csf_uint32 len) {
 

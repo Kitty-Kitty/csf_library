@@ -450,7 +450,7 @@ namespace csf
 
 }
 
-#include "csf_logger_define.h"
+#include "csf_logger_define.hpp"
 
 
 #endif // !defined(CSF_LOGGER_INCLUDED_)

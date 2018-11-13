@@ -37,7 +37,7 @@ namespace csf
 				 * @version 1.0
 				 * @created 27-6ÔÂ-2018 17:28:47
 				 */
-				class csf_process : public csf::core::module::device::csf_device, public csf::core::module::device::csf_process_interface
+				class csf_process : public csf::core::module::csf_device, public csf::core::module::device::csf_process_interface
 				{
 
 				public:

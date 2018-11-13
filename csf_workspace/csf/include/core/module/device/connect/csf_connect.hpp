@@ -125,7 +125,7 @@ namespace csf
 					*
 					* @param factory    表示创建网络套接字的工厂类对象
 					*/
-					inline explicit csf_connect::csf_connect(csf_connect_factory& factory
+					inline explicit csf_connect(csf_connect_factory& factory
 						, csf_connect_type type)
 						: csf_connect(&factory, type) {
 
@@ -610,12 +610,12 @@ namespace csf
 					* 主要功能是：更新异步写超时对象
 					* 返回：0表示成功；非0表示失败；
 					*/
-					inline virtual void flush_write_timeout();
+					virtual void flush_write_timeout();
 					/**
 					* 主要功能是：更新异步读超时对象
 					* 返回：0表示成功；非0表示失败；
 					*/
-					inline virtual void flush_read_timeout();
+					virtual void flush_read_timeout();
 					/**
 					* 主要功能是：连接超时处理函数句柄
 					* 返回：0表示成功；非0表示失败；

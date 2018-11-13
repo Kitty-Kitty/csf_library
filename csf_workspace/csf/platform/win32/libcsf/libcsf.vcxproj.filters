@@ -121,11 +121,11 @@
     <Filter Include="src\core\module\device\connect\url">
       <UniqueIdentifier>{70c46598-c45a-4376-a069-5ef8898ec983}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\core\utils\time">
-      <UniqueIdentifier>{4c190fd3-737a-4b34-8f94-85f3c3cd82d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\core\utils\time">
-      <UniqueIdentifier>{0850dcd1-4f11-4f53-85a7-72f7d5893626}</UniqueIdentifier>
+      <UniqueIdentifier>{55df3fb3-9aec-4ccf-8240-577e01127ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\core\utils\time">
+      <UniqueIdentifier>{b421b1e4-1590-4e8e-94c9-3e8b8d19fd2b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -519,14 +519,29 @@
     <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute_exception_include.h">
       <Filter>include\core\system\attribute</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_timeout_manager.hpp">
-      <Filter>include\core\module\device\connect</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\core\utils\time\system_time.hpp">
       <Filter>include\core\utils\time</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\core\utils\time\time_maker.hpp">
       <Filter>include\core\utils\time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_timeout_manager.hpp">
+      <Filter>include\core\module\device\connect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\database\csf_database.hpp">
+      <Filter>include\core\module\device\database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\database\csf_database_interface.hpp">
+      <Filter>include\core\module\device\database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\database\csf_database_request.hpp">
+      <Filter>include\core\module\device\database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\process\csf_process.hpp">
+      <Filter>include\core\module\device\process</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\process\csf_process_interface.hpp">
+      <Filter>include\core\module\device\process</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -704,14 +719,53 @@
     <ClCompile Include="..\..\..\src\core\utils\thread\csf_thread_pool.cpp">
       <Filter>src\core\utils\thread</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout_manager.cpp">
-      <Filter>src\core\module\device\connect</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\core\utils\time\system_time.cpp">
       <Filter>src\core\utils\time</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\utils\time\time_maker.cpp">
       <Filter>src\core\utils\time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_callback.cpp">
+      <Filter>src\core\module\device\connect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout_manager.cpp">
+      <Filter>src\core\module\device\connect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_deadline_timer.cpp">
+      <Filter>src\core\module\device\connect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\process\csf_process.cpp">
+      <Filter>src\core\module\device\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\database\csf_database.cpp">
+      <Filter>src\core\module\device\database</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\database\csf_database_request.cpp">
+      <Filter>src\core\module\device\database</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\base\csf_buffer.cpp">
+      <Filter>src\core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\base\csf_container.cpp">
+      <Filter>src\core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\base\csf_version.cpp">
+      <Filter>src\core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_default_value.cpp">
+      <Filter>src\core\system\attribute</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_exception_critical.cpp">
+      <Filter>src\core\system\attribute</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_exception_warning.cpp">
+      <Filter>src\core\system\attribute</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\csf_configure_file.cpp">
+      <Filter>src\core\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\csf_measure_configure.cpp">
+      <Filter>src\core\system</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -732,6 +786,51 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <Text Include="..\..\..\CMakeLists.txt" />
+    <Text Include="..\..\..\include\CMakeLists.txt">
+      <Filter>include</Filter>
+    </Text>
+    <Text Include="..\..\..\src\CMakeLists.txt">
+      <Filter>src</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\CMakeLists.txt">
+      <Filter>src\core</Filter>
+    </Text>
+    <Text Include="..\..\..\src\modules\CMakeLists.txt">
+      <Filter>src\modules</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\base\CMakeLists.txt">
+      <Filter>src\core\base</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\module\CMakeLists.txt">
+      <Filter>src\core\module</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\module\app\CMakeLists.txt">
+      <Filter>src\core\module\app</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\module\device\CMakeLists.txt">
+      <Filter>src\core\module\device</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\module\device\connect\CMakeLists.txt">
+      <Filter>src\core\module\device\connect</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\module\device\connect\url\CMakeLists.txt">
+      <Filter>src\core\module\device\connect\url</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\module\device_io\CMakeLists.txt">
+      <Filter>src\core\module\device_io</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\system\CMakeLists.txt">
+      <Filter>src\core\system</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\system\attribute\CMakeLists.txt">
+      <Filter>src\core\system\attribute</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\utils\CMakeLists.txt">
+      <Filter>src\core\utils</Filter>
+    </Text>
+    <Text Include="..\..\..\src\core\utils\thread\CMakeLists.txt">
+      <Filter>src\core\utils\thread</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -69,7 +69,8 @@ namespace csf
 					, m_compile("vs high")
 #endif
 #elif defined(__GNUC__)
-					, m_compile("gcc " #__GNUC__ "." #__GNUC_MINOR__ "." #__GNUC_PATCHLEVEL__)
+					//, m_compile(__VERSION__)
+					, m_compile(CSF_GCC_COMPILE_VERSION)
 #else
 					, m_compile("unknow compile")
 #endif

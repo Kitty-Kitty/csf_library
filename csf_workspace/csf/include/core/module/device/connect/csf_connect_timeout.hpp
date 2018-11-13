@@ -223,11 +223,11 @@ namespace csf
 					/**
 					 * 表示当前的时间数值，单位为毫秒（ms）
 					 */
-					csf_atomic_uint64 m_time = 0;
+					csf_atomic_uint64 m_time;
 					/**
 					* 表示当前超时的时间数值，单位为毫秒（ms）
 					*/
-					csf_atomic_uint64 m_timeout = csf_connect_timeout_default_ms;
+					csf_atomic_uint64 m_timeout;
 					/**
 					 * 表示超时后的回调函数
 					 */

@@ -21,24 +21,3 @@
 #include "csf_attribute_exception_warning.hpp"
 
 using csf::core::system::attribute::csf_attribute_exception_warning;
-
-
-csf_attribute_exception_warning::csf_attribute_exception_warning()
-	: csf_attribute_exception([](csf_attribute& attr) {
-	csf_log_ex(warning, csf_log_code_warning
-		, "%s process exception."
-		, attr.to_string().c_str());
-	}) {
-
-}
-
-
-
-csf_attribute_exception_warning::~csf_attribute_exception_warning() {
-
-}
-
-
-csf_void csf_attribute_exception_warning::print_warning(csf::core::system::attribute::csf_attribute &attribute) {
-
-}

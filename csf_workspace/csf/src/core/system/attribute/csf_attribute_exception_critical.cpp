@@ -19,15 +19,4 @@
 
 #include "csf_attribute_exception_critical.hpp"
 
-using csf::core::system::configure::csf_attribute_exception_critical;
-
-
-csf_attribute_exception_critical::csf_attribute_exception_critical() {
-
-}
-
-
-
-csf_attribute_exception_critical::~csf_attribute_exception_critical() {
-
-}
+using csf::core::system::attribute::csf_attribute_exception_critical;

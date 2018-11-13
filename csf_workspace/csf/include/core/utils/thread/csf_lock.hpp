@@ -20,7 +20,8 @@
 #if !defined(CSF_LOCK_INCLUDED_)
 #define CSF_LOCK_INCLUDED_
 
-#include <mutex>
+//#include <mutex>
+#include "boost/thread/mutex.hpp"
 #include "csf_shared_mutex.hpp"
 
 namespace csf
@@ -31,9 +32,12 @@ namespace csf
 		{
 			namespace thread
 			{
-				#define	csf_shared_lock									std::shared_lock
-				#define csf_lock_guard									std::lock_guard
-				#define csf_unqiue_lock									std::unique_lock
+				//#define	csf_shared_lock								std::shared_lock		//C++14
+				//#define csf_lock_guard								std::lock_guard			//C++11
+				//#define csf_unqiue_lock								std::unique_lock		//C++11
+				#define	csf_shared_lock									boost::shared_lock
+				#define csf_lock_guard									boost::lock_guard
+				#define csf_unqiue_lock									boost::unique_lock
 				typedef	csf_shared_lock<csf_shared_mutex>				csf_read_lock;
 				typedef	csf_unqiue_lock<csf_shared_mutex>				csf_write_lock;
 				/**	

@@ -65,10 +65,10 @@ namespace csf
 						* @param connect_ptr    表示连接对象
 						* @param timeout    表示连接超时对象
 						*/
-						inline explicit csf_connect_wrapper(csf_connect_ptr connect_ptr
-							, csf_connect_timeout& timeout)
+						inline explicit csf_connect_wrapper(const csf_connect_ptr& connect_ptr
+							, const csf_connect_timeout& timeout)
 							: m_connect_ptr(connect_ptr)
-							, m_timeout(timeout) {
+							, m_timeout((csf_connect_timeout&)timeout) {
 
 						}
 						virtual ~csf_connect_wrapper() {
@@ -78,10 +78,10 @@ namespace csf
 						*
 						* @param connect_wrapper    表示需要进行判断的连接封装对象
 						*/
-						inline csf_connect_wrapper& operator =(csf_connect_wrapper& connect_wrapper) {
+						inline csf_connect_wrapper& operator =(const csf_connect_wrapper& connect_wrapper) {
 
 							set_timeout(connect_wrapper.get_timeout());
-							set_connect_ptr(connect_wrapper.get_connect_ptr());
+							set_connect_ptr(((csf_connect_wrapper&)connect_wrapper).get_connect_ptr());
 
 							return *this;
 						}
@@ -89,10 +89,10 @@ namespace csf
 						*
 						* @param connect_wrapper    表示需要进行判断的连接封装对象
 						*/
-						inline csf_bool operator ==(csf_connect_wrapper& connect_wrapper) {
+						inline csf_bool operator ==(const csf_connect_wrapper& connect_wrapper) {
 
 							if (get_timeout() == connect_wrapper.get_timeout()
-								&& get_connect_ptr() == connect_wrapper.get_connect_ptr()) {
+								&& get_connect_ptr() == ((csf_connect_wrapper&)connect_wrapper).get_connect_ptr()) {
 								return csf_true;
 							}
 
@@ -102,7 +102,7 @@ namespace csf
 						*
 						* @param connect_wrapper    表示需要进行判断的连接封装对象
 						*/
-						inline csf_bool operator !=(csf_connect_wrapper& connect_wrapper) {
+						inline csf_bool operator !=(const csf_connect_wrapper& connect_wrapper) {
 
 							if (*this == connect_wrapper) {
 								return csf_false;
@@ -113,7 +113,7 @@ namespace csf
 						/**
 						* 表示超时对象引用
 						*/
-						inline csf_connect_timeout& get_timeout() {
+						inline csf_connect_timeout& get_timeout() const {
 
 							return m_timeout;
 						}
@@ -195,7 +195,7 @@ namespace csf
 					* @param time    表示当前的时间基准
 					* @param connect_wrapper    表示需要添加到连接管理器的连接对象封装
 					*/
-					inline csf_int32 insert(const csf_uint64& time, csf_connect_wrapper& connect_wrapper) {
+					inline csf_int32 insert(const csf_uint64& time, const csf_connect_wrapper& connect_wrapper) {
 
 						csf_unqiue_lock<decltype(m_collector_mutex)> tmp_lock(m_collector_mutex);
 
@@ -211,7 +211,7 @@ namespace csf
 					 * @param timeout    表示当前的超时对象内容
 					 * @param connect_ptr    表示需要添加到连接管理器的连接对象
 					 */
-					inline csf_int32 insert(const csf_connect_timeout& timeout, csf_connect_ptr& connect_ptr) {
+					inline csf_int32 insert(const csf_connect_timeout& timeout, const csf_connect_ptr& connect_ptr) {
 
 						return insert(timeout.get_time()
 							, csf_connect_wrapper(connect_ptr, (csf_connect_timeout&)timeout));

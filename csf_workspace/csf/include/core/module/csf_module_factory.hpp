@@ -427,7 +427,7 @@ namespace csf
 				/**
 				 * 表示模块创建的数量
 				 */
-				csf::core::base::csf_atomic_uint32 m_count = 0;
+				csf::core::base::csf_atomic_uint32 m_count;
 				/**
 				 * 表示模块工厂对应的模块名称
 				 */

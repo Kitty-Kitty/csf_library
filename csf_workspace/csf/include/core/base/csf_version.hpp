@@ -73,45 +73,9 @@ namespace csf
 					m_compile = "unknow compiler[MSC_VER=]";
 				#endif	//_MSC_VER == 1900
 
-
-				#if 0
-					switch (_MSC_VER)
-					{
-					case 1800:
-						m_compile = "Visual Studio 2013";
-						break;
-					case 1700:
-						m_compile = "Visual Studio 2012";
-						break;
-					case 1600:
-						m_compile = "Visual Studio 2010";
-						break;
-					case 1500:
-						m_compile = "Visual Studio 2008";
-						break;
-					case 1400:
-						m_compile = "Visual Studio 2005";
-						break;
-					case 1310:
-						m_compile = "Visual Studio 2003";
-						break;
-					default:
-						m_compile = "unknow compiler[MSC_VER=]";
-						break;
-					}
-				#endif
-
-
 #else	//__linux__
 					m_compile = __VERSION__;
 #endif	//WIN32
-
-				}
-				/**
-				*
-				* @param version    表示版本号信息
-				*/
-				csf_version_(const csf_version_& version) {
 
 				}
 				virtual ~csf_version_() {

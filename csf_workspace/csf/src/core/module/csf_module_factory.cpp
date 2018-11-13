@@ -19,6 +19,9 @@
 
 #ifdef WIN32
 #include <windows.h>
+#elif defined(__linux__)
+#include <dlfcn.h>
+#else
 #endif
 
 #include "csf_module_factory_printf.h"
@@ -36,7 +39,7 @@ using csf::core::module::csf_module_factory;
  */
 csf::core::base::csf_int32 csf_module_factory::init(const csf_configure_manager* conf_mg) {
 
-	return  NULL;
+	return  csf_succeed;
 }
 
 
@@ -47,7 +50,7 @@ csf::core::base::csf_int32 csf_module_factory::init(const csf_configure_manager*
  */
 csf::core::base::csf_int32 csf_module_factory::start(const csf_configure_manager* conf_mg) {
 
-	return  NULL;
+	return  csf_succeed;
 }
 
 
@@ -58,7 +61,7 @@ csf::core::base::csf_int32 csf_module_factory::start(const csf_configure_manager
  */
 csf::core::base::csf_int32 csf_module_factory::stop(const csf_configure_manager* conf_mg) {
 
-	return  NULL;
+	return  csf_succeed;
 }
 
 

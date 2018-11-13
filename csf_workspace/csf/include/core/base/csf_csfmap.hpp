@@ -39,7 +39,8 @@ namespace csf
 			 * @created 27-6ÔÂ-2018 17:28:38
 			 */
 			template <class Tkey, class Tvalue>
-			class csf_csfmap : public csf::core::base::csf_collector, public csf::core::base::csf_csftype_template<Tvalue>
+			class csf_csfmap : public csf::core::base::csf_collector
+				, public csf::core::base::csf_csftype_template<Tvalue>
 			{
 				typedef	typename csf_map<Tkey, Tvalue>::iterator		_map_iterator;
 				typedef	typename csf_map<Tkey, Tvalue>::value_type		_map_value_type;
@@ -104,7 +105,7 @@ namespace csf
 					Tvalue					tmp_value;
 
 					tmp_value = find(key);
-					if (tmp_value == get_null()) {
+					if (tmp_value == csf_csftype_template<Tvalue>::get_null()) {
 						return tmp_value;
 					}
 					else {
@@ -130,7 +131,7 @@ namespace csf
 						tmp_value = tmp_iter->second;
 					}
 					else {
-						tmp_value = get_null();
+						tmp_value = csf_csftype_template<Tvalue>::get_null();
 					}
 
 					return tmp_value;

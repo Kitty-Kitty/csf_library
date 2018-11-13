@@ -58,8 +58,8 @@ namespace csf
 					* @param len    表示需要发送的缓存长度
 					*/
 					inline explicit csf_connect_buffer(const csf_uint32 len)
-						: csf_connect_buffer(new ValueType(len), len)
-						, m_is_free(csf_true) {
+						: csf_connect_buffer(new ValueType(len), len) {
+						m_is_free(csf_true);
 
 					}
 					/**

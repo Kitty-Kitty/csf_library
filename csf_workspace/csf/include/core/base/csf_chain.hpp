@@ -281,7 +281,7 @@ namespace csf
 				/**
 				 * 表示数据的实际长度
 				 */
-				csf::core::base::csf_atomic_uint32 m_length = 0;
+				csf::core::base::csf_atomic_uint32 m_length;
 				/**
 				 * 表示缓存链表数据，保存所有buffer
 				 */

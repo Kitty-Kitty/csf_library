@@ -19,5 +19,5 @@
 
 #include "csf_attribute_default_value.hpp"
 
-using csf::core::system::configure::csf_attribute_default_value;
+using csf::core::system::attribute::csf_attribute_default_value;
 

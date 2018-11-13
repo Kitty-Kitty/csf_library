@@ -119,7 +119,11 @@ namespace csf
 				 */
 				inline csf_csfstring& operator =(const csf_csfstring& csfstr) {
 
-					return csf_csfstring();
+					clear();
+					reset(csfstr.get_size());
+					cat(csfstr.get_buffer(), csfstr.length());
+
+					return *this;
 				}
 				/**
 				 * 表示获取指定长度的缓存地址

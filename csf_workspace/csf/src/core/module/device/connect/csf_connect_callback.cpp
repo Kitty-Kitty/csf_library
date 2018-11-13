@@ -22,13 +22,3 @@
 
 using csf::core::module::connect::csf_connect_callback;
 
-
-csf_connect_callback::csf_connect_callback() {
-
-}
-
-
-
-csf_connect_callback::~csf_connect_callback() {
-
-}

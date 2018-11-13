@@ -167,7 +167,7 @@ namespace csf
 				*
 				* @param url    表示url字符串数据，地址格式为：xxx.xxx.xxx.xxx；例如:192.168.1.10，地址格式为：ip:port；例如:192.168.1.10:80
 				*/
-				inline virtual csf_int32 csf_ip_url::parse(const csf_char* url) {
+				inline virtual csf_int32 parse(const csf_char* url) {
 
 					return parse(csf_string(url));
 				}

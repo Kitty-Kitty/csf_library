@@ -1,72 +1,86 @@
-#pc_server project main CmakeList
+#project main CMakeList
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
 
-
 #project name 
-PROJECT(PC_PROJECT C CXX ASM)
-
+PROJECT(CSF_PROJECT C CXX ASM)
 
 # this one is important
 SET(CMAKE_SYSTEM_NAME Linux)
 
-
 #set library name
-SET(PC_PROJECT_NAME pc_server)
-#set cp library name
-SET(PC_LIBRARY_NAME pc_server_lib)
-#set css_server executable name
-SET(PC_EXECUTABLE_NAME css_server)
-SET(PC_PROJECT_LIBRARY_STATIC_NAME lib${PC_PROJECT_NAME}.a)
-SET(PC_PROJECT_LIBRARY_SHARED_NAME lib${PC_PROJECT_NAME}.so)
+SET(CSF_PROJECT_NAME csf)
 
-#set cp source directory
-SET(PC_PROJECT_SOURCE_DIR ${PROJECT_SOURCE_DIR})
+#set csf library name
+SET(CSF_LIBRARY_NAME libcsf)
+
+#set executable name
+SET(CSF_EXECUTABLE_NAME csf_library)
+SET(CSF_PROJECT_LIBRARY_STATIC_NAME lib${CSF_PROJECT_NAME}.a)
+SET(CSF_PROJECT_LIBRARY_SHARED_NAME lib${CSF_PROJECT_NAME}.so)
+
+#set csf source directory
+SET(CSF_PROJECT_SOURCE_DIR ${PROJECT_SOURCE_DIR})
+
+#grep "\"V" include/core/base/csf_version.hpp -m 1 | awk '{print $3}' | awk -F "\"" '{print $2}' | awk -F "V" '{print $2}'
+EXECUTE_PROCESS(
+    COMMAND grep "\"V" ${CSF_PROJECT_SOURCE_DIR}/include/core/base/csf_version.hpp -m 1
+    COMMAND awk "{print $3}"
+    COMMAND awk -F "\"" "{print $2}"
+    COMMAND awk -F "V" "{print $2}"
+    OUTPUT_VARIABLE CSF_PROJECT_LIBRARY_VERSION
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+IF( CSF_PROJECT_LIBRARY_VERSION )
+    SET(CSF_PROJECT_LIBRARY_STATIC_NAME lib${CSF_PROJECT_NAME}-${CSF_PROJECT_LIBRARY_VERSION}.a)
+    SET(CSF_PROJECT_LIBRARY_SHARED_NAME lib${CSF_PROJECT_NAME}-${CSF_PROJECT_LIBRARY_VERSION}.so)
+ENDIF()
 
 #set system support platform
-SET(PC_PLATFORM_LIST "x86" "hisiv100" "hisiv300" "hisiv400" "cpptestscan")
-
+SET(CSF_PLATFORM_LIST "x86" "hisiv100" "hisiv300" "hisiv400" "cpptestscan")
 
 
 #select a mode
 IF(DEBUG_MODE)        #cmake -D DEBUG_MODE=ON ../
     SET(CMAKE_BUILD_TYPE "Debug")
-    #set cp output debug directory
-    SET(PC_PROJECT_OUTPUT_TOP_DIR ${PROJECT_BINARY_DIR}/debug)
-    SET(PC_OUTPUT_EXECUTABLE_DIR ${PC_PROJECT_OUTPUT_TOP_DIR}/${PC_EXECUTABLE_NAME})
-    SET(PC_OUTPUT_LIBRARY_DIR ${PC_PROJECT_OUTPUT_TOP_DIR}/${PC_LIBRARY_NAME})
-    SET(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} ${CMAKE_C_FLAGS_DEBUG} -ggdb3 -pthread -Wl,--no-as-needed -ldl -lrt")
-    SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -ggdb3 -pthread -Wl,--no-as-needed -ldl -lrt")
-    MESSAGE(STATUS "use the [debug] mode! output_path:" ${PC_PROJECT_OUTPUT_TOP_DIR})
+    #set csf output debug directory
+    SET(CSF_PROJECT_OUTPUT_TOP_DIR ${PROJECT_BINARY_DIR}/debug)
+    SET(CSF_OUTPUT_EXECUTABLE_DIR ${CSF_PROJECT_OUTPUT_TOP_DIR}/${CSF_EXECUTABLE_NAME})
+    SET(CSF_OUTPUT_LIBRARY_DIR ${CSF_PROJECT_OUTPUT_TOP_DIR}/${CSF_LIBRARY_NAME})
+    SET(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} ${CMAKE_C_FLAGS_DEBUG} -ggdb3 -std=c++11  -pthread -Wl,--no-as-needed -ldl -lrt")
+    SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -ggdb3 -std=c++11 -pthread -Wl,--no-as-needed -ldl -lrt")
+    MESSAGE(STATUS "use the [debug] mode! output_path:" ${CSF_PROJECT_OUTPUT_TOP_DIR})
 ELSE()
     SET(CMAKE_BUILD_TYPE "Release")
-    #set cp output release directory
-    SET(PC_PROJECT_OUTPUT_TOP_DIR ${PROJECT_BINARY_DIR}/release)
-    SET(PC_OUTPUT_EXECUTABLE_DIR ${PC_PROJECT_OUTPUT_TOP_DIR}/${PC_EXECUTABLE_NAME})
-    SET(PC_OUTPUT_LIBRARY_DIR ${PC_PROJECT_OUTPUT_TOP_DIR}/${PC_LIBRARY_NAME})
-    SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} ${CMAKE_C_FLAGS_RELEASE} -Wl,--no-as-needed -pipe -lpthread_nonshared -ldl -lrt")
-	SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -Wl,--no-as-needed -pipe -pthread -ldl -lrt")
-    MESSAGE(STATUS "use the [release] mode! output_path:" ${PC_PROJECT_OUTPUT_TOP_DIR})
+    #set csf output release directory
+    SET(CSF_PROJECT_OUTPUT_TOP_DIR ${PROJECT_BINARY_DIR}/release)
+    SET(CSF_OUTPUT_EXECUTABLE_DIR ${CSF_PROJECT_OUTPUT_TOP_DIR}/${CSF_EXECUTABLE_NAME})
+    SET(CSF_OUTPUT_LIBRARY_DIR ${CSF_PROJECT_OUTPUT_TOP_DIR}/${CSF_LIBRARY_NAME})
+    SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} ${CMAKE_C_FLAGS_RELEASE} -std=c++11 -Wl,--no-as-needed -pipe -lpthread_nonshared -ldl -lrt")
+	SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -std=c++11 -Wl,--no-as-needed -pipe -pthread -ldl -lrt")
+    MESSAGE(STATUS "use the [release] mode! output_path:" ${CSF_PROJECT_OUTPUT_TOP_DIR})
 ENDIF()
 
 
 IF(NOT DEFINED PLATFORM)
-    SET(PC_PLATFORM "x86")
+    SET(CSF_PLATFORM "x86")
 	MESSAGE(WARNING "set platform warning. parameter[PLATFORM] not defined. used default [PLATFORM = x86]")
-	MESSAGE(STATUS "[ctrl + c] to stop; usage: [cmake -DPLATFORM=${PC_PLATFORM} ../] ; wait [5] seconds for you ...")
+	MESSAGE(STATUS "[ctrl + c] to stop; usage: [cmake -DPLATFORM=${CSF_PLATFORM} ../] ; wait [5] seconds for you ...")
 	#CTEST_SLEEP(5)
 ELSE()
-    SET(PC_PLATFORM ${PLATFORM})
+    SET(CSF_PLATFORM ${PLATFORM})
 	MESSAGE(STATUS "set parameter[PLATFORM = ${PLATFORM}] ")
 ENDIF()
 
-#LIST(FIND PC_PLATFORM_LIST PC_PLATFORM FIND_LIST_RETURN)
+#LIST(FIND CSF_PLATFORM_LIST CSF_PLATFORM FIND_LIST_RETURN)
 #IF(${FIND_LIST_RETURN} EQUAL -1)
-	#MESSAGE(STATUS "usage: [cmake PC_PLATFORM=x86 ../] " "  ${FIND_LIST_RETURN}")
-	#MESSAGE(FATAL_ERROR "system usupport[PC_PLATFORM = ${PC_PLATFORM}]. support system list[${PC_PLATFORM_LIST}]")
+	#MESSAGE(STATUS "usage: [cmake CSF_PLATFORM=x86 ../] " "  ${FIND_LIST_RETURN}")
+	#MESSAGE(FATAL_ERROR "system usupport[CSF_PLATFORM = ${CSF_PLATFORM}]. support system list[${CSF_PLATFORM_LIST}]")
 #ENDIF()
 
+
 #set general x86 platform
-IF(PC_PLATFORM STREQUAL "x86")
+IF(CSF_PLATFORM STREQUAL "x86")
   SET(CMAKE_ASM_NASM_COMPILER "as")
   SET(CMAKE_C_COMPILER "gcc")
   SET(CMAKE_CXX_COMPILER "g++")
@@ -78,23 +92,19 @@ IF(PC_PLATFORM STREQUAL "x86")
   SET(SYSTEM_USR_LIBRARY_DIR /usr/lib/)
   SET(SYSTEM_USR_LOCAL_LIBRARY_DIR /usr/local/lib/)
   
-  SET(PC_THIRD_PARTY_PLATFORM_NAME "Linux_x86")
-  
-  #set third-party directory
-  SET(PC_THIRD_PARTY_DIR ${PC_PROJECT_SOURCE_DIR}/third-party)
-  
-  #set third-party lib directory
-  SET(PC_THIRD_PARTY_LIB_DIR ${PC_THIRD_PARTY_DIR}/lib)
-  
+  SET(CSF_THIRD_PARTY_PLATFORM_NAME "linux_x86")
+    
 ENDIF()
+
 
 #set x86_64 flag
 IF(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
 	ADD_DEFINITIONS(-fPIC)
 ENDIF(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
 
+
 #set hisiv100 platform
-IF(PC_PLATFORM STREQUAL "hisiv100")
+IF(CSF_PLATFORM STREQUAL "hisiv100")
   SET(CMAKE_ASM_NASM_COMPILER "as")
   SET(CMAKE_C_COMPILER "arm-hisiv100nptl-linux-gcc")
   SET(CMAKE_CXX_COMPILER "arm-hisiv100nptl-linux-g++")
@@ -110,20 +120,15 @@ IF(PC_PLATFORM STREQUAL "hisiv100")
   SET(SYSTEM_USR_INCLUDE_DIR /opt/hisi-linux-nptl/arm-hisiv100-linux/target/usr/include)
   SET(SYSTEM_USR_LIBRARY_DIR /opt/hisi-linux-nptl/arm-hisiv100-linux/target/usr/lib/)
 	
-  SET(PC_THIRD_PARTY_PLATFORM_NAME "arm-hisiv100nptl")
-  
-  #set third-party directory
-  SET(PC_THIRD_PARTY_DIR ${PC_PROJECT_SOURCE_DIR}/third-party)
-
-  #set third-party lib directory
-  SET(PC_THIRD_PARTY_LIB_DIR ${PC_THIRD_PARTY_DIR}/lib/Arm/hisiv100)
-  
+  SET(CSF_THIRD_PARTY_PLATFORM_NAME "arm-hisiv100npt")
+    
   ADD_DEFINITIONS(-DPLATEFORM_HISIV)
   
 ENDIF()
 
+
 #set hisiv300 platform
-IF(PC_PLATFORM STREQUAL "hisiv300")
+IF(CSF_PLATFORM STREQUAL "hisiv300")
   SET(CMAKE_ASM_NASM_COMPILER "as")
   SET(CMAKE_C_COMPILER "arm-hisiv300-linux-gcc")
   SET(CMAKE_CXX_COMPILER "arm-hisiv300-linux-g++")
@@ -139,20 +144,15 @@ IF(PC_PLATFORM STREQUAL "hisiv300")
   SET(SYSTEM_USR_INCLUDE_DIR /opt/hisi-linux/x86-arm/arm-hisiv300-linux/target/usr/include)
   SET(SYSTEM_USR_LIBRARY_DIR /opt/hisi-linux/x86-arm/arm-hisiv300-linux/target/usr/lib/)
 	
-  SET(PC_THIRD_PARTY_PLATFORM_NAME "hisiv300")
-  
-  #set third-party directory
-  SET(PC_THIRD_PARTY_DIR ${PC_PROJECT_SOURCE_DIR}/third-party)
-
-  #set third-party lib directory
-  SET(PC_THIRD_PARTY_LIB_DIR ${PC_THIRD_PARTY_DIR}/lib/Arm/hisiv300)
-  
+  SET(CSF_THIRD_PARTY_PLATFORM_NAME "arm-hisiv300")
+    
   ADD_DEFINITIONS(-DPLATEFORM_HISIV)
 
 ENDIF()
 
+
 #set hisiv400 platform
-IF(PC_PLATFORM STREQUAL "hisiv400")
+IF(CSF_PLATFORM STREQUAL "hisiv400")
   SET(CMAKE_ASM_NASM_COMPILER "as")
   SET(CMAKE_C_COMPILER "arm-hisiv400-linux-gcc")
   SET(CMAKE_CXX_COMPILER "arm-hisiv400-linux-g++")
@@ -168,20 +168,15 @@ IF(PC_PLATFORM STREQUAL "hisiv400")
   SET(SYSTEM_USR_INCLUDE_DIR /opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/usr/include)
   SET(SYSTEM_USR_LIBRARY_DIR /opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/usr/lib/)
 	
-  SET(PC_THIRD_PARTY_PLATFORM_NAME "hisiv400")
-  
-  #set third-party directory
-  SET(PC_THIRD_PARTY_DIR ${PC_PROJECT_SOURCE_DIR}/third-party)
-
-  #set third-party lib directory
-  SET(PC_THIRD_PARTY_LIB_DIR ${PC_THIRD_PARTY_DIR}/lib/Arm/hisiv400)
-  
+  SET(CSF_THIRD_PARTY_PLATFORM_NAME "arm-hisiv400")
+    
   ADD_DEFINITIONS(-DPLATEFORM_HISIV)
   
 ENDIF()
 
+
 #set cpptestscan platform
-IF(PC_PLATFORM STREQUAL "cpptestscan")
+IF(CSF_PLATFORM STREQUAL "cpptestscan")
   SET(CMAKE_ASM_NASM_COMPILER "as")
   SET(CMAKE_C_COMPILER "cpptestscan")
   SET(CMAKE_CXX_COMPILER "cpptestscan")
@@ -189,51 +184,119 @@ IF(PC_PLATFORM STREQUAL "cpptestscan")
   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --cpptestscanOutputFile=/home/CpptestProject/MyProject.bdf --cpptestscanProjectName=MyProject g++ -Wno-write-strings")
   SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --cpptestscanOutputFile=/home/CpptestProject/MyProject.bdf --cpptestscanProjectName=MyProject gcc")
   
-  SET(PC_THIRD_PARTY_PLATFORM_NAME "cpptestscan" )
+  SET(CSF_THIRD_PARTY_PLATFORM_NAME ${CSF_PLATFORM})
   
 ENDIF()
 
-MESSAGE(STATUS "system platform[${PC_PLATFORM}] used third library [${PC_THIRD_PARTY_PLATFORM_NAME}].")
+EXECUTE_PROCESS(
+		COMMAND ${CMAKE_CXX_COMPILER} --version
+		COMMAND grep "g++"
+		OUTPUT_VARIABLE CSF_GCC_COMPILE_VERSION_STRING
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+	)
+ADD_DEFINITIONS(-DCSF_GCC_COMPILE_VERSION="${CSF_GCC_COMPILE_VERSION_STRING}")
 
+MESSAGE(STATUS "system platform[${CSF_PLATFORM}] used CMAKE_CXX_COMPILER[${CSF_GCC_COMPILE_VERSION_STRING}].")
+MESSAGE(STATUS "system platform[${CSF_PLATFORM}] used third library [${CSF_THIRD_PARTY_PLATFORM_NAME}].")
+
+#define macro for get sub directories
+MACRO(SUB_DIRECTORY_LIST dest_paramete src_directory)
+  FILE(GLOB children RELATIVE ${src_directory} ${src_directory}/*)
+  SET(tmp_directories "")
+  FOREACH(tem_item ${children})
+    IF(IS_DIRECTORY ${src_directory}/${tem_item})
+      LIST(APPEND tmp_directories ${src_directory}/${tem_item})      
+    ENDIF()
+  ENDFOREACH()
+  SET(${dest_paramete} ${tmp_directories})
+ENDMACRO()
+
+#define macro for get all sub directories
+MACRO(ALL_SUB_DIRECTORY_LIST dest_paramete src_directory)
+	#find ./ -type d
+	EXECUTE_PROCESS(
+		COMMAND find ${src_directory} -type d
+		OUTPUT_VARIABLE tmp_directories
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+	)
+	STRING(REGEX REPLACE "\n" ";" ${dest_paramete} "${tmp_directories}")
+	#SET(${dest_paramete} ${tmp_directories})
+ENDMACRO()
 
 #set include directory
-SET(PC_INCLUDE_DIR ${PC_PROJECT_SOURCE_DIR}/include)
+SET(CSF_INCLUDE_DIR ${CSF_PROJECT_SOURCE_DIR}/include)
+SET(CSF_INCLUDE_DIRECTORIES ${CSF_INCLUDE_DIR})
 
 #set src directory
-SET(PC_SRC_DIR ${PC_PROJECT_SOURCE_DIR}/src)
+SET(CSF_SRC_DIR ${CSF_PROJECT_SOURCE_DIR}/src)
+
+#set third-party directory
+SET(CSF_THIRD_PARTY_DIR ${CSF_PROJECT_SOURCE_DIR}/third-party)
 
 #set tests directory
-SET(PC_TESTS_DIR ${PC_PROJECT_SOURCE_DIR}/test)
+SET(CSF_TESTS_DIR ${CSF_PROJECT_SOURCE_DIR}/test)
 
 #set library directory
-SET(PC_LIBRARY_DIR ${PC_PROJECT_OUTPUT_TOP_DIR})
+SET(CSF_LIBRARY_DIR ${CSF_PROJECT_OUTPUT_TOP_DIR})
     
+#into include directory
+ADD_SUBDIRECTORY(${CSF_INCLUDE_DIR})
+
 #build third party directory
-ADD_SUBDIRECTORY(${PC_THIRD_PARTY_DIR})
+ADD_SUBDIRECTORY(${CSF_THIRD_PARTY_DIR})
+
+
+#MESSAGE(STATUS "add include CSF_INCLUDE_DIR:[${CSF_INCLUDE_DIR}]")
+#MESSAGE(STATUS "add include CSF_INCLUDE_DIRECTORIES:[${CSF_INCLUDE_DIRECTORIES}]")
+
 
 #add include direntories
 INCLUDE_DIRECTORIES(
     ${SYSTEM_USR_INCLUDE_DIR}
     ${SYSTEM_USR_LOCAL_INCLUDE_DIR}
-    ${PC_INCLUDE_DIR}
+    ${CSF_INCLUDE_DIR}
+	${CSF_INCLUDE_DIRECTORIES}
     )
-	#MESSAGE(STATUS "update include path : "${PC_INCLUDE_DIR})
+#MESSAGE(STATUS "update include path : "${CSF_INCLUDE_DIR})
 
 #add library directories 
 LINK_DIRECTORIES(
     ${SYSTEM_USR_LIBRARY_DIR}
     ${SYSTEM_USR_LOCAL_LIBRARY_DIR}
-    ${PC_PROJECT_OUTPUT_TOP_DIR}
-	${PC_LIBRARY_DIR}
+    ${CSF_PROJECT_OUTPUT_TOP_DIR}
+	${CSF_LIBRARY_DIR}
     )
-	#MESSAGE(STATUS "library directories: "${PC_LIBRARY_DIR})
+#MESSAGE(STATUS "library directories: "${CSF_LIBRARY_DIR})
 
 
+IF(CSF_GLOBAL_PROJECT_NAME)
+	#update global parameters
+	#set library name
+	SET(CSF_GLOBAL_PROJECT_NAME ${CSF_PROJECT_NAME} PARENT_SCOPE)
+
+	#set csf library name
+	SET(CSF_GLOBAL_LIBRARY_NAME ${CSF_LIBRARY_NAME} PARENT_SCOPE)
+
+	#set executable name
+	SET(CSF_GLOBAL_EXECUTABLE_NAME ${CSF_EXECUTABLE_NAME} PARENT_SCOPE)
+	SET(CSF_GLOBAL_PROJECT_LIBRARY_STATIC_NAME ${CSF_PROJECT_LIBRARY_STATIC_NAME} PARENT_SCOPE)
+	SET(CSF_GLOBAL_PROJECT_LIBRARY_SHARED_NAME ${CSF_PROJECT_LIBRARY_SHARED_NAME} PARENT_SCOPE)
+
+	#set include directories
+	SET(CSF_GLOBAL_INCLUDE_DIRECTORIES
+		{CSF_INCLUDE_DIR}
+		${CSF_INCLUDE_DIRECTORIES}
+		PARENT_SCOPE)
+
+	#set library directories
+	SET(CSF_GLOBAL_LIBRARY_DIRECTORIES
+		${CSF_PROJECT_OUTPUT_TOP_DIR}
+		${CSF_LIBRARY_DIR}
+		PARENT_SCOPE)
+ENDIF(CSF_GLOBAL_PROJECT_NAME)
 
 
-ADD_SUBDIRECTORY(${PC_SRC_DIR})
-ADD_SUBDIRECTORY(${PC_TESTS_DIR})
-
-
-
+#add all subdirectory
+ADD_SUBDIRECTORY(${CSF_SRC_DIR})
+ADD_SUBDIRECTORY(${CSF_TESTS_DIR})
 

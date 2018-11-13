@@ -67,12 +67,23 @@ namespace csf
 #define	csf_srand()							srand((uint32_t)time(NULL));
 #define	csf_sprintf							sprintf
 #define	csf_snprintf						snprintf
+#if defined(WIN32)
 #define	csf_vsnprintf						_vsnprintf
+#else
+#define	csf_vsnprintf						vsnprintf
+#endif
+
+#define	csf_vscprintf						_vscprintf
 
 
 #define csf_atoi							atoi
 #define csf_atoint32						atoi
+
+#if defined(WIN32)
 #define csf_atoint64						_atoi64
+#else
+#define csf_atoint64						atoll
+#endif
 
 
 //ºËÑé×Ö·û´®·Ç¿Õ°××Ö·û£¬ascii ÊýÖµ·¶Î§[33, 126]£¬¼´[!, ~].·Ç¿ÕÎªtrue£¬¿ÕÎªfalse

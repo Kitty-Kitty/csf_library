@@ -70,7 +70,6 @@ namespace csf
 					virtual ~csf_attribute_manager() {
 						clear();
 					}
-
 					/**
 					 * 表创建的时候赋值配置管理器
 					 *
@@ -81,7 +80,6 @@ namespace csf
 						, m_root_element(csf_nullptr) {
 
 					}
-
 					/**
 					* 表创建的时候赋值配置管理器
 					*
@@ -117,15 +115,15 @@ namespace csf
 					 * @param name    表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复。
 					 * @param attribute    表示添加的属性对象
 					 */
-					template <class AttributeType>
-					inline csf_bool add(const csf_string& name, AttributeType& attribute) {
-
-						if (name.empty()) {
-							return csf_false;
-						}
-
-						return add(name.c_str(), attribute);
-					}
+ 					template <class AttributeType>
+ 					inline csf_bool add(const csf_string& name, AttributeType attribute) {
+ 
+ 						if (name.empty()) {
+ 							return csf_false;
+ 						}
+ 
+ 						return add<AttributeType>(name.c_str(), attribute);
+ 					}
 					/**
 					 * 函数功能为：向attribute_manager中添加一个属性。
 					 * 注意：表示添加的属性名称，在一个attribute_manager中必须保证唯一不重复，否则操作失败。
@@ -135,7 +133,7 @@ namespace csf
 					 * @param attribute    表示添加的属性对象
 					 */
 					template <class AttributeType>
-					csf_bool add(const csf_char* name, AttributeType& attribute) {
+					csf_bool add(const csf_char* name, AttributeType attribute) {
 
 						//核验名称数据的合法性
 						if (!name || csf_strlen(name) <= 0 || attribute.is_null()) {
@@ -543,7 +541,7 @@ namespace csf
 					* @param attribute    表示添加的属性对象
 					*/
 					template <class AttributeType>
-					csf_bool csf_attribute_manager::insert_attribute(const csf_char* name, AttributeType& attribute) {
+					csf_bool insert_attribute(const csf_char* name, AttributeType& attribute) {
 
 						AttributeType			*tmp_new = csf_nullptr;
 

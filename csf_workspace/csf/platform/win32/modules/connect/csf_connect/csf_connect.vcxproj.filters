@@ -89,4 +89,7 @@
       <Filter>config</Filter>
     </Xml>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\CMakeLists.txt" />
+  </ItemGroup>
 </Project>

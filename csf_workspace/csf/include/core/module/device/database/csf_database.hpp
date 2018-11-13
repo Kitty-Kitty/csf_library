@@ -37,7 +37,7 @@ namespace csf
 				 * @version 1.0
 				 * @created 27-6ÔÂ-2018 17:28:39
 				 */
-				class csf_database : public csf::core::module::device::csf_device, public csf::core::module::device::csf_database_interface
+				class csf_database : public csf::core::module::csf_device, public csf::core::module::device::csf_database_interface
 				{
 
 				public:

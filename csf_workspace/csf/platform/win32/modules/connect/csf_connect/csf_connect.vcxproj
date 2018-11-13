@@ -46,6 +46,9 @@
   <ItemGroup>
     <Xml Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\config\csf_module_configure.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\CMakeLists.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F85FADD3-DDD5-49A7-A63D-A8923486D674}</ProjectGuid>
     <RootNamespace>csf_connect</RootNamespace>

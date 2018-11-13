@@ -24,10 +24,10 @@
 /************************************************************************/
 /* 表示数据值最大最小值定义                                               */
 /************************************************************************/
-#define	csf_min_char					(-127i8 - 1)
-#define	csf_min_short					(-32767i16 - 1)
-#define	csf_min_int						(-2147483647i32 - 1)
-#define	csf_min_long					(-9223372036854775807i64 - 1)
+#define	csf_min_char					(-127 - 1)
+#define	csf_min_short					(-32767 - 1)
+#define	csf_min_int						(-2147483647 - 1)
+#define	csf_min_long					(-9223372036854775807LL - 1)
 
 
 
@@ -41,13 +41,13 @@
 #define	csf_max_char						127i8
 #define	csf_max_short						32767i16
 #define	csf_max_int							2147483647i32
-#define	csf_max_long						9223372036854775807i64
+#define	csf_max_long						9223372036854775807LL
 
 
-#define	csf_max_uchar						0xffui8
-#define	csf_max_ushort						0xffffui16
-#define	csf_max_uint						0xffffffffui32
-#define	csf_max_ulong						0xffffffffffffffffui64
+#define	csf_max_uchar						0xffu
+#define	csf_max_ushort						0xffffu
+#define	csf_max_uint						0xffffffffu
+#define	csf_max_ulong						0xffffffffffffffffuLL
 
 
 

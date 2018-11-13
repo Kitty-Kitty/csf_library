@@ -72,8 +72,9 @@ namespace csf
 
 				inline explicit csf_module()
 					: m_type(csf_module_type_none)
-					, m_guid("")
-					, m_name("")
+					, m_guid{0, }
+					, m_name{ 0, }
+					, m_format{0, }
 					, m_decorator(csf_nullptr)
 					, m_configure_manager(csf_nullptr) {
 
@@ -88,8 +89,9 @@ namespace csf
 					, const csf_module_type type)
 
 					: m_type(type)
-					, m_guid("")
-					, m_name("")
+					, m_guid{ 0, }
+					, m_name{ 0, }
+					, m_format{ 0, }
 					, m_decorator(csf_nullptr)
 					, m_configure_manager((csf_configure_manager*)configure_manager)
 					, m_attribute_manager(configure_manager) {

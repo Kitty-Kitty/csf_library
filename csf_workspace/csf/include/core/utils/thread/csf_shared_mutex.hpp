@@ -20,7 +20,8 @@
 #if !defined(CSF_SHARED_MUTEX_INCLUDED_)
 #define CSF_SHARED_MUTEX_INCLUDED_
 
-#include <shared_mutex>
+//#include <shared_mutex>		//c++17
+#include "boost/thread/shared_mutex.hpp"
 
 namespace csf
 {
@@ -30,7 +31,8 @@ namespace csf
 		{
 			namespace thread
 			{
-				typedef	std::shared_mutex				csf_shared_mutex;
+				//typedef	std::shared_mutex				csf_shared_mutex;		//C++17
+				typedef		boost::shared_mutex				csf_shared_mutex;
 				/**
 				 * 表示共享互斥锁内容
 				 * @author fz

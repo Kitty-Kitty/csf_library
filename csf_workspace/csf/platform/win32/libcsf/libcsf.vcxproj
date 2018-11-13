@@ -82,6 +82,9 @@
     <Link>
       <AdditionalDependencies>$(OutDir)libcsf.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -190,6 +193,11 @@
     <ClInclude Include="..\..\..\include\core\module\device\connect\url\csf_url.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\csf_device.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\csf_device_interface.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\database\csf_database.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\database\csf_database_interface.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\database\csf_database_request.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\process\csf_process.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\process\csf_process_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device_io\csf_device_io.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device_io\csf_device_io_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\system\attribute\csf_attribute.hpp" />
@@ -253,8 +261,10 @@
     <ClInclude Include="..\..\..\include\csf_include.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\core\base\csf_buffer.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_chain.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp" />
+    <ClCompile Include="..\..\..\src\core\base\csf_container.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_csflist.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_csfmap.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_csfqueue.cpp" />
@@ -267,6 +277,7 @@
     <ClCompile Include="..\..\..\src\core\base\csf_stack.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_time.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_vector.cpp" />
+    <ClCompile Include="..\..\..\src\core\base\csf_version.cpp" />
     <ClCompile Include="..\..\..\src\core\module\app\csf_app.cpp" />
     <ClCompile Include="..\..\..\src\core\module\csf_device_base.cpp" />
     <ClCompile Include="..\..\..\src\core\module\csf_manager.cpp" />
@@ -277,18 +288,26 @@
     <ClCompile Include="..\..\..\src\core\module\csf_module_version.cpp" />
     <ClCompile Include="..\..\..\src\core\module\csf_vm.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_callback.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_error.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_factory.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_factory_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout_manager.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_deadline_timer.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\url\csf_url.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\csf_device.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\database\csf_database.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\database\csf_database_request.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\process\csf_process.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device_io\csf_device_io.cpp" />
     <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute.cpp" />
     <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_bool.cpp" />
     <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_boundary.cpp" />
+    <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_default_value.cpp" />
     <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_exception.cpp" />
+    <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_exception_critical.cpp" />
+    <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_exception_warning.cpp" />
     <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_int.cpp" />
     <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_int64.cpp" />
     <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_manager.cpp" />
@@ -298,11 +317,13 @@
     <ClCompile Include="..\..\..\src\core\system\attribute\csf_attribute_time.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_app_bootloader.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_configure.cpp" />
+    <ClCompile Include="..\..\..\src\core\system\csf_configure_file.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_configure_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_configure_module.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_configure_parser.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_element.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_logger.cpp" />
+    <ClCompile Include="..\..\..\src\core\system\csf_measure_configure.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_root_configure.cpp" />
     <ClCompile Include="..\..\..\src\core\utils\csf_markup_xml.cpp" />
     <ClCompile Include="..\..\..\src\core\utils\csf_rb_tree.cpp" />
@@ -323,7 +344,22 @@
     <Xml Include="..\..\..\config\csf_system.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <Text Include="..\..\..\CMakeLists.txt" />
+    <Text Include="..\..\..\include\CMakeLists.txt" />
+    <Text Include="..\..\..\src\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\base\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\module\app\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\module\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\module\device\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\module\device\connect\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\module\device\connect\url\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\module\device_io\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\system\attribute\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\system\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\utils\CMakeLists.txt" />
+    <Text Include="..\..\..\src\core\utils\thread\CMakeLists.txt" />
+    <Text Include="..\..\..\src\modules\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

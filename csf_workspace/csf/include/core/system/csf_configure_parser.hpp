@@ -51,7 +51,7 @@ namespace csf
 				 * @version 1.0
 				 * @created 01-7月-2018 14:06:44
 				 */
-				typedef enum 
+				typedef enum csf_configure_format_type_enum
 				{
 					/**
 					 * 表示未定义的配置文件格式类型
@@ -62,8 +62,6 @@ namespace csf
 					 */
 					csf_configure_format_type_xml = 0x00000001
 				} csf_configure_format_type;
-
-				typedef csf_configure_parser::csf_configure_format_type		csf_configure_format_type;
 
 				/**
 				* 表示定义的配置文件格式类型和类型编号的对应关系
@@ -90,27 +88,6 @@ namespace csf
 				 * @param element    表示需要保存的配置信息
 				 */
 				csf_int32 save(const csf_configure_file& configure_file, const csf_element& element);
-#if 0
-				/**
-				 * 表示将configure中的configure_file描述文件内容转换为csf_element内容。
-				 * 返回：0表示成功；<0表示错误码。
-				 * 
-				 * @param configure    表示存储最终结果的csf_element对象
-				 */
-				inline csf_int32 parse(const csf_configure& configure) {
-
-					return parse(((csf_configure&)configure).get_element(),
-						((csf_configure&)configure).get_configure_file());
-				}
-				/**
-				 * 将配置文件信息保存到文件中
-				 * 
-				 * @param configure    表示需要保存的配置信息
-				 */
-				inline csf_int32 save(const csf_configure& configure) {
-					return csf_succeed;
-				}
-#endif
 				/**
 				 * 表示获取配置文件的文件格式
 				 * 
