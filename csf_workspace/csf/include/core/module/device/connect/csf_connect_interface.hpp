@@ -190,6 +190,13 @@ namespace csf
 					*/
 					virtual csf_int32 connect(const csf_url& url, const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
+					* 主要功能是：发送连接对象的写缓存(write_buffer)内容。
+					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
+					*
+					* @param callback    表示需要返回的回调函数
+					*/
+					//virtual csf_int32 write(const csf_connect_callback& callback = csf_nullptr) = 0;
+					/**
 					* 主要功能是：写入指定缓存的内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
 					*
@@ -327,6 +334,13 @@ namespace csf
 					* @param callback    表示需要返回的回调函数
 					*/
 					virtual csf_int32 write(csf_connect_buffer<csf_chain>& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr) = 0;
+					/**
+					* 主要功能是：读取数据并存放在连接对象的读缓存(read_buffer)空间中。
+					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
+					*
+					* @param callback    表示读取的回调函数
+					*/
+					//virtual csf_int32 read(const csf_chain_buffer_read_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；

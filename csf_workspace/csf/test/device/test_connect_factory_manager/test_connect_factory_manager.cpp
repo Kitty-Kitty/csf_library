@@ -35,7 +35,7 @@ test_connect_factory_manager::~test_connect_factory_manager() {
 
 /**
  * 模块初始化
- * 
+ *
  * @param conf_mg    表示配置文件信息
  */
 csf::core::base::csf_int32 test_connect_factory_manager::init(const csf_configure_manager * conf_mg) {
@@ -49,10 +49,22 @@ csf::core::base::csf_int32 test_connect_factory_manager::init(const csf_configur
 		return csf_failure;
 	}
 
+	csf_connect_callback tmp_callback = csf_bind(&test_connect_factory_manager::tcp_handle
+		, this
+		, std::placeholders::_1
+		, std::placeholders::_2);
+
+	tmp_callback.operator()
+	// 	cfm.add_handle("tcp_handle", csf_bind(&test_connect_factory_manager::tcp_handle
+	// 		, this
+	// 		, std::placeholders::_1
+	// 		, std::placeholders::_2));
+
 	cfm.add_handle("tcp_handle", csf_bind(&test_connect_factory_manager::tcp_handle
 		, this
 		, std::placeholders::_1
 		, std::placeholders::_2));
+
 
 	cfm.add_handle("udp_handle", csf_bind(&test_connect_factory_manager::udp_handle
 		, this
@@ -72,7 +84,7 @@ csf::core::base::csf_int32 test_connect_factory_manager::init(const csf_configur
 
 /**
  * 模块启动
- * 
+ *
  * @param conf_mg    表示配置文件信息
  */
 csf::core::base::csf_int32 test_connect_factory_manager::start(const csf_configure_manager * conf_mg) {
@@ -83,7 +95,7 @@ csf::core::base::csf_int32 test_connect_factory_manager::start(const csf_configu
 
 /**
  * 模块停止
- * 
+ *
  * @param conf_mg    表示配置文件信息
  */
 csf::core::base::csf_int32 test_connect_factory_manager::stop(const csf_configure_manager * conf_mg) {

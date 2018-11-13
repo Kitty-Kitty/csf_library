@@ -270,6 +270,8 @@ namespace csf
 				* @param callback    表示需要返回的回调函数
 				*/
 				virtual csf_int32 write(csf_connect_buffer<csf_chain>& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
+				csf_int32 read(const csf_uchar* buf, const csf_uint32 len
+					, const csf_function<csf_int32(csf_connect_error&)>& callback = csf_nullptr);
 				/**
 				* 主要功能是：读取数据并存在指定缓存位置。
 				* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；

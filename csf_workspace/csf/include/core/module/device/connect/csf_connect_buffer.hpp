@@ -138,10 +138,14 @@ namespace csf
 					 * 
 					 * @param len    表示需要发送的缓存长度
 					 */
-					inline void create(const csf_uint32 len) {
+					inline csf_int32 create(const csf_uint32 len) {
 
+						if (get_buffer()) {
+							return csf_failure;
+						}
 						m_buffer = new ValueType(len);
 						set_is_free(csf_true);
+						return csf_succeed;
 					}
 					/**
 					 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。

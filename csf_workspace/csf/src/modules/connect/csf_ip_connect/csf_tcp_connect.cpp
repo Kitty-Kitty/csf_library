@@ -411,6 +411,12 @@ csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_chain>& buffer, csf_url&
 	return 0;
 }
 
+csf_int32 csf_tcp_connect::read(const csf_uchar* buf, const csf_uint32 len
+	, const csf_function<csf_int32(csf_connect_error&)>& callback)
+{
+	return 0;
+}
+
 
 /**
 * 主要功能是：读取数据并存在指定缓存位置。
@@ -492,6 +498,14 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf
 */
 csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_buffer_buffer_read_callback& callback) {
 
+	if (csf_nullptr == buffer.get_buffer()
+		|| buffer.get_length() <= 0) {
+		return csf_failure;
+	}
+
+// 	return read(buffer.get_buffer()->get_buffer()
+// 		, buffer.get_length()
+// 		, callback(shared_from_this(), buffer, std::placeholders::_1));
 	return 0;
 }
 
