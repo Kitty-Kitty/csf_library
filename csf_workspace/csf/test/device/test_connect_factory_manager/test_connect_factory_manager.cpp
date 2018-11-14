@@ -54,7 +54,7 @@ csf::core::base::csf_int32 test_connect_factory_manager::init(const csf_configur
 		, std::placeholders::_1
 		, std::placeholders::_2);
 
-	tmp_callback.operator()
+	//tmp_callback.operator()
 	// 	cfm.add_handle("tcp_handle", csf_bind(&test_connect_factory_manager::tcp_handle
 	// 		, this
 	// 		, std::placeholders::_1
