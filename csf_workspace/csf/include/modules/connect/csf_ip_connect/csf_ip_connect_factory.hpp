@@ -35,7 +35,7 @@ namespace csf
 		namespace connect
 		{
 #define		csf_connect_version				1000000
-#define		CSF_CONNECT_VERSION				"v1.0.0"
+#define		CSF_CONNECT_VERSION				"V1.0.0"
 #define		CSF_CONNECT_VAR					"csf_ip_connect_factory"
 #define		CSF_CONNECT_VER					CSF_CONNECT_VAR	"/" CSF_CONNECT_VERSION
 			/************************************************************************/
