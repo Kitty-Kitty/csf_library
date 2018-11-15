@@ -38,7 +38,8 @@ test_connect_factory_manager::~test_connect_factory_manager() {
  *
  * @param conf_mg    表示配置文件信息
  */
-csf::core::base::csf_int32 test_connect_factory_manager::init(const csf_configure_manager * conf_mg) {
+csf::core::base::csf_int32 test_connect_factory_manager::init(
+	const csf_configure_manager * conf_mg) {
 
 	csf_connect_factory_manager			cfm(conf_mg);
 
@@ -48,17 +49,6 @@ csf::core::base::csf_int32 test_connect_factory_manager::init(const csf_configur
 			, "init connect factory manager failed!");
 		return csf_failure;
 	}
-
-	csf_connect_callback tmp_callback = csf_bind(&test_connect_factory_manager::tcp_handle
-		, this
-		, std::placeholders::_1
-		, std::placeholders::_2);
-
-	//tmp_callback.operator()
-	// 	cfm.add_handle("tcp_handle", csf_bind(&test_connect_factory_manager::tcp_handle
-	// 		, this
-	// 		, std::placeholders::_1
-	// 		, std::placeholders::_2));
 
 	cfm.add_handle("tcp_handle", csf_bind(&test_connect_factory_manager::tcp_handle
 		, this
@@ -87,7 +77,8 @@ csf::core::base::csf_int32 test_connect_factory_manager::init(const csf_configur
  *
  * @param conf_mg    表示配置文件信息
  */
-csf::core::base::csf_int32 test_connect_factory_manager::start(const csf_configure_manager * conf_mg) {
+csf::core::base::csf_int32 test_connect_factory_manager::start(
+	const csf_configure_manager * conf_mg) {
 
 	return 0;
 }
@@ -98,7 +89,8 @@ csf::core::base::csf_int32 test_connect_factory_manager::start(const csf_configu
  *
  * @param conf_mg    表示配置文件信息
  */
-csf::core::base::csf_int32 test_connect_factory_manager::stop(const csf_configure_manager * conf_mg) {
+csf::core::base::csf_int32 test_connect_factory_manager::stop(
+	const csf_configure_manager * conf_mg) {
 
 	return 0;
 }
@@ -111,9 +103,27 @@ csf::core::base::csf_int32 test_connect_factory_manager::stop(const csf_configur
 * @param connect_ptr    表示当前正在处理的连接对象
 * @param connect_error    表示当前处理的异常信息
 */
-csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(csf_connect_ptr connect_ptr, csf_connect_error& connect_error) {
+csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(
+	csf_connect_ptr connect_ptr
+	, csf_connect_error& connect_error) {
 
-	//connect->write(csf_connect_buffer<csf_buffer>(new csf_buffer(), 123), csf_nullptr);
+	connect_ptr->get_read_buffer().create(1024);
+// 	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
+// 		, csf_bind(&test_connect_factory_manager::read_handle
+// 			, this
+// 			, connect_ptr
+// 			, std::ref(connect_ptr->get_read_buffer())
+// 			, std::placeholders::_1));
+
+//	connect_ptr->read(std::ref(connect_ptr->get_read_buffer()), csf_nullptr);
+
+	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
+		, csf_bind(&test_connect_factory_manager::read_handle
+			, this
+			, connect_ptr
+			, std::ref(connect_ptr->get_read_buffer())
+			, connect_error));
+
 	return 0;
 }
 
@@ -125,7 +135,26 @@ csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(csf_connect_
 * @param connect_ptr    表示当前正在处理的连接对象
 * @param connect_error    表示当前处理的异常信息
 */
-csf::core::base::csf_int32 test_connect_factory_manager::udp_handle(csf_connect_ptr connect_ptr, csf_connect_error& connect_error) {
+csf::core::base::csf_int32 test_connect_factory_manager::udp_handle(
+	csf_connect_ptr connect_ptr
+	, csf_connect_error& connect_error) {
+
+	return 0;
+}
+
+
+/**
+* 主要功能是：tcp读数据返回函数
+* 返回：大于等于0表示成功；小于0表示错误
+*
+* @param connect_ptr    表示当前正在处理的连接对象
+* @param connect_buffer
+* @param connect_error    表示当前处理的异常信息
+*/
+csf::core::base::csf_int32 test_connect_factory_manager::read_handle(
+	csf_connect_ptr connect_ptr
+	, csf_connect_buffer<csf_buffer>& connect_buffer
+	, csf_connect_error& connect_error) {
 
 	return 0;
 }

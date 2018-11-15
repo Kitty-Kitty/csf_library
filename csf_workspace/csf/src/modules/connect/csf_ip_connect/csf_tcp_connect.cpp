@@ -503,6 +503,11 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const cs
 		return csf_failure;
 	}
 
+// 	get_socket().async_receive(
+// 		boost::asio::buffer(buffer.get_buffer(), buffer.get_length()),
+// 		pc_bind(&pc_conn_socket_media_manager_class::read,
+// 			this, conn_socket_ptr, pc_placeholders::error, pc_placeholders::bytes_transferred));
+
 // 	return read(buffer.get_buffer()->get_buffer()
 // 		, buffer.get_length()
 // 		, callback(shared_from_this(), buffer, std::placeholders::_1));
