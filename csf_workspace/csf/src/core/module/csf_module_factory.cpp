@@ -142,7 +142,7 @@ csf_void* csf_module_factory::load(const csf_char* path) {
 
 		DWORD				dwErrorCode = GetLastError();
 		const DWORD			dwSize = CSF_MODULE_FACTORY_MAX_ERROR_STRING;
-		TCHAR				tcBuffer[dwSize];
+		TCHAR				tcBuffer[dwSize] = { 0, };
 
 		if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
 			0,
@@ -235,7 +235,7 @@ csf_void* csf_module_factory::find_symbol(const csf_void* handle, const csf_char
 	if (!tmp_ret_handle) {
 		DWORD				dwErrorCode = GetLastError();
 		const DWORD			dwSize = CSF_MODULE_FACTORY_MAX_ERROR_STRING;
-		TCHAR				tcBuffer[dwSize];
+		TCHAR				tcBuffer[dwSize] = {0, };
 
 		if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
 			0,

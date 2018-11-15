@@ -210,20 +210,20 @@ namespace csf
 					/**
 					* 表示时间生成器的时间精度，主要描述各种时间的生成精度，单位：毫秒（ms）
 					*/
-					csf_atomic_uint64 m_time_resolution;
+					csf_atomic_uint64 m_time_resolution{ 0 };
 					/**
 					* 表示系统维护的相对时间。因为该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的相对时间计时（如连接对象的超时、各种处理的超时计时），而不能
 					* 当作操作系统时间使用。单位：毫秒（ms）
 					*/
-					csf_atomic_uint64 m_time;
+					csf_atomic_uint64 m_time{ 0 };
 					/**
 					* 表示系统维护的系统时间，通过实时获取系统时间而生成。该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的系统时间。单位：毫秒（ms）
 					*/
-					csf_atomic_uint64 m_native_time;
+					csf_atomic_uint64 m_native_time{ 0 };
 					/**
 					* 表示系统的启动时间。该数值等于第一个time时间。所以time减去begin_time所得时间为系统到目前为止的运行总时间。单位：毫秒（ms）
 					*/
-					csf_atomic_uint64 m_begin_time;
+					csf_atomic_uint64 m_begin_time{ 0 };
 					/**
 					* 表示当前的时间处理线程，用于时间和生成处理
 					*/

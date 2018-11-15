@@ -552,7 +552,7 @@ csf_bool csf_app_bootloader::stop_devices(csf_app& app
 			return csf_false;
 		}
 		else {
-
+			//后续处理...
 		}
 	}
 

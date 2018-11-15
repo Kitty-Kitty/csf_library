@@ -222,7 +222,7 @@ csf_module_factory* csf::core::module::csf_module_factory_manager::create_module
 		return new csf_module_factory(this, get_configure_manager(), tmp_module_configure);
 	}
 
-	return  NULL;
+	return csf_nullptr;
 }
 
 
