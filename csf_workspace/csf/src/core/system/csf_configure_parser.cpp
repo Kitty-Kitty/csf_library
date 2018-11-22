@@ -69,7 +69,10 @@ csf_int32 csf_configure_parser::parse(csf_element& element, const csf_configure_
 	}
 	break;
 	default:
-		break;
+	{
+		return csf_failure;
+	}
+	break;
 	}
 
 	return csf_succeed;
@@ -90,6 +93,7 @@ csf_int32 csf_configure_parser::save(const csf_configure_file& configure_file, c
 
 /**
  * 表示获取配置文件的文件格式
+ * 返回：配置文件格式数值
  *
  * @param format    表示需要获取的配置文件格式类型数据
  */
@@ -113,6 +117,7 @@ csf_configure_parser::csf_configure_format_type csf_configure_parser::format(con
 
 /**
 * 根据配置文件格式类型转换格式类型字符串
+* 返回：配置文件格式字符串描述
 *
 * @param fmt    表示需要获取的配置文件格式类型
 */

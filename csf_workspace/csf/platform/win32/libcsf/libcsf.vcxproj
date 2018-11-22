@@ -231,7 +231,7 @@
     <ClInclude Include="..\..\..\include\core\system\csf_element.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_element_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_logger.hpp" />
-    <ClInclude Include="..\..\..\include\core\system\csf_logger_define.h" />
+    <ClInclude Include="..\..\..\include\core\system\csf_logger_define.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_measure_configure.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_root_configure.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_system_include.h" />

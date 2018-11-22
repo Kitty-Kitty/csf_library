@@ -83,37 +83,6 @@
 } while (0)																				\
 
 
-#if 0
-
-/**
-* 表示定义一个printf写日志函数,同时添加判断日志级别
-* @author f
-* @version 1.0
-* @created 01-7月-2018 20:38:59
-* @param _level_	表示日志级别,取值为csf_logger_level类型
-* @param _code_	表示日志错误码
-* @param _fmt_	表示日志格式化字符串，类型printf("_fmt_", args)中的_fmt_字符串
-* @param ...	表示日志格式化参数列表，类型printf("_fmt_", args)中的args列表
-*/
-#define _csf_log_write(_level_, _code_, _fmt_, ...)	do {{								\
-	if(_level_ >= csf::core::system::csf_logger::get_level()) {							\
-		char				_tmp_buf_[CSF_LOGGER_MAX_ERROR_STRING] = {0,};				\
-		va_list				_tmp_marker_;												\
-																						\
-		va_start(_tmp_marker_, _fmt_);													\
-		if (csf_vsnprintf(_tmp_buf_, sizeof(_tmp_buf_), _fmt_, _tmp_marker_) < 0) {			\
-			_tmp_buf_[CSF_LOGGER_MAX_ERROR_STRING - 2] = '.';							\
-			_tmp_buf_[CSF_LOGGER_MAX_ERROR_STRING - 3] = '.';							\
-			_tmp_buf_[CSF_LOGGER_MAX_ERROR_STRING - 4] = '.';							\
-		}																				\
-		va_end(_tmp_marker_);															\
-		BOOST_LOG_WRITE(_level_, _code_, _tmp_buf_);									\
-	}																					\
-}} while (0)																			\
-
-
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -191,24 +160,6 @@ extern "C" {
 }
 #endif
 
-#if 0
-
-/**
-* 表示定义一个printf写日志函数,同时添加判断日志级别
-* @author f
-* @version 1.0
-* @created 01-7月-2018 20:38:59
-* @param _strlevel_	表示日志级别字符串,取值为"debug", "normal", "info", "notice", "warning", "error", "critical"
-* @param _code_		表示日志错误码
-* @param _fmt_		表示日志格式化字符串，类型printf("_fmt_", args)中的_fmt_字符串
-* @param ...		表示日志格式化参数列表，类型printf("_fmt_", args)中的args列表
-*/
-#define _csf_log_write_ex(_strlevel_, _code_, _fmt_, ...)	do {{								\
-	_csf_log_write(csf_logger_level_##_strlevel_, _code_, "func[%s(%d):%s] " _fmt_,				\
-						__FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__);						\
-}} while (0)																					\
-
-#endif
 
 /**
 * 表示定义一个printf写日志函数,同时添加判断日志级别
@@ -224,7 +175,6 @@ extern "C" {
 	_csf_log_write(csf_logger_level_##_strlevel_, _code_, "func[%s:%d] " _fmt_,				\
 						__FUNCTION__, __LINE__, ##__VA_ARGS__);								\
 }} while (0)																				\
-
 
 
 /**

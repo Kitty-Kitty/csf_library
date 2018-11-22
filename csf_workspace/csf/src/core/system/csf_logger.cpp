@@ -57,6 +57,10 @@ csf_logger::csf_logger(const csf_configure_manager* configure_manager, const csf
 
 csf_logger::~csf_logger() {
 
+	if (csf_nullptr != m_attribute_manager) {
+		delete ((csf_attribute_manager*)m_attribute_manager);
+		m_attribute_manager = csf_nullptr;
+	}
 }
 
 

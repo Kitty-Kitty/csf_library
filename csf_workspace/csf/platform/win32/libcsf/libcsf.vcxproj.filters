@@ -321,9 +321,6 @@
     <ClInclude Include="..\..\..\include\core\utils\csf_markup_xml.hpp">
       <Filter>include\core\utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\core\system\csf_logger_define.h">
-      <Filter>include\core\system</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\core\module\csf_module_factory_printf.h">
       <Filter>include\core\module</Filter>
     </ClInclude>
@@ -542,6 +539,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\core\module\device\process\csf_process_interface.hpp">
       <Filter>include\core\module\device\process</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\csf_logger_define.hpp">
+      <Filter>include\core\system</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
