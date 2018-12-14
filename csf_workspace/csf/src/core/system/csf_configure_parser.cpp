@@ -170,7 +170,6 @@ csf_int32 csf_configure_parser::parse_xml(csf_element& element, const csf_config
 */
 csf_int32 csf_configure_parser::parse(csf_element& element, CMarkup& markup) {
 
-	csf_int32								i = 0;
 	csf_string								tmp_name = "";
 	csf_string								tmp_value = "";
 
@@ -181,7 +180,7 @@ csf_int32 csf_configure_parser::parse(csf_element& element, CMarkup& markup) {
 		csf_element			tmp_child_element;
 
 		tmp_child_element.set_name(markup.GetTagName());
-		for (i = 0; ; i++) {
+		for (csf_int32 i = 0; ; i++) {
 
 			tmp_name = markup.GetAttribName(i);
 			if (tmp_name.empty()) {

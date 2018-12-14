@@ -23,7 +23,7 @@
 
 int main(int argc, char** argv)
 {
-	csf_bool								tmp_bool = csf_false;
+	csf_int32								tmp_bool = csf_false;
 	//csf::core::module::csf_app			tmp_app("D:\\project_work\\project\\css_workspace\\common_server_framework\\csf_workspace\\csf\\example\\app\\config\\csf_configs.xml", "xml");
 	//csf::core::module::csf_app			tmp_app("D:\\project_work\\csf_workspace\\csf\\example\\app\\config\\csf_configs.xml", "xml");
 	csf::core::module::csf_app				tmp_app("D:\\project_work\\csf_library\\csf_workspace\\csf\\example\\app\\config\\csf_configs.xml", "xml");

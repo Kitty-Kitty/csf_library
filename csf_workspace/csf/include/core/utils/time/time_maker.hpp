@@ -171,7 +171,7 @@ namespace csf
 					* @param tv
 					* @param tz
 					*/
-					static csf_int32 gettimeofday(struct timeval* tv, csf_timezone* tz) {
+					static csf_int32 csf_gettimeofday(struct timeval* tv, csf_timezone* tz) {
 #ifdef WIN32
 						FILETIME time;
 						double   timed;
@@ -202,7 +202,7 @@ namespace csf
 
 						struct timeval			tmp_timeval = { 0, };
 
-						gettimeofday(&tmp_timeval, csf_nullptr);
+						csf_gettimeofday(&tmp_timeval, csf_nullptr);
 
 						return ((csf_uint64)(tmp_timeval.tv_sec) * 1000) + (tmp_timeval.tv_usec / 1000);
 					}
