@@ -718,3 +718,16 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	//调用回调函数通知接收数据等各种处理
 	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
 }
+
+
+/**
+* 主要功能是：读取数据并存在指定缓存位置。
+* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
+*
+* @param buffer    表示读取数据存在的缓存对象
+* @param callback    表示读取的回调函数
+*/
+csf::core::base::csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback)
+{
+	return 0;
+}

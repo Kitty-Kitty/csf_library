@@ -487,7 +487,8 @@ namespace csf
 					* @param callback    表示读取的回调函数
 					*/
 					inline virtual csf_int32 read(const csf_buffer_buffer_read_callback& callback = csf_nullptr) {
-						return read(get_read_buffer(), callback);
+						//return read(get_read_buffer(), callback);
+						return 0;
 					}
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
@@ -542,7 +543,7 @@ namespace csf
 					* @param buffer    表示读取数据存在的缓存对象
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_buffer_buffer_read_callback& callback = csf_nullptr);
+					//virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_buffer_buffer_read_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -604,6 +605,31 @@ namespace csf
 					inline void set_write_buffer(csf_connect_buffer<csf_buffer>& newVal) {
 
 						m_write_buffer = newVal;
+					}
+					/**
+					* 主要功能是：读取数据并存在指定缓存位置。
+					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
+					*
+					* @param buffer    表示读取数据存在的缓存对象
+					* @param callback    表示读取的回调函数
+					*/
+					virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr);
+					/**
+					* 主要功能是：读取数据并存在指定缓存位置。
+					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
+					*
+					* @param buffer    表示读取数据存在的缓存对象
+					* @param callback    表示读取的回调函数
+					*/
+					template <typename ReadBuffer, class Function, typename Instance, typename... Args>
+					csf_int32 read(ReadBuffer &buffer, Function *func, Instance *instance, Args... args)
+					{
+						return read(buffer
+							, csf_bind(func
+								, instance
+								, std::placeholders::arg1
+								, std::placeholders::arg2
+								, std::forward<Args>(args)));
 					}
 				protected:
 					/**

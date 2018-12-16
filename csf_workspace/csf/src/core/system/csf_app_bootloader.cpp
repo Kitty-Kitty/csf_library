@@ -328,9 +328,14 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app
 		return csf_false;
 	}
 	else {
- 		csf_log_ex(notice, csf_log_code_notice
- 			, "add %s succeed!"
- 			, const_cast<csf::core::module::csf_device*>(device)->to_string().c_str());
+//		csf_string		tmp_str = const_cast<csf::core::module::csf_device*>(device)->to_string();
+
+// 		csf_log_ex(notice, csf_log_code_notice
+// 			, "add %s succeed!"
+// 			, tmp_str.c_str());
+  		csf_log_ex(notice, csf_log_code_notice
+  			, "add %s succeed!"
+  			, const_cast<csf::core::module::csf_device*>(device)->to_string().c_str());
 
 		return csf_true;
 	}

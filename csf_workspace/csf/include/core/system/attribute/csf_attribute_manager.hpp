@@ -492,14 +492,14 @@ namespace csf
 
 				private:
 					/**
-					 * 表示配置的属性列表，方便查找各个属性内容
-					 */
-					csf_unordered_map<csf_string, csf_attribute*> m_attributes;
-					/**
 					* 表示配置项的根节点对象。该配置信息优先与"csf_configure_manager*
 					* m_configure_manager"配置信息。如果配置了该对象，则优先采用该信息。所有配置项都出该对象中获取。
 					*/
 					csf_element* m_root_element = csf_nullptr;
+					/**
+					 * 表示配置的属性列表，方便查找各个属性内容
+					 */
+					csf_unordered_map<csf_string, csf_attribute*> m_attributes;
 					/**
 					* 表示模块指定的items所相对的根路径信息。如果指定该信息，则该模块的配置信息都是相对该路径信息。
 					*/

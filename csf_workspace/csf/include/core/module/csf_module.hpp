@@ -71,12 +71,12 @@ namespace csf
 				};
 
 				inline explicit csf_module()
-					: m_type(csf_module_type_none)
+					: m_decorator(csf_nullptr)
+					, m_configure_manager(csf_nullptr)
+					, m_type(csf_module_type_none)
 					, m_guid{0, }
 					, m_name{ 0, }
-					, m_format{0, }
-					, m_decorator(csf_nullptr)
-					, m_configure_manager(csf_nullptr) {
+					, m_format{0, } {
 
 				}
 				/**
@@ -88,12 +88,12 @@ namespace csf
 				inline explicit csf_module(const csf_configure_manager* configure_manager
 					, const csf_module_type type)
 
-					: m_type(type)
+					: m_decorator(csf_nullptr)
+					, m_configure_manager((csf_configure_manager*)configure_manager)
+					, m_type(type)
 					, m_guid{ 0, }
 					, m_name{ 0, }
 					, m_format{ 0, }
-					, m_decorator(csf_nullptr)
-					, m_configure_manager((csf_configure_manager*)configure_manager)
 					, m_attribute_manager(configure_manager) {
 
 				}
@@ -312,6 +312,14 @@ namespace csf
 				}
 			private:
 				/**
+				* 表示装饰者指针
+				*/
+				csf_module* m_decorator = csf_nullptr;
+				/**
+				* 表示模块的配置信息管理器
+				*/
+				csf::core::system::csf_configure_manager* m_configure_manager = csf_nullptr;
+				/**
 				 * 模块的类型
 				 */
 				csf_module_type m_type = csf_module_type_none;
@@ -328,10 +336,6 @@ namespace csf
 				*/
 				csf_char m_format[256] = { 0, };
 				/**
-				 * 表示装饰者指针
-				 */
-				csf_module* m_decorator = csf_nullptr;
-				/**
 				 * 表示模块的版本信息
 				 */
 				csf::core::module::csf_module_version m_version;
@@ -339,10 +343,6 @@ namespace csf
 				 * 表示模块的错误信息
 				 */
 				csf::core::module::csf_error m_error;
-				/**
-				 * 表示模块的配置信息管理器
-				 */
-				csf::core::system::csf_configure_manager* m_configure_manager = csf_nullptr;
 				/**
 				* 模块包含一个属性管理器，统一保存模块所需要的配置属性内容
 				*/

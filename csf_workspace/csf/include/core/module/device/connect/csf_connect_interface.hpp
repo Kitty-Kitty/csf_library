@@ -394,7 +394,7 @@ namespace csf
 					* @param buffer    表示读取数据存在的缓存对象
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_buffer_buffer_read_callback& callback = csf_nullptr) = 0;
+					//virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_buffer_buffer_read_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；

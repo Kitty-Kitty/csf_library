@@ -108,6 +108,17 @@ namespace csf
 			csf::core::base::csf_int32 read_handle(csf_connect_ptr connect_ptr
 				, csf_connect_buffer<csf_buffer>& connect_buffer
 				, csf_connect_error& connect_error);
+			/**
+			* 主要功能是：tcp读数据返回函数
+			* 返回：大于等于0表示成功；小于0表示错误
+			*
+			* @param connect_ptr    表示当前正在处理的连接对象
+			* @param connect_buffer
+			* @param connect_error    表示当前处理的异常信息
+			*/
+			csf::core::base::csf_int32 tcp_read_handle(csf_connect_ptr connect_ptr
+				, csf_connect_error& connect_error
+				, csf_int32 len);
 		};
 
 	}

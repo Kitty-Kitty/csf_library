@@ -117,13 +117,20 @@ csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(
 
 //	connect_ptr->read(std::ref(connect_ptr->get_read_buffer()), csf_nullptr);
 
-	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
-		, csf_bind(&test_connect_factory_manager::read_handle
-			, this
-			, connect_ptr
-			, std::ref(connect_ptr->get_read_buffer())
-			, connect_error));
+// 	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
+// 		, csf_bind(&test_connect_factory_manager::read_handle
+// 			, this
+// 			, connect_ptr
+// 			, std::ref(connect_ptr->get_read_buffer())
+// 			, connect_error));
 
+	csf_int32				tmp_int = 0;
+
+
+	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
+		, &test_connect_factory_manager::tcp_read_handle
+		, this
+		, tmp_int);
 	return 0;
 }
 
@@ -159,6 +166,22 @@ csf::core::base::csf_int32 test_connect_factory_manager::read_handle(
 	return 0;
 }
 
+
+/**
+* 主要功能是：tcp读数据返回函数
+* 返回：大于等于0表示成功；小于0表示错误
+*
+* @param connect_ptr    表示当前正在处理的连接对象
+* @param connect_buffer
+* @param connect_error    表示当前处理的异常信息
+*/
+csf::core::base::csf_int32 test_connect_factory_manager::tcp_read_handle(csf_connect_ptr connect_ptr
+	, csf_connect_error& connect_error
+	, csf_int32 len)
+{
+
+	return 0;
+}
 
 
 

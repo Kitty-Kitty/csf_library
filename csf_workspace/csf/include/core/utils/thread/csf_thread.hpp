@@ -79,6 +79,7 @@ namespace csf
 					csf_thread(TheadFunction func)
 						: m_status(csf_thread::csf_thread_status::csf_thread_status_none)
 						, boost::thread(boost::bind(&csf_thread::start, this, func)) {
+						//, boost::thread([&] {this->start(func); }) {
 
 					}
 					virtual ~csf_thread() {

@@ -57,8 +57,8 @@ namespace csf
 
 			public:
 				inline explicit csf_device_base()
-					: m_mid{ 0, }
-					, m_parent(csf_nullptr) {
+					: m_parent(csf_nullptr)
+					, m_mid{ 0, } {
 
 				}
 
@@ -75,8 +75,8 @@ namespace csf
 					, const csf_module::csf_module_type type) 
 				
 					: csf_module(configure_manager, type)
-					, m_mid{ 0, }
-					, m_parent(csf_nullptr) {
+					, m_parent(csf_nullptr)
+					, m_mid{ 0, } {
 
 				}
 				/**
@@ -281,13 +281,13 @@ namespace csf
 				}
 			private:
 				/**
-				* 表示设备的唯一编码id
-				*/
-				csf_char m_mid[csf_device_id_length] = { 0, };
-				/**
 				* 表示设备所属的父设备的节点名称
 				*/
 				csf_device_base* m_parent = csf_nullptr;
+				/**
+				* 表示设备的唯一编码id
+				*/
+				csf_char m_mid[csf_device_id_length] = { 0, };
 
 			};
 
