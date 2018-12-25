@@ -127,10 +127,10 @@ csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(
 	csf_int32				tmp_int = 0;
 
 
-	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
-		, &test_connect_factory_manager::tcp_read_handle
-		, this
-		, tmp_int);
+// 	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
+// 		, &test_connect_factory_manager::tcp_read_handle
+// 		, this
+// 		, tmp_int);
 	return 0;
 }
 
