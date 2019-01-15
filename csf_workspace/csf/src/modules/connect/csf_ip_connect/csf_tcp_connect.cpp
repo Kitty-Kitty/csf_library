@@ -204,6 +204,23 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 */
 csf_int32 csf_tcp_connect::write(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback) {
 
+	//这里可以不进行数据的校验处理，这样会减少数据读取的效率
+ 	if (csf_nullptr == buf
+ 		|| len <= 0) {
+ 		exception_callback(shared_from_this()
+ 			, callback
+ 			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes
+				, "data is null"));
+		return csf_failure;
+ 	}
+
+	//根据是否有回调函数，来判断使用异步还是同步
+	if (csf_nullptr == callback) {
+		return sync_write(buf, len, callback);
+	}
+	else {
+		return async_write(buf, len, callback);
+	}
 	return 0;
 }
 
@@ -217,7 +234,7 @@ csf_int32 csf_tcp_connect::write(const csf_uchar* buf, const csf_uint32 len, con
 */
 csf_int32 csf_tcp_connect::write(csf_buffer& buffer, const csf_connect_callback& callback) {
 
-	return 0;
+	return write(buffer.get_buffer(), buffer.length(), callback);
 }
 
 
@@ -230,7 +247,7 @@ csf_int32 csf_tcp_connect::write(csf_buffer& buffer, const csf_connect_callback&
 */
 csf_int32 csf_tcp_connect::write(csf_csfstring& csfstr, const csf_connect_callback& callback) {
 
-	return 0;
+	return write(csfstr.get_buffer(), csfstr.length(), callback);
 }
 
 
@@ -243,64 +260,11 @@ csf_int32 csf_tcp_connect::write(csf_csfstring& csfstr, const csf_connect_callba
 */
 csf_int32 csf_tcp_connect::write(csf_chain& chain, const csf_connect_callback& callback) {
 
-	return 0;
-}
+	csf_buffer				tmp_buffer(chain.length());
 
+	chain.convert(tmp_buffer);
 
-/**
-* 主要功能是：写入指定缓存的内容。
-* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-*
-* @param buf    表示内容的缓存地址
-* @param len    表示内容缓存的长度
-* @param url    表示需要发送数据的目的地址
-* @param callback    表示需要返回的回调函数
-*/
-csf_int32 csf_tcp_connect::write(const csf_uchar* buf, const csf_uint32 len, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
-
-
-/**
-* 主要功能是：写入csf_buffer内容。
-* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-*
-* @param buffer    表示需要写入的csf_buffer内容
-* @param url    表示需要发送数据的目的地址
-* @param callback    表示需要返回的回调函数
-*/
-csf_int32 csf_tcp_connect::write(csf_buffer& buffer, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
-
-
-/**
-* 主要功能是：发送csf_csfstring内容。
-* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-*
-* @param csfstr    表示csf_csfstring的内容
-* @param url    表示需要发送数据的目的地址
-* @param callback    表示需要返回的回调函数
-*/
-csf_int32 csf_tcp_connect::write(csf_csfstring& csfstr, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
-
-
-/**
-* 主要功能是：发送csf_csfstring内容。
-* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-*
-* @param chain    表示csf_chain的内容
-* @param url    表示需要发送数据的目的地址
-* @param callback    表示需要返回的回调函数
-*/
-csf_int32 csf_tcp_connect::write(csf_chain& chain, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
+	return write(tmp_buffer, callback);
 }
 
 
@@ -313,6 +277,21 @@ csf_int32 csf_tcp_connect::write(csf_chain& chain, csf_url& url, const csf_conne
 */
 csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback) {
 
+	//先判断数据的合法性，之后再处理
+	if (!buffer.is_valid()) {
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
+		return csf_failure;
+	}
+
+	//根据csf_connect_buffer的标志位来判断异步与同步
+	if (buffer.get_is_sync()) {
+		return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
+	}
+	else {
+		return async_write(buffer.get_buffer(), buffer.get_length(), callback);
+	}
 	return 0;
 }
 
@@ -326,6 +305,21 @@ csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_uchar>& buffer, const cs
 */
 csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
 
+	//先判断数据的合法性，之后再处理
+	if (!buffer.is_valid()) {
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
+		return csf_failure;
+	}
+
+	//根据csf_connect_buffer的标志位来判断异步与同步
+	if (buffer.get_is_sync()) {
+		return sync_write(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+	}
+	else {
+		return async_write(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+	}
 	return 0;
 }
 
@@ -339,6 +333,20 @@ csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const c
 */
 csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback) {
 
+	//先判断数据的合法性，之后再处理
+	if (!buffer.is_valid()) {
+		return exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
+	}
+
+	//根据csf_connect_buffer的标志位来判断异步与同步
+	if (buffer.get_is_sync()) {
+		return sync_write(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+	}
+	else {
+		return async_write(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+	}
 	return 0;
 }
 
@@ -352,68 +360,25 @@ csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_csfstring>& buffer, cons
 */
 csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback) {
 
-	return 0;
-}
+	//先判断数据的合法性，之后再处理
+	if (!buffer.is_valid()) {
+		return exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
+	}
 
+	//先将chain转化为buffer，成为一个连续的内存空间后处理
+	csf_buffer				tmp_buffer(buffer.get_buffer()->length());
 
-/**
-* 主要功能是：写入指定缓存的内容。
-* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-*
-* @param buffer    表示需要发送的内容缓存
-* @param url    表示需要发送数据的目的地址
-* @param callback    表示需要返回的回调函数
-*/
-csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_uchar>& buffer, csf_url& url, const csf_connect_callback& callback) {
+	buffer.get_buffer()->convert(tmp_buffer);
 
-	return 0;
-}
-
-
-/**
-* 主要功能是：写入csf_buffer内容。
-* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-*
-* @param buffer    表示需要发送的内容缓存
-* @param url    表示需要发送数据的目的地址
-* @param callback    表示需要返回的回调函数
-*/
-csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
-
-
-/**
-* 主要功能是：发送csf_csfstring内容。
-* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-*
-* @param buffer    表示需要发送的内容缓存
-* @param url    表示需要发送数据的目的地址
-* @param callback    表示需要返回的回调函数
-*/
-csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_csfstring>& buffer, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
-
-
-/**
-* 主要功能是：发送csf_csfstring内容。
-* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-*
-* @param buffer    表示需要发送的内容缓存
-* @param url    表示需要发送数据的目的地址
-* @param callback    表示需要返回的回调函数
-*/
-csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_chain>& buffer, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
-
-csf_int32 csf_tcp_connect::read(const csf_uchar* buf, const csf_uint32 len
-	, const csf_function<csf_int32(csf_connect_error&)>& callback)
-{
+	//根据csf_connect_buffer的标志位来判断异步与同步
+	if (buffer.get_is_sync()) {
+		return sync_write(tmp_buffer.get_buffer(), buffer.get_length(), callback);
+	}
+	else {
+		return async_write(tmp_buffer.get_buffer(), buffer.get_length(), callback);
+	}
 	return 0;
 }
 
@@ -427,8 +392,24 @@ csf_int32 csf_tcp_connect::read(const csf_uchar* buf, const csf_uint32 len
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_tcp_connect::read(const csf_uchar* buf, const csf_uint32 len, const csf_char_read_callback& callback) {
+csf_int32 csf_tcp_connect::read(csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback) {
 
+	//先判断数据的合法性，之后再处理
+	if (csf_nullptr == buf
+		|| len <= 0) {
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
+		return csf_failure;
+	}
+
+	//根据csf_connect_buffer的标志位来判断异步与同步
+	if (csf_nullptr == callback) {
+		return sync_read(buf, len, callback);
+	}
+	else {
+		return async_read(buf, len, callback);
+	}
 	return 0;
 }
 
@@ -441,7 +422,20 @@ csf_int32 csf_tcp_connect::read(const csf_uchar* buf, const csf_uint32 len, cons
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_tcp_connect::read(csf_buffer& buffer, const csf_uint32 len, const csf_buffer_read_callback& callback) {
+csf_int32 csf_tcp_connect::read(csf_buffer& buffer, const csf_uint32 len, const csf_connect_callback& callback) {
+
+	//剩余空间充足时，则直接处理
+	if (buffer.avail() >= len) {
+		return read(buffer.get_buffer(), len, callback);
+	}
+	else {
+		//如果剩余的空间不足，则报出异常
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
+				, "not enough storage available"));
+		return csf_failure;
+	}
 
 	return 0;
 }
@@ -455,7 +449,20 @@ csf_int32 csf_tcp_connect::read(csf_buffer& buffer, const csf_uint32 len, const 
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_tcp_connect::read(csf_csfstring& csfstr, const csf_uint32 len, const csf_csfstr_read_callback& callback) {
+csf_int32 csf_tcp_connect::read(csf_csfstring& csfstr, const csf_uint32 len, const csf_connect_callback& callback) {
+
+	//剩余空间充足时，则直接处理
+	if (csfstr.length() >= len) {
+		return read(csfstr.get_buffer(), len, callback);
+	}
+	else {
+		//如果剩余的空间不足，则报出异常
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
+				, "not enough storage available"));
+		return csf_failure;
+	}
 
 	return 0;
 }
@@ -469,7 +476,34 @@ csf_int32 csf_tcp_connect::read(csf_csfstring& csfstr, const csf_uint32 len, con
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_tcp_connect::read(csf_chain& chain, const csf_uint32 len, const csf_chain_read_callback& callback) {
+csf_int32 csf_tcp_connect::read(csf_chain& chain, const csf_uint32 len, const csf_connect_callback& callback) {
+
+	//先判断数据的合法性，之后再处理
+	if (len <= 0) {
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
+				, "not enough storage available"));
+		return csf_failure;
+	}
+
+	csf_int32		tmp_length = 0;
+	csf_buffer		tmp_buffer(len);
+
+	//chain只能进行同步接收和保存处理
+	tmp_length = read(tmp_buffer, len, csf_nullptr);
+	if (tmp_length >= (csf_int32)len) {
+		chain.add(tmp_buffer);
+		async_callback(shared_from_this(), callback, csf_ip_connect_error());
+		return csf_succeed;
+	}
+	else {
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_operation_error, "read data error"));
+
+		return csf_failure;
+	}
 
 	return 0;
 }
@@ -483,34 +517,54 @@ csf_int32 csf_tcp_connect::read(csf_chain& chain, const csf_uint32 len, const cs
 *
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf_char_buffer_read_callback& callback) {
+csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback) {
 
-	return 0;
-}
-
-
-/**
-* 主要功能是：读取数据并存在指定缓存位置。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param buffer    表示读取数据存在的缓存对象
-* @param callback    表示读取的回调函数
-*/
-csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_buffer_buffer_read_callback& callback) {
-
-	if (csf_nullptr == buffer.get_buffer()
-		|| buffer.get_length() <= 0) {
+	//先判断数据的合法性，之后再处理
+	if (!buffer.is_valid()) {
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
+				, "not enough storage available"));
 		return csf_failure;
 	}
 
-// 	get_socket().async_receive(
-// 		boost::asio::buffer(buffer.get_buffer(), buffer.get_length()),
-// 		pc_bind(&pc_conn_socket_media_manager_class::read,
-// 			this, conn_socket_ptr, pc_placeholders::error, pc_placeholders::bytes_transferred));
+	//根据csf_connect_buffer的标志位来判断异步与同步
+	if (buffer.get_is_sync()) {
+		return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
+	}
+	else {
+		return async_read(buffer.get_buffer(), buffer.get_length(), callback);
+	}
 
-// 	return read(buffer.get_buffer()->get_buffer()
-// 		, buffer.get_length()
-// 		, callback(shared_from_this(), buffer, std::placeholders::_1));
+	return csf_succeed;
+}
+
+
+/**
+* 主要功能是：读取数据并存在指定缓存位置。
+* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
+*
+* @param buffer    表示读取数据存在的缓存对象
+* @param callback    表示读取的回调函数
+*/
+csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
+
+	//先判断数据的合法性，之后再处理
+	if (!buffer.is_valid()) {
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
+				, "not enough storage available"));
+		return csf_failure;
+	}
+
+	//根据csf_connect_buffer的标志位来判断异步与同步
+	if (buffer.get_is_sync()) {
+		return sync_read(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+	}
+	else {
+		return async_read(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+	}
 	return 0;
 }
 
@@ -522,8 +576,24 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const cs
 * @param buffer    表示读取数据存在的缓存对象
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf_csfstr_buffer_read_callback& callback) {
+csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback) {
 
+	//先判断数据的合法性，之后再处理
+	if (!buffer.is_valid()) {
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
+				, "not enough storage available"));
+		return csf_failure;
+	}
+
+	//根据csf_connect_buffer的标志位来判断异步与同步
+	if (buffer.get_is_sync()) {
+		return sync_read(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+	}
+	else {
+		return async_read(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+	}
 	return 0;
 }
 
@@ -535,9 +605,19 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const
 * @param buffer    表示读取数据存在的缓存对象
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_chain>& buffer, const csf_chain_buffer_read_callback& callback) {
+csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback) {
 
-	return 0;
+	//先判断数据的合法性，之后再处理
+	if (!buffer.is_valid()) {
+		exception_callback(shared_from_this()
+			, callback
+			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
+				, "not enough storage available"));
+
+		return csf_failure;
+	}
+
+	return read(*(buffer.get_buffer()), buffer.get_length(), callback);
 }
 
 
@@ -551,12 +631,14 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_chain>& buffer, const csf
 */
 csf_int32 csf_tcp_connect::sync_write(const csf_uchar* buf
 	, const csf_uint32 len
-	, const csf_connect_callback callback) {
+	, const csf_connect_callback& callback) {
 
 	csf_int32						tmp_length = 0;
 	csf_int32						tmp_send_length = 0;
 	boost::system::error_code		tmp_error_code;
 
+
+	get_write_timeout().flush_time();
 
 	//循环发送数据内容，直到数据发送完成为止
 	while (tmp_send_length < (csf_int32)len)
@@ -590,17 +672,151 @@ csf_int32 csf_tcp_connect::sync_write(const csf_uchar* buf
 */
 csf_int32 csf_tcp_connect::async_write(const csf_uchar* buf
 	, const csf_uint32 len
-	, const csf_connect_callback callback) {
+	, const csf_connect_callback& callback) {
+
+	get_write_timeout().flush_time();
 
 	//这里主要是数据量一大，就发送不完全了。尤其在linux平台下更容易出现这个问题
 	get_socket().async_write_some(boost::asio::buffer(buf, len)
-			, boost::bind(&csf_tcp_connect::async_write_callback
+			, boost::bind(&csf_tcp_connect::tcp_async_write_callback
 			, this
+			, buf
+			, len
 			, callback
 			, boost::asio::placeholders::error
 			, boost::asio::placeholders::bytes_transferred));
 
 	return len;
+}
+
+
+/**
+* 主要功能是：处理异步写处理回调函数
+* 返回：0表示处理成功；非0表示处理失败
+*
+* @param buf		 表示内容的缓存地址
+* @param src_len	 表示需要被处理的源内容缓存的长度
+* @param callback    表示异常处理句柄信息
+* @param error_code  表示boost的错误信息
+* @param write_len   表示当前实际写的缓存长度
+*/
+csf_bool csf_tcp_connect::tcp_async_write_callback(const csf_uchar* buf
+	, const csf_uint32 src_len
+	, const csf_connect_callback& callback
+	, const boost::system::error_code& error_code
+	, csf_uint32 write_len) {
+
+	//如果处理错误，则按照错误处理
+	if (error_code) {
+		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
+		return csf_false;
+	}
+	//如果已经发送完成所有数据，则正常回调返回
+	if (write_len >= src_len) {
+		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
+		return csf_true;
+	}
+	else {
+		//如果没有发送完全，还有部分数据，则继续发送
+		async_write(buf + write_len, src_len - write_len, callback);
+	}
+
+	return csf_true;
+}
+
+
+/**
+* 主要功能是：同步读取数据，并放入指定缓存。
+* 返回：小于等于0表示失败；大于0表示成功读入的数据长度；
+*
+* @param buf    表示内容的缓存地址
+* @param len    表示内容缓存的长度
+* @param callback    表示需要返回的回调函数
+*/
+csf_int32 csf_tcp_connect::sync_read(csf_uchar* buf
+	, const csf_uint32 len
+	, const csf_connect_callback& callback) {
+
+	csf_int32						tmp_receive_length = 0;
+	boost::system::error_code		tmp_error_code;
+
+
+	get_read_timeout().flush_time();
+
+	tmp_receive_length = get_socket().receive(boost::asio::buffer(buf, len)
+		, 0
+		, tmp_error_code);
+	if (tmp_receive_length < 0 || tmp_error_code) {
+
+		exception_callback(shared_from_this(), callback, csf_ip_connect_error(tmp_error_code));
+		return csf_failure;
+	}
+	else {
+		return tmp_receive_length;
+	}
+	return 0;
+}
+
+
+/**
+* 主要功能是：异步读取数据，并放入指定缓存。
+* 返回：小于等于0表示失败；大于0表示成功读入的数据长度；
+*
+* @param buf    表示内容的缓存地址
+* @param len    表示内容缓存的长度
+* @param callback    表示需要返回的回调函数
+*/
+csf_int32 csf_tcp_connect::async_read(csf_uchar* buf
+	, const csf_uint32 len
+	, const csf_connect_callback& callback) {
+
+	get_read_timeout().flush_time();
+
+	get_socket().async_receive(boost::asio::buffer(buf, len)
+		, boost::bind(&csf_tcp_connect::tcp_async_read_callback
+		, this
+		, buf
+		, len
+		, callback
+		, boost::asio::placeholders::error
+		, boost::asio::placeholders::bytes_transferred));
+
+	return 0;
+}
+
+
+/**
+* 主要功能是：处理异步读处理回调函数
+* 返回：0表示处理成功；非0表示处理失败
+*
+* @param buf		 表示内容的缓存地址
+* @param buf_len	 表示需要被处理的源内容缓存的长度
+* @param callback    表示异常处理句柄信息
+* @param error_code  表示boost的错误信息
+* @param read_len   表示当前实际写的缓存长度
+*/
+csf_bool csf_tcp_connect::tcp_async_read_callback(csf_uchar* buf
+	, const csf_uint32 buf_len
+	, const csf_connect_callback& callback
+	, const boost::system::error_code& error_code
+	, csf_uint32 read_len) {
+
+	//如果处理错误，则按照错误处理
+	if (error_code) {
+		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
+		return csf_false;
+	}
+	//如果已经发送完成所有数据，则正常回调返回
+	if (read_len >= buf_len) {
+		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
+		return csf_true;
+	}
+	else {
+		//如果没有发送完全，还有部分数据，则继续发送
+		async_read(buf + read_len, buf_len - read_len, callback);
+	}
+
+	return csf_true;
 }
 
 
@@ -719,15 +935,3 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
 }
 
-
-/**
-* 主要功能是：读取数据并存在指定缓存位置。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param buffer    表示读取数据存在的缓存对象
-* @param callback    表示读取的回调函数
-*/
-csf::core::base::csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback)
-{
-	return 0;
-}

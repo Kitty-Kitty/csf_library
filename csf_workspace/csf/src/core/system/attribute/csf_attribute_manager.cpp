@@ -91,7 +91,6 @@ csf_string csf_attribute_manager::get_content(const csf_char* name) {
 
 
 	if (attr.not_null()) {
-
 		return attr.get_content();
 	}
 

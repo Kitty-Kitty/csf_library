@@ -61,7 +61,19 @@ namespace csf
 						/**
 						* 表示打开监听地址错误编码
 						*/
-						csf_connect_code_listen = 0x00000020
+						csf_connect_code_listen = 0x00000020,
+						/**
+						* 表示传入非法参数，参数为空错误
+						*/
+						csf_connect_code_invalid_parametes = 0x00000040,
+						/**
+						* 表示存放数据的空间不足
+						*/
+						csf_connect_code_not_enough_space = 0x00000080,
+						/**
+						* 表示进行的处理错误
+						*/
+						csf_connect_code_operation_error = 0x00000100
 					} csf_connect_code;
 
 				public:

@@ -25,10 +25,17 @@
 #include "csf_thread.hpp"
 
 #ifdef WIN32
-#include <sysinfoapi.h>
 typedef void						csf_timezone;
+/*
+* Structure used in select() call, taken from the BSD file sys/time.h.
+*/
+typedef struct csf_timeval_s {
+	long    tv_sec;         /* seconds */
+	long    tv_usec;        /* and microseconds */
+} csf_timeval;
 #else
 #include <sys/time.h>
+typedef struct timeval				csf_timeval;
 typedef struct timezone				csf_timezone;
 #endif
 
@@ -171,7 +178,7 @@ namespace csf
 					* @param tv
 					* @param tz
 					*/
-					static csf_int32 csf_gettimeofday(struct timeval* tv, csf_timezone* tz) {
+					static csf_int32 csf_gettimeofday(csf_timeval* tv, csf_timezone* tz) {
 #ifdef WIN32
 						FILETIME time;
 						double   timed;
@@ -200,7 +207,7 @@ namespace csf
 					*/
 					inline static csf_uint64 gettimeofday_millsecond() {
 
-						struct timeval			tmp_timeval = { 0, };
+						csf_timeval			tmp_timeval = { 0, };
 
 						csf_gettimeofday(&tmp_timeval, csf_nullptr);
 

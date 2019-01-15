@@ -105,9 +105,11 @@ namespace csf
 			* @param connect_buffer
 			* @param connect_error    表示当前处理的异常信息
 			*/
-			csf::core::base::csf_int32 read_handle(csf_connect_ptr connect_ptr
+			csf::core::base::csf_int32 read_handle(
+				csf_connect_ptr connect_ptr
+				, csf_connect_error& connect_error
 				, csf_connect_buffer<csf_buffer>& connect_buffer
-				, csf_connect_error& connect_error);
+				);
 			/**
 			* 主要功能是：tcp读数据返回函数
 			* 返回：大于等于0表示成功；小于0表示错误
@@ -119,6 +121,48 @@ namespace csf
 			csf::core::base::csf_int32 tcp_read_handle(csf_connect_ptr connect_ptr
 				, csf_connect_error& connect_error
 				, csf_int32 len);
+
+		private:
+			/**
+			* 表示读取数据所使用的回调函数对象
+			*/
+			csf_connect_callback m_read_function = csf_nullptr;
+			/**
+			* 表示写数据所使用的回调函数对象
+			*/
+			csf_connect_callback m_write_function = csf_nullptr;
+			/**
+			* 表示读取数据所使用的回调函数对象
+			*/
+			inline csf_connect_callback& get_read_function() {
+
+				return m_read_function;
+			}
+			/**
+			* 表示读取数据所使用的回调函数对象
+			*
+			* @param newVal
+			*/
+			inline void set_read_function(csf_connect_callback newVal) {
+
+				m_read_function = newVal;
+			}
+			/**
+			* 表示写数据所使用的回调函数对象
+			*/
+			inline csf_connect_callback& get_write_function() {
+
+				return m_write_function;
+			}
+			/**
+			* 表示写数据所使用的回调函数对象
+			*
+			* @param newVal
+			*/
+			inline void set_write_function(csf_connect_callback newVal) {
+
+				m_write_function = newVal;
+			}
 		};
 
 	}

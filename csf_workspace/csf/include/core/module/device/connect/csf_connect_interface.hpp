@@ -42,83 +42,6 @@ namespace csf
 				class csf_connect_interface
 				{
 				public:
-					/**
-					* 表示读取char的回调函数
-					* @author f
-					* @version 1.0
-					* @created 01-10月-2018 12:54:37
-					*/
-					typedef csf_function<csf_int32(csf_connect_ptr
-						, const csf_uchar*
-						, const csf_uint32
-						, csf_connect_error&)> 	csf_char_read_callback;
-					/**
-					* 表示读取csf_buffer的回调函数
-					* @author f
-					* @version 1.0
-					* @created 01-10月-2018 12:54:37
-					*/
-					typedef csf_function<csf_int32(csf_connect_ptr
-						, csf_buffer& buffer
-						, const csf_uint32
-						, csf_connect_error&)> 	csf_buffer_read_callback;
-					/**
-					* 表示读取csf_csfstring的回调函数
-					* @author f
-					* @version 1.0
-					* @created 01-10月-2018 12:54:37
-					*/
-					typedef csf_function<csf_int32(csf_connect_ptr
-						, csf_csfstring& csfstr
-						, const csf_uint32
-						, csf_connect_error&)> 	csf_csfstr_read_callback;
-					/**
-					* 表示读取csf_chain的回调函数
-					* @author f
-					* @version 1.0
-					* @created 01-10月-2018 12:54:37
-					*/
-					typedef csf_function<csf_int32(csf_connect_ptr
-						, csf_chain& chain
-						, const csf_uint32
-						, csf_connect_error&)> 	csf_chain_read_callback;
-					/**
-					* 表示读取char的回调函数
-					* @author f
-					* @version 1.0
-					* @created 01-10月-2018 12:54:37
-					*/
-					typedef csf_function<csf_int32(csf_connect_ptr
-						, csf_connect_buffer<csf_uchar>&
-						, csf_connect_error&)> 	csf_char_buffer_read_callback;
-					/**
-					* 表示读取csf_buffer的回调函数
-					* @author f
-					* @version 1.0
-					* @created 01-10月-2018 12:54:37
-					*/
-					typedef csf_function<csf_int32(csf_connect_ptr
-						, csf_connect_buffer<csf_buffer>&
-						, csf_connect_error&)> 	csf_buffer_buffer_read_callback;
-					/**
-					* 表示读取csf_csfstring的回调函数
-					* @author f
-					* @version 1.0
-					* @created 01-10月-2018 12:54:37
-					*/
-					typedef csf_function<csf_int32(csf_connect_ptr
-						, csf_connect_buffer<csf_csfstring>& csfstr
-						, csf_connect_error&)> 	csf_csfstr_buffer_read_callback;
-					/**
-					* 表示读取csf_chain的回调函数
-					* @author f
-					* @version 1.0
-					* @created 01-10月-2018 12:54:37
-					*/
-					typedef csf_function<csf_int32(csf_connect_ptr
-						, csf_connect_buffer<csf_chain>& chain
-						, csf_connect_error&)> 	csf_chain_buffer_read_callback;
-				public:
 					csf_connect_interface() {
 
 					}
@@ -189,13 +112,6 @@ namespace csf
 					* @param callback    表示需要返回的回调函数
 					*/
 					virtual csf_int32 connect(const csf_url& url, const csf_connect_callback& callback = csf_nullptr) = 0;
-					/**
-					* 主要功能是：发送连接对象的写缓存(write_buffer)内容。
-					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
-					*
-					* @param callback    表示需要返回的回调函数
-					*/
-					//virtual csf_int32 write(const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：写入指定缓存的内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -335,13 +251,6 @@ namespace csf
 					*/
 					virtual csf_int32 write(csf_connect_buffer<csf_chain>& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
-					* 主要功能是：读取数据并存放在连接对象的读缓存(read_buffer)空间中。
-					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-					*
-					* @param callback    表示读取的回调函数
-					*/
-					//virtual csf_int32 read(const csf_chain_buffer_read_callback& callback = csf_nullptr) = 0;
-					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
 					*
@@ -350,7 +259,7 @@ namespace csf
 					* @param len    表示读取数据存在的指定缓存长度
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(const csf_uchar* buf, const csf_uint32 len, const csf_char_read_callback& callback = csf_nullptr) = 0;
+					virtual csf_int32 read(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -359,7 +268,7 @@ namespace csf
 					* @param len    表示读取数据存在的指定缓存长度
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_buffer& buffer, const csf_uint32 len, const csf_buffer_read_callback& callback = csf_nullptr) = 0;
+					virtual csf_int32 read(csf_buffer& buffer, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -368,7 +277,7 @@ namespace csf
 					* @param len    表示读取数据存在的指定缓存长度
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_csfstring& csfstr, const csf_uint32 len, const csf_csfstr_read_callback& callback = csf_nullptr) = 0;
+					virtual csf_int32 read(csf_csfstring& csfstr, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：读取数据并存在指定缓存链表中。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -377,7 +286,7 @@ namespace csf
 					* @param len    表示读取数据存在的指定缓存长度
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_chain& chain, const csf_uint32 len, const csf_chain_read_callback& callback = csf_nullptr) = 0;
+					virtual csf_int32 read(csf_chain& chain, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -386,7 +295,7 @@ namespace csf
 					*
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_connect_buffer<csf_uchar>& buffer, const csf_char_buffer_read_callback& callback = csf_nullptr) = 0;
+					virtual csf_int32 read(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -394,7 +303,7 @@ namespace csf
 					* @param buffer    表示读取数据存在的缓存对象
 					* @param callback    表示读取的回调函数
 					*/
-					//virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_buffer_buffer_read_callback& callback = csf_nullptr) = 0;
+					virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -402,7 +311,7 @@ namespace csf
 					* @param buffer    表示读取数据存在的缓存对象
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_connect_buffer<csf_csfstring>& buffer, const csf_csfstr_buffer_read_callback& callback = csf_nullptr) = 0;
+					virtual csf_int32 read(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback = csf_nullptr) = 0;
 					/**
 					* 主要功能是：读取数据并存在指定缓存链表中。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -410,7 +319,7 @@ namespace csf
 					* @param buffer    表示读取数据存在的缓存对象
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_connect_buffer<csf_chain>& buffer, const csf_chain_buffer_read_callback& callback = csf_nullptr) = 0;
+					virtual csf_int32 read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback = csf_nullptr) = 0;
 				};
 
 			}

@@ -198,7 +198,7 @@ namespace csf
 						buffer.cat(**tmp_iter);
 					}
 
-					buffer.length();
+					return buffer.length();
 				}
 				/**
 				 * 表示将chain转换为csf_csfstring
@@ -217,7 +217,7 @@ namespace csf
 						csfstr.cat((*tmp_iter)->get_pos(), (*tmp_iter)->length());
 					}
 
-					csfstr.length();
+					return csfstr.length();
 				}
 				/**
 				 * 表示将chain转换到指定的内存中

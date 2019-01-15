@@ -145,6 +145,7 @@ namespace csf
 						}
 						m_buffer = new ValueType(len);
 						set_is_free(csf_true);
+						set_length(len);
 						return csf_succeed;
 					}
 					/**
@@ -176,6 +177,19 @@ namespace csf
 							set_is_free(csf_false);
 							m_buffer = csf_nullptr;
 						}
+					}
+					/**
+					* 主要功能是：根据对象是否为空，长度是否为空，判断当前的csf_connect_buffer是否合法；
+					* 返回：对象不为空，长度不为0则返回true；其他情况返回false
+					*/
+					inline csf_bool is_valid() {
+
+						if (csf_nullptr == get_buffer()
+							|| get_length() <= 0) {
+
+							return csf_false;
+						}
+						return csf_true;
 					}
 				private:
 					/**
