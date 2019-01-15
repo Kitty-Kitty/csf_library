@@ -22,7 +22,7 @@
 #define CSF_CONNECT_TIMEOUT_H_INCLUDED_
 
 #include "csf_base_include.h"
-
+#include "system_time.hpp"
 #include "csf_connect_callback.hpp"
 
 namespace csf
@@ -207,7 +207,13 @@ namespace csf
 
 						return csf_false;
 					}
-					
+					/**
+					* 主要功能是：刷新时间到当前的系统时间。
+					* 返回：无
+					*/
+					inline csf_void flush_time() {
+						set_time(csf::core::utils::time::system_time::get_time());
+					}
 				protected:
 					/**
 					* 主要功能是：表示用当前时间基准与connect_timeout中的time进行计算，所得数值即为返回数值。

@@ -475,10 +475,10 @@ csf_int32 csf_connect::write(csf_connect_buffer<csf_chain>& buffer, csf_url& url
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(const csf_uchar* buf, const csf_uint32 len, const csf_char_read_callback& callback) {
-
+csf_int32 csf_connect::read(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback) {
 	return 0;
 }
+
 
 
 /**
@@ -489,10 +489,10 @@ csf_int32 csf_connect::read(const csf_uchar* buf, const csf_uint32 len, const cs
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_buffer& buffer, const csf_uint32 len, const csf_buffer_read_callback& callback) {
-
+csf_int32 csf_connect::read(csf_buffer& buffer, const csf_uint32 len, const csf_connect_callback& callback) {
 	return 0;
 }
+
 
 
 /**
@@ -503,10 +503,10 @@ csf_int32 csf_connect::read(csf_buffer& buffer, const csf_uint32 len, const csf_
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_csfstring& csfstr, const csf_uint32 len, const csf_csfstr_read_callback& callback) {
-
+csf_int32 csf_connect::read(csf_csfstring& csfstr, const csf_uint32 len, const csf_connect_callback& callback) {
 	return 0;
 }
+
 
 
 /**
@@ -517,10 +517,10 @@ csf_int32 csf_connect::read(csf_csfstring& csfstr, const csf_uint32 len, const c
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_chain& chain, const csf_uint32 len, const csf_chain_read_callback& callback) {
-
+csf_int32 csf_connect::read(csf_chain& chain, const csf_uint32 len, const csf_connect_callback& callback) {
 	return 0;
 }
+
 
 
 /**
@@ -531,10 +531,10 @@ csf_int32 csf_connect::read(csf_chain& chain, const csf_uint32 len, const csf_ch
 *
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf_char_buffer_read_callback& callback) {
-
+csf_int32 csf_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback) {
 	return 0;
 }
+
 
 
 /**
@@ -544,10 +544,10 @@ csf_int32 csf_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf_cha
 * @param buffer    表示读取数据存在的缓存对象
 * @param callback    表示读取的回调函数
 */
-// csf_int32 csf_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_buffer_buffer_read_callback& callback) {
-// 
-// 	return 0;
-// }
+csf_int32 csf_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
+	return 0;
+}
+
 
 
 /**
@@ -557,10 +557,10 @@ csf_int32 csf_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf_cha
 * @param buffer    表示读取数据存在的缓存对象
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf_csfstr_buffer_read_callback& callback) {
-
+csf_int32 csf_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback) {
 	return 0;
 }
+
 
 
 /**
@@ -570,10 +570,10 @@ csf_int32 csf_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf
 * @param buffer    表示读取数据存在的缓存对象
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_connect_buffer<csf_chain>& buffer, const csf_chain_buffer_read_callback& callback) {
-
+csf_int32 csf_connect::read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback) {
 	return 0;
 }
+
 
 
 /**
@@ -588,18 +588,5 @@ csf::core::base::csf_int32 csf_connect::timeout_handle(csf_connect_ptr connect_p
 	connect_ptr->close();
 	get_factory()->remove(connect_ptr);
 
-	return 0;
-}
-
-
-/**
-* 主要功能是：读取数据并存在指定缓存位置。
-* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
-*
-* @param buffer    表示读取数据存在的缓存对象
-* @param callback    表示读取的回调函数
-*/
-csf::core::base::csf_int32 csf_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback)
-{
 	return 0;
 }

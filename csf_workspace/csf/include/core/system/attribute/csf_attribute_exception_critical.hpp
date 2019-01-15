@@ -48,7 +48,7 @@ namespace csf
 							, "%s critical exception."
 							, attr.to_string().c_str());
 
-						csf_log_ex(warning, csf_log_code_warning , "%s", tmp_buf);
+						csf_log_ex(critical, csf_log_code_critical, "%s", tmp_buf);
 
 						//这里通过退出程度的方式处理，以达到严重错误的特点
 						//throw tmp_buf;

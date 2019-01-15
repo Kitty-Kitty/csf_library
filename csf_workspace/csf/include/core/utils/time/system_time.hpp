@@ -90,7 +90,7 @@ namespace csf
 					 * @param tv
 					 * @param tz
 					 */
-					inline static csf_int32 gettimeofday(struct timeval* tv, csf_timezone* tz) {
+					inline static csf_int32 gettimeofday(csf_timeval* tv, csf_timezone* tz) {
 
 						return time_maker::csf_gettimeofday(tv, tz);
 					}

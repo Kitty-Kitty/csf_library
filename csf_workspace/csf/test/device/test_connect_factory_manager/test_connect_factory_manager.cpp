@@ -108,6 +108,25 @@ csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(
 	, csf_connect_error& connect_error) {
 
 	connect_ptr->get_read_buffer().create(1024);
+//  	set_read_function(csf_bind(&test_connect_factory_manager::read_handle
+//  		, this
+//  		, std::ref(connect_ptr->get_read_buffer())
+//  		, std::placeholders::_1
+//  		, std::placeholders::_2));
+
+// 	m_read_function = csf_bind(&test_connect_factory_manager::read_handle
+// 		, this
+// 		, std::placeholders::_1
+// 		, std::placeholders::_2
+// 		, std::ref(connect_ptr->get_read_buffer()));
+
+	set_read_function(csf_bind(&test_connect_factory_manager::read_handle
+		, this
+		, std::placeholders::_1
+		, std::placeholders::_2
+		, std::ref(connect_ptr->get_read_buffer())));
+
+
 // 	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
 // 		, csf_bind(&test_connect_factory_manager::read_handle
 // 			, this
@@ -116,6 +135,7 @@ csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(
 // 			, std::placeholders::_1));
 
 //	connect_ptr->read(std::ref(connect_ptr->get_read_buffer()), csf_nullptr);
+	connect_ptr->read(std::ref(connect_ptr->get_read_buffer()), get_read_function());
 
 // 	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
 // 		, csf_bind(&test_connect_factory_manager::read_handle
@@ -160,8 +180,9 @@ csf::core::base::csf_int32 test_connect_factory_manager::udp_handle(
 */
 csf::core::base::csf_int32 test_connect_factory_manager::read_handle(
 	csf_connect_ptr connect_ptr
+	, csf_connect_error& connect_error
 	, csf_connect_buffer<csf_buffer>& connect_buffer
-	, csf_connect_error& connect_error) {
+	) {
 
 	return 0;
 }
