@@ -40,6 +40,7 @@ const csf_map<csf_connect::csf_connect_type, csf_string> csf_connect::m_connect_
 csf_connect::csf_connect()
 	: m_type(csf_connect_type_none)
 	, m_is_sync(csf_false)
+	, m_is_filled(csf_false)
 	, m_status(csf_connect_status_none)
 	, m_factory(csf_nullptr)
 	, m_configure_manager(csf_nullptr) {
@@ -55,6 +56,7 @@ csf_connect::csf_connect()
 csf_connect::csf_connect(csf_connect_factory* factory, csf_connect_type type)
 	: m_type(type)
 	, m_is_sync(csf_false)
+	, m_is_filled(csf_false)
 	, m_status(csf_connect_status_none)
 	, m_factory(factory)
 	, m_configure_manager(factory->get_configure_manager()) {
@@ -256,10 +258,10 @@ csf_int32 csf_connect::connect(const csf_url& url, const csf_connect_callback& c
 * @param len    表示内容缓存的长度
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -269,10 +271,10 @@ csf_int32 csf_connect::write(const csf_uchar* buf, const csf_uint32 len, const c
 * @param buffer    表示需要写入的csf_buffer内容
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_buffer& buffer, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_buffer& buffer, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -282,10 +284,10 @@ csf_int32 csf_connect::write(csf_buffer& buffer, const csf_connect_callback& cal
 * @param csfstr    表示csf_csfstring的内容
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_csfstring& csfstr, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_csfstring& csfstr, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -295,10 +297,10 @@ csf_int32 csf_connect::write(csf_csfstring& csfstr, const csf_connect_callback& 
 * @param chain    表示csf_chain的内容
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_chain& chain, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_chain& chain, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -310,10 +312,10 @@ csf_int32 csf_connect::write(csf_chain& chain, const csf_connect_callback& callb
 * @param url    表示需要发送数据的目的地址
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(const csf_uchar* buf, const csf_uint32 len, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(const csf_uchar* buf, const csf_uint32 len, csf_url& url, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -324,10 +326,10 @@ csf_int32 csf_connect::write(const csf_uchar* buf, const csf_uint32 len, csf_url
 * @param url    表示需要发送数据的目的地址
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_buffer& buffer, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_buffer& buffer, csf_url& url, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -338,10 +340,10 @@ csf_int32 csf_connect::write(csf_buffer& buffer, csf_url& url, const csf_connect
 * @param url    表示需要发送数据的目的地址
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_csfstring& csfstr, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_csfstring& csfstr, csf_url& url, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -352,10 +354,10 @@ csf_int32 csf_connect::write(csf_csfstring& csfstr, csf_url& url, const csf_conn
 * @param url    表示需要发送数据的目的地址
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_chain& chain, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_chain& chain, csf_url& url, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -365,10 +367,10 @@ csf_int32 csf_connect::write(csf_chain& chain, csf_url& url, const csf_connect_c
 * @param buffer    表示需要发送的内容缓存
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -391,10 +393,10 @@ csf_int32 csf_connect::write(csf_connect_buffer<csf_buffer>& buffer, const csf_c
 * @param buffer    表示需要发送的内容缓存
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -404,10 +406,10 @@ csf_int32 csf_connect::write(csf_connect_buffer<csf_csfstring>& buffer, const cs
 * @param buffer    表示需要发送的内容缓存
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -418,10 +420,10 @@ csf_int32 csf_connect::write(csf_connect_buffer<csf_chain>& buffer, const csf_co
 * @param url    表示需要发送数据的目的地址
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_connect_buffer<csf_uchar>& buffer, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_connect_buffer<csf_uchar>& buffer, csf_url& url, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -446,10 +448,10 @@ csf_int32 csf_connect::write(csf_connect_buffer<csf_buffer>& buffer, csf_url& ur
 * @param url    表示需要发送数据的目的地址
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_connect_buffer<csf_csfstring>& buffer, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_connect_buffer<csf_csfstring>& buffer, csf_url& url, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -460,10 +462,10 @@ csf_int32 csf_connect::write(csf_connect_buffer<csf_csfstring>& buffer, csf_url&
 * @param url    表示需要发送数据的目的地址
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_connect::write(csf_connect_buffer<csf_chain>& buffer, csf_url& url, const csf_connect_callback& callback) {
-
-	return 0;
-}
+// csf_int32 csf_connect::write(csf_connect_buffer<csf_chain>& buffer, csf_url& url, const csf_connect_callback& callback) {
+// 
+// 	return 0;
+// }
 
 
 /**
@@ -475,9 +477,9 @@ csf_int32 csf_connect::write(csf_connect_buffer<csf_chain>& buffer, csf_url& url
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback) {
-	return 0;
-}
+// csf_int32 csf_connect::read(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback) {
+// 	return 0;
+// }
 
 
 
@@ -489,9 +491,9 @@ csf_int32 csf_connect::read(const csf_uchar* buf, const csf_uint32 len, const cs
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_buffer& buffer, const csf_uint32 len, const csf_connect_callback& callback) {
-	return 0;
-}
+// csf_int32 csf_connect::read(csf_buffer& buffer, const csf_uint32 len, const csf_connect_callback& callback) {
+// 	return 0;
+// }
 
 
 
@@ -503,9 +505,9 @@ csf_int32 csf_connect::read(csf_buffer& buffer, const csf_uint32 len, const csf_
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_csfstring& csfstr, const csf_uint32 len, const csf_connect_callback& callback) {
-	return 0;
-}
+// csf_int32 csf_connect::read(csf_csfstring& csfstr, const csf_uint32 len, const csf_connect_callback& callback) {
+// 	return 0;
+// }
 
 
 
@@ -517,9 +519,9 @@ csf_int32 csf_connect::read(csf_csfstring& csfstr, const csf_uint32 len, const c
 * @param len    表示读取数据存在的指定缓存长度
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_chain& chain, const csf_uint32 len, const csf_connect_callback& callback) {
-	return 0;
-}
+// csf_int32 csf_connect::read(csf_chain& chain, const csf_uint32 len, const csf_connect_callback& callback) {
+// 	return 0;
+// }
 
 
 
@@ -531,9 +533,9 @@ csf_int32 csf_connect::read(csf_chain& chain, const csf_uint32 len, const csf_co
 *
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback) {
-	return 0;
-}
+// csf_int32 csf_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback) {
+// 	return 0;
+// }
 
 
 
@@ -557,9 +559,9 @@ csf_int32 csf_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_co
 * @param buffer    表示读取数据存在的缓存对象
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback) {
-	return 0;
-}
+// csf_int32 csf_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback) {
+// 	return 0;
+// }
 
 
 
@@ -570,9 +572,9 @@ csf_int32 csf_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf
 * @param buffer    表示读取数据存在的缓存对象
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_connect::read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback) {
-	return 0;
-}
+// csf_int32 csf_connect::read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback) {
+// 	return 0;
+// }
 
 
 

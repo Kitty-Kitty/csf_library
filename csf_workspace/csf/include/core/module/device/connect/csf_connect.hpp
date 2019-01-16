@@ -225,22 +225,6 @@ namespace csf
 						return csf_succeed;
 					}
 					/**
-					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
-					*/
-					inline csf_bool get_is_sync() {
-
-						return m_is_sync;
-					}
-					/**
-					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
-					*
-					* @param newVal
-					*/
-					inline void set_is_sync(csf_bool newVal) {
-
-						m_is_sync = newVal;
-					}
-					/**
 					 * 表示网络的状态信息
 					 */
 					inline csf_connect_status get_status() {
@@ -339,9 +323,9 @@ namespace csf
 					*
 					* @param callback    表示需要返回的回调函数
 					*/
-					inline virtual csf_int32 write(const csf_connect_callback& callback = csf_nullptr) {
-						return write(get_write_buffer(), callback);
-					}
+					//inline virtual csf_int32 write(const csf_connect_callback& callback = csf_nullptr) {
+					//	return write(get_write_buffer(), callback);
+					//}
 					/**
 					* 主要功能是：写入指定缓存的内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -350,7 +334,7 @@ namespace csf
 					* @param len    表示内容缓存的长度
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：写入csf_buffer内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -358,7 +342,7 @@ namespace csf
 					* @param buffer    表示需要写入的csf_buffer内容
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_buffer& buffer, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_buffer& buffer, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：发送csf_csfstring内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -366,7 +350,7 @@ namespace csf
 					* @param csfstr    表示csf_csfstring的内容
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_csfstring& csfstr, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_csfstring& csfstr, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：发送csf_csfstring内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -374,7 +358,7 @@ namespace csf
 					* @param chain    表示csf_chain的内容
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_chain& chain, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_chain& chain, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：写入指定缓存的内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -384,7 +368,7 @@ namespace csf
 					* @param url    表示需要发送数据的目的地址
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：写入csf_buffer内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -393,7 +377,7 @@ namespace csf
 					* @param url    表示需要发送数据的目的地址
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_buffer& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_buffer& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：发送csf_csfstring内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -402,7 +386,7 @@ namespace csf
 					* @param url    表示需要发送数据的目的地址
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_csfstring& csfstr, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_csfstring& csfstr, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：发送csf_csfstring内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -411,7 +395,7 @@ namespace csf
 					* @param url    表示需要发送数据的目的地址
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_chain& chain, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_chain& chain, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：写入指定缓存的内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -419,7 +403,7 @@ namespace csf
 					* @param buffer    表示需要发送的内容缓存
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：写入csf_buffer内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -435,7 +419,7 @@ namespace csf
 					* @param buffer    表示需要发送的内容缓存
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：发送csf_csfstring内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -443,7 +427,7 @@ namespace csf
 					* @param buffer    表示需要发送的内容缓存
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：写入指定缓存的内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -452,7 +436,7 @@ namespace csf
 					* @param url    表示需要发送数据的目的地址
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_connect_buffer<csf_uchar>& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_connect_buffer<csf_uchar>& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：写入csf_buffer内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -470,7 +454,7 @@ namespace csf
 					* @param url    表示需要发送数据的目的地址
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_connect_buffer<csf_csfstring>& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_connect_buffer<csf_csfstring>& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：发送csf_csfstring内容。
 					* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -479,7 +463,7 @@ namespace csf
 					* @param url    表示需要发送数据的目的地址
 					* @param callback    表示需要返回的回调函数
 					*/
-					virtual csf_int32 write(csf_connect_buffer<csf_chain>& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 write(csf_connect_buffer<csf_chain>& buffer, csf_url& url, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -489,7 +473,7 @@ namespace csf
 					* @param len    表示读取数据存在的指定缓存长度
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 read(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -498,7 +482,7 @@ namespace csf
 					* @param len    表示读取数据存在的指定缓存长度
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_buffer& buffer, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 read(csf_buffer& buffer, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -507,7 +491,7 @@ namespace csf
 					* @param len    表示读取数据存在的指定缓存长度
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_csfstring& csfstr, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 read(csf_csfstring& csfstr, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：读取数据并存在指定缓存链表中。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -516,7 +500,7 @@ namespace csf
 					* @param len    表示读取数据存在的指定缓存长度
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_chain& chain, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 read(csf_chain& chain, const csf_uint32 len, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -525,7 +509,7 @@ namespace csf
 					*
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 read(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：读取数据并存在指定缓存位置。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -541,7 +525,7 @@ namespace csf
 					* @param buffer    表示读取数据存在的缓存对象
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 read(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：读取数据并存在指定缓存链表中。
 					* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
@@ -549,7 +533,7 @@ namespace csf
 					* @param buffer    表示读取数据存在的缓存对象
 					* @param callback    表示读取的回调函数
 					*/
-					virtual csf_int32 read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback = csf_nullptr);
+					//virtual csf_int32 read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 表示异步读超时对象
 					*/
@@ -598,6 +582,40 @@ namespace csf
 					}
 
 				protected:
+					/**
+					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
+					*/
+					inline csf_bool get_is_sync() {
+
+						return m_is_sync;
+					}
+					/**
+					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
+					*
+					* @param newVal
+					*/
+					inline void set_is_sync(csf_bool newVal) {
+
+						m_is_sync = newVal;
+					}
+					/**
+					* 表示填满标志位，设备该标识位来强制接收数据时是否填充满后返回。当sync=true表示接收数据时，需要收取足够多的数据后才返回。这是一种收发性能的优化处理机制，
+					* 可以提高部分网络应用的性能。
+					*/
+					inline csf_bool get_is_filled() {
+
+						return m_is_filled;
+					}
+					/**
+					* 表示填满标志位，设备该标识位来强制接收数据时是否填充满后返回。当sync=true表示接收数据时，需要收取足够多的数据后才返回。这是一种收发性能的优化处理机制，
+					* 可以提高部分网络应用的性能。
+					*
+					* @param newVal
+					*/
+					inline void set_is_filled(csf_bool newVal) {
+
+						m_is_filled = newVal;
+					}
 					/**
 					* 表示异步写超时对象
 					*
@@ -666,7 +684,12 @@ namespace csf
 					/**
 					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
 					*/
-					csf_bool m_is_sync = csf_false;
+					csf_atomic_bool m_is_sync{ csf_false };
+					/**
+					* 表示填满标志位，设备该标识位来强制接收数据时是否填充满后返回。当sync=true表示接收数据时，需要收取足够多的数据后才返回。这是一种收发性能的优化处理机制，
+					* 可以提高部分网络应用的性能。
+					*/
+					csf_atomic_bool m_is_filled{ csf_false };
 					/**
 					 * 表示网络的状态信息
 					 */

@@ -48,7 +48,8 @@ namespace csf
 						: m_buffer(csf_nullptr)
 						, m_length(0)
 						, m_is_sync(csf_false)
-						, m_is_free(csf_false) {
+						, m_is_free(csf_false)
+						, m_is_filled(csf_false) {
 
 					}
 					/**
@@ -73,7 +74,8 @@ namespace csf
 						: m_buffer(buffer)
 						, m_length(len)
 						, m_is_sync(csf_false)
-						, m_is_free(csf_false) {
+						, m_is_free(csf_false)
+						, m_is_filled(csf_false) {
 
 					}
 
@@ -191,6 +193,24 @@ namespace csf
 						}
 						return csf_true;
 					}
+					/**
+					* 表示填满标志位，设备该标识位来强制接收数据时是否填充满后返回。当sync=true表示接收数据时，需要收取足够多的数据后才返回。这是一种收发性能的优化处理机制，
+					* 可以提高部分网络应用的性能。
+					*/
+					inline csf_bool get_is_filled() {
+
+						return m_is_filled;
+					}
+					/**
+					* 表示填满标志位，设备该标识位来强制接收数据时是否填充满后返回。当sync=true表示接收数据时，需要收取足够多的数据后才返回。这是一种收发性能的优化处理机制，
+					* 可以提高部分网络应用的性能。
+					*
+					* @param newVal
+					*/
+					inline void set_is_filled(csf_bool newVal) {
+
+						m_is_filled = newVal;
+					}
 				private:
 					/**
 					 * 表示是否采用同步的方式发送，false表示异步；true表示同步；默认为异步方式
@@ -208,7 +228,11 @@ namespace csf
 					 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 					 */
 					csf_bool m_is_free = csf_false;
-
+					/**
+					* 表示填满标志位，设备该标识位来强制接收数据时是否填充满后返回。当sync=true表示接收数据时，需要收取足够多的数据后才返回。这是一种收发性能的优化处理机制，
+					* 可以提高部分网络应用的性能。
+					*/
+					csf_bool m_is_filled = csf_false;
 				};
 
 			}

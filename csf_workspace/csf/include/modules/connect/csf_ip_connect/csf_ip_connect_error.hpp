@@ -79,7 +79,9 @@ namespace csf
 				 * @param boost_error    ±Ì æboost error_code¥ÌŒÛ
 				 */
 				inline csf_void set_error_code(const boost::system::error_code& boost_error) {
-					set_error(boost_error.value(), boost::system::system_error(boost_error).what());
+					if (boost_error) {
+						set_error(boost_error.value(), boost::system::system_error(boost_error).what());
+					}
 				}
 
 			};

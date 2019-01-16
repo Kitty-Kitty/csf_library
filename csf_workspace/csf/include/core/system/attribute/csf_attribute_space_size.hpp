@@ -89,10 +89,10 @@ namespace csf
 					CSF_SPACE_SIZE_UNIT_SCALE_MAP(none, 1ll)										\
 					CSF_SPACE_SIZE_UNIT_SCALE_MAP(b,	1ll)										\
 					CSF_SPACE_SIZE_UNIT_SCALE_MAP(kb,   1024ll)										\
-					CSF_SPACE_SIZE_UNIT_SCALE_MAP(mb,   1024 * 1024ll)								\
-					CSF_SPACE_SIZE_UNIT_SCALE_MAP(gb,   1024 * 1024 * 1024ll)						\
-					CSF_SPACE_SIZE_UNIT_SCALE_MAP(tb,   1024 * 1024 * 1024 * 1024ll)				\
-					CSF_SPACE_SIZE_UNIT_SCALE_MAP(pb,   1024 * 1024 * 1024 * 1024 * 1024ll)			\
+					CSF_SPACE_SIZE_UNIT_SCALE_MAP(mb,   1024ll * 1024ll)							\
+					CSF_SPACE_SIZE_UNIT_SCALE_MAP(gb,   1024ll * 1024 * 1024ll)						\
+					CSF_SPACE_SIZE_UNIT_SCALE_MAP(tb,   1024ll * 1024 * 1024 * 1024ll)				\
+					CSF_SPACE_SIZE_UNIT_SCALE_MAP(pb,   1024ll * 1024 * 1024 * 1024 * 1024ll)		\
 
 					inline explicit csf_attribute_space_size()
 						: csf_attribute_int64(csf_attribute_type_space_size)
@@ -438,7 +438,7 @@ namespace csf
 					inline csf_bool convert_from_bytes(csf_int64& dest_value, const csf_space_size_unit& dest_unit, const csf_int64& src_value) {
 
 #ifndef CSF_SPACE_SIZE_UNIT_SCALE_GEN
-#define CSF_SPACE_SIZE_UNIT_SCALE_GEN(type, scale)				case csf_space_size_unit_ ## type: {dest_value = src_value / scale;}break;
+#define CSF_SPACE_SIZE_UNIT_SCALE_GEN(type, scale)				case csf_space_size_unit_ ## type: {dest_value = src_value / (scale);}break;
 
 						switch (dest_unit) {
 							CSF_SPACE_SIZE_UNIT_SCALE(CSF_SPACE_SIZE_UNIT_SCALE_GEN)

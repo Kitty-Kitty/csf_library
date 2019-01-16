@@ -57,7 +57,7 @@ namespace csf
 					, m_pos(m_start)
 					, m_last(m_pos) {
 
-					reset();
+					//reset();
 				}
 				/**
 				 * 
@@ -71,7 +71,7 @@ namespace csf
 					, m_pos(m_start)
 					, m_last(m_pos) {
 
-					reset();
+					//reset();
 				}
 				/**
 				 * 
@@ -311,11 +311,12 @@ namespace csf
 					}
 
 					//如果数据大于空闲空间，则需要重新创建内存保存
-					tmp_buf = new csf_uchar(length() + buffer.length());
+					tmp_buf = new csf_uchar[length() + buffer.length()];
 					csf_memcpy(tmp_buf, get_buffer(), length());
 					csf_memcpy(tmp_buf + length(), buffer.get_buffer(), buffer.length());
 					clear();
 					set_buffer(tmp_buf, length() + buffer.length(), csf_true);
+					reset();
 
 					return  *this;
 				}
@@ -331,7 +332,7 @@ namespace csf
 				 */
 				inline csf_void reset() {
 
-					set_start(get_buffer());
+					set_start(csf_memblock::get_buffer());
 					set_pos(get_start());
 					set_last(get_pos());
 					set_end(get_start() + csf_memblock::size());

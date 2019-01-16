@@ -133,7 +133,7 @@ namespace csf
 				inline csf_void clear() {
 
 					if (m_buffer && get_is_free()) {
-						delete m_buffer;
+						delete[] m_buffer;
 					}
 
 					set_buffer(csf_nullptr);
@@ -229,7 +229,7 @@ namespace csf
 				inline csf_void reset(const csf_int32 len) {
 
 					clear();
-					set_buffer(new csf_uchar(len));
+					set_buffer(new csf_uchar[len]);
 					set_size(len);
 					set_is_free(csf_true);
 				}
