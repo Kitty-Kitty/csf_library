@@ -53,7 +53,7 @@ namespace csf
 				inline explicit csf_buffer(const csf_uint32 len) 
 					: csf_memblock(len)
 					, m_start(csf_memblock::get_buffer())
-					, m_end(m_start + len)
+					, m_end(m_start + csf_memblock::get_size())
 					, m_pos(m_start)
 					, m_last(m_pos) {
 
@@ -67,7 +67,7 @@ namespace csf
 				inline explicit csf_buffer(const csf_uchar* buf, const csf_uint32 len) 
 					: csf_memblock(buf, len)
 					, m_start(csf_memblock::get_buffer())
-					, m_end(m_start + len)
+					, m_end(m_start + csf_memblock::get_size())
 					, m_pos(m_start)
 					, m_last(m_pos) {
 
