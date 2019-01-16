@@ -590,5 +590,10 @@ csf::core::base::csf_int32 csf_connect::timeout_handle(csf_connect_ptr connect_p
 	connect_ptr->close();
 	get_factory()->remove(connect_ptr);
 
+	csf_log_ex(info
+		, csf_log_code_info
+		, "connect[0x%x] timeout."
+		, connect_ptr.get());
+
 	return 0;
 }
