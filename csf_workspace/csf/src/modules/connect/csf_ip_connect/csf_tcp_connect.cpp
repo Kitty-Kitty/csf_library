@@ -913,7 +913,8 @@ csf_int32 csf_tcp_connect::async_write(csf_connect_buffer<csf_buffer>& buffer
 	get_write_timeout().flush_time();
 
 	//这里主要是数据量一大，就发送不完全了。尤其在linux平台下更容易出现这个问题
-	get_socket().async_write_some(boost::asio::buffer(buffer.get_buffer(), buffer.get_length())
+	get_socket().async_write_some(boost::asio::buffer(buffer.get_buffer()->get_buffer()
+		, buffer.get_length())
 		, boost::bind(&csf_tcp_connect::ip_async_write_callback
 			, this
 			, std::ref(buffer)
@@ -935,7 +936,46 @@ csf_int32 csf_tcp_connect::async_write(csf_connect_buffer<csf_buffer>& buffer
 csf_int32 csf_tcp_connect::sync_read(csf_connect_buffer<csf_buffer>& buffer
 	, const csf_connect_callback& callback) {
 
-	return 0;
+	csf_uchar						*tmp_buf = buffer.get_buffer()->get_buffer();
+	csf_int32						tmp_total_length = buffer.get_length();
+	csf_int32						tmp_length = 0;
+	csf_int32						tmp_receive_length = 0;
+	boost::system::error_code		tmp_error_code;
+
+
+	do {
+
+		get_read_timeout().flush_time();
+
+		//接收数据
+		tmp_length = get_socket().receive(boost::asio::buffer(tmp_buf + tmp_receive_length
+			, tmp_total_length - tmp_receive_length)
+			, 0
+			, tmp_error_code);
+		if (tmp_error_code) {
+			//如果出现通信错误，则错误处理
+			exception_callback(shared_from_this(), callback, csf_ip_connect_error(tmp_error_code));
+			return csf_failure;
+		}
+		else if (tmp_receive_length <= 0) {
+			//如果出现数据内容错误，则另外处理
+			csf_ip_connect_error			tmp_error;
+
+			tmp_error.set_error(csf_connect_error::csf_connect_code_operation_error
+				, "receive data length[ %d <= 0 ]"
+				, tmp_length);
+			exception_callback(shared_from_this(), callback, tmp_error);
+			return csf_failure;
+		}
+		else {
+			//累加数据长度
+			tmp_receive_length += tmp_length;
+		}
+
+	} while ((csf_int32)tmp_total_length > tmp_receive_length
+		&& csf_true == buffer.get_is_filled());		//判断是否填充满，如果需要则循环处理直到填充满
+
+	return tmp_receive_length;
 }
 
 
@@ -948,6 +988,16 @@ csf_int32 csf_tcp_connect::sync_read(csf_connect_buffer<csf_buffer>& buffer
 */
 csf_int32 csf_tcp_connect::async_read(csf_connect_buffer<csf_buffer>& buffer
 	, const csf_connect_callback& callback) {
+
+	get_read_timeout().flush_time();
+
+	get_socket().async_receive(boost::asio::buffer(buffer.get_buffer()->get_buffer(), buffer.get_length())
+		, boost::bind(&csf_tcp_connect::ip_async_read_callback
+			, this
+			, std::ref(buffer)
+			, callback
+			, boost::asio::placeholders::error
+			, boost::asio::placeholders::bytes_transferred));
 
 	return 0;
 }
@@ -967,8 +1017,29 @@ csf_bool csf_tcp_connect::ip_async_write_callback(csf_connect_buffer<csf_buffer>
 	, const boost::system::error_code& error_code
 	, csf_uint32 length) {
 
+
+	//如果处理错误，则按照错误处理
+	if (error_code) {
+		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
+		return csf_false;
+	}
+	//如果已经发送完成所有数据，则正常回调返回
+	if (length >= buffer.get_length()) {
+		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
+		return csf_true;
+	}
+	else {
+		//如果没有发送完全，还有部分数据，则继续发送
+		buffer.get_buffer()->set_pos(buffer.get_buffer()->get_pos() + length);
+		buffer.set_length(buffer.get_length() - length);
+
+		async_write(std::ref(buffer), callback);
+	}
+
 	return csf_true;
 }
+
+
 /**
 * 主要功能是：处理异步读处理回调函数
 * 返回：0表示处理成功；非0表示处理失败
@@ -990,7 +1061,7 @@ csf_bool csf_tcp_connect::ip_async_read_callback(csf_connect_buffer<csf_buffer>&
 	}
 
 	//如果需要接收所有数据，则继续接收，直到完整接收完全
-	if (csf_false == get_is_filled()) {
+	if (csf_false == buffer.get_is_filled()) {
 		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 		return csf_true;
 	}
@@ -1002,8 +1073,10 @@ csf_bool csf_tcp_connect::ip_async_read_callback(csf_connect_buffer<csf_buffer>&
 		}
 		else {
 			//如果没有发送完全，还有部分数据，则继续发送
-			buffer.set_pos();
-			async_read(buf + read_len, buf_len - read_len, callback);
+			buffer.get_buffer()->set_pos(buffer.get_buffer()->get_pos() + length);
+			buffer.set_length(buffer.get_length() - length);
+
+			async_read(std::ref(buffer), callback);
 		}
 	}
 
