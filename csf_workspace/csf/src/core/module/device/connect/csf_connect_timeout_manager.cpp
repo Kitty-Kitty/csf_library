@@ -37,41 +37,28 @@ csf_connect_timeout_manager::~csf_connect_timeout_manager() {
 
 
 /**
-* 主要功能是：从连接容器中移除连接对象。
+* 主要功能是：从连接容器中移除一个的连接对象，该删除操作只是将连接设置为立即超时，而不是直接的删除操作。真正的删除需要等待超时处理完成。
 * 返回：0表示成功获取连接对象；非0表示错误；
 *
-* @param time    表示当前的时间基准
-* @param connect_wrapper    表示连接对象封装
+* @param timeout    表示删除的超时对象
 */
-csf_int32 csf_connect_timeout_manager::remove(const csf_uint64& time, csf_connect_wrapper& connect_wrapper) {
+csf_int32 csf_connect_timeout_manager::remove(csf_connect_timeout& timeout) {
 
-	csf_int32													tmp_count = 0;
-	csf_multimap<csf_uint64, csf_connect_wrapper>::iterator		tmp_iter;
+	csf_int32															tmp_count = 0;
+	csf_map<csf_connect_timeout*, csf_connect_wrapper>::iterator		tmp_iter;
 
 
+	timeout.set_expired();
 	{
 		csf_unqiue_lock<decltype(m_collector_mutex)> tmp_lock(m_collector_mutex);
 
 		//查询容器中是否存在需要的key对象，如果存在则接着查询相似对象，遍历处理
-		tmp_iter = get_connect_collector().find(time);
+		tmp_iter = get_connect_collector().find(&timeout);
 		if (tmp_iter == get_connect_collector().end()) {
 			return csf_succeed;
 		}
-
-		//如果存在，则遍历处理所有的相同key对象
-		tmp_count = get_connect_collector().count(time);
-
-		for (int i = 0; i < tmp_count; i++) {
-
-			//如果key和value数值相同，则删除容器中的对象
-			if (tmp_iter->first == time
-				&& tmp_iter->second == connect_wrapper) {
-
-				get_connect_collector().erase(tmp_iter++);
-			}
-			else {
-				tmp_iter++;
-			}
+		else {
+			get_connect_collector().erase(tmp_iter++);
 		}
 	}
 
@@ -88,7 +75,7 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 	static csf_connect_timeout									tmp_timeout;
 	csf_connect_wrapper											tmp_wrapper(m_null_connect_ptr, tmp_timeout);
 	csf::core::module::connect::csf_connect_callback			tmp_callback = csf_nullptr;
-	csf_multimap<csf_uint64, csf_connect_wrapper>::iterator		tmp_iter;
+	csf_map<csf_connect_timeout*, csf_connect_wrapper>::iterator		tmp_iter;
 	csf_uint64													tmp_time = csf::core::utils::time::system_time::get_time();
 
 
@@ -113,8 +100,8 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 
 			get_connect_collector().erase(tmp_iter++);
 			get_connect_collector().insert(
-				csf_multimap<csf_uint64, csf_connect_wrapper>::value_type(
-					tmp_wrapper.get_timeout().get_time(), tmp_wrapper));
+				csf_map<csf_connect_timeout*, csf_connect_wrapper>::value_type(
+					&(tmp_wrapper.get_timeout()), tmp_wrapper));
 
 			return;
 		}
@@ -129,8 +116,8 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 
 				get_connect_collector().erase(tmp_iter++);
 				get_connect_collector().insert(
-					csf_multimap<csf_uint64, csf_connect_wrapper>::value_type(
-						tmp_wrapper.get_timeout().get_time(), tmp_wrapper));
+					csf_map<csf_connect_timeout*, csf_connect_wrapper>::value_type(
+						&(tmp_wrapper.get_timeout()), tmp_wrapper));
 			}
 
 			csf_msleep((csf_uint32)get_idle_interval());
@@ -145,15 +132,23 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 		}
 	}
 
-	//对相应的过期对象进行处理。
-	//如果超时对象中的回调函数不为空，则调用回调函数进行处理。
-	//如果没有回调函数，则直接关闭连接处理
-	tmp_callback = tmp_wrapper.get_timeout().get_handle();
-	if (tmp_callback) {
-		csf_connect_error	tmp_error(csf_connect_error::csf_connect_code::csf_connect_code_timeout, "timeout");
-		tmp_callback(tmp_wrapper.get_connect_ptr(), tmp_error);
-	}
-	else {
-		tmp_wrapper.get_connect_ptr()->close();
+	if (tmp_wrapper.get_connect_ptr() != m_null_connect_ptr) {
+
+		//对相应的过期对象进行处理。
+		//如果超时对象中的回调函数不为空，则调用回调函数进行处理。
+		//如果没有回调函数，则直接关闭连接处理
+		tmp_callback = tmp_wrapper.get_timeout().get_handle();
+		if (tmp_callback) {
+			csf_connect_error	tmp_error;
+
+			tmp_error.set_error(csf_connect_error::csf_connect_code::csf_connect_code_timeout
+				, "connect[0x%x] timeout."
+				, tmp_wrapper.get_connect_ptr().get());
+
+			tmp_callback(tmp_wrapper.get_connect_ptr(), tmp_error);
+		}
+		else {
+			tmp_wrapper.get_connect_ptr()->close();
+		}
 	}
 }

@@ -195,12 +195,13 @@ namespace csf
 					* @param time    表示当前的时间基准
 					* @param connect_wrapper    表示需要添加到连接管理器的连接对象封装
 					*/
-					inline csf_int32 insert(const csf_uint64& time, const csf_connect_wrapper& connect_wrapper) {
+					inline csf_int32 insert(const csf_connect_timeout& timeout, const csf_connect_wrapper& connect_wrapper) {
 
 						csf_unqiue_lock<decltype(m_collector_mutex)> tmp_lock(m_collector_mutex);
 
 						get_connect_collector().insert(
-							csf_multimap<csf_uint64, csf_connect_wrapper>::value_type(time, connect_wrapper));
+							csf_map<csf_connect_timeout*, csf_connect_wrapper>::value_type(&(const_cast<csf_connect_timeout&>(timeout))
+								, connect_wrapper));
 
 						return csf_succeed;
 					}
@@ -213,8 +214,7 @@ namespace csf
 					 */
 					inline csf_int32 insert(const csf_connect_timeout& timeout, const csf_connect_ptr& connect_ptr) {
 
-						return insert(timeout.get_time()
-							, csf_connect_wrapper(connect_ptr, (csf_connect_timeout&)timeout));
+						return insert(timeout, csf_connect_wrapper(connect_ptr, (csf_connect_timeout&)timeout));
 					}
 					/**
 					* 主要功能是：从连接容器中移除一个的连接对象，该删除操作只是将连接设置为立即超时，而不是直接的删除操作。真正的删除需要等待超时处理完成。
@@ -222,12 +222,7 @@ namespace csf
 					*
 					* @param timeout    表示删除的超时对象
 					*/
-					inline csf_int32 remove(csf_connect_timeout& timeout) {
-
-						timeout.set_expired();
-
-						return csf_succeed;
-					}
+					csf_int32 remove(csf_connect_timeout& timeout);
 					/**
 					 * 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
 					 */
@@ -253,9 +248,9 @@ namespace csf
 					 */
 					csf::core::utils::thread::csf_thread_pool m_thread_pool;
 					/**
-					 * 表示连接管理器，用于处理连接超时相关内容
-					 */
-					csf_multimap<csf_uint64, csf_connect_wrapper> m_connect_collector;
+					* 表示连接管理器，用于处理连接超时相关内容
+					*/
+					csf_map<csf_connect_timeout*, csf_connect_wrapper> m_connect_collector;
 					/**
 					 * 表示连接管理器处理的互斥变量
 					 */
@@ -264,14 +259,6 @@ namespace csf
 					 * 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
 					 */
 					csf_uint64 m_idle_interval = csf_connect_timeout_process_idle_interval_ms;
-					/**
-					* 主要功能是：从连接容器中移除连接对象。
-					* 返回：0表示成功获取连接对象；非0表示错误；
-					*
-					* @param time    表示当前的时间基准
-					* @param connect_wrapper    表示连接对象封装
-					*/
-					csf_int32 remove(const csf_uint64& time, csf_connect_wrapper& connect_wrapper);
 					/**
 					 * 表示超时处理线程池，统一处理超时相关事务。
 					 */
@@ -282,7 +269,7 @@ namespace csf
 					/**
 					 * 表示连接管理器，用于处理连接超时相关内容
 					 */
-					inline csf_multimap<csf_uint64, csf_connect_wrapper>& get_connect_collector() {
+					inline csf_map<csf_connect_timeout*, csf_connect_wrapper>& get_connect_collector() {
 
 						return m_connect_collector;
 					}
@@ -292,7 +279,7 @@ namespace csf
 					*/
 					inline csf::core::base::csf_int32 clear() {
 
-						csf_multimap<csf_uint64, csf_connect_wrapper>::iterator		tmp_iter;
+						csf_map<csf_connect_timeout*, csf_connect_wrapper>::iterator		tmp_iter;
 
 
 						{
