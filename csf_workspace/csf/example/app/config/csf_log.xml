@@ -18,6 +18,6 @@
   </log_size>
 
   <!--日志级别：debug/normal/info/notice/warning/error/critical-->
-  <level>notice</level>
+  <level>normal</level>
 
 </log_configure>

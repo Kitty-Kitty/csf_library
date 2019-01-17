@@ -1195,6 +1195,11 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	//设置空连接超时处理。如果超过该时间，则表示空连接，需要关闭处理。
 	connect_ptr->set_read_timeout(csf_connect_timeout_default_ms, csf_nullptr);
 
+	csf_log_ex(info
+		, csf_log_code_info
+		, "accept tcp connect[0x%x]."
+		, connect_ptr.get());
+
 	//调用回调函数通知接收数据等各种处理
 	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
 }
