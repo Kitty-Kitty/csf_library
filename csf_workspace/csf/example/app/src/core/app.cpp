@@ -31,13 +31,6 @@ int main(int argc, char** argv)
 	csf::core::module::csf_app			tmp_app("E:\\Trans-Control-CO\\DS-C12N-DO\\trunk\\DS-C12N-DO-VDU\\csf_workspace\\csf\\example\\app\\config\\csf_configs.xml", "xml");
 
 
-	csf_buffer			*tmp_buf = new csf_buffer(10);
-
-
-	tmp_buf->cat("hello!");
-	delete tmp_buf;
-
-
 	tmp_bool = tmp_app.init(csf_nullptr);
 	if (tmp_bool) {
 		csf_log(error, "app init failed!");

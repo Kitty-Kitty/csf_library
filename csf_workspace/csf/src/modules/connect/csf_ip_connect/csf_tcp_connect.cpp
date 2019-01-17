@@ -1029,7 +1029,7 @@ csf_bool csf_tcp_connect::ip_async_write_callback(csf_connect_buffer<csf_buffer>
 		return csf_true;
 	}
 	else {
-		//如果没有发送完全，还有部分数据，则继续发送
+		//如果没有发送完全，还有部分数据，则更新缓存信息继续发送
 		buffer.get_buffer()->set_pos(buffer.get_buffer()->get_pos() + length);
 		buffer.set_length(buffer.get_length() - length);
 
@@ -1072,7 +1072,7 @@ csf_bool csf_tcp_connect::ip_async_read_callback(csf_connect_buffer<csf_buffer>&
 			return csf_true;
 		}
 		else {
-			//如果没有发送完全，还有部分数据，则继续发送
+			//如果没有发送完全，还有部分数据，则更新缓存信息继续发送
 			buffer.get_buffer()->set_pos(buffer.get_buffer()->get_pos() + length);
 			buffer.set_length(buffer.get_length() - length);
 
