@@ -80,6 +80,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "media_server", "media_serve
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "device_media", "..\..\..\css\platform\win32\modules\service\media_server\device_media\device_media.vcxproj", "{A4936CA1-60CD-40C6-805F-45EB36932A49}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_hi3536_vdu", "..\..\..\vdu\vdu\platform\win32\test\test_hi3536_vdu\test_hi3536_vdu.vcxproj", "{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -200,6 +202,16 @@ Global
 		{A4936CA1-60CD-40C6-805F-45EB36932A49}.Release|x64.Build.0 = Release|x64
 		{A4936CA1-60CD-40C6-805F-45EB36932A49}.Release|x86.ActiveCfg = Release|Win32
 		{A4936CA1-60CD-40C6-805F-45EB36932A49}.Release|x86.Build.0 = Release|Win32
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Debug|ARM.ActiveCfg = Debug|Win32
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Debug|x64.ActiveCfg = Debug|x64
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Debug|x64.Build.0 = Debug|x64
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Debug|x86.ActiveCfg = Debug|Win32
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Debug|x86.Build.0 = Debug|Win32
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Release|ARM.ActiveCfg = Release|Win32
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Release|x64.ActiveCfg = Release|x64
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Release|x64.Build.0 = Release|x64
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Release|x86.ActiveCfg = Release|Win32
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -236,5 +248,6 @@ Global
 		{AD7AC67F-A2EF-46F9-9F6A-10FCA66D4EB9} = {9B79F684-85B5-4445-8826-0680566E297B}
 		{2E8B4F07-942B-488F-B943-83D4D17A6433} = {A332F713-498F-49D9-84F5-08A6CBFB0412}
 		{A4936CA1-60CD-40C6-805F-45EB36932A49} = {2E8B4F07-942B-488F-B943-83D4D17A6433}
+		{B149F103-ECF8-4265-A6C8-F15D33B1F9B8} = {7A789F54-8217-4DF4-9829-3D0559E5EC81}
 	EndGlobalSection
 EndGlobal
