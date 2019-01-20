@@ -142,6 +142,10 @@ namespace csf
 					inline void set_time(csf_uint64 newVal) {
 
 						m_time = newVal;
+
+						csf_log_ex(error, csf_log_code_error
+							, "timeout [url:%lld]."
+							, newVal);
 					}
 					/**
 					 * 表示超时后的回调函数

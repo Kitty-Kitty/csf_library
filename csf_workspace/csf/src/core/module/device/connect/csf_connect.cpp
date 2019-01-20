@@ -43,7 +43,8 @@ csf_connect::csf_connect()
 	, m_is_filled(csf_false)
 	, m_status(csf_connect_status_none)
 	, m_factory(csf_nullptr)
-	, m_configure_manager(csf_nullptr) {
+	, m_configure_manager(csf_nullptr)
+	, m_format{ 0, }  {
 
 }
 
@@ -59,7 +60,8 @@ csf_connect::csf_connect(csf_connect_factory* factory, csf_connect_type type)
 	, m_is_filled(csf_false)
 	, m_status(csf_connect_status_none)
 	, m_factory(factory)
-	, m_configure_manager(factory->get_configure_manager()) {
+	, m_configure_manager(factory->get_configure_manager())
+	, m_format{ 0, } {
 
 }
 

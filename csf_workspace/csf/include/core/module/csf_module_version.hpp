@@ -123,9 +123,10 @@ namespace csf
 
 					return m_description;
 				}
-				inline csf::core::base::csf_string to_string() {
+				inline csf_string to_string() {
 
-					if (csf_strlen(m_format) <= 0) {
+					//if (csf_strlen(m_format) <= 0) {
+					if ('\0' == m_format[0]) {
 
 						//格式为“csf_lib/v1.0-1000-gcc 4.8.0-20180102-base library”
 						csf_snprintf(m_format, csf_sizeof(m_format)
@@ -138,6 +139,14 @@ namespace csf
 					}
 
 					return csf_string(m_format);
+				}
+				/**
+				* 主要功能是：刷新格式化字符串缓存空间
+				* 返回：无
+				*/
+				inline void flush_string() {
+
+					csf_memset(m_format, 0, csf_sizeof(m_format));
 				}
 				/**
 				 * 模块的版本字符串信息

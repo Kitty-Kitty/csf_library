@@ -171,6 +171,26 @@ namespace csf
 
 						m_type = new_value;
 					}
+					/**
+					* 主要功能是：根据类型获取类型名称
+					* 返回：类型名称字符串；
+					*
+					* @param type    表示连接类型
+					*/
+					inline static csf_string get_type_name(const csf_connect::csf_connect_type type) {
+
+						csf_map<csf_connect::csf_connect_type, csf_string>::const_iterator		tmp_iter;
+
+
+						tmp_iter = get_connect_type_name().find(type);
+						if (tmp_iter != get_connect_type_name().end()) {
+							return tmp_iter->second;
+						}
+						else {
+							csf_string("unknow");
+						}
+						return "";
+					}
 					inline virtual const csf_url& get_remote_url() const {
 						return m_remote_url;
 					}
@@ -580,7 +600,32 @@ namespace csf
 
 						m_write_buffer = newVal;
 					}
+					/**
+					* 主要功能是：将连接信息格式化成字符串输出
+					* 返回：连接信息字符串
+					*/
+					inline virtual csf_string to_string() {
 
+						//if (csf_strlen(m_format) <= 0) {
+						if ('\0' == m_format[0]) {
+
+							csf_snprintf(m_format
+								, csf_sizeof(m_format)
+								, "connect[ %p type:%s ]"
+								, this
+								, get_type_name(get_type()).c_str());
+						}
+
+						return csf_string(m_format);
+					}
+					/**
+					* 主要功能是：刷新格式化字符串缓存空间
+					* 返回：无
+					*/
+					inline virtual void flush_string() {
+
+						csf_memset(m_format, 0, csf_sizeof(m_format));
+					}
 				protected:
 					/**
 					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
@@ -702,6 +747,10 @@ namespace csf
 					 * 表示配置文件管理器
 					 */
 					csf::core::system::csf_configure_manager* m_configure_manager = csf_nullptr;
+					/**
+					* 表示连接信息的格式化字符串
+					*/
+					csf_char m_format[64] = { 0, };
 					/**
 					* 表示网络连接类型名称映射表
 					*/

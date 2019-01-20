@@ -344,7 +344,7 @@ csf_void csf_ip_connect_factory::run_io_service() {
 			, boost::current_exception_diagnostic_information().c_str()
 			, boost::diagnostic_information(e).c_str());
 
-		get_thread_pool().stop();
+		//get_thread_pool().stop();
 	}
 }
 

@@ -145,7 +145,15 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 				, "connect[0x%x] timeout."
 				, tmp_wrapper.get_connect_ptr().get());
 
-			tmp_callback(tmp_wrapper.get_connect_ptr(), tmp_error);
+			try {
+				tmp_callback(tmp_wrapper.get_connect_ptr(), tmp_error);
+			}
+			catch (std::exception &e) {
+				csf_log_ex(error
+					, csf_log_code_error
+					, "timeout manager exception[%s]"
+					, e.what());
+			}
 		}
 		else {
 			tmp_wrapper.get_connect_ptr()->close();

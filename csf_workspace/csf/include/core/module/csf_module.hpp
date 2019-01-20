@@ -254,7 +254,8 @@ namespace csf
 				*/
 				inline virtual csf_string to_string() {
 
-					if (csf_strlen(m_format) <= 0) {
+					//if (csf_strlen(m_format) <= 0) {
+					if ( '\0' == m_format[0] ) {
 
 						csf_snprintf(m_format
 							, csf_sizeof(m_format)
@@ -267,6 +268,14 @@ namespace csf
 					}
 
 					return csf_string(m_format);
+				}
+				/**
+				* 主要功能是：刷新格式化字符串缓存空间
+				* 返回：无
+				*/
+				inline virtual void flush_string() {
+
+					csf_memset(m_format, 0, csf_sizeof(m_format));
 				}
 			protected:
 				/**

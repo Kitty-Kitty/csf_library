@@ -57,7 +57,8 @@ namespace csf
 				*/
 				inline explicit csf_tcp_connect(csf_ip_connect_factory& factory)
 					: csf_stream_connect(factory, csf_connect::csf_connect_type_tcp)
-					, m_socket(factory.get_io_service()) {
+					, m_socket(factory.get_io_service())
+					, m_format{ 0, } {
 
 				}
 				/**
@@ -67,7 +68,8 @@ namespace csf
 				*/
 				inline explicit csf_tcp_connect(csf_ip_connect_factory* factory)
 					: csf_stream_connect(*factory, csf_connect::csf_connect_type_tcp)
-					, m_socket(factory->get_io_service()) {
+					, m_socket(factory->get_io_service())
+					, m_format{ 0, } {
 
 				}
 				/**
@@ -77,7 +79,8 @@ namespace csf
 				*/
 				inline explicit csf_tcp_connect(csf_tcp_connect* connect)
 					: csf_stream_connect(*((csf_ip_connect_factory*)(connect->get_factory())), csf_connect::csf_connect_type_tcp)
-					, m_socket(((csf_ip_connect_factory*)(connect->get_factory()))->get_io_service()) {
+					, m_socket(((csf_ip_connect_factory*)(connect->get_factory()))->get_io_service())
+					, m_format{ 0, } {
 				}
 				virtual ~csf_tcp_connect();
 				/**
@@ -266,6 +269,33 @@ namespace csf
 				* @param callback    表示读取的回调函数
 				*/
 				//virtual csf_int32 read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback = csf_nullptr);
+				/**
+				* 主要功能是：将连接信息格式化成字符串输出
+				* 返回：连接信息字符串
+				*/
+				inline virtual csf_string to_string() {
+
+					//if (csf_strlen(m_format) <= 0) {
+					if ('\0' == m_format[0]) {
+
+						csf_snprintf(m_format
+							, csf_sizeof(m_format)
+							, "%s url[ local:%s -- remote:%s ]"
+							, csf::core::module::connect::csf_connect::to_string().c_str()
+							, get_local_url().get_url().c_str()
+							, get_remote_url().get_url().c_str());
+					}
+
+					return csf_string(m_format);
+				}
+				/**
+				* 主要功能是：清空格式化字符串缓存空间
+				* 返回：无
+				*/
+				inline virtual void flush_string() {
+
+					csf_memset(m_format, 0, csf_sizeof(m_format));
+				}
 			protected:
 				/**
 				* 表示写入指定缓存的内容。
@@ -395,35 +425,35 @@ namespace csf
 				* @param error_code  表示boost的错误信息
 				* @param write_len   表示当前实际写的缓存长度
 				*/
-// 				csf_bool ip_async_write_callback(const csf_uchar* buf
-// 					, const csf_uint32 src_len
-// 					, const csf_connect_callback& callback
-// 					, const boost::system::error_code& error_code
-// 					, csf_uint32 write_len);
-				/**
-				* 主要功能是：处理异步读处理回调函数
-				* 返回：0表示处理成功；非0表示处理失败
-				*
-				* @param buf		 表示内容的缓存地址
-				* @param buf_len	 表示需要被处理的源内容缓存的长度
-				* @param callback    表示异常处理句柄信息
-				* @param error_code  表示boost的错误信息
-				* @param read_len   表示当前实际写的缓存长度
-				*/
-// 				csf_bool ip_async_read_callback(csf_uchar* buf
-// 					, const csf_uint32 buf_len
-// 					, const csf_connect_callback& callback
-// 					, const boost::system::error_code& error_code
-// 					, csf_uint32 read_len);
-				/**
-				* 主要功能是：处理异步写处理回调函数
-				* 返回：0表示处理成功；非0表示处理失败
-				*
-				* @param buffer		 表示内容的缓存
-				* @param callback    表示异常处理句柄信息
-				* @param error_code  表示boost的错误信息
-				* @param length		表示当前实际写的缓存长度
-				*/
+				// 				csf_bool ip_async_write_callback(const csf_uchar* buf
+				// 					, const csf_uint32 src_len
+				// 					, const csf_connect_callback& callback
+				// 					, const boost::system::error_code& error_code
+				// 					, csf_uint32 write_len);
+								/**
+								* 主要功能是：处理异步读处理回调函数
+								* 返回：0表示处理成功；非0表示处理失败
+								*
+								* @param buf		 表示内容的缓存地址
+								* @param buf_len	 表示需要被处理的源内容缓存的长度
+								* @param callback    表示异常处理句柄信息
+								* @param error_code  表示boost的错误信息
+								* @param read_len   表示当前实际写的缓存长度
+								*/
+								// 				csf_bool ip_async_read_callback(csf_uchar* buf
+								// 					, const csf_uint32 buf_len
+								// 					, const csf_connect_callback& callback
+								// 					, const boost::system::error_code& error_code
+								// 					, csf_uint32 read_len);
+												/**
+												* 主要功能是：处理异步写处理回调函数
+												* 返回：0表示处理成功；非0表示处理失败
+												*
+												* @param buffer		 表示内容的缓存
+												* @param callback    表示异常处理句柄信息
+												* @param error_code  表示boost的错误信息
+												* @param length		表示当前实际写的缓存长度
+												*/
 				csf_bool ip_async_write_callback(csf_connect_buffer<csf_buffer>& buffer
 					, const csf_connect_callback& callback
 					, const boost::system::error_code& error_code
@@ -450,7 +480,10 @@ namespace csf
 				* 表示当前的tcp监听确认对象
 				*/
 				boost::asio::ip::tcp::acceptor* m_acceptor;
-
+				/**
+				* 表示连接信息的格式化字符串
+				*/
+				csf_char m_format[128] = { 0, };
 			};
 		}
 

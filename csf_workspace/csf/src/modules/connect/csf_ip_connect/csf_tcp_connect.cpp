@@ -80,9 +80,8 @@ csf_int32 csf_tcp_connect::close() {
 		}
 		catch (boost::exception& e) {
 			csf_log_ex(error, csf_log_code_error
-				, "socket[0x%x url:%s] close failed! reason:[%s -- %s]."
-				, this
-				, get_local_url().get_url().c_str()
+				, "%s close failed! reason:[%s -- %s]."
+				, to_string().c_str()
 				, boost::current_exception_diagnostic_information().c_str()
 				, boost::diagnostic_information(e).c_str());
 		}
@@ -1109,7 +1108,7 @@ const csf_url& csf_tcp_connect::get_local_url() const {
 	//判断现在的地址是否存在，存在则直接返回
 	if (csf_ip_connect::get_local_url().get_url().empty()) {
 
-		((csf_ip_url&)csf_ip_connect::get_remote_url()).set_url(
+		((csf_ip_url&)csf_ip_connect::get_local_url()).set_url(
 			get_socket().local_endpoint().address().to_string()
 			, get_socket().local_endpoint().port());
 	}
@@ -1197,8 +1196,8 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 
 	csf_log_ex(info
 		, csf_log_code_info
-		, "accept tcp connect[0x%x]."
-		, connect_ptr.get());
+		, "accept %s."
+		, connect_ptr->to_string().c_str());
 
 	//调用回调函数通知接收数据等各种处理
 	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
