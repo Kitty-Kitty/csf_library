@@ -81,6 +81,11 @@ csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 		, csf_attribute_int(std::list<csf_string>{ "timeout_manager_thread_number" }
 		, csf_attribute_boundary("[1, n)")
 		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_thread_number)));
+	//表示连接的最大连接数，数值默认为：1024
+	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(connect_limit)
+		, csf_attribute_int(std::list<csf_string>{ "connect_limit" }
+		, csf_attribute_boundary("[1, 65535]")
+		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_connect_limit)));
 	//表示定时器时间间隔，数值默认为：500ms
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(idle_interval)
 		, csf_attribute_time(std::list<csf_string>{ "idle_interval" }
