@@ -25,6 +25,36 @@ using csf::core::system::csf_logger;
 using csf::core::system::attribute::csf_attribute_manager;
 
 
+
+/**
+* 表示当前系统中每条日志的最大长度
+*/
+#ifndef CSF_LOGGER_MAX_ERROR_STRING
+#define CSF_LOGGER_MAX_ERROR_STRING						102400
+#endif
+
+
+#ifdef WIN32
+
+#define csf_static_thread_local			static thread_local
+
+#else
+
+#if defined(HAVE___ATTRIBUTE__) && defined(HAVE_TLS)
+#define ATTR_INITIAL_EXEC __attribute__ ((tls_model ("initial-exec")))
+//#define csf_static_thread_local			static __thread
+#define csf_static_thread_local			static thread_local
+#else
+#define ATTR_INITIAL_EXEC
+//#warning "disable TLS."
+#define csf_static_thread_local			
+#endif
+
+#endif
+
+
+
+
 csf_logger::csf_logger()
 	: m_configure_manager(csf_nullptr)
 	, m_path("")
@@ -62,12 +92,22 @@ csf_logger::~csf_logger() {
 		m_attribute_manager = csf_nullptr;
 	}
 }
-
+// #ifdef WIN32
+// #pragma data_seg("csf_logger::m_level")
+// #endif
 
 /**
 * 表示当前系统的日志级别，默认notice级别
 */
-csf_logger_level csf_logger::m_level = csf_logger_level::csf_logger_level_notice;
+//csf_logger_level csf_logger::m_level = csf_logger_level::csf_logger_level_notice;
+csf_logger_level csf_logger::m_level = csf_logger_level::csf_logger_level_debug;
+
+
+// #ifdef WIN32
+// #pragma data_seg()
+// #pragma comment(linker, "/section:SHARED,RWS")
+// #endif
+
 
 /**
 * 表示日志级别对应的名称列表内容。
@@ -236,21 +276,22 @@ csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_
 
 		boost::log::formatter tmp_fmtter =
 			boost::log::expressions::stream
-			<< "[" << boost::log::expressions::format_date_time< boost::posix_time::ptime >("TimeStamp", "%Y%m%dT%H%M%S")
-			<< "]<" << log_severity
+			<< boost::log::expressions::format_date_time< boost::posix_time::ptime >("TimeStamp", "[%Y-%m-%d %H:%M:%S.%f] [")
+			<< boost::log::expressions::attr<boost::log::attributes::current_thread_id::value_type >("ThreadID")
+			<< "] ["
+			<< log_severity
 			<< ":"
 			<< boost::log::expressions::if_(boost::log::expressions::has_attr("Code"))
 			[
 				boost::log::expressions::stream << boost::log::expressions::attr< int >("Code")
 			]
-			<< ">"
-			<< "(" << boost::log::expressions::attr<boost::log::attributes::current_thread_id::value_type >("ThreadID") << ") "
+			<< "] -- "
 			<< boost::log::expressions::smessage;
 
 		// Create a text file sink
 		boost::shared_ptr<file_sink> tmp_file_sink_ptr(new file_sink(
-			boost::log::keywords::file_name = tmp_log_file_name,									// file name pattern
-			boost::log::keywords::rotation_size = get_rotation_size(),						// rotation size, in characters
+			boost::log::keywords::file_name = tmp_log_file_name,				// file name pattern
+			boost::log::keywords::rotation_size = get_rotation_size(),			// rotation size, in characters
 			boost::log::keywords::time_based_rotation = boost::log::sinks::file::rotation_at_time_point(0, 0, 0)
 		));
 
@@ -317,4 +358,65 @@ csf_void csf_logger::set_configure_manager(const csf_configure_manager* new_valu
 	if (get_attribute_manager()) {
 		((csf_attribute_manager*)get_attribute_manager())->set_configure_manager(new_value, std::list<csf_string>());
 	}
+}
+
+
+
+/**
+* 表示定义一个printf写日志函数,同时添加判断日志级别
+* @author f
+* @version 1.0
+* @created 01-7月-2018 20:38:59
+* @param _level_	表示日志级别,取值为csf_logger_level类型
+* @param _code_	表示日志错误码
+* @param _fmt_	表示日志格式化字符串，类型printf("_fmt_", args)中的_fmt_字符串
+* @param ...	表示日志格式化参数列表，类型printf("_fmt_", args)中的args列表
+*/
+void csf_logger::write(int _level_, int _code_, char *_fmt_, ...) {
+
+	if (_level_ >= get_level()) {
+
+		csf_static_thread_local char		_tmp_buf_[CSF_LOGGER_MAX_ERROR_STRING] = { 0, };
+		csf_static_thread_local size_t		_tmp_size_ = 0;
+		csf_static_thread_local char*		_tmp_buf_point_ = NULL;
+		csf_static_thread_local bool		_tmp_is_free = false;
+		va_list								_tmp_marker_;
+
+
+		va_start(_tmp_marker_, _fmt_);
+
+		//这里对日志的频繁分配内存做优化。
+		//1、如果已经分配的内存够用，则用已经分配的。（实现需求的内存长度小与固定已有的内存长度，则采用固定内存;）
+		//2、如果已经分配的内存不够用，则重新分配，并释放
+		_tmp_size_ = csf_vscprintf(_fmt_, _tmp_marker_);
+		if (_tmp_size_ < sizeof(_tmp_buf_)) {
+			_tmp_buf_point_ = _tmp_buf_;
+			//将末尾的一个字节清0，表示字符结束
+			_tmp_buf_point_[_tmp_size_ - 1] = '\0';
+			_tmp_size_ = sizeof(_tmp_buf_);
+			_tmp_is_free = false;
+		}
+		else {
+			_tmp_buf_point_ = (char*)malloc(_tmp_size_);
+			//将末尾的一个字节清0，表示字符结束
+			_tmp_buf_point_[_tmp_size_ - 1] = '\0';
+			_tmp_is_free = true;
+		}
+
+		if (csf_vsnprintf(_tmp_buf_point_, _tmp_size_, _fmt_, _tmp_marker_) < 0) {
+			_tmp_buf_[CSF_LOGGER_MAX_ERROR_STRING - 2] = '.';
+			_tmp_buf_[CSF_LOGGER_MAX_ERROR_STRING - 3] = '.';
+			_tmp_buf_[CSF_LOGGER_MAX_ERROR_STRING - 4] = '.';
+		}
+		va_end(_tmp_marker_);
+		//printf("%s\r\n", _tmp_buf_);
+		BOOST_LOG_WRITE((csf_logger_level)_level_, (csf_log_code)_code_, _tmp_buf_point_);
+
+		if (_tmp_is_free) {
+			free(_tmp_buf_point_);
+			_tmp_buf_point_ = NULL;
+		}
+
+	}
+
 }

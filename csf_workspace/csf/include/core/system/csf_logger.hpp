@@ -118,6 +118,7 @@ typedef enum
 	csf_logger_level_critical
 } csf_logger_level;
 
+
 //级别对应的字符串，表示日志格式中的“日志级别”
 template< typename CharT, typename TraitsT >
 inline std::basic_ostream< CharT, TraitsT >& operator<< (
@@ -136,11 +137,45 @@ inline std::basic_ostream< CharT, TraitsT >& operator<< (
 	return stream;
 }
 
-
+//#define BOOST_LOG_DYN_LINK
+//#define BOOST_LOG_USE_COMPILER_TLS
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(my_logger, boost::log::sources::severity_logger_mt<csf_logger_level>)
 BOOST_LOG_ATTRIBUTE_KEYWORD(log_severity, "Severity", csf_logger_level)
 BOOST_LOG_ATTRIBUTE_KEYWORD(log_scope, "Scope", boost::log::attributes::named_scope::value_type)
 BOOST_LOG_ATTRIBUTE_KEYWORD(log_code, "Code", int)
+
+/**
+* 表示定义一个写日志函数
+* @author f
+* @version 1.0
+* @created 01-7月-2018 20:38:59
+* @param _level_	表示日志级别,取值为csf_logger_level类型
+* @param _code_		表示日志错误码
+* @param _string_	表示日志错误信息
+*/
+#define	BOOST_LOG_WRITE(_level_, _code_, _string_)		do {							\
+	boost::log::sources::severity_logger<csf_logger_level> slg;							\
+	slg.add_attribute("Code", boost::log::attributes::constant<int>(_code_));			\
+	slg.add_attribute("TimeStamp", boost::log::attributes::local_clock());				\
+	slg.add_attribute("ThreadID", boost::log::attributes::current_thread_id());			\
+	BOOST_LOG_SEV(slg, _level_) << _string_;											\
+} while (0)																				\
+
+
+/**
+* 表示定义一个写日志函数,同时添加判断日志级别
+* @author f
+* @version 1.0
+* @created 01-7月-2018 20:38:59
+* @param _level_	表示日志级别,取值为csf_logger_level类型
+* @param _code_		表示日志错误码
+* @param _string_	表示日志错误信息
+*/
+#define	BOOST_LOG_WRITE_EX(_level_, _code_, _string_)	do {							\
+	if(_level_ >= csf::core::system::csf_logger::get_level()) {							\
+		BOOST_LOG_WRITE(_level_, _code_, _string_);										\
+	}																					\
+} while (0)																				\
 
 
 #if (BOOST_VERSION == 105500)
@@ -327,6 +362,31 @@ namespace csf
 
 					return m_attribute_manager;
 				}
+				/**
+				* 表示控制台输出
+				*/
+				inline boost::shared_ptr<text_sink> get_text_sink_ptr() {
+
+					return m_text_sink_ptr;
+				}
+				/**
+				* 表示文件输出
+				*/
+				inline boost::shared_ptr<file_sink> get_file_sink_ptr() {
+
+					return m_file_sink_ptr;
+				}
+				/**
+				* 表示定义一个printf写日志函数,同时添加判断日志级别
+				* @author f
+				* @version 1.0
+				* @created 01-7月-2018 20:38:59
+				* @param _level_	表示日志级别,取值为csf_logger_level类型
+				* @param _code_	表示日志错误码
+				* @param _fmt_	表示日志格式化字符串，类型printf("_fmt_", args)中的_fmt_字符串
+				* @param ...	表示日志格式化参数列表，类型printf("_fmt_", args)中的args列表
+				*/
+				static void write(int _level_, int _code_, char *_fmt_, ...);
 			protected:
 				/**
 				* 表示日志级别对应的名称列表内容。
@@ -403,26 +463,12 @@ namespace csf
 				static const csf_unordered_map<csf_string, csf_logger_level> m_level_name;
 				/**
 				* 表示控制台输出
-				*/
-				inline boost::shared_ptr<text_sink> get_text_sink_ptr() {
-
-					return m_text_sink_ptr;
-				}
-				/**
-				* 表示控制台输出
 				*
 				* @param new_value
 				*/
 				inline csf_void set_text_sink_ptr(const boost::shared_ptr<text_sink> new_value) {
 
 					m_text_sink_ptr = new_value;
-				}
-				/**
-				* 表示文件输出
-				*/
-				inline boost::shared_ptr<file_sink> get_file_sink_ptr() {
-
-					return m_file_sink_ptr;
 				}
 				/**
 				* 表示文件输出

@@ -165,6 +165,7 @@ csf_bool csf_app::init_logger(csf::core::system::csf_configure_manager& configur
 }
 
 
+
 /**
 * 该函数主要用于初始化app的模块管理器
 * 返回：true表示初始化成功；false表示初始化失败。

@@ -35,6 +35,22 @@ const csf_unordered_map<csf_string, csf_attribute_space_size::csf_space_size_uni
 	{ "TB", csf_space_size_unit_tb },
 	{ "PB", csf_space_size_unit_pb }
 };
+
+
+/**
+* 表示空间单位名称定义
+*/
+const csf_map<csf_attribute_space_size::csf_space_size_unit, csf_uint64> csf_attribute_space_size::m_unit_size = {
+	{ csf_space_size_unit_none, 1ll },
+	{ csf_space_size_unit_b, 1ll },
+	{ csf_space_size_unit_kb, 1024ll },
+	{ csf_space_size_unit_mb, 1024ll * 1024ll },
+	{ csf_space_size_unit_gb, 1024ll * 1024 * 1024ll },
+	{ csf_space_size_unit_tb, 1024ll * 1024 * 1024 * 1024ll },
+	{ csf_space_size_unit_pb, 1024ll * 1024 * 1024 * 1024 * 1024ll }
+};
+
+
 /**
 * 表示该种格式数据的说明
 */

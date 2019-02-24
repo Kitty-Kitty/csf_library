@@ -199,7 +199,7 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, const
 	}
 
 	//创建一个设备对象
-	tmp_device_base = csf_configure_module::create_module(app.get_module_manager(), element);
+	tmp_device_base = csf_configure_module::create_module(&app, app.get_module_manager(), element);
 	if (csf_nullptr == tmp_device_base) {
 		csf_log_ex(error, csf_log_code_error
 			, "create factory module[name:%s] failed!"

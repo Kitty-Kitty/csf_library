@@ -236,11 +236,48 @@ namespace csf
 				*
 				* @param type    表示模块的类型数值
 				*/
+				inline static csf_bool is_device_base(const csf::core::module::csf_module::csf_module_type type) {
+
+					if (is_app(type) || is_device(type) || is_device_io(type)) {
+						return csf_true;
+					}
+					return csf_false;
+				}
+				/**
+				* 功能：根据模块的类型数据，判断是否为csf_device_base设备。校验的方法是判断是否为app的设备
+				* 返回：true表示是device设备；false表示不是device设备。
+				*
+				* @param type    表示模块的类型数值
+				*/
+				inline static csf_bool is_app(const csf::core::module::csf_module::csf_module_type type) {
+
+					if (type && csf_module::csf_module_type::csf_module_type_app) {
+						return csf_true;
+					}
+					return csf_false;
+				}
+				/**
+				* 功能：根据模块的类型数据，判断是否为csf_device_base设备。校验的方法是判断是否为device的设备
+				* 返回：true表示是device设备；false表示不是device设备。
+				*
+				* @param type    表示模块的类型数值
+				*/
 				inline static csf_bool is_device(const csf::core::module::csf_module::csf_module_type type) {
 
-					if ((type && csf_module::csf_module_type::csf_module_type_app)
-							|| (type && csf_module::csf_module_type::csf_module_type_device)
-							|| (type && csf_module::csf_module_type::csf_module_type_device_io)) {
+					if (type && csf_module::csf_module_type::csf_module_type_device) {
+						return csf_true;
+					}
+					return csf_false;
+				}
+				/**
+				* 功能：根据模块的类型数据，判断是否为csf_device_base设备。校验的方法是判断是否为device_io的设备
+				* 返回：true表示是device设备；false表示不是device设备。
+				*
+				* @param type    表示模块的类型数值
+				*/
+				inline static csf_bool is_device_io(const csf::core::module::csf_module::csf_module_type type) {
+
+					if (type && csf_module::csf_module_type::csf_module_type_device_io) {
 						return csf_true;
 					}
 					return csf_false;

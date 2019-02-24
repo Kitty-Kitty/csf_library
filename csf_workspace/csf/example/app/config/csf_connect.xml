@@ -15,6 +15,8 @@
         <configure>
           <!--[选配]表示连接工厂所需要创建的线程数量，数值默认为：2-->
           <thread_number>3</thread_number>
+          <!--[选配]表示连接的最大连接数，数值默认为：1024-->
+          <connect_limit>256</connect_limit>
           <!--[选配]表示系统的空休眠等待间隔时间，单位：毫秒（ms）.数值默认为：500ms-->
           <idle_interval>500ms</idle_interval>
         </configure>
@@ -26,13 +28,13 @@
           <!--表示连接对象的名称-->
           <name>tcp_listen</name>
           <!--表示需要监听的地址信息-->
-          <tcp>192.168.1.7:8080</tcp>
+          <tcp>192.168.1.6:8080</tcp>
           <!--表示打开监听句柄成功后回调的句柄名称-->
           <handle>tcp_handle</handle>
         </listen>
         <listen>
           <name>udp_listen</name>
-          <udp>192.168.1.7:8081</udp>
+          <udp>192.168.1.6:8081</udp>
           <handle>udp_handle</handle>
         </listen>
       </listen_list>

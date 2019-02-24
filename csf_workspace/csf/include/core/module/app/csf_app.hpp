@@ -330,6 +330,27 @@ namespace csf
 					return del_device(csf_string(mid));
 				}
 				/**
+				* 功能：每个模块在加载之后，都需要初始化日志功能，以保证日志顺利写入日志中
+				* 返回：true表示成功；false表示失败；
+				*/
+
+
+				/**
+				* 功能：每个模块在加载之后，都需要初始化日志功能，以保证日志顺利写入日志中
+				* 返回：true表示成功；false表示失败；
+				*/
+				inline csf_bool init_module_logger() {
+
+#if defined(WIN32)
+					boost::log::core::get()->add_sink(get_logger().get_text_sink_ptr());
+#endif
+					boost::log::core::get()->add_sink(get_logger().get_file_sink_ptr());
+
+					csf_logger::set_level(get_logger().get_level());
+
+					return csf_true;
+				}
+				/**
 				* 主要功能是：将模块信息格式化成字符串输出
 				* 返回：模块信息字符串
 				*/

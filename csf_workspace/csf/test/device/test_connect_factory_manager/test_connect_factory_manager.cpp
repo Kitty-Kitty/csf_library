@@ -44,6 +44,11 @@ csf::core::base::csf_int32 test_connect_factory_manager::init(
 	csf_connect_factory_manager			cfm(conf_mg);
 
 
+	//表示调用app的接口，初始化模块的日志功能，满足模块的日志记录功能
+	if (get_app()) {
+		get_app()->init_module_logger();
+	}
+
 	if (csf_succeed != cfm.init(conf_mg, get_app())) {
 		csf_log_ex(warning, csf_log_code_warning
 			, "init connect factory manager failed!");

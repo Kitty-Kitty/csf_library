@@ -43,9 +43,9 @@ namespace csf
 			/************************************************************************/
 			#define csf_ip_connect_factory_thread_number							2		//表示连接工厂所需要创建的线程数量
 			/************************************************************************/
-			/* 表示连接工厂所能接收的最大连接数据，数值默认为：1024						*/
+			/* 表示连接工厂所能接收的最大连接数，数值默认为：1024						*/
 			/************************************************************************/
-			#define csf_ip_connect_factory_connect_limit							1024	//表示连接工厂所能接收的最大连接数据
+			#define csf_ip_connect_factory_connect_limit							1024	//表示连接工厂所能接收的最大连接数
 			/************************************************************************/
 			/* 表示默认的定时器间隔时间，单位：毫秒（ms）								*/
 			/************************************************************************/
@@ -251,6 +251,22 @@ namespace csf
 				* 返回：无
 				*/
 				csf_void run_io_service();
+				/**
+				* 表示连接工厂所能接收的最大连接
+				*/
+				inline csf_uint32 get_connect_limit() {
+
+					return m_connect_limit;
+				}
+				/**
+				* 表示连接工厂所能接收的最大连接
+				*
+				* @param newVal
+				*/
+				inline void set_connect_limit(csf_uint32 newVal) {
+
+					m_connect_limit = newVal;
+				}
 			private:
 				/**
 				* 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
@@ -280,6 +296,10 @@ namespace csf
 				* 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
 				*/
 				csf_uint64 m_idle_interval = csf_ip_connect_factory_timer_interval_ms;
+				/**
+				* 表示连接工厂所能接收的最大连接
+				*/
+				csf_uint32 m_connect_limit = csf_ip_connect_factory_connect_limit;
 			};
 		}
 

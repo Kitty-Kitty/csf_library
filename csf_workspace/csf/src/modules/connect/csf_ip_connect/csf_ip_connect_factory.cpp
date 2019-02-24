@@ -22,6 +22,7 @@
 #include "csf_ip_connect_factory.hpp"
 #include "csf_tcp_connect.hpp"
 #include "csf_udp_connect.hpp"
+#include "csf_app.hpp"
 
 
 using csf::modules::connect::csf_ip_connect_factory;
@@ -68,6 +69,11 @@ csf_ip_connect_factory::~csf_ip_connect_factory() {
 */
 csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 
+	//表示调用app的接口，初始化模块的日志功能，满足模块的日志记录功能
+	if (get_app()) {
+		get_app()->init_module_logger();
+	}
+
 	//根配置信息
 	get_attribute_manager().set_root_element(&element);
 
@@ -81,7 +87,7 @@ csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 		, csf_attribute_int(std::list<csf_string>{ "timeout_manager_thread_number" }
 		, csf_attribute_boundary("[1, n)")
 		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_thread_number)));
-	//表示连接的最大连接数，数值默认为：1024
+	//表示连接工厂所能接收的最大连接数，数值默认为：1024
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(connect_limit)
 		, csf_attribute_int(std::list<csf_string>{ "connect_limit" }
 		, csf_attribute_boundary("[1, 65535]")
@@ -96,6 +102,9 @@ csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 	//更新系统的空闲间隔时间，单位：毫秒（ms）
 	set_idle_interval(get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(idle_interval)));
 
+	//表示连接工厂所能接收的最大连接数，数值默认为：1024
+	set_connect_limit((csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(connect_limit)));
+
 	return 0;
 }
 
@@ -109,6 +118,7 @@ csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_type type) {
 
 	csf_connect					*tmp_connect = csf_nullptr;
+
 
 	if (type & csf_connect::csf_connect_type::csf_connect_type_tcp) {
 		tmp_connect = new csf_tcp_connect(*this);
@@ -171,6 +181,7 @@ csf::core::base::csf_int32 csf_ip_connect_factory::init(const csf_configure_mana
 csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url) {
 
 	csf_connect_ptr					tmp_connect_ptr = create(type);
+
 
 	if (tmp_connect_ptr == m_null_connect_ptr) {
 		return m_null_connect_ptr;
@@ -247,6 +258,7 @@ csf::core::base::csf_int32 csf_ip_connect_factory::start(const csf_configure_man
 csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url, const csf_url& remote_url) {
 
 	csf_connect_ptr					tmp_connect_ptr = create(type, local_url);
+
 
 	if (tmp_connect_ptr == m_null_connect_ptr) {
 		return m_null_connect_ptr;

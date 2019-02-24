@@ -263,13 +263,13 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, const c
 		return csf_false;
 	}
 
-	tmp_device_base = csf_configure_module::create_module(app.get_module_manager(), element);
+	tmp_device_base = csf_configure_module::create_module(&app, app.get_module_manager(), element);
 	if (!tmp_device_base) {
 		return csf_false;
 	}
 
 	//校验该模块是否为device模块对象。如果是则添加；如果不是则模块是错误的，销毁；
-	if (!csf_device_base::is_device(tmp_device_base->get_type())) {
+	if (!csf_device_base::is_device_base(tmp_device_base->get_type())) {
 		csf_log_ex(error, csf_log_code_error
 			, "add device failed! reason: module type[%d] faile!"
 			, tmp_device_base->get_type());
@@ -380,7 +380,7 @@ csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::modu
 	}
 
 	//校验该模块是否为device模块对象。如果是则添加；如果不是则模块是错误的，销毁；
-	if (!csf_device_base::is_device(tmp_module->get_type())) {
+	if (!csf_device_base::is_device_base(tmp_module->get_type())) {
 		csf_log_ex(error, csf_log_code_error
 			, "add device module[name:\"%s\"] failed! reason: module type[%d] faile!"
 			, name.c_str()
@@ -393,9 +393,18 @@ csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::modu
 	else {
 
 		//添加设备到设备列表中
+		((csf_device_base*)(tmp_module))->set_parent(&app);
 
-		dynamic_cast<csf_device_base*>(tmp_module)->set_parent(&app);
+		//设置device设备的app对象
+		if (csf_device_base::is_device(tmp_module->get_type())) {
+			((csf_device*)(tmp_module))->set_app(&app);
+		}
 
+		//设置device_io设备的app对象
+		if (csf_device_base::is_device_io(tmp_module->get_type())) {
+			((csf_device_io*)(tmp_module))->set_app(&app);
+		}
+		
 		return tmp_module;
 	}
 
@@ -421,7 +430,9 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 	}
 
 	tmp_device_io = dynamic_cast<csf_device_io*>(
-		csf_configure_module::create_module(device.get_app()->get_module_manager(), element));
+		csf_configure_module::create_module(device.get_app()
+			, device.get_app()->get_module_manager()
+			, element));
 	if (!tmp_device_io) {
 		return csf_false;
 	}
