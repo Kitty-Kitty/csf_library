@@ -6,6 +6,8 @@
   <thread_number>2</thread_number>
   <!--[选配]表示连接超时管理器需要创建的线程数量，数值默认为：2-->
   <timeout_manager_thread_number>2</timeout_manager_thread_number>
+  <!--[选配]表示连接的最大连接数，数值默认为：1024-->
+  <connect_limit>1024</connect_limit>
   <!--[选配]表示系统的空休眠等待间隔时间，单位：毫秒（ms）.数值默认为：500ms-->
   <idle_interval>500ms</idle_interval>
 </csf_ip_connect_factory>

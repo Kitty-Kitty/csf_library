@@ -23,6 +23,7 @@
 
 using csf::core::module::csf_device;
 
+
 /**
 * 功能：根据模块的mid查找一个设备对象
 * 返回：非空表示成功；空表示失败；

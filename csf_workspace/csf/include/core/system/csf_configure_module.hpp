@@ -48,6 +48,7 @@ namespace csf
 				* 主要功能是：通过配置信息创建一个基础模块对象
 				* 返回：非null表示模块对象地址；null表示失败；
 				*
+				* @param app    表示针对指定app创建模块对象
 				* @param module_manager    表示模块管理器对象信息
 				* @param element    表示模块的配置信息。
 				*
@@ -68,7 +69,8 @@ namespace csf
 				*
 				*/
 				static csf::core::module::csf_device_base* create_module(
-					csf::core::module::csf_module_manager& module_manager
+					csf_app* app
+					, csf::core::module::csf_module_manager& module_manager
 					, const csf::core::system::csf_element& element);
 
 			};

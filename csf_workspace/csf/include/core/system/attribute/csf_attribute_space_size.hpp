@@ -265,6 +265,13 @@ namespace csf
 						return m_unit_name;
 					}
 					/**
+					* 表示空间大小单位名称的数据大小
+					*/
+					inline const csf_map<csf_space_size_unit, csf_uint64>& get_unit_size() {
+
+						return m_unit_size;
+					}
+					/**
 					 * 表示将字符串时间单位转换为类型数值
 					 * 
 					 * @param unit    表示需要被转换的单位字符串
@@ -380,6 +387,10 @@ namespace csf
 					 */
 					static const csf_unordered_map<csf_string, csf_space_size_unit> m_unit_name;
 					/**
+					* 表示空间大小单位名称的数据大小
+					*/
+					static const csf_map<csf_space_size_unit, csf_uint64> m_unit_size;
+					/**
 					* 表示该种格式数据的说明
 					*/
 					static const csf_string m_usage;
@@ -391,17 +402,6 @@ namespace csf
 					 * @param unit    表示该数值的单位字符
 					 */
 					csf_bool get_parametes(const csf_string& val, const csf_string& unit);
-#if 0
-					/**
-					 * 表示时间单位名称的对应列表
-					 * 
-					 * @param new_value    表示时间单位名称的对应列表
-					 */
-					inline csf_void set_unit_name(csf_unordered_map<csf_string, csf_space_size_unit>& new_value) {
-
-						m_unit_name = new_value;
-					}
-#endif
 					/**
 					 * 表示将时间数值转换为纳秒格式的时间数值。
 					 * 返回：true表示转换成功；false表示转换失败；
@@ -412,19 +412,31 @@ namespace csf
 					 */
 					inline csf_bool convert_to_bytes(csf_int64& dest_value, const csf_int64& src_value, const csf_space_size_unit& src_unit) {
 
-#ifndef CSF_SPACE_SIZE_UNIT_SCALE_GEN
-#define CSF_SPACE_SIZE_UNIT_SCALE_GEN(type, scale)				case csf_space_size_unit_ ## type: {dest_value = src_value * scale;}break;
+						csf_map<csf_space_size_unit, csf_uint64>::const_iterator			tmp_iter;
 
-						switch (src_unit) {
-							CSF_SPACE_SIZE_UNIT_SCALE(CSF_SPACE_SIZE_UNIT_SCALE_GEN)
 
-						default:
-							return csf_false;
-							break;
+						tmp_iter = get_unit_size().find(src_unit);
+						if (tmp_iter != get_unit_size().end()) {
+							dest_value = tmp_iter->second * src_value;
+							return csf_true;
 						}
+						else {
+							return csf_false;
+						}
+// 	#ifndef CSF_SPACE_SIZE_UNIT_SCALE_GEN
+// 	#define CSF_SPACE_SIZE_UNIT_SCALE_GEN(type, scale)				case csf_space_size_unit_ ## type: {dest_value = src_value * scale;}break;
+// 
+// 						switch (src_unit) {
+// 							CSF_SPACE_SIZE_UNIT_SCALE(CSF_SPACE_SIZE_UNIT_SCALE_GEN)
+// 
+// 						default:
+// 							return csf_false;
+// 							break;
+// 						}
+// 
+// 	#undef  CSF_SPACE_SIZE_UNIT_SCALE_GEN
+// 	#endif // CSF_SPACE_SIZE_UNIT_SCALE_GEN
 
-#undef  CSF_SPACE_SIZE_UNIT_SCALE_GEN
-#endif // CSF_SPACE_SIZE_UNIT_SCALE_GEN
 						return csf_true;
 					}
 					/**
@@ -437,19 +449,30 @@ namespace csf
 					 */
 					inline csf_bool convert_from_bytes(csf_int64& dest_value, const csf_space_size_unit& dest_unit, const csf_int64& src_value) {
 
-#ifndef CSF_SPACE_SIZE_UNIT_SCALE_GEN
-#define CSF_SPACE_SIZE_UNIT_SCALE_GEN(type, scale)				case csf_space_size_unit_ ## type: {dest_value = src_value / (scale);}break;
+						csf_map<csf_space_size_unit, csf_uint64>::const_iterator			tmp_iter;
 
-						switch (dest_unit) {
-							CSF_SPACE_SIZE_UNIT_SCALE(CSF_SPACE_SIZE_UNIT_SCALE_GEN)
 
-						default:
-							return csf_false;
-							break;
+						tmp_iter = get_unit_size().find(dest_unit);
+						if (tmp_iter != get_unit_size().end()) {
+							dest_value = src_value / tmp_iter->second;
+							return csf_true;
 						}
-
-#undef  CSF_SPACE_SIZE_UNIT_SCALE_GEN
-#endif // CSF_SPACE_SIZE_UNIT_SCALE_GEN
+						else {
+							return csf_false;
+						}
+// #ifndef CSF_SPACE_SIZE_UNIT_SCALE_GEN
+// #define CSF_SPACE_SIZE_UNIT_SCALE_GEN(type, scale)				case csf_space_size_unit_ ## type: {dest_value = src_value / (scale);}break;
+// 
+// 						switch (dest_unit) {
+// 							CSF_SPACE_SIZE_UNIT_SCALE(CSF_SPACE_SIZE_UNIT_SCALE_GEN)
+// 
+// 						default:
+// 							return csf_false;
+// 							break;
+// 						}
+// 
+// #undef  CSF_SPACE_SIZE_UNIT_SCALE_GEN
+// #endif // CSF_SPACE_SIZE_UNIT_SCALE_GEN
 
 						return csf_true;
 					}

@@ -97,11 +97,12 @@ namespace csf
 				}
 
 				/**
-				 * 表示device_io所属的app地址
-				 *
-				 * @param new_value
-				 */
-				inline void set_app(const csf::core::module::csf_app* new_value) {
+				* 表示device_io所属的app地址
+				*
+				* @param new_value
+				*/
+				inline void csf_device_io::set_app(const csf::core::module::csf_app* new_value) {
+					
 					m_app = (csf::core::module::csf_app*)new_value;
 				}
 				/**

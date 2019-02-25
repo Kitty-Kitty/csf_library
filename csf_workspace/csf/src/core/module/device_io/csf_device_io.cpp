@@ -17,6 +17,7 @@
 *History:
 *******************************************************************************/
 
+#include "csf_app.hpp"
 #include "csf_device.hpp"
 #include "csf_device_io.hpp"
 
