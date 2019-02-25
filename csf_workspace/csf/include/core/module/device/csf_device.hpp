@@ -24,6 +24,8 @@
 #include "csf_device_base.hpp"
 #include "csf_logger.hpp"
 #include "csf_mutex.hpp"
+#include "csf_configure_module.hpp"
+
 
 namespace csf
 {
@@ -90,6 +92,7 @@ namespace csf
 					: csf_device_base(configure_manager, csf_module_type_device)
 					, m_app(csf_nullptr) {
 
+					csf_configure_module::init_logger(configure_manager);
 				}
 
 				/**
@@ -104,6 +107,7 @@ namespace csf
 					: csf_device_base(configure_manager, (csf::core::module::csf_module::csf_module_type)type)
 					, m_app(csf_nullptr) {
 
+					csf_configure_module::init_logger(configure_manager);
 				}
 
 				inline virtual ~csf_device() {

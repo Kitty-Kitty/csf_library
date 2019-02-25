@@ -143,8 +143,8 @@ namespace csf
 
 						m_time = newVal;
 
-						csf_log_ex(error, csf_log_code_error
-							, "timeout [url:%lld]."
+						csf_log_ex(debug, csf_log_code_debug
+							, "timeout [%lld]."
 							, newVal);
 					}
 					/**

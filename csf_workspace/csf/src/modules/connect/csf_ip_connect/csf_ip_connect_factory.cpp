@@ -69,11 +69,6 @@ csf_ip_connect_factory::~csf_ip_connect_factory() {
 */
 csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 
-	//表示调用app的接口，初始化模块的日志功能，满足模块的日志记录功能
-	if (get_app()) {
-		get_app()->init_module_logger();
-	}
-
 	//根配置信息
 	get_attribute_manager().set_root_element(&element);
 

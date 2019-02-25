@@ -24,6 +24,7 @@
 #include "csf_module_manager.hpp"
 #include "csf_element.hpp"
 #include "csf_device_base.hpp"
+#include "csf_app.hpp"
 
 namespace csf
 {
@@ -72,7 +73,76 @@ namespace csf
 					csf_app* app
 					, csf::core::module::csf_module_manager& module_manager
 					, const csf::core::system::csf_element& element);
+				/**
+				* 主要功能是：
+				*    由于日志模块不支持dll和so模块输出，所以需要配置日志功能
+				* 返回：
+				*    true表示配置成功；
+				*    false表示失败；
+				*
+				* @param configure_manager    表示配置文件内容
+				*/
+				inline static csf_bool init_logger(const csf_configure_manager * configure_manager) {
 
+					csf_void				*tmp_app = csf_nullptr;
+
+					
+					if (!configure_manager) {
+						return csf_false;
+					}
+
+					//获取app对象
+					tmp_app = ((csf_configure_manager *)configure_manager)->get_app_object();
+					if (!tmp_app) {
+						return csf_false;
+					}
+
+					//判断是否为app对象类型
+					if (!csf_device_base::is_app(((csf_device_base*)tmp_app)->get_type())) {
+						return csf_false;
+					}
+
+					//初始化日志功能
+					return init_logger((csf_app*)tmp_app);
+				}
+				/**
+				* 主要功能是：
+				*    由于日志模块不支持dll和so模块输出，所以需要配置日志功能
+				* 返回：
+				*    true表示配置成功；
+				*    false表示失败；
+				*
+				* @param app    表示对应的app对象地址信息
+				*/
+				inline static csf_bool init_logger(csf_app* app) {
+
+					if (!app) {
+						return csf_false;
+					}
+					
+					return init_logger(app->get_logger());
+				}
+
+				/**
+				* 主要功能是：
+				*    由于日志模块不支持dll和so模块输出，所以需要配置日志功能
+				* 返回：
+				*    true表示配置成功；
+				*    false表示失败；
+				*
+				* @param logger    表示需要处理日志对象
+				*/
+				inline static csf_bool init_logger(csf_logger& logger) {
+
+#if defined(WIN32)
+					boost::log::core::get()->add_sink(logger.get_text_sink_ptr());
+#endif
+					boost::log::core::get()->add_sink(logger.get_file_sink_ptr());
+
+					csf_logger::set_level(logger.get_level());
+
+					return csf_true;
+				}
 			};
 
 		}

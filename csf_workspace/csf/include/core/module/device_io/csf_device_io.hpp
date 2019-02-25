@@ -22,6 +22,8 @@
 
 #include "csf_device_io_interface.hpp"
 #include "csf_device_base.hpp"
+#include "csf_configure_module.hpp"
+
 
 namespace csf
 {
@@ -74,6 +76,7 @@ namespace csf
 					, m_device(csf_nullptr)
 					, m_app(csf_nullptr) {
 
+					csf_configure_module::init_logger(configure_manager);
 				}
 
 				/**
@@ -89,6 +92,7 @@ namespace csf
 					, m_device(csf_nullptr)
 					, m_app(csf_nullptr) {
 
+					csf_configure_module::init_logger(configure_manager);
 				}
 
 

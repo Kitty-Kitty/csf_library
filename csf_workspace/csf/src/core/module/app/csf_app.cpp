@@ -67,6 +67,10 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
+	else {
+		//将app对象添加到附加列表中
+		get_config_mg().set_app_object(this);
+	}
 
 	//开始初始化系统模块工厂管理器
 	tmp_bool_ret = init_module_manager(get_config_mg());
