@@ -25,7 +25,8 @@
 using csf::core::system::csf_configure_manager;
 
 
-csf_configure_manager::csf_configure_manager() {
+csf_configure_manager::csf_configure_manager()
+	: m_supply(csf_nullptr) {
 
 }
 

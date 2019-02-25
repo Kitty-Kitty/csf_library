@@ -318,8 +318,10 @@ csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_
 		tmp_file_sink_ptr->set_formatter(tmp_fmtter);
 
 		//set filter
-		tmp_text_sink_ptr->set_filter(log_severity >= csf_logger::get_level()); // ...or specifically tagged
-		tmp_file_sink_ptr->set_filter(log_severity >= csf_logger::get_level()); // ...or specifically tagged
+// 		tmp_text_sink_ptr->set_filter(log_severity >= csf_logger::get_level()); // ...or specifically tagged
+// 		tmp_file_sink_ptr->set_filter(log_severity >= csf_logger::get_level()); // ...or specifically tagged
+		tmp_text_sink_ptr->set_filter(log_severity >= boost::ref(m_level)); // ...or specifically tagged
+		tmp_file_sink_ptr->set_filter(log_severity >= boost::ref(m_level)); // ...or specifically tagged
 
 		set_text_sink_ptr(tmp_text_sink_ptr);
 		set_file_sink_ptr(tmp_file_sink_ptr);

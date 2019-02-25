@@ -228,6 +228,7 @@
     <ClInclude Include="..\..\..\include\core\system\csf_configure_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_configure_module.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_configure_parser.hpp" />
+    <ClInclude Include="..\..\..\include\core\system\csf_configure_supply.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_element.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_element_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\system\csf_logger.hpp" />
@@ -321,6 +322,7 @@
     <ClCompile Include="..\..\..\src\core\system\csf_configure_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_configure_module.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_configure_parser.cpp" />
+    <ClCompile Include="..\..\..\src\core\system\csf_configure_supply.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_element.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_logger.cpp" />
     <ClCompile Include="..\..\..\src\core\system\csf_measure_configure.cpp" />
