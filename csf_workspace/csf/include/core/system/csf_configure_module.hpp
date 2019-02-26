@@ -75,10 +75,13 @@ namespace csf
 					, const csf::core::system::csf_element& element);
 				/**
 				* 主要功能是：
-				*    由于日志模块不支持dll和so模块输出，所以需要配置日志功能
+				*    由于boost.
+				* log日志模块的处理问题，不支持dll和so模块输出，所以需要配置日志功能。在所有的device和device_io构造时，都需要执行该处理。如果后面更换了日志
+				* 模块，则不需要该函数功能。
+				*
 				* 返回：
-				*    true表示配置成功；
-				*    false表示失败；
+				*    true:表示配置成功；
+				*    false:表示失败；
 				*
 				* @param configure_manager    表示配置文件内容
 				*/
@@ -107,10 +110,13 @@ namespace csf
 				}
 				/**
 				* 主要功能是：
-				*    由于日志模块不支持dll和so模块输出，所以需要配置日志功能
+				*    由于boost.
+				* log日志模块的处理问题，不支持dll和so模块输出，所以需要配置日志功能。在所有的device和device_io构造时，都需要执行该处理。如果后面更换了日志
+				* 模块，则不需要该函数功能。
+				*
 				* 返回：
-				*    true表示配置成功；
-				*    false表示失败；
+				*    true:表示配置成功；
+				*    false:表示失败；
 				*
 				* @param app    表示对应的app对象地址信息
 				*/
@@ -125,10 +131,13 @@ namespace csf
 
 				/**
 				* 主要功能是：
-				*    由于日志模块不支持dll和so模块输出，所以需要配置日志功能
+				*    由于boost.
+				* log日志模块的处理问题，不支持dll和so模块输出，所以需要配置日志功能。在所有的device和device_io构造时，都需要执行该处理。如果后面更换了日志
+				* 模块，则不需要该函数功能。
+				*
 				* 返回：
-				*    true表示配置成功；
-				*    false表示失败；
+				*    true:表示配置成功；
+				*    false:表示失败；
 				*
 				* @param logger    表示需要处理日志对象
 				*/

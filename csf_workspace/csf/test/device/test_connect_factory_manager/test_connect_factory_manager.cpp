@@ -157,6 +157,17 @@ csf::core::base::csf_int32 test_connect_factory_manager::read_handle(
 	, csf_connect_buffer<csf_buffer>& connect_buffer
 	) {
 
+	if (connect_error.get_code()) {
+		return 0;
+	}
+
+	csf_log_ex(info, csf_log_code_info
+		, "get data length[%d]"
+		, connect_buffer.get_length());
+	
+	connect_buffer.get_buffer()->reset();
+	connect_ptr->read(std::ref(connect_buffer), get_read_function());
+
 	return 0;
 }
 

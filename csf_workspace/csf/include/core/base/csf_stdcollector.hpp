@@ -51,6 +51,7 @@ namespace csf
 			#define csf_map							std::map
 			#define csf_multimap					std::multimap 
 			#define csf_unordered_map				std::unordered_map
+			#define csf_pair						std::pair
 #endif
 
 

@@ -61,13 +61,18 @@ namespace csf
 				 */
 				inline explicit csf_memblock(const csf_uchar* buf
 					, const csf_int32 len
-					, const csf_bool is_free = csf_false)
-					: m_buffer((csf_uchar*)buf)
+					, const csf_bool is_free = csf_true)
+					: m_buffer(csf_nullptr)
 					, m_size(len)
 					, m_is_free(is_free) {
 					if (len < 0) {
 						throw csf_nullptr;
 					}
+
+					reset(len);
+					memzero();
+					csf_memcpy(get_buffer(), buf, len);
+
 				}
 				/**
 				 * 根据长度申请一个内存，创建一个对象
@@ -83,6 +88,7 @@ namespace csf
 					}
 					else {
 						reset(len);
+						memzero();
 					}
 				}
 				/**

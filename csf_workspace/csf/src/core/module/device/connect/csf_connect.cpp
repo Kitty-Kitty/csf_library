@@ -160,7 +160,7 @@ csf_int32 csf_connect::get_option() {
 * @param timeout_ms		表示超时的时间数值，单位：毫秒（ms）
 * @param callback    表示超时回调函数。
 */
-csf_int32 csf_connect::set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback) {
+csf_int32 csf_connect::set_read_timeout(const csf_uint64 timeout_ms, const csf_connect_callback& callback) {
 
 	get_read_timeout().set_time(csf::core::utils::time::system_time::get_time());
 	get_read_timeout().set_timeout(timeout_ms);
@@ -188,7 +188,7 @@ csf_int32 csf_connect::set_read_timeout(const csf_uint32 timeout_ms, const csf_c
 * @param timeout_ms		表示超时的时间数值，单位：毫秒（ms）
 * @param callback    表示超时回调函数。
 */
-csf_int32 csf_connect::set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback) {
+csf_int32 csf_connect::set_write_timeout(const csf_uint64 timeout_ms, const csf_connect_callback& callback) {
 
 	get_write_timeout().set_time(csf::core::utils::time::system_time::get_time());
 	get_write_timeout().set_timeout(timeout_ms);
@@ -594,7 +594,7 @@ csf::core::base::csf_int32 csf_connect::timeout_handle(csf_connect_ptr connect_p
 
 	csf_log_ex(info
 		, csf_log_code_info
-		, "connect[0x%x] timeout."
+		, "connect[%p] timeout."
 		, connect_ptr.get());
 
 	return 0;

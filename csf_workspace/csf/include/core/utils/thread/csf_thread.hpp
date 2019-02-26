@@ -174,7 +174,7 @@ namespace csf
 								catch (std::exception &e) {
 									csf_log_ex(error
 										, csf_log_code_error
-										, "thread[0x%x] exception[%s]"
+										, "thread[%p] exception[%s]"
 										, this
 										, e.what());
 								}

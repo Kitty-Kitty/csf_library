@@ -29,13 +29,15 @@ using csf::modules::connect::csf_ip_connect_factory;
 
 
 csf_ip_connect_factory::csf_ip_connect_factory()
-	: m_idle_interval(csf_ip_connect_factory_timer_interval_ms) {
+	: m_idle_interval(csf_ip_connect_factory_timer_interval_ms)
+	, m_connect_limit(csf_ip_connect_factory_connect_limit)
+	, m_connect_timeout(csf_connect_timeout_default_ms) {
 
  	set_version(
  		csf_connect_version
  		, CSF_CONNECT_VER
 		, CSF_CONNECT_VAR
- 		, "general ip connect"
+ 		, "general ip connect factory"
  	);
 }
 
@@ -87,6 +89,12 @@ csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 		, csf_attribute_int(std::list<csf_string>{ "connect_limit" }
 		, csf_attribute_boundary("[1, 65535]")
 		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_connect_limit)));
+	//表示连接的超时时间，数值默认为：5s
+	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(connect_timeout)
+		, csf_attribute_time(std::list<csf_string>{ "connect_timeout" }
+		, csf_attribute_time::csf_time_unit_ms
+		, csf_attribute_boundary("[10, n)")
+		, csf_attribute_default_value<csf_attribute_time, csf_int64>(csf_connect_timeout_default_ms)));
 	//表示定时器时间间隔，数值默认为：500ms
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(idle_interval)
 		, csf_attribute_time(std::list<csf_string>{ "idle_interval" }
@@ -94,11 +102,15 @@ csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 		, csf_attribute_boundary("[10, n)")
 		, csf_attribute_default_value<csf_attribute_time, csf_int64>(csf_ip_connect_factory_timer_interval_ms)));
 
+	//表示连接工厂所能接收的最大连接数，数值默认为：1024
+	set_connect_limit((csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(connect_limit)));
+
+	//表示连接的超时时间，单位：毫秒（ms）
+	set_connect_timeout(get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(connect_timeout)));
+
 	//更新系统的空闲间隔时间，单位：毫秒（ms）
 	set_idle_interval(get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(idle_interval)));
 
-	//表示连接工厂所能接收的最大连接数，数值默认为：1024
-	set_connect_limit((csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(connect_limit)));
 
 	return 0;
 }
@@ -322,7 +334,7 @@ csf_int32 csf_ip_connect_factory::start_thread_pool() {
 
 		csf_log_ex(error, csf_log_code_error
 			, "start thread pool failed! thread_number[%d], idle_interval[%d ms]."
-			, get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
+			, (csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
 			, (csf_int32)get_idle_interval());
 
 		return csf_failure;
@@ -330,7 +342,7 @@ csf_int32 csf_ip_connect_factory::start_thread_pool() {
 	else {
 		csf_log_ex(notice, csf_log_code_notice
 			, "start thread pool succeed! thread_number[%d], idle_interval[%d ms]."
-			, get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
+			, (csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
 			, (csf_int32)get_idle_interval());
 	}
 

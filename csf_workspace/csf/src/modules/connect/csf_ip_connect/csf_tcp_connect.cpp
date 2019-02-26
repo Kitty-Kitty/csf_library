@@ -917,6 +917,7 @@ csf_int32 csf_tcp_connect::async_write(csf_connect_buffer<csf_buffer>& buffer
 		, boost::bind(&csf_tcp_connect::ip_async_write_callback
 			, this
 			, std::ref(buffer)
+			, shared_from_this()
 			, callback
 			, boost::asio::placeholders::error
 			, boost::asio::placeholders::bytes_transferred));
@@ -994,6 +995,7 @@ csf_int32 csf_tcp_connect::async_read(csf_connect_buffer<csf_buffer>& buffer
 		, boost::bind(&csf_tcp_connect::ip_async_read_callback
 			, this
 			, std::ref(buffer)
+			, shared_from_this()
 			, callback
 			, boost::asio::placeholders::error
 			, boost::asio::placeholders::bytes_transferred));
@@ -1007,11 +1009,13 @@ csf_int32 csf_tcp_connect::async_read(csf_connect_buffer<csf_buffer>& buffer
 * 返回：0表示处理成功；非0表示处理失败
 *
 * @param buffer		 表示内容的缓存
+* @param connect_ptr 表示当前的网络连接对象
 * @param callback    表示异常处理句柄信息
 * @param error_code  表示boost的错误信息
 * @param length		表示当前实际写的缓存长度
 */
 csf_bool csf_tcp_connect::ip_async_write_callback(csf_connect_buffer<csf_buffer>& buffer
+	, csf_connect_ptr connect_ptr
 	, const csf_connect_callback& callback
 	, const boost::system::error_code& error_code
 	, csf_uint32 length) {
@@ -1022,6 +1026,7 @@ csf_bool csf_tcp_connect::ip_async_write_callback(csf_connect_buffer<csf_buffer>
 		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 		return csf_false;
 	}
+
 	//如果已经发送完成所有数据，则正常回调返回
 	if (length >= buffer.get_length()) {
 		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
@@ -1044,11 +1049,13 @@ csf_bool csf_tcp_connect::ip_async_write_callback(csf_connect_buffer<csf_buffer>
 * 返回：0表示处理成功；非0表示处理失败
 *
 * @param buffer		 表示内容的缓存
+* @param connect_ptr 表示当前的网络连接对象
 * @param callback    表示异常处理句柄信息
 * @param error_code  表示boost的错误信息
 * @param length   表示当前实际写的缓存长度
 */
 csf_bool csf_tcp_connect::ip_async_read_callback(csf_connect_buffer<csf_buffer>& buffer
+	, csf_connect_ptr connect_ptr
 	, const csf_connect_callback& callback
 	, const boost::system::error_code& error_code
 	, csf_uint32 length) {
@@ -1192,8 +1199,14 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	async_accept(callback);
 
 	//设置空连接超时处理。如果超过该时间，则表示空连接，需要关闭处理。
-	connect_ptr->set_read_timeout(csf_connect_timeout_default_ms, csf_nullptr);
-
+	if (get_factory()) {
+		connect_ptr->set_read_timeout(
+			((csf_ip_connect_factory*)get_factory())->get_connect_timeout(), csf_nullptr);
+	}
+	else {
+		connect_ptr->set_read_timeout(csf_connect_timeout_default_ms, csf_nullptr);
+	}
+	
 	csf_log_ex(info
 		, csf_log_code_info
 		, "accept %s."

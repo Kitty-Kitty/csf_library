@@ -36,7 +36,7 @@
 * @param ...		表示日志格式化参数列表，类型printf("_fmt_", args)中的args列表
 */
 #define csf_module_factory_log(_strlevel_, _code_, _fmt_, ...)	do {											\
-	_csf_log_write_ex(_strlevel_, _code_, "module_factory[ 0x%x : %d : %s : %s ] " _fmt_, 								\
+	_csf_log_write_ex(_strlevel_, _code_, "module_factory[ %p : %d : %s : %s ] " _fmt_, 								\
 		this, get_count(), get_name().c_str(), get_symbol_path().c_str(), ##__VA_ARGS__);								\
 } while (0)
 

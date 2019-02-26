@@ -312,7 +312,7 @@ namespace csf
 					* @param timeout_ms    表示超时的时间数值，单位：毫秒（ms）
 					* @param callback    表示超时回调函数。
 					*/
-					virtual csf_int32 set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback = csf_nullptr);
+					virtual csf_int32 set_read_timeout(const csf_uint64 timeout_ms, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：设置写超时时间。
 					* 返回：0表示成功；非0表示失败；
@@ -320,7 +320,7 @@ namespace csf
 					* @param timeout_ms    表示超时的时间数值，单位：毫秒（ms）
 					* @param callback    表示超时回调函数。
 					*/
-					virtual csf_int32 set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback& callback = csf_nullptr);
+					virtual csf_int32 set_write_timeout(const csf_uint64 timeout_ms, const csf_connect_callback& callback = csf_nullptr);
 					/**
 					* 主要功能是：打开一个监听地址。
 					* 返回：0表示成功；非0表示失败；
@@ -611,7 +611,7 @@ namespace csf
 
 							csf_snprintf(m_format
 								, csf_sizeof(m_format)
-								, "connect[ %p type:%s ]"
+								, "connect[%p type:%s ]"
 								, this
 								, get_type_name(get_type()).c_str());
 						}

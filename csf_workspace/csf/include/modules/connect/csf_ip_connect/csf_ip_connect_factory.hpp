@@ -34,10 +34,10 @@ namespace csf
 	{
 		namespace connect
 		{
-#define		csf_connect_version				1000000
-#define		CSF_CONNECT_VERSION				"V1.0.0"
-#define		CSF_CONNECT_VAR					"csf_ip_connect_factory"
-#define		CSF_CONNECT_VER					CSF_CONNECT_VAR	"/" CSF_CONNECT_VERSION
+			#define		csf_connect_version				1000000
+			#define		CSF_CONNECT_VERSION				"V1.0.0"
+			#define		CSF_CONNECT_VAR					"csf_ip_connect_factory"
+			#define		CSF_CONNECT_VER					CSF_CONNECT_VAR	"/" CSF_CONNECT_VERSION
 			/************************************************************************/
 			/* 表示连接工厂所需要创建的线程数量，数值默认为：2						*/
 			/************************************************************************/
@@ -70,8 +70,16 @@ namespace csf
 				*/
 				inline explicit csf_ip_connect_factory(const csf_configure_manager * configure_manager)
 					: csf_connect_factory(configure_manager, csf_device_type_connect_extend)
-					, m_idle_interval(csf_ip_connect_factory_timer_interval_ms) {
+					, m_idle_interval(csf_ip_connect_factory_timer_interval_ms)
+					, m_connect_limit(csf_ip_connect_factory_connect_limit)
+					, m_connect_timeout(csf_connect_timeout_default_ms) {
 
+					set_version(
+						csf_connect_version
+						, CSF_CONNECT_VER
+						, CSF_CONNECT_VAR
+						, "general ip connect factory"
+					);
 				}
 				/**
 				* 表示根据配置文件和类型创建设备模块
@@ -82,8 +90,17 @@ namespace csf
 				*/
 				inline explicit csf_ip_connect_factory(const csf_configure_manager * configure_manager
 					, const csf_connect_factory_manager* cfm)
-					: csf_connect_factory(configure_manager, csf_device_type_connect_extend, cfm) {
+					: csf_connect_factory(configure_manager, csf_device_type_connect_extend, cfm)
+					, m_idle_interval(csf_ip_connect_factory_timer_interval_ms)
+					, m_connect_limit(csf_ip_connect_factory_connect_limit)
+					, m_connect_timeout(csf_connect_timeout_default_ms) {
 
+					set_version(
+						csf_connect_version
+						, CSF_CONNECT_VER
+						, CSF_CONNECT_VAR
+						, "general ip connect factory"
+					);
 				}
 				/**
 				* 主要功能是：主要实现模块的配置信息处理接口。
@@ -191,6 +208,13 @@ namespace csf
 
 					return m_io_service;
 				}
+				/**
+				* 表示系统的连接的超时时间，单位：毫秒（ms）
+				*/
+				inline csf_uint64 get_connect_timeout() {
+
+					return m_connect_timeout;
+				}
 			protected:
 				/**
 				* 主要功能是：表示往网络连接管理器中插入网络连接对象
@@ -285,6 +309,15 @@ namespace csf
 					m_idle_interval = newVal;
 				}
 				/**
+				* 表示系统的连接的超时时间，单位：毫秒（ms）
+				*
+				* @param newVal
+				*/
+				inline void set_connect_timeout(csf_uint64 newVal) {
+
+					m_connect_timeout = newVal;
+				}
+				/**
 				* 表示boost的io_service对象
 				*/
 				boost::asio::io_service m_io_service;
@@ -300,6 +333,10 @@ namespace csf
 				* 表示连接工厂所能接收的最大连接
 				*/
 				csf_uint32 m_connect_limit = csf_ip_connect_factory_connect_limit;
+				/**
+				* 表示系统的连接的超时时间，单位：毫秒（ms）
+				*/
+				csf_uint64 m_connect_timeout = csf_connect_timeout_default_ms;
 			};
 		}
 

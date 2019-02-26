@@ -36,7 +36,7 @@ csf::core::base::csf_int32 csf_connect_factory_manager::init(const csf_configure
 	//判断参数的合法性
 	if (csf_nullptr == conf_mg || csf_nullptr == app) {
 		csf_log_ex(warning, csf_log_code_warning
-			, "invalid parameters confmg[0x%x] or app[0x%x] is null."
+			, "invalid parameters confmg[%p] or app[%p] is null."
 			, conf_mg
 			, app);
 		return csf_failure;
@@ -62,7 +62,7 @@ csf::core::base::csf_int32 csf_connect_factory_manager::start(const csf_configur
 	//判断参数的合法性
 	if (csf_nullptr == conf_mg || csf_nullptr == app) {
 		csf_log_ex(warning, csf_log_code_warning
-			, "invalid parameters confmg[0x%x] or app[0x%x] is null."
+			, "invalid parameters confmg[%p] or app[%p] is null."
 			, conf_mg
 			, app);
 		return csf_failure;
@@ -170,6 +170,7 @@ csf_bool csf_connect_factory_manager::create_connect_factories(csf_app& app, csf
 csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, const csf_element& element) {
 
 	csf_device_base				*tmp_device_base = csf_nullptr;
+	csf_connect_factory			*tmp_connect_factory = csf_nullptr;
 	csf_string					tmp_string_name = "";
 
 
@@ -207,18 +208,26 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, const
 		return csf_false;
 	}
 	else {
-
-		//创建网络连接工厂类对象成功
-		csf_log_ex(notice, csf_log_code_notice
-			, "create factory module[0x%x name:%s] succeed!"
-			, tmp_device_base
-			, tmp_string_name.c_str());
+		tmp_connect_factory = dynamic_cast<csf_connect_factory*>(tmp_device_base);
+		if (!tmp_connect_factory || !csf_device_base::is_device(tmp_device_base->get_type())) {
+			csf_log_ex(error, csf_log_code_error
+				, "create factory module[name:%s] failed! not \"csf_connect_factory\" module."
+				, tmp_string_name.c_str());
+			return csf_false;
+		}
+		else {
+			//创建网络连接工厂类对象成功
+			csf_log_ex(notice, csf_log_code_notice
+				, "create factory module[%p name:%s] succeed!"
+				, tmp_device_base
+				, tmp_string_name.c_str());
+		}
 
 		//启动运行网络连接对象
-		if (!start_connect_factory(dynamic_cast<csf_connect_factory*>(tmp_device_base))) {
+		if (!start_connect_factory(tmp_connect_factory)) {
 
 			csf_log_ex(error, csf_log_code_error
-				, "start factory module[0x%x name:%s] failed!"
+				, "start factory module[%p name:%s] failed!"
 				, tmp_device_base
 				, tmp_string_name.c_str());
 
@@ -228,7 +237,7 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, const
 		}
 
 		//根据配置的监听列表信息，创建监听对象
-		if (!create_listen_list(app, *(dynamic_cast<csf_connect_factory*>(tmp_device_base)), element)) {
+		if (!create_listen_list(app, *tmp_connect_factory, element)) {
 
 			csf_log_ex(error, csf_log_code_error
 				, "create listen list failed!");
@@ -241,7 +250,7 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, const
 		}
 
 		//将工厂对象添加到列表中
-		add_factory(tmp_string_name, dynamic_cast<csf_connect_factory*>(tmp_device_base));
+		add_factory(tmp_string_name, tmp_connect_factory);
 	}
 
 	return csf_true;
@@ -484,7 +493,7 @@ csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory&
 			tmp_connect_ptr->set_factory(&factory);
 
 			csf_log_ex(notice, csf_log_code_notice
-				, "create connect[0x%x type:%d type_name:%s url:%s] succeed!"
+				, "create connect[%p type:%d type_name:%s url:%s] succeed!"
 				, &tmp_connect_ptr
 				, tmp_iter.first
 				, tmp_iter.second.c_str()
@@ -535,7 +544,7 @@ csf::core::base::csf_int32 csf_connect_factory_manager::listen_connect(csf_conne
 	if (tmp_int_value) {
 
 		csf_log_ex(error, csf_log_code_error
-			, "listen connect[0x%x url:%s] failed!"
+			, "listen connect[%p url:%s] failed!"
 			, &connect
 			, connect->get_local_url().get_url().c_str());
 
@@ -543,7 +552,7 @@ csf::core::base::csf_int32 csf_connect_factory_manager::listen_connect(csf_conne
 	}
 	else {
 		csf_log_ex(notice, csf_log_code_notice
-			, "listen connect[0x%x url:%s] succeed!"
+			, "listen connect[%p url:%s] succeed!"
 			, &connect
 			, connect->get_local_url().get_url().c_str());
 	}

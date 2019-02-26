@@ -142,7 +142,7 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 			csf_connect_error	tmp_error;
 
 			tmp_error.set_error(csf_connect_error::csf_connect_code::csf_connect_code_timeout
-				, "connect[0x%x] timeout."
+				, "connect[%p] timeout."
 				, tmp_wrapper.get_connect_ptr().get());
 
 			try {

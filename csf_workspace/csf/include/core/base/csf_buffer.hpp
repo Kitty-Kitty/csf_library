@@ -55,7 +55,7 @@ namespace csf
 					, m_start(csf_memblock::get_buffer())
 					, m_end(m_start + csf_memblock::get_size())
 					, m_pos(m_start)
-					, m_last(m_pos) {
+					, m_last(m_start) {
 
 					//reset();
 				}
@@ -69,7 +69,7 @@ namespace csf
 					, m_start(csf_memblock::get_buffer())
 					, m_end(m_start + csf_memblock::get_size())
 					, m_pos(m_start)
-					, m_last(m_pos) {
+					, m_last(m_end) {
 
 					//reset();
 				}
@@ -89,6 +89,15 @@ namespace csf
 					: csf_buffer(str.c_str()) {
 
 				}
+				/**
+				* 复制构造函数
+				* @param str    表示根据csf_buffer内容创建一个buffer
+				*/
+				inline csf_buffer(const csf_buffer& buf)
+				{
+					*this = buf;
+				}
+
 				virtual ~csf_buffer() {
 
 				}
@@ -121,7 +130,7 @@ namespace csf
 				*/
 				inline csf_bool set_last(const csf_uchar* new_value) {
 
-					if (new_value < get_pos() || new_value > get_end()) {
+					if (new_value < get_start() || new_value > get_end()) {
 						return csf_false;
 					}
 
@@ -152,16 +161,16 @@ namespace csf
 				/**
 				 * 表示清空buffer内容，重置buffer内容，并释放内存。
 				 */
-				inline csf_void clear() {
-					csf_memblock::clear();
-
-					reset();
-				}
+ 				inline csf_void clear() {
+ 					csf_memblock::clear();
+ 
+ 					reset();
+ 				}
 				/**
 				 * 表示清空内存空间，并重置buffer内容
 				 */
 				inline csf_void memzero() {
-
+					csf_memblock::memzero();
 					reset();
 				}
 				/**
@@ -220,7 +229,7 @@ namespace csf
 				*
 				* @param buffer    表示需要添加的buffer内容
 				*/
-				inline csf_int32 cat(csf_buffer& buffer) {
+				inline csf_int32 cat(const csf_buffer& buffer) {
 
 					return cat(buffer.get_buffer(), buffer.length());
 				}
@@ -266,7 +275,13 @@ namespace csf
 				 * 
 				 * @param buffer    buffer
 				 */
-				inline csf_buffer& operator =(csf_buffer& buffer) {
+				inline csf_buffer& operator =(const csf_buffer& buffer) {
+
+					/*如果是自复制，返回自身即可*/
+					if (buffer == *this)
+					{
+						return *this;
+					}
 
 					//如果小于等0，表示buffer为空，则清空本地数据即可
 					if (buffer.length() <= 0) {
@@ -288,6 +303,15 @@ namespace csf
 				 */
 				inline bool operator ==(const csf_buffer& buffer) const {
 
+					if (   (get_start() == buffer.get_start())
+						&& (get_end() == buffer.get_end())
+						&& (get_pos() == buffer.get_pos())
+						&& (get_last() == buffer.get_last())
+						)
+					{
+						return true;
+					}
+
 					return false;
 				}
 				/**
@@ -298,6 +322,7 @@ namespace csf
 				inline csf_buffer& operator +=(csf_buffer& buffer) {
 
 					csf_uchar			*tmp_buf = csf_nullptr;
+					csf_uint32			tmp_length = 0;
 
 					//如果没有内容，则直接返回
 					if (buffer.length() <= 0) {
@@ -310,13 +335,29 @@ namespace csf
 						return *this;
 					}
 
+					/*
 					//如果数据大于空闲空间，则需要重新创建内存保存
-					tmp_buf = new csf_uchar[length() + buffer.length()];
+					tmp_length = length() + buffer.length();
+					tmp_buf = new csf_uchar[tmp_length];
+
 					csf_memcpy(tmp_buf, get_buffer(), length());
 					csf_memcpy(tmp_buf + length(), buffer.get_buffer(), buffer.length());
 					clear();
-					set_buffer(tmp_buf, length() + buffer.length(), csf_true);
+					set_buffer(tmp_buf, tmp_length, csf_true);
 					reset();
+
+					//设置游标值
+					reset();
+					set_last(get_end());
+					*/
+
+					/*修改：采用临时变量存储内容，避免在buffer中申请内存，在memblock中去释放*/
+					csf_buffer tmp_buffer(length() + buffer.length());
+
+					tmp_buffer.cat(*this);
+					tmp_buffer.cat(buffer);
+
+					*this = tmp_buffer;
 
 					return  *this;
 				}
@@ -333,9 +374,11 @@ namespace csf
 				inline csf_void reset() {
 
 					set_start(csf_memblock::get_buffer());
-					set_pos(get_start());
-					set_last(get_pos());
 					set_end(get_start() + csf_memblock::size());
+
+					set_last(get_start());
+					set_pos(get_start());
+					
 				}
 				/**
 				* 表示buffer的当前地址。
@@ -359,7 +402,45 @@ namespace csf
 
 					return (csf_uint32)(get_end() - get_last());
 				}
+				/**
+				* 取buffer中间部分的内容。
+				*
+				* @param pos 从pos位置取数据
+				* @param cnt 需要取得数据的个数
+				*/
+				csf_buffer mid(csf_uint32 pos, csf_uint32 cnt)const
+				{
+					/*参数不合法*/
+					if (pos + cnt > get_size())
+					{
+						return csf_buffer();
+					}
 
+					csf_buffer tmp_buf(cnt);
+					tmp_buf.cat(get_buffer() + pos, cnt);
+
+					return tmp_buf;
+				}
+				/**
+				* 取buffer左侧部分的内容。
+				* 返回：成功返回数据内容，失败返回空
+				* 
+				* @param cnt 需要取得数据的个数
+				*/
+				csf_buffer left(csf_uint32 cnt)const
+				{
+					return mid(0, cnt);
+				}
+				/**
+				* 取buffer右侧部分的内容。
+				* 返回：成功返回数据内容，失败返回空
+				*
+				* @param cnt 需要取得数据的个数
+				*/
+				csf_buffer right(csf_uint32 cnt)const
+				{
+					return mid(get_size()-cnt, cnt);
+				}
 			private:
 				/**
 				 * 表示buffer的起始地址

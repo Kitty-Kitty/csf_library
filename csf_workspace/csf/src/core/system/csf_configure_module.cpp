@@ -124,7 +124,7 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 		if (element.find_element(csf_list<csf_string>{"module", "configure"}).is_null()) {
 
 			csf_log_ex(notice, csf_log_code_notice
-				, "create module[0x%x name:\"%s\" mid:\"%s\"] succeed!"
+				, "create module[%p name:\"%s\" mid:\"%s\"] succeed!"
 				, tmp_device_base
 				, tmp_string_name.c_str()
 				, tmp_string_mid.c_str());
@@ -135,7 +135,7 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 			if (tmp_int_return) {
 
 				csf_log_ex(error, csf_log_code_error
-					, "create module[0x%x name:\"%s\" mid:\"%s\"] succeed! reason:[%d] configure failed!"
+					, "create module[%p name:\"%s\" mid:\"%s\"] succeed! reason:[%d] configure failed!"
 					, tmp_device_base
 					, tmp_string_name.c_str()
 					, tmp_string_mid.c_str()
@@ -147,7 +147,7 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 			}
 			else {
 				csf_log_ex(notice, csf_log_code_notice
-					, "create module[0x%x name:\"%s\" mid:\"%s\"] and configure succeed!"
+					, "create module[%p name:\"%s\" mid:\"%s\"] and configure succeed!"
 					, tmp_device_base
 					, tmp_string_name.c_str()
 					, tmp_string_mid.c_str());

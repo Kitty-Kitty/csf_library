@@ -68,7 +68,7 @@ namespace csf
 
 						: csf_attribute(type)
 						, m_exception(ex)
-						, m_value(val){
+						, m_value(val) {
 					}
 					/**
 					* 根据名称和类型创建一个对象
@@ -261,7 +261,7 @@ namespace csf
 						//从配置管理中获取配置项数值
 						if (!get_configure((csf_configure_manager&)configure_manager)) {
 							csf_attribute_log(warning, csf_logger_level_warning,
-								"get attribute[%s] content from configure_manager[0x%x] error."
+								"get attribute[%s] content from configure_manager[%p] error."
 								, alias.c_str()
 								, &configure_manager);
 							return csf_false;
@@ -319,7 +319,7 @@ namespace csf
 						//从配置管理中获取配置项数值
 						if (!get_configure((csf_element&)element, get_items())) {
 							csf_attribute_log(warning, csf_logger_level_warning,
-								"get attribute[%s] content from element[0x%x] error."
+								"get attribute[%s] content from element[%p] error."
 								, alias.c_str()
 								, &element);
 							return csf_false;

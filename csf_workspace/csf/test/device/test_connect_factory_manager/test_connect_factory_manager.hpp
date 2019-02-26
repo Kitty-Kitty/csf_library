@@ -30,7 +30,7 @@ namespace csf
 	{
 #define		csf_test_version				1000000
 #define		CSF_TEST_VERSION				"v1.0.0"
-#define		CSF_TEST_VAR					"csf_ip_connect_factory"
+#define		CSF_TEST_VAR					"test_connect_factory"
 #define		CSF_TEST_VER					CSF_TEST_VAR "/" CSF_TEST_VERSION
 
 		/**

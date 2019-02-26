@@ -430,31 +430,33 @@ namespace csf
 				// 					, const csf_connect_callback& callback
 				// 					, const boost::system::error_code& error_code
 				// 					, csf_uint32 write_len);
-								/**
-								* 主要功能是：处理异步读处理回调函数
-								* 返回：0表示处理成功；非0表示处理失败
-								*
-								* @param buf		 表示内容的缓存地址
-								* @param buf_len	 表示需要被处理的源内容缓存的长度
-								* @param callback    表示异常处理句柄信息
-								* @param error_code  表示boost的错误信息
-								* @param read_len   表示当前实际写的缓存长度
-								*/
-								// 				csf_bool ip_async_read_callback(csf_uchar* buf
-								// 					, const csf_uint32 buf_len
-								// 					, const csf_connect_callback& callback
-								// 					, const boost::system::error_code& error_code
-								// 					, csf_uint32 read_len);
-												/**
-												* 主要功能是：处理异步写处理回调函数
-												* 返回：0表示处理成功；非0表示处理失败
-												*
-												* @param buffer		 表示内容的缓存
-												* @param callback    表示异常处理句柄信息
-												* @param error_code  表示boost的错误信息
-												* @param length		表示当前实际写的缓存长度
-												*/
+				/**
+				* 主要功能是：处理异步读处理回调函数
+				* 返回：0表示处理成功；非0表示处理失败
+				*
+				* @param buf		 表示内容的缓存地址
+				* @param buf_len	 表示需要被处理的源内容缓存的长度
+				* @param callback    表示异常处理句柄信息
+				* @param error_code  表示boost的错误信息
+				* @param read_len   表示当前实际写的缓存长度
+				*/
+				// 				csf_bool ip_async_read_callback(csf_uchar* buf
+				// 					, const csf_uint32 buf_len
+				// 					, const csf_connect_callback& callback
+				// 					, const boost::system::error_code& error_code
+				// 					, csf_uint32 read_len);
+				/**
+				* 主要功能是：处理异步写处理回调函数
+				* 返回：0表示处理成功；非0表示处理失败
+				*
+				* @param buffer		 表示内容的缓存
+				* @param connect_ptr 表示当前的网络连接对象
+				* @param callback    表示异常处理句柄信息
+				* @param error_code  表示boost的错误信息
+				* @param length		表示当前实际写的缓存长度
+				*/
 				csf_bool ip_async_write_callback(csf_connect_buffer<csf_buffer>& buffer
+					, csf_connect_ptr connect_ptr
 					, const csf_connect_callback& callback
 					, const boost::system::error_code& error_code
 					, csf_uint32 length);
@@ -463,11 +465,13 @@ namespace csf
 				* 返回：0表示处理成功；非0表示处理失败
 				*
 				* @param buffer		 表示内容的缓存
+				* @param connect_ptr 表示当前的网络连接对象
 				* @param callback    表示异常处理句柄信息
 				* @param error_code  表示boost的错误信息
 				* @param length   表示当前实际写的缓存长度
 				*/
 				csf_bool ip_async_read_callback(csf_connect_buffer<csf_buffer>& buffer
+					, csf_connect_ptr connect_ptr
 					, const csf_connect_callback& callback
 					, const boost::system::error_code& error_code
 					, csf_uint32 length);
