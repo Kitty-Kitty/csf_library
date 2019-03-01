@@ -312,13 +312,21 @@ csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const c
 		return csf_failure;
 	}
 
+	//如果buffer中写长度大小没有设置（buffer.get_length()为0），则根据宿主的空间大小自动设置数据
+	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
+	//发送默认长度为宿主容器中数据的长度
+	//接收默认长度为宿主容器中空闲空间的长度
+	if (buffer.get_length() <= 0 && buffer.length() > 0) {
+		buffer.set_length(buffer.length());
+	}
+
 	//根据csf_connect_buffer的标志位来判断异步与同步
 	if (buffer.get_is_sync()) {
-		//return sync_write(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+		//return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
 		return sync_write(buffer, callback);
 	}
 	else {
-		//return async_write(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+		//return async_write(buffer.get_buffer(), buffer.get_length(), callback);
 		return async_write(buffer, callback);
 	}
 	return 0;
@@ -343,10 +351,10 @@ csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const c
 // 
 // 	//根据csf_connect_buffer的标志位来判断异步与同步
 // 	if (buffer.get_is_sync()) {
-// 		return sync_write(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+// 		return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
 // 	}
 // 	else {
-// 		return async_write(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+// 		return async_write(buffer.get_buffer(), buffer.get_length(), callback);
 // 	}
 // 	return 0;
 // }
@@ -369,9 +377,9 @@ csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const c
 // 	}
 // 
 // 	//先将chain转化为buffer，成为一个连续的内存空间后处理
-// 	csf_buffer				tmp_buffer(buffer.get_buffer()->length());
+// 	csf_buffer				tmp_buffer(buffer.length());
 // 
-// 	buffer.get_buffer()->convert(tmp_buffer);
+// 	buffer.get_container()->convert(tmp_buffer);
 // 
 // 	//根据csf_connect_buffer的标志位来判断异步与同步
 // 	if (buffer.get_is_sync()) {
@@ -560,16 +568,25 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const cs
 				, "not enough storage available"));
 		return csf_failure;
 	}
+
+	//如果接收长度为空（buffer.get_length()为0），则表示采用宿主容器的空闲空间大小。
+	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
+	//发送默认长度为宿主容器中数据的长度
+	//接收默认长度为宿主容器中空闲空间的长度
+	if (buffer.get_length() <= 0 && buffer.avail() > 0) {
+		buffer.set_length(buffer.avail());
+	}
+
 	//更新filled标志位
 	set_is_filled(buffer.get_is_filled());
 
 	//根据csf_connect_buffer的标志位来判断异步与同步
 	if (buffer.get_is_sync()) {
-		//return sync_read(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+		//return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
 		return sync_read(buffer, callback);
 	}
 	else {
-		//return async_read(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+		//return async_read(buffer.get_buffer(), buffer.get_length(), callback);
 		return async_read(buffer, callback);
 	}
 	return 0;
@@ -598,10 +615,10 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const cs
 // 
 // 	//根据csf_connect_buffer的标志位来判断异步与同步
 // 	if (buffer.get_is_sync()) {
-// 		return sync_read(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+// 		return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
 // 	}
 // 	else {
-// 		return async_read(buffer.get_buffer()->get_buffer(), buffer.get_length(), callback);
+// 		return async_read(buffer.get_buffer(), buffer.get_length(), callback);
 // 	}
 // 	return 0;
 // }
@@ -867,8 +884,8 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const cs
 csf_int32 csf_tcp_connect::sync_write(csf_connect_buffer<csf_buffer>& buffer
 	, const csf_connect_callback& callback) {
 
-	csf_uchar						*tmp_buf = buffer.get_buffer()->get_buffer();
-	csf_int32						tmp_total_length = buffer.get_buffer()->length();
+	csf_uchar						*tmp_buf = buffer.get_buffer();
+	csf_int32						tmp_total_length = buffer.get_length();
 	csf_int32						tmp_length = 0;
 	csf_int32						tmp_send_length = 0;
 	boost::system::error_code		tmp_error_code;
@@ -908,11 +925,10 @@ csf_int32 csf_tcp_connect::sync_write(csf_connect_buffer<csf_buffer>& buffer
 csf_int32 csf_tcp_connect::async_write(csf_connect_buffer<csf_buffer>& buffer
 	, const csf_connect_callback& callback) {
 
-
 	get_write_timeout().flush_time();
 
 	//这里主要是数据量一大，就发送不完全了。尤其在linux平台下更容易出现这个问题
-	get_socket().async_write_some(boost::asio::buffer(buffer.get_buffer()->get_buffer()
+	get_socket().async_write_some(boost::asio::buffer(buffer.get_buffer()
 		, buffer.get_length())
 		, boost::bind(&csf_tcp_connect::ip_async_write_callback
 			, this
@@ -936,7 +952,7 @@ csf_int32 csf_tcp_connect::async_write(csf_connect_buffer<csf_buffer>& buffer
 csf_int32 csf_tcp_connect::sync_read(csf_connect_buffer<csf_buffer>& buffer
 	, const csf_connect_callback& callback) {
 
-	csf_uchar						*tmp_buf = buffer.get_buffer()->get_buffer();
+	csf_uchar						*tmp_buf = buffer.get_buffer();
 	csf_int32						tmp_total_length = buffer.get_length();
 	csf_int32						tmp_length = 0;
 	csf_int32						tmp_receive_length = 0;
@@ -991,7 +1007,7 @@ csf_int32 csf_tcp_connect::async_read(csf_connect_buffer<csf_buffer>& buffer
 
 	get_read_timeout().flush_time();
 
-	get_socket().async_receive(boost::asio::buffer(buffer.get_buffer()->get_buffer(), buffer.get_length())
+	get_socket().async_receive(boost::asio::buffer(buffer.get_buffer(), buffer.get_length())
 		, boost::bind(&csf_tcp_connect::ip_async_read_callback
 			, this
 			, std::ref(buffer)
@@ -1034,7 +1050,7 @@ csf_bool csf_tcp_connect::ip_async_write_callback(csf_connect_buffer<csf_buffer>
 	}
 	else {
 		//如果没有发送完全，还有部分数据，则更新缓存信息继续发送
-		buffer.get_buffer()->set_pos(buffer.get_buffer()->get_pos() + length);
+		buffer.get_container()->set_pos(buffer.get_container()->get_pos() + length);
 		buffer.set_length(buffer.get_length() - length);
 
 		async_write(std::ref(buffer), callback);
@@ -1066,6 +1082,12 @@ csf_bool csf_tcp_connect::ip_async_read_callback(csf_connect_buffer<csf_buffer>&
 		return csf_false;
 	}
 
+	if (length > 0) {
+		//如果接收到数据，则移动buffer中的缓存游标，方便下一次接收
+		buffer.get_container()->set_last(buffer.get_container()->get_last() + length);
+		buffer.set_length(buffer.get_length() - length);
+	}
+
 	//如果需要接收所有数据，则继续接收，直到完整接收完全
 	if (csf_false == buffer.get_is_filled()) {
 		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
@@ -1078,10 +1100,6 @@ csf_bool csf_tcp_connect::ip_async_read_callback(csf_connect_buffer<csf_buffer>&
 			return csf_true;
 		}
 		else {
-			//如果没有发送完全，还有部分数据，则更新缓存信息继续发送
-			buffer.get_buffer()->set_pos(buffer.get_buffer()->get_pos() + length);
-			buffer.set_length(buffer.get_length() - length);
-
 			async_read(std::ref(buffer), callback);
 		}
 	}

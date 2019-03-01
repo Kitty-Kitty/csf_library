@@ -39,7 +39,7 @@ namespace csf
 
 			public:
 				inline explicit csf_buffer()
-				    : m_start(csf_nullptr)
+					: m_start(csf_nullptr)
 					, m_end(csf_nullptr)
 					, m_pos(csf_nullptr)
 					, m_last(csf_nullptr) {
@@ -47,10 +47,10 @@ namespace csf
 				}
 				/**
 				 * 构造一个指定长度的buffer
-				 * 
+				 *
 				 * @param len    表示buffer缓存的长度
 				 */
-				inline explicit csf_buffer(const csf_uint32 len) 
+				inline explicit csf_buffer(const csf_uint32 len)
 					: csf_memblock(len)
 					, m_start(csf_memblock::get_buffer())
 					, m_end(m_start + csf_memblock::get_size())
@@ -60,11 +60,11 @@ namespace csf
 					//reset();
 				}
 				/**
-				 * 
+				 *
 				 * @param buf    表示根据缓存空间来创建buffer
 				 * @param len    表示缓存的长度
 				 */
-				inline explicit csf_buffer(const csf_uchar* buf, const csf_uint32 len) 
+				inline explicit csf_buffer(const csf_uchar* buf, const csf_uint32 len)
 					: csf_memblock(buf, len)
 					, m_start(csf_memblock::get_buffer())
 					, m_end(m_start + csf_memblock::get_size())
@@ -74,18 +74,18 @@ namespace csf
 					//reset();
 				}
 				/**
-				 * 
+				 *
 				 * @param buf    表示根据字符串创建buffer
 				 */
-				inline explicit csf_buffer(const csf_char* buf) 
-					: csf_buffer((const csf_uchar*) buf, (csf_uint32)csf_strlen(buf)) {
+				inline explicit csf_buffer(const csf_char* buf)
+					: csf_buffer((const csf_uchar*)buf, (csf_uint32)csf_strlen(buf)) {
 
 				}
 				/**
-				 * 
+				 *
 				 * @param str    表示根据csf_string内容创建一个buffer
 				 */
-				inline explicit csf_buffer(const csf_string& str) 
+				inline explicit csf_buffer(const csf_string& str)
 					: csf_buffer(str.c_str()) {
 
 				}
@@ -161,11 +161,11 @@ namespace csf
 				/**
 				 * 表示清空buffer内容，重置buffer内容，并释放内存。
 				 */
- 				inline csf_void clear() {
- 					csf_memblock::clear();
- 
- 					reset();
- 				}
+				inline csf_void clear() {
+					csf_memblock::clear();
+
+					reset();
+				}
 				/**
 				 * 表示清空内存空间，并重置buffer内容
 				 */
@@ -175,7 +175,7 @@ namespace csf
 				}
 				/**
 				 * 表示通过外置的内存初始化buffer
-				 * 
+				 *
 				 * @param buf    表示缓存内存地址
 				 * @param len    表示缓存的长度
 				 */
@@ -186,7 +186,7 @@ namespace csf
 				}
 				/**
 				 * 获取buffer指定位置的内存地址
-				 * 
+				 *
 				 * @param len    表示获取缓存数据偏移length后的内存地址
 				 */
 				inline csf_uchar* position(const csf_uint32 len) const {
@@ -203,12 +203,6 @@ namespace csf
 				inline csf_string to_string() const {
 
 					return "";
-				}
-				/**
-				 * 表示释放buffer中的start指定的内存，并将buffer清空为null
-				 */
-				inline csf_void destroy() {
-					clear();
 				}
 				/**
 				 * 表示buffer是否为空，为空返回true,否则返回false。长度为0或null都为空，返回true。
@@ -235,7 +229,7 @@ namespace csf
 				}
 				/**
 				 * 表示将csf_string插入到csf_buffer中。 返回：>=0表示实际添加的字符数量；<0表示错误码；
-				 * 
+				 *
 				 * @param str    表示标准字符内容
 				 */
 				inline csf_int32 cat(const csf_string& str) {
@@ -244,7 +238,7 @@ namespace csf
 				}
 				/**
 				 * 表示将一个char*字符串插入到buffer中。 返回：>=0表示实际添加的字符数量；<0表示错误码；
-				 * 
+				 *
 				 * @param buf    表示插入char*内容
 				 */
 				inline csf_int32 cat(const csf_char* buf) {
@@ -272,7 +266,7 @@ namespace csf
 				}
 				/**
 				 * 赋值操作，处理方式是将csf_buffer对象的所有内容（本身结构 和内存数据）拷贝一份，
-				 * 
+				 *
 				 * @param buffer    buffer
 				 */
 				inline csf_buffer& operator =(const csf_buffer& buffer) {
@@ -298,12 +292,12 @@ namespace csf
 				}
 				/**
 				 * 对比操作，当判断csf_buffer的四个内部地址相同时，即表示csf_buffer对象相同。
-				 * 
+				 *
 				 * @param buffer    表示需要被比较的csf_buffer对象
 				 */
 				inline bool operator ==(const csf_buffer& buffer) const {
 
-					if (   (get_start() == buffer.get_start())
+					if ((get_start() == buffer.get_start())
 						&& (get_end() == buffer.get_end())
 						&& (get_pos() == buffer.get_pos())
 						&& (get_last() == buffer.get_last())
@@ -378,7 +372,7 @@ namespace csf
 
 					set_last(get_start());
 					set_pos(get_start());
-					
+
 				}
 				/**
 				* 表示buffer的当前地址。
@@ -424,7 +418,7 @@ namespace csf
 				/**
 				* 取buffer左侧部分的内容。
 				* 返回：成功返回数据内容，失败返回空
-				* 
+				*
 				* @param cnt 需要取得数据的个数
 				*/
 				csf_buffer left(csf_uint32 cnt)const
@@ -439,7 +433,15 @@ namespace csf
 				*/
 				csf_buffer right(csf_uint32 cnt)const
 				{
-					return mid(get_size()-cnt, cnt);
+					return mid(get_size() - cnt, cnt);
+				}
+			protected:
+				/**
+				* 表示销毁容器，除了clear清空数据外，更增加了销毁内存的功能。
+				* 执行clear后，对象还是完整的，可以继续使用。而相对执行destroy函数后，部分资源将会被释放，可能导致对象不完整，不能继续正常使用。
+				*/
+				inline virtual csf_void destroy() {
+					csf_memblock::destroy();
 				}
 			private:
 				/**
@@ -461,7 +463,7 @@ namespace csf
 
 				/**
 				 * 表示buffer的起始地址
-				 * 
+				 *
 				 * @param new_value    new_value
 				 */
 				inline csf_void set_start(const csf_uchar* new_value) {
@@ -470,7 +472,7 @@ namespace csf
 				}
 				/**
 				 * 表示buffer的终于地址
-				 * 
+				 *
 				 * @param new_value    new_value
 				 */
 				inline csf_void set_end(const csf_uchar* new_value) {

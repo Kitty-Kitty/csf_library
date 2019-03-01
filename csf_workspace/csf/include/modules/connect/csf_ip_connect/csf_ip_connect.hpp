@@ -127,6 +127,12 @@ namespace csf
 
 					if (!connect_ptr 
 						|| csf_nullptr == callback) {
+
+						csf_log_ex(warning
+							, csf_log_code_warning
+							, "%s %s"
+							, connect_ptr->to_string().c_str()
+							, error_code.to_string().c_str());
 						return csf_failure;
 					}
 					else {

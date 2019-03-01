@@ -45,7 +45,7 @@ namespace csf
 
 				public:
 					inline explicit csf_connect_buffer()
-						: m_buffer(csf_nullptr)
+						: m_container(csf_nullptr)
 						, m_length(0)
 						, m_is_sync(csf_false)
 						, m_is_free(csf_false)
@@ -71,7 +71,7 @@ namespace csf
 					* @param len    表示需要发送的缓存长度
 					*/
 					inline explicit csf_connect_buffer(ValueType* buffer, const csf_uint32 len)
-						: m_buffer(buffer)
+						: m_container(buffer)
 						, m_length(len)
 						, m_is_sync(csf_false)
 						, m_is_free(csf_false)
@@ -81,30 +81,51 @@ namespace csf
 
 					virtual ~csf_connect_buffer() {
 
+						destroy();
 					}
 					/**
-					* 主要功能是：根据宿主缓存对象，设置buffer内容.
-					* 返回：无
+					* 表示csf_connect_buffer所包含的实际需要被操作的宿主容器对象，例如:csf_buffer、csf_csfstring对象等
+					*
+					* @param newVal
+					*/
+					inline void set_container(ValueType* newVal) {
+
+						if (csf_nullptr != newVal) {
+							set_container(newVal, newVal->length());
+						}
+					}
+					/**
+					* 表示csf_connect_buffer所包含的实际需要被操作的宿主容器对象，例如:csf_buffer、csf_csfstring对象等
 					*
 					* @param newVal    表示csf_connect_buffer的宿主对象地址
 					* @param len    表示需要发送的缓存长度
 					*/
-					inline void set_buffer(ValueType* newVal, const csf_uint32 len) {
+					inline void set_container(ValueType* newVal, const csf_uint32 len) {
 
-						m_buffer = newVal;
+						m_container = newVal;
 						set_is_free(csf_false);
 						set_length(len);
 					}
 					/**
+					* 表示csf_connect_buffer所包含的实际需要被操作的宿主容器对象，例如:csf_buffer、csf_csfstring对象等
+					*/
+					inline ValueType* get_container() {
+
+						return m_container;
+					}
+					/**
 					* 表示当前的缓存数据内容
 					*/
-					inline ValueType* get_buffer() {
+					inline csf_uchar* get_buffer() {
 
-						return m_buffer;
+						if (csf_nullptr != get_container()) {
+							return get_container()->get_buffer();
+						}
+						return csf_nullptr;
 					}
 					/**
 					 * 表示是否采用同步的方式发送，false表示异步；true表示同步；默认为异步方式
-					 * 
+					 *
 					 * @param newVal    表示是否采用同步的方式发送，false表示异步；true表示同步；
 					 */
 					inline void set_is_sync(const csf_bool newVal) {
@@ -120,7 +141,7 @@ namespace csf
 					}
 					/**
 					 * 表示发送或接收的内容长度
-					 * 
+					 *
 					 * @param newVal    表示需要发送的数据长度
 					 */
 					inline void set_length(const csf_uint32 newVal) {
@@ -137,7 +158,7 @@ namespace csf
 					/**
 					 * 主要功能是：根据数据长度创建一个宿主对象
 					 * 返回：无
-					 * 
+					 *
 					 * @param len    表示需要发送的缓存长度
 					 */
 					inline csf_int32 create(const csf_uint32 len) {
@@ -145,7 +166,7 @@ namespace csf
 						if (get_buffer()) {
 							return csf_failure;
 						}
-						m_buffer = new ValueType(len);
+						set_container(new ValueType(len));
 						set_is_free(csf_true);
 						set_length(len);
 						return csf_succeed;
@@ -159,10 +180,10 @@ namespace csf
 					}
 					/**
 					 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
-					 * 
+					 *
 					 * @param newVal
 					 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
-					 * 
+					 *
 					 */
 					inline void set_is_free(const csf_bool newVal) {
 
@@ -174,10 +195,12 @@ namespace csf
 					*/
 					inline csf_void clear() {
 
-						if (get_is_free() && m_buffer) {
-							delete m_buffer;
-							set_is_free(csf_false);
-							m_buffer = csf_nullptr;
+						set_length(0);
+						set_is_sync(csf_false);
+						set_is_free(csf_false);
+						set_is_filled(csf_false);
+						if (csf_nullptr != get_container()) {
+							return get_container()->clear();
 						}
 					}
 					/**
@@ -187,7 +210,7 @@ namespace csf
 					inline csf_bool is_valid() {
 
 						if (csf_nullptr == get_buffer()
-							|| get_length() <= 0) {
+							|| length() <= 0) {
 
 							return csf_false;
 						}
@@ -211,19 +234,142 @@ namespace csf
 
 						m_is_filled = newVal;
 					}
+					/**
+					* 表示获取buffer总缓存长度
+					*/
+					inline csf_uint32 size() {
+
+						if (csf_nullptr != get_container()) {
+							return get_container()->size();
+						}
+						return 0;
+					}
+					/**
+					* 表示获取buffer未使用的空间长度
+					*/
+					inline csf_uint32 avail() {
+
+						if (csf_nullptr != get_container()) {
+							return get_container()->avail();
+						}
+						return 0;
+					}
+
+					/**
+					* 表示当前实际已经使用的缓存的长度
+					*/
+					inline csf_uint32 length() {
+
+						if (csf_nullptr != get_container()) {
+							return get_container()->length();
+						}
+						return 0;
+					}
+					/**
+					* 将内存数据添加到buffer中。 返回：>=0表示实际添加的字符数量；<0表示错误码；
+					*
+					* @param buf    表示数据内存的起始地址
+					* @param len    表示内存数据的长度
+					*/
+					inline csf_int32 cat(const csf_uchar* buf, const csf_uint32 len) {
+
+						if (csf_nullptr != get_container()) {
+							return get_container()->cat(buf, len);
+						}
+						return 0;
+					}
+					/**
+					* 表示buffer是否为空，为空返回true,否则返回false。长度为0或null都为空，返回true。
+					*/
+					inline csf_bool empty() {
+
+						if (csf_nullptr != get_container()) {
+							return get_container()->empty();
+						}
+						return csf_true;
+					}
+					/**
+					* 表示将csf_string插入到csf_buffer中。 返回：>=0表示实际添加的字符数量；<0表示错误码；
+					*
+					* @param str    表示标准字符内容
+					*/
+					inline csf_int32 cat(const csf_string& str) {
+
+						if (csf_nullptr != get_container()) {
+							return get_container()->cat(str);
+						}
+						return 0;
+					}
+					/**
+					* 表示将一个char*字符串插入到buffer中。 返回：>=0表示实际添加的字符数量；<0表示错误码；
+					*
+					* @param buf    表示插入char*内容
+					*/
+					inline csf_int32 cat(const csf_char* buf) {
+
+						if (csf_nullptr != get_container()) {
+							return get_container()->cat(buf);
+						}
+						return 0;
+					}
+					/**
+					* 表示将csf_buffer插入到csf_buffer中。 返回：>=0表示实际添加的字符数量；<0表示错误码；
+					*
+					* @param buffer    表示需要添加的buffer内容
+					*/
+					inline csf_int32 cat(csf_buffer& buffer) {
+
+						if (csf_nullptr != get_container()) {
+							return get_container()->cat(buffer);
+						}
+						return 0;
+					}
+//				protected:
+					/**
+					* 表示释放buffer中的start指定的内存，并将buffer清空为null
+					*/
+					inline csf_void destroy() {
+
+						if (get_is_free() && get_container()) {
+							delete get_container();
+							set_is_free(csf_false);
+							set_container(csf_nullptr);
+						}
+					}
+				private:
+					/**
+					* 表示实际用于接收和发送的缓存长度
+					*
+					* @param newVal
+					*/
+					inline void set_size(csf_uint32 newVal) {
+
+						m_size = newVal;
+					}
+					/**
+					* 表示实际用于接收和发送的缓存长度
+					*/
+					inline csf_uint32 get_size() {
+
+						return m_size;
+					}
 				private:
 					/**
 					 * 表示是否采用同步的方式发送，false表示异步；true表示同步；默认为异步方式
 					 */
 					csf_bool m_is_sync = csf_false;
 					/**
-					 * 表示当前的缓存数据内容
-					 */
-					ValueType* m_buffer;
+					* 表示csf_connect_buffer所包含的实际需要被操作的宿主容器对象，例如:csf_buffer、csf_csfstring对象等
+					*/
+					ValueType* m_container;
 					/**
-					 * 表示发送或接收的内容长度
-					 */
+					* 表示发送或接收的内容长度
+					*/
 					csf_uint32 m_length = 0;
+					/**
+					* 表示实际用于接收和发送的缓存长度
+					*/
+					csf_uint32 m_size = 0;
 					/**
 					 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 					 */

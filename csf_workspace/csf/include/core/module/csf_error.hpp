@@ -45,12 +45,12 @@ namespace csf
 
 			public:
 				inline explicit csf_error()
-				    : m_code(0) {
+					: m_code(0) {
 
 				}
 				/**
 				 * 表示根据错误码（code）和错误描述（description）创建一个csf_error。
-				 * 
+				 *
 				 * @param code    表示错误码编码
 				 * @param description    表示错误描述信息
 				 */
@@ -61,11 +61,11 @@ namespace csf
 				}
 				/**
 				 * 表示根据错误码（code）和错误描述（description）创建一个csf_error。
-				 * 
+				 *
 				 * @param code    表示错误码编码
 				 * @param description    表示错误描述信息
 				 */
-				inline explicit csf_error(const csf_int32 code, const csf_char* description) 
+				inline explicit csf_error(const csf_int32 code, const csf_char* description)
 					: m_code(code) {
 
 					if (csf_failure == set_descripion(description)) {
@@ -77,7 +77,16 @@ namespace csf
 				}
 				inline csf_string to_string() {
 
-					return "";
+					csf_char				tmp_buf[csf_errno_max_length] = { 0, };
+
+
+					csf_snprintf(tmp_buf
+						, csf_sizeof(tmp_buf)
+						, "error[%d: %s]"
+						, get_code()
+						, m_descripion);
+
+					return csf_string(tmp_buf);
 				}
 				/**
 				 * 表示错误编号
@@ -88,7 +97,7 @@ namespace csf
 				}
 				/**
 				 * 表示错误编号
-				 * 
+				 *
 				 * @param new_value    new_value
 				 */
 				inline csf_void set_code(const csf_int32 new_value) {
@@ -105,7 +114,7 @@ namespace csf
 				/**
 				 * 表示错误原因描述信息
 				 * 返回：0表示成功；非0表示失败。
-				 * 
+				 *
 				 * @param new_value    new_value
 				 */
 				inline csf_int32 set_description(const csf_char* new_value) {
@@ -127,7 +136,7 @@ namespace csf
 				/**
 				 * 表示错误原因描述信息
 				 * 返回：0表示成功；非0表示失败。
-				 * 
+				 *
 				 * @param new_value
 				 */
 				inline csf_int32 set_descripion(const csf_string& new_value) {
@@ -151,7 +160,7 @@ namespace csf
 						return csf_false;
 					}
 
-					va_start(tmp_marker, fmt);					
+					va_start(tmp_marker, fmt);
 					if (csf_vsnprintf(tmp_buf, csf_sizeof(tmp_buf), fmt, tmp_marker) < 0) {
 						//超过最大长度后，只打印部分内容
 						tmp_buf[csf_sizeof(tmp_buf) - 2] = '.';
@@ -186,7 +195,7 @@ namespace csf
 				/**
 				 * 表示错误原因描述信息
 				 */
-				csf_char m_descripion[csf_errno_max_length] = {0};
+				csf_char m_descripion[csf_errno_max_length] = { 0 };
 
 			};
 

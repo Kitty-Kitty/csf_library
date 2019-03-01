@@ -546,6 +546,12 @@
     <ClInclude Include="..\..\..\include\core\system\csf_configure_supply.hpp">
       <Filter>include\core\system</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\base\csf_csfdeque.hpp">
+      <Filter>include\core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\base\csf_exception.hpp">
+      <Filter>include\core\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -772,6 +778,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\system\csf_configure_supply.cpp">
       <Filter>src\core\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\base\csf_exception.cpp">
+      <Filter>src\core\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

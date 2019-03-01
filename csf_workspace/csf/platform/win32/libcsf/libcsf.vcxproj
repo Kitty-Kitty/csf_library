@@ -130,6 +130,7 @@
     <ClInclude Include="..\..\..\include\core\base\csf_container.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_container_convert.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_container_interface.hpp" />
+    <ClInclude Include="..\..\..\include\core\base\csf_csfdeque.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_csflist.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_csfmap.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_csfqueue.hpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="..\..\..\include\core\base\csf_csftype_template.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_default.h" />
     <ClInclude Include="..\..\..\include\core\base\csf_errno.hpp" />
+    <ClInclude Include="..\..\..\include\core\base\csf_exception.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_list.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_map.hpp" />
     <ClInclude Include="..\..\..\include\core\base\csf_memblock.hpp" />
@@ -271,6 +273,7 @@
     <ClCompile Include="..\..\..\src\core\base\csf_csfqueue.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_csfstring.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_csftype.cpp" />
+    <ClCompile Include="..\..\..\src\core\base\csf_exception.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_list.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_map.cpp" />
     <ClCompile Include="..\..\..\src\core\base\csf_queue.cpp" />

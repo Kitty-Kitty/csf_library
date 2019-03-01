@@ -46,6 +46,7 @@ namespace csf
 			#define csf_list						std::list
 			#define csf_stack						std::stack
 			#define csf_queue						std::queue
+			#define csf_deque						std::deque
 			#define csf_set							std::set
 			#define csf_vector						std::vector
 			#define csf_map							std::map

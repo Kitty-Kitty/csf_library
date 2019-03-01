@@ -47,7 +47,7 @@ namespace csf
 				}
 				virtual ~csf_memblock()
 				{
-					clear();
+					destroy();
 				}
 
 				/**
@@ -134,17 +134,11 @@ namespace csf
 					return m_size;
 				}
 				/**
-				 * 表示清空容器，有些类需要释放空间（例如：csf_chain），有些空间可重用的类则重置数据(例如：csf_buffer)。
-				 */
+				* 表示清空容器，有些类需要释放空间（例如：csf_chain），有些空间可重用的类则重置数据(例如：csf_buffer)。
+				* 执行clear后，对象还是完整的，可以继续使用。而相对执行destroy函数后，部分资源将会被释放，可能导致对象不完整，不能继续正常使用。
+				*/
 				inline csf_void clear() {
-
-					if (m_buffer && get_is_free()) {
-						delete[] m_buffer;
-					}
-
-					set_buffer(csf_nullptr);
-					m_size = 0;
-					set_is_free(csf_true);
+					
 				}
 				/**
 				 * 表示清空内存空间
@@ -234,12 +228,25 @@ namespace csf
 				*/
 				inline csf_void reset(const csf_int32 len) {
 
-					clear();
+					destroy();
 					set_buffer(new csf_uchar[len]);
 					set_size(len);
 					set_is_free(csf_true);
 				}
+				/**
+				* 表示销毁容器，除了clear清空数据外，更增加了销毁内存的功能。
+				* 执行clear后，对象还是完整的，可以继续使用。而相对执行destroy函数后，部分资源将会被释放，可能导致对象不完整，不能继续正常使用。
+				*/
+				inline virtual csf_void destroy() {
 
+					if (m_buffer && get_is_free()) {
+						delete[] m_buffer;
+					}
+
+					set_buffer(csf_nullptr);
+					m_size = 0;
+					set_is_free(csf_true);
+				}
 			private:
 				/**
 				 * 表示保存内容的缓存地址
