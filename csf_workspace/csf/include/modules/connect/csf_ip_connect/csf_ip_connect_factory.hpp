@@ -202,6 +202,28 @@ namespace csf
 					return 0;
 				}
 				/**
+				* 主要功能是：添加一个连接对象
+				* 返回：0表示成功；非0表示失败；
+				*
+				* @param connect_ptr    表示连接对象
+				*/
+				inline virtual csf::core::base::csf_int32 insert(csf_connect_ptr& connect_ptr) {
+
+					if (!connect_ptr) {
+						return csf_failure;
+					}
+
+					//如果已经配置了连接最大值，则需要进行最大连接数处理
+					if (get_connect_limit() > 0) {
+						//判断是否超过最大值，则返回失败
+						if (get_connect_collector().size() >= (csf_int32)get_connect_limit()) {
+							return csf_failure;
+						}
+					}
+
+					return csf_connect_factory::insert(connect_ptr);
+				}
+				/**
 				* 表示boost的io_service对象
 				*/
 				inline boost::asio::io_service& get_io_service() {
@@ -215,23 +237,14 @@ namespace csf
 
 					return m_connect_timeout;
 				}
-			protected:
 				/**
-				* 主要功能是：表示往网络连接管理器中插入网络连接对象
-				* 返回：0表示成功；非0表示失败；
-				*
-				* @param connect_ptr    表示需要添加的网络连接对象
+				* 表示连接工厂所能接收的最大连接
 				*/
-				inline csf::core::base::csf_int32 insert(csf_connect_ptr connect_ptr) {
+				inline csf_uint32 get_connect_limit() {
 
-					if (!connect_ptr) {
-						return csf_failure;
-					}
-
-					get_connect_collector().insert(connect_ptr.get(), connect_ptr);
-
-					return csf_succeed;
+					return m_connect_limit;
 				}
+			protected:
 				/**
 				* 主要功能是：表示往网络连接管理器中删除网络连接对象
 				* 返回：0表示成功；非0表示失败；
@@ -275,13 +288,6 @@ namespace csf
 				* 返回：无
 				*/
 				csf_void run_io_service();
-				/**
-				* 表示连接工厂所能接收的最大连接
-				*/
-				inline csf_uint32 get_connect_limit() {
-
-					return m_connect_limit;
-				}
 				/**
 				* 表示连接工厂所能接收的最大连接
 				*

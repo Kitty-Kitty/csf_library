@@ -129,6 +129,16 @@ csf_int32 csf_connect::close() {
 	get_read_timeout().set_expired();
 	get_write_timeout().set_expired();
 
+	if (get_factory()) {
+		if (get_factory()->is_exist(shared_from_this())) {
+			csf_log_ex(notice
+				, csf_log_code_notice
+				, "close %s succeed!"
+				, to_string().c_str());
+		}
+		get_factory()->remove(shared_from_this());
+	}
+
 	return csf_succeed;
 }
 
@@ -592,8 +602,8 @@ csf::core::base::csf_int32 csf_connect::timeout_handle(csf_connect_ptr connect_p
 	connect_ptr->close();
 	get_factory()->remove(connect_ptr);
 
-	csf_log_ex(info
-		, csf_log_code_info
+	csf_log_ex(warning
+		, csf_log_code_warning
 		, "connect[%p] timeout. %s"
 		, connect_ptr.get()
 		, connect_error.to_string().c_str());

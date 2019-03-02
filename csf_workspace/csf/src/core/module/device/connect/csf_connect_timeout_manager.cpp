@@ -55,7 +55,7 @@ csf_int32 csf_connect_timeout_manager::remove(csf_connect_timeout& timeout) {
 		//查询容器中是否存在需要的key对象，如果存在则接着查询相似对象，遍历处理
 		tmp_iter = get_connect_collector().find(&timeout);
 		if (tmp_iter == get_connect_collector().end()) {
-			return csf_succeed;
+			return csf_failure;
 		}
 		else {
 			get_connect_collector().erase(tmp_iter++);
@@ -109,8 +109,9 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 */
 csf_void csf_connect_timeout_manager::process_connect_wrapper(csf_connect_wrapper_ptr& wrapper) {
 
-	csf::core::module::connect::csf_connect_callback			tmp_callback = csf_nullptr;
-	csf_uint64													tmp_time = 0;
+	csf::core::module::connect::csf_connect_callback	tmp_callback = csf_nullptr;
+	csf_uint64											tmp_time = 0;
+	csf_bool											tmp_is_timeout = csf_false;
 
 
 	if (csf_nullptr == wrapper.get()) {
@@ -137,40 +138,50 @@ csf_void csf_connect_timeout_manager::process_connect_wrapper(csf_connect_wrappe
 	else {
 
 		//这里取出过期对象进行处理
-		remove(wrapper->get_timeout());
+		if (csf_succeed == remove(wrapper->get_timeout())) {
+			tmp_is_timeout = csf_true;
+		}
+		else {
+			tmp_is_timeout = csf_false;
+		}
 	}
 
 	if (wrapper->get_connect_ptr() != m_null_connect_ptr) {
+
+		if (csf_false == tmp_is_timeout) {
+			wrapper->get_connect_ptr()->close();
+			return;
+		}
 
 		//对相应的过期对象进行处理。
 		//如果超时对象中的回调函数不为空，则调用回调函数进行处理。
 		//如果没有回调函数，则直接关闭连接处理
 		tmp_callback = wrapper->get_timeout().get_handle();
-		if (tmp_callback) {
-			csf_connect_error	tmp_error;
-
-			tmp_error.set_error(csf_connect_error::csf_connect_code::csf_connect_code_timeout
-				, "timeout[%lld ms]"
-				, wrapper->get_timeout().get_timeout());
-
-			csf_log_ex(warning
-				, csf_log_code_warning
-				, "connect[%p] %s"
-				, wrapper->get_connect_ptr().get()
-				, tmp_error.to_string().c_str());
-
-			try {
-				tmp_callback(wrapper->get_connect_ptr(), tmp_error);
-			}
-			catch (std::exception &e) {
-				csf_log_ex(error
-					, csf_log_code_error
-					, "timeout manager exception[%s]"
-					, e.what());
-			}
-		}
-		else {
+		if (csf_nullptr == tmp_callback) {
 			wrapper->get_connect_ptr()->close();
+			return;
+		}
+
+		csf_connect_error	tmp_error;
+
+		tmp_error.set_error(csf_connect_error::csf_connect_code::csf_connect_code_timeout
+			, "timeout[%lld ms]"
+			, wrapper->get_timeout().get_timeout());
+
+		csf_log_ex(warning
+			, csf_log_code_warning
+			, "connect[%p] %s"
+			, wrapper->get_connect_ptr().get()
+			, tmp_error.to_string().c_str());
+
+		try {
+			tmp_callback(wrapper->get_connect_ptr(), tmp_error);
+		}
+		catch (std::exception &e) {
+			csf_log_ex(error
+				, csf_log_code_error
+				, "timeout manager exception[%s]"
+				, e.what());
 		}
 	}
 }

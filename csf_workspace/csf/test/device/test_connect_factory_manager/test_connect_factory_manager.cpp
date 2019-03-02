@@ -162,6 +162,7 @@ csf::core::base::csf_int32 test_connect_factory_manager::read_handle(
 
 
 	if (connect_error.get_code()) {
+		connect_ptr->close();
 		return 0;
 	}
 

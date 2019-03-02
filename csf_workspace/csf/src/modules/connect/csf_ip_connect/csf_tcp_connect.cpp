@@ -79,8 +79,9 @@ csf_int32 csf_tcp_connect::close() {
 			get_socket().close();
 		}
 		catch (boost::exception& e) {
-			csf_log_ex(error, csf_log_code_error
-				, "%s close failed! reason:[%s -- %s]."
+			csf_log_ex(error
+				, csf_log_code_error
+				, "close %s failed! reason:[%s -- %s]."
 				, to_string().c_str()
 				, boost::current_exception_diagnostic_information().c_str()
 				, boost::diagnostic_information(e).c_str());
@@ -1218,17 +1219,40 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 
 	//设置空连接超时处理。如果超过该时间，则表示空连接，需要关闭处理。
 	if (get_factory()) {
+
+		if (csf_failure == ((csf_ip_connect_factory*)get_factory())->insert((csf_connect_ptr)connect_ptr)) {
+			csf_log_ex(warning
+				, csf_log_code_warning
+				, "accept [%d/%d] %s over load warning. connect limit[%d]."
+				, get_factory()->get_connect_collector().size()
+				, ((csf_ip_connect_factory*)get_factory())->get_connect_limit()
+				, connect_ptr->to_string().c_str()
+				, ((csf_ip_connect_factory*)get_factory())->get_connect_limit());
+			return;
+		}
 		connect_ptr->set_read_timeout(
 			((csf_ip_connect_factory*)get_factory())->get_connect_timeout(), csf_nullptr);
+
+		csf_log_ex(notice
+			, csf_log_code_notice
+			, "accept [%d/%d] %s succeed!"
+			, get_factory()->get_connect_collector().size()
+			, ((csf_ip_connect_factory*)get_factory())->get_connect_limit()
+			, connect_ptr->to_string().c_str());
 	}
 	else {
 		connect_ptr->set_read_timeout(csf_connect_timeout_default_ms, csf_nullptr);
+
+		csf_log_ex(notice
+			, csf_log_code_notice
+			, "accept %s succeed!"
+			, connect_ptr->to_string().c_str());
 	}
-	
-	csf_log_ex(info
-		, csf_log_code_info
-		, "accept %s."
-		, connect_ptr->to_string().c_str());
+
+// 	csf_log_ex(info
+// 		, csf_log_code_info
+// 		, "accept %s."
+// 		, connect_ptr->to_string().c_str());
 
 	//调用回调函数通知接收数据等各种处理
 	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
