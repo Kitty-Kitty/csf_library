@@ -125,14 +125,16 @@ namespace csf
 					, const csf_connect_callback& callback
 					, csf_ip_connect_error error_code) {
 
-					if (!connect_ptr 
+					if (!connect_ptr
 						|| csf_nullptr == callback) {
 
-						csf_log_ex(warning
-							, csf_log_code_warning
-							, "%s %s"
-							, connect_ptr->to_string().c_str()
-							, error_code.to_string().c_str());
+						if (error_code.get_code() > 0) {
+							csf_log_ex(warning
+								, csf_log_code_warning
+								, "%s %s"
+								, connect_ptr->to_string().c_str()
+								, error_code.to_string().c_str());
+						}
 						return csf_failure;
 					}
 					else {

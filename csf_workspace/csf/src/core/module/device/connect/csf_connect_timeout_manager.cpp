@@ -150,12 +150,13 @@ csf_void csf_connect_timeout_manager::process_connect_wrapper(csf_connect_wrappe
 			csf_connect_error	tmp_error;
 
 			tmp_error.set_error(csf_connect_error::csf_connect_code::csf_connect_code_timeout
-				, "connect[%p] timeout."
-				, wrapper->get_connect_ptr().get());
+				, "timeout[%lld ms]"
+				, wrapper->get_timeout().get_timeout());
 
 			csf_log_ex(warning
 				, csf_log_code_warning
-				, "%s"
+				, "connect[%p] %s"
+				, wrapper->get_connect_ptr().get()
 				, tmp_error.to_string().c_str());
 
 			try {

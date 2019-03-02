@@ -209,8 +209,9 @@ namespace csf
 					*/
 					inline csf_bool is_valid() {
 
-						if (csf_nullptr == get_buffer()
-							|| length() <= 0) {
+						if (csf_nullptr == get_container()
+							|| csf_nullptr == get_buffer()
+							|| size() <= 0) {
 
 							return csf_false;
 						}
