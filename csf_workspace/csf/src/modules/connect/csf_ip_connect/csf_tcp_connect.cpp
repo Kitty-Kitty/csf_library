@@ -190,7 +190,31 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 */
 csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callback& callback) {
 
-	return 0;
+	csf_ip_url					&tmp_url = (csf_ip_url&)(url);
+
+
+	boost::asio::ip::tcp::endpoint tmp_remote_endpoint(
+		boost::asio::ip::address::from_string(tmp_url.get_ip()), tmp_url.get_port());
+	if (csf_nullptr == callback) {
+		boost::system::error_code	tmp_error;
+
+		get_socket().connect(tmp_remote_endpoint, tmp_error);
+		if (tmp_error) {
+			return csf_failure;
+		}
+		return csf_succeed;
+	}
+	else {
+ 		get_socket().async_connect(tmp_remote_endpoint
+ 			, boost::bind(&csf_ip_connect::async_connect_callback
+ 				, this
+ 				, shared_from_this()
+ 				, callback
+ 				, boost::asio::placeholders::error));
+		return csf_succeed;
+	}
+
+	return csf_failure;
 }
 
 
@@ -1249,12 +1273,12 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 			, connect_ptr->to_string().c_str());
 	}
 
-// 	csf_log_ex(info
-// 		, csf_log_code_info
-// 		, "accept %s."
-// 		, connect_ptr->to_string().c_str());
+	// 	csf_log_ex(info
+	// 		, csf_log_code_info
+	// 		, "accept %s."
+	// 		, connect_ptr->to_string().c_str());
 
-	//调用回调函数通知接收数据等各种处理
+		//调用回调函数通知接收数据等各种处理
 	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
 }
 

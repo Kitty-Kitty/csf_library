@@ -121,7 +121,27 @@ namespace csf
 			csf::core::base::csf_int32 tcp_read_handle(csf_connect_ptr connect_ptr
 				, csf_connect_error& connect_error
 				, csf_int32 len);
-
+			/**
+			* 主要功能是：主要实现模块的配置信息处理接口。
+			* 返回：0表示成功；非0表示失败；
+			*
+			* @param element    表示模块的配置信息
+			*
+			* 常用的配置信息保存结构为：
+			* <!--***该部分描述模块配置信息，是必须配置的数据内容***-->
+			* <module>
+			*        <!--***表示模块对应的模块名称信息***-->
+			*        <name>csf_connection</name>
+			*        <!--***表示该设备模块的唯一标识字符串，该字符串长度应小于等于64字节***-->
+			*        <mid>02000000-0000001</mid>
+			*        <!--表示该模块的配置信息，主要由模块的configure接口处理。该模块的配置项内容由模对应的模块确定-->
+			*        <configure>
+			*                <!--表示线程数量-->
+			*                <thread_number>4</thread_number>
+			*        </configure>
+			* </module>
+			*/
+			virtual csf_int32 configure(const csf_element& element);
 		private:
 			/**
 			* 表示读取数据所使用的回调函数对象
@@ -131,6 +151,10 @@ namespace csf
 			* 表示写数据所使用的回调函数对象
 			*/
 			csf_connect_callback m_write_function = csf_nullptr;
+			/**
+			* 表示模块使用的连接管理器对象
+			*/
+			csf_connect_factory* m_connect_factory = csf_nullptr;
 			/**
 			* 表示读取数据所使用的回调函数对象
 			*/
@@ -162,6 +186,22 @@ namespace csf
 			inline void set_write_function(csf_connect_callback newVal) {
 
 				m_write_function = newVal;
+			}
+			/**
+			* 表示模块使用的连接管理器对象
+			*/
+			inline csf_connect_factory* get_connect_factory() {
+
+				return m_connect_factory;
+			}
+			/**
+			* 表示模块使用的连接管理器对象
+			*
+			* @param newVal
+			*/
+			inline void set_connect_factory(csf_connect_factory* newVal) {
+
+				m_connect_factory = newVal;
 			}
 		};
 

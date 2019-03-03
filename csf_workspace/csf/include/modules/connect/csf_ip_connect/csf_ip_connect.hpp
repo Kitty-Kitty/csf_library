@@ -112,6 +112,25 @@ namespace csf
 
 					return m_local_url;
 				}
+				/**
+				* 主要功能是：
+				*    处理异步连接回调函数
+				* 返回：
+				*    0   ：表示成功；
+				*    非0 ：表示失败
+				*
+				* @param connect    表示处理的网络连接对象
+				* @param callback    表示异常处理句柄信息
+				* @param error_code    表示boost的错误信息
+				*/
+				inline csf_int32 async_connect_callback(csf_connect_ptr connect_ptr
+					, const csf_connect_callback& callback
+					, const boost::system::error_code& error_code) {
+
+					return async_callback(connect_ptr
+						, callback
+						, csf_ip_connect_error(error_code));
+				}
 			protected:
 				/**
 				* 主要功能是：针对错误或异常的处理
@@ -157,7 +176,6 @@ namespace csf
 
 					return async_callback(connect_ptr, callback, error_code);
 				}
-
 				/**
 				* 主要功能是：处理异步写处理回调函数
 				* 返回：0表示处理成功；非0表示处理失败
@@ -170,7 +188,9 @@ namespace csf
 					, const boost::system::error_code& error_code
 					, csf_uint32 len) {
 
-					async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
+					if (csf_failure == async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code))) {
+						return csf_false;
+					}
 
 					return csf_true;
 				}
@@ -186,7 +206,9 @@ namespace csf
 					, const boost::system::error_code& error_code
 					, csf_uint32 len) {
 
-					async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
+					if (csf_failure == async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code))) {
+						return csf_false;
+					}
 
 					return csf_true;
 				}

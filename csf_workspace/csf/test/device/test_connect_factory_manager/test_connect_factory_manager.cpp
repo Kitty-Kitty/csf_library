@@ -80,6 +80,38 @@ csf::core::base::csf_int32 test_connect_factory_manager::init(
 csf::core::base::csf_int32 test_connect_factory_manager::start(
 	const csf_configure_manager * conf_mg) {
 
+	csf_device					*tmp_device = csf_nullptr;
+	csf_connect_factory			*tmp_factory = csf_nullptr;
+	csf_connect_ptr				tmp_connect;
+
+
+	//查找指定的连接管理器对象
+	tmp_device = get_app()->find_device(
+		get_attribute_manager().get_value<csf_attribute_string>(CSF_ATTRIBUTE_NAME(connect_factory)));
+	if (csf_nullptr == tmp_device) {
+		csf_log_ex(error
+			, csf_log_code_error
+			, "not found connect factory[%s]"
+			, get_attribute_manager().get_value<csf_attribute_string>(CSF_ATTRIBUTE_NAME(connect_factory)).c_str());
+		return csf_failure;
+	}
+
+	//设置连接管理器
+	tmp_factory = dynamic_cast<csf_connect_factory*>(tmp_device);
+	set_connect_factory(tmp_factory);
+
+	//创建需要的连接
+	tmp_connect = tmp_factory->create(csf_connect::csf_connect_type_tcp);
+	if (!tmp_connect) {
+		csf_log_ex(error
+			, csf_log_code_error
+			, "create connect failed!");
+		return csf_failure;
+	}
+	else {
+		tmp_connect->set_remote_url(get_attribute_manager().get_value<csf_attribute_string>(CSF_ATTRIBUTE_NAME(center)));
+	}
+
 	return 0;
 }
 
@@ -200,7 +232,43 @@ csf::core::base::csf_int32 test_connect_factory_manager::tcp_read_handle(csf_con
 }
 
 
+/**
+* 主要功能是：主要实现模块的配置信息处理接口。
+* 返回：0表示成功；非0表示失败；
+*
+* @param element    表示模块的配置信息
+*
+* 常用的配置信息保存结构为：
+* <!--***该部分描述模块配置信息，是必须配置的数据内容***-->
+* <module>
+*        <!--***表示模块对应的模块名称信息***-->
+*        <name>csf_connection</name>
+*        <!--***表示该设备模块的唯一标识字符串，该字符串长度应小于等于64字节***-->
+*        <mid>02000000-0000001</mid>
+*        <!--表示该模块的配置信息，主要由模块的configure接口处理。该模块的配置项内容由模对应的模块确定-->
+*        <configure>
+*                <!--表示线程数量-->
+*                <thread_number>4</thread_number>
+*        </configure>
+* </module>
+*/
+csf_int32 test_connect_factory_manager::configure(const csf_element& element) {
 
+	//根配置信息
+	get_attribute_manager().set_root_element(&element);
+
+	//表示该模块使用的连接管理器配置
+	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(connect_factory)
+		, csf_attribute_string(std::list<csf_string>{ "connect_factory", "mid" }
+		, csf_attribute_exception_critical()));
+
+	//表示连接中心的地址
+	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(center)
+		, csf_attribute_string(std::list<csf_string>{ "center" }
+		, csf_attribute_exception_critical()));
+	
+	return 0;
+}
 
 
 

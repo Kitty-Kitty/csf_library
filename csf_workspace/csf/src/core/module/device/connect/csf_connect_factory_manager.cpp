@@ -251,6 +251,7 @@ csf_bool csf_connect_factory_manager::create_connect_factory(csf_app& app, const
 
 		//将工厂对象添加到列表中
 		add_factory(tmp_string_name, tmp_connect_factory);
+		app.add_device(tmp_connect_factory->get_mid(), tmp_connect_factory);
 	}
 
 	return csf_true;
