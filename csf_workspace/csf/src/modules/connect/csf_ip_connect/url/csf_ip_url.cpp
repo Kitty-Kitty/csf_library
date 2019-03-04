@@ -88,7 +88,7 @@ csf_int32 csf_ip_url::parse(const csf_string& url) {
 
 		set_port(tmp_port);
 
-		return csf_succeed;
+		return csf_url::parse(url);
 	}
 
 	return csf_failure;

@@ -71,7 +71,9 @@ namespace csf
 					 * 
 					 * @param type    表示连接地址类型
 					 */
-					inline explicit csf_url(const csf::core::module::connect::csf_url::csf_url_type type) {
+					inline explicit csf_url(const csf::core::module::connect::csf_url::csf_url_type type)
+						: m_type(type)
+						, m_url("") {
 
 					}
 					/**
@@ -91,6 +93,8 @@ namespace csf
 					* @param url    表示url字符串数据
 					*/
 					inline virtual csf_url& operator =(const csf_char* url) {
+
+						set_url(url);
 
 						return  *this;
 					}
@@ -138,7 +142,9 @@ namespace csf
 					*/
 					inline virtual csf_int32 parse(const csf_string& url) {
 
-						return 0;
+						set_url(url);
+
+						return csf_succeed;
 					}
 					/**
 					 * 表示解析地址函数
@@ -147,7 +153,9 @@ namespace csf
 					 */
 					inline virtual csf_int32 parse(const csf_char* url) {
 
-						return 0;
+						set_url(url);
+
+						return csf_succeed;
 					}
 
 				protected:

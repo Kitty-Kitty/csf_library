@@ -30,13 +30,13 @@
           <!--表示连接对象的名称-->
           <name>tcp_listen</name>
           <!--表示需要监听的地址信息-->
-          <tcp>192.168.1.7:8080</tcp>
+          <tcp>10.197.237.26:8080</tcp>
           <!--表示打开监听句柄成功后回调的句柄名称-->
           <handle>tcp_handle</handle>
         </listen>
         <listen>
           <name>udp_listen</name>
-          <udp>192.168.1.7:8081</udp>
+          <udp>10.197.237.26:8081</udp>
           <handle>udp_handle</handle>
         </listen>
       </listen_list>

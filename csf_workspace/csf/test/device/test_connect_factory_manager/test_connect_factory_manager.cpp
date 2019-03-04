@@ -108,8 +108,38 @@ csf::core::base::csf_int32 test_connect_factory_manager::start(
 			, "create connect failed!");
 		return csf_failure;
 	}
+
+	if (csf_failure == tmp_connect->set_remote_url(
+		get_attribute_manager().get_value<csf_attribute_string>(CSF_ATTRIBUTE_NAME(center)))) {
+
+		csf_log_ex(error
+			, csf_log_code_error
+			, "url[%s] failed!"
+			, get_attribute_manager().get_value<csf_attribute_string>(CSF_ATTRIBUTE_NAME(center)).c_str());
+
+		return csf_failure;
+	}
 	else {
-		tmp_connect->set_remote_url(get_attribute_manager().get_value<csf_attribute_string>(CSF_ATTRIBUTE_NAME(center)));
+		if (csf_failure == tmp_connect->connect(tmp_connect->get_remote_url())) {
+			return csf_failure;
+		}
+		else {
+			csf_log_ex(notice
+				, csf_log_code_notice
+				, "connect [%s] succeed!"
+				, tmp_connect->get_remote_url().get_url().c_str());
+
+			tmp_connect->get_write_buffer().create(1024);
+
+			csf_string			tmp_string = "hello world! i'm client!";
+
+			tmp_connect->get_write_buffer().clear();
+			tmp_connect->get_write_buffer().cat(tmp_string);
+			//connect_ptr->get_write_buffer().set_length(tmp_string.length());
+			tmp_connect->write(std::ref(tmp_connect->get_write_buffer()));
+
+			tmp_connect->close();
+		}
 	}
 
 	return 0;
@@ -148,12 +178,12 @@ csf::core::base::csf_int32 test_connect_factory_manager::tcp_handle(
 		, std::placeholders::_2
 		, std::ref(connect_ptr->get_read_buffer())));
 
-// 	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
-// 		, csf_bind(&test_connect_factory_manager::read_handle
-// 			, this
-// 			, connect_ptr
-// 			, std::ref(connect_ptr->get_read_buffer())
-// 			, std::placeholders::_1));
+	// 	connect_ptr->read(std::ref(connect_ptr->get_read_buffer())
+	// 		, csf_bind(&test_connect_factory_manager::read_handle
+	// 			, this
+	// 			, connect_ptr
+	// 			, std::ref(connect_ptr->get_read_buffer())
+	// 			, std::placeholders::_1));
 
 	connect_ptr->read(std::ref(connect_ptr->get_read_buffer()), get_read_function());
 
@@ -188,7 +218,7 @@ csf::core::base::csf_int32 test_connect_factory_manager::read_handle(
 	csf_connect_ptr connect_ptr
 	, csf_connect_error& connect_error
 	, csf_connect_buffer<csf_buffer>& connect_buffer
-	) {
+) {
 
 	csf_string			tmp_string = "hello world!";
 
@@ -206,7 +236,7 @@ csf::core::base::csf_int32 test_connect_factory_manager::read_handle(
 	connect_ptr->get_write_buffer().cat(tmp_string);
 	//connect_ptr->get_write_buffer().set_length(tmp_string.length());
 	connect_ptr->write(std::ref(connect_ptr->get_write_buffer()));
-	
+
 	connect_buffer.clear();
 	//connect_buffer.set_length(connect_buffer.size());
 	connect_ptr->read(std::ref(connect_buffer), get_read_function());
@@ -260,13 +290,13 @@ csf_int32 test_connect_factory_manager::configure(const csf_element& element) {
 	//表示该模块使用的连接管理器配置
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(connect_factory)
 		, csf_attribute_string(std::list<csf_string>{ "connect_factory", "mid" }
-		, csf_attribute_exception_critical()));
+	, csf_attribute_exception_critical()));
 
 	//表示连接中心的地址
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(center)
 		, csf_attribute_string(std::list<csf_string>{ "center" }
-		, csf_attribute_exception_critical()));
-	
+	, csf_attribute_exception_critical()));
+
 	return 0;
 }
 

@@ -25,7 +25,7 @@ using csf::modules::connect::csf_tcp_connect;
 
 csf_tcp_connect::~csf_tcp_connect() {
 
-	int abc = 1;
+	close_socket();
 }
 
 
@@ -60,33 +60,7 @@ csf_int32 csf_tcp_connect::open(const csf_url& url) {
 */
 csf_int32 csf_tcp_connect::close() {
 
-	if (get_socket().is_open()) {
-
-		try {
-			int									tmp_ret_int = 0;
-			struct linger						tmp_linger = { 0, 0 };
-			boost::system::error_code			tmp_error_code;
-
-
-			tmp_ret_int = setsockopt(get_socket().native()
-				, SOL_SOCKET
-				, SO_LINGER
-				, (char*)(&tmp_linger)
-				, sizeof(struct linger));
-
-			get_socket().cancel();
-			get_socket().shutdown(boost::asio::socket_base::shutdown_both, tmp_error_code);
-			get_socket().close();
-		}
-		catch (boost::exception& e) {
-			csf_log_ex(error
-				, csf_log_code_error
-				, "close %s failed! reason:[%s -- %s]."
-				, to_string().c_str()
-				, boost::current_exception_diagnostic_information().c_str()
-				, boost::diagnostic_information(e).c_str());
-		}
-	}
+	close_socket();
 
 	return csf_connect::close();
 }
@@ -133,7 +107,21 @@ csf::core::base::csf_int32 csf_tcp_connect::stop(const csf_configure_manager * c
 */
 csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback& callback) {
 
-	csf::modules::connect::csf_ip_url &ip_url = (csf::modules::connect::csf_ip_url&)url;
+	csf::modules::connect::csf_ip_url  tmp_ip_url;
+
+
+	//对url内容进行合法性处理，避免出现处理异常
+	if (csf_ip_url::is_valid_type(url)) {
+		tmp_ip_url = (csf::modules::connect::csf_ip_url&)url;
+	}
+	else {
+		if (csf_failure == tmp_ip_url.parse(url.get_url())) {
+			csf_log_ex(error, csf_log_code_error
+				, "listen[url:%s] failed! url format failed!"
+				, url.get_url().c_str());
+			return csf_failure;
+		}
+	}
 
 	try {
 		//如果已经监听了，则返回失败
@@ -141,7 +129,7 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 
 			csf_log_ex(error, csf_log_code_error
 				, "listen[url:%s] failed! connect is listening."
-				, ip_url.get_url().c_str());
+				, tmp_ip_url.get_url().c_str());
 
 			exception_callback(shared_from_this()
 				, callback
@@ -155,8 +143,8 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 		//创建一个acceptor，用于实现tcp监听
 		set_acceptor(new boost::asio::ip::tcp::acceptor(
 			get_socket().get_io_service()
-			, boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(ip_url.get_ip())
-				, ip_url.get_port())));
+			, boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(tmp_ip_url.get_ip())
+				, tmp_ip_url.get_port())));
 
 		async_accept(callback);
 	}
@@ -164,7 +152,7 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 
 		csf_log_ex(error, csf_log_code_error
 			, "listen [url:%s] failed! reason:[%s -- %s]."
-			, ip_url.get_url().c_str()
+			, tmp_ip_url.get_url().c_str()
 			, boost::current_exception_diagnostic_information().c_str()
 			, boost::diagnostic_information(e).c_str());
 
@@ -190,11 +178,25 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 */
 csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callback& callback) {
 
-	csf_ip_url					&tmp_url = (csf_ip_url&)(url);
+	csf::modules::connect::csf_ip_url  tmp_ip_url;
 
 
+	//对url内容进行合法性处理，避免出现处理异常
+	if (csf_ip_url::is_valid_type(url)) {
+		tmp_ip_url = (csf::modules::connect::csf_ip_url&)url;
+	}
+	else {
+		if (csf_failure == tmp_ip_url.parse(url.get_url())) {
+			csf_log_ex(error, csf_log_code_error
+				, "connect[url:%s] failed! url format failed!"
+				, url.get_url().c_str());
+			return csf_failure;
+		}
+	}
+
+	//根据是否存在加高函数来判断使用同步方式还是异步方式
 	boost::asio::ip::tcp::endpoint tmp_remote_endpoint(
-		boost::asio::ip::address::from_string(tmp_url.get_ip()), tmp_url.get_port());
+		boost::asio::ip::address::from_string(tmp_ip_url.get_ip()), tmp_ip_url.get_port());
 	if (csf_nullptr == callback) {
 		boost::system::error_code	tmp_error;
 
@@ -202,6 +204,8 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 		if (tmp_error) {
 			return csf_failure;
 		}
+		//更新一下本地的地址信息
+		get_local_url();
 		return csf_succeed;
 	}
 	else {
@@ -327,35 +331,35 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 * @param buffer    表示需要发送的内容缓存
 * @param callback    表示需要返回的回调函数
 */
-csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
-
-	//先判断数据的合法性，之后再处理
-	if (!buffer.is_valid()) {
-		exception_callback(shared_from_this()
-			, callback
-			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
-		return csf_failure;
-	}
-
-	//如果buffer中写长度大小没有设置（buffer.get_length()为0），则根据宿主的空间大小自动设置数据
-	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
-	//发送默认长度为宿主容器中数据的长度
-	//接收默认长度为宿主容器中空闲空间的长度
-	if (buffer.get_length() <= 0 && buffer.length() > 0) {
-		buffer.set_length(buffer.length());
-	}
-
-	//根据csf_connect_buffer的标志位来判断异步与同步
-	if (buffer.get_is_sync()) {
-		//return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
-		return sync_write(buffer, callback);
-	}
-	else {
-		//return async_write(buffer.get_buffer(), buffer.get_length(), callback);
-		return async_write(buffer, callback);
-	}
-	return 0;
-}
+ csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
+ 
+ 	//先判断数据的合法性，之后再处理
+ 	if (!buffer.is_valid()) {
+ 		exception_callback(shared_from_this()
+ 			, callback
+ 			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
+ 		return csf_failure;
+ 	}
+ 
+ 	//如果buffer中写长度大小没有设置（buffer.get_length()为0），则根据宿主的空间大小自动设置数据
+ 	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
+ 	//发送默认长度为宿主容器中数据的长度
+ 	//接收默认长度为宿主容器中空闲空间的长度
+ 	if (buffer.get_length() <= 0 && buffer.length() > 0) {
+ 		buffer.set_length(buffer.length());
+ 	}
+ 
+ 	//根据csf_connect_buffer的标志位来判断异步与同步
+ 	if (buffer.get_is_sync()) {
+ 		//return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
+ 		return sync_write(buffer, callback);
+ 	}
+ 	else {
+ 		//return async_write(buffer.get_buffer(), buffer.get_length(), callback);
+ 		return async_write(buffer, callback);
+ 	}
+ 	return 0;
+ }
 
 
 /**
@@ -583,39 +587,39 @@ csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const c
 * @param buffer    表示读取数据存在的缓存对象
 * @param callback    表示读取的回调函数
 */
-csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
-
-	//先判断数据的合法性，之后再处理
-	if (!buffer.is_valid()) {
-		exception_callback(shared_from_this()
-			, callback
-			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
-				, "not enough storage available"));
-		return csf_failure;
-	}
-
-	//如果接收长度为空（buffer.get_length()为0），则表示采用宿主容器的空闲空间大小。
-	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
-	//发送默认长度为宿主容器中数据的长度
-	//接收默认长度为宿主容器中空闲空间的长度
-	if (buffer.get_length() <= 0 && buffer.avail() > 0) {
-		buffer.set_length(buffer.avail());
-	}
-
-	//更新filled标志位
-	set_is_filled(buffer.get_is_filled());
-
-	//根据csf_connect_buffer的标志位来判断异步与同步
-	if (buffer.get_is_sync()) {
-		//return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
-		return sync_read(buffer, callback);
-	}
-	else {
-		//return async_read(buffer.get_buffer(), buffer.get_length(), callback);
-		return async_read(buffer, callback);
-	}
-	return 0;
-}
+ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
+ 
+ 	//先判断数据的合法性，之后再处理
+ 	if (!buffer.is_valid()) {
+ 		exception_callback(shared_from_this()
+ 			, callback
+ 			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
+ 				, "not enough storage available"));
+ 		return csf_failure;
+ 	}
+ 
+ 	//如果接收长度为空（buffer.get_length()为0），则表示采用宿主容器的空闲空间大小。
+ 	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
+ 	//发送默认长度为宿主容器中数据的长度
+ 	//接收默认长度为宿主容器中空闲空间的长度
+ 	if (buffer.get_length() <= 0 && buffer.avail() > 0) {
+ 		buffer.set_length(buffer.avail());
+ 	}
+ 
+ 	//更新filled标志位
+ 	set_is_filled(buffer.get_is_filled());
+ 
+ 	//根据csf_connect_buffer的标志位来判断异步与同步
+ 	if (buffer.get_is_sync()) {
+ 		//return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
+ 		return sync_read(buffer, callback);
+ 	}
+ 	else {
+ 		//return async_read(buffer.get_buffer(), buffer.get_length(), callback);
+ 		return async_read(buffer, callback);
+ 	}
+ 	return 0;
+ }
 
 
 /**
@@ -729,7 +733,7 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const cs
 // 
 // 	//这里主要是数据量一大，就发送不完全了。尤其在linux平台下更容易出现这个问题
 // 	get_socket().async_write_some(boost::asio::buffer(buf, len)
-// 		, boost::bind(&csf_tcp_connect::ip_async_write_callback
+// 		, boost::bind(&csf_tcp_connect::async_write_callback
 // 			, this
 // 			, buf
 // 			, len
@@ -751,7 +755,7 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const cs
 * @param error_code  表示boost的错误信息
 * @param write_len   表示当前实际写的缓存长度
 */
-// csf_bool csf_tcp_connect::ip_async_write_callback(const csf_uchar* buf
+// csf_bool csf_tcp_connect::async_write_callback(const csf_uchar* buf
 // 	, const csf_uint32 src_len
 // 	, const csf_connect_callback& callback
 // 	, const boost::system::error_code& error_code
@@ -842,7 +846,7 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const cs
 // 	get_read_timeout().flush_time();
 // 
 // 	get_socket().async_receive(boost::asio::buffer(buf, len)
-// 		, boost::bind(&csf_tcp_connect::ip_async_read_callback
+// 		, boost::bind(&csf_tcp_connect::async_read_callback
 // 			, this
 // 			, buf
 // 			, len
@@ -864,7 +868,7 @@ csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const cs
 * @param error_code  表示boost的错误信息
 * @param read_len   表示当前实际写的缓存长度
 */
-// csf_bool csf_tcp_connect::ip_async_read_callback(csf_uchar* buf
+// csf_bool csf_tcp_connect::async_read_callback(csf_uchar* buf
 // 	, const csf_uint32 buf_len
 // 	, const csf_connect_callback& callback
 // 	, const boost::system::error_code& error_code
@@ -955,7 +959,7 @@ csf_int32 csf_tcp_connect::async_write(csf_connect_buffer<csf_buffer>& buffer
 	//这里主要是数据量一大，就发送不完全了。尤其在linux平台下更容易出现这个问题
 	get_socket().async_write_some(boost::asio::buffer(buffer.get_buffer()
 		, buffer.get_length())
-		, boost::bind(&csf_tcp_connect::ip_async_write_callback
+		, boost::bind(&csf_tcp_connect::async_write_callback
 			, this
 			, std::ref(buffer)
 			, shared_from_this()
@@ -1033,7 +1037,7 @@ csf_int32 csf_tcp_connect::async_read(csf_connect_buffer<csf_buffer>& buffer
 	get_read_timeout().flush_time();
 
 	get_socket().async_receive(boost::asio::buffer(buffer.get_buffer(), buffer.get_length())
-		, boost::bind(&csf_tcp_connect::ip_async_read_callback
+		, boost::bind(&csf_tcp_connect::async_read_callback
 			, this
 			, std::ref(buffer)
 			, shared_from_this()
@@ -1046,100 +1050,13 @@ csf_int32 csf_tcp_connect::async_read(csf_connect_buffer<csf_buffer>& buffer
 
 
 /**
-* 主要功能是：处理异步写处理回调函数
-* 返回：0表示处理成功；非0表示处理失败
-*
-* @param buffer		 表示内容的缓存
-* @param connect_ptr 表示当前的网络连接对象
-* @param callback    表示异常处理句柄信息
-* @param error_code  表示boost的错误信息
-* @param length		表示当前实际写的缓存长度
-*/
-csf_bool csf_tcp_connect::ip_async_write_callback(csf_connect_buffer<csf_buffer>& buffer
-	, csf_connect_ptr connect_ptr
-	, const csf_connect_callback& callback
-	, const boost::system::error_code& error_code
-	, csf_uint32 length) {
-
-
-	//如果处理错误，则按照错误处理
-	if (error_code) {
-		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
-		return csf_false;
-	}
-
-	//如果已经发送完成所有数据，则正常回调返回
-	if (length >= buffer.get_length()) {
-		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
-		return csf_true;
-	}
-	else {
-		//如果没有发送完全，还有部分数据，则更新缓存信息继续发送
-		buffer.get_container()->set_pos(buffer.get_container()->get_pos() + length);
-		buffer.set_length(buffer.get_length() - length);
-
-		async_write(std::ref(buffer), callback);
-	}
-
-	return csf_true;
-}
-
-
-/**
-* 主要功能是：处理异步读处理回调函数
-* 返回：0表示处理成功；非0表示处理失败
-*
-* @param buffer		 表示内容的缓存
-* @param connect_ptr 表示当前的网络连接对象
-* @param callback    表示异常处理句柄信息
-* @param error_code  表示boost的错误信息
-* @param length   表示当前实际写的缓存长度
-*/
-csf_bool csf_tcp_connect::ip_async_read_callback(csf_connect_buffer<csf_buffer>& buffer
-	, csf_connect_ptr connect_ptr
-	, const csf_connect_callback& callback
-	, const boost::system::error_code& error_code
-	, csf_uint32 length) {
-
-	//如果处理错误，则按照错误处理
-	if (error_code) {
-		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
-		return csf_false;
-	}
-
-	if (length > 0) {
-		//如果接收到数据，则移动buffer中的缓存游标，方便下一次接收
-		buffer.get_container()->set_last(buffer.get_container()->get_last() + length);
-		buffer.set_length(buffer.get_length() - length);
-	}
-
-	//如果需要接收所有数据，则继续接收，直到完整接收完全
-	if (csf_false == buffer.get_is_filled()) {
-		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
-		return csf_true;
-	}
-	else {
-		//如果已经发送完成所有数据，则正常回调返回
-		if (length >= buffer.get_length()) {
-			async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
-			return csf_true;
-		}
-		else {
-			async_read(std::ref(buffer), callback);
-		}
-	}
-
-	return csf_true;
-}
-
-
-/**
 * 表示远程的主机地址
 */
 const csf_url& csf_tcp_connect::get_remote_url() const {
 
 	//判断现在的地址是否存在，存在则直接返回
-	if (csf_ip_connect::get_remote_url().get_url().empty()) {
+	if (csf_ip_connect::get_remote_url().get_url().empty()
+		&& get_socket().is_open()) {
 
 		((csf_ip_url&)csf_ip_connect::get_remote_url()).set_url(
 			get_socket().remote_endpoint().address().to_string()
@@ -1156,7 +1073,8 @@ const csf_url& csf_tcp_connect::get_remote_url() const {
 const csf_url& csf_tcp_connect::get_local_url() const {
 
 	//判断现在的地址是否存在，存在则直接返回
-	if (csf_ip_connect::get_local_url().get_url().empty()) {
+	if (csf_ip_connect::get_local_url().get_url().empty()
+		&& get_socket().is_open()) {
 
 		((csf_ip_url&)csf_ip_connect::get_local_url()).set_url(
 			get_socket().local_endpoint().address().to_string()
@@ -1282,3 +1200,46 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
 }
 
+
+/**
+* 主要功能：
+*    表示socket连接对象
+* 返回：
+*    0：表示成功；
+*    非0：表示失败；
+*/
+csf_int32 csf_tcp_connect::close_socket() {
+
+
+	if (get_socket().is_open()) {
+
+		try {
+			int									tmp_ret_int = 0;
+			struct linger						tmp_linger = { 0, 0 };
+			boost::system::error_code			tmp_error_code;
+
+
+			//设置为立即关闭处理，避免出现延时关闭的问题
+			tmp_ret_int = setsockopt(get_socket().native()
+				, SOL_SOCKET
+				, SO_LINGER
+				, (char*)(&tmp_linger)
+				, sizeof(struct linger));
+
+			//取消所有处理，关闭收发，关闭连接对象
+			get_socket().cancel();
+			get_socket().shutdown(boost::asio::socket_base::shutdown_both, tmp_error_code);
+			get_socket().close();
+		}
+		catch (boost::exception& e) {
+			csf_log_ex(error
+				, csf_log_code_error
+				, "close %s failed! reason:[%s -- %s]."
+				, to_string().c_str()
+				, boost::current_exception_diagnostic_information().c_str()
+				, boost::diagnostic_information(e).c_str());
+		}
+	}
+
+	return csf_true;
+}

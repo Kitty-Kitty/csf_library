@@ -61,9 +61,9 @@ namespace csf
 				*/
 				inline virtual csf_int32 set_remote_url(csf_string newVal) {
 
-					m_remote_url = newVal;
-
-					return csf_succeed;
+					return m_remote_url.parse(newVal);
+					//m_remote_url = newVal;
+					//return csf_succeed;
 				}
 				/**
 				* 表示远程网络地址
@@ -72,6 +72,9 @@ namespace csf
 				*/
 				inline virtual csf_int32 set_remote_url(csf::core::module::connect::csf_url& newVal) {
 
+					if (csf_false == csf_ip_url::is_valid_type(newVal)) {
+						return csf_failure;
+					}
 					m_remote_url = (csf::modules::connect::csf_ip_url&)newVal;
 
 					return csf_succeed;
@@ -83,9 +86,9 @@ namespace csf
 				*/
 				inline virtual csf_int32 set_local_url(csf_string newVal) {
 
-					m_local_url = newVal;
-
-					return csf_succeed;
+					return m_local_url.parse(newVal);
+					//m_local_url = newVal;
+					//return csf_succeed;
 				}
 				/**
 				* 表示本地网络地址
@@ -94,6 +97,9 @@ namespace csf
 				*/
 				inline virtual csf_int32 set_local_url(csf::core::module::connect::csf_url& newVal) {
 
+					if (csf_false == csf_ip_url::is_valid_type(newVal)) {
+						return csf_failure;
+					}
 					m_local_url = (csf::modules::connect::csf_ip_url&)newVal;
 
 					return csf_succeed;
@@ -127,10 +133,29 @@ namespace csf
 					, const csf_connect_callback& callback
 					, const boost::system::error_code& error_code) {
 
+					//更新一下本地的地址信息
+					connect_ptr->get_local_url();
+
 					return async_callback(connect_ptr
 						, callback
 						, csf_ip_connect_error(error_code));
 				}
+				/**
+				* 主要功能是：写入csf_buffer内容。
+				* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
+				*
+				* @param buffer    表示需要发送的内容缓存
+				* @param callback    表示需要返回的回调函数
+				*/
+				virtual csf_int32 write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr);
+				/**
+				* 主要功能是：读取数据并存在指定缓存位置。
+				* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
+				*
+				* @param buffer    表示读取数据存在的缓存对象
+				* @param callback    表示读取的回调函数
+				*/
+				virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr);
 			protected:
 				/**
 				* 主要功能是：针对错误或异常的处理
@@ -180,37 +205,79 @@ namespace csf
 				* 主要功能是：处理异步写处理回调函数
 				* 返回：0表示处理成功；非0表示处理失败
 				*
+				* @param buffer		 表示内容的缓存
+				* @param connect_ptr 表示当前的网络连接对象
 				* @param callback    表示异常处理句柄信息
-				* @param error_code    表示boost的错误信息
-				* @param len    表示数据长度信息
+				* @param error_code  表示boost的错误信息
+				* @param length		表示当前实际写的缓存长度
 				*/
-				inline csf_bool async_write_callback(const csf_connect_callback& callback
+				csf_bool async_write_callback(csf_connect_buffer<csf_buffer>& buffer
+					, csf_connect_ptr connect_ptr
+					, const csf_connect_callback& callback
 					, const boost::system::error_code& error_code
-					, csf_uint32 len) {
-
-					if (csf_failure == async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code))) {
-						return csf_false;
-					}
-
-					return csf_true;
-				}
+					, csf_uint32 length);
 				/**
 				* 主要功能是：处理异步读处理回调函数
 				* 返回：0表示处理成功；非0表示处理失败
 				*
+				* @param buffer		 表示内容的缓存
+				* @param connect_ptr 表示当前的网络连接对象
 				* @param callback    表示异常处理句柄信息
-				* @param error_code    表示boost的错误信息
-				* @param len    表示数据长度信息
+				* @param error_code  表示boost的错误信息
+				* @param length   表示当前实际写的缓存长度
 				*/
-				inline csf_bool async_read_callback(const csf_connect_callback& callback
+				csf_bool async_read_callback(csf_connect_buffer<csf_buffer>& buffer
+					, csf_connect_ptr connect_ptr
+					, const csf_connect_callback& callback
 					, const boost::system::error_code& error_code
-					, csf_uint32 len) {
+					, csf_uint32 length);
+				/**
+				* 表示写入指定缓存的内容。
+				* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
+				*
+				* @param buffer    表示内容的缓存地址
+				* @param callback    表示需要返回的回调函数
+				*/
+				virtual csf_int32 async_write(const csf_connect_buffer<csf_buffer>& buffer
+					, const csf_connect_callback& callback = csf_nullptr) {
 
-					if (csf_failure == async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code))) {
-						return csf_false;
-					}
+					return 0;
+				}
+				/**
+				* 主要功能是：异步读取数据，并放入指定缓存。
+				* 返回：小于等于0表示失败；大于0表示成功读入的数据长度；
+				*
+				* @param buffer    表示内容的缓存地址
+				* @param callback    表示需要返回的回调函数
+				*/
+				virtual csf_int32 async_read(csf_connect_buffer<csf_buffer>& buffer
+					, const csf_connect_callback& callback = csf_nullptr) {
 
-					return csf_true;
+					return 0;
+				}
+				/**
+				* 表示写入指定缓存的内容。
+				* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
+				*
+				* @param buffer    表示内容的缓存地址
+				* @param callback    表示需要返回的回调函数
+				*/
+				virtual csf_int32 sync_write(const csf_connect_buffer<csf_buffer>& buffer
+					, const csf_connect_callback& callback = csf_nullptr) {
+
+					return 0;
+				}
+				/**
+				* 主要功能是：同步读取数据，并放入指定缓存。
+				* 返回：小于等于0表示失败；大于0表示成功读入的数据长度；
+				*
+				* @param buffer    表示内容的缓存地址
+				* @param callback    表示需要返回的回调函数
+				*/
+				virtual csf_int32 sync_read(csf_connect_buffer<csf_buffer>& buffer
+					, const csf_connect_callback& callback = csf_nullptr) {
+
+					return 0;
 				}
 			private:
 				/**
