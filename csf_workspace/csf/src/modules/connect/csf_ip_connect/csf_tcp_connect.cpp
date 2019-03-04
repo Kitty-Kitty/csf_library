@@ -331,35 +331,35 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 * @param buffer    表示需要发送的内容缓存
 * @param callback    表示需要返回的回调函数
 */
- csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
- 
- 	//先判断数据的合法性，之后再处理
- 	if (!buffer.is_valid()) {
- 		exception_callback(shared_from_this()
- 			, callback
- 			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
- 		return csf_failure;
- 	}
- 
- 	//如果buffer中写长度大小没有设置（buffer.get_length()为0），则根据宿主的空间大小自动设置数据
- 	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
- 	//发送默认长度为宿主容器中数据的长度
- 	//接收默认长度为宿主容器中空闲空间的长度
- 	if (buffer.get_length() <= 0 && buffer.length() > 0) {
- 		buffer.set_length(buffer.length());
- 	}
- 
- 	//根据csf_connect_buffer的标志位来判断异步与同步
- 	if (buffer.get_is_sync()) {
- 		//return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
- 		return sync_write(buffer, callback);
- 	}
- 	else {
- 		//return async_write(buffer.get_buffer(), buffer.get_length(), callback);
- 		return async_write(buffer, callback);
- 	}
- 	return 0;
- }
+//  csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
+//  
+//  	//先判断数据的合法性，之后再处理
+//  	if (!buffer.is_valid()) {
+//  		exception_callback(shared_from_this()
+//  			, callback
+//  			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
+//  		return csf_failure;
+//  	}
+//  
+//  	//如果buffer中写长度大小没有设置（buffer.get_length()为0），则根据宿主的空间大小自动设置数据
+//  	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
+//  	//发送默认长度为宿主容器中数据的长度
+//  	//接收默认长度为宿主容器中空闲空间的长度
+//  	if (buffer.get_length() <= 0 && buffer.length() > 0) {
+//  		buffer.set_length(buffer.length());
+//  	}
+//  
+//  	//根据csf_connect_buffer的标志位来判断异步与同步
+//  	if (buffer.get_is_sync()) {
+//  		//return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
+//  		return sync_write(buffer, callback);
+//  	}
+//  	else {
+//  		//return async_write(buffer.get_buffer(), buffer.get_length(), callback);
+//  		return async_write(buffer, callback);
+//  	}
+//  	return 0;
+//  }
 
 
 /**
@@ -587,39 +587,39 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 * @param buffer    表示读取数据存在的缓存对象
 * @param callback    表示读取的回调函数
 */
- csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
- 
- 	//先判断数据的合法性，之后再处理
- 	if (!buffer.is_valid()) {
- 		exception_callback(shared_from_this()
- 			, callback
- 			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
- 				, "not enough storage available"));
- 		return csf_failure;
- 	}
- 
- 	//如果接收长度为空（buffer.get_length()为0），则表示采用宿主容器的空闲空间大小。
- 	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
- 	//发送默认长度为宿主容器中数据的长度
- 	//接收默认长度为宿主容器中空闲空间的长度
- 	if (buffer.get_length() <= 0 && buffer.avail() > 0) {
- 		buffer.set_length(buffer.avail());
- 	}
- 
- 	//更新filled标志位
- 	set_is_filled(buffer.get_is_filled());
- 
- 	//根据csf_connect_buffer的标志位来判断异步与同步
- 	if (buffer.get_is_sync()) {
- 		//return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
- 		return sync_read(buffer, callback);
- 	}
- 	else {
- 		//return async_read(buffer.get_buffer(), buffer.get_length(), callback);
- 		return async_read(buffer, callback);
- 	}
- 	return 0;
- }
+//  csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
+//  
+//  	//先判断数据的合法性，之后再处理
+//  	if (!buffer.is_valid()) {
+//  		exception_callback(shared_from_this()
+//  			, callback
+//  			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
+//  				, "not enough storage available"));
+//  		return csf_failure;
+//  	}
+//  
+//  	//如果接收长度为空（buffer.get_length()为0），则表示采用宿主容器的空闲空间大小。
+//  	//这样处理主要为减少收发操作时的使用成本，用户不用记得必须调用buffer.set_length()函数。但底层的自动处理，同时引入了程序的不确定性。
+//  	//发送默认长度为宿主容器中数据的长度
+//  	//接收默认长度为宿主容器中空闲空间的长度
+//  	if (buffer.get_length() <= 0 && buffer.avail() > 0) {
+//  		buffer.set_length(buffer.avail());
+//  	}
+//  
+//  	//更新filled标志位
+//  	set_is_filled(buffer.get_is_filled());
+//  
+//  	//根据csf_connect_buffer的标志位来判断异步与同步
+//  	if (buffer.get_is_sync()) {
+//  		//return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
+//  		return sync_read(buffer, callback);
+//  	}
+//  	else {
+//  		//return async_read(buffer.get_buffer(), buffer.get_length(), callback);
+//  		return async_read(buffer, callback);
+//  	}
+//  	return 0;
+//  }
 
 
 /**

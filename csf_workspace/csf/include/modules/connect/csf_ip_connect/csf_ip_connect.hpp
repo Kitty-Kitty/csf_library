@@ -238,7 +238,14 @@ namespace csf
 				* @param buffer    表示内容的缓存地址
 				* @param callback    表示需要返回的回调函数
 				*/
-				virtual csf_int32 async_write(const csf_connect_buffer<csf_buffer>& buffer
+				/**
+				* 表示写入指定缓存的内容。
+				* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
+				*
+				* @param buffer    表示内容的缓存地址
+				* @param callback    表示需要返回的回调函数
+				*/
+				virtual csf_int32 async_write(csf_connect_buffer<csf_buffer>& buffer
 					, const csf_connect_callback& callback = csf_nullptr) {
 
 					return 0;
@@ -262,7 +269,7 @@ namespace csf
 				* @param buffer    表示内容的缓存地址
 				* @param callback    表示需要返回的回调函数
 				*/
-				virtual csf_int32 sync_write(const csf_connect_buffer<csf_buffer>& buffer
+				virtual csf_int32 sync_write(csf_connect_buffer<csf_buffer>& buffer
 					, const csf_connect_callback& callback = csf_nullptr) {
 
 					return 0;

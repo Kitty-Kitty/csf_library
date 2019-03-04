@@ -182,7 +182,7 @@ namespace csf
 				* @param buffer    表示需要发送的内容缓存
 				* @param callback    表示需要返回的回调函数
 				*/
-				virtual csf_int32 write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr);
+				//virtual csf_int32 write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr);
 				/**
 				* 主要功能是：发送csf_csfstring内容。
 				* 返回：小于等于0表示失败；大于0表示成功写入的数据长度；
@@ -252,7 +252,7 @@ namespace csf
 				* @param buffer    表示读取数据存在的缓存对象
 				* @param callback    表示读取的回调函数
 				*/
-				virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr);
+				//virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr);
 				/**
 				* 主要功能是：读取数据并存在指定缓存位置。
 				* 返回：小于等于0表示失败；大于0表示成功读取的数据长度；
