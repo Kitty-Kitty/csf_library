@@ -194,28 +194,45 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 		}
 	}
 
-	//根据是否存在加高函数来判断使用同步方式还是异步方式
+	//地址验证成功，则先更新地址信息
+	set_remote_url(tmp_ip_url);
+
+	//根据是否存在回调函数来判断使用同步方式还是异步方式
 	boost::asio::ip::tcp::endpoint tmp_remote_endpoint(
 		boost::asio::ip::address::from_string(tmp_ip_url.get_ip()), tmp_ip_url.get_port());
-	if (csf_nullptr == callback) {
+	if (csf_nullptr != callback) {
+		get_socket().async_connect(tmp_remote_endpoint
+			, boost::bind(&csf_ip_connect::async_connect_callback
+				, this
+				, shared_from_this()
+				, callback
+				, boost::asio::placeholders::error));
+		return csf_succeed;
+	}
+	else {
 		boost::system::error_code	tmp_error;
 
 		get_socket().connect(tmp_remote_endpoint, tmp_error);
 		if (tmp_error) {
+			set_error(csf_connect_error(tmp_error.value()
+				, boost::system::system_error(tmp_error).what()));
+
+			csf_log_ex(error, csf_log_code_error
+				, "connect[url:%s] failed! %s."
+				, tmp_ip_url.get_url().c_str()
+				, get_error().to_string().c_str());
 			return csf_failure;
 		}
-		//更新一下本地的地址信息
-		get_local_url();
-		return csf_succeed;
-	}
-	else {
- 		get_socket().async_connect(tmp_remote_endpoint
- 			, boost::bind(&csf_ip_connect::async_connect_callback
- 				, this
- 				, shared_from_this()
- 				, callback
- 				, boost::asio::placeholders::error));
-		return csf_succeed;
+		else {
+			//更新一下本地的地址信息
+			get_local_url();
+
+			csf_log_ex(notice, csf_log_code_notice
+				, "connect[url:%s] succeed! %s"
+				, tmp_ip_url.get_url().c_str()
+				, to_string().c_str());
+			return csf_succeed;
+		}
 	}
 
 	return csf_failure;

@@ -23,8 +23,6 @@
 using csf::modules::connect::csf_ip_connect;
 
 
-
-
 csf_ip_connect::~csf_ip_connect() {
 
 }

@@ -626,6 +626,22 @@ namespace csf
 
 						csf_memset(m_format, 0, csf_sizeof(m_format));
 					}
+					/**
+					* 保存该连接的当前异常信息
+					*/
+					inline csf::core::module::connect::csf_connect_error& get_error() {
+
+						return m_error;
+					}
+					/**
+					* 保存该连接的当前异常信息
+					*
+					* @param newVal
+					*/
+					inline void set_error(csf::core::module::connect::csf_connect_error& newVal) {
+
+						m_error = newVal;
+					}
 				protected:
 					/**
 					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
@@ -751,6 +767,10 @@ namespace csf
 					* 表示连接信息的格式化字符串
 					*/
 					csf_char m_format[64] = { 0, };
+					/**
+					* 保存该连接的当前异常信息
+					*/
+					csf::core::module::connect::csf_connect_error m_error;
 					/**
 					* 表示网络连接类型名称映射表
 					*/

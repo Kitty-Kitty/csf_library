@@ -136,6 +136,23 @@ namespace csf
 					//更新一下本地的地址信息
 					connect_ptr->get_local_url();
 
+					//如果错误，则设置错误信息
+					//正确与否都打印信息
+					if (error_code) {
+						set_error(csf_connect_error(error_code.value()
+							, boost::system::system_error(error_code).what()));
+
+						csf_log_ex(error, csf_log_code_error
+							, "connect[url:%s] failed! %s."
+							, connect_ptr->get_remote_url().get_url().c_str()
+							, get_error().to_string().c_str());
+					}
+					else {
+						csf_log_ex(notice, csf_log_code_notice
+							, "connect %s succeed!"
+							, connect_ptr->to_string().c_str());
+					}
+
 					return async_callback(connect_ptr
 						, callback
 						, csf_ip_connect_error(error_code));
