@@ -156,10 +156,7 @@ csf_bool csf_ip_url::check_port(const csf_string& port) {
 	}
 	else {
 		//校验端口的合法性
-		tmp_int = atoi(port.c_str());
-		if (tmp_int >= 0 && tmp_int <= csf_max_ushort) {
-			return csf_true;
-		}
+		return check_port(atoi(port.c_str()));
 	}
 
 	return csf_false;

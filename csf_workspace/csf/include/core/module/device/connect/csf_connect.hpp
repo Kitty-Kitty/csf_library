@@ -601,6 +601,38 @@ namespace csf
 						m_write_buffer = newVal;
 					}
 					/**
+					* 表示当前连接对象的接收回调函数
+					*/
+					inline csf::core::module::connect::csf_connect_callback& get_read_handle() {
+
+						return m_read_handle;
+					}
+					/**
+					* 表示当前连接对象的接收回调函数
+					*
+					* @param newVal
+					*/
+					inline void set_read_handle(csf::core::module::connect::csf_connect_callback newVal) {
+
+						m_read_handle = newVal;
+					}
+					/**
+					* 表示当前连接对象的发送回调函数
+					*/
+					inline csf::core::module::connect::csf_connect_callback& get_write_handle() {
+
+						return m_write_handle;
+					}
+					/**
+					* 表示当前连接对象的发送回调函数
+					*
+					* @param newVal
+					*/
+					inline void set_write_handle(csf::core::module::connect::csf_connect_callback newVal) {
+
+						m_write_handle = newVal;
+					}
+					/**
 					* 主要功能是：将连接信息格式化成字符串输出
 					* 返回：连接信息字符串
 					*/
@@ -742,6 +774,14 @@ namespace csf
 					* 表示写数据的缓存空间信息
 					*/
 					csf_connect_buffer<csf_buffer> m_write_buffer;
+					/**
+					* 表示当前连接对象的接收回调函数
+					*/
+					csf::core::module::connect::csf_connect_callback m_read_handle = csf_nullptr;
+					/**
+					* 表示当前连接对象的发送回调函数
+					*/
+					csf::core::module::connect::csf_connect_callback m_write_handle = csf_nullptr;
 					/**
 					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
 					*/

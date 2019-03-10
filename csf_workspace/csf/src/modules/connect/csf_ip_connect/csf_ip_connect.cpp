@@ -95,8 +95,8 @@ csf_int32 csf_ip_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf
 	//更新filled标志位
 	set_is_filled(buffer.get_is_filled());
 
-	//根据csf_connect_buffer的标志位来判断异步与同步
-	if (buffer.get_is_sync()) {
+	//根据csf_connect_buffer的标志位和回调函数是否为空来判断异步与同步
+	if (buffer.get_is_sync() || csf_nullptr == callback) {
 		//return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
 		return sync_read(buffer, callback);
 	}

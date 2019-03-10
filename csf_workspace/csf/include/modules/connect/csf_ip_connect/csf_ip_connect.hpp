@@ -34,6 +34,10 @@ namespace csf
 	{
 		namespace connect
 		{
+			/************************************************************************/
+			/* 表示ip_connect的描述信息的缓存大小，数值默认为：128						*/
+			/************************************************************************/
+			#define csf_ip_connect_format_buffer_size							128
 			/**
 			 * 表示IP类型的连接类
 			 * @author f
@@ -50,7 +54,8 @@ namespace csf
 				* @param factory    表示创建网络套接字的工厂类对象
 				*/
 				inline explicit csf_ip_connect(csf_ip_connect_factory& factory, csf_connect_type type)
-					: csf_connect(factory, type) {
+					: csf_connect(factory, type)
+					, m_format(csf_ip_connect_format_buffer_size) {
 
 				}
 				virtual ~csf_ip_connect();
@@ -303,6 +308,35 @@ namespace csf
 
 					return 0;
 				}
+				/**
+				* 表示连接信息的格式化字符串
+				*/
+				inline csf::core::base::csf_csfstring& get_format() {
+
+					return m_format;
+				}
+				/**
+				* 表示连接信息的格式化字符串
+				*
+				* @param newVal
+				*/
+				inline void set_format(const csf_char* fmt, ...) {
+
+					va_list					tmp_marker;
+
+
+					if (!fmt || csf_strlen(fmt) <= 0) {
+						return ;
+					}
+
+					va_start(tmp_marker, fmt);
+
+					get_format().format(fmt, tmp_marker);
+
+					va_end(tmp_marker);
+
+					return;
+				}
 			private:
 				/**
 				* 表示远程网络地址
@@ -312,7 +346,10 @@ namespace csf
 				* 表示本地网络地址
 				*/
 				csf::modules::connect::csf_ip_url m_local_url;
-
+				/**
+				* 表示连接信息的格式化字符串
+				*/
+				csf::core::base::csf_csfstring m_format;
 			};
 
 		}

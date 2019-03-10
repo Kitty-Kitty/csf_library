@@ -157,7 +157,21 @@ namespace csf
 
 						return csf_succeed;
 					}
+					/**
+					* 主要功能：
+					*    判断url地址是否合法
+					* 返回：
+					*    true ：表示合法
+					*    false：表示不合法
+					*/
+					inline virtual csf_bool is_valid() {
 
+						if (csf_url_type_none != get_type()
+							&& !get_url().empty()) {
+							return csf_true;
+						}
+						return csf_false;
+					}
 				protected:
 					/**
 					 * 表示url地址的类型信息

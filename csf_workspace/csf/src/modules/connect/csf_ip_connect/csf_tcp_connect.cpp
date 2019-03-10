@@ -1019,7 +1019,7 @@ csf_int32 csf_tcp_connect::sync_read(csf_connect_buffer<csf_buffer>& buffer
 			exception_callback(shared_from_this(), callback, csf_ip_connect_error(tmp_error_code));
 			return csf_failure;
 		}
-		else if (tmp_receive_length <= 0) {
+		else if (tmp_length <= 0) {
 			//如果出现数据内容错误，则另外处理
 			csf_ip_connect_error			tmp_error;
 
@@ -1213,7 +1213,7 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	// 		, "accept %s."
 	// 		, connect_ptr->to_string().c_str());
 
-		//调用回调函数通知接收数据等各种处理
+	//调用回调函数通知接收数据等各种处理
 	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
 }
 
@@ -1226,7 +1226,6 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 *    非0：表示失败；
 */
 csf_int32 csf_tcp_connect::close_socket() {
-
 
 	if (get_socket().is_open()) {
 
@@ -1255,8 +1254,10 @@ csf_int32 csf_tcp_connect::close_socket() {
 				, to_string().c_str()
 				, boost::current_exception_diagnostic_information().c_str()
 				, boost::diagnostic_information(e).c_str());
+
+			return csf_failure;
 		}
 	}
 
-	return csf_true;
+	return csf_succeed;
 }

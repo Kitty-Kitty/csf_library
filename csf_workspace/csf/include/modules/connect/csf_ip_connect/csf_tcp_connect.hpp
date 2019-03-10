@@ -57,8 +57,7 @@ namespace csf
 				*/
 				inline explicit csf_tcp_connect(csf_ip_connect_factory& factory)
 					: csf_stream_connect(factory, csf_connect::csf_connect_type_tcp)
-					, m_socket(factory.get_io_service())
-					, m_format{ 0, } {
+					, m_socket(factory.get_io_service()) {
 
 				}
 				/**
@@ -68,8 +67,7 @@ namespace csf
 				*/
 				inline explicit csf_tcp_connect(csf_ip_connect_factory* factory)
 					: csf_stream_connect(*factory, csf_connect::csf_connect_type_tcp)
-					, m_socket(factory->get_io_service())
-					, m_format{ 0, } {
+					, m_socket(factory->get_io_service()) {
 
 				}
 				/**
@@ -79,8 +77,7 @@ namespace csf
 				*/
 				inline explicit csf_tcp_connect(csf_tcp_connect* connect)
 					: csf_stream_connect(*((csf_ip_connect_factory*)(connect->get_factory())), csf_connect::csf_connect_type_tcp)
-					, m_socket(((csf_ip_connect_factory*)(connect->get_factory()))->get_io_service())
-					, m_format{ 0, } {
+					, m_socket(((csf_ip_connect_factory*)(connect->get_factory()))->get_io_service()) {
 				}
 				virtual ~csf_tcp_connect();
 				/**
@@ -275,18 +272,15 @@ namespace csf
 				*/
 				inline virtual csf_string to_string() {
 
-					//if (csf_strlen(m_format) <= 0) {
-					if ('\0' == m_format[0]) {
-
-						csf_snprintf(m_format
-							, csf_sizeof(m_format)
-							, "%s url[ local:%s -- remote:%s ]"
+					if (get_format().empty()) {
+						set_format(
+							"%s url[ local:%s -- remote:%s ]"
 							, csf::core::module::connect::csf_connect::to_string().c_str()
 							, get_local_url().get_url().c_str()
 							, get_remote_url().get_url().c_str());
 					}
 
-					return csf_string(m_format);
+					return get_format().to_string();
 				}
 				/**
 				* 主要功能是：清空格式化字符串缓存空间
@@ -294,7 +288,7 @@ namespace csf
 				*/
 				inline virtual void flush_string() {
 
-					csf_memset(m_format, 0, csf_sizeof(m_format));
+					get_format().memzero();
 				}
 			protected:
 				/**
@@ -463,10 +457,7 @@ namespace csf
 				* 表示当前的tcp监听确认对象
 				*/
 				boost::asio::ip::tcp::acceptor* m_acceptor;
-				/**
-				* 表示连接信息的格式化字符串
-				*/
-				csf_char m_format[128] = { 0, };
+				
 			};
 		}
 

@@ -184,6 +184,32 @@ namespace csf
 					}
 					return csf_false;
 				}
+				/**
+				* 主要功能：
+				*    判断url地址是否合法
+				* 返回：
+				*    true ：表示合法
+				*    false：表示不合法
+				*/
+				inline virtual csf_bool is_valid() {
+
+					//判断是否合法，如果csf_url都非法则直接返回失败
+					if (!csf_url::is_valid()) {
+						return csf_false;
+					}
+					
+					//判断ip url的类型合法性
+					if (!is_valid_type(*this)) {
+						return csf_false;
+					}
+
+					//判断数值和端口的合法性
+					if (!check_ip(get_ip()) || !check_port(get_port()) ) {
+						return csf_false;
+					}
+
+					return csf_true;
+				}
 			protected:
 				/**
 				* 主要功能是：对ip地址的格式合法性校验

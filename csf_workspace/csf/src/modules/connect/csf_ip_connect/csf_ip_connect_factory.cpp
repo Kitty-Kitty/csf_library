@@ -131,7 +131,7 @@ csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_ty
 		tmp_connect = new csf_tcp_connect(*this);
 	}
 	else if (type & csf_connect::csf_connect_type::csf_connect_type_udp) {
-		tmp_connect = new csf_udp_connect(*this);
+		tmp_connect = new csf_udp_connect(*this, type);
 	}
 	else {
 		return m_null_connect_ptr;
