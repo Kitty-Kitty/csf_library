@@ -380,7 +380,8 @@ csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_fa
 	tmp_string_name = element.find_element(csf_list<csf_string>{"name"}).get_content();
 	if (tmp_string_name.empty()) {
 		csf_log_ex(warning, csf_log_code_warning
-			, "element[%s] is null"
+			, "%s[%s] failed! element[%s] is null"
+			, element.get_name().c_str()
 			, csf_container_convert<csf_list<csf_string>>(
 				csf_list<csf_string>{"name"}).to_string().c_str());
 		return csf_false;
@@ -390,7 +391,8 @@ csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_fa
 	tmp_handle_name = element.find_element(csf_list<csf_string>{"handle"}).get_content();
 	if (tmp_handle_name.empty()) {
 		csf_log_ex(warning, csf_log_code_warning
-			, "element[%s] is null"
+			, "%s[%s] failed! element[%s] is null"
+			, element.get_name().c_str()
 			, csf_container_convert<csf_list<csf_string>>(
 				csf_list<csf_string>{"handle"}).to_string().c_str());
 		return csf_false;
@@ -407,6 +409,16 @@ csf_bool csf_connect_factory_manager::create_listen(csf_app& app, csf_connect_fa
 
 			return csf_false;
 		}
+	}
+
+	//从列表中查找是否存在同名和连接对象,如果存在则返回错误
+	tmp_connect_ptr = find_connect(tmp_string_name);
+	if (tmp_connect_ptr != m_null_connect_ptr) {
+		csf_log_ex(error, csf_log_code_error
+			, "connect[name:%s] exist failed! handle[%s]"
+			, tmp_string_name.c_str()
+			, tmp_handle_name.c_str());
+		return csf_false;
 	}
 
 	//创建一个设备对象

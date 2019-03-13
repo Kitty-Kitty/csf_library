@@ -57,7 +57,8 @@ namespace csf
 				*/
 				inline explicit csf_tcp_connect(csf_ip_connect_factory& factory)
 					: csf_stream_connect(factory, csf_connect::csf_connect_type_tcp)
-					, m_socket(factory.get_io_service()) {
+					, m_socket(factory.get_io_service())
+					, m_acceptor(csf_nullptr) {
 
 				}
 				/**
@@ -67,7 +68,8 @@ namespace csf
 				*/
 				inline explicit csf_tcp_connect(csf_ip_connect_factory* factory)
 					: csf_stream_connect(*factory, csf_connect::csf_connect_type_tcp)
-					, m_socket(factory->get_io_service()) {
+					, m_socket(factory->get_io_service())
+					, m_acceptor(csf_nullptr) {
 
 				}
 				/**
@@ -77,7 +79,9 @@ namespace csf
 				*/
 				inline explicit csf_tcp_connect(csf_tcp_connect* connect)
 					: csf_stream_connect(*((csf_ip_connect_factory*)(connect->get_factory())), csf_connect::csf_connect_type_tcp)
-					, m_socket(((csf_ip_connect_factory*)(connect->get_factory()))->get_io_service()) {
+					, m_socket(((csf_ip_connect_factory*)(connect->get_factory()))->get_io_service())
+					, m_acceptor(csf_nullptr) {
+
 				}
 				virtual ~csf_tcp_connect();
 				/**
@@ -456,7 +460,7 @@ namespace csf
 				/**
 				* 表示当前的tcp监听确认对象
 				*/
-				boost::asio::ip::tcp::acceptor* m_acceptor;
+				boost::asio::ip::tcp::acceptor* m_acceptor = csf_nullptr;
 				
 			};
 		}

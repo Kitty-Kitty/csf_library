@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 12:54:43
+*Date: 13-3æœˆ-2019 16:56:49
 *
 *Description: Class(csf_ip_url)
 *
@@ -24,32 +24,23 @@
 using csf::modules::connect::csf_ip_url;
 
 
-csf_ip_url::csf_ip_url()
-	: csf_url(csf_url::csf_url_type::csf_url_type_ip)
-	, m_ip("")
-	, m_port(0) {
-
-}
-
-
-
-csf_ip_url::~csf_ip_url() {
-
-}
-
-
-
-
-
 /**
- * ±íÊ¾½âÎöµØÖ·º¯Êı
- *
- * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+ * åŠŸèƒ½ï¼š
+ *    è¡¨ç¤ºè§£æåœ°å€å‡½æ•°ã€‚åœ°å€æ ¼å¼ä¸ºï¼š1ã€[ip]:portï¼›2ã€ip:portä¸¤ç§ï¼›ä¾‹å¦‚:[192.168.1.10]:80å’Œ192.168.1.10:
+ * 80ã€‚æ¨èä½¿ç”¨1æ ¼å¼ï¼Œå¯ä»¥å…¼å®¹ipv6æ ¼å¼çš„ipåœ°å€ï¼Œæ›´é€‚åˆæœªæ¥çš„urlæè¿°éœ€æ±‚ã€‚
+ * 
+ * è¿”å›ï¼š
+ *    0  ï¼šè¡¨ç¤ºæˆåŠŸ
+ *    é0ï¼šè¡¨ç¤ºé”™è¯¯
+ * 
+ * @param url    è¡¨ç¤ºurlå­—ç¬¦ä¸²æ•°æ®ï¼Œåœ°å€æ ¼å¼ä¸ºï¼š1. [ip]:port; 2.ip:portä¸¤ç§ï¼›ä¾‹å¦‚:[192.168.1.10]:
+ * 80å’Œ192.168.1.10:80
  */
 csf_int32 csf_ip_url::parse(const csf_string& url) {
 
+
 	/**
-	* ±íÊ¾ºËÑé¸ñÊ½ºÍ½ØÈ¡×Ö·û´®ÕıÔò±í´ïÊ½
+	* è¡¨ç¤ºæ ¸éªŒæ ¼å¼å’Œæˆªå–å­—ç¬¦ä¸²æ­£åˆ™è¡¨è¾¾å¼
 	*/
 	//std::regex					tmp_regex("(\\w+):([0-9]{0,5})");
 	std::regex					tmp_regex("(\\d+.\\d+.\\d+.\\d+):([0-9]{0,5})");
@@ -61,24 +52,24 @@ csf_int32 csf_ip_url::parse(const csf_string& url) {
 		return csf_failure;
 	}
 
-	//Ê¹ÓÃÕıÔò±í´ïÊ½ºËÑéÊı¾İ½á¹¹ºÍÌáÈ¡²ÎÊı
+	//ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼æ ¸éªŒæ•°æ®ç»“æ„å’Œæå–å‚æ•°
 	if (!std::regex_match(url, tmp_match_result, tmp_regex)) {
-		//ÕıÔò±í´ïÊ½Æ¥ÅäÊ§°Ü£¬±íÊ¾Êı¾İ¸ñÊ½´íÎó
+		//æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…å¤±è´¥ï¼Œè¡¨ç¤ºæ•°æ®æ ¼å¼é”™è¯¯
 		return csf_failure;
 	}
 
-	//Èç¹ûmatchÌáÈ¡µÄ²ÎÊıĞ¡ÓÚµÈÓÚĞèÒªµÄ²ÎÊı¸öÊı£¬Ôò±íÊ¾´íÎó
+	//å¦‚æœmatchæå–çš„å‚æ•°å°äºç­‰äºéœ€è¦çš„å‚æ•°ä¸ªæ•°ï¼Œåˆ™è¡¨ç¤ºé”™è¯¯
 	if (tmp_match_result.size() <= csf_ip_url_parametes_size) {
 		return csf_failure;
 	}
 	else {
-		//Ğ£Ñé¶Ë¿ÚµÄºÏ·¨ĞÔ
+		//æ ¡éªŒç«¯å£çš„åˆæ³•æ€§
 		tmp_port = atoi(tmp_match_result[2].str().c_str());
 		if (!check_port(tmp_port)) {
 			return csf_failure;
 		}
 
-		//Ğ£ÑéipµØÖ·µÄºÏ·¨ĞÔ
+		//æ ¡éªŒipåœ°å€çš„åˆæ³•æ€§
 		if (!check_ip(tmp_match_result[1].str())) {
 			return csf_failure;
 		}
@@ -96,13 +87,65 @@ csf_int32 csf_ip_url::parse(const csf_string& url) {
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İipºÍ¶Ë¿ÚºÅÉèÖÃurlĞÅÏ¢
-* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾´íÎó
-*
-* @param ip    ±íÊ¾ip×Ö·û´®Êı¾İ£¬µØÖ·¸ñÊ½Îª£ºxxx.xxx.xxx.xxxxt£»ÀıÈç:192.168.1.10
-* @param port    ±íÊ¾¶Ë¿ÚÊı¾İ
-*/
+ * åŠŸèƒ½ï¼š
+ *    å¯¹ipåœ°å€çš„æ ¼å¼åˆæ³•æ€§æ ¡éªŒã€‚åœ°å€æ ¼å¼ä¸ºï¼š1ã€[ip]:portï¼›2ã€ip:portä¸¤ç§ï¼›ä¾‹å¦‚:[192.168.1.10]:80å’Œ192.168.1.
+ * 10ã€‚æ¨èä½¿ç”¨1æ ¼å¼ï¼Œå¯ä»¥å…¼å®¹ipv6æ ¼å¼çš„ipåœ°å€ï¼Œæ›´é€‚åˆæœªæ¥çš„urlæè¿°éœ€æ±‚ã€‚
+ * 
+ * è¿”å›ï¼š
+ *    trueè¡¨ç¤ºæˆåŠŸï¼›
+ *    falseè¡¨ç¤ºå¤±è´¥ï¼›
+ * 
+ * @param ip    è¡¨ç¤ºç½‘ç»œåœ°å€æ ¼å¼ï¼Œåœ°å€æ ¼å¼ä¸ºï¼š1. [ip]:port; 2.ip:portä¸¤ç§ï¼›ä¾‹å¦‚:[192.168.1.10]:80å’Œ192.
+ * 168.1.10:80
+ */
+csf_bool csf_ip_url::check_ip(const csf_string& ip) {
+
+	std::regex			tmp_pattern("((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])");
+
+	if (!std::regex_match(ip, tmp_pattern)) {
+		return csf_false;
+	}
+
+	return csf_true;
+}
+
+
+/**
+ * åŠŸèƒ½ï¼š
+ *    å¯¹portæ•°å€¼åˆæ³•æ€§æ ¡éªŒ
+ * è¿”å›ï¼š
+ *    trueè¡¨ç¤ºæˆåŠŸï¼›
+ *    falseè¡¨ç¤ºå¤±è´¥ï¼›
+ * 
+ * @param port    è¡¨ç¤ºéœ€è¦è¢«æ ¡éªŒçš„æ•°å€¼
+ */
+csf_bool csf_ip_url::check_port(const csf_string& port) {
+
+	int							tmp_int = 0;
+	std::regex					tmp_pattern("[0-9]{0,5}");
+
+	if (!std::regex_match(port, tmp_pattern)) {
+		return csf_false;
+	}
+	else {
+		//æ ¡éªŒç«¯å£çš„åˆæ³•æ€§
+		return check_port(atoi(port.c_str()));
+	}
+
+	return csf_false;
+}
+
+
+/**
+ * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®ipå’Œç«¯å£å·è®¾ç½®urlä¿¡æ¯
+ * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºé”™è¯¯
+ * 
+ * @param ip    è¡¨ç¤ºipå­—ç¬¦ä¸²æ•°æ®ï¼Œåœ°å€æ ¼å¼ä¸ºï¼š1. [ip]:port; 2.ip:portä¸¤ç§ï¼›ä¾‹å¦‚:[192.168.1.10]:80å’Œ192.
+ * 168.1.10:80
+ * @param port    è¡¨ç¤ºç«¯å£æ•°æ®
+ */
 csf_int32 csf_ip_url::set_url(const csf_string& ip, const csf_ushort port) {
+
 
 	if (check_ip(ip) && check_port(port)) {
 		set_ip(ip);
@@ -121,43 +164,3 @@ csf_int32 csf_ip_url::set_url(const csf_string& ip, const csf_ushort port) {
 	return csf_failure;
 }
 
-
-/**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÔipµØÖ·µÄ¸ñÊ½ºÏ·¨ĞÔĞ£Ñé
-* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
-*
-* @param ip    ±íÊ¾ÍøÂçµØÖ·¸ñÊ½
-*/
-csf_bool csf_ip_url::check_ip(const csf_string& ip) {
-
-	std::regex					tmp_pattern("((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])");
-
-	if (!std::regex_match(ip, tmp_pattern)) {
-		return csf_false;
-	}
-
-	return csf_true;
-}
-
-
-/**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÔportÊıÖµºÏ·¨ĞÔĞ£Ñé
-* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
-*
-* @param port    ±íÊ¾ÍøÂç¶Ë¿Ú
-*/
-csf_bool csf_ip_url::check_port(const csf_string& port) {
-
-	int							tmp_int = 0;
-	std::regex					tmp_pattern("[0-9]{0,5}");
-
-	if (!std::regex_match(port, tmp_pattern)) {
-		return csf_false;
-	}
-	else {
-		//Ğ£Ñé¶Ë¿ÚµÄºÏ·¨ĞÔ
-		return check_port(atoi(port.c_str()));
-	}
-
-	return csf_false;
-}
