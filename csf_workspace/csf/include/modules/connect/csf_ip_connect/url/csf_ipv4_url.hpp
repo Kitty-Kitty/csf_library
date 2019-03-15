@@ -85,7 +85,7 @@ namespace csf
 				 */
 				inline virtual csf_url& operator =(const csf_char* url) {
 
-					return  csf_nullptr;
+					return *this;
 				}
 				/**
 				 * 主要功能是：
@@ -101,7 +101,7 @@ namespace csf
 				 */
 				inline virtual csf_url& operator =(const csf_string& url) {
 
-					return  csf_nullptr;
+					return *this;
 				}
 				/**
 				 * 功能：
@@ -114,7 +114,7 @@ namespace csf
 				 * 
 				 * @param url    表示需要校验的url对象
 				 */
-				inline virtual static csf_bool is_valid_type(const csf_url& url) {
+				inline static csf_bool is_valid_type(const csf_url& url) {
 
 					return csf_true;
 				}

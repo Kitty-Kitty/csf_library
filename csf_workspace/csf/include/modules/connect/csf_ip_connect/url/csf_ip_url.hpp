@@ -272,12 +272,8 @@ namespace csf
 				 */
 				inline static csf_bool is_valid_type(const csf_url& url) {
 
-// 					if (csf_url::csf_url_type::csf_url_type_ip == ((csf_url&)url).get_type()) {
-// 						return csf_true;
-// 					}
-					if (csf_url::csf_url_type::csf_url_type_ip == ((csf_url&)url).get_type()
-						|| csf_ip_type_v4 == ((csf_url&)url).get_type()
-						|| csf_ip_type_v6 == ((csf_url&)url).get_type()) {
+					if (csf_url::csf_url_type::csf_url_type_ip 
+						== ((csf_url&)url).csf_url::get_type()) {
 
 						return csf_true;
 					}

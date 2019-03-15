@@ -52,15 +52,15 @@ namespace csf
 						/**
 						 * 表示空地址
 						 */
-						csf_url_type_none = 0,
+						csf_url_type_none = 0x00000000,
 						/**
 						 * 表示IP地址
 						 */
-						csf_url_type_ip,
+						csf_url_type_ip = 0x00010000,
 						/**
 						 * 表示串口地址
 						 */
-						csf_url_type_serial
+						csf_url_type_serial = 0x00020000
 					} csf_url_type;
 
 

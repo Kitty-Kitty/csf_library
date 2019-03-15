@@ -54,6 +54,12 @@
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_udp_connect.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\url\csf_ipv4_url.hpp">
+      <Filter>include\url</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\url\csf_ipv6_url.hpp">
+      <Filter>include\url</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\url\csf_ip_url.cpp">
@@ -82,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_udp_connect.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\url\csf_ipv4_url.cpp">
+      <Filter>src\url</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\url\csf_ipv6_url.cpp">
+      <Filter>src\url</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

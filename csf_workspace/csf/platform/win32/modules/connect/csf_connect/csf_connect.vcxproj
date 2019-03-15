@@ -29,6 +29,8 @@
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_stream_connect_interface.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_tcp_connect.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\csf_udp_connect.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\url\csf_ipv4_url.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\url\csf_ipv6_url.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\url\csf_ip_url.hpp" />
     <ClInclude Include="..\..\..\..\..\include\modules\connect\csf_ip_connect\url\csf_serial_url.hpp" />
   </ItemGroup>
@@ -40,6 +42,8 @@
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_stream_connect.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_tcp_connect.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\csf_udp_connect.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\url\csf_ipv4_url.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\url\csf_ipv6_url.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\url\csf_ip_url.cpp" />
     <ClCompile Include="..\..\..\..\..\src\modules\connect\csf_ip_connect\url\csf_serial_url.cpp" />
   </ItemGroup>
