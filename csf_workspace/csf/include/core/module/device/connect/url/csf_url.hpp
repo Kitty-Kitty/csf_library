@@ -182,7 +182,16 @@ namespace csf
 
 						m_type = new_value;
 					}
-
+					/**
+					* 功能：
+					*    清空url对象中的数据
+					* 返回：
+					*    无
+					*/
+					inline virtual void clear() {
+						m_url = "";
+						m_type = csf_url_type_none;
+					}
 				private:
 					/**
 					 * 表示url的完整字符串数据

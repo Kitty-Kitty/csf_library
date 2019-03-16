@@ -18,12 +18,14 @@
 *
 *******************************************************************************/
 
+#include <regex>
 #include "csf_ipv4_url.hpp"
 
 using csf::modules::connect::csf_ipv4_url;
 
 
-csf_ipv4_url::csf_ipv4_url() {
+csf_ipv4_url::csf_ipv4_url()
+	:csf_ip_url(csf::modules::connect::csf_ip_url::csf_ip_type_v4) {
 
 }
 
@@ -68,6 +70,16 @@ csf_int32 csf_ipv4_url::parse(const csf_string& url) {
  * 168.1.10:80
  */
 csf_bool csf_ipv4_url::check_ip(const csf_string& ip) {
+
+	std::regex			tmp_pattern("((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])");
+
+	if (ip.empty()) {
+		return csf_false;
+	}
+
+	if (!std::regex_match(ip, tmp_pattern)) {
+		return csf_false;
+	}
 
 	return csf_true;
 }

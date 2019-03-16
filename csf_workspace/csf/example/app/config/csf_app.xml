@@ -27,7 +27,7 @@
                 <mid>02000000-0000001</mid>
               </connect_factory>
               <!--表示连接中心的地址-->
-              <center>10.197.237.26:9000</center>
+              <center>192.168.1.4:9000</center>
             </configure>
           </module>
         </device>

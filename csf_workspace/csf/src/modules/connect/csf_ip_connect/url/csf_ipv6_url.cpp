@@ -23,7 +23,8 @@
 using csf::modules::connect::csf_ipv6_url;
 
 
-csf_ipv6_url::csf_ipv6_url() {
+csf_ipv6_url::csf_ipv6_url()
+	:csf_ip_url(csf::modules::connect::csf_ip_url::csf_ip_type_v6) {
 
 }
 
@@ -69,5 +70,18 @@ csf_int32 csf_ipv6_url::parse(const csf_string& url) {
  */
 csf_bool csf_ipv6_url::check_ip(const csf_string& ip) {
 
-	return csf_true;
+	if (ip.empty()) {
+		return csf_false;
+	}
+
+	//统计ipv6中":"符号的数量，最少为2个
+	for (unsigned int i = 0, count = 0; i < ip.length(); i++) {
+		if (csf_ipv6_url_spacer == ip[i]) {
+			if (count++ >= csf_ipv6_url_min_spacer_number) {
+				return csf_true;
+			}
+		}
+	}
+
+	return csf_false;
 }

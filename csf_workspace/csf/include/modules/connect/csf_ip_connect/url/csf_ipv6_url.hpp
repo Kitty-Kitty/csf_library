@@ -29,6 +29,15 @@ namespace csf
 	{
 		namespace connect
 		{
+			
+			/************************************************************************/
+			/* ipv6地址的间隔符号														*/
+			/************************************************************************/
+			#define csf_ipv6_url_spacer						':'
+			/************************************************************************/
+			/* ipv6地址的间隔符号的最少数量     										*/
+			/************************************************************************/
+			#define csf_ipv6_url_min_spacer_number			2
 			/**
 			 * ipv6格式的url地址处理类，地址格式仅支持（[ip]:port）格式。
 			 * @author fangzhenmu
@@ -55,70 +64,6 @@ namespace csf
 				 * 80和192.168.1.10:80
 				 */
 				virtual csf_int32 parse(const csf_string& url);
-				/**
-				 * 功能：
-				 *    表示解析地址函数。地址格式为：1、[ip]:port；2、ip:port两种；例如:[192.168.1.10]:80和192.168.1.10:
-				 * 80。推荐使用1格式，可以兼容ipv6格式的ip地址，更适合未来的url描述需求。
-				 * 
-				 * 返回：
-				 *    0  ：表示成功
-				 *    非0：表示错误
-				 * 
-				 * @param url    表示url字符串数据，地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:
-				 * 80和192.168.1.10:80
-				 */
-				inline virtual csf_int32 parse(const csf_char* url) {
-
-					return 0;
-				}
-				/**
-				 * 主要功能是：
-				 *    通过url字符串数据设置url对象。地址格式为：1、[ip]:port；2、ip:port两种；例如:[192.168.1.10]:80和192.168.
-				 * 1.10:80。推荐使用1格式，可以兼容ipv6格式的ip地址，更适合未来的url描述需求。
-				 * 
-				 * 返回：
-				 *    无异常表示成功；
-				 *    抛出异常表示错误
-				 * 
-				 * @param url    表示url字符串数据，地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:
-				 * 80和192.168.1.10:80
-				 */
-				inline virtual csf_url& operator =(const csf_char* url) {
-
-					return *this;
-				}
-				/**
-				 * 主要功能是：
-				 *    通过url字符串数据设置url对象。地址格式为：1、[ip]:port；2、ip:port两种；例如:[192.168.1.10]:80和192.168.
-				 * 1.10:80。推荐使用1格式，可以兼容ipv6格式的ip地址，更适合未来的url描述需求。
-				 * 
-				 * 返回：
-				 *    无异常表示成功；
-				 *    抛出异常表示错误
-				 * 
-				 * @param url    表示url字符串数据，地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:
-				 * 80和192.168.1.10:80
-				 */
-				inline virtual csf_url& operator =(const csf_string& url) {
-
-					return *this;
-				}
-				/**
-				 * 功能：
-				 *    校验url类型是否是合法。地址格式为：1、[ip]:port；2、ip:port两种；例如:[192.168.1.10]:80和192.168.1.10:
-				 * 80。推荐使用1格式，可以兼容ipv6格式的ip地址，更适合未来的url描述需求。
-				 * 
-				 * 返回：
-				 *    true表示是合法；
-				 *    false表示不合法
-				 * 
-				 * @param url    表示需要校验的url对象
-				 */
-				inline static csf_bool is_valid_type(const csf_url& url) {
-
-					return csf_true;
-				}
-
 			protected:
 				/**
 				 * 功能：
