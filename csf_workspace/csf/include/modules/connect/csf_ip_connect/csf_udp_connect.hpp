@@ -160,6 +160,17 @@ namespace csf
 
 					get_format().memzero();
 				}
+				/**
+				* 功能：
+				*    表示连接是否已经打开，打开返回true，不打开返回false。
+				* 返回：
+				*    true ：表示打开状态；
+				*    false：表示关闭状态；
+				*/
+				inline virtual csf_bool is_open() {
+
+					return get_socket().is_open();
+				}
 			protected:
 				/**
 				 * 表示网络连接套接字

@@ -674,6 +674,17 @@ namespace csf
 
 						m_error = newVal;
 					}
+					/**
+					* 功能：
+					*    表示连接是否已经打开，打开返回true，不打开返回false。
+					* 返回：
+					*    true ：表示打开状态；
+					*    false：表示关闭状态；
+					*/
+					inline virtual csf_bool is_open() {
+
+						return csf_false;
+					}
 				protected:
 					/**
 					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。

@@ -320,6 +320,14 @@ namespace csf
 					* @param callback    表示读取的回调函数
 					*/
 					//virtual csf_int32 read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback = csf_nullptr) = 0;
+					/**
+					* 功能：
+					*    表示连接是否已经打开，打开返回true，不打开返回false。
+					* 返回：
+					*    true ：表示打开状态；
+					*    false：表示关闭状态；
+					*/
+					virtual csf_bool is_open() = 0;
 				};
 
 			}

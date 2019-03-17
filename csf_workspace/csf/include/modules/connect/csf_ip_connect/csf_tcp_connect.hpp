@@ -420,6 +420,17 @@ namespace csf
 				*    非0：表示失败；
 				*/
 				virtual csf_int32 close_socket();
+				/**
+				* 功能：
+				*    表示连接是否已经打开，打开返回true，不打开返回false。
+				* 返回：
+				*    true ：表示打开状态；
+				*    false：表示关闭状态；
+				*/
+				inline virtual csf_bool is_open() {
+
+					return get_socket().is_open();
+				}
 			private:
 				/**
 				* 主要功能是：处理异步写处理回调函数

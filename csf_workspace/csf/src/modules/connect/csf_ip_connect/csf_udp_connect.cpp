@@ -494,11 +494,19 @@ const csf_url& csf_udp_connect::get_local_url() const {
 */
 boost::asio::ip::udp::endpoint csf_udp_connect::listen_endpoint(csf::modules::connect::csf_ip_url& url) {
 
+	boost::asio::ip::udp	tmp_protocol = boost::asio::ip::udp::v4();
+
+
+	//获取udp的协议类型，支持ipv4和ipv6
+	if (url.is_ipv6()) {
+		tmp_protocol = boost::asio::ip::udp::v6();
+	}
+	//创建一个endpoint
 	if (csf_connect::csf_connect_type_multicast
 	 	== (get_type() & csf_connect::csf_connect_type_multicast)) {
 
 		return boost::asio::ip::udp::endpoint(
-			boost::asio::ip::udp::v4()
+			tmp_protocol
 			, url.get_port());
 	}
 	else if (csf_connect::csf_connect_type_broadcast
@@ -509,7 +517,7 @@ boost::asio::ip::udp::endpoint csf_udp_connect::listen_endpoint(csf::modules::co
 			, url.get_port());
 #else
 		return boost::asio::ip::udp::endpoint(
-			boost::asio::ip::udp::v4()
+			tmp_protocol
 			, url.get_port());
 #endif
 	}
