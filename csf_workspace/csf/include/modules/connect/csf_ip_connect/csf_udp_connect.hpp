@@ -302,6 +302,7 @@ namespace csf
 				* 表示数据接收的地址
 				*/
 				boost::asio::ip::udp::endpoint m_receive_endpoint;
+
 			};
 
 		}

@@ -350,6 +350,7 @@ namespace csf
 				* 表示连接信息的格式化字符串
 				*/
 				csf::core::base::csf_csfstring m_format;
+
 			};
 
 		}
