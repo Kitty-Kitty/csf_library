@@ -127,6 +127,12 @@
     <Filter Include="include\core\utils\time">
       <UniqueIdentifier>{b421b1e4-1590-4e8e-94c9-3e8b8d19fd2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core\system\message">
+      <UniqueIdentifier>{e32285e7-d291-44b9-9076-4b07c3fa46eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core\system\message">
+      <UniqueIdentifier>{d5fd4a3e-cdbe-4f7f-b354-4d3dcc075688}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\core\base\csf_buffer.hpp">
@@ -552,6 +558,21 @@
     <ClInclude Include="..\..\..\include\core\base\csf_exception.hpp">
       <Filter>include\core\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\message\csf_message.hpp">
+      <Filter>include\core\system\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\message\csf_message_callback.hpp">
+      <Filter>include\core\system\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\message\csf_message_interface.hpp">
+      <Filter>include\core\system\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\message\csf_message_manager.hpp">
+      <Filter>include\core\system\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\message\csf_message_manager_callback.hpp">
+      <Filter>include\core\system\message</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -781,6 +802,18 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\base\csf_exception.cpp">
       <Filter>src\core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\message\csf_message.cpp">
+      <Filter>src\core\system\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\message\csf_message_callback.cpp">
+      <Filter>src\core\system\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\message\csf_message_manager.cpp">
+      <Filter>src\core\system\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\message\csf_message_manager_callback.cpp">
+      <Filter>src\core\system\message</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
