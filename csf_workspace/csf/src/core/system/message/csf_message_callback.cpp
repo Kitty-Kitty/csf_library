@@ -20,14 +20,3 @@
 #include "csf_message_callback.hpp"
 
 using csf::core::system::message::csf_message_callback;
-
-
-csf_message_callback::csf_message_callback() {
-
-}
-
-
-
-csf_message_callback::~csf_message_callback() {
-
-}

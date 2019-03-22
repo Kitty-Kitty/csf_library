@@ -23,6 +23,7 @@
 #include "csf_base_include.h"
 #include "csf_stdcplusplus.hpp"
 #include "csf_stdbind.hpp"
+#include "csf_message_error.hpp"
 
 namespace csf
 {
@@ -33,27 +34,27 @@ namespace csf
 			namespace message
 			{
 				/**
-				* 表示定义一个网络连接类
+				* 表示定义一个消息类
 				* @author fangzhenmu@aliyun.com
 				* @version 1.0
 				* @created 01-10月-2018 12:54:36
 				*/
 				class csf_message;
 				/**
-				* 表示定义一个网络连接智能指针
+				* 表示定义一个消息智能指针
 				* @author fangzhenmu@aliyun.com
 				* @version 1.0
 				* @created 01-10月-2018 12:54:36
 				*/
 				typedef	csf_shared_ptr<csf_message>				csf_message_ptr;
 				/**
-				* 表示连接的返回函数
+				* 表示消息的回调函数
 				* @author f
 				* @version 1.0
 				* @created 01-10月-2018 12:54:37
 				*/
 				typedef csf_function<csf_int32(csf_message_ptr
-					, csf_connect_error&)> 	csf_connect_callback;
+					, csf_message_error&)> 	csf_message_callback;
 
 			}
 

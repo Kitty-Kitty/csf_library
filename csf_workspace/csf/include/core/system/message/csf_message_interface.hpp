@@ -62,7 +62,7 @@ namespace csf
 					 * @param callback    表示回调函数
 					 * @param element    表示消息内容
 					 */
-					virtual csf_int32 post(const csf::core::system::message::csf_message_type type, const csf::core::system::message::csf_message_callback callback, const csf_element& element) =0;
+					virtual csf_int32 post(const csf_message::csf_message_type type, const csf::core::system::message::csf_message_callback callback, const csf_element& element) =0;
 					/**
 					 * 表示弹出消息内容
 					 */

@@ -41,7 +41,7 @@ csf_message_manager::~csf_message_manager() {
  * 
  * @param type    表示消息的类型
  */
-csf_int32 csf_message_manager::add(const csf::core::system::message::csf_message_type type) {
+csf_int32 csf_message_manager::add(const csf_message::csf_message_type type) {
 
 	return 0;
 }
@@ -63,7 +63,7 @@ csf::core::base::csf_int32 csf_message_manager::init(const csf_configure_manager
  * 
  * @param message    表示添加的消息内容
  */
-csf_int32 csf_message_manager::post(const csf_message& message) {
+csf_int32 csf_message_manager::post(const csf::core::system::message::csf_message& message) {
 
 	return 0;
 }
@@ -75,7 +75,7 @@ csf_int32 csf_message_manager::post(const csf_message& message) {
  * @param type    表示消息的类型
  * @param callback    表示回调函数
  */
-csf_int32 csf_message_manager::del(const csf::core::system::message::csf_message_type type, const csf::core::system::message::csf_message_manager_callback callback) {
+csf_int32 csf_message_manager::del(const csf_message::csf_message_type type, const csf::core::system::message::csf_message_manager_callback callback) {
 
 	return 0;
 }
@@ -88,7 +88,7 @@ csf_int32 csf_message_manager::del(const csf::core::system::message::csf_message
  * @param callback    表示回调函数
  * @param element    表示消息内容
  */
-csf_int32 csf_message_manager::post(const csf::core::system::message::csf_message_type type, const csf::core::system::message::csf_message_callback callback, const csf_element& element) {
+csf_int32 csf_message_manager::post(const csf_message::csf_message_type type, const csf::core::system::message::csf_message_callback callback, const csf_element& element) {
 
 	return 0;
 }
@@ -110,7 +110,7 @@ csf::core::base::csf_int32 csf_message_manager::start(const csf_configure_manage
  */
 csf::core::system::message::csf_message csf_message_manager::pop() {
 
-	return  NULL;
+	return csf::core::system::message::csf_message();
 }
 
 
@@ -126,41 +126,11 @@ csf::core::base::csf_int32 csf_message_manager::stop(const csf_configure_manager
 
 
 /**
- * 表示接收到的消息保存的队列
- */
-csf_queue<csf_message>& csf_message_manager::get_queue() {
-
-	return m_queue;
-}
-
-
-/**
- * 表示接收到的消息保存的队列
- * 
- * @param newVal
- */
-csf_void csf_message_manager::set_queue(const csf_queue<csf_message>& newVal) {
-
-	m_queue = newVal;
-}
-
-
-csf_thread_group& csf_message_manager::get_thread_group() {
-
-	return m_thread_group;
-}
-
-
-/**
- * 
- * @param newVal
- */
-csf_void csf_message_manager::set_thread_group(csf::core::utils::thread::csf_thread_group newVal) {
-
-	m_thread_group = newVal;
-}
-
-
+* 功能：
+*    表示处理消息的函数
+* 返回：
+*    无
+*/
 csf_void csf_message_manager::process() {
 
 }

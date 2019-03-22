@@ -23,6 +23,8 @@
 #include "csf_message_callback.hpp"
 #include "csf_element.hpp"
 
+using namespace csf::core::system;
+
 namespace csf
 {
 	namespace core

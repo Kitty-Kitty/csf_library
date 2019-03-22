@@ -573,6 +573,9 @@
     <ClInclude Include="..\..\..\include\core\system\message\csf_message_manager_callback.hpp">
       <Filter>include\core\system\message</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\message\csf_message_error.hpp">
+      <Filter>include\core\system\message</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -813,6 +816,9 @@
       <Filter>src\core\system\message</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\system\message\csf_message_manager_callback.cpp">
+      <Filter>src\core\system\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\message\csf_message_error.cpp">
       <Filter>src\core\system\message</Filter>
     </ClCompile>
   </ItemGroup>

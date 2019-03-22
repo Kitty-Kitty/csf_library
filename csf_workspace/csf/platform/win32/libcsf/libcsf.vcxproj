@@ -240,6 +240,7 @@
     <ClInclude Include="..\..\..\include\core\system\csf_system_include.h" />
     <ClInclude Include="..\..\..\include\core\system\message\csf_message.hpp" />
     <ClInclude Include="..\..\..\include\core\system\message\csf_message_callback.hpp" />
+    <ClInclude Include="..\..\..\include\core\system\message\csf_message_error.hpp" />
     <ClInclude Include="..\..\..\include\core\system\message\csf_message_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\system\message\csf_message_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\system\message\csf_message_manager_callback.hpp" />
@@ -337,6 +338,7 @@
     <ClCompile Include="..\..\..\src\core\system\csf_root_configure.cpp" />
     <ClCompile Include="..\..\..\src\core\system\message\csf_message.cpp" />
     <ClCompile Include="..\..\..\src\core\system\message\csf_message_callback.cpp" />
+    <ClCompile Include="..\..\..\src\core\system\message\csf_message_error.cpp" />
     <ClCompile Include="..\..\..\src\core\system\message\csf_message_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\system\message\csf_message_manager_callback.cpp" />
     <ClCompile Include="..\..\..\src\core\utils\csf_markup_xml.cpp" />
