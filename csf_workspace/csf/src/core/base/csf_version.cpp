@@ -10,7 +10,7 @@
 *
 *Date: 05-11ÔÂ-2018 14:57:19
 *
-*Description: Class(csf_version)
+*Description: Class(_csf_version_)
 *
 *Others:
 *
@@ -20,4 +20,4 @@
 
 #include "csf_version.hpp"
 
-using csf::core::base::csf_version_;
+using csf::core::base::_csf_version_;

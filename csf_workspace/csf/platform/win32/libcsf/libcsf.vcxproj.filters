@@ -133,6 +133,12 @@
     <Filter Include="src\core\system\message">
       <UniqueIdentifier>{d5fd4a3e-cdbe-4f7f-b354-4d3dcc075688}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core\service">
+      <UniqueIdentifier>{aefb2852-f848-4561-bcae-a005008f341e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core\service">
+      <UniqueIdentifier>{3d0f522f-9ef5-46f7-9f05-91238523c586}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\core\base\csf_buffer.hpp">
@@ -576,6 +582,30 @@
     <ClInclude Include="..\..\..\include\core\system\message\csf_message_error.hpp">
       <Filter>include\core\system\message</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\service\csf_divider.hpp">
+      <Filter>include\core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\service\csf_divider_manager.hpp">
+      <Filter>include\core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\service\csf_filter.hpp">
+      <Filter>include\core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\service\csf_filter_manager.hpp">
+      <Filter>include\core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\service\csf_request.hpp">
+      <Filter>include\core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\service\csf_request_manager.hpp">
+      <Filter>include\core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\service\csf_response.hpp">
+      <Filter>include\core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\service\csf_response_manager.hpp">
+      <Filter>include\core\service</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -820,6 +850,30 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\system\message\csf_message_error.cpp">
       <Filter>src\core\system\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\service\csf_divider.cpp">
+      <Filter>src\core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\service\csf_divider_manager.cpp">
+      <Filter>src\core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\service\csf_filter.cpp">
+      <Filter>src\core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\service\csf_filter_manager.cpp">
+      <Filter>src\core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\service\csf_request.cpp">
+      <Filter>src\core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\service\csf_request_manager.cpp">
+      <Filter>src\core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\service\csf_response.cpp">
+      <Filter>src\core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\service\csf_response_manager.cpp">
+      <Filter>src\core\service</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
