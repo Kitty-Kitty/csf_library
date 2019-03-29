@@ -129,7 +129,7 @@ csf::core::base::csf_int32 test_connect_factory_manager::start(
 
 			tmp_connect->get_write_buffer().create(1024);
 
-			csf_string			tmp_string = "hello world! i'm client!";
+			csf_string			tmp_string = "hello world! I'm client!";
 
 			tmp_connect->get_write_buffer().clear();
 			tmp_connect->get_write_buffer().cat(tmp_string);

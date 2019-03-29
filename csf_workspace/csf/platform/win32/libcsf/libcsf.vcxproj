@@ -193,6 +193,8 @@
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_timeout.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_timeout_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_deadline_timer.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_filter.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_filter_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\url\csf_url.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\csf_device.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\csf_device_interface.hpp" />
@@ -205,8 +207,6 @@
     <ClInclude Include="..\..\..\include\core\module\device_io\csf_device_io_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_divider.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_divider_manager.hpp" />
-    <ClInclude Include="..\..\..\include\core\service\csf_filter.hpp" />
-    <ClInclude Include="..\..\..\include\core\service\csf_filter_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_request.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_request_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_response.hpp" />
@@ -314,6 +314,8 @@
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_timeout_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_deadline_timer.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_filter.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_filter_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\url\csf_url.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\csf_device.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\database\csf_database.cpp" />
@@ -322,8 +324,6 @@
     <ClCompile Include="..\..\..\src\core\module\device_io\csf_device_io.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_divider.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_divider_manager.cpp" />
-    <ClCompile Include="..\..\..\src\core\service\csf_filter.cpp" />
-    <ClCompile Include="..\..\..\src\core\service\csf_filter_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_request.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_request_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_response.cpp" />

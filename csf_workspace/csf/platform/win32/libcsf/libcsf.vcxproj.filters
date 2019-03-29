@@ -588,12 +588,6 @@
     <ClInclude Include="..\..\..\include\core\service\csf_divider_manager.hpp">
       <Filter>include\core\service</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\core\service\csf_filter.hpp">
-      <Filter>include\core\service</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\core\service\csf_filter_manager.hpp">
-      <Filter>include\core\service</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\core\service\csf_request.hpp">
       <Filter>include\core\service</Filter>
     </ClInclude>
@@ -605,6 +599,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\core\service\csf_response_manager.hpp">
       <Filter>include\core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_filter.hpp">
+      <Filter>include\core\module\device\connect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\device\connect\csf_filter_manager.hpp">
+      <Filter>include\core\module\device\connect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -857,12 +857,6 @@
     <ClCompile Include="..\..\..\src\core\service\csf_divider_manager.cpp">
       <Filter>src\core\service</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\core\service\csf_filter.cpp">
-      <Filter>src\core\service</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\core\service\csf_filter_manager.cpp">
-      <Filter>src\core\service</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\core\service\csf_request.cpp">
       <Filter>src\core\service</Filter>
     </ClCompile>
@@ -874,6 +868,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\service\csf_response_manager.cpp">
       <Filter>src\core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_filter.cpp">
+      <Filter>src\core\module\device\connect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\device\connect\csf_filter_manager.cpp">
+      <Filter>src\core\module\device\connect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -307,7 +307,7 @@ namespace csf
 					* connect_collector主要面向用户的操作（增、删、查、改）。
 					* connect_queue集合除了添加外，其他全部由系统根据既定的超时机制处理，超时了就删除，是一种自主的处理过程。
 					*/
-					inline csf_csfdeque<csf_connect_wrapper_ptr>& csf_connect_timeout_manager::get_connect_queue() {
+					inline csf_csfdeque<csf_connect_wrapper_ptr>& get_connect_queue() {
 
 						return m_connect_queue;
 					}
