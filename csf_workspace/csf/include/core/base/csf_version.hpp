@@ -321,12 +321,12 @@ namespace csf
 				/**
 				* 表示版本信息的格式化字符串
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_format(csf_char* newVal) {
+				inline csf_void set_format(csf_char* new_value) {
 
-					// 					csf_strncpy(m_format, newVal
-					// 						, csf_strlen(newVal) < csf_sizeof(m_format) ? csf_strlen(newVal) : csf_sizeof(m_format));
+					// 					csf_strncpy(m_format, new_value
+					// 						, csf_strlen(new_value) < csf_sizeof(m_format) ? csf_strlen(new_value) : csf_sizeof(m_format));
 				}
 				/**
 				* 模块的名称
@@ -338,11 +338,11 @@ namespace csf
 				/**
 				* 模块的名称
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_name(csf::core::base::csf_string newVal) {
+				inline csf_void set_name(csf::core::base::csf_string new_value) {
 
-					m_name = newVal;
+					m_name = new_value;
 				}
 			private:
 				/**

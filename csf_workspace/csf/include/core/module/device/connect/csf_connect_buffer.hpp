@@ -86,23 +86,23 @@ namespace csf
 					/**
 					* 表示csf_connect_buffer所包含的实际需要被操作的宿主容器对象，例如:csf_buffer、csf_csfstring对象等
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_container(ValueType* newVal) {
+					inline void set_container(ValueType* new_value) {
 
-						if (csf_nullptr != newVal) {
-							set_container(newVal, newVal->length());
+						if (csf_nullptr != new_value) {
+							set_container(new_value, new_value->length());
 						}
 					}
 					/**
 					* 表示csf_connect_buffer所包含的实际需要被操作的宿主容器对象，例如:csf_buffer、csf_csfstring对象等
 					*
-					* @param newVal    表示csf_connect_buffer的宿主对象地址
+					* @param new_value    表示csf_connect_buffer的宿主对象地址
 					* @param len    表示需要发送的缓存长度
 					*/
-					inline void set_container(ValueType* newVal, const csf_uint32 len) {
+					inline void set_container(ValueType* new_value, const csf_uint32 len) {
 
-						m_container = newVal;
+						m_container = new_value;
 						set_is_free(csf_false);
 						set_length(len);
 					}
@@ -126,11 +126,11 @@ namespace csf
 					/**
 					 * 表示是否采用同步的方式发送，false表示异步；true表示同步；默认为异步方式
 					 *
-					 * @param newVal    表示是否采用同步的方式发送，false表示异步；true表示同步；
+					 * @param new_value    表示是否采用同步的方式发送，false表示异步；true表示同步；
 					 */
-					inline void set_is_sync(const csf_bool newVal) {
+					inline void set_is_sync(const csf_bool new_value) {
 
-						m_is_sync = newVal;
+						m_is_sync = new_value;
 					}
 					/**
 					 * 表示是否采用同步的方式发送，false表示异步；true表示同步；默认为异步方式
@@ -142,11 +142,11 @@ namespace csf
 					/**
 					 * 表示发送或接收的内容长度
 					 *
-					 * @param newVal    表示需要发送的数据长度
+					 * @param new_value    表示需要发送的数据长度
 					 */
-					inline void set_length(const csf_uint32 newVal) {
+					inline void set_length(const csf_uint32 new_value) {
 
-						m_length = newVal;
+						m_length = new_value;
 					}
 					/**
 					* 表示发送或接收的内容长度
@@ -181,13 +181,13 @@ namespace csf
 					/**
 					 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 					 *
-					 * @param newVal
+					 * @param new_value
 					 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 					 *
 					 */
-					inline void set_is_free(const csf_bool newVal) {
+					inline void set_is_free(const csf_bool new_value) {
 
-						m_is_free = newVal;
+						m_is_free = new_value;
 					}
 					/**
 					* 主要功能是：清空所有缓存空间数据；
@@ -229,11 +229,11 @@ namespace csf
 					* 表示填满标志位，设备该标识位来强制接收数据时是否填充满后返回。当sync=true表示接收数据时，需要收取足够多的数据后才返回。这是一种收发性能的优化处理机制，
 					* 可以提高部分网络应用的性能。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_is_filled(csf_bool newVal) {
+					inline void set_is_filled(csf_bool new_value) {
 
-						m_is_filled = newVal;
+						m_is_filled = new_value;
 					}
 					/**
 					* 表示获取buffer总缓存长度
@@ -341,11 +341,11 @@ namespace csf
 					/**
 					* 表示实际用于接收和发送的缓存长度
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_size(csf_uint32 newVal) {
+					inline void set_size(csf_uint32 new_value) {
 
-						m_size = newVal;
+						m_size = new_value;
 					}
 					/**
 					* 表示实际用于接收和发送的缓存长度

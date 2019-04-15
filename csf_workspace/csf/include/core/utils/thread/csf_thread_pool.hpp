@@ -154,11 +154,11 @@ namespace csf
 					/**
 					* 表示线程池的线程数量，默认为2
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_thread_number(csf_uint32 newVal) {
+					inline void set_thread_number(csf_uint32 new_value) {
 
-						m_thread_number = newVal;
+						m_thread_number = new_value;
 					}
 					/**
 					* 表示最大失败次数
@@ -170,11 +170,11 @@ namespace csf
 					/**
 					* 表示最大失败次数
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_max_failure_times(csf_uint32 newVal) {
+					inline void set_max_failure_times(csf_uint32 new_value) {
 
-						m_max_failure_times = newVal;
+						m_max_failure_times = new_value;
 					}
 				protected:
 					/**

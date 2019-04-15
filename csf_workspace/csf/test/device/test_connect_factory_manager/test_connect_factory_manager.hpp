@@ -165,11 +165,11 @@ namespace csf
 			/**
 			* 表示读取数据所使用的回调函数对象
 			*
-			* @param newVal
+			* @param new_value
 			*/
-			inline void set_read_function(csf_connect_callback newVal) {
+			inline void set_read_function(csf_connect_callback new_value) {
 
-				m_read_function = newVal;
+				m_read_function = new_value;
 			}
 			/**
 			* 表示写数据所使用的回调函数对象
@@ -181,11 +181,11 @@ namespace csf
 			/**
 			* 表示写数据所使用的回调函数对象
 			*
-			* @param newVal
+			* @param new_value
 			*/
-			inline void set_write_function(csf_connect_callback newVal) {
+			inline void set_write_function(csf_connect_callback new_value) {
 
-				m_write_function = newVal;
+				m_write_function = new_value;
 			}
 			/**
 			* 表示模块使用的连接管理器对象
@@ -197,11 +197,11 @@ namespace csf
 			/**
 			* 表示模块使用的连接管理器对象
 			*
-			* @param newVal
+			* @param new_value
 			*/
-			inline void set_connect_factory(csf_connect_factory* newVal) {
+			inline void set_connect_factory(csf_connect_factory* new_value) {
 
-				m_connect_factory = newVal;
+				m_connect_factory = new_value;
 			}
 		};
 

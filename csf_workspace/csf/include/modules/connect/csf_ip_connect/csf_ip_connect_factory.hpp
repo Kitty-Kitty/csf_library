@@ -291,11 +291,11 @@ namespace csf
 				/**
 				* 表示连接工厂所能接收的最大连接
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_connect_limit(csf_uint32 newVal) {
+				inline void set_connect_limit(csf_uint32 new_value) {
 
-					m_connect_limit = newVal;
+					m_connect_limit = new_value;
 				}
 			private:
 				/**
@@ -308,20 +308,20 @@ namespace csf
 				/**
 				* 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_idle_interval(csf_uint64 newVal) {
+				inline void set_idle_interval(csf_uint64 new_value) {
 
-					m_idle_interval = newVal;
+					m_idle_interval = new_value;
 				}
 				/**
 				* 表示系统的连接的超时时间，单位：毫秒（ms）
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_connect_timeout(csf_uint64 newVal) {
+				inline void set_connect_timeout(csf_uint64 new_value) {
 
-					m_connect_timeout = newVal;
+					m_connect_timeout = new_value;
 				}
 				/**
 				* 表示boost的io_service对象

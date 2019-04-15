@@ -62,50 +62,50 @@ namespace csf
 				/**
 				* 表示远程的主机地址
 				*
-				* @param newVal    表示url字符串内容
+				* @param new_value    表示url字符串内容
 				*/
-				inline virtual csf_int32 set_remote_url(csf_string newVal) {
+				inline virtual csf_int32 set_remote_url(csf_string new_value) {
 
-					return m_remote_url.parse(newVal);
-					//m_remote_url = newVal;
+					return m_remote_url.parse(new_value);
+					//m_remote_url = new_value;
 					//return csf_succeed;
 				}
 				/**
 				* 表示远程网络地址
 				*
-				* @param newVal    表示url字符串内容
+				* @param new_value    表示url字符串内容
 				*/
-				inline virtual csf_int32 set_remote_url(csf::core::module::connect::csf_url& newVal) {
+				inline virtual csf_int32 set_remote_url(csf::core::module::connect::csf_url& new_value) {
 
-					if (csf_false == csf_ip_url::is_valid_type(newVal)) {
+					if (csf_false == csf_ip_url::is_valid_type(new_value)) {
 						return csf_failure;
 					}
-					m_remote_url = (csf::modules::connect::csf_ip_url&)newVal;
+					m_remote_url = (csf::modules::connect::csf_ip_url&)new_value;
 
 					return csf_succeed;
 				}
 				/**
 				* 表示本地的主机地址
 				*
-				* @param newVal    表示url字符串内容
+				* @param new_value    表示url字符串内容
 				*/
-				inline virtual csf_int32 set_local_url(csf_string newVal) {
+				inline virtual csf_int32 set_local_url(csf_string new_value) {
 
-					return m_local_url.parse(newVal);
-					//m_local_url = newVal;
+					return m_local_url.parse(new_value);
+					//m_local_url = new_value;
 					//return csf_succeed;
 				}
 				/**
 				* 表示本地网络地址
 				*
-				* @param newVal    表示url字符串内容
+				* @param new_value    表示url字符串内容
 				*/
-				inline virtual csf_int32 set_local_url(csf::core::module::connect::csf_url& newVal) {
+				inline virtual csf_int32 set_local_url(csf::core::module::connect::csf_url& new_value) {
 
-					if (csf_false == csf_ip_url::is_valid_type(newVal)) {
+					if (csf_false == csf_ip_url::is_valid_type(new_value)) {
 						return csf_failure;
 					}
-					m_local_url = (csf::modules::connect::csf_ip_url&)newVal;
+					m_local_url = (csf::modules::connect::csf_ip_url&)new_value;
 
 					return csf_succeed;
 				}
@@ -318,7 +318,7 @@ namespace csf
 				/**
 				* 表示连接信息的格式化字符串
 				*
-				* @param newVal
+				* @param new_value
 				*/
 				inline void set_format(const csf_char* fmt, ...) {
 

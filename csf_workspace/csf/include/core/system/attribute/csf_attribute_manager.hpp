@@ -423,11 +423,11 @@ namespace csf
 					/**
 					* 表示配置项的根节点对象
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_root_element(const csf_element* newVal) {
+					inline void set_root_element(const csf_element* new_value) {
 
-						m_root_element = (csf_element*)newVal;
+						m_root_element = (csf_element*)new_value;
 					}
 					/**
 					* 表示模块指定的items所相对的根路径信息。如果指定该信息，则该模块的配置信息都是相对该路径信息。
@@ -439,11 +439,11 @@ namespace csf
 					/**
 					* 表示模块指定的items所相对的根路径信息。如果指定该信息，则该模块的配置信息都是相对该路径信息。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_root_items(const std::list<csf_string>& newVal) {
+					inline void set_root_items(const std::list<csf_string>& new_value) {
 
-						m_root_items = newVal;
+						m_root_items = new_value;
 					}
 					/**
 					*

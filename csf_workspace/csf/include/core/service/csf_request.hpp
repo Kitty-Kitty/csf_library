@@ -54,11 +54,11 @@ namespace csf
 				/**
 				 * 表示当前请求的连接信息
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_connect(csf_connect_ptr& newVal) {
+				inline void set_connect(csf_connect_ptr& new_value) {
 
-					m_connect = newVal;
+					m_connect = new_value;
 				}
 
 			private:

@@ -160,11 +160,11 @@ namespace csf
 					/**
 					* 表示网络连接工厂所属的工厂管理器
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline csf_void set_connect_factory_manager(csf::core::module::connect::csf_connect_factory_manager * newVal) {
+					inline csf_void set_connect_factory_manager(csf::core::module::connect::csf_connect_factory_manager * new_value) {
 
-						m_connect_factory_manager = newVal;
+						m_connect_factory_manager = new_value;
 					}
 					/**
 					* 表示连接超时管理器，主要处理各个连接对象的超时问题。

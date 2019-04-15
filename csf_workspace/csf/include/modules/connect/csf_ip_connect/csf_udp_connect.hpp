@@ -238,11 +238,11 @@ namespace csf
 				/**
 				* 表示数据接收的地址
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_receive_endpoint(boost::asio::ip::udp::endpoint& newVal) {
+				inline void set_receive_endpoint(boost::asio::ip::udp::endpoint& new_value) {
 
-					m_receive_endpoint = newVal;
+					m_receive_endpoint = new_value;
 				}
 				/**
 				* 表示数据发送的地址
@@ -254,11 +254,11 @@ namespace csf
 				/**
 				* 表示数据发送的地址
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_send_endpoint(boost::asio::ip::udp::endpoint& newVal) {
+				inline void set_send_endpoint(boost::asio::ip::udp::endpoint& new_value) {
 
-					m_send_endpoint = newVal;
+					m_send_endpoint = new_value;
 				}
 				/**
 				* 主要功能是：

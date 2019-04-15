@@ -61,11 +61,11 @@ namespace csf
 				/**
 				 * 表示当前程序所拥有的虚拟机对象地址。
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_vm(csf_vm* newVal) {
+				inline void set_vm(csf_vm* new_value) {
 
-					m_vm = newVal;
+					m_vm = new_value;
 				}
 				/**
 				 * 表示当前程序所拥有的app对象地址，如果多个app对象则表示最后一个app对象。
@@ -77,11 +77,11 @@ namespace csf
 				/**
 				 * 表示当前程序所拥有的app对象地址，如果多个app对象则表示最后一个app对象。
 				 * 
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_app(csf_app* newVal) {
+				inline void set_app(csf_app* new_value) {
 
-					m_app = newVal;
+					m_app = new_value;
 				}
 
 			private:

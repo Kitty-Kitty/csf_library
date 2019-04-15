@@ -141,11 +141,11 @@ namespace csf
 					/**
 					* 表示线程状态信息
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_status(csf_thread_status newVal) {
+					inline void set_status(csf_thread_status new_value) {
 
-						m_status = newVal;
+						m_status = new_value;
 					}
 					/**
 					* 主要功能是：启动运行线程

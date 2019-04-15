@@ -55,11 +55,11 @@ namespace csf
 					/**
 					 * 表示时间生成器的时间精度，主要描述各种时间的生成精度，单位：毫秒（ms）
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline static void set_time_resolution(csf_uint64 newVal) {
+					inline static void set_time_resolution(csf_uint64 new_value) {
 
-						time_maker::get_instance()->set_time_resolution(newVal);
+						time_maker::get_instance()->set_time_resolution(new_value);
 					}
 					/**
 					 * 表示系统维护的相对时间。因为该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的相对时间计时（如连接对象的超时、各种处理的超时计时），而不能

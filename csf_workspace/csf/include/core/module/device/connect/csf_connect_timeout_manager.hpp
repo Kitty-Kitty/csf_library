@@ -121,11 +121,11 @@ namespace csf
 						/**
 						* 表示超时对象引用
 						*
-						* @param newVal
+						* @param new_value
 						*/
-						inline void set_timeout(csf_connect_timeout& newVal) {
+						inline void set_timeout(csf_connect_timeout& new_value) {
 
-							m_timeout = newVal;
+							m_timeout = new_value;
 						}
 						/**
 						* 表示连接对象
@@ -137,11 +137,11 @@ namespace csf
 						/**
 						* 表示连接对象
 						*
-						* @param newVal
+						* @param new_value
 						*/
-						inline void set_connect_ptr(csf_connect_ptr& newVal) {
+						inline void set_connect_ptr(csf_connect_ptr& new_value) {
 
-							m_connect_ptr = newVal;
+							m_connect_ptr = new_value;
 						}
 					private:
 						/**
@@ -252,12 +252,12 @@ namespace csf
 					/**
 					 * 表示系统的空休眠等待间隔时间，单位：毫秒（ms）
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline csf_void set_idle_interval(csf_uint64 newVal) {
+					inline csf_void set_idle_interval(csf_uint64 new_value) {
 
-						if (0 != newVal) {
-							m_idle_interval = newVal;
+						if (0 != new_value) {
+							m_idle_interval = new_value;
 						}
 					}
 

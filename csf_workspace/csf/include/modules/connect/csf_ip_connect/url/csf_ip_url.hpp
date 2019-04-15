@@ -159,14 +159,14 @@ namespace csf
 				 * 主要功能是：表示url的完整字符串数据
 				 * 返回：0表示成功；非0表示错误
 				 *
-				 * @param newVal    表示url字符串数据，地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:
+				 * @param new_value    表示url字符串数据，地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:
 				 * 80和192.168.1.10:80
 				 */
-				inline csf_int32 set_url(const csf_char* newVal) {
+				inline csf_int32 set_url(const csf_char* new_value) {
 
-					if (csf_succeed == parse(newVal)) {
+					if (csf_succeed == parse(new_value)) {
 
-						csf_url::set_url(newVal);
+						csf_url::set_url(new_value);
 						return csf_succeed;
 					}
 
@@ -176,12 +176,12 @@ namespace csf
 				 * 主要功能是：表示url的完整字符串数据
 				 * 返回：0表示成功；非0表示错误
 				 *
-				 * @param newVal    表示url字符串数据，地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:
+				 * @param new_value    表示url字符串数据，地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:
 				 * 80和192.168.1.10:80
 				 */
-				inline csf_int32 set_url(const csf_string& newVal) {
+				inline csf_int32 set_url(const csf_string& new_value) {
 
-					return set_url((csf_char*)(newVal.c_str()));
+					return set_url((csf_char*)(new_value.c_str()));
 				}
 				/**
 				 * 主要功能：
@@ -304,21 +304,21 @@ namespace csf
 				/**
 				* 表示IP地址字符串
 				*
-				* @param newVal    表示url字符串数据，地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:
+				* @param new_value    表示url字符串数据，地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:
 				* 80和192.168.1.10:80
 				*/
-				inline csf_void set_ip(const csf_string& newVal) {
+				inline csf_void set_ip(const csf_string& new_value) {
 
-					m_ip = newVal;
+					m_ip = new_value;
 				}
 				/**
 				* 设置端口数据
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_port(const csf::core::base::csf_ushort newVal) {
+				inline void set_port(const csf::core::base::csf_ushort new_value) {
 
-					m_port = newVal;
+					m_port = new_value;
 				}
 				/**
 				 * 功能：
@@ -366,11 +366,11 @@ namespace csf
 				/**
 				 * 表示ip地址的类型描述信息，默认为：csf_ip_type_v4
 				 *
-				 * @param newVal
+				 * @param new_value
 				 */
-				inline void set_type(csf_ip_type newVal) {
+				inline void set_type(csf_ip_type new_value) {
 
-					m_type = newVal;
+					m_type = new_value;
 				}
 				/**
 				* 功能：

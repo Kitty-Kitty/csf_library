@@ -313,11 +313,11 @@ namespace csf
 				/**
 				* 表示模块信息的格式化字符串
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_format(csf_char* newVal) {
+				inline void set_format(csf_char* new_value) {
 
-					csf_strcpy(m_format, newVal);
+					csf_strcpy(m_format, new_value);
 				}
 			private:
 				/**

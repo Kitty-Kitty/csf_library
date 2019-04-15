@@ -137,15 +137,15 @@ namespace csf
 					/**
 					 * 表示当前超时的时间数值，单位为毫秒（ms）
 					 *
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_time(csf_uint64 newVal) {
+					inline void set_time(csf_uint64 new_value) {
 
-						m_time = newVal;
+						m_time = new_value;
 
 // 						csf_log_ex(debug, csf_log_code_debug
 // 							, "timeout [%lld]."
-// 							, newVal);
+// 							, new_value);
 					}
 					/**
 					 * 表示超时后的回调函数
@@ -157,11 +157,11 @@ namespace csf
 					/**
 					 * 表示超时后的回调函数
 					 *
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_handle(csf::core::module::connect::csf_connect_callback newVal) {
+					inline void set_handle(csf::core::module::connect::csf_connect_callback new_value) {
 
-						m_handle = newVal;
+						m_handle = new_value;
 					}
 					/**
 					* 表示当前超时的时间数值，单位为毫秒（ms）
@@ -173,11 +173,11 @@ namespace csf
 					/**
 					* 表示当前超时的时间数值，单位为毫秒（ms）
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_timeout(csf_uint64 newVal) {
+					inline void set_timeout(csf_uint64 new_value) {
 
-						m_timeout = newVal;
+						m_timeout = new_value;
 					}
 					/**
 					* 主要功能是：设置永不超期，处理过程是设置一个超长时间。

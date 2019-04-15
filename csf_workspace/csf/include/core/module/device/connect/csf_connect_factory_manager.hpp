@@ -150,11 +150,11 @@ namespace csf
 					/**
 					* 表示该模块所属的app对象地址
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_app(const csf_app* newVal) {
+					inline void set_app(const csf_app* new_value) {
 
-						m_app = (csf_app*)newVal;
+						m_app = (csf_app*)new_value;
 					}
 					/**
 					* 表示连接工厂管理器保存的对象列表

@@ -138,15 +138,15 @@ namespace csf
 					* 表示时间生成器的时间精度，主要描述各种时间的生成精度，单位：毫秒（ms）
 					* 如果时间数值为0，则表示采用默认时间精度
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_time_resolution(csf_uint64 newVal) {
+					inline void set_time_resolution(csf_uint64 new_value) {
 
-						if (0 == newVal) {
+						if (0 == new_value) {
 							m_time_resolution = csf_time_maker_resolution_ms;
 						}
 						else {
-							m_time_resolution = newVal;
+							m_time_resolution = new_value;
 						}
 					}
 					/**
@@ -255,29 +255,29 @@ namespace csf
 					* 表示系统维护的相对时间。因为该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的相对时间计时（如连接对象的超时、各种处理的超时计时），而不能
 					* 当作操作系统时间使用。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_time(csf_uint64 newVal) {
+					inline void set_time(csf_uint64 new_value) {
 
-						m_time = newVal;
+						m_time = new_value;
 					}
 					/**
 					* 表示系统维护的系统时间，通过实时获取系统时间而生成。该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的系统时间。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_native_time(csf_uint64 newVal) {
+					inline void set_native_time(csf_uint64 new_value) {
 
-						m_native_time = newVal;
+						m_native_time = new_value;
 					}
 					/**
 					* 表示系统的启动时间。该数值等于第一个time时间。所以time减去begin_time所得时间为系统到目前为止的运行总时间。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_begin_time(csf_uint64 newVal) {
+					inline void set_begin_time(csf_uint64 new_value) {
 
-						m_begin_time = newVal;
+						m_begin_time = new_value;
 					}
 					/**
 					* 主要功能是：时间生成线程处理函数。
@@ -295,10 +295,10 @@ namespace csf
 					/**
 					* 表示当前的时间处理线程，用于时间和生成处理
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_time_thread(csf::core::utils::thread::csf_thread* newVal) {
-						m_time_thread = newVal;
+					inline void set_time_thread(csf::core::utils::thread::csf_thread* new_value) {
+						m_time_thread = new_value;
 					}
 					/**
 					* 主要功能是：初始化time_maker对象

@@ -388,11 +388,11 @@ namespace csf
 				/**
 				* 表示当前的tcp监听确认对象
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline csf_void set_acceptor(boost::asio::ip::tcp::acceptor* newVal) {
+				inline csf_void set_acceptor(boost::asio::ip::tcp::acceptor* new_value) {
 
-					m_acceptor = newVal;
+					m_acceptor = new_value;
 				}
 				/**
 				* 主要功能是：异步tcp监听的accept处理函数。

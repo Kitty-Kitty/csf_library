@@ -207,11 +207,11 @@ namespace csf
 					/**
 					* 表示远程的主机地址
 					*
-					* @param newVal    表示url字符串内容
+					* @param new_value    表示url字符串内容
 					*/
-					inline virtual csf_int32 set_remote_url(csf_string newVal) {
+					inline virtual csf_int32 set_remote_url(csf_string new_value) {
 
-						//m_remote_url = newVal;
+						//m_remote_url = new_value;
 
 						return csf_succeed;
 					}
@@ -236,11 +236,11 @@ namespace csf
 					/**
 					* 表示本地的主机地址
 					*
-					* @param newVal    表示url字符串内容
+					* @param new_value    表示url字符串内容
 					*/
-					inline virtual csf_int32 set_local_url(csf_string newVal) {
+					inline virtual csf_int32 set_local_url(csf_string new_value) {
 
-						//m_local_url = newVal;
+						//m_local_url = new_value;
 
 						return csf_succeed;
 					}
@@ -578,11 +578,11 @@ namespace csf
 					/**
 					* 表示读取数据的缓存空间信息
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_read_buffer(csf_connect_buffer<csf_buffer>& newVal) {
+					inline void set_read_buffer(csf_connect_buffer<csf_buffer>& new_value) {
 
-						m_read_buffer = newVal;
+						m_read_buffer = new_value;
 					}
 					/**
 					* 表示写数据的缓存空间信息
@@ -594,11 +594,11 @@ namespace csf
 					/**
 					* 表示写数据的缓存空间信息
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_write_buffer(csf_connect_buffer<csf_buffer>& newVal) {
+					inline void set_write_buffer(csf_connect_buffer<csf_buffer>& new_value) {
 
-						m_write_buffer = newVal;
+						m_write_buffer = new_value;
 					}
 					/**
 					* 表示当前连接对象的接收回调函数
@@ -610,11 +610,11 @@ namespace csf
 					/**
 					* 表示当前连接对象的接收回调函数
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_read_handle(csf::core::module::connect::csf_connect_callback newVal) {
+					inline void set_read_handle(csf::core::module::connect::csf_connect_callback new_value) {
 
-						m_read_handle = newVal;
+						m_read_handle = new_value;
 					}
 					/**
 					* 表示当前连接对象的发送回调函数
@@ -626,11 +626,11 @@ namespace csf
 					/**
 					* 表示当前连接对象的发送回调函数
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_write_handle(csf::core::module::connect::csf_connect_callback newVal) {
+					inline void set_write_handle(csf::core::module::connect::csf_connect_callback new_value) {
 
-						m_write_handle = newVal;
+						m_write_handle = new_value;
 					}
 					/**
 					* 主要功能是：将连接信息格式化成字符串输出
@@ -668,11 +668,11 @@ namespace csf
 					/**
 					* 保存该连接的当前异常信息
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_error(csf::core::module::connect::csf_connect_error& newVal) {
+					inline void set_error(csf::core::module::connect::csf_connect_error& new_value) {
 
-						m_error = newVal;
+						m_error = new_value;
 					}
 					/**
 					* 功能：
@@ -696,11 +696,11 @@ namespace csf
 					/**
 					* 表示同步标志位，设备该标识位来强制通信采用同步发送。当sync=true表示采用同步方式发送。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_is_sync(csf_bool newVal) {
+					inline void set_is_sync(csf_bool new_value) {
 
-						m_is_sync = newVal;
+						m_is_sync = new_value;
 					}
 					/**
 					* 表示填满标志位，设备该标识位来强制接收数据时是否填充满后返回。当sync=true表示接收数据时，需要收取足够多的数据后才返回。这是一种收发性能的优化处理机制，
@@ -714,29 +714,29 @@ namespace csf
 					* 表示填满标志位，设备该标识位来强制接收数据时是否填充满后返回。当sync=true表示接收数据时，需要收取足够多的数据后才返回。这是一种收发性能的优化处理机制，
 					* 可以提高部分网络应用的性能。
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline void set_is_filled(csf_bool newVal) {
+					inline void set_is_filled(csf_bool new_value) {
 
-						m_is_filled = newVal;
+						m_is_filled = new_value;
 					}
 					/**
 					* 表示异步写超时对象
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline virtual void set_write_timeout(csf::core::module::connect::csf_connect_timeout& newVal) {
+					inline virtual void set_write_timeout(csf::core::module::connect::csf_connect_timeout& new_value) {
 
-						m_write_timeout = newVal;
+						m_write_timeout = new_value;
 					}
 					/**
 					* 表示异步读超时对象
 					*
-					* @param newVal
+					* @param new_value
 					*/
-					inline virtual void set_read_timeout(csf::core::module::connect::csf_connect_timeout& newVal) {
+					inline virtual void set_read_timeout(csf::core::module::connect::csf_connect_timeout& new_value) {
 
-						m_read_timeout = newVal;
+						m_read_timeout = new_value;
 					}
 					/**
 					* 主要功能是：更新异步写超时对象

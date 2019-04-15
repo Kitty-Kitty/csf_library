@@ -199,11 +199,11 @@ namespace csf
 				* 2、保持csf_configure_manager一致，可以使用csf_configure_supply扩展对象的方式进行。
 				* 3、将需要的运行时对象附加到csf_configure_manager的附加对象列表中，使用时查找。
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_supply(csf_configure_supply* newVal) {
+				inline void set_supply(csf_configure_supply* new_value) {
 
-					m_supply = newVal;
+					m_supply = new_value;
 				}
 				/**
 				* 表示附加对象列表中保存的vm对象指针。即，addition_objects中促成的key为csf_vm的对象。
@@ -223,11 +223,11 @@ namespace csf
 				/**
 				* 表示附加对象列表中保存的vm对象指针。即，addition_objects中促成的key为csf_vm的对象。
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_vm_object(csf_void* newVal) {
+				inline void set_vm_object(csf_void* new_value) {
 
-					get_addition_objects()[CSF_VM_OBJECT] = newVal;
+					get_addition_objects()[CSF_VM_OBJECT] = new_value;
 				}
 				/**
 				* 表示附加对象列表中保存的app对象指针。即，addition_objects中促成的kdy为csf_app的对象。
@@ -247,11 +247,11 @@ namespace csf
 				/**
 				* 表示附加对象列表中保存的app对象指针。即，addition_objects中促成的kdy为csf_app的对象。
 				*
-				* @param newVal
+				* @param new_value
 				*/
-				inline void set_app_object(csf_void* newVal) {
+				inline void set_app_object(csf_void* new_value) {
 
-					get_addition_objects()[CSF_APP_OBJECT] = newVal;
+					get_addition_objects()[CSF_APP_OBJECT] = new_value;
 				}
 				
 			protected:

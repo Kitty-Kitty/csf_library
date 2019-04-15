@@ -122,11 +122,11 @@ namespace csf
 					/**
 					 * 表示消息回调函数
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_callback(const csf::core::system::message::csf_message_callback newVal) {
+					inline void set_callback(const csf::core::system::message::csf_message_callback new_value) {
 
-						m_callback = newVal;
+						m_callback = new_value;
 					}
 					/**
 					 * 表示消息的类型
@@ -138,11 +138,11 @@ namespace csf
 					/**
 					 * 表示消息的类型
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_type(const csf_message_type newVal) {
+					inline void set_type(const csf_message_type new_value) {
 
-						m_type = newVal;
+						m_type = new_value;
 					}
 					/**
 					 * 表示message自带的信息内容
@@ -154,11 +154,11 @@ namespace csf
 					/**
 					 * 表示message自带的信息内容
 					 * 
-					 * @param newVal
+					 * @param new_value
 					 */
-					inline void set_element(const csf_element& newVal) {
+					inline void set_element(const csf_element& new_value) {
 
-						m_element = newVal;
+						m_element = new_value;
 					}
 
 				private:
