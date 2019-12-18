@@ -1,0 +1,25 @@
+./configure --host= -prefix /opt/Project/qt_project/qt_5.9.1/qt-5.9.1-arm-hisiv400-linux-qtbase -confirm-license -opensource -xplatform arm-hisiv400-linux-g++ -sysroot /opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/ -pch -qt-libjpeg -qt-libpng -qt-zlib -opengl es2 -opengles3 -qpa eglfs -linuxfb -nomake tests -nomake examples -skip qtserialbus -skip qtserialport -skip xmlpatterns -gui -widgets -iconv --enable-linuxfb -skip qtwayland -release -shared -static -no-feature-icu
+
+
+
+
+
+hi3536 qt编译opengl 和 eglfs 支持的配置说明
+1、复制linux-arm-hisilicon-hi3536-g++.tar.gz到qt-everywhere-opensource-src-5.9.6/qtbase/mkspecs/devices目录中
+	执行指令 tar zxvf linux-arm-hisilicon-hi3536-g++.tar.gz
+
+2、如果编译包含openvg支持的qt，还需要openvg库
+	解压  amanithvg-sdk-master.zip
+	执行指令：unzip amanithvg-sdk-master.zip
+
+3、配置好hi3536 sdk
+
+注意：需要根据实际的hi3536 SDK目录和 openvg目录修改linux-arm-hisilicon-hi3536-g++/qmake.conf文件中相应的目录地址信息
+
+
+2、编译qt
+2.1没有openvg
+./configure  -prefix qt_5.9.1 -confirm-license -opensource -sysroot /opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/ -pch -qt-libjpeg -qt-libpng -qt-zlib -openvg -opengl es2 -opengles3 -eglfs -linuxfb -nomake tests -nomake examples -skip qtserialbus -skip qtserialport -skip xmlpatterns -gui -widgets -iconv --enable-linuxfb -skip qtwayland -release -shared -static -no-feature-icu -v -static -device linux-arm-hisilicon-hi3536-g++ -device-option CROSS_COMPILE=/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/arm-hisiv400-linux- -recheck-all
+
+2.2有openvg
+./configure  -prefix qt_5.9.1 -confirm-license -opensource -sysroot /opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/ -pch -qt-libjpeg -qt-libpng -qt-zlib -opengl es2 -opengles3 -eglfs -linuxfb -nomake tests -nomake examples -skip qtserialbus -skip qtserialport -skip xmlpatterns -gui -widgets -iconv --enable-linuxfb -skip qtwayland -release -shared -static -no-feature-icu -v -static -device linux-arm-hisilicon-hi3536-g++ -device-option CROSS_COMPILE=/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/arm-hisiv400-linux- -recheck-all

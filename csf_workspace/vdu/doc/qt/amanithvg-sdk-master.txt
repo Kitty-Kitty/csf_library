@@ -1,0 +1,21 @@
+/home/f/Program/cmake-3.11.0-install/bin/cmake
+
+
+
+cmake ../ -DENGINE_SRE=1 -DCMAKE_TOOLCHAIN_FILE=../CMake/toolchain/linux_armv7.cmake  -DCMAKE_C_COMPILER=/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/arm-hisiv400-linux-gcc -DCMAKE_CXX_COMPILER=/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/arm-hisiv400-linux-g++  --no-warn-unused-cli -G "Unix Makefiles"
+
+
+
+cmake ../ -DENGINE_SRE=1 -DCMAKE_TOOLCHAIN_FILE=../CMake/toolchain/linux_armv7_hi3536.cmake  -DCMAKE_C_COMPILER=/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/arm-hisiv400-linux-gcc -DCMAKE_CXX_COMPILER=/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/arm-hisiv400-linux-g++  --no-warn-unused-cli -G "Unix Makefiles"
+
+
+linux_armv7_hi3536.cmake
+
+
+
+
+
+
+
+
+/home/f/Program/cmake-3.11.0-install/bin/cmake ../ -DENGINE_SRE=1 -DCMAKE_TOOLCHAIN_FILE=../CMake/toolchain/linux_armv7_hi3536.cmake  -DCMAKE_C_COMPILER=/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/arm-hisiv400-linux-gcc -DCMAKE_CXX_COMPILER=/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/arm-hisiv400-linux-g++  --no-warn-unused-cli -G "Unix Makefiles"

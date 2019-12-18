@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7D8F6C24-6235-4779-90FD-F71E803EF841}</ProjectGuid>
+    <RootNamespace>ec_device_io</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\props\libec.props" />
+    <Import Project="..\..\..\..\..\csf\platform\win32\props\libcsf.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\src\device_io\ec_device_io;$(ProjectDir)..\..\..\..\include\device_io\ec_device_io;$(ProjectDir)..\..\..\..\src\device_io\ec_device_io\md;$(ProjectDir)..\..\..\..\src\device_io\ec_device_io\hi;$(ProjectDir)..\..\..\..\src\device_io\ec_device_io\av;$(ProjectDir)..\..\..\..\src\device_io\ec_device_io\hi\conf;$(ProjectDir)..\..\..\..\src\device_io\ec_device_io\mp4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_NO_VA_START_VALIDATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\av\csf_hiprocessor.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\ec_device_io.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_aiconf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_aoconf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_common_conf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_conf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hichannel_conf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiconfigure.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hidisk_storage_conf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hisys_conf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_channel_conf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_conf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_storage_conf.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hiadev.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hiai.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hichannel.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hisystem.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hivdev.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hivi.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hiobject.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hiobject_video.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hipool.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hipool_video.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdbuffer.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdframe.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpipe.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdslot.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpool.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdslot_cover.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_h264_nalu.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_minimp4_file.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4muxer_file.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4muxer_recoder.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4recoder.cpp" />
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\mp4muxer.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\av\csf_hiprocessor.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\ec_device_io.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_aiconf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_aoconf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_common_conf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_conf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hichannel_conf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiconfigure.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hidisk_storage_conf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hisys_conf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_channel_conf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_conf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_storage_conf.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hiadev.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hiai.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hichannel.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hichannel_interface.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hichannel_manager.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hisystem.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hivdev.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hivi.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi_include.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hiobject.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hiobject_video.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hipool.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hipool_video.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdbuffer.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdframe.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdmanager_template.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdobject.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdobject_interface.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpipe.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpipe_manager.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdslot.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpool.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpool_interface.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdslot_cover.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_h264_nalu.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_minimp4_file.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4muxer_file.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4muxer_recoder.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4recoder.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4_file.hpp" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\minimp4.h" />
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\mp4muxer.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

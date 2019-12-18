@@ -1,0 +1,14 @@
+%OperationNotes%
+%PI=""%
+%OperationDeclaration%
+%if opPure=="T"%
+%endTemplate%
+
+%if opTag:"overrides" == "default" or opTag:"overrides" == "delete"%
+%endTemplate%
+
+$classParams = %list="ClassParameter" @separator=", "%
+$bodyLoc = %opTag:"bodyLocation"%
+%if opTag:"inline" == "true" or $bodyLoc == "header" or $bodyLoc == "classDec" or $classParams!=""%
+%OperationBody%
+%endIf%

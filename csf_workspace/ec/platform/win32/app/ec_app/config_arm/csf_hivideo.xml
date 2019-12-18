@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--视频相关的配置信息-->
+<hisiv_video_configure>
+  
+  <!--表示存储空间大小配置-->
+  <storage>
+    <!--表示存储文件的目录地址-->
+    <path>/udisk/project</path>
+    <!--表示单文件回滚最大大小，即每个文件的最大大小。注意：该数值要小于stored_max_size,最大为:1GB-->
+    <rotation_size>500MB</rotation_size>
+    <!--表示日志占用磁盘最大大小，stored_max_size/rotation_size表示保存的日志文件数量。注意：该值要大于rotation_size，最大为:1GB-->
+    <stored_max_size>10GB</stored_max_size>
+    <!--表示磁盘空间最小多大的时候才能写日志。注意：该值要大于stored_max_size，最大为:1GB-->
+    <drive_min_free_size>12GB</drive_min_free_size>
+  </storage>
+  
+  <!--表示视频文件配置-->
+  <video>
+    <!--表示视频文件的播放时间长度，单位为（s/m/h/d）-->
+    <duration>5m</duration>
+  </video>
+
+</hisiv_video_configure>

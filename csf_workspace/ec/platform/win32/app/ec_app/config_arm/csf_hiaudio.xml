@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--音频相关的配置信息-->
+<hisiv_audio_configure>
+  <!--表示该模块使用的连接管理器配置-->
+  <hisiv_audio>
+    <!--表示采集设备编号id-->
+    <device_id>2</device_id>
+    <!--表示采集设备通道编号id-->
+    <device_channel>0</device_channel>
+    <!--表示采集设备编码器通道编号id-->
+    <encode_channel>0</encode_channel>
+    <!--表示编码类型名称-->
+    <encode_tpe>aac</encode_tpe>
+    <!--表示音频采样，取值：(8000，12000，11025，16000，22050，24000,32000，44100，48000，64000，96000)-->
+    <sample_rate>16000</sample_rate>
+    <!--音频采样精度，取值：(8，16，24)-->
+    <bit_width>16</bit_width>
+    <!--音频声道模式，取值：(mono，stereo)-->
+    <sound_mode>mono</sound_mode>
+    <!--表示音频音量数值大小-->
+    <volume>50</volume>
+    <!--音频是否重采样，取值：(true，false);true表示需要重采样；false表示不需要重采样；-->
+    <resample>true</resample>
+    <!--表示是否使用音频增强，取值：(true，false);true表示是；false表示否；-->
+    <use_vqe>true</use_vqe>
+
+  </hisiv_audio>
+</hisiv_audio_configure>

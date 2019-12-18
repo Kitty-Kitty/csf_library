@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--***这里主要配置启动时app的相关信息***-->
+<app_configure>
+  <!--***表示当前app的配置***-->
+  <app>
+
+    <!--表示当前app包含的所有设备配置信息-->
+    <device_configure>
+      
+      <!--表示各个设备详细信息列表-->
+      <devices>
+        
+        <!--表示单个设备的配置信息-->
+        <device>
+          <!--***该部分描述模块配置信息，是必须配置的数据内容***-->
+          <module>
+            <!--***表示device对应的模块名称信息，该需要从csf_module.xml中查找device_modules节点内容***-->
+            <name>ec_device</name>
+            <!--***表示该设备模块的唯一标识字符串，该字符串长度应小于等于64字节***-->
+            <mid>02000000-0000002</mid>
+            <!--表示该模块的配置信息，主要由模块的configure接口处理。该模块的配置项内容由模对应的模块确定-->
+            <configure>
+              <!--表示该模块使用的连接管理器配置-->
+              <connect_factory>
+                <!--表示连接管理器的mid-->
+                <mid>02000000-0000001</mid>
+              </connect_factory>
+              <!--表示连接中心的地址-->
+              <center>[10.197.237.26]:9000</center>
+            </configure>
+          </module>
+          <!--表示该设备的子模块配置信息-->
+          <device_io_configure>
+            <!--表示子设备模块信息-->
+            <device_ioes>
+              <device_io>
+                <!--***该部分描述模块配置信息，是必须配置的数据内容***-->
+                <module>
+                  <!--***表示device对应的模块名称信息，该需要从csf_module.xml中查找device_modules节点内容***-->
+                  <name>ec_device_io</name>
+                  <!--***表示该设备模块的唯一标识字符串，该字符串长度应小于等于64字节***-->
+                  <mid>04000000-0000004</mid>
+                  <!--表示该模块的配置信息，主要由模块的configure接口处理。该模块的配置项内容由模对应的模块确定-->
+                  <configure>
+                    
+                  </configure>
+                </module>
+              </device_io>
+            </device_ioes>
+          </device_io_configure>
+        </device>
+
+        <!--表示单个设备的配置信息-->
+        <device>
+          <!--***该部分描述模块配置信息，是必须配置的数据内容***-->
+          <module>
+            <!--***表示device对应的模块名称信息，该需要从csf_module.xml中查找device_modules节点内容***-->
+            <name>csf_directory_monitor</name>
+            <!--***表示该设备模块的唯一标识字符串，该字符串长度应小于等于64字节***-->
+            <mid>02000000-0000003</mid>
+            <!--表示该模块的配置信息，主要由模块的configure接口处理。该模块的配置项内容由模对应的模块确定-->
+            <configure>
+              <!--表示根配置项目名称-->
+              <root_configure_name>csf_directory_monitor</root_configure_name>
+            </configure>
+          </module>
+          <!--表示该设备的子模块配置信息-->
+          <device_io_configure>
+            <!--表示子设备模块信息-->
+            <device_ioes>
+            </device_ioes>
+          </device_io_configure>
+        </device>
+
+      </devices>
+
+    </device_configure>
+    
+  </app>
+</app_configure>

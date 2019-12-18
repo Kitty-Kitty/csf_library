@@ -1,0 +1,140 @@
+
+  227   130 root     S    73280     79.6   0      44.5      ./ec_main_app-debug-1.19-20191214213001
+
+ffmpeg指令：
+	使用ffmpeg从mp4文件中提取视频流到h264文件中：
+	./ffmpeg -i ssss.mp4 -codec copy -bsf: h264_mp4toannexb -f h264 ssss.264
+
+	fffmpeg 提取pcm：
+	./ffmpeg -i ssss.mp4 -codec:a pcm_f32le -ar 44100 -ac 1 -f f32le ssss.pcm
+
+	./ffmpeg -i 123456-12345-19700101211224.mp4 -vn -y -acodec copy 123456-12345-19700101211224_new.aac
+
+nfs服务指令：
+
+	停止firewall：
+	systemctl stop firewalld.service
+
+	启动nfs服务：
+	systemctl start  nfs.service
+	systemctl start rpcbind nfs-server
+
+编译程序 :
+	cmake -DPLATFORM="hisiv500"  -DDEBUG_MODE=OFF ..
+	cmake -DPLATFORM="hisiv500"  -DDEBUG_MODE=ON ..
+
+
+	cmake ../ -DCMAKE_BUILD_TYPE=Debug
+
+启动wifi连接：
+	wpa_supplicant -i wlan0 -c /data/wifi/wifi.cfg  &
+	udhcpc -i wlan0 -f -p /udhcpc.pid  &
+
+挂载目录：
+	mount -t nfs -o nolock 192.168.1.15:/home/f/project  /mnt
+
+	mount -t vfat /dev/mmcblk0p8 /udisk
+
+	cp -rf /mnt/arm/hisiv500/csf_library/csf_workspace/build/ec/release/* /data/test/release/
+
+运行程序：
+
+	export PATH=$PATH:/mnt/arm/hisiv500/packages/gdb-8.3_arm-hisiv500-linux/bin
+
+	cd /mnt/arm/hisiv500/csf_library/csf_workspace/build/ec/debug/ec_app
+
+	./ec_app -f ./config/csf_configs.xml  -t xml
+
+
+	/data/test/release/ec_app/ec_app  -f /data/test/config/csf_configs.xml  -t xml
+
+
+	arm-hisiv500-linux-gdbserver-8.3  192.168.1.9:8080   ./ec_app -f ./config/csf_configs.xml  -t xml
+
+	arm-hisiv500-linux-gdbserver-8.3  192.168.1.9:8080  --attach 6622
+	
+ 	arm-hisiv500-linux-gdbserver-8.3  192.168.1.9:8080  /mnt/arm/hisiv500/packages/ec/ec_main_app/build/ec_main_app-debug-1.19-20191213232024 
+
+	arm-hisiv500-linux-gdb-8.3  ./ec_app
+	
+	target remote 192.168.1.9:8080
+
+
+gdb 使用设置non-stop模式：
+	set target-async 1
+	set pagination off
+	set non-stop on
+
+修改内存方法：
+	1、修改uboot
+		setenv bootargs 'mem=160M console=ttyAMA0,115200 root=/dev/mmcblk0p5 rootfstype=ext4 rootwait  rw blkdevparts=mmcblk0:512K(boot),512K(env),5M(kernelA),5M(kernelB),64M(rootfsA),64M(rootfsB),32M(data),-(udisk)'
+
+		saveenv无效
+		直接运行： mmc read 0x0 0x82000000 0x800 0x2800;bootm 0x82000000
+			
+	2、加载ko： ./load3516cv300_160M -i
+
+修改gdb环境变量：
+	X86 PC端：
+		export PATH=$PATH:/home/f/project/arm/hisiv500/packages/gdb-8.3_arm-hisiv500-linux/bin
+
+	ARM端：
+		export PATH=$PATH:/mnt/arm/hisiv500/packages/gdb-8.3_arm-hisiv500-linux/bin
+
+./configure --target=arm-hisiv500-linux  --prefix=/home/f/project/arm/hisiv500/packages/gdb-8.3_arm-hisiv500-linux
+
+
+./configure --target=arm-hisiv500-linux --host=arm-hisiv500-linux   --prefix=/home/f/project/arm/hisiv500/packages/gdb-8.3_arm-hisiv500-linux
+
+
+./configure --target=arm-hisiv500-linux --host=arm-hisiv500-linux   --prefix=/home/f/project/arm/hisiv500/packages/srs-3.0-a4/trunk/srs-3.0-a4
+
+
+
+bootcmd=mmc read 0x0 0x82000000 0x800 0x2800;bootm 0x82000000
+bootargs=mem=96M console=ttyAMA0,115200 root=/dev/mmcblk0p5 rootfstype=ext4 rootwait  rw blkdevparts=mmcblk0:512K(boot),512K(env),5M(kernelA),5M(kernelB),64M(rootfsA),64M(rootfsB),32M(data),-(udisk)
+
+
+
+setenv bootargs 'mem=256M console=ttyAMA0,115200 root=/dev/mmcblk0p5 rootfstype=ext4 rootwait  rw blkdevparts=mmcblk0:512K(boot),512K(env),5M(kernelA),5M(kernelB),64M(rootfsA),64M(rootfsB),32M(data),-(udisk)'
+
+
+setenv bootargs 'mem=96M console=ttyAMA0,115200 root=/dev/mmcblk0p5 rootfstype=ext4 rootwait  rw blkdevparts=mmcblk0:512K(boot),512K(env),5M(kernelA),5M(kernelB),64M(rootfsA),64M(rootfsB),32M(data),-(udisk)'
+
+setenv bootargs 'mem=160M console=ttyAMA0,115200 root=/dev/mmcblk0p5 rootfstype=ext4 rootwait  rw blkdevparts=mmcblk0:512K(boot),512K(env),5M(kernelA),5M(kernelB),64M(rootfsA),64M(rootfsB),32M(data),-(udisk)'
+
+
+
+####################MMZ config####################################
+
+mem_total=256;              # 256M, total mem
+mem_start=0x80000000;       # phy mem start
+os_mem_size=160;             # 64M, os mem
+mmz_start=0x8A000000;       # mmz start addr
+mmz_size=96M;              # 192M, mmz size
+
+##################################################################
+
+
+check_h264_pictrue_frame
+
+
+ctrl_interface=/var/run/wpa_supplicant
+update_config=1
+autoscan=periodic:3
+bgscan="simple:1:-45:3"
+network={
+ssid="Kitty_Network_Master"
+psk="bestday123456"
+}
+
+
+
+ctrl_interface=/var/run/wpa_supplicant
+update_config=1
+autoscan=periodic:3
+bgscan="simple:1:-45:3"
+network={
+ssid="ChinaNet-zg7K"
+psk="bestday123456"
+}

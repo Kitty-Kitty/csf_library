@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  模块说明：
+    该模块主要功能是实现目录空间大小的监控，通过回滚的方式控制目录中的所有文件大小在确定的范围内。
+    该种功能非常适合视频监控类应用使用，可以很大程序减少视频文件的保存导致磁盘空间被不断占用的问题。
+-->
+<!--表示ip网络连接管理器模块的配置项内容-->
+<csf_directory_monitor>
+  <!--***需要被监视的目录地址***-->
+  <directory>E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\platform\win32\app\ec_app</directory>
+  <!--***被监控的文件扩展名（取值如:mp4、txt、log等）（当空间不足时，最久创建的该种文件将被删除释放空间）***-->
+  <extension>.mp4</extension>
+  <!--***表示单文件回滚大小，每次释放空间时需要释放的空间大小。这也可以理解为最小空间大小。注意：该数值要小于stored_max_size***-->
+  <rotation_size>200MB</rotation_size>
+  <!--***表示目录中所有文件占用磁盘最大大小。注意：该值要大于rotation_size-->
+  <stored_max_size>600MB</stored_max_size>
+  <!--***表示磁盘空间最小多大的时候才能往目录中保存文件。注意：该值要大于stored_max_size-->
+  <disk_min_free_size>1GB</disk_min_free_size>
+  
+  <!--[选配]表示处理目录状态变化的线程数量，数值默认为：1-->
+  <thread_number>1</thread_number>
+  <!--[选配]表示表示需要实时循环监测文件系统的时间间隔，即每次监测的时间间隔。数值默认为：10s-->
+  <rotation_interval>10s</rotation_interval>
+  <!--[选配]表示单个文件更新操作时，需要实时更新状态的间隔时间。数值默认为：10s-->
+  <modify_update_interval>30s</modify_update_interval>
+
+</csf_directory_monitor>

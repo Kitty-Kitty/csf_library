@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--系统日志相关配置文件-->
+<log_configure>
+  <!--表示日志保存的目录位置,如果该值为空则采用默认的系统路径-->
+  <path></path>
+  
+  <!--表示日志文件的名称格式-->
+  <format>%Y%m%dT%H%M%S_%5N.log</format>
+  
+  <!--配置日志大小信息-->
+  <log_size>
+    <!--表示单文件回滚最大大小，即每个文件的最大大小。注意：该数值要小于stored_max_size,最大为:1GB-->
+    <rotation_size>10MB</rotation_size>
+    <!--表示日志占用磁盘最大大小，stored_max_size/rotation_size表示保存的日志文件数量。注意：该值要大于rotation_size，最大为:1GB-->
+    <stored_max_size>800MB</stored_max_size>
+    <!--表示磁盘空间最小多大的时候才能写日志。注意：该值要大于stored_max_size，最大为:1GB-->
+    <drive_min_free_size>1GB</drive_min_free_size>
+  </log_size>
+
+  <!--日志级别：debug/normal/info/notice/warning/error/critical-->
+  <level>debug</level>
+
+</log_configure>

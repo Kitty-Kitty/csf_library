@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modules_configure>
+  <!--设备模块-->
+  <device_modules>
+    <module name="dev_client_background" file= "dev_client_background.dll"/>
+    <module name="dev_player_background" file= "dev_player_background.dll"/>
+    <module name="dev_aero_bus_analyzer" file= "dev_aero_bus_analyzer.dll"/>
+    <module name="ec_device" file= "/mnt/arm/hisiv500/csf_library/csf_workspace/build/ec/release/ec_device/libec_device.so"/>
+  </device_modules>
+
+  <!--设备io模块-->
+  <device_io_modules>
+    <module name="dev_io_client_background" file= "dev_io_client_background.dll"/>
+    <module name="dev_io_player_background" file= "dev_io_player_background.dll"/>
+    <module name="ec_device_io" file= "/mnt/arm/hisiv500/csf_library/csf_workspace/build/ec/release/ec_device_io/libec_device_io.so"/>
+  </device_io_modules>
+
+  <!--数据库模块-->
+  <database_modules>
+    <module name="db_sqlite" file = "db_sqlite.dll"/>
+  </database_modules>
+
+  <!--通信模块-->
+  <connect_modules>
+    <module name="csf_connection" file = "/mnt/arm/hisiv500/csf_library/csf_workspace/build/csf/release/csf_ip_connect_factory/libcsf_ip_connect_factory.so"/>
+    <module name="local_connection" file = "local_socket.dll"/>
+    <module name="socket_connection" file = "conn_socket.dll"/>
+    <module name="socket_connection_media" file = "conn_socket_media.dll"/>
+    <module name="serial_connection" file = "conn_serial.dll"/>
+  </connect_modules>
+
+  <!--业务处理模块-->
+  <process_modules>
+    <module name="single_server_process" file = "process_work_single_server.dll"/>
+    <module name="server_process" file = "process_work_server.dll"/>
+    <module name="monitor_process" file = "process_work_monitor.dll"/>
+  </process_modules>
+</modules_configure>

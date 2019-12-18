@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{a66a7ea3-14ac-4859-a2f6-d7dac6e36231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{b33661ae-10cf-4fc3-b1c2-44f3486733d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\md">
+      <UniqueIdentifier>{7aca87e6-ea5a-45cb-944b-39e914685009}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\md">
+      <UniqueIdentifier>{df7e7482-da5f-4a6f-842c-0e9f167b1627}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\hi">
+      <UniqueIdentifier>{2551f170-de96-4f7c-b784-6be2643d386b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hi">
+      <UniqueIdentifier>{e13951b5-6cb6-4e63-89af-ccf9875f2a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\av">
+      <UniqueIdentifier>{0411f155-3c63-40c4-b4dc-f9af90108ef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\av">
+      <UniqueIdentifier>{a263f105-d3af-47fa-9f90-887080f23638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\hi\conf">
+      <UniqueIdentifier>{ff4f1ae8-9f0a-4ccf-b77e-d5d5280d7919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hi\conf">
+      <UniqueIdentifier>{42112d0c-cfa5-41fc-85d4-817893f3f48b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\mp4">
+      <UniqueIdentifier>{1b81b4c6-5da8-4940-9cd0-984efc70cc2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mp4">
+      <UniqueIdentifier>{ed97e1cc-133e-427b-8ec7-c6a7ce82a832}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\ec_device_io.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hipool.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpool.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdframe.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdbuffer.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hiobject.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdslot.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hiadev.cpp">
+      <Filter>src\hi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hichannel.cpp">
+      <Filter>src\hi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpipe.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\av\csf_hiprocessor.cpp">
+      <Filter>src\av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hiai.cpp">
+      <Filter>src\hi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_conf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_channel_conf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hisys_conf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiconfigure.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_conf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_common_conf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_aoconf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_aiconf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hichannel_conf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hisystem.cpp">
+      <Filter>src\hi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdslot_cover.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hivdev.cpp">
+      <Filter>src\hi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hivi.cpp">
+      <Filter>src\hi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\mp4muxer.c">
+      <Filter>src\mp4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4recoder.cpp">
+      <Filter>src\mp4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4muxer_recoder.cpp">
+      <Filter>src\mp4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hidisk_storage_conf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_storage_conf.cpp">
+      <Filter>src\hi\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_h264_nalu.cpp">
+      <Filter>src\mp4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4muxer_file.cpp">
+      <Filter>src\mp4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hiobject_video.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hipool_video.cpp">
+      <Filter>src\md</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_minimp4_file.cpp">
+      <Filter>src\mp4</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\ec_device_io.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hipool.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdobject.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpool.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpool_interface.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdframe.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdbuffer.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdobject_interface.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hiobject.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdslot.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hiadev.hpp">
+      <Filter>include\hi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hichannel.hpp">
+      <Filter>include\hi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpipe.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdpipe_manager.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdmanager_template.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hichannel_manager.hpp">
+      <Filter>include\hi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\av\csf_hiprocessor.hpp">
+      <Filter>include\av</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hiai.hpp">
+      <Filter>include\hi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_conf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_channel_conf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hisys_conf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiconfigure.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_conf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_common_conf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_aoconf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hiaudio_aiconf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hichannel_interface.hpp">
+      <Filter>include\hi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hichannel_conf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi_include.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hisystem.hpp">
+      <Filter>include\hi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_mdslot_cover.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hivdev.hpp">
+      <Filter>include\hi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\csf_hivi.hpp">
+      <Filter>include\hi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\mp4muxer.h">
+      <Filter>include\mp4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4recoder.hpp">
+      <Filter>include\mp4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4muxer_recoder.hpp">
+      <Filter>include\mp4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hidisk_storage_conf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\hi\conf\hivideo_storage_conf.hpp">
+      <Filter>include\hi\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_h264_nalu.hpp">
+      <Filter>include\mp4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4muxer_file.hpp">
+      <Filter>include\mp4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hiobject_video.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\md\csf_hipool_video.hpp">
+      <Filter>include\md</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_mp4_file.hpp">
+      <Filter>include\mp4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\csf_minimp4_file.hpp">
+      <Filter>include\mp4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\device_io\ec_device_io\mp4\minimp4.h">
+      <Filter>include\mp4</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

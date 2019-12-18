@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modules_configure>
+  <!--设备模块-->
+  <device_modules>
+    <module name="dev_lanchi_video" file= "dev_lanchi_video.dll"/>
+    <module name="dev_lanchi_platecap" file= "dev_lanchi_platecap.dll"/>
+    <module name="dev_parking_sync" file= "dev_parking_sync.dll"/>
+    <module name="dev_parking_audio" file= "dev_parking_audio.dll"/>
+    <module name="dev_parking_serial" file= "dev_parking_serial.dll"/>
+    <module name="dev_access_server" file= "dev_access_server.dll"/>
+    <module name="dev_media_server" file= "dev_media_server.dll"/>
+    <module name="dev_client_background" file= "dev_client_background.dll"/>
+    <module name="dev_player_background" file= "dev_player_background.dll"/>
+    <module name="dev_aero_bus_analyzer" file= "dev_aero_bus_analyzer.dll"/>
+  </device_modules>
+
+  <!--设备io模块-->
+  <device_io_modules>
+    <module name="dev_io_platform" file= "dev_io_platform.dll"/>
+    <module name="dev_io_access_channel" file= "dev_io_access_channel.dll"/>
+    <module name="dev_io_access_channel_ipc" file= "dev_io_access_channel_ip_camera.dll"/>
+    <module name="dev_io_access_channel_media_center" file= "dev_io_access_channel_media_center.dll"/>
+    <module name="dev_io_access_channel_new_orange" file= "dev_io_access_channel_new_orange.dll"/>
+    <module name="dev_io_access_channel_one_click" file= "dev_io_access_channel_one_click.dll"/>
+    <module name="dev_io_access_channel_sip" file= "dev_io_access_channel_sip_28181.dll"/>
+    <module name="dev_io_media_channel" file= "dev_io_media_channel.dll"/>
+    <module name="dev_io_client_background" file= "dev_io_client_background.dll"/>
+    <module name="dev_io_player_background" file= "dev_io_player_background.dll"/>
+    <module name="dev_io_aero_bus_analyzer" file= "dev_io_aero_bus_analyzer.dll"/>
+  </device_io_modules>
+
+  <!--数据库模块-->
+  <database_modules>
+    <module name="db_sqlite" file = "db_sqlite.dll"/>
+  </database_modules>
+
+  <!--通信模块-->
+  <connect_modules>
+    <module name="local_connection" file = "local_socket.dll"/>
+    <module name="socket_connection" file = "conn_socket.dll"/>
+    <module name="socket_connection_media" file = "conn_socket_media.dll"/>
+    <module name="serial_connection" file = "conn_serial.dll"/>
+  </connect_modules>
+
+  <!--业务处理模块-->
+  <process_modules>
+    <module name="single_server_process" file = "process_work_single_server.dll"/>
+    <module name="server_process" file = "process_work_server.dll"/>
+    <module name="monitor_process" file = "process_work_monitor.dll"/>
+  </process_modules>
+</modules_configure>

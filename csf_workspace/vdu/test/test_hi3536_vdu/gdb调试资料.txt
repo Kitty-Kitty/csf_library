@@ -1,0 +1,14 @@
+/mnt/hi3536/gdb-7.10.1/gdbserver-7.10.1/bin/arm-hisiv400-linux-gdbserver 192.168.1.103:8080 ./test_hi3536_vdu
+
+
+
+/opt/Project/hi3536/gdb-7.10.1/gdb-7.10.1/bin/arm-linux-gdb ./test_hi3536_vdu
+
+
+
+
+
+
+
+
+
