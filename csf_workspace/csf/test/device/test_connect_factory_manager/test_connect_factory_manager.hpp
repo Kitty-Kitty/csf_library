@@ -28,10 +28,10 @@ namespace csf
 {
 	namespace example
 	{
-#define		csf_test_version				1000000
-#define		CSF_TEST_VERSION				"v1.0.0"
-#define		CSF_TEST_VAR					"test_connect_factory"
-#define		CSF_TEST_VER					CSF_TEST_VAR "/" CSF_TEST_VERSION
+		#define		csf_test_version				1000000
+		#define		CSF_TEST_VERSION				"V1.0.0"
+		#define		CSF_TEST_VAR					"test_connect_factory_manager"
+		#define		CSF_TEST_VER					CSF_TEST_VAR "/" CSF_TEST_VERSION
 
 		/**
 		 * 主要功能用于测试connect factory manager 中的自动配置功能

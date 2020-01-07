@@ -139,6 +139,12 @@
     <Filter Include="src\core\service">
       <UniqueIdentifier>{3d0f522f-9ef5-46f7-9f05-91238523c586}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core\system\platform">
+      <UniqueIdentifier>{e242b1c0-d254-4cc7-b7ea-c652e051392b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core\system\platform">
+      <UniqueIdentifier>{9256eae0-e5ce-4869-9669-5eaf92082db1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\core\base\csf_buffer.hpp">
@@ -606,6 +612,36 @@
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_filter_manager.hpp">
       <Filter>include\core\module\device\connect</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\utils\csf_uuid.hpp">
+      <Filter>include\core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\utils\getopt.h">
+      <Filter>include\core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\utils\csf_app_option.hpp">
+      <Filter>include\core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\utils\time\sleep_time.hpp">
+      <Filter>include\core\utils\time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\platform\csf_network.hpp">
+      <Filter>include\core\system\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\platform\csf_network_interface.hpp">
+      <Filter>include\core\system\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\platform\csf_platform.hpp">
+      <Filter>include\core\system\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\platform\csf_system_interface.hpp">
+      <Filter>include\core\system\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\platform\csf_windows_network.hpp">
+      <Filter>include\core\system\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\system\platform\csf_windows_platform.hpp">
+      <Filter>include\core\system\platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -874,6 +910,30 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_filter_manager.cpp">
       <Filter>src\core\module\device\connect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\utils\csf_uuid.cpp">
+      <Filter>src\core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\utils\getopt.c">
+      <Filter>src\core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\utils\csf_app_option.cpp">
+      <Filter>src\core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\utils\time\sleep_time.cpp">
+      <Filter>src\core\utils\time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\platform\csf_network.cpp">
+      <Filter>src\core\system\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\platform\csf_platform.cpp">
+      <Filter>src\core\system\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\platform\csf_windows_network.cpp">
+      <Filter>src\core\system\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\system\platform\csf_windows_platform.cpp">
+      <Filter>src\core\system\platform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

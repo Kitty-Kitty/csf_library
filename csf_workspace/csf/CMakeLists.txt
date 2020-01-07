@@ -40,7 +40,8 @@ IF( CSF_PROJECT_LIBRARY_VERSION )
 ENDIF()
 
 #set system support platform
-SET(CSF_PLATFORM_LIST "x86" "hisiv100" "hisiv300" "hisiv400" "cpptestscan")
+SET(CSF_HISIV_PLATFORM_LIST "hisiv100" "hisiv300" "hisiv400" "hisiv500")
+SET(CSF_PLATFORM_LIST "x86" "cpptestscan" "hisiv100nptl" ${CSF_HISIV_PLATFORM_LIST})
 
 
 #select a mode
@@ -52,7 +53,7 @@ IF(DEBUG_MODE)        #cmake -D DEBUG_MODE=ON ../
     SET(CSF_OUTPUT_LIBRARY_DIR ${CSF_PROJECT_OUTPUT_TOP_DIR}/${CSF_LIBRARY_NAME})
     SET(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} ${CMAKE_C_FLAGS_DEBUG} -ggdb3  -pthread -Wl,--no-as-needed -ldl -lrt")
     SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -ggdb3 -std=c++11 -pthread -Wl,--no-as-needed -ldl -lrt")
-    MESSAGE(STATUS "use the [debug] mode! output_path:" ${CSF_PROJECT_OUTPUT_TOP_DIR})
+    MESSAGE(STATUS "use the [ debug ] mode! output_path[ ${CSF_PROJECT_OUTPUT_TOP_DIR} ]")
 ELSE()
     SET(CMAKE_BUILD_TYPE "Release")
     #set csf output release directory
@@ -61,24 +62,24 @@ ELSE()
     SET(CSF_OUTPUT_LIBRARY_DIR ${CSF_PROJECT_OUTPUT_TOP_DIR}/${CSF_LIBRARY_NAME})
     SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} ${CMAKE_C_FLAGS_RELEASE}  -Wl,--no-as-needed -pipe -lpthread_nonshared -ldl -lrt")
 	SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -std=c++11 -Wl,--no-as-needed -pipe -pthread -ldl -lrt")
-    MESSAGE(STATUS "use the [release] mode! output_path:" ${CSF_PROJECT_OUTPUT_TOP_DIR})
+    MESSAGE(STATUS "use the [ release ] mode! output_path[ ${CSF_PROJECT_OUTPUT_TOP_DIR} ]")
 ENDIF()
 
 
 IF(NOT DEFINED PLATFORM)
     SET(CSF_PLATFORM "x86")
-	MESSAGE(WARNING "set platform warning. parameter[PLATFORM] not defined. used default [PLATFORM = x86]")
-	MESSAGE(STATUS "[ctrl + c] to stop; usage: [cmake -DPLATFORM=${CSF_PLATFORM} ../] ; wait [5] seconds for you ...")
+	MESSAGE(WARNING "set platform warning. parameter[ PLATFORM ] not defined. used default [ PLATFORM = x86 ]")
+	MESSAGE(STATUS "[ ctrl + c ] to stop; usage: [ cmake -DPLATFORM=${CSF_PLATFORM} ../ ] ; wait [ 5 ] seconds for you ...")
 	#CTEST_SLEEP(5)
 ELSE()
     SET(CSF_PLATFORM ${PLATFORM})
-	MESSAGE(STATUS "set parameter[PLATFORM = ${PLATFORM}] ")
+	MESSAGE(STATUS "set parameter[ PLATFORM = ${PLATFORM} ] ")
 ENDIF()
 
 #LIST(FIND CSF_PLATFORM_LIST CSF_PLATFORM FIND_LIST_RETURN)
 #IF(${FIND_LIST_RETURN} EQUAL -1)
-	#MESSAGE(STATUS "usage: [cmake CSF_PLATFORM=x86 ../] " "  ${FIND_LIST_RETURN}")
-	#MESSAGE(FATAL_ERROR "system usupport[CSF_PLATFORM = ${CSF_PLATFORM}]. support system list[${CSF_PLATFORM_LIST}]")
+	#MESSAGE(STATUS "usage: [ cmake CSF_PLATFORM=x86 ../ ] " "  ${FIND_LIST_RETURN}")
+	#MESSAGE(FATAL_ERROR "system usupport[ CSF_PLATFORM = ${CSF_PLATFORM} ]. support system list[ ${CSF_PLATFORM_LIST} ]")
 #ENDIF()
 
 
@@ -106,8 +107,35 @@ IF(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
 ENDIF(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
 
 
-#set hisiv100 platform
-IF(CSF_PLATFORM STREQUAL "hisiv100")
+#处理海思平台相关的配置信息
+#process hisiv platform
+MESSAGE(STATUS "system support [ hisiv ] platform list[ ${CSF_HISIV_PLATFORM_LIST} ].")
+LIST(FIND CSF_HISIV_PLATFORM_LIST ${CSF_PLATFORM} FIND_FLATFORM_RETURN)
+IF(NOT FIND_FLATFORM_RETURN EQUAL -1)
+  MESSAGE(STATUS "[ hisiv ] platform [ ${CSF_PLATFORM} ] supported.")
+
+  SET(CMAKE_ASM_NASM_COMPILER "as")
+  SET(CMAKE_C_COMPILER "arm-${CSF_PLATFORM}-linux-gcc")
+  SET(CMAKE_CXX_COMPILER "arm-${CSF_PLATFORM}-linux-g++")
+  SET(CMAKE_CXX_COMPILER_FULLPATH "/opt/hisi-linux/x86-arm/arm-${CSF_PLATFORM}-linux/target/bin/")
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-write-strings -Wl,-Bsymbolic")
+  
+  SET(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} ${CMAKE_C_FLAGS_DEBUG} -ggdb3 -lpthread -lrt")
+  SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} ${CMAKE_C_FLAGS_RELEASE} -pipe -lpthread -lrt")
+  
+  SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -ggdb3 -lpthread -lrt")
+  SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -pipe -lpthread -lrt")
+  
+  SET(SYSTEM_USR_INCLUDE_DIR /opt/hisi-linux/x86-arm/arm-${CSF_PLATFORM}-linux/target/usr/include)
+  SET(SYSTEM_USR_LIBRARY_DIR /opt/hisi-linux/x86-arm/arm-${CSF_PLATFORM}-linux/target/usr/lib/)
+	
+  SET(CSF_THIRD_PARTY_PLATFORM_NAME "arm-${CSF_PLATFORM}")
+ELSE()
+  MESSAGE(WARNING "CSF_PLATFORM [ ${CSF_PLATFORM} ] not in [ hisiv ] platform supported list.")
+ENDIF()
+
+#set hisiv100nptl platform
+IF(CSF_PLATFORM STREQUAL "hisiv100nptl")
   SET(CMAKE_ASM_NASM_COMPILER "as")
   SET(CMAKE_C_COMPILER "arm-hisiv100nptl-linux-gcc")
   SET(CMAKE_CXX_COMPILER "arm-hisiv100nptl-linux-g++")
@@ -129,53 +157,78 @@ IF(CSF_PLATFORM STREQUAL "hisiv100")
   
 ENDIF()
 
-
-#set hisiv300 platform
-IF(CSF_PLATFORM STREQUAL "hisiv300")
-  SET(CMAKE_ASM_NASM_COMPILER "as")
-  SET(CMAKE_C_COMPILER "arm-hisiv300-linux-gcc")
-  SET(CMAKE_CXX_COMPILER "arm-hisiv300-linux-g++")
-  SET(CMAKE_CXX_COMPILER_FULLPATH "/opt/hisi-linux/x86-arm/arm-hisiv300-linux/target/bin/")
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-write-strings -Wl,-Bsymbolic")
-  
-  SET(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} ${CMAKE_C_FLAGS_DEBUG} -ggdb3 -lpthread -lrt -Wl,--no-as-needed -ldl")
-  SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} ${CMAKE_C_FLAGS_RELEASE} -pipe -lpthread -lrt -Wl,--no-as-needed -ldl")
-  
-  SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -ggdb3 -lpthread -Wl,--no-as-needed -ldl -lrt")
-  SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -pipe -lpthread -Wl,--no-as-needed -ldl -lrt")
-  
-  SET(SYSTEM_USR_INCLUDE_DIR /opt/hisi-linux/x86-arm/arm-hisiv300-linux/target/usr/include)
-  SET(SYSTEM_USR_LIBRARY_DIR /opt/hisi-linux/x86-arm/arm-hisiv300-linux/target/usr/lib/)
-	
-  SET(CSF_THIRD_PARTY_PLATFORM_NAME "arm-hisiv300")
-    
-  ADD_DEFINITIONS(-DPLATEFORM_HISIV)
-
-ENDIF()
-
-
-#set hisiv400 platform
-IF(CSF_PLATFORM STREQUAL "hisiv400")
-  SET(CMAKE_ASM_NASM_COMPILER "as")
-  SET(CMAKE_C_COMPILER "arm-hisiv400-linux-gcc")
-  SET(CMAKE_CXX_COMPILER "arm-hisiv400-linux-g++")
-  SET(CMAKE_CXX_COMPILER_FULLPATH "/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/")
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-write-strings -Wl,-Bsymbolic")
-  
-  SET(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} ${CMAKE_C_FLAGS_DEBUG} -ggdb3 -lpthread -lrt")
-  SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} ${CMAKE_C_FLAGS_RELEASE} -pipe -lpthread -lrt")
-  
-  SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -ggdb3 -lpthread -lrt")
-  SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -pipe -lpthread -lrt")
-  
-  SET(SYSTEM_USR_INCLUDE_DIR /opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/usr/include)
-  SET(SYSTEM_USR_LIBRARY_DIR /opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/usr/lib/)
-	
-  SET(CSF_THIRD_PARTY_PLATFORM_NAME "arm-hisiv400")
-    
-  ADD_DEFINITIONS(-DPLATEFORM_HISIV)
-  
-ENDIF()
+#
+##set hisiv300 platform
+#IF(CSF_PLATFORM STREQUAL "hisiv300")
+#  SET(CMAKE_ASM_NASM_COMPILER "as")
+#  SET(CMAKE_C_COMPILER "arm-hisiv300-linux-gcc")
+#  SET(CMAKE_CXX_COMPILER "arm-hisiv300-linux-g++")
+#  SET(CMAKE_CXX_COMPILER_FULLPATH "/opt/hisi-linux/x86-arm/arm-hisiv300-linux/target/bin/")
+#  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-write-strings -Wl,-Bsymbolic")
+#  
+#  SET(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} ${CMAKE_C_FLAGS_DEBUG} -ggdb3 -lpthread -lrt -Wl,--no-as-needed -ldl")
+#  SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} ${CMAKE_C_FLAGS_RELEASE} -pipe -lpthread -lrt -Wl,--no-as-needed -ldl")
+#  
+#  SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -ggdb3 -lpthread -Wl,--no-as-needed -ldl -lrt")
+#  SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -pipe -lpthread -Wl,--no-as-needed -ldl -lrt")
+#  
+#  SET(SYSTEM_USR_INCLUDE_DIR /opt/hisi-linux/x86-arm/arm-hisiv300-linux/target/usr/include)
+#  SET(SYSTEM_USR_LIBRARY_DIR /opt/hisi-linux/x86-arm/arm-hisiv300-linux/target/usr/lib/)
+#	
+#  SET(CSF_THIRD_PARTY_PLATFORM_NAME "arm-hisiv300")
+#    
+#  ADD_DEFINITIONS(-DPLATEFORM_HISIV)
+#
+#ENDIF()
+#
+#
+##set hisiv400 platform
+#IF(CSF_PLATFORM STREQUAL "hisiv400")
+#  SET(CMAKE_ASM_NASM_COMPILER "as")
+#  SET(CMAKE_C_COMPILER "arm-hisiv400-linux-gcc")
+#  SET(CMAKE_CXX_COMPILER "arm-hisiv400-linux-g++")
+#  SET(CMAKE_CXX_COMPILER_FULLPATH "/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin/")
+#  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-write-strings -Wl,-Bsymbolic")
+#  
+#  SET(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} ${CMAKE_C_FLAGS_DEBUG} -ggdb3 -lpthread -lrt")
+#  SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} ${CMAKE_C_FLAGS_RELEASE} -pipe -lpthread -lrt")
+#  
+#  SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -ggdb3 -lpthread -lrt")
+#  SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -pipe -lpthread -lrt")
+#  
+#  SET(SYSTEM_USR_INCLUDE_DIR /opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/usr/include)
+#  SET(SYSTEM_USR_LIBRARY_DIR /opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/usr/lib/)
+#	
+#  SET(CSF_THIRD_PARTY_PLATFORM_NAME "arm-hisiv400")
+#    
+#  ADD_DEFINITIONS(-DPLATEFORM_HISIV)
+#  
+#ENDIF()
+#
+#
+##set hisiv500 platform
+#IF(CSF_PLATFORM STREQUAL "hisiv500")
+#  SET(CMAKE_ASM_NASM_COMPILER "as")
+#  SET(CMAKE_C_COMPILER "arm-hisiv500-linux-gcc")
+#  SET(CMAKE_CXX_COMPILER "arm-hisiv500-linux-g++")
+#  SET(CMAKE_CXX_COMPILER_FULLPATH "/opt/hisi-linux/x86-arm/arm-hisiv500-linux/target/bin/")
+#  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-write-strings -Wl,-Bsymbolic")
+#  
+#  SET(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} ${CMAKE_C_FLAGS_DEBUG} -ggdb3 -lpthread -lrt")
+#  SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} ${CMAKE_C_FLAGS_RELEASE} -pipe -lpthread -lrt")
+#  
+#  SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -ggdb3 -lpthread -lrt")
+#  SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -pipe -lpthread -lrt")
+#  
+#  SET(SYSTEM_USR_INCLUDE_DIR /opt/hisi-linux/x86-arm/arm-hisiv500-linux/target/usr/include)
+#  SET(SYSTEM_USR_LIBRARY_DIR /opt/hisi-linux/x86-arm/arm-hisiv500-linux/target/usr/lib/)
+#	
+#  SET(CSF_THIRD_PARTY_PLATFORM_NAME "arm-hisiv500")
+#    
+#  ADD_DEFINITIONS(-DPLATEFORM_HISIV)
+#  
+#ENDIF()
+#
 
 
 #set cpptestscan platform
@@ -199,8 +252,8 @@ EXECUTE_PROCESS(
 	)
 ADD_DEFINITIONS(-DCSF_GCC_COMPILE_VERSION="${CSF_GCC_COMPILE_VERSION_STRING}")
 
-MESSAGE(STATUS "system platform[${CSF_PLATFORM}] used CMAKE_CXX_COMPILER[${CSF_GCC_COMPILE_VERSION_STRING}].")
-MESSAGE(STATUS "system platform[${CSF_PLATFORM}] used third library [${CSF_THIRD_PARTY_PLATFORM_NAME}].")
+MESSAGE(STATUS "system platform[ ${CSF_PLATFORM} ] used CMAKE_CXX_COMPILER[ ${CSF_GCC_COMPILE_VERSION_STRING} ].")
+MESSAGE(STATUS "system platform[ ${CSF_PLATFORM} ] used third library [ ${CSF_THIRD_PARTY_PLATFORM_NAME} ].")
 
 #define macro for get sub directories
 MACRO(SUB_DIRECTORY_LIST dest_paramete src_directory)
@@ -235,6 +288,7 @@ SET(CSF_SRC_DIR ${CSF_PROJECT_SOURCE_DIR}/src)
 
 #set third-party directory
 SET(CSF_THIRD_PARTY_DIR ${CSF_PROJECT_SOURCE_DIR}/third-party)
+SET(CSF_THIRD_PARTY_ROOT_DIR "")
 
 #set tests directory
 SET(CSF_TESTS_DIR ${CSF_PROJECT_SOURCE_DIR}/test)
@@ -249,8 +303,8 @@ ADD_SUBDIRECTORY(${CSF_INCLUDE_DIR})
 ADD_SUBDIRECTORY(${CSF_THIRD_PARTY_DIR})
 
 
-#MESSAGE(STATUS "add include CSF_INCLUDE_DIR:[${CSF_INCLUDE_DIR}]")
-#MESSAGE(STATUS "add include CSF_INCLUDE_DIRECTORIES:[${CSF_INCLUDE_DIRECTORIES}]")
+#MESSAGE(STATUS "add include CSF_INCLUDE_DIR:[ ${CSF_INCLUDE_DIR} ]")
+#MESSAGE(STATUS "add include CSF_INCLUDE_DIRECTORIES:[ ${CSF_INCLUDE_DIRECTORIES} ]")
 
 
 #add include direntories
@@ -275,6 +329,7 @@ LINK_DIRECTORIES(
     )
 
 SET(ENV{LIBRARY_PATH} $ENV{LIBRARY_PATH} ${CSF_PROJECT_OUTPUT_TOP_DIR} ${CSF_LIBRARY_DIR})
+#MESSAGE(STATUS "include directories: "${CSF_INCLUDE_DIR})
 #MESSAGE(STATUS "library directories: "${CSF_LIBRARY_DIR})
 
 
@@ -293,7 +348,7 @@ IF(CSF_GLOBAL_PROJECT_NAME)
 
 	#set include directories
 	SET(CSF_GLOBAL_INCLUDE_DIRECTORIES
-		{CSF_INCLUDE_DIR}
+		${CSF_INCLUDE_DIR}
 		${CSF_INCLUDE_DIRECTORIES}
 		PARENT_SCOPE)
 
@@ -304,6 +359,7 @@ IF(CSF_GLOBAL_PROJECT_NAME)
 		PARENT_SCOPE)
 ENDIF(CSF_GLOBAL_PROJECT_NAME)
 
+#MESSAGE(STATUS "library third-party: "${CSF_THIRD_PARTY_ROOT_DIR})
 
 #add all subdirectory
 ADD_SUBDIRECTORY(${CSF_SRC_DIR})
