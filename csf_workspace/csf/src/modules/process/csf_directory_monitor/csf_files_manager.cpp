@@ -133,8 +133,7 @@ csf_bool csf_files_manager::set_space(csf_uint64 rotation_size
 	, csf_uint64 stored_max_size
 	, csf_uint64 disk_min_free_size) {
 
-	if (rotation_size >= stored_max_size
-		|| stored_max_size >= disk_min_free_size) {
+	if (rotation_size >= stored_max_size) {
 		return csf_false;
 	}
 
@@ -711,6 +710,26 @@ csf_bool csf_files_manager::refresh_modify_map() {
 
 /**
 * 功能：
+*    校验目录存储空间的合法性
+* 返回：
+*    true  ：  表示合法；
+*    false ：  表示不合法；
+*/
+csf_bool csf_files_manager::is_stored_size_valid() {
+	if (get_stored_size() > get_stored_max_size()) {
+		csf_log(error
+			, "disk stored size[%s] more than disk stored max size[%s]."
+			, csf_attribute_space_size::format_string(get_stored_size()).c_str()
+			, csf_attribute_space_size::format_string(get_stored_max_size()).c_str()
+		);
+		return csf_false;
+	}
+	return csf_true;
+}
+
+
+/**
+* 功能：
 *    校验磁盘存储空间的合法性
 * 返回：
 *    true  ：  表示合法；
@@ -741,6 +760,11 @@ csf_bool csf_files_manager::is_disk_size_valid() {
 		//
 		//如果存储空间不足，则返回非法
 		if (get_disk_min_free_size() >= tmp_space_info.available) {
+			csf_log(error
+				, "disk space available[%s] less than disk_min_free_size[%s]."
+				, csf_attribute_space_size::format_string(tmp_space_info.available).c_str()
+				, csf_attribute_space_size::format_string(get_disk_min_free_size()).c_str()
+			);
 			return csf_false;
 		}
 	}

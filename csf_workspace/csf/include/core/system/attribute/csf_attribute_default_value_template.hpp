@@ -42,7 +42,7 @@ namespace csf
 
 				public:
 					csf_attribute_default_value_template(ValueType value) 
-						: csf_attribute_exception([&value](csf_attribute& attr) {attr.set_va})
+						: csf_attribute_exception([&value](csf_attribute& attr) {})
 						, m_value(value) {
 
 					}

@@ -256,7 +256,7 @@ namespace csf
 				*
 				* @param new_value
 				*/
-				inline void set_send_endpoint(boost::asio::ip::udp::endpoint& new_value) {
+				inline void set_send_endpoint(boost::asio::ip::udp::endpoint new_value) {
 
 					m_send_endpoint = new_value;
 				}
@@ -268,7 +268,7 @@ namespace csf
 				*
 				* @param url    表示当前的ip url地址信息
 				*/
-				boost::asio::ip::udp::endpoint csf_udp_connect::listen_endpoint(csf::modules::connect::csf_ip_url& url);
+				boost::asio::ip::udp::endpoint listen_endpoint(csf::modules::connect::csf_ip_url& url);
 				/**
 				* 主要功能是：
 				*    在socket打开之后设置选项

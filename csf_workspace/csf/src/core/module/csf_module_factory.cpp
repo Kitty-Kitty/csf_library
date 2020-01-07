@@ -21,6 +21,9 @@
 #include <windows.h>
 #elif defined(__linux__)
 #include <dlfcn.h>
+#ifndef RTLD_DEEPBIND
+#define RTLD_DEEPBIND    0x00008 /* Use deep binding.  */
+#endif
 #else
 #endif
 

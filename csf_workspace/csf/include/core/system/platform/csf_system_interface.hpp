@@ -2,23 +2,24 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: csf_system_interface.hpp
-*
 *Author: f
+*
+*File name: csf_system_interface.hpp
 *
 *Version: 1.0
 *
-*Date: 27-6��-2018 17:28:50
+*Date: 07-1月-2020 13:49:55
 *
-*Description: Interface(csf_system_interface)
+*Description: Interface(csf_system_interface) 表示系统的操作接口
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_SYSTEM_INTERFACE_INCLUDED_)
-#define CSF_SYSTEM_INTERFACE_INCLUDED_
+#if !defined(CSF_SYSTEM_INTERFACE_H_INCLUDED_)
+#define CSF_SYSTEM_INTERFACE_H_INCLUDED_
 
 namespace csf
 {
@@ -29,10 +30,10 @@ namespace csf
 			namespace platform
 			{
 				/**
-				 * ��ʾϵͳ�Ĳ����ӿ�
+				 * 表示系统的操作接口
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6��-2018 17:28:50
+				 * @created 07-1月-2020 13:49:56
 				 */
 				class csf_system_interface
 				{
@@ -55,4 +56,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_SYSTEM_INTERFACE_INCLUDED_)
+#endif // !defined(CSF_SYSTEM_INTERFACE_H_INCLUDED_)

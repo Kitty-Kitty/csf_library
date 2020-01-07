@@ -92,12 +92,12 @@ namespace csf
 								continue;
 							}
 							
-							if (++tmp_thread_number == get_thread_number()) {
+							if (++tmp_thread_number >= get_thread_number()) {
 								break;
 							}
 						}
 
-						return csf_true;
+						return csf_succeed;
 					}
 					/**
 					* 主要功能是：启动线程池，同时指定线程数量
@@ -126,7 +126,7 @@ namespace csf
 						get_group().join_all();
 						get_group().clear();
 
-						return 0;
+						return csf_succeed;
 					}
 					/**
 					* 主要功能是：表示在指定的时间内，停止线程池
@@ -137,12 +137,12 @@ namespace csf
 					inline csf_int32 stop(const csf_uint64 timeout_ms) {
 
 						if (timeout_ms <= 0) {
-							return -1;
+							return csf_failure;
 						}
 
 						get_group().timed_join_all(timeout_ms);
 
-						return 0;
+						return csf_succeed;
 					}
 					/**
 					* 表示线程池的线程数量，默认为2

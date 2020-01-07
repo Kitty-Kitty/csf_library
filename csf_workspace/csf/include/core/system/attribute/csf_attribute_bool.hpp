@@ -45,52 +45,59 @@ namespace csf
 
 					/**
 					 * 根据名称和类型创建一个对象
-					 * 
+					 *
 					 * @param name    表示属性的名称
 					 */
-					inline explicit csf_attribute_bool(const csf_string& name) 
-						: csf_attribute_template<csf_bool>(name, csf_attribute::csf_attribute_type_bool, csf_false) {
+					inline explicit csf_attribute_bool(const csf_string& name
+						, const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
+						: csf_attribute_template<csf_bool>(name, csf_attribute::csf_attribute_type_bool, csf_false, ex) {
 
 					}
 					/**
 					 * 根据名称和类型创建一个对象
-					 * 
+					 *
 					 * @param name    表示属性的名称
 					 */
-					inline explicit csf_attribute_bool(const csf_char* name)
-						: csf_attribute_template<csf_bool>(name, csf_attribute::csf_attribute_type_bool, csf_false) {
+					inline explicit csf_attribute_bool(const csf_char* name
+						, const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
+						: csf_attribute_template<csf_bool>(name, csf_attribute::csf_attribute_type_bool, csf_false, ex) {
 
 					}
 					/**
 					 * 根据名称、属性路径、类型创建一个对象
-					 * 
+					 *
 					 * @param name    表示属性的名称
 					 * @param items    表示该属性所对应的配置文件节点位置
-					 * 
+					 *
 					 */
-					inline explicit csf_attribute_bool(const csf_string& name, const csf_list<csf_string> items)
-						: csf_attribute_template<csf_bool>(name, items, csf_attribute::csf_attribute_type_bool, csf_false) {
+					inline explicit csf_attribute_bool(const csf_string& name
+						, const csf_list<csf_string> items
+						, const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
+						: csf_attribute_template<csf_bool>(name, items, csf_attribute::csf_attribute_type_bool, csf_false, ex) {
 
 					}
 					/**
 					 * 根据名称、属性路径、类型创建一个对象
-					 * 
+					 *
 					 * @param name    表示属性的名称
 					 * @param items    表示该属性所对应的配置文件节点位置
-					 * 
+					 *
 					 */
-					inline explicit csf_attribute_bool(const csf_char* name, const csf_list<csf_string> items)
-						: csf_attribute_template<csf_bool>(name, items, csf_attribute::csf_attribute_type_bool, csf_false) {
+					inline explicit csf_attribute_bool(const csf_char* name
+						, const csf_list<csf_string> items
+						, const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
+						: csf_attribute_template<csf_bool>(name, items, csf_attribute::csf_attribute_type_bool, csf_false, ex) {
 
 					}
 					/**
 					 * 根据名称、属性路径、类型创建一个对象
-					 * 
+					 *
 					 * @param items    表示该属性所对应的配置文件节点位置
-					 * 
+					 *
 					 */
-					inline explicit csf_attribute_bool(const csf_list<csf_string> items)
-						: csf_attribute_template<csf_bool>(items, csf_attribute::csf_attribute_type_bool, csf_false) {
+					inline explicit csf_attribute_bool(const csf_list<csf_string> items
+						, const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
+						: csf_attribute_template<csf_bool>(items, csf_attribute::csf_attribute_type_bool, csf_false, ex) {
 
 					}
 					/**
@@ -111,7 +118,12 @@ namespace csf
 					*/
 					inline csf_string value_to_string() {
 
-						return m_value_string[get_value()];
+						if (get_value()) {
+							return get_true_string();
+						}
+						else {
+							return get_false_string();
+						}
 					}
 				protected:
 					/**
@@ -122,9 +134,7 @@ namespace csf
 					* @param configure_manager    表示保存配置管理器对象
 					* @param alias    表示当前属性别名，如果属性名称为空则则使用该别名。
 					*/
-					inline virtual csf_bool process_attribute(const csf_configure_manager& configure_manager, const csf_string& alias) final {
-						return csf_true;
-					}
+					virtual csf_bool process_attribute(const csf_configure_manager& configure_manager, const csf_string& alias);
 					/**
 					* 表示处理csf_attribute属性操作。这里与csf_attribute中不同的是，这里添加一层process_attribute函数主要是为了实现异常（e
 					* xception）的统一处理。当异常出现时，直接根据返回错误，调用异常处理函数。
@@ -138,9 +148,27 @@ namespace csf
 					}
 				private:
 					/**
-					* 表示布尔类型数据的字符串数值
+					* 表示布尔为假类型数据的字符串数值
 					*/
-					static const csf_string m_value_string[];
+					inline csf_string get_false_string() {
+						return m_false_string;
+					}
+					/**
+					* 表示布尔为真类型数据的字符串数值
+					*/
+					inline csf_string get_true_string() {
+						return m_true_string;
+					}
+				private:
+					/**
+					* 表示布尔为真类型数据的字符串数值
+					*/
+					static const csf_string m_true_string;
+					/**
+					* 表示布尔为假类型数据的字符串数值
+					*/
+					static const csf_string m_false_string;
+
 				};
 
 			}

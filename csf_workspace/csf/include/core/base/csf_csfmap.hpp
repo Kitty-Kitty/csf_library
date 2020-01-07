@@ -40,7 +40,6 @@ namespace csf
 			 */
 			template <class Tkey, class Tvalue>
 			class csf_csfmap : public csf::core::base::csf_collector
-				, public csf::core::base::csf_csftype_template<Tvalue>
 			{
 				typedef	typename csf_map<Tkey, Tvalue>::iterator		_map_iterator;
 				typedef	typename csf_map<Tkey, Tvalue>::value_type		_map_value_type;
@@ -100,41 +99,36 @@ namespace csf
 				*
 				* @param key    表示map的key
 				*/
-				Tvalue get(Tkey key) {
+				csf_bool get(Tvalue &value, Tkey key) {
 
-					Tvalue					tmp_value;
+					csf_bool				tmp_ret = csf_false;
 
-					tmp_value = find(key);
-					if (tmp_value == csf_csftype_template<Tvalue>::get_null()) {
-						return tmp_value;
-					}
-					else {
+					tmp_ret = find(value, key);
+					if (csf_true == tmp_ret) {
 						erase(key);
+						return tmp_ret;
 					}
-
-					return tmp_value;
+					return tmp_ret;
 				}
 				/**
 				* 表示查询一个数据对象
 				*
 				* @param key    表示map的key
 				*/
-				Tvalue find(Tkey key) {
+				csf_bool find(Tvalue &value, Tkey key) {
 
 					_map_iterator			tmp_iter;
-					Tvalue					tmp_value;
+					csf_bool				tmp_ret = csf_false;
 
 					csf_shared_lock<decltype(m_mutex)> tmp_lock(m_mutex);
 
 					tmp_iter = m_map.find(key);
 					if (tmp_iter != m_map.end()) {
-						tmp_value = tmp_iter->second;
-					}
-					else {
-						tmp_value = csf_csftype_template<Tvalue>::get_null();
+						value = tmp_iter->second;
+						return csf_true;
 					}
 
-					return tmp_value;
+					return csf_false;
 				}
 				/**
 				* 表示查询一个数据对象是否存在，存在返回true，不存在返回false

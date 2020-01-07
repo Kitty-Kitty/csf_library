@@ -207,7 +207,7 @@ namespace csf
 				*
 				* @param connect_ptr    表示连接对象
 				*/
-				inline virtual csf::core::base::csf_int32 insert(csf_connect_ptr& connect_ptr) {
+				inline virtual csf::core::base::csf_int32 insert(csf_connect_ptr connect_ptr) {
 
 					if (!connect_ptr) {
 						return csf_failure;

@@ -20,6 +20,8 @@
 #if !defined(CSF_CSFSTRING_INCLUDED_)
 #define CSF_CSFSTRING_INCLUDED_
 
+#include <stdio.h>
+#include <stdarg.h>
 #include "csf_memblock.hpp"
 
 namespace csf

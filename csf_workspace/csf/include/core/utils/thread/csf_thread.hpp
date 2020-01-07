@@ -72,7 +72,7 @@ namespace csf
 						/**
 						* 表示线程停止状态
 						*/
-						csf_thread_status_stop = 0x04					
+						csf_thread_status_stop = 0x04
 					} csf_thread_status;
 				public:
 					template<typename TheadFunction>
@@ -126,6 +126,31 @@ namespace csf
 						}
 						return true;
 					}
+					/**
+					* 功能：
+					*    判断是否正在运行
+					* 返回：
+					*    true：表示正在运行；
+					*    false：表示不在运行
+					*/
+					inline bool is_start() {
+
+						if (csf_thread_status_start == get_status()) {
+							return true;
+						}
+						return false;
+					}
+					/**
+					* 功能：
+					*    判断是否已经停止
+					* 返回：
+					*    true：表示已经停止；
+					*    false：表示还在运行
+					*/
+					inline bool is_stop() {
+
+						return !is_start();
+					}
 				private:
 					/**
 					* 表示线程状态信息
@@ -166,18 +191,16 @@ namespace csf
 					*/
 					template<typename TheadFunction>
 					inline void cycle(TheadFunction func) {
-						while (csf_true) {
-							if (csf_thread_status_start == m_status) {
-								try {
-									func();
-								}
-								catch (std::exception &e) {
-									csf_log_ex(error
-										, csf_log_code_error
-										, "thread[%p] exception[%s]"
-										, this
-										, e.what());
-								}
+						while (is_start()) {
+							try {
+								func();
+							}
+							catch (std::exception &e) {
+								csf_log_ex(error
+									, csf_log_code_error
+									, "thread[%p] exception[%s]"
+									, this
+									, e.what());
 							}
 						}
 					}

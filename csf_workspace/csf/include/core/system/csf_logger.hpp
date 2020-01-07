@@ -294,18 +294,18 @@ namespace csf
 				/**
 				 * 表示磁盘的最小空间大小
 				 */
-				inline csf_uint64 get_drive_min_free_size() {
+				inline csf_uint64 get_disk_min_free_size() {
 
-					return m_drive_min_free_size;
+					return m_disk_min_free_size;
 				}
 				/**
 				 * 表示磁盘的最小空间大小
 				 *
 				 * @param new_value
 				 */
-				inline csf_void set_drive_min_free_size(const csf_uint64 new_value) {
+				inline csf_void set_disk_min_free_size(const csf_uint64 new_value) {
 
-					m_drive_min_free_size = new_value;
+					m_disk_min_free_size = new_value;
 				}
 				/**
 				* 表示当前系统的日志级别，默认notice级别
@@ -436,7 +436,7 @@ namespace csf
 				/**
 				 * 表示磁盘的最小空间大小
 				 */
-				csf_uint64 m_drive_min_free_size = 0;
+				csf_uint64 m_disk_min_free_size = 0;
 				/**
 				* 表示当前系统的日志级别，默认notice级别
 				*/

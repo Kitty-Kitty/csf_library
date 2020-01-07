@@ -111,6 +111,17 @@ namespace csf
 				* @param root_configure_file    表示当前app根配置文件信息
 				*/
 				csf_bool init_configure_manager(csf::core::system::csf_configure_manager& configure_manager, csf_configure_file& root_configure_file);
+				/**
+				 * 功能：
+				 *    该函数主要用于解析一个配置文件，获取配置文件中保存的属性信息。
+				 * 返回：
+				 *    true  ：表示初始化配置信息成功；
+				 *    false ：表示初始化配置文件失败。
+				 *
+				 * @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
+				 * @param configure_file    表示当前app根配置文件信息
+				 */
+				csf_bool parse_configure_file(csf::core::system::csf_configure_manager& configure_manager, csf_configure_file& configure_file);
 
 			protected:
 				/**

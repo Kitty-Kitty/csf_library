@@ -74,10 +74,11 @@ namespace csf
 					: m_decorator(csf_nullptr)
 					, m_configure_manager(csf_nullptr)
 					, m_type(csf_module_type_none)
-					, m_guid{0, }
+					, m_guid{ 0, }
 					, m_name{ 0, }
-					, m_format{0, } {
+					, m_format{ 0, } {
 
+					set_guid();
 				}
 				/**
 				 * 根据配置文件和类型创建一个模块。
@@ -96,6 +97,7 @@ namespace csf
 					, m_format{ 0, }
 					, m_attribute_manager(configure_manager) {
 
+					set_guid();
 				}
 				inline virtual ~csf_module() {
 
@@ -255,7 +257,7 @@ namespace csf
 				inline virtual csf_string to_string() {
 
 					//if (csf_strlen(m_format) <= 0) {
-					if ( '\0' == m_format[0] ) {
+					if ('\0' == m_format[0]) {
 
 						csf_snprintf(m_format
 							, csf_sizeof(m_format)
@@ -319,6 +321,11 @@ namespace csf
 
 					csf_strcpy(m_format, new_value);
 				}
+			private:
+				/**
+				* 表示模块的uuid，用于唯一标识一个模块
+				*/
+				void set_guid();
 			private:
 				/**
 				* 表示装饰者指针

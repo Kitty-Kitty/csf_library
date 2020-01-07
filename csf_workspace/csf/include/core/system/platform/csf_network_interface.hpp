@@ -2,23 +2,24 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: csf_network_interface.hpp
-*
 *Author: f
+*
+*File name: csf_network_interface.hpp
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:47
+*Date: 07-1æœˆ-2020 13:49:55
 *
-*Description: Interface(csf_network_interface)
+*Description: Interface(csf_network_interface) è¡¨ç¤ºç½‘ç»œçš„æ“ä½œæ¥å£
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_NETWORK_INTERFACE_INCLUDED_)
-#define CSF_NETWORK_INTERFACE_INCLUDED_
+#if !defined(CSF_NETWORK_INTERFACE_H_INCLUDED_)
+#define CSF_NETWORK_INTERFACE_H_INCLUDED_
 
 namespace csf
 {
@@ -29,10 +30,10 @@ namespace csf
 			namespace platform
 			{
 				/**
-				 * ±íÊ¾ÍøÂçµÄ²Ù×÷½Ó¿Ú
+				 * è¡¨ç¤ºç½‘ç»œçš„æ“ä½œæ¥å£
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:47
+				 * @created 07-1æœˆ-2020 13:49:55
 				 */
 				class csf_network_interface
 				{
@@ -55,4 +56,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_NETWORK_INTERFACE_INCLUDED_)
+#endif // !defined(CSF_NETWORK_INTERFACE_H_INCLUDED_)

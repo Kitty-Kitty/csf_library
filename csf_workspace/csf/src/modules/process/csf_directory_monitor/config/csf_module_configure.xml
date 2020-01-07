@@ -14,7 +14,7 @@
   <rotation_size>200MB</rotation_size>
   <!--***表示目录中所有文件占用磁盘最大大小。注意：该值要大于rotation_size-->
   <stored_max_size>800MB</stored_max_size>
-  <!--***表示磁盘空间最小多大的时候才能往目录中保存文件。注意：该值要大于stored_max_size-->
+  <!--***表示磁盘空间最小多大的时候才能往目录中保存文件。注意：该值要大于0-->
   <disk_min_free_size>1GB</disk_min_free_size>
   
   <!--[选配]表示处理目录状态变化的线程数量，数值默认为：1-->

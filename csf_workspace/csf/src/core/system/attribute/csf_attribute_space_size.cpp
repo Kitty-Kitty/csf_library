@@ -196,3 +196,49 @@ csf_bool csf_attribute_space_size::process_number(const csf_configure_manager& c
 
 	return csf_true;
 }
+
+/**
+* 函数功能是将csf_attribute内容信息格式化
+*
+* @param size   表示需要被转化的字节数，单位：字节（bytes）
+*/
+csf_string csf_attribute_space_size::format_string(csf_uint64 size) {
+	csf_int32				i = 0;
+	csf_int32				tmp_format[csf_sizeof(size)] = { 0, };
+	csf_char				tmp_char_ret[32] = { 0, };
+	static const csf_char	*const_unit[] = { "B", "KB", "MB", "GB", "TB", "PB" };
+	csf_uint64				tmp_size = size;
+
+
+	//计算出各个单位的数值
+	for (i = 0; i < csf_ary_size(tmp_format); i++) {
+		tmp_format[i] = tmp_size & ((csf_uint64)0x3FF);
+		tmp_size = tmp_size >> 10;
+		if (0 == tmp_size) {
+			break;
+		}
+	}
+	//查找最大的单位数值
+	for (i = csf_ary_size(tmp_format) - 1; i > 0 && tmp_format[i] == 0; i--) {}
+
+	if (0 == i) {
+		csf_snprintf(tmp_char_ret
+			, csf_sizeof(tmp_char_ret)
+			, "%d %s (%lld B)"
+			, tmp_format[i]
+			, const_unit[i]
+			, size
+		);
+	}
+	else {
+		csf_snprintf(tmp_char_ret
+			, csf_sizeof(tmp_char_ret)
+			, "%.2f %s (%lld B)"
+			, tmp_format[i] + (csf_float)(tmp_format[i - 1]) / 1024
+			, const_unit[i]
+			, size
+		);
+	}
+
+	return tmp_char_ret;
+}

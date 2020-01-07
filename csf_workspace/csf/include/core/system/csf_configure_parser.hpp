@@ -127,6 +127,22 @@ namespace csf
 				* @param markup    表示CMarkup解析的XML文件对象
 				*/
 				csf_int32 parse(csf_element& element, CMarkup& markup);
+			private:
+				/**
+				 * 功能：
+				 *    删除字符串前后的空格
+				 * 返回：
+				 *    返回前后没有空格的字符串
+				 *
+				 * @param str
+				 */
+				inline static csf_string& clear_head_tail_space(csf_string& str) {
+
+					str.erase(0, str.find_first_not_of(" "));
+					str.erase(str.find_last_not_of(" ") + 1);
+
+					return str;
+				}
 			};
 
 		}

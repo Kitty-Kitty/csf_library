@@ -75,6 +75,8 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 	csf_int32					tmp_int_return = 0;
 	csf_string					tmp_string_name = "";
 	csf_string					tmp_string_mid = "";
+	csf_string					tmp_string_root_configure_name = "";
+	csf::core::system::csf_element	*tmp_element = const_cast<csf::core::system::csf_element*>(&element);
 
 
 	if (element.is_null()) {
@@ -84,6 +86,7 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 	//判断当前是否为device节点，如果是则添加设备
 	tmp_string_name = element.find_element(csf_list<csf_string>{"module", "name"}).get_content();
 	tmp_string_mid = element.find_element(csf_list<csf_string>{"module", "mid"}).get_content();
+	tmp_string_root_configure_name = element.find_element(csf_list<csf_string>{"module", "configure", "root_configure_name"}).get_content();
 
 	if (tmp_string_name.empty() || tmp_string_mid.empty()) {
 
@@ -105,22 +108,24 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 		return csf_nullptr;
 	}
 	else {
+		
 		//添加设备到设备列表中
 		tmp_device_base->set_name(tmp_string_name);
 		tmp_device_base->set_mid(tmp_string_mid);
-
+		tmp_device_base->set_root_configure_name(tmp_string_root_configure_name);
 		tmp_device_base->set_parent(app);
-
+		
 		//设置device设备的app对象
 		if (csf_device_base::is_device(tmp_device_base->get_type())) {
-			((csf_device*)(tmp_device_base))->set_app(app);
+			dynamic_cast<csf_device*>(tmp_device_base)->set_app(app);
 		}
-
-		//设置device_io设备的app对象
-		if (csf_device_base::is_device_io(tmp_device_base->get_type())) {
-			((csf_device_io*)(tmp_device_base))->set_app(app);
+		else {
+			//设置device_io设备的app对象
+			if (csf_device_base::is_device_io(tmp_device_base->get_type())) {
+				dynamic_cast<csf_device_io*>(tmp_device_base)->set_app(app);
+			}
 		}
-
+		
 		if (element.find_element(csf_list<csf_string>{"module", "configure"}).is_null()) {
 
 			csf_log_ex(notice, csf_log_code_notice
@@ -130,10 +135,18 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 				, tmp_string_mid.c_str());
 		}
 		else {
-			
-			tmp_int_return = tmp_device_base->configure(element);
-			if (tmp_int_return) {
 
+			//根据"root_configure_name"指定的名称，获取配置根配置项信息
+			if (tmp_device_base->update_root_configure_by_name(tmp_string_root_configure_name)) {
+				tmp_element = tmp_device_base->get_attribute_manager().get_root_element();
+			}
+			else {
+				tmp_element = const_cast<csf::core::system::csf_element*>(&element);
+			}
+			
+			//配置模块的信息
+			tmp_int_return = tmp_device_base->configure(*tmp_element);
+			if (tmp_int_return) {
 				csf_log_ex(error, csf_log_code_error
 					, "create module[%p name:\"%s\" mid:\"%s\"] succeed! reason:[%d] configure failed!"
 					, tmp_device_base

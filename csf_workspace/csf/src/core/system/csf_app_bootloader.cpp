@@ -500,8 +500,11 @@ csf_bool csf_app_bootloader::init_devices(csf_app& app
 		//开始初始化设备
 		tmp_int_ret = tmp_iter.second->init(&configure_manager);
 		if (csf_failure == tmp_int_ret) {
-
+			csf_log(warning, "init %s failed!", tmp_iter.second->to_string().c_str());
 			return csf_false;
+		}
+		else {
+			csf_log(notice, "init %s succeed!", tmp_iter.second->to_string().c_str());
 		}
 	}
 

@@ -62,11 +62,15 @@ namespace csf
 					/**
 					* 表示数据库设备
 					*/
-					csf_device_type_database = csf_module_type_device | 0x00800000,
+					csf_device_type_database = csf_module_type_device | 0x00020000,
 					/**
 					* 表示测试设备类型
 					*/
-					csf_device_type_test = csf_module_type_device | 0x00040000,
+					csf_device_type_test = csf_module_type_device | 0x00030000,
+					/**
+					* 表示满足业务而进行的扩展
+					*/
+					csf_device_type_general_extend = csf_module_type_device | 0x00040000,
 					/**
 					* 表示网络连接设备扩展，用于第三方运用
 					*/
@@ -103,7 +107,7 @@ namespace csf
 				*/
 				inline explicit csf_device(const csf_configure_manager * configure_manager
 					, const csf::core::module::csf_device::csf_device_type type)
-				
+
 					: csf_device_base(configure_manager, (csf::core::module::csf_module::csf_module_type)type)
 					, m_app(csf_nullptr) {
 
@@ -219,6 +223,55 @@ namespace csf
 
 					return csf_string(tmp_buf);
 				}
+			protected:
+				/**
+				* 功能：初始化device_io对象
+				* 返回：true表示成功；false表示失败；
+				*
+				* @param mid    表示设备的模块编号
+				* @param device_io    表示device_io模块对象地址
+				*/
+				csf_bool init_device_io(const csf_string& mid, csf_device_io* device_io);
+				/**
+				* 功能：启动device_io对象
+				* 返回：true表示成功；false表示失败；
+				*
+				* @param mid    表示设备的模块编号
+				* @param device_io    表示device_io模块对象地址
+				*/
+				csf_bool start_device_io(const csf_string& mid, csf_device_io* device_io);
+				/**
+				* 功能：启动device_io对象
+				* 返回：true表示成功；false表示失败；
+				*
+				* @param mid    表示设备的模块编号
+				* @param device_io    表示device_io模块对象地址
+				*/
+				csf_bool stop_device_io(const csf_string& mid, csf_device_io* device_io);
+				/**
+				* 功能：
+				*    初始化所有device io 设备
+				* 返回：
+				*    true：表示成功；
+				*    false：表示失败；
+				*/
+				csf_bool init_device_ioes();
+				/**
+				* 功能：
+				*    启动所有device io 设备
+				* 返回：
+				*    true：表示成功；
+				*    false：表示失败；
+				*/
+				csf_bool start_device_ioes();
+				/**
+				* 功能：
+				*    停止所有device io 设备
+				* 返回：
+				*    true：表示成功；
+				*    false：表示失败；
+				*/
+				csf_bool stop_device_ioes();
 			private:
 				/**
 				 * 表示device所属的app设备地址

@@ -670,7 +670,7 @@ namespace csf
 					*
 					* @param new_value
 					*/
-					inline void set_error(csf::core::module::connect::csf_connect_error& new_value) {
+					inline void set_error(csf::core::module::connect::csf_connect_error new_value) {
 
 						m_error = new_value;
 					}

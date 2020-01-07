@@ -58,7 +58,8 @@ namespace csf
 			public:
 				inline explicit csf_device_base()
 					: m_parent(csf_nullptr)
-					, m_mid{ 0, } {
+					, m_mid{ 0, }
+					, m_root_configure_name{ 0, } {
 
 				}
 
@@ -76,7 +77,8 @@ namespace csf
 				
 					: csf_module(configure_manager, type)
 					, m_parent(csf_nullptr)
-					, m_mid{ 0, } {
+					, m_mid{ 0, } 
+					, m_root_configure_name{ 0, } {
 
 				}
 				/**
@@ -251,7 +253,7 @@ namespace csf
 				*/
 				inline static csf_bool is_app(const csf::core::module::csf_module::csf_module_type type) {
 
-					if (type && csf_module::csf_module_type::csf_module_type_app) {
+					if (type & csf_module::csf_module_type::csf_module_type_app) {
 						return csf_true;
 					}
 					return csf_false;
@@ -264,7 +266,7 @@ namespace csf
 				*/
 				inline static csf_bool is_device(const csf::core::module::csf_module::csf_module_type type) {
 
-					if (type && csf_module::csf_module_type::csf_module_type_device) {
+					if (type & csf_module::csf_module_type::csf_module_type_device) {
 						return csf_true;
 					}
 					return csf_false;
@@ -277,7 +279,7 @@ namespace csf
 				*/
 				inline static csf_bool is_device_io(const csf::core::module::csf_module::csf_module_type type) {
 
-					if (type && csf_module::csf_module_type::csf_module_type_device_io) {
+					if (type & csf_module::csf_module_type::csf_module_type_device_io) {
 						return csf_true;
 					}
 					return csf_false;
@@ -298,6 +300,69 @@ namespace csf
 
 					return m_parent;
 				}
+				/**
+				* 表示根配置项名称
+				*/
+				inline csf_string get_root_configure_name() {
+
+					return m_root_configure_name;
+				}
+				/**
+				* 表示根配置项名称
+				*
+				* @param newVal
+				*/
+				inline void set_root_configure_name(const csf_char *newVal) {
+
+					csf_int32				tmp_length = (csf_int32)csf_strlen(newVal);
+
+
+					if (tmp_length < csf_sizeof(m_root_configure_name)) {
+						csf_strncpy(m_root_configure_name
+							, newVal
+							, tmp_length);
+					}
+					else {
+						csf_strncpy(m_root_configure_name
+							, newVal
+							, csf_sizeof(m_root_configure_name));
+					}
+
+				}
+				/**
+				* 表示根配置项名称
+				*
+				* @param newVal
+				*/
+				inline void set_root_configure_name(const csf_string& newVal) {
+
+					set_root_configure_name(newVal.c_str());
+				}
+				/**
+				* 功能：
+				*    根据根配置项的名称设置根配置节点
+				* 返回：
+				*    true  ： 表示成功；
+				*    false ： 表示失败；
+				*/
+				inline csf_bool update_root_configure_by_name() {
+					if (get_root_configure_name().empty()) {
+						return csf_false;
+					}
+					else {
+						return update_root_configure_by_name(get_root_configure_name());
+					}
+				}
+				/**
+				* 功能：
+				*    根据根配置项的名称设置根配置节点
+				* 返回：
+				*    true  ： 表示成功；
+				*    false ： 表示失败；
+				*
+				* @param root_configure_name    表示根节点名称
+				*/
+				csf_bool update_root_configure_by_name(csf_string root_configure_name);
 				/**
 				* 主要功能是：将模块信息格式化成字符串输出
 				* 返回：模块信息字符串
@@ -325,6 +390,10 @@ namespace csf
 				* 表示设备的唯一编码id
 				*/
 				csf_char m_mid[csf_device_id_length] = { 0, };
+				/**
+				* 表示根配置项名称
+				*/
+				csf_char m_root_configure_name[128] = { 0, };
 
 			};
 

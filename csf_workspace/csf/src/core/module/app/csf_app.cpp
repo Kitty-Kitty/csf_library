@@ -21,6 +21,7 @@
 #include "csf_app_bootloader.hpp"
 #include "csf_container_convert.hpp"
 #include "csf_attribute_default_value.hpp"
+#include "csf_platform.hpp"
 
 
 using csf::core::module::csf_app;
@@ -38,20 +39,22 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 	csf_string							tmp_string_ret = "";
 
 
-	//解析配置文件，将所有信息保存到configure_manager中
-	tmp_bool_ret = init_configure_manager(get_config_mg(), get_root_configure_file());
-	if (csf_false == tmp_bool_ret) {
-		return csf_failure;
-	}
+	csf_log(notice, "init app[%s]...", get_version().to_string().c_str());
 
 	/************************************************************************/
-	/* 程序当前工作目录主要有三个方面数据来源，优先级依次如下：                 */
+	/* 程序当前工作目录主要有三个方面数据来源，优先级(1<2<3)依次如下：          */
 	/*		1、环境变量获取；													*/
 	/*		2、配置文件获取；													*/
 	/*		3、程序运行时自带的参数；											*/
 	/* 该优先级的定义主要是方便满足程序的维护需求       						*/
 	/************************************************************************/
 	tmp_bool_ret = init_work_directory(get_config_mg());
+	if (csf_false == tmp_bool_ret) {
+		return csf_failure;
+	}
+
+	//解析配置文件，将所有信息保存到configure_manager中
+	tmp_bool_ret = init_configure_manager(get_config_mg(), get_root_configure_file());
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
@@ -104,6 +107,8 @@ csf::core::base::csf_int32 csf_app::start(const csf_configure_manager* conf_mg) 
 	csf_string							tmp_string_ret = "";
 
 
+	csf_log(notice, "start app[%s]...", get_version().to_string().c_str());
+
 	//通过bootloader启动app需要的模块
 	tmp_bool_ret = init_bootloader(get_config_mg());
 	if (csf_false == tmp_bool_ret) {
@@ -120,6 +125,8 @@ csf::core::base::csf_int32 csf_app::start(const csf_configure_manager* conf_mg) 
 * @param conf_mg    表示配置文件信息
 */
 csf::core::base::csf_int32 csf_app::stop(const csf_configure_manager* conf_mg) {
+
+	csf_log(notice, "stop app[%s]...", get_version().to_string().c_str());
 
 	return  csf_succeed;
 }
@@ -260,30 +267,56 @@ csf_bool csf_app::init_bootloader(csf::core::system::csf_configure_manager& conf
 csf_bool csf_app::init_work_directory(csf::core::system::csf_configure_manager& configure_manager) {
 
 	csf_string							tmp_string_ret = "";
+	csf_int32							tmp_int_ret = csf_failure;
+	csf_bool							tmp_bool_ret = csf_false;
+	csf_configure_manager				tmp_configure_manager;
+	csf_attribute_manager				tmp_attribute_manager(&tmp_configure_manager);
 
+
+	//解析配置文件，将所有信息保存到configure_manager中
+	tmp_bool_ret = csf_root_configure().parse_configure_file(tmp_configure_manager, get_root_configure_file());
+	if (csf_false == tmp_bool_ret) {
+		csf_log_ex(error, csf_log_code_error
+			, "app set work_direction failed! root configure file format error. file[%s] "
+			, get_root_configure_file().get_file_path().c_str());
+		return csf_false;
+	}
 
 	/************************************************************************/
-	/* 程序当前工作目录主要有三个方面数据来源，优先级依次如下：                 */
+	/* 程序当前工作目录主要有三个方面数据来源，优先级(1<2<3)依次如下：          */
 	/*		1、环境变量获取；													*/
 	/*		2、配置文件获取；													*/
 	/*		3、程序运行时自带的参数；											*/
 	/* 该优先级的定义主要是方便满足程序的维护需求       						*/
 	/************************************************************************/
 	//获取系统的工作根目录地址，并配置到日志系统中
-	get_attribute_manager().add("work_directory"
-		, csf_attribute_string(csf_list<csf_string>({ "configures", "work_directory" })));
+	tmp_attribute_manager.add("work_directory"
+		, csf_attribute_string(csf_list<csf_string>({ "configures", "work_directory" })
+			, csf_attribute_exception_critical()));
 
-	tmp_string_ret = get_attribute_manager().get_value<csf_attribute_string>("work_directory");
-	if (!tmp_string_ret.empty()) {
-		set_work_directory(tmp_string_ret);
+	//获取当前配置的工作目录地址
+	tmp_string_ret = tmp_attribute_manager.get_value<csf_attribute_string>("work_directory");
+	if (tmp_string_ret.empty()) {
+		set_work_directory(csf::core::system::platform::csf_platform::current_path());
 	}
 	else {
-
+		set_work_directory(tmp_string_ret);
 	}
-
-	csf_log_ex(notice, csf_log_code_notice
-		, "app set work_direction[ \"%s\" ] succeed!"
-		, get_work_directory().c_str());
+	
+	//调用设置函数，实现工作目录的配置
+	tmp_int_ret = csf::core::system::platform::csf_platform::set_work_directory(get_work_directory());
+	if (csf_failure == tmp_int_ret) {
+		csf_log_ex(error, csf_log_code_error
+			, "app set work_direction[ \"%s\" ] failed!"
+			, get_work_directory().c_str());
+		return csf_false;
+	}
+	else {
+		csf_log_ex(notice, csf_log_code_notice
+			, "app set work_direction[ \"%s\" ] succeed!"
+			, get_work_directory().c_str());
+		return csf_true;
+	}
 
 	return csf_true;
 }

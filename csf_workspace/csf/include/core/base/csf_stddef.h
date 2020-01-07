@@ -21,6 +21,7 @@
 #define _CSF_STDDEF_H_
 
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -96,7 +97,7 @@ namespace csf
 #endif
 
 #define csf_dec_abs(a, b)					((a) >= (b) ? ((a) - (b)) : ((b) - (a)))
-
+#define	csf_ary_size(ary)					(csf_sizeof(ary) / csf_sizeof((ary)[0]))
 
 #ifdef __cplusplus
 		}

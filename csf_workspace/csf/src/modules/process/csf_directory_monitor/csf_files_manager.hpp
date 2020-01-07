@@ -425,12 +425,7 @@ namespace csf
 				*    true  ：  表示合法；
 				*    false ：  表示不合法；
 				*/
-				inline csf_bool is_stored_size_valid() {
-					if (get_stored_size() > get_stored_max_size()) {
-						return csf_false;
-					}
-					return csf_true;
-				}
+				inline csf_bool is_stored_size_valid();
 				/**
 				* 功能：
 				*    校验磁盘存储空间的合法性
@@ -438,7 +433,7 @@ namespace csf
 				*    true  ：  表示合法；
 				*    false ：  表示不合法；
 				*/
-				csf_bool is_disk_size_valid();
+				inline csf_bool is_disk_size_valid();
 			private:
 				/**
 				 * 需要被监视的目录地址

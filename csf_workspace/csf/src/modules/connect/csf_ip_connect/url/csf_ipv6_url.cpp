@@ -23,17 +23,6 @@
 using csf::modules::connect::csf_ipv6_url;
 
 
-csf_ipv6_url::csf_ipv6_url()
-	:csf_ip_url(csf::modules::connect::csf_ip_url::csf_ip_type_v6) {
-
-}
-
-
-
-csf_ipv6_url::~csf_ipv6_url() {
-
-}
-
 
 
 

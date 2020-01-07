@@ -209,27 +209,6 @@ namespace csf
 					return m_logger;
 				}
 				/**
-				* 表示app自身维持的时间
-				*/
-				inline csf::core::base::csf_time get_app_time() {
-
-					return m_app_time;
-				}
-				/**
-				* 表示定时获取的系统时间
-				*/
-				inline csf::core::base::csf_time get_system_time() {
-
-					return m_system_time;
-				}
-				/**
-				* 表示app的启动时间
-				*/
-				inline csf::core::base::csf_time get_start_time() {
-
-					return m_start_time;
-				}
-				/**
 				* 表示当前的工作目录地址
 				*/
 				inline csf_string& get_work_directory() {
@@ -335,42 +314,24 @@ namespace csf
 				*/
 				inline virtual csf_string to_string() {
 
-					return "";
+					csf_char				tmp_buf[512] = { 0, };
+
+
+					csf_snprintf(tmp_buf
+						, csf_sizeof(tmp_buf)
+						, "app[app:%p] %s"
+						, this
+						, csf_device_base::to_string().c_str());
+
+					return csf_string(tmp_buf);
 				}
 			protected:
-				/**
-				* 表示app自身维持的时间
-				*
-				* @param new_value
-				*/
-				inline void set_app_time(csf::core::base::csf_time new_value) {
-
-					m_app_time = new_value;
-				}
-				/**
-				* 表示定时获取的系统时间
-				*
-				* @param new_value
-				*/
-				inline void set_system_time(csf::core::base::csf_time new_value) {
-
-					m_system_time = new_value;
-				}
-				/**
-				* 表示app的启动时间
-				*
-				* @param new_value
-				*/
-				inline void set_start_time(csf::core::base::csf_time new_value) {
-
-					m_start_time = new_value;
-				}
 				/**
 				* 表示当前的工作目录地址
 				*
 				* @param new_value
 				*/
-				inline void set_work_directory(csf_string& new_value) {
+				inline void set_work_directory(csf_string new_value) {
 
 					m_work_directory = new_value;
 				}
@@ -453,18 +414,6 @@ namespace csf
 				csf_bool init_work_directory(csf::core::system::csf_configure_manager& configure_manager);
 
 			private:
-				/**
-				 * 表示app的启动时间
-				 */
-				csf::core::base::csf_time m_start_time;
-				/**
-				 * 表示app自身维持的时间
-				 */
-				csf::core::base::csf_time m_app_time;
-				/**
-				 * 表示定时获取的系统时间
-				 */
-				csf::core::base::csf_time m_system_time;
 				/**
 				 * 表示当前的工作目录地址
 				 */

@@ -198,7 +198,7 @@ namespace csf
 					*
 					* @param connect_ptr    表示连接对象
 					*/
-					inline csf::core::base::csf_int32 remove(csf_connect_ptr& connect_ptr) {
+					inline csf::core::base::csf_int32 remove(csf_connect_ptr connect_ptr) {
 
 						get_connect_collector().remove(connect_ptr.get());
 						get_timeout_manager().remove(connect_ptr->get_read_timeout());
@@ -215,7 +215,7 @@ namespace csf
 					*
 					* @param connect_ptr    表示连接对象
 					*/
-					inline csf_bool is_exist(csf_connect_ptr& connect_ptr) {
+					inline csf_bool is_exist(csf_connect_ptr connect_ptr) {
 
 						return get_connect_collector().have_key(connect_ptr.get());
 					}

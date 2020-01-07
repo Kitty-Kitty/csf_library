@@ -32,18 +32,19 @@ namespace csf
 			/************************************************************************/
 			/* 需要提取的参数个数														*/
 			/************************************************************************/
-#define csf_ip_url_parametes_size						2		//表示需要提取的参数个数
-/************************************************************************/
-/* 表示ip url 数据默认的缓存大小											*/
-/************************************************************************/
-#define csf_ip_url_buffer_size							64		//表示ip url 数据默认的缓存大小
-/**
- * 表示网络地址对象。地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:80和192.168.1.10:
- * 80。推荐使用1格式，可以兼容ipv6格式的ip地址，更适合未来的url描述需求。
- * @author f
- * @version 1.0
- * @updated 13-3月-2019 17:33:46
- */
+			#define csf_ip_url_parametes_size						2		
+			/************************************************************************/
+			/* 表示ip url 数据默认的缓存大小											*/
+			/************************************************************************/
+			#define csf_ip_url_buffer_size							64		
+
+			/**
+			 * 表示网络地址对象。地址格式为：1. [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:80和192.168.1.10:
+			 * 80。推荐使用1格式，可以兼容ipv6格式的ip地址，更适合未来的url描述需求。
+			 * @author f
+			 * @version 1.0
+			 * @updated 13-3月-2019 17:33:46
+			 */
 			class csf_ip_url : public csf::core::module::connect::csf_url
 			{
 
@@ -65,6 +66,7 @@ namespace csf
 					 */
 					csf_ip_type_v6 = 0x00000002
 				} csf_ip_type;
+
 				/**
 				* 表示ip字符串的格式。地址格式主要有 [ip]:port; 2.ip:port两种；例如:[192.168.1.10]:80和192.168.1.10:80。
 				* @author fangzhenmu
@@ -77,17 +79,20 @@ namespace csf
 					* 表示ip地址字符串格式错误
 					*/
 					csf_ip_string_format_error = 0x00,
+
 					/**
 					* 表示url地址字符串格式为单一简单格式（ip:port），例如：192.168.1.10:
 					* 80。该种格式主要满足ipv4和端口使用，无法兼容ipv6和端口的描述。
 					*/
 					csf_ip_string_format_single = 0x01,
+
 					/**
 					* 表示url地址字符串格式为兼容格式（[ip]:port），例如：[192.168.1.10]:80。该种格式可以兼容ipv4和ipv6的表述
 					*/
 					csf_ip_string_format_compatible = 0x02
 				} csf_ip_string_format;
-				inline explicit csf_ip_url::csf_ip_url()
+
+				inline explicit csf_ip_url()
 					: csf_url(csf_url::csf_url_type::csf_url_type_ip)
 					, m_ip("")
 					, m_port(0)
@@ -183,6 +188,7 @@ namespace csf
 
 					return set_url((csf_char*)(new_value.c_str()));
 				}
+
 				/**
 				 * 主要功能：
 				 *    判断url地址是否合法

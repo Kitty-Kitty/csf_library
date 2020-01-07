@@ -43,7 +43,17 @@ namespace csf
 				public:
 					csf_process();
 					virtual ~csf_process();
+					/**
+					* 表示根据配置文件和类型创建设备模块
+					*
+					* @param configure_manager    表示配置文件内容
+					* @param type    表示模块的类型
+					*/
+					inline explicit csf_process(const csf_configure_manager * configure_manager
+						, const csf::core::module::csf_device::csf_device_type type)
+						: csf_device(configure_manager, type) {
 
+					}
 					/**
 					 * 表示设备的添加操作
 					 * 

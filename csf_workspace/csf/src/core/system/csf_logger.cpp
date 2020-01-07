@@ -60,7 +60,7 @@ csf_logger::csf_logger()
 	, m_path("")
 	, m_rotation_size(0)
 	, m_stored_max_size(0)
-	, m_drive_min_free_size(0)
+	, m_disk_min_free_size(0)
 	, m_file_name_format("")
 	, m_attribute_manager(new csf_attribute_manager()) {
 
@@ -78,7 +78,7 @@ csf_logger::csf_logger(const csf_configure_manager* configure_manager, const csf
 	, m_path(path)
 	, m_rotation_size(0)
 	, m_stored_max_size(0)
-	, m_drive_min_free_size(0)
+	, m_disk_min_free_size(0)
 	, m_file_name_format("")
 	, m_attribute_manager(new csf_attribute_manager(configure_manager)) {
 
@@ -178,8 +178,8 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 			, csf_attribute_exception_critical()));
 
 	//表示磁盘空间最小多大的时候才能写日志。注意：该值要大于stored_max_size，最大为:1GB
-	((csf_attribute_manager*)get_attribute_manager())->add(CSF_LOGGER_ATTRIBUTE_NAME(drive_min_free_size)
-		, csf_attribute_space_size(std::list<csf_string>{ "log_size", "drive_min_free_size" }
+	((csf_attribute_manager*)get_attribute_manager())->add(CSF_LOGGER_ATTRIBUTE_NAME(disk_min_free_size)
+		, csf_attribute_space_size(std::list<csf_string>{ "log_size", "disk_min_free_size" }
 			, csf_attribute_space_size::csf_space_size_unit::csf_space_size_unit_b
 			, csf_attribute_boundary("(1000, n)")
 			, csf_attribute_exception_critical()));
@@ -228,13 +228,13 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 	//设置各种空间参数信息
 	set_rotation_size(((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_space_size>(CSF_LOGGER_ATTRIBUTE_NAME(rotation_size)));
 	set_stored_max_size(((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_space_size>(CSF_LOGGER_ATTRIBUTE_NAME(stored_max_size)));
-	set_drive_min_free_size(((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_space_size>(CSF_LOGGER_ATTRIBUTE_NAME(drive_min_free_size)));
+	set_disk_min_free_size(((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_space_size>(CSF_LOGGER_ATTRIBUTE_NAME(disk_min_free_size)));
 
 	csf_log_ex(notice, csf_log_code_notice
-		, "init logger[rotation_size: %s  stored_max_size: %s  drive_min_free_size: %s ]."
+		, "init logger[rotation_size: %s  stored_max_size: %s  disk_min_free_size: %s ]."
 		, ((csf_attribute_manager*)get_attribute_manager())->get_content(CSF_LOGGER_ATTRIBUTE_NAME(rotation_size)).c_str()
 		, ((csf_attribute_manager*)get_attribute_manager())->get_content(CSF_LOGGER_ATTRIBUTE_NAME(stored_max_size)).c_str()
-		, ((csf_attribute_manager*)get_attribute_manager())->get_content(CSF_LOGGER_ATTRIBUTE_NAME(drive_min_free_size)).c_str());
+		, ((csf_attribute_manager*)get_attribute_manager())->get_content(CSF_LOGGER_ATTRIBUTE_NAME(disk_min_free_size)).c_str());
 
 	csf_log_ex(notice, csf_log_code_notice
 		, "init logger[level: \"%s\"  format: \"%s\"  path: \"%s\"]."
@@ -285,6 +285,7 @@ csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_
 			[
 				boost::log::expressions::stream << boost::log::expressions::attr< int >("Code")
 			]
+			//<< "] -- " << boost::log::expressions::format_named_scope(log_scope, boost::log::keywords::format = "[%F:%l (%c)] ")
 			<< "] -- "
 			<< boost::log::expressions::smessage;
 
@@ -299,7 +300,7 @@ csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_
 		tmp_file_sink_ptr->locked_backend()->set_file_collector(boost::log::sinks::file::make_collector(
 			boost::log::keywords::target = tmp_log_path,						 // where to store rotated files
 			boost::log::keywords::max_size = get_stored_max_size(),              // maximum total size of the stored files, in bytes
-			boost::log::keywords::min_free_space = get_drive_min_free_size()     // minimum free space on the drive, in bytes
+			boost::log::keywords::min_free_space = get_disk_min_free_size()     // minimum free space on the drive, in bytes
 		));
 		// Upon restart, scan the target directory for files matching the file_name pattern
 		tmp_file_sink_ptr->locked_backend()->scan_for_files();
@@ -313,6 +314,7 @@ csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_
 		//boost::log::core::get()->add_global_attribute("Severity", boost::log::attributes::constant<pc_severity_level>());
 		//boost::log::core::get()->add_global_attribute("Code", boost::log::attributes::constant<int>());
 		boost::log::core::get()->add_global_attribute("ThreadID", boost::log::attributes::current_thread_id());
+		boost::log::core::get()->add_thread_attribute("Scope", boost::log::attributes::named_scope());
 
 		tmp_text_sink_ptr->set_formatter(tmp_fmtter);
 		tmp_file_sink_ptr->set_formatter(tmp_fmtter);

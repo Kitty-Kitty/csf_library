@@ -105,7 +105,7 @@ namespace csf
 				*
 				* @param new_value
 				*/
-				inline void csf_device_io::set_app(const csf::core::module::csf_app* new_value) {
+				inline void set_app(const csf::core::module::csf_app* new_value) {
 					
 					m_app = (csf::core::module::csf_app*)new_value;
 				}
@@ -135,7 +135,17 @@ namespace csf
 				*/
 				inline virtual csf_string to_string() {
 
-					return "";
+					csf_char				tmp_buf[512] = { 0, };
+
+
+					csf_snprintf(tmp_buf
+						, csf_sizeof(tmp_buf)
+						, "device_io[app:%p | device:%p] %s"
+						, get_app()
+						, get_device()
+						, csf_device_base::to_string().c_str());
+
+					return csf_string(tmp_buf);
 				}
 			private:
 				/**

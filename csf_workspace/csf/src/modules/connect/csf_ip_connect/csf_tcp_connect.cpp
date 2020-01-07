@@ -1235,12 +1235,14 @@ csf_int32 csf_tcp_connect::close_socket() {
 			boost::system::error_code			tmp_error_code;
 
 
+#if 0  //主要是boost_1_69_0中没有get_socket().native() 函数
 			//设置为立即关闭处理，避免出现延时关闭的问题
 			tmp_ret_int = setsockopt(get_socket().native()
 				, SOL_SOCKET
 				, SO_LINGER
 				, (char*)(&tmp_linger)
 				, sizeof(struct linger));
+#endif
 
 			//取消所有处理，关闭收发，关闭连接对象
 			get_socket().cancel();

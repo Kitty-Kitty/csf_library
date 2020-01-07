@@ -68,7 +68,7 @@ extern "C" {
 */
 #define _csf_log_write_ex(_strlevel_, _code_, _fmt_, ...)	do {{							\
 	_csf_log_write(csf_logger_level_##_strlevel_, _code_, "func[%s:%d] " _fmt_,				\
-						__FUNCTION__, __LINE__, ##__VA_ARGS__);								\
+ 						__FUNCTION__, __LINE__, ##__VA_ARGS__);								\
 }} while (0)																				\
 
 

@@ -180,6 +180,9 @@ namespace csf
 
 						csf_shared_lock<decltype(m_mutex)> tmp_lock(m_mutex);
 
+						
+						stop_all();
+						//等待所有线程退出
 						for (auto &iter : get_threads()) {
 							if (iter->joinable()) {
 								iter->join();
@@ -200,6 +203,8 @@ namespace csf
 
 						csf_shared_lock<decltype(m_mutex)> tmp_lock(m_mutex);
 
+						stop_all();
+
 						for (auto &iter : get_threads()) {
 							if (iter->joinable()) {
 								if (!iter->timed_join(timeout_ms)) {
@@ -216,6 +221,7 @@ namespace csf
 
 						csf_shared_lock<decltype(m_mutex)> tmp_lock(m_mutex);
 
+						stop_all();
 						for (auto &iter : get_threads()) {
 							iter->interrupt();
 						}
@@ -247,6 +253,18 @@ namespace csf
 					inline csf_set<csf_thread*>& get_threads() {
 
 						return m_threads;
+					}
+					/**
+					* 功能：
+					*    停止所有线程
+					* 返回：
+					*    无
+					*/
+					inline void stop_all() {
+						//设置停止标识
+						for (auto &iter : get_threads()) {
+							iter->stop();
+						}
 					}
 				private:
 					/**

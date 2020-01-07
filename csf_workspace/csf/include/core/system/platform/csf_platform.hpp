@@ -2,26 +2,29 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: csf_platform.hpp
-*
 *Author: f
+*
+*File name: csf_platform.hpp
 *
 *Version: 1.0
 *
-*Date: 27-6��-2018 17:28:47
+*Date: 07-1月-2020 13:49:55
 *
-*Description: Class(csf_platform)
+*Description: Class(csf_platform) 描述系统信息类，主要获取系统相关的信息
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_PLATFORM_INCLUDED_)
-#define CSF_PLATFORM_INCLUDED_
+#if !defined(CSF_PLATFORM_H_INCLUDED_)
+#define CSF_PLATFORM_H_INCLUDED_
 
-#include "csf_configure_manager.hpp"
+#include "csf_typedef.h"
 #include "csf_system_interface.hpp"
+
+using namespace csf::core::base;
 
 namespace csf
 {
@@ -32,10 +35,10 @@ namespace csf
 			namespace platform
 			{
 				/**
-				 * ����ϵͳ��Ϣ�࣬��Ҫ��ȡϵͳ��ص���Ϣ
+				 * 描述系统信息类，主要获取系统相关的信息
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6��-2018 17:28:47
+				 * @updated 07-1月-2020 14:14:17
 				 */
 				class csf_platform : public csf::core::system::platform::csf_system_interface
 				{
@@ -43,49 +46,33 @@ namespace csf
 				public:
 					csf_platform();
 					virtual ~csf_platform();
-
-					inline csf::core::system::csf_configure_manager get_configure_manager() {
-
-						return m_configure_manager;
+					/**
+					 * 功能：
+					 *    使用程序文件所在的目录作为工作目录，设置程序运行的工作目录
+					 * 返回：
+					 *    0   ：表示成功；
+					 *    非0 ：表示失败；
+					 */
+					static csf_int32 set_work_directory() {
+						return set_work_directory(current_path());
 					}
 					/**
-					 * ģ���ʼ��
+					 * 功能：
+					 *    设置程序运行的工作目录
+					 * 返回：
+					 *    0   ：表示成功；
+					 *    非0 ：表示失败；
 					 * 
-					 * @param conf_mg    ��ʾ�����ļ���Ϣ
+					 * @param newVal    表示工作目录地址
 					 */
-					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
+					static csf_int32 set_work_directory(csf_string newVal);
 					/**
-					 * 
-					 * @param new_value
+					 * 功能：
+					 *    获取当前程序所在的目录地址
+					 * 返回：
+					 *    当前程序存放目录地址字符串，如果获取失败，则目录地址字符串为空。
 					 */
-					inline csf::core::base::csf_void set_configure_manager(csf::core::system::csf_configure_manager new_value) {
-
-						m_configure_manager = newVal;
-					}
-					/**
-					 * ģ������
-					 * 
-					 * @param conf_mg    ��ʾ�����ļ���Ϣ
-					 */
-					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
-					/**
-					 * 
-					 * @param type
-					 */
-					csf::core::base::csf_void csf_module(csf::core::module::csf_module_type type);
-					/**
-					 * ģ��ֹͣ
-					 * 
-					 * @param conf_mg    ��ʾ�����ļ���Ϣ
-					 */
-					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
-					/**
-					 * ģ�������
-					 * 
-					 * @param new_value
-					 */
-					csf::core::base::csf_void set_type(csf::core::module::csf_module_type new_value);
-
+					static csf_string current_path();
 				};
 
 			}
@@ -95,4 +82,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_PLATFORM_INCLUDED_)
+#endif // !defined(CSF_PLATFORM_H_INCLUDED_)

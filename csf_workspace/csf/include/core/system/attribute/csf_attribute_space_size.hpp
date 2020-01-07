@@ -351,15 +351,19 @@ namespace csf
 						csf_char				tmp_buf[csf_attribute_string_length] = { 0, };
 
 						csf_snprintf(tmp_buf, csf_sizeof(tmp_buf)
-							, "%s value[ %lld %s ]"
+							, "%s value[ %s ]"
 							, csf_attribute::to_string().c_str()
-							, get_value()
-							, convert(get_unit()).c_str()
+							, format_string(get_value()).c_str()
 						);
 
 						return tmp_buf;
 					}
-
+					/**
+					* 函数功能是将csf_attribute内容信息格式化
+					*
+					* @param size   表示需要被转化的字节数，单位：字节（bytes）
+					*/
+					static csf_string format_string(csf_uint64 size);
 				protected:
 					/**
 					 * 表示处理csf_attribute属性操作。这里与csf_attribute_template中不同的是，这里添加一层process_number函数主要是为了

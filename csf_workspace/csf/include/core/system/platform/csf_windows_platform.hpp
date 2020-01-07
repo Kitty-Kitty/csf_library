@@ -2,25 +2,25 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: csf_windows_platform.hpp
-*
 *Author: f
+*
+*File name: csf_windows_platform.hpp
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:54
+*Date: 07-1æœˆ-2020 13:49:56
 *
-*Description: Class(csf_windows_platform)
+*Description: Class(csf_windows_platform) è¡¨ç¤ºwindowsç³»ç»Ÿæè¿°ä¿¡æ¯
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_WINDOWS_PLATFORM_INCLUDED_)
-#define CSF_WINDOWS_PLATFORM_INCLUDED_
+#if !defined(CSF_WINDOWS_PLATFORM_H_INCLUDED_)
+#define CSF_WINDOWS_PLATFORM_H_INCLUDED_
 
-#include "csf_configure_manager.hpp"
 #include "csf_platform.hpp"
 
 namespace csf
@@ -32,10 +32,10 @@ namespace csf
 			namespace platform
 			{
 				/**
-				 * ±íÊ¾windowsÏµÍ³ÃèÊöĞÅÏ¢
+				 * è¡¨ç¤ºwindowsç³»ç»Ÿæè¿°ä¿¡æ¯
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:54
+				 * @created 07-1æœˆ-2020 13:49:56
 				 */
 				class csf_windows_platform : public csf::core::system::platform::csf_platform
 				{
@@ -43,37 +43,6 @@ namespace csf
 				public:
 					csf_windows_platform();
 					virtual ~csf_windows_platform();
-
-					inline csf::core::system::csf_configure_manager get_configure_manager() {
-
-						return m_configure_manager;
-					}
-					/**
-					 * Ä£¿é³õÊ¼»¯
-					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					 */
-					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
-					/**
-					 * 
-					 * @param new_value
-					 */
-					inline csf::core::base::csf_void set_configure_manager(csf::core::system::csf_configure_manager new_value) {
-
-						m_configure_manager = newVal;
-					}
-					/**
-					 * Ä£¿éÆô¶¯
-					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					 */
-					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
-					/**
-					 * Ä£¿éÍ£Ö¹
-					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					 */
-					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 
 				};
 
@@ -84,4 +53,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_WINDOWS_PLATFORM_INCLUDED_)
+#endif // !defined(CSF_WINDOWS_PLATFORM_H_INCLUDED_)

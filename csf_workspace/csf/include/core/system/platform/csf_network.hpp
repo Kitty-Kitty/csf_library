@@ -2,25 +2,25 @@
 *
 *Copyright: armuxinxian@aliyun.com
 *
-*File name: csf_network.hpp
-*
 *Author: f
+*
+*File name: csf_network.hpp
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:46
+*Date: 07-1æœˆ-2020 13:49:55
 *
-*Description: Class(csf_network)
+*Description: Class(csf_network) è¡¨ç¤ºæè¿°ç½‘ç»œä¿¡æ¯ç±»
 *
 *Others:
 *
 *History:
+*
 *******************************************************************************/
 
-#if !defined(CSF_NETWORK_INCLUDED_)
-#define CSF_NETWORK_INCLUDED_
+#if !defined(CSF_NETWORK_H_INCLUDED_)
+#define CSF_NETWORK_H_INCLUDED_
 
-#include "csf_configure_manager.hpp"
 #include "csf_network_interface.hpp"
 
 namespace csf
@@ -32,10 +32,10 @@ namespace csf
 			namespace platform
 			{
 				/**
-				 * ±íÊ¾ÃèÊöÍøÂçĞÅÏ¢Àà
+				 * è¡¨ç¤ºæè¿°ç½‘ç»œä¿¡æ¯ç±»
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:46
+				 * @created 07-1æœˆ-2020 13:49:55
 				 */
 				class csf_network : public csf::core::system::platform::csf_network_interface
 				{
@@ -43,42 +43,6 @@ namespace csf
 				public:
 					csf_network();
 					virtual ~csf_network();
-
-					inline csf::core::system::csf_configure_manager get_configure_manager() {
-
-						return m_configure_manager;
-					}
-					/**
-					 * Ä£¿é³õÊ¼»¯
-					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					 */
-					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
-					/**
-					 * 
-					 * @param new_value
-					 */
-					inline csf::core::base::csf_void set_configure_manager(csf::core::system::csf_configure_manager new_value) {
-
-						m_configure_manager = newVal;
-					}
-					/**
-					 * Ä£¿éÆô¶¯
-					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					 */
-					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
-					/**
-					 * 
-					 * @param type
-					 */
-					csf::core::base::csf_void csf_module(csf::core::module::csf_module_type type);
-					/**
-					 * Ä£¿éÍ£Ö¹
-					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					 */
-					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 
 				};
 
@@ -89,4 +53,4 @@ namespace csf
 	}
 
 }
-#endif // !defined(CSF_NETWORK_INCLUDED_)
+#endif // !defined(CSF_NETWORK_H_INCLUDED_)

@@ -87,7 +87,7 @@ namespace csf
 
 					csf_unqiue_lock<decltype(m_mutex)> tmp_lock(m_mutex);
 
-					return get_deque().size();
+					return (csf_int32)get_deque().size();
 				}
 				/**
 				 * 主要功能：

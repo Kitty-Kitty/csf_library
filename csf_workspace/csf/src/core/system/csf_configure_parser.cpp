@@ -179,15 +179,15 @@ csf_int32 csf_configure_parser::parse(csf_element& element, CMarkup& markup) {
 
 		csf_element			tmp_child_element;
 
-		tmp_child_element.set_name(markup.GetTagName());
+		tmp_child_element.set_name(clear_head_tail_space(markup.GetTagName()));
 		for (csf_int32 i = 0; ; i++) {
 
-			tmp_name = markup.GetAttribName(i);
+			tmp_name = clear_head_tail_space(markup.GetAttribName(i));
 			if (tmp_name.empty()) {
 				break;
 			}
 
-			tmp_value = markup.GetAttrib(tmp_name);
+			tmp_value = clear_head_tail_space(markup.GetAttrib(tmp_name));
 			tmp_child_element.add(tmp_name, tmp_value);
 		}
 
@@ -198,7 +198,7 @@ csf_int32 csf_configure_parser::parse(csf_element& element, CMarkup& markup) {
 		}
 
 		if (tmp_child_element.not_null()) {
-			tmp_child_element.set_content(markup.GetElemContent());
+			tmp_child_element.set_content(clear_head_tail_space(markup.GetElemContent()));
 			
 			if (element.is_null()) {
 				element = tmp_child_element;

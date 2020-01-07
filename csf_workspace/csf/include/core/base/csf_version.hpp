@@ -20,6 +20,7 @@
 #if !defined(CSF_VERSION_INCLUDED_)
 #define CSF_VERSION_INCLUDED_
 
+#include <stdarg.h>
 #include "csf_typedef.h"
 #include "csf_stddef.h"
 
@@ -77,7 +78,7 @@ namespace csf
 #else
 					, m_compile("unknow compile")
 #endif
-					, m_build(__DATE__ "T" __TIME__)
+					, m_build(__DATE__ " " __TIME__)
 					, m_description("") {
 
 				}
