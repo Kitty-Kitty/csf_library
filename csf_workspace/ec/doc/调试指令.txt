@@ -10,6 +10,9 @@ ffmpeg指令：
 
 	./ffmpeg -i 123456-12345-19700101211224.mp4 -vn -y -acodec copy 123456-12345-19700101211224_new.aac
 
+	ffmpeg 把视频转换为图片
+	ffmpeg -i "Tail of Hope.mp4" -r 1 -q:v 2 -f image2 pic-%03d.jpeg
+
 nfs服务指令：
 
 	停止firewall：

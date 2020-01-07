@@ -2,19 +2,19 @@
 <configures>
   
   <!--表示系统的默认工作目录地址，必须配置绝对路径。如果为空则采用程序运行时程序所在的位置-->
-  <work_directory>E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\csf\platform\win32\x64\Debug\</work_directory>
+  <work_directory> E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\ </work_directory>
   
   <!--表示配置文件列表-->
   <configure_files>
-    <configure_file name="system" file="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_system.xml" format="xml"/>
-    <configure_file name="log" file="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_log.xml" format="xml"/>
-    <configure_file name="module" file="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_module.xml" format="xml"/>
-    <configure_file name="app" file="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_app.xml" format="xml"/>
-    <configure_file name="hisiv" file="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_hisiv.xml" format="xml"/>
-    <configure_file name="hivideo" file="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_hivideo.xml" format="xml"/>
-    <configure_file name="hiaudio" file="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_hiaudio.xml" format="xml"/>
-    <configure_file name="csf_directory_monitor" file="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_directory_monitor.xml" format="xml"/>
+    <configure_file name="system" file="config\csf_system.xml" format="xml"/>
+    <configure_file name="log" file="config\csf_log.xml" format="xml"/>
+    <configure_file name="module" file="config\csf_module.xml" format="xml"/>
+    <configure_file name="app" file="config\csf_app.xml" format="xml"/>
+    <configure_file name="hisiv" file="config\csf_hisiv.xml" format="xml"/>
+    <configure_file name="hivideo" file="config\csf_hivideo.xml" format="xml"/>
+    <configure_file name="hiaudio" file="config\csf_hiaudio.xml" format="xml"/>
+    <configure_file name="csf_directory_monitor" file="config\csf_directory_monitor.xml" format="xml"/>
 
-    <!--<configure_file name="connect" file="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_connect.xml" format="xml"/>-->
+    <!--<configure_file name="connect" file="config\csf_connect.xml" format="xml"/>-->
   </configure_files>
 </configures>

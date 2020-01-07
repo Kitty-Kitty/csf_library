@@ -46,6 +46,7 @@ int main(int argc, char** argv)
 
 	//解析程序运行参数
 	if (!tmp_app_option.get_option(argc, argv)) {
+		csf_log(error, "app option error!");
 		return 0;
 	}
 
