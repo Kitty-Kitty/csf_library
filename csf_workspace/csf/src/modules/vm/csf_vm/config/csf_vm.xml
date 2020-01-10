@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vm_configure>
+  
+  <!--表示当前虚拟机的名称-->
+  <name>csf_vm</name>
+    
+  <!--表示客户程序列表-->
+  <slaves>
+    <slave name="ec_app" command="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\csf\platform\win32\x64\Debug\ec_app.exe" arguments=" -f E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_configs.xml  -t xml"/>
+
+  </slaves>
+  
+</vm_configure>
