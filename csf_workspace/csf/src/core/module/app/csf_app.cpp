@@ -53,18 +53,24 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 		return csf_failure;
 	}
 
+	//表示保存当前app信息到指定文件中
+	tmp_bool_ret = save_information();
+	if (csf_false == tmp_bool_ret) {
+		return csf_failure;
+	}
+	
 	//解析配置文件，将所有信息保存到configure_manager中
 	tmp_bool_ret = init_configure_manager(get_config_mg(), get_root_configure_file());
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
-	
+
 	//加载启动日志系统，为程序提供日志服务
 	tmp_bool_ret = init_logger(get_config_mg(), get_work_directory());
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
-	
+
 	//开始初始化系统模块、负载限制相关信息
 	tmp_bool_ret = get_config_mg().init();
 	if (csf_false == tmp_bool_ret) {
@@ -83,8 +89,8 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 
 #if 0
 	get_attribute_manager().add("time"
-		, csf_attribute_time(csf_list<csf_string>({ "configures", "size" }) 
-			, csf_attribute_time::csf_time_unit_s 
+		, csf_attribute_time(csf_list<csf_string>({ "configures", "size" })
+			, csf_attribute_time::csf_time_unit_s
 			, csf_attribute_boundary("(0, 10]")
 			, csf_attribute_default_value<csf_attribute_time, csf_int32>(100)));;
 
@@ -302,7 +308,7 @@ csf_bool csf_app::init_work_directory(csf::core::system::csf_configure_manager& 
 	else {
 		set_work_directory(tmp_string_ret);
 	}
-	
+
 	//调用设置函数，实现工作目录的配置
 	tmp_int_ret = csf::core::system::platform::csf_platform::set_work_directory(get_work_directory());
 	if (csf_failure == tmp_int_ret) {
@@ -319,6 +325,27 @@ csf_bool csf_app::init_work_directory(csf::core::system::csf_configure_manager& 
 	}
 
 	return csf_true;
+}
+
+
+/**
+* 功能：
+*    保存当前app信息到指定文件中。
+* 返回：
+*    true  ：  表示成功；
+*    false ：  表示失败。
+*/
+csf_bool csf_app::save_information() {
+
+	csf_string		tmp_file = "";
+
+
+#ifdef WIN32
+	tmp_file = "pid\\pid.txt";
+#else
+	tmp_file = "./pid/pid.txt";
+#endif
+	return csf::core::system::platform::csf_platform::save_pid(tmp_file);
 }
 
 
@@ -370,7 +397,7 @@ csf_bool csf_app::add_device(const csf_string& mid, const csf_device* device) {
 	if (tmp_device) {
 		return csf_false;
 	}
-	
+
 	csf_unqiue_lock<decltype(m_devices_mutex)>			tmp_lock(m_devices_mutex);
 
 	//设备不存在则插入新设备
@@ -387,7 +414,7 @@ csf_bool csf_app::add_device(const csf_string& mid, const csf_device* device) {
 * @param mid    表示设备名称
 */
 csf_bool csf_app::del_device(const csf_string& mid) {
-	
+
 	csf_unordered_map<csf_string, csf_device*>::iterator			tmp_iter;
 
 

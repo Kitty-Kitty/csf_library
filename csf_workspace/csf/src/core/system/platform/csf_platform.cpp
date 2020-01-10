@@ -18,6 +18,11 @@
 *
 *******************************************************************************/
 
+#ifdef WIN32
+#include <process.h>
+#else
+#include <unistd.h>
+#endif
 #include <boost/filesystem.hpp>
 #include "csf_logger.hpp"
 #include "csf_platform.hpp"
@@ -116,4 +121,79 @@ csf_string csf_platform::current_path() {
 		return tmp_path.string();
 	}
 	return "";
+}
+
+
+/**
+ * 功能：
+ *    获取当前进程的PID数值，用于记录使用
+ * 返回：
+ *    返回当前进程的PID数值，成功则返回非0；失败则返回0；
+ */
+csf_uint32 csf_platform::get_pid() {
+	return getpid();
+}
+
+
+/**
+ * 功能：
+ *    保存pid等信息到文件中
+ * 返回：
+ *    csf_true  ：  表示保存pid信息成功；
+ *    csf_false ：  表示保存pid信息失败；
+ *
+ * @param file    表示需要将信息保存的目的文件地址
+ */
+csf_bool csf_platform::save_pid(csf_string file) {
+
+	boost::system::error_code	tmp_ec;
+	csf_string					tmp_str_directories = "";
+	csf_uint32					tmp_pid = 0;
+
+
+	tmp_str_directories = file.substr(0, file.find_last_of(boost::filesystem::path::preferred_separator));
+	boost::filesystem::path		tmp_directories(tmp_str_directories);
+
+	if (!boost::filesystem::exists(tmp_directories, tmp_ec)) {
+		//如果文件不存在，则创建该文件
+		if (!boost::filesystem::create_directories(tmp_directories, tmp_ec)) {
+			csf_log(error
+				, "create directories failed! directories[%s] error_code[%d]: %s."
+				, tmp_str_directories.c_str()
+				, tmp_ec.value()
+				, tmp_ec.message().c_str()
+			);
+			return csf_false;
+		}
+		else {
+			csf_log(notice
+				, "create directories succeed! directories[%s]."
+				, tmp_str_directories.c_str()
+			);
+		}
+	}
+
+	boost::filesystem::path		tmp_path(file);
+	//表示获取当前进程的pid数值
+	tmp_pid = get_pid();
+	if (tmp_pid <= 0) {
+		csf_log(error
+			, "get pid failed! pid file[%s]."
+			, file.c_str()
+		);
+		return csf_false;
+	}
+	else {
+		boost::filesystem::ofstream		tmp_ofstream{ tmp_path };
+		tmp_ofstream << tmp_pid << "\n";
+
+		csf_log(error
+			, "save pid[%d] succeed! pid file[%s]."
+			, tmp_pid
+			, file.c_str()
+		);
+		return csf_true;
+	}
+
+	return csf_true;
 }

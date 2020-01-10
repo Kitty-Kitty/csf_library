@@ -77,7 +77,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(SolutionDir)..\..\include\core;$(SolutionDir)..\..\include\core\base;$(SolutionDir)..\..\include\core\module;$(SolutionDir)..\..\include\core\module\app;$(SolutionDir)..\..\include\core\module\device;$(SolutionDir)..\..\include\core\module\device\connect;$(SolutionDir)..\..\include\core\module\device\connect\url;$(SolutionDir)..\..\include\core\module\device\database;$(SolutionDir)..\..\include\core\module\device\process;$(SolutionDir)..\..\include\core\module\device_io;$(SolutionDir)..\..\include\core\service;$(SolutionDir)..\..\include\core\system;$(SolutionDir)..\..\include\core\system\attribute;$(SolutionDir)..\..\include\core\system\message;$(SolutionDir)..\..\include\core\utils;$(SolutionDir)..\..\include\core\utils\task;$(SolutionDir)..\..\include\core\utils\thread;$(SolutionDir)..\..\include\core\utils\time;$(SolutionDir)..\..\third-party\src\boost_1_69_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(SolutionDir)..\..\include\core;$(SolutionDir)..\..\include\core\base;$(SolutionDir)..\..\include\core\module;$(SolutionDir)..\..\include\core\module\app;$(SolutionDir)..\..\include\core\module\device;$(SolutionDir)..\..\include\core\module\device\connect;$(SolutionDir)..\..\include\core\module\device\connect\url;$(SolutionDir)..\..\include\core\module\device\database;$(SolutionDir)..\..\include\core\module\device\process;$(SolutionDir)..\..\include\core\module\device_io;$(SolutionDir)..\..\include\core\module\vm;$(SolutionDir)..\..\include\core\service;$(SolutionDir)..\..\include\core\system;$(SolutionDir)..\..\include\core\system\attribute;$(SolutionDir)..\..\include\core\system\message;$(SolutionDir)..\..\include\core\system\platform;$(SolutionDir)..\..\include\core\utils;$(SolutionDir)..\..\include\core\utils\task;$(SolutionDir)..\..\include\core\utils\thread;$(SolutionDir)..\..\include\core\utils\time;$(SolutionDir)..\..\third-party\src\boost_1_69_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0501;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_NO_VA_START_VALIDATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -95,7 +95,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(SolutionDir)..\..\include\core;$(SolutionDir)..\..\include\core\base;$(SolutionDir)..\..\include\core\module;$(SolutionDir)..\..\include\core\module\app;$(SolutionDir)..\..\include\core\module\device;$(SolutionDir)..\..\include\core\module\device\connect;$(SolutionDir)..\..\include\core\module\device\connect\url;$(SolutionDir)..\..\include\core\module\device\database;$(SolutionDir)..\..\include\core\module\device\process;$(SolutionDir)..\..\include\core\module\device_io;$(SolutionDir)..\..\include\core\service;$(SolutionDir)..\..\include\core\system;$(SolutionDir)..\..\include\core\system\attribute;$(SolutionDir)..\..\include\core\system\platform;$(SolutionDir)..\..\include\core\system\message;$(SolutionDir)..\..\include\core\utils;$(SolutionDir)..\..\include\core\utils\task;$(SolutionDir)..\..\include\core\utils\thread;$(SolutionDir)..\..\include\core\utils\time;$(SolutionDir)..\..\third-party\src\boost_1_69_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(SolutionDir)..\..\include\core;$(SolutionDir)..\..\include\core\base;$(SolutionDir)..\..\include\core\module;$(SolutionDir)..\..\include\core\module\app;$(SolutionDir)..\..\include\core\module\device;$(SolutionDir)..\..\include\core\module\device\connect;$(SolutionDir)..\..\include\core\module\device\connect\url;$(SolutionDir)..\..\include\core\module\device\database;$(SolutionDir)..\..\include\core\module\device\process;$(SolutionDir)..\..\include\core\module\device_io;$(SolutionDir)..\..\include\core\module\vm;$(SolutionDir)..\..\include\core\service;$(SolutionDir)..\..\include\core\system;$(SolutionDir)..\..\include\core\system\attribute;$(SolutionDir)..\..\include\core\system\platform;$(SolutionDir)..\..\include\core\system\message;$(SolutionDir)..\..\include\core\utils;$(SolutionDir)..\..\include\core\utils\task;$(SolutionDir)..\..\include\core\utils\thread;$(SolutionDir)..\..\include\core\utils\time;$(SolutionDir)..\..\third-party\src\boost_1_69_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_NO_VA_START_VALIDATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Lib>
@@ -187,7 +187,6 @@
     <ClInclude Include="..\..\..\include\core\module\csf_module_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\module\csf_module_manager_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\csf_module_version.hpp" />
-    <ClInclude Include="..\..\..\include\core\module\csf_vm.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_buffer.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device\connect\csf_connect_callback.hpp" />
@@ -212,6 +211,10 @@
     <ClInclude Include="..\..\..\include\core\module\device\process\csf_process_interface.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device_io\csf_device_io.hpp" />
     <ClInclude Include="..\..\..\include\core\module\device_io\csf_device_io_interface.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\vm\csf_master.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\vm\csf_shared_memory.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\vm\csf_slave.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\vm\csf_vm.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_divider.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_divider_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_request.hpp" />
@@ -322,7 +325,6 @@
     <ClCompile Include="..\..\..\src\core\module\csf_module_factory_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\module\csf_module_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\module\csf_module_version.cpp" />
-    <ClCompile Include="..\..\..\src\core\module\csf_vm.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_callback.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\connect\csf_connect_error.cpp" />
@@ -339,6 +341,10 @@
     <ClCompile Include="..\..\..\src\core\module\device\database\csf_database_request.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device\process\csf_process.cpp" />
     <ClCompile Include="..\..\..\src\core\module\device_io\csf_device_io.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\vm\csf_master.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\vm\csf_shared_memory.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\vm\csf_slave.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\vm\csf_vm.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_divider.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_divider_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_request.cpp" />

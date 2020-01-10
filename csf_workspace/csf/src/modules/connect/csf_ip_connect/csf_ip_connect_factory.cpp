@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: f
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 12:54:43
+*Date: 01-10æœˆ-2018 12:54:43
 *
 *Description: Class(csf_ip_connect_factory)
 *
@@ -50,65 +50,65 @@ csf_ip_connect_factory::~csf_ip_connect_factory() {
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºÖ÷ÒªÊµÏÖÄ£¿éµÄÅäÖÃĞÅÏ¢´¦Àí½Ó¿Ú¡£
-* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šä¸»è¦å®ç°æ¨¡å—çš„é…ç½®ä¿¡æ¯å¤„ç†æ¥å£ã€‚
+* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param element    ±íÊ¾Ä£¿éµÄÅäÖÃĞÅÏ¢
+* @param element    è¡¨ç¤ºæ¨¡å—çš„é…ç½®ä¿¡æ¯
 *
-* ³£ÓÃµÄÅäÖÃĞÅÏ¢±£´æ½á¹¹Îª£º
-* <!--***¸Ã²¿·ÖÃèÊöÄ£¿éÅäÖÃĞÅÏ¢£¬ÊÇ±ØĞëÅäÖÃµÄÊı¾İÄÚÈİ***-->
+* å¸¸ç”¨çš„é…ç½®ä¿¡æ¯ä¿å­˜ç»“æ„ä¸ºï¼š
+* <!--***è¯¥éƒ¨åˆ†æè¿°æ¨¡å—é…ç½®ä¿¡æ¯ï¼Œæ˜¯å¿…é¡»é…ç½®çš„æ•°æ®å†…å®¹***-->
 * <module>
-*        <!--***±íÊ¾Ä£¿é¶ÔÓ¦µÄÄ£¿éÃû³ÆĞÅÏ¢***-->
+*        <!--***è¡¨ç¤ºæ¨¡å—å¯¹åº”çš„æ¨¡å—åç§°ä¿¡æ¯***-->
 *        <name>csf_connection</name>
-*        <!--***±íÊ¾¸ÃÉè±¸Ä£¿éµÄÎ¨Ò»±êÊ¶×Ö·û´®£¬¸Ã×Ö·û´®³¤¶ÈÓ¦Ğ¡ÓÚµÈÓÚ64×Ö½Ú***-->
+*        <!--***è¡¨ç¤ºè¯¥è®¾å¤‡æ¨¡å—çš„å”¯ä¸€æ ‡è¯†å­—ç¬¦ä¸²ï¼Œè¯¥å­—ç¬¦ä¸²é•¿åº¦åº”å°äºç­‰äº64å­—èŠ‚***-->
 *        <mid>02000000-0000001</mid>
-*        <!--±íÊ¾¸ÃÄ£¿éµÄÅäÖÃĞÅÏ¢£¬Ö÷ÒªÓÉÄ£¿éµÄconfigure½Ó¿Ú´¦Àí¡£¸ÃÄ£¿éµÄÅäÖÃÏîÄÚÈİÓÉÄ£¶ÔÓ¦µÄÄ£¿éÈ·¶¨-->
+*        <!--è¡¨ç¤ºè¯¥æ¨¡å—çš„é…ç½®ä¿¡æ¯ï¼Œä¸»è¦ç”±æ¨¡å—çš„configureæ¥å£å¤„ç†ã€‚è¯¥æ¨¡å—çš„é…ç½®é¡¹å†…å®¹ç”±æ¨¡å¯¹åº”çš„æ¨¡å—ç¡®å®š-->
 *        <configure>
-*                <!--±íÊ¾Ïß³ÌÊıÁ¿-->
+*                <!--è¡¨ç¤ºçº¿ç¨‹æ•°é‡-->
 *                <thread_number>4</thread_number>
 *        </configure>
 * </module>
 */
 csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 
-	//¸ùÅäÖÃĞÅÏ¢
+	//æ ¹é…ç½®ä¿¡æ¯
 	get_attribute_manager().set_root_element(&element);
 
-	//±íÊ¾Á¬½Ó¹¤³§ËùĞèÒª´´½¨µÄÏß³ÌÊıÁ¿£¬ÊıÖµÄ¬ÈÏÎª£º2
+	//è¡¨ç¤ºè¿æ¥å·¥å‚æ‰€éœ€è¦åˆ›å»ºçš„çº¿ç¨‹æ•°é‡ï¼Œæ•°å€¼é»˜è®¤ä¸ºï¼š2
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(thread_number)
 		, csf_attribute_int(std::list<csf_string>{ "thread_number" }
 		, csf_attribute_boundary("[2, n)")
 		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_thread_number)));
-	//±íÊ¾Á¬½Ó³¬Ê±¹ÜÀíÆ÷ĞèÒª´´½¨µÄÏß³ÌÊıÁ¿£¬ÊıÖµÄ¬ÈÏÎª£º2
+	//è¡¨ç¤ºè¿æ¥è¶…æ—¶ç®¡ç†å™¨éœ€è¦åˆ›å»ºçš„çº¿ç¨‹æ•°é‡ï¼Œæ•°å€¼é»˜è®¤ä¸ºï¼š2
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(timeout_manager_thread_number)
 		, csf_attribute_int(std::list<csf_string>{ "timeout_manager_thread_number" }
 		, csf_attribute_boundary("[1, n)")
 		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_thread_number)));
-	//±íÊ¾Á¬½Ó¹¤³§ËùÄÜ½ÓÊÕµÄ×î´óÁ¬½ÓÊı£¬ÊıÖµÄ¬ÈÏÎª£º1024
+	//è¡¨ç¤ºè¿æ¥å·¥å‚æ‰€èƒ½æ¥æ”¶çš„æœ€å¤§è¿æ¥æ•°ï¼Œæ•°å€¼é»˜è®¤ä¸ºï¼š1024
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(connect_limit)
 		, csf_attribute_int(std::list<csf_string>{ "connect_limit" }
 		, csf_attribute_boundary("[1, 65535]")
 		, csf_attribute_default_value<csf_attribute_int, csf_int32>(csf_ip_connect_factory_connect_limit)));
-	//±íÊ¾Á¬½ÓµÄ³¬Ê±Ê±¼ä£¬ÊıÖµÄ¬ÈÏÎª£º5s
+	//è¡¨ç¤ºè¿æ¥çš„è¶…æ—¶æ—¶é—´ï¼Œæ•°å€¼é»˜è®¤ä¸ºï¼š5s
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(connect_timeout)
 		, csf_attribute_time(std::list<csf_string>{ "connect_timeout" }
 		, csf_attribute_time::csf_time_unit_ms
 		, csf_attribute_boundary("[10, n)")
 		, csf_attribute_default_value<csf_attribute_time, csf_int64>(csf_connect_timeout_default_ms)));
-	//±íÊ¾¶¨Ê±Æ÷Ê±¼ä¼ä¸ô£¬ÊıÖµÄ¬ÈÏÎª£º500ms
+	//è¡¨ç¤ºå®šæ—¶å™¨æ—¶é—´é—´éš”ï¼Œæ•°å€¼é»˜è®¤ä¸ºï¼š500ms
 	get_attribute_manager().add(CSF_ATTRIBUTE_NAME(idle_interval)
 		, csf_attribute_time(std::list<csf_string>{ "idle_interval" }
 		, csf_attribute_time::csf_time_unit_ms
 		, csf_attribute_boundary("[10, n)")
 		, csf_attribute_default_value<csf_attribute_time, csf_int64>(csf_ip_connect_factory_timer_interval_ms)));
 
-	//±íÊ¾Á¬½Ó¹¤³§ËùÄÜ½ÓÊÕµÄ×î´óÁ¬½ÓÊı£¬ÊıÖµÄ¬ÈÏÎª£º1024
+	//è¡¨ç¤ºè¿æ¥å·¥å‚æ‰€èƒ½æ¥æ”¶çš„æœ€å¤§è¿æ¥æ•°ï¼Œæ•°å€¼é»˜è®¤ä¸ºï¼š1024
 	set_connect_limit((csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(connect_limit)));
 
-	//±íÊ¾Á¬½ÓµÄ³¬Ê±Ê±¼ä£¬µ¥Î»£ººÁÃë£¨ms£©
+	//è¡¨ç¤ºè¿æ¥çš„è¶…æ—¶æ—¶é—´ï¼Œå•ä½ï¼šæ¯«ç§’ï¼ˆmsï¼‰
 	set_connect_timeout(get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(connect_timeout)));
 
-	//¸üĞÂÏµÍ³µÄ¿ÕÏĞ¼ä¸ôÊ±¼ä£¬µ¥Î»£ººÁÃë£¨ms£©
+	//æ›´æ–°ç³»ç»Ÿçš„ç©ºé—²é—´éš”æ—¶é—´ï¼Œå•ä½ï¼šæ¯«ç§’ï¼ˆmsï¼‰
 	set_idle_interval(get_attribute_manager().get_value<csf_attribute_time>(CSF_ATTRIBUTE_NAME(idle_interval)));
 
 
@@ -118,9 +118,9 @@ csf_int32 csf_ip_connect_factory::configure(const csf_element& element) {
 
 
 /**
- * ±íÊ¾¸ù¾İÁ¬½ÓÀàĞÍ´´½¨Ò»¸öÁ¬½Ó¡£³É¹¦·µ»Ø·Ç0£¬Ê§°Ü·µ»Ø0¡£
+ * è¡¨ç¤ºæ ¹æ®è¿æ¥ç±»å‹åˆ›å»ºä¸€ä¸ªè¿æ¥ã€‚æˆåŠŸè¿”å›é0ï¼Œå¤±è´¥è¿”å›0ã€‚
  * 
- * @param type    ±íÊ¾Á¬½ÓÀàĞÍ
+ * @param type    è¡¨ç¤ºè¿æ¥ç±»å‹
  */
 csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_type type) {
 
@@ -146,10 +146,10 @@ csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_ty
 
 
 /**
- * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+ * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
  * 
- * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
- * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+ * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+ * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
  */
 csf_int32 csf_ip_connect_factory::del(csf_element& element, csf_device_operation_callback callback) {
 
@@ -158,16 +158,16 @@ csf_int32 csf_ip_connect_factory::del(csf_element& element, csf_device_operation
 
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_ip_connect_factory::init(const csf_configure_manager * conf_mg) {
 
 	csf_int32				tmp_int_ret = csf_failure;
 
 
-	//¸üĞÂÅäÖÃÏîÄÚÈİ
+	//æ›´æ–°é…ç½®é¡¹å†…å®¹
 	tmp_int_ret = csf_device_base::configure(conf_mg, std::list<csf_string>{ CSF_CONNECT_VAR });
 	if (csf_failure == tmp_int_ret) {
 		csf_log_ex(error, csf_log_code_error
@@ -180,10 +180,10 @@ csf::core::base::csf_int32 csf_ip_connect_factory::init(const csf_configure_mana
 
 
 /**
- * ±íÊ¾¸ù¾İÁ¬½ÓÀàĞÍ¡¢±¾µØµØÖ·´´½¨Ò»¸öÁ¬½Ó¡£³É¹¦·µ»Ø·Ç0£¬Ê§°Ü·µ»Ø0¡£
+ * è¡¨ç¤ºæ ¹æ®è¿æ¥ç±»å‹ã€æœ¬åœ°åœ°å€åˆ›å»ºä¸€ä¸ªè¿æ¥ã€‚æˆåŠŸè¿”å›é0ï¼Œå¤±è´¥è¿”å›0ã€‚
  * 
- * @param type    ±íÊ¾Á¬½ÓÀàĞÍ
- * @param local_url    ±íÊ¾Á¬½Ó´ò¿ªµÄ±¾µØµØÖ·
+ * @param type    è¡¨ç¤ºè¿æ¥ç±»å‹
+ * @param local_url    è¡¨ç¤ºè¿æ¥æ‰“å¼€çš„æœ¬åœ°åœ°å€
  */
 csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url) {
 
@@ -205,10 +205,10 @@ csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_ty
 
 
 /**
- * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+ * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
  * 
- * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
- * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+ * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+ * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
  */
 csf_int32 csf_ip_connect_factory::ctrl(csf_element& element, csf_device_operation_callback callback) {
 
@@ -217,16 +217,16 @@ csf_int32 csf_ip_connect_factory::ctrl(csf_element& element, csf_device_operatio
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_ip_connect_factory::start(const csf_configure_manager * conf_mg) {
 
 	csf_int32				tmp_int_ret = csf_failure;
 
 
-	//¸üĞÂÅäÖÃÏîÄÚÈİ
+	//æ›´æ–°é…ç½®é¡¹å†…å®¹
 	tmp_int_ret = csf_device_base::configure(conf_mg, std::list<csf_string>{ CSF_CONNECT_VAR });
 	if (csf_failure == tmp_int_ret) {
 		csf_log_ex(error, csf_log_code_error
@@ -234,7 +234,7 @@ csf::core::base::csf_int32 csf_ip_connect_factory::start(const csf_configure_man
 		return csf_failure;
 	}
 
-	//Æô¶¯³¬Ê±¹ÜÀíÆ÷
+	//å¯åŠ¨è¶…æ—¶ç®¡ç†å™¨
 	tmp_int_ret = csf_connect_factory::get_timeout_manager().start(
 		(csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(timeout_manager_thread_number)));
 	if (csf_failure == tmp_int_ret) {
@@ -243,7 +243,7 @@ csf::core::base::csf_int32 csf_ip_connect_factory::start(const csf_configure_man
 		return csf_failure;
 	}
 
-	//Æô¶¯´¦ÀíÏß³Ì³Ø
+	//å¯åŠ¨å¤„ç†çº¿ç¨‹æ± 
 	tmp_int_ret = start_thread_pool();
 	if (csf_failure == tmp_int_ret) {
 		csf_log_ex(error, csf_log_code_error
@@ -256,11 +256,11 @@ csf::core::base::csf_int32 csf_ip_connect_factory::start(const csf_configure_man
 
 
 /**
- * ±íÊ¾¸ù¾İÁ¬½ÓÀàĞÍ¡¢±¾µØµØÖ·¡¢Ô¶³ÌµØÖ·´´½¨Ò»¸öÁ¬½Ó¡£³É¹¦·µ»Ø·Ç0£¬Ê§°Ü·µ»Ø0¡£
+ * è¡¨ç¤ºæ ¹æ®è¿æ¥ç±»å‹ã€æœ¬åœ°åœ°å€ã€è¿œç¨‹åœ°å€åˆ›å»ºä¸€ä¸ªè¿æ¥ã€‚æˆåŠŸè¿”å›é0ï¼Œå¤±è´¥è¿”å›0ã€‚
  * 
- * @param type    ±íÊ¾Á¬½ÓÀàĞÍ
- * @param local_url    ±íÊ¾Á¬½Ó´ò¿ªµÄ±¾µØµØÖ·
- * @param remote_url    ±íÊ¾Á¬½Ó´ò¿ªµÄÔ¶³ÌµØÖ·
+ * @param type    è¡¨ç¤ºè¿æ¥ç±»å‹
+ * @param local_url    è¡¨ç¤ºè¿æ¥æ‰“å¼€çš„æœ¬åœ°åœ°å€
+ * @param remote_url    è¡¨ç¤ºè¿æ¥æ‰“å¼€çš„è¿œç¨‹åœ°å€
  */
 csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_type type, const csf_url& local_url, const csf_url& remote_url) {
 
@@ -282,9 +282,9 @@ csf_connect_ptr csf_ip_connect_factory::create(const csf_connect::csf_connect_ty
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_ip_connect_factory::stop(const csf_configure_manager * conf_mg) {
 
@@ -293,10 +293,10 @@ csf::core::base::csf_int32 csf_ip_connect_factory::stop(const csf_configure_mana
 
 
 /**
- * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+ * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
  * 
- * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
- * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+ * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+ * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
  */
 csf_int32 csf_ip_connect_factory::update(csf_element& element, csf_device_operation_callback callback) {
 
@@ -305,10 +305,10 @@ csf_int32 csf_ip_connect_factory::update(csf_element& element, csf_device_operat
 
 
 /**
- * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+ * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
  * 
- * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
- * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+ * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+ * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
  */
 csf_int32 csf_ip_connect_factory::add(csf_element& element, csf_device_operation_callback callback) {
 
@@ -317,15 +317,15 @@ csf_int32 csf_ip_connect_factory::add(csf_element& element, csf_device_operation
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºÆô¶¯Ïß³Ì³Ø
-* ·µ»Ø£ºÎŞ
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¯åŠ¨çº¿ç¨‹æ± 
+* è¿”å›ï¼šæ— 
 */
 csf_int32 csf_ip_connect_factory::start_thread_pool() {
 
 	csf_int32				tmp_int_ret = csf_failure;
 
 	
-	//Æô¶¯Ïß³Ì³Ø£¬×¼±¸½øĞĞÍøÂçÁ¬½Ó´¦Àí
+	//å¯åŠ¨çº¿ç¨‹æ± ï¼Œå‡†å¤‡è¿›è¡Œç½‘ç»œè¿æ¥å¤„ç†
 	tmp_int_ret = get_thread_pool().start(
 		(csf_int32)get_attribute_manager().get_value<csf_attribute_int>(CSF_ATTRIBUTE_NAME(thread_number))
 		, csf_bind(&csf_ip_connect_factory::run_io_service, this));
@@ -351,8 +351,8 @@ csf_int32 csf_ip_connect_factory::start_thread_pool() {
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºÏß³Ì³ØÆô¶¯µÄio_serviceÈÎÎñ
-* ·µ»Ø£ºÎŞ
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šçº¿ç¨‹æ± å¯åŠ¨çš„io_serviceä»»åŠ¡
+* è¿”å›ï¼šæ— 
 */
 csf_void csf_ip_connect_factory::run_io_service() {
 
@@ -375,9 +375,9 @@ csf_void csf_ip_connect_factory::run_io_service() {
 
 /*************************************************************************************/
 /* csf module symboy handle define                                                   */
-/* ±íÊ¾Ä£¿éµÄcreate ºÍ destroy ¾ä±ú¶¨Òå¡£                                              */
-/* Ã¿¸öĞèÒªÍ¨¹ıÄ£¿é¹¤³§´´½¨µÄÄ£¿é¶¼ĞèÒªÌí¼Ó¸Ãºê¶¨Òå¡£                                    */
-/* ÆäÖĞmodule_type±íÊ¾¸ÃÄ£¿éµÄÀàÃû³Æ£¬¸ÃÀàÊµÏÖÁË¹¹Ôì·½·¨Îª£º                             */
+/* è¡¨ç¤ºæ¨¡å—çš„create å’Œ destroy å¥æŸ„å®šä¹‰ã€‚                                              */
+/* æ¯ä¸ªéœ€è¦é€šè¿‡æ¨¡å—å·¥å‚åˆ›å»ºçš„æ¨¡å—éƒ½éœ€è¦æ·»åŠ è¯¥å®å®šä¹‰ã€‚                                    */
+/* å…¶ä¸­module_typeè¡¨ç¤ºè¯¥æ¨¡å—çš„ç±»åç§°ï¼Œè¯¥ç±»å®ç°äº†æ„é€ æ–¹æ³•ä¸ºï¼š                             */
 /* public:                                                                            */
 /*     module_type(const csf::core::system::csf_configure_manager* configure_manager) */
 /**************************************************************************************/

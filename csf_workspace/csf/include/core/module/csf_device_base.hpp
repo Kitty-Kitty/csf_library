@@ -314,20 +314,7 @@ namespace csf
 				*/
 				inline void set_root_configure_name(const csf_char *newVal) {
 
-					csf_int32				tmp_length = (csf_int32)csf_strlen(newVal);
-
-
-					if (tmp_length < csf_sizeof(m_root_configure_name)) {
-						csf_strncpy(m_root_configure_name
-							, newVal
-							, tmp_length);
-					}
-					else {
-						csf_strncpy(m_root_configure_name
-							, newVal
-							, csf_sizeof(m_root_configure_name));
-					}
-
+					csf_strncpy(m_root_configure_name, newVal, csf_sizeof(m_root_configure_name) - 1);
 				}
 				/**
 				* 表示根配置项名称

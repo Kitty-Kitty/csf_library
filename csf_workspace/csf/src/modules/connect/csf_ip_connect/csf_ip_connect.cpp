@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: f
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 15:10:39
+*Date: 01-10æœˆ-2018 15:10:39
 *
 *Description: Class(csf_ip_connect)
 *
@@ -29,15 +29,15 @@ csf_ip_connect::~csf_ip_connect() {
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºĞ´Èëcsf_bufferÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå†™å…¥csf_bufferå†…å®¹ã€‚
+* è¿”å›ï¼šå°äºç­‰äº0è¡¨ç¤ºå¤±è´¥ï¼›å¤§äº0è¡¨ç¤ºæˆåŠŸå†™å…¥çš„æ•°æ®é•¿åº¦ï¼›
 *
-* @param buffer    ±íÊ¾ĞèÒª·¢ËÍµÄÄÚÈİ»º´æ
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    è¡¨ç¤ºéœ€è¦å‘é€çš„å†…å®¹ç¼“å­˜
+* @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 */
 csf_int32 csf_ip_connect::write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
 
-	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+	//å…ˆåˆ¤æ–­æ•°æ®çš„åˆæ³•æ€§ï¼Œä¹‹åå†å¤„ç†
 	if (!buffer.is_valid()) {
 		exception_callback(shared_from_this()
 			, callback
@@ -45,15 +45,15 @@ csf_int32 csf_ip_connect::write(csf_connect_buffer<csf_buffer>& buffer, const cs
 		return csf_failure;
 	}
 
-	//Èç¹ûbufferÖĞĞ´³¤¶È´óĞ¡Ã»ÓĞÉèÖÃ£¨buffer.get_length()Îª0£©£¬Ôò¸ù¾İËŞÖ÷µÄ¿Õ¼ä´óĞ¡×Ô¶¯ÉèÖÃÊı¾İ
-	//ÕâÑù´¦ÀíÖ÷ÒªÎª¼õÉÙÊÕ·¢²Ù×÷Ê±µÄÊ¹ÓÃ³É±¾£¬ÓÃ»§²»ÓÃ¼ÇµÃ±ØĞëµ÷ÓÃbuffer.set_length()º¯Êı¡£µ«µ×²ãµÄ×Ô¶¯´¦Àí£¬Í¬Ê±ÒıÈëÁË³ÌĞòµÄ²»È·¶¨ĞÔ¡£
-	//·¢ËÍÄ¬ÈÏ³¤¶ÈÎªËŞÖ÷ÈİÆ÷ÖĞÊı¾İµÄ³¤¶È
-	//½ÓÊÕÄ¬ÈÏ³¤¶ÈÎªËŞÖ÷ÈİÆ÷ÖĞ¿ÕÏĞ¿Õ¼äµÄ³¤¶È
+	//å¦‚æœbufferä¸­å†™é•¿åº¦å¤§å°æ²¡æœ‰è®¾ç½®ï¼ˆbuffer.get_length()ä¸º0ï¼‰ï¼Œåˆ™æ ¹æ®å®¿ä¸»çš„ç©ºé—´å¤§å°è‡ªåŠ¨è®¾ç½®æ•°æ®
+	//è¿™æ ·å¤„ç†ä¸»è¦ä¸ºå‡å°‘æ”¶å‘æ“ä½œæ—¶çš„ä½¿ç”¨æˆæœ¬ï¼Œç”¨æˆ·ä¸ç”¨è®°å¾—å¿…é¡»è°ƒç”¨buffer.set_length()å‡½æ•°ã€‚ä½†åº•å±‚çš„è‡ªåŠ¨å¤„ç†ï¼ŒåŒæ—¶å¼•å…¥äº†ç¨‹åºçš„ä¸ç¡®å®šæ€§ã€‚
+	//å‘é€é»˜è®¤é•¿åº¦ä¸ºå®¿ä¸»å®¹å™¨ä¸­æ•°æ®çš„é•¿åº¦
+	//æ¥æ”¶é»˜è®¤é•¿åº¦ä¸ºå®¿ä¸»å®¹å™¨ä¸­ç©ºé—²ç©ºé—´çš„é•¿åº¦
 	if (buffer.get_length() <= 0 && buffer.length() > 0) {
 		buffer.set_length(buffer.length());
 	}
 
-	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»À´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+	//æ ¹æ®csf_connect_bufferçš„æ ‡å¿—ä½æ¥åˆ¤æ–­å¼‚æ­¥ä¸åŒæ­¥
 	if (buffer.get_is_sync()) {
 		//return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
 		return sync_write(buffer, callback);
@@ -67,15 +67,15 @@ csf_int32 csf_ip_connect::write(csf_connect_buffer<csf_buffer>& buffer, const cs
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜ä½ç½®ã€‚
+* è¿”å›ï¼šå°äºç­‰äº0è¡¨ç¤ºå¤±è´¥ï¼›å¤§äº0è¡¨ç¤ºæˆåŠŸè¯»å–çš„æ•°æ®é•¿åº¦ï¼›
 *
-* @param buffer    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄ»º´æ¶ÔÏó
-* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+* @param buffer    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„ç¼“å­˜å¯¹è±¡
+* @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 */
 csf_int32 csf_ip_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
 
-	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+	//å…ˆåˆ¤æ–­æ•°æ®çš„åˆæ³•æ€§ï¼Œä¹‹åå†å¤„ç†
 	if (!buffer.is_valid()) {
 		exception_callback(shared_from_this()
 			, callback
@@ -84,18 +84,18 @@ csf_int32 csf_ip_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf
 		return csf_failure;
 	}
 
-	//Èç¹û½ÓÊÕ³¤¶ÈÎª¿Õ£¨buffer.get_length()Îª0£©£¬Ôò±íÊ¾²ÉÓÃËŞÖ÷ÈİÆ÷µÄ¿ÕÏĞ¿Õ¼ä´óĞ¡¡£
-	//ÕâÑù´¦ÀíÖ÷ÒªÎª¼õÉÙÊÕ·¢²Ù×÷Ê±µÄÊ¹ÓÃ³É±¾£¬ÓÃ»§²»ÓÃ¼ÇµÃ±ØĞëµ÷ÓÃbuffer.set_length()º¯Êı¡£µ«µ×²ãµÄ×Ô¶¯´¦Àí£¬Í¬Ê±ÒıÈëÁË³ÌĞòµÄ²»È·¶¨ĞÔ¡£
-	//·¢ËÍÄ¬ÈÏ³¤¶ÈÎªËŞÖ÷ÈİÆ÷ÖĞÊı¾İµÄ³¤¶È
-	//½ÓÊÕÄ¬ÈÏ³¤¶ÈÎªËŞÖ÷ÈİÆ÷ÖĞ¿ÕÏĞ¿Õ¼äµÄ³¤¶È
+	//å¦‚æœæ¥æ”¶é•¿åº¦ä¸ºç©ºï¼ˆbuffer.get_length()ä¸º0ï¼‰ï¼Œåˆ™è¡¨ç¤ºé‡‡ç”¨å®¿ä¸»å®¹å™¨çš„ç©ºé—²ç©ºé—´å¤§å°ã€‚
+	//è¿™æ ·å¤„ç†ä¸»è¦ä¸ºå‡å°‘æ”¶å‘æ“ä½œæ—¶çš„ä½¿ç”¨æˆæœ¬ï¼Œç”¨æˆ·ä¸ç”¨è®°å¾—å¿…é¡»è°ƒç”¨buffer.set_length()å‡½æ•°ã€‚ä½†åº•å±‚çš„è‡ªåŠ¨å¤„ç†ï¼ŒåŒæ—¶å¼•å…¥äº†ç¨‹åºçš„ä¸ç¡®å®šæ€§ã€‚
+	//å‘é€é»˜è®¤é•¿åº¦ä¸ºå®¿ä¸»å®¹å™¨ä¸­æ•°æ®çš„é•¿åº¦
+	//æ¥æ”¶é»˜è®¤é•¿åº¦ä¸ºå®¿ä¸»å®¹å™¨ä¸­ç©ºé—²ç©ºé—´çš„é•¿åº¦
 	if (buffer.get_length() <= 0 && buffer.avail() > 0) {
 		buffer.set_length(buffer.avail());
 	}
 
-	//¸üĞÂfilled±êÖ¾Î»
+	//æ›´æ–°filledæ ‡å¿—ä½
 	set_is_filled(buffer.get_is_filled());
 
-	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»ºÍ»Øµ÷º¯ÊıÊÇ·ñÎª¿ÕÀ´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+	//æ ¹æ®csf_connect_bufferçš„æ ‡å¿—ä½å’Œå›è°ƒå‡½æ•°æ˜¯å¦ä¸ºç©ºæ¥åˆ¤æ–­å¼‚æ­¥ä¸åŒæ­¥
 	if (buffer.get_is_sync() || csf_nullptr == callback) {
 		//return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
 		return sync_read(buffer, callback);
@@ -109,14 +109,14 @@ csf_int32 csf_ip_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º´¦ÀíÒì²½Ğ´´¦Àí»Øµ÷º¯Êı
-* ·µ»Ø£º0±íÊ¾´¦Àí³É¹¦£»·Ç0±íÊ¾´¦ÀíÊ§°Ü
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¤„ç†å¼‚æ­¥å†™å¤„ç†å›è°ƒå‡½æ•°
+* è¿”å›ï¼š0è¡¨ç¤ºå¤„ç†æˆåŠŸï¼›é0è¡¨ç¤ºå¤„ç†å¤±è´¥
 *
-* @param buffer		 ±íÊ¾ÄÚÈİµÄ»º´æ
-* @param connect_ptr ±íÊ¾µ±Ç°µÄÍøÂçÁ¬½Ó¶ÔÏó
-* @param callback    ±íÊ¾Òì³£´¦Àí¾ä±úĞÅÏ¢
-* @param error_code  ±íÊ¾boostµÄ´íÎóĞÅÏ¢
-* @param length		±íÊ¾µ±Ç°Êµ¼ÊĞ´µÄ»º´æ³¤¶È
+* @param buffer		 è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜
+* @param connect_ptr è¡¨ç¤ºå½“å‰çš„ç½‘ç»œè¿æ¥å¯¹è±¡
+* @param callback    è¡¨ç¤ºå¼‚å¸¸å¤„ç†å¥æŸ„ä¿¡æ¯
+* @param error_code  è¡¨ç¤ºboostçš„é”™è¯¯ä¿¡æ¯
+* @param length		è¡¨ç¤ºå½“å‰å®é™…å†™çš„ç¼“å­˜é•¿åº¦
 */
 csf_bool csf_ip_connect::async_write_callback(csf_connect_buffer<csf_buffer>& buffer
 	, csf_connect_ptr connect_ptr
@@ -125,19 +125,19 @@ csf_bool csf_ip_connect::async_write_callback(csf_connect_buffer<csf_buffer>& bu
 	, csf_uint32 length) {
 
 
-	//Èç¹û´¦Àí´íÎó£¬Ôò°´ÕÕ´íÎó´¦Àí
+	//å¦‚æœå¤„ç†é”™è¯¯ï¼Œåˆ™æŒ‰ç…§é”™è¯¯å¤„ç†
 	if (error_code) {
 		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 		return csf_false;
 	}
 
-	//Èç¹ûÒÑ¾­·¢ËÍÍê³ÉËùÓĞÊı¾İ£¬ÔòÕı³£»Øµ÷·µ»Ø
+	//å¦‚æœå·²ç»å‘é€å®Œæˆæ‰€æœ‰æ•°æ®ï¼Œåˆ™æ­£å¸¸å›è°ƒè¿”å›
 	if (length >= buffer.get_length()) {
 		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 		return csf_true;
 	}
 	else {
-		//Èç¹ûÃ»ÓĞ·¢ËÍÍêÈ«£¬»¹ÓĞ²¿·ÖÊı¾İ£¬Ôò¸üĞÂ»º´æĞÅÏ¢¼ÌĞø·¢ËÍ
+		//å¦‚æœæ²¡æœ‰å‘é€å®Œå…¨ï¼Œè¿˜æœ‰éƒ¨åˆ†æ•°æ®ï¼Œåˆ™æ›´æ–°ç¼“å­˜ä¿¡æ¯ç»§ç»­å‘é€
 		buffer.get_container()->set_pos(buffer.get_container()->get_pos() + length);
 		buffer.set_length(buffer.get_length() - length);
 
@@ -149,14 +149,14 @@ csf_bool csf_ip_connect::async_write_callback(csf_connect_buffer<csf_buffer>& bu
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º´¦ÀíÒì²½¶Á´¦Àí»Øµ÷º¯Êı
-* ·µ»Ø£º0±íÊ¾´¦Àí³É¹¦£»·Ç0±íÊ¾´¦ÀíÊ§°Ü
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¤„ç†å¼‚æ­¥è¯»å¤„ç†å›è°ƒå‡½æ•°
+* è¿”å›ï¼š0è¡¨ç¤ºå¤„ç†æˆåŠŸï¼›é0è¡¨ç¤ºå¤„ç†å¤±è´¥
 *
-* @param buffer		 ±íÊ¾ÄÚÈİµÄ»º´æ
-* @param connect_ptr ±íÊ¾µ±Ç°µÄÍøÂçÁ¬½Ó¶ÔÏó
-* @param callback    ±íÊ¾Òì³£´¦Àí¾ä±úĞÅÏ¢
-* @param error_code  ±íÊ¾boostµÄ´íÎóĞÅÏ¢
-* @param length   ±íÊ¾µ±Ç°Êµ¼ÊĞ´µÄ»º´æ³¤¶È
+* @param buffer		 è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜
+* @param connect_ptr è¡¨ç¤ºå½“å‰çš„ç½‘ç»œè¿æ¥å¯¹è±¡
+* @param callback    è¡¨ç¤ºå¼‚å¸¸å¤„ç†å¥æŸ„ä¿¡æ¯
+* @param error_code  è¡¨ç¤ºboostçš„é”™è¯¯ä¿¡æ¯
+* @param length   è¡¨ç¤ºå½“å‰å®é™…å†™çš„ç¼“å­˜é•¿åº¦
 */
 csf_bool csf_ip_connect::async_read_callback(csf_connect_buffer<csf_buffer>& buffer
 	, csf_connect_ptr connect_ptr
@@ -164,25 +164,25 @@ csf_bool csf_ip_connect::async_read_callback(csf_connect_buffer<csf_buffer>& buf
 	, const boost::system::error_code& error_code
 	, csf_uint32 length) {
 
-	//Èç¹û´¦Àí´íÎó£¬Ôò°´ÕÕ´íÎó´¦Àí
+	//å¦‚æœå¤„ç†é”™è¯¯ï¼Œåˆ™æŒ‰ç…§é”™è¯¯å¤„ç†
 	if (error_code) {
 		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 		return csf_false;
 	}
 
 	if (length > 0) {
-		//Èç¹û½ÓÊÕµ½Êı¾İ£¬ÔòÒÆ¶¯bufferÖĞµÄ»º´æÓÎ±ê£¬·½±ãÏÂÒ»´Î½ÓÊÕ
+		//å¦‚æœæ¥æ”¶åˆ°æ•°æ®ï¼Œåˆ™ç§»åŠ¨bufferä¸­çš„ç¼“å­˜æ¸¸æ ‡ï¼Œæ–¹ä¾¿ä¸‹ä¸€æ¬¡æ¥æ”¶
 		buffer.get_container()->set_last(buffer.get_container()->get_last() + length);
 		buffer.set_length(buffer.get_length() - length);
 	}
 
-	//Èç¹ûĞèÒª½ÓÊÕËùÓĞÊı¾İ£¬Ôò¼ÌĞø½ÓÊÕ£¬Ö±µ½ÍêÕû½ÓÊÕÍêÈ«
+	//å¦‚æœéœ€è¦æ¥æ”¶æ‰€æœ‰æ•°æ®ï¼Œåˆ™ç»§ç»­æ¥æ”¶ï¼Œç›´åˆ°å®Œæ•´æ¥æ”¶å®Œå…¨
 	if (csf_false == buffer.get_is_filled()) {
 		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 		return csf_true;
 	}
 	else {
-		//Èç¹ûÒÑ¾­·¢ËÍÍê³ÉËùÓĞÊı¾İ£¬ÔòÕı³£»Øµ÷·µ»Ø
+		//å¦‚æœå·²ç»å‘é€å®Œæˆæ‰€æœ‰æ•°æ®ï¼Œåˆ™æ­£å¸¸å›è°ƒè¿”å›
 		if (length >= buffer.get_length()) {
 			async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 			return csf_true;

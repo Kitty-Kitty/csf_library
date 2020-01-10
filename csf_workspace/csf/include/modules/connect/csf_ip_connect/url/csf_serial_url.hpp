@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 12:54:51
+*Date: 01-10æœˆ-2018 12:54:51
 *
-*Description: Class(csf_serial_url) ±íÊ¾´®¿ÚµØÖ·ĞÅÏ¢
+*Description: Class(csf_serial_url) è¡¨ç¤ºä¸²å£åœ°å€ä¿¡æ¯
 *
 *Others:
 *
@@ -30,81 +30,81 @@ namespace csf
 		namespace connect
 		{
 			/**
-			 * ±íÊ¾´®¿ÚµØÖ·ĞÅÏ¢
+			 * è¡¨ç¤ºä¸²å£åœ°å€ä¿¡æ¯
 			 * @author f
 			 * @version 1.0
-			 * @created 01-10ÔÂ-2018 12:54:51
+			 * @created 01-10æœˆ-2018 12:54:51
 			 */
 			class csf_serial_url : public csf::core::module::connect::csf_url
 			{
 
 			public:
 				/**
-				 * ±íÊ¾´®¿ÚµÄÁ÷¿ØÖÆÀàĞÍ
+				 * è¡¨ç¤ºä¸²å£çš„æµæ§åˆ¶ç±»å‹
 				 * @author f
 				 * @version 1.0
-				 * @created 01-10ÔÂ-2018 12:54:51
+				 * @created 01-10æœˆ-2018 12:54:51
 				 */
 				typedef enum csf_serial_flow_control_type_enum
 				{
 					/**
-					 * ±íÊ¾Î´ÖªµÄ´®¿ÚÁ÷¿ØÖÆÀàĞÍ
+					 * è¡¨ç¤ºæœªçŸ¥çš„ä¸²å£æµæ§åˆ¶ç±»å‹
 					 */
 					csf_serial_flow_control_type_none = 0,
 					/**
-					 * ±íÊ¾Èí¿ØÖÆ
+					 * è¡¨ç¤ºè½¯æ§åˆ¶
 					 */
 					csf_serial_flow_control_type_software,
 					/**
-					 * ±íÊ¾Ó²¿ØÖÆ
+					 * è¡¨ç¤ºç¡¬æ§åˆ¶
 					 */
 					csf_serial_flow_control_type_hardware
 				} csf_serial_flow_control_type;
 
 				/**
-				 * ±íÊ¾ÆæÓöĞ£ÑéÀàĞÍ
+				 * è¡¨ç¤ºå¥‡é‡æ ¡éªŒç±»å‹
 				 * @author f
 				 * @version 1.0
-				 * @created 01-10ÔÂ-2018 12:54:51
+				 * @created 01-10æœˆ-2018 12:54:51
 				 */
 				typedef enum csf_serial_parity_type_enum
 				{
 					/**
-					 * ±íÊ¾Î´ÖªµÄÆæÓöĞ£Ñé
+					 * è¡¨ç¤ºæœªçŸ¥çš„å¥‡é‡æ ¡éªŒ
 					 */
 					csf_serial_parity_type_none = 0,
 					/**
-					 * ±íÊ¾Î´ÖªµÄÆæĞ£Ñé
+					 * è¡¨ç¤ºæœªçŸ¥çš„å¥‡æ ¡éªŒ
 					 */
 					csf_serial_parity_type_odd,
 					/**
-					 * ±íÊ¾Î´ÖªµÄÓöĞ£Ñé
+					 * è¡¨ç¤ºæœªçŸ¥çš„é‡æ ¡éªŒ
 					 */
 					csf_serial_parity_type_even
 				} csf_serial_parity_type;
 
 				/**
-				 * ±íÊ¾Í£Ö¹Î»ÀàĞÍ
+				 * è¡¨ç¤ºåœæ­¢ä½ç±»å‹
 				 * @author f
 				 * @version 1.0
-				 * @created 01-10ÔÂ-2018 12:54:51
+				 * @created 01-10æœˆ-2018 12:54:51
 				 */
 				typedef enum csf_serial_stop_bits_type_enum
 				{
 					/**
-					 * ±íÊ¾Î´ÖªµÄÍ£Ö¹Î»
+					 * è¡¨ç¤ºæœªçŸ¥çš„åœæ­¢ä½
 					 */
 					csf_serial_stop_bits_type_none = 0,
 					/**
-					 * ±íÊ¾1Î»Í£Ö¹Î»
+					 * è¡¨ç¤º1ä½åœæ­¢ä½
 					 */
 					csf_serial_stop_bits_type_one,
 					/**
-					 * ±íÊ¾1.5Î»Í£Ö¹Î»
+					 * è¡¨ç¤º1.5ä½åœæ­¢ä½
 					 */
 					csf_serial_stop_bits_type_one_point_five,
 					/**
-					 * ±íÊ¾2Î»Í£Ö¹Î»
+					 * è¡¨ç¤º2ä½åœæ­¢ä½
 					 */
 					csf_serial_stop_bits_type_two
 				}csf_serial_stop_bits_type;
@@ -114,21 +114,21 @@ namespace csf
 				virtual ~csf_serial_url();
 
 				/**
-				 * ±íÊ¾´®¿ÚµÄ²¨ÌØÊıÖµ
+				 * è¡¨ç¤ºä¸²å£çš„æ³¢ç‰¹æ•°å€¼
 				 */
 				inline csf_int32 get_baud_rate() {
 
 					return m_baud_rate;
 				}
 				/**
-				 * ±íÊ¾×Ö·ûµÄ³¤¶È
+				 * è¡¨ç¤ºå­—ç¬¦çš„é•¿åº¦
 				 */
 				inline csf_uchar get_character_size() {
 
 					return m_character_size;
 				}
 				/**
-				 * ±íÊ¾´®¿ÚµÄ²¨ÌØÊıÖµ
+				 * è¡¨ç¤ºä¸²å£çš„æ³¢ç‰¹æ•°å€¼
 				 * 
 				 * @param new_value
 				 */
@@ -137,7 +137,7 @@ namespace csf
 					m_baud_rate = new_value;
 				}
 				/**
-				 * ±íÊ¾×Ö·ûµÄ³¤¶È
+				 * è¡¨ç¤ºå­—ç¬¦çš„é•¿åº¦
 				 * 
 				 * @param new_value
 				 */
@@ -146,23 +146,23 @@ namespace csf
 					m_character_size = new_value;
 				}
 				/**
-				 * ±íÊ¾´®¿ÚÉè±¸
+				 * è¡¨ç¤ºä¸²å£è®¾å¤‡
 				 */
 				inline csf_string & get_dev() {
 
 					return m_dev;
 				}
 				/**
-				 * ±íÊ¾½âÎöµØÖ·º¯Êı
+				 * è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
 				 * 
-				 * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+				 * @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
 				 */
 				inline virtual csf_int32 parse(csf_string& url) {
 
 					return 0;
 				}
 				/**
-				 * ±íÊ¾´®¿ÚÉè±¸
+				 * è¡¨ç¤ºä¸²å£è®¾å¤‡
 				 * 
 				 * @param new_value
 				 */
@@ -171,14 +171,14 @@ namespace csf
 					m_dev = new_value;
 				}
 				/**
-				 * ±íÊ¾Á÷¿ØÀàĞÍ
+				 * è¡¨ç¤ºæµæ§ç±»å‹
 				 */
 				inline csf::modules::connect::csf_serial_url::csf_serial_flow_control_type get_flow_control() {
 
 					return m_flow_control;
 				}
 				/**
-				 * ±íÊ¾Á÷¿ØÀàĞÍ
+				 * è¡¨ç¤ºæµæ§ç±»å‹
 				 * 
 				 * @param new_value
 				 */
@@ -187,14 +187,14 @@ namespace csf
 					m_flow_control = new_value;
 				}
 				/**
-				 * ±íÊ¾ÆæÅ¼Ğ£ÑéÀàĞÍ
+				 * è¡¨ç¤ºå¥‡å¶æ ¡éªŒç±»å‹
 				 */
 				inline csf::modules::connect::csf_serial_url::csf_serial_parity_type get_parity() {
 
 					return m_parity;
 				}
 				/**
-				 * ±íÊ¾ÆæÅ¼Ğ£ÑéÀàĞÍ
+				 * è¡¨ç¤ºå¥‡å¶æ ¡éªŒç±»å‹
 				 * 
 				 * @param new_value
 				 */
@@ -203,14 +203,14 @@ namespace csf
 					m_parity = new_value;
 				}
 				/**
-				 * ±íÊ¾Í£Ö¹Î»ÀàĞÍ
+				 * è¡¨ç¤ºåœæ­¢ä½ç±»å‹
 				 */
 				inline csf::modules::connect::csf_serial_url::csf_serial_stop_bits_type get_stop_bits() {
 
 					return m_stop_bits;
 				}
 				/**
-				 * ±íÊ¾Í£Ö¹Î»ÀàĞÍ
+				 * è¡¨ç¤ºåœæ­¢ä½ç±»å‹
 				 * 
 				 * @param new_value
 				 */
@@ -219,14 +219,14 @@ namespace csf
 					m_stop_bits = new_value;
 				}
 				/**
-				 * ±íÊ¾´®¿ÚµÄ¶Ë¿ÚºÅ
+				 * è¡¨ç¤ºä¸²å£çš„ç«¯å£å·
 				 */
 				inline csf_uint32 get_port() {
 
 					return m_port;
 				}
 				/**
-				 * ±íÊ¾´®¿ÚµÄ¶Ë¿ÚºÅ
+				 * è¡¨ç¤ºä¸²å£çš„ç«¯å£å·
 				 * 
 				 * @param new_value
 				 */
@@ -235,7 +235,7 @@ namespace csf
 					m_port = new_value;
 				}
 				/**
-				 * ±íÊ¾´®¿ÚÉè±¸
+				 * è¡¨ç¤ºä¸²å£è®¾å¤‡
 				 * 
 				 * @param new_value
 				 */
@@ -244,9 +244,9 @@ namespace csf
 					m_dev = new_value;
 				}
 				/**
-				 * ±íÊ¾½âÎöµØÖ·º¯Êı
+				 * è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
 				 * 
-				 * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+				 * @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
 				 */
 				inline virtual csf_int32 parse(const csf_char* url) {
 
@@ -255,31 +255,31 @@ namespace csf
 
 			private:
 				/**
-				 * ±íÊ¾´®¿ÚµÄ²¨ÌØÊıÖµ
+				 * è¡¨ç¤ºä¸²å£çš„æ³¢ç‰¹æ•°å€¼
 				 */
 				csf_int32 m_baud_rate = 0;
 				/**
-				 * ±íÊ¾×Ö·ûµÄ³¤¶È
+				 * è¡¨ç¤ºå­—ç¬¦çš„é•¿åº¦
 				 */
 				csf_uchar m_character_size = 0;
 				/**
-				 * ±íÊ¾Á÷¿ØÀàĞÍ
+				 * è¡¨ç¤ºæµæ§ç±»å‹
 				 */
 				csf::modules::connect::csf_serial_url::csf_serial_flow_control_type m_flow_control = csf_serial_flow_control_type_none;
 				/**
-				 * ±íÊ¾´®¿ÚÉè±¸
+				 * è¡¨ç¤ºä¸²å£è®¾å¤‡
 				 */
 				csf_string m_dev = "";
 				/**
-				 * ±íÊ¾ÆæÅ¼Ğ£ÑéÀàĞÍ
+				 * è¡¨ç¤ºå¥‡å¶æ ¡éªŒç±»å‹
 				 */
 				csf::modules::connect::csf_serial_url::csf_serial_parity_type m_parity = csf_serial_parity_type_none;
 				/**
-				 * ±íÊ¾Í£Ö¹Î»ÀàĞÍ
+				 * è¡¨ç¤ºåœæ­¢ä½ç±»å‹
 				 */
 				csf::modules::connect::csf_serial_url::csf_serial_stop_bits_type m_stop_bits = csf_serial_stop_bits_type_none;
 				/**
-				 * ±íÊ¾´®¿ÚµÄ¶Ë¿ÚºÅ
+				 * è¡¨ç¤ºä¸²å£çš„ç«¯å£å·
 				 */
 				csf_uint32 m_port = 0;
 

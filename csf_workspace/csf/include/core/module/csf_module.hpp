@@ -229,19 +229,7 @@ namespace csf
 				 */
 				inline csf_void set_name(const csf_char* new_value) {
 
-					csf_int32				tmp_length = (csf_int32)csf_strlen(new_value);
-
-
-					if (tmp_length < csf_sizeof(m_name)) {
-						csf_strncpy(m_name
-							, new_value
-							, tmp_length);
-					}
-					else {
-						csf_strncpy(m_name
-							, new_value
-							, csf_sizeof(m_name));
-					}
+					csf_strncpy(m_name, new_value, csf_sizeof(m_name) - 1);
 				}
 				/**
 				* 模块包含一个属性管理器，统一保存模块所需要的配置属性内容

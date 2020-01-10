@@ -7,10 +7,10 @@
 
     <!--表示当前app包含的所有设备配置信息-->
     <device_configure>
-      
+
       <!--表示各个设备详细信息列表-->
       <devices>
-        
+
         <!--表示单个设备的配置信息-->
         <device>
           <!--***该部分描述模块配置信息，是必须配置的数据内容***-->
@@ -31,10 +31,7 @@
             </configure>
           </module>
         </device>
-      
       </devices>
-
     </device_configure>
-    
   </app>
 </app_configure>

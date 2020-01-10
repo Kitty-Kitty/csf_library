@@ -20,7 +20,6 @@
 #include <windows.h>
 #include "app.hpp"
 
-
 int main(int argc, char** argv)
 {
 	csf_int32								tmp_bool = csf_false;
@@ -29,7 +28,6 @@ int main(int argc, char** argv)
 	//csf::core::module::csf_app			tmp_app("D:\\project_work\\csf_library\\csf_workspace\\csf\\example\\app\\config\\csf_configs.xml", "xml");
 	//csf::core::module::csf_app			tmp_app;
 	csf::core::module::csf_app				tmp_app("E:\\Trans-Control-CO\\DS-C12N-DO\\trunk\\DS-C12N-DO-VDU\\csf_workspace\\csf\\example\\app\\config\\csf_configs.xml", "xml");
-
 
 	tmp_bool = tmp_app.init(csf_nullptr);
 	if (tmp_bool) {

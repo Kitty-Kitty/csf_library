@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: f
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 02-10ÔÂ-2018 14:18:00
+*Date: 02-10Ã”Ã‚-2018 14:18:00
 *
 *Description: Class(csf_tcp_connect)
 *
@@ -32,9 +32,9 @@ csf_tcp_connect::~csf_tcp_connect() {
 
 
 /**
-* Ä£¿é³õÊ¼»¯
+* Ã„Â£Â¿Ã©Â³ÃµÃŠÂ¼Â»Â¯
 *
-* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+* @param conf_mg    Â±Ã­ÃŠÂ¾Ã…Ã¤Ã–ÃƒÃÃ„Â¼Ã¾ÃÃ…ÃÂ¢
 */
 csf::core::base::csf_int32 csf_tcp_connect::init(const csf_configure_manager * conf_mg) {
 
@@ -43,10 +43,10 @@ csf::core::base::csf_int32 csf_tcp_connect::init(const csf_configure_manager * c
 
 
 /**
-* ±íÊ¾´ò¿ªÁ¬½ÓĞÅÏ¢.
-* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+* Â±Ã­ÃŠÂ¾Â´Ã²Â¿ÂªÃÂ¬Â½Ã“ÃÃ…ÃÂ¢.
+* Â·ÂµÂ»Ã˜Â£Âº0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â£Â»Â·Ã‡0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»
 *
-* @param url    ±íÊ¾Á¬½ÓµØÖ·
+* @param url    Â±Ã­ÃŠÂ¾ÃÂ¬Â½Ã“ÂµÃ˜Ã–Â·
 */
 csf_int32 csf_tcp_connect::open(const csf_url& url) {
 
@@ -55,8 +55,8 @@ csf_int32 csf_tcp_connect::open(const csf_url& url) {
 
 
 /**
-* ±íÊ¾¹Ø±ÕÁ¬½Ó.
-* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+* Â±Ã­ÃŠÂ¾Â¹Ã˜Â±Ã•ÃÂ¬Â½Ã“.
+* Â·ÂµÂ»Ã˜Â£Âº0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â£Â»Â·Ã‡0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»
 */
 csf_int32 csf_tcp_connect::close() {
 
@@ -67,9 +67,9 @@ csf_int32 csf_tcp_connect::close() {
 
 
 /**
-* Ä£¿éÆô¶¯
+* Ã„Â£Â¿Ã©Ã†Ã´Â¶Â¯
 *
-* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+* @param conf_mg    Â±Ã­ÃŠÂ¾Ã…Ã¤Ã–ÃƒÃÃ„Â¼Ã¾ÃÃ…ÃÂ¢
 */
 csf::core::base::csf_int32 csf_tcp_connect::start(const csf_configure_manager * conf_mg) {
 
@@ -78,8 +78,8 @@ csf::core::base::csf_int32 csf_tcp_connect::start(const csf_configure_manager * 
 
 
 /**
-* ±íÊ¾ÉèÖÃÁ¬½ÓµÄÊôĞÔÏîÄ¿ĞÅÏ¢¡£
-* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+* Â±Ã­ÃŠÂ¾Ã‰Ã¨Ã–ÃƒÃÂ¬Â½Ã“ÂµÃ„ÃŠÃ´ÃÃ”ÃÃ®Ã„Â¿ÃÃ…ÃÂ¢Â¡Â£
+* Â·ÂµÂ»Ã˜Â£Âº0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â£Â»Â·Ã‡0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ¡Â£
 */
 csf_int32 csf_tcp_connect::set_option() {
 
@@ -88,9 +88,9 @@ csf_int32 csf_tcp_connect::set_option() {
 
 
 /**
-* Ä£¿éÍ£Ö¹
+* Ã„Â£Â¿Ã©ÃÂ£Ã–Â¹
 *
-* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+* @param conf_mg    Â±Ã­ÃŠÂ¾Ã…Ã¤Ã–ÃƒÃÃ„Â¼Ã¾ÃÃ…ÃÂ¢
 */
 csf::core::base::csf_int32 csf_tcp_connect::stop(const csf_configure_manager * conf_mg) {
 
@@ -99,18 +99,18 @@ csf::core::base::csf_int32 csf_tcp_connect::stop(const csf_configure_manager * c
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º´ò¿ªÒ»¸ö¼àÌıµØÖ·¡£
-* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ´Ã²Â¿ÂªÃ’Â»Â¸Ã¶Â¼Ã ÃŒÃ½ÂµÃ˜Ã–Â·Â¡Â£
+* Â·ÂµÂ»Ã˜Â£Âº0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â£Â»Â·Ã‡0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»
 *
-* @param url    ±íÊ¾ĞèÒª¼àÌıµÄµØÖ·
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param url    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ¼Ã ÃŒÃ½ÂµÃ„ÂµÃ˜Ã–Â·
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback& callback) {
 
 	csf::modules::connect::csf_ip_url  tmp_ip_url;
 
 
-	//¶ÔurlÄÚÈİ½øĞĞºÏ·¨ĞÔ´¦Àí£¬±ÜÃâ³öÏÖ´¦ÀíÒì³£
+	//Â¶Ã”urlÃ„ÃšÃˆÃÂ½Ã¸ÃÃÂºÃÂ·Â¨ÃÃ”Â´Â¦Ã€Ã­Â£Â¬Â±ÃœÃƒÃ¢Â³Ã¶ÃÃ–Â´Â¦Ã€Ã­Ã’Ã¬Â³Â£
 	if (csf_ip_url::is_valid_type(url)) {
 		tmp_ip_url = (csf::modules::connect::csf_ip_url&)url;
 	}
@@ -124,7 +124,7 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 	}
 
 	try {
-		//Èç¹ûÒÑ¾­¼àÌıÁË£¬Ôò·µ»ØÊ§°Ü
+		//ÃˆÃ§Â¹Ã»Ã’Ã‘Â¾Â­Â¼Ã ÃŒÃ½ÃÃ‹Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂ§Â°Ãœ
 		if (csf_nullptr != get_acceptor()) {
 
 			csf_log_ex(error, csf_log_code_error
@@ -140,7 +140,7 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 			return csf_failure;
 		}
 
-		//´´½¨Ò»¸öacceptor£¬ÓÃÓÚÊµÏÖtcp¼àÌı
+		//Â´Â´Â½Â¨Ã’Â»Â¸Ã¶acceptorÂ£Â¬Ã“ÃƒÃ“ÃšÃŠÂµÃÃ–tcpÂ¼Ã ÃŒÃ½
 		set_acceptor(new boost::asio::ip::tcp::acceptor(
 			get_socket().get_io_service()
 			, boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(tmp_ip_url.get_ip())
@@ -170,18 +170,18 @@ csf_int32 csf_tcp_connect::listen(const csf_url& url, const csf_connect_callback
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºĞèÒªÁ¬½ÓÒ»¸öµØÖ·¡£
-* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃÃ¨Ã’ÂªÃÂ¬Â½Ã“Ã’Â»Â¸Ã¶ÂµÃ˜Ã–Â·Â¡Â£
+* Â·ÂµÂ»Ã˜Â£Âº0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â£Â»Â·Ã‡0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»
 *
-* @param url    ±íÊ¾ĞèÒª¼àÌıµÄµØÖ·
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param url    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ¼Ã ÃŒÃ½ÂµÃ„ÂµÃ˜Ã–Â·
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callback& callback) {
 
 	csf::modules::connect::csf_ip_url  tmp_ip_url;
 
 
-	//¶ÔurlÄÚÈİ½øĞĞºÏ·¨ĞÔ´¦Àí£¬±ÜÃâ³öÏÖ´¦ÀíÒì³£
+	//Â¶Ã”urlÃ„ÃšÃˆÃÂ½Ã¸ÃÃÂºÃÂ·Â¨ÃÃ”Â´Â¦Ã€Ã­Â£Â¬Â±ÃœÃƒÃ¢Â³Ã¶ÃÃ–Â´Â¦Ã€Ã­Ã’Ã¬Â³Â£
 	if (csf_ip_url::is_valid_type(url)) {
 		tmp_ip_url = (csf::modules::connect::csf_ip_url&)url;
 	}
@@ -194,10 +194,10 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 		}
 	}
 
-	//µØÖ·ÑéÖ¤³É¹¦£¬ÔòÏÈ¸üĞÂµØÖ·ĞÅÏ¢
+	//ÂµÃ˜Ã–Â·Ã‘Ã©Ã–Â¤Â³Ã‰Â¹Â¦Â£Â¬Ã”Ã²ÃÃˆÂ¸Ã¼ÃÃ‚ÂµÃ˜Ã–Â·ÃÃ…ÃÂ¢
 	set_remote_url(tmp_ip_url);
 
-	//¸ù¾İÊÇ·ñ´æÔÚ»Øµ÷º¯ÊıÀ´ÅĞ¶ÏÊ¹ÓÃÍ¬²½·½Ê½»¹ÊÇÒì²½·½Ê½
+	//Â¸Ã¹Â¾ÃÃŠÃ‡Â·Ã±Â´Ã¦Ã”ÃšÂ»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½Ã€Â´Ã…ÃÂ¶ÃÃŠÂ¹Ã“ÃƒÃÂ¬Â²Â½Â·Â½ÃŠÂ½Â»Â¹ÃŠÃ‡Ã’Ã¬Â²Â½Â·Â½ÃŠÂ½
 	boost::asio::ip::tcp::endpoint tmp_remote_endpoint(
 		boost::asio::ip::address::from_string(tmp_ip_url.get_ip()), tmp_ip_url.get_port());
 	if (csf_nullptr != callback) {
@@ -224,7 +224,7 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 			return csf_failure;
 		}
 		else {
-			//¸üĞÂÒ»ÏÂ±¾µØµÄµØÖ·ĞÅÏ¢
+			//Â¸Ã¼ÃÃ‚Ã’Â»ÃÃ‚Â±Â¾ÂµÃ˜ÂµÃ„ÂµÃ˜Ã–Â·ÃÃ…ÃÂ¢
 			get_local_url();
 
 			csf_log_ex(notice, csf_log_code_notice
@@ -240,16 +240,16 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºĞ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃÂ´ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÂµÃ„Ã„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buf    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param len    ±íÊ¾ÄÚÈİ»º´æµÄ³¤¶È
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buf    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param len    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦ÂµÃ„Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::write(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback) {
 // 
-// 	//ÕâÀï¿ÉÒÔ²»½øĞĞÊı¾İµÄĞ£Ñé´¦Àí£¬ÕâÑù»á¼õÉÙÊı¾İ¶ÁÈ¡µÄĞ§ÂÊ
+// 	//Ã•Ã¢Ã€Ã¯Â¿Ã‰Ã’Ã”Â²Â»Â½Ã¸ÃÃÃŠÃ½Â¾ÃÂµÃ„ÃÂ£Ã‘Ã©Â´Â¦Ã€Ã­Â£Â¬Ã•Ã¢Ã‘Ã¹Â»Ã¡Â¼ÃµÃ‰Ã™ÃŠÃ½Â¾ÃÂ¶ÃÃˆÂ¡ÂµÃ„ÃÂ§Ã‚ÃŠ
 // 	if (csf_nullptr == buf
 // 		|| len <= 0) {
 // 		exception_callback(shared_from_this()
@@ -259,7 +259,7 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 		return csf_failure;
 // 	}
 // 
-// 	//¸ù¾İÊÇ·ñÓĞ»Øµ÷º¯Êı£¬À´ÅĞ¶ÏÊ¹ÓÃÒì²½»¹ÊÇÍ¬²½
+// 	//Â¸Ã¹Â¾ÃÃŠÃ‡Â·Ã±Ã“ÃÂ»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½Â£Â¬Ã€Â´Ã…ÃÂ¶ÃÃŠÂ¹Ã“ÃƒÃ’Ã¬Â²Â½Â»Â¹ÃŠÃ‡ÃÂ¬Â²Â½
 // 	if (csf_nullptr == callback) {
 // 		return sync_write(buf, len, callback);
 // 	}
@@ -271,11 +271,11 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºĞ´Èëcsf_bufferÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃÂ´ÃˆÃ«csf_bufferÃ„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾ĞèÒªĞ´ÈëµÄcsf_bufferÄÚÈİ
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÃÂ´ÃˆÃ«ÂµÃ„csf_bufferÃ„ÃšÃˆÃ
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::write(csf_buffer& buffer, const csf_connect_callback& callback) {
 // 
@@ -284,11 +284,11 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º·¢ËÍcsf_csfstringÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ·Â¢Ã‹Ãcsf_csfstringÃ„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param csfstr    ±íÊ¾csf_csfstringµÄÄÚÈİ
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param csfstr    Â±Ã­ÃŠÂ¾csf_csfstringÂµÃ„Ã„ÃšÃˆÃ
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::write(csf_csfstring& csfstr, const csf_connect_callback& callback) {
 // 
@@ -297,11 +297,11 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º·¢ËÍcsf_csfstringÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ·Â¢Ã‹Ãcsf_csfstringÃ„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param chain    ±íÊ¾csf_chainµÄÄÚÈİ
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param chain    Â±Ã­ÃŠÂ¾csf_chainÂµÃ„Ã„ÃšÃˆÃ
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::write(csf_chain& chain, const csf_connect_callback& callback) {
 // 
@@ -314,15 +314,15 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºĞ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃÂ´ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÂµÃ„Ã„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾ĞèÒª·¢ËÍµÄÄÚÈİ»º´æ
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·Â¢Ã‹ÃÂµÃ„Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback) {
 // 
-// 	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+// 	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 // 	if (!buffer.is_valid()) {
 // 		exception_callback(shared_from_this()
 // 			, callback
@@ -330,7 +330,7 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 		return csf_failure;
 // 	}
 // 
-// 	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»À´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+// 	//Â¸Ã¹Â¾Ãcsf_connect_bufferÂµÃ„Â±ÃªÃ–Â¾ÃÂ»Ã€Â´Ã…ÃÂ¶ÃÃ’Ã¬Â²Â½Ã“Ã«ÃÂ¬Â²Â½
 // 	if (buffer.get_is_sync()) {
 // 		return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
 // 	}
@@ -342,15 +342,15 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºĞ´Èëcsf_bufferÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃÂ´ÃˆÃ«csf_bufferÃ„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾ĞèÒª·¢ËÍµÄÄÚÈİ»º´æ
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·Â¢Ã‹ÃÂµÃ„Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 //  csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
 //  
-//  	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+//  	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 //  	if (!buffer.is_valid()) {
 //  		exception_callback(shared_from_this()
 //  			, callback
@@ -358,15 +358,15 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 //  		return csf_failure;
 //  	}
 //  
-//  	//Èç¹ûbufferÖĞĞ´³¤¶È´óĞ¡Ã»ÓĞÉèÖÃ£¨buffer.get_length()Îª0£©£¬Ôò¸ù¾İËŞÖ÷µÄ¿Õ¼ä´óĞ¡×Ô¶¯ÉèÖÃÊı¾İ
-//  	//ÕâÑù´¦ÀíÖ÷ÒªÎª¼õÉÙÊÕ·¢²Ù×÷Ê±µÄÊ¹ÓÃ³É±¾£¬ÓÃ»§²»ÓÃ¼ÇµÃ±ØĞëµ÷ÓÃbuffer.set_length()º¯Êı¡£µ«µ×²ãµÄ×Ô¶¯´¦Àí£¬Í¬Ê±ÒıÈëÁË³ÌĞòµÄ²»È·¶¨ĞÔ¡£
-//  	//·¢ËÍÄ¬ÈÏ³¤¶ÈÎªËŞÖ÷ÈİÆ÷ÖĞÊı¾İµÄ³¤¶È
-//  	//½ÓÊÕÄ¬ÈÏ³¤¶ÈÎªËŞÖ÷ÈİÆ÷ÖĞ¿ÕÏĞ¿Õ¼äµÄ³¤¶È
+//  	//ÃˆÃ§Â¹Ã»bufferÃ–ÃÃÂ´Â³Â¤Â¶ÃˆÂ´Ã³ÃÂ¡ÃƒÂ»Ã“ÃÃ‰Ã¨Ã–ÃƒÂ£Â¨buffer.get_length()ÃÂª0Â£Â©Â£Â¬Ã”Ã²Â¸Ã¹Â¾ÃÃ‹ÃÃ–Ã·ÂµÃ„Â¿Ã•Â¼Ã¤Â´Ã³ÃÂ¡Ã—Ã”Â¶Â¯Ã‰Ã¨Ã–ÃƒÃŠÃ½Â¾Ã
+//  	//Ã•Ã¢Ã‘Ã¹Â´Â¦Ã€Ã­Ã–Ã·Ã’ÂªÃÂªÂ¼ÃµÃ‰Ã™ÃŠÃ•Â·Â¢Â²Ã™Ã—Ã·ÃŠÂ±ÂµÃ„ÃŠÂ¹Ã“ÃƒÂ³Ã‰Â±Â¾Â£Â¬Ã“ÃƒÂ»Â§Â²Â»Ã“ÃƒÂ¼Ã‡ÂµÃƒÂ±Ã˜ÃÃ«ÂµÃ·Ã“Ãƒbuffer.set_length()ÂºÂ¯ÃŠÃ½Â¡Â£ÂµÂ«ÂµÃ—Â²Ã£ÂµÃ„Ã—Ã”Â¶Â¯Â´Â¦Ã€Ã­Â£Â¬ÃÂ¬ÃŠÂ±Ã’Ã½ÃˆÃ«ÃÃ‹Â³ÃŒÃÃ²ÂµÃ„Â²Â»ÃˆÂ·Â¶Â¨ÃÃ”Â¡Â£
+//  	//Â·Â¢Ã‹ÃÃ„Â¬ÃˆÃÂ³Â¤Â¶ÃˆÃÂªÃ‹ÃÃ–Ã·ÃˆÃÃ†Ã·Ã–ÃÃŠÃ½Â¾ÃÂµÃ„Â³Â¤Â¶Ãˆ
+//  	//Â½Ã“ÃŠÃ•Ã„Â¬ÃˆÃÂ³Â¤Â¶ÃˆÃÂªÃ‹ÃÃ–Ã·ÃˆÃÃ†Ã·Ã–ÃÂ¿Ã•ÃÃÂ¿Ã•Â¼Ã¤ÂµÃ„Â³Â¤Â¶Ãˆ
 //  	if (buffer.get_length() <= 0 && buffer.length() > 0) {
 //  		buffer.set_length(buffer.length());
 //  	}
 //  
-//  	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»À´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+//  	//Â¸Ã¹Â¾Ãcsf_connect_bufferÂµÃ„Â±ÃªÃ–Â¾ÃÂ»Ã€Â´Ã…ÃÂ¶ÃÃ’Ã¬Â²Â½Ã“Ã«ÃÂ¬Â²Â½
 //  	if (buffer.get_is_sync()) {
 //  		//return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
 //  		return sync_write(buffer, callback);
@@ -380,22 +380,22 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º·¢ËÍcsf_csfstringÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ·Â¢Ã‹Ãcsf_csfstringÃ„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾ĞèÒª·¢ËÍµÄÄÚÈİ»º´æ
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·Â¢Ã‹ÃÂµÃ„Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback) {
 // 
-// 	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+// 	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 // 	if (!buffer.is_valid()) {
 // 		return exception_callback(shared_from_this()
 // 			, callback
 // 			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
 // 	}
 // 
-// 	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»À´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+// 	//Â¸Ã¹Â¾Ãcsf_connect_bufferÂµÃ„Â±ÃªÃ–Â¾ÃÂ»Ã€Â´Ã…ÃÂ¶ÃÃ’Ã¬Â²Â½Ã“Ã«ÃÂ¬Â²Â½
 // 	if (buffer.get_is_sync()) {
 // 		return sync_write(buffer.get_buffer(), buffer.get_length(), callback);
 // 	}
@@ -407,27 +407,27 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º·¢ËÍcsf_csfstringÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ·Â¢Ã‹Ãcsf_csfstringÃ„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾ĞèÒª·¢ËÍµÄÄÚÈİ»º´æ
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·Â¢Ã‹ÃÂµÃ„Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::write(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback) {
 // 
-// 	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+// 	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 // 	if (!buffer.is_valid()) {
 // 		return exception_callback(shared_from_this()
 // 			, callback
 // 			, csf_ip_connect_error(csf_connect_error::csf_connect_code_invalid_parametes, "data is null"));
 // 	}
 // 
-// 	//ÏÈ½«chain×ª»¯Îªbuffer£¬³ÉÎªÒ»¸öÁ¬ĞøµÄÄÚ´æ¿Õ¼äºó´¦Àí
+// 	//ÃÃˆÂ½Â«chainÃ—ÂªÂ»Â¯ÃÂªbufferÂ£Â¬Â³Ã‰ÃÂªÃ’Â»Â¸Ã¶ÃÂ¬ÃÃ¸ÂµÃ„Ã„ÃšÂ´Ã¦Â¿Ã•Â¼Ã¤ÂºÃ³Â´Â¦Ã€Ã­
 // 	csf_buffer				tmp_buffer(buffer.length());
 // 
 // 	buffer.get_container()->convert(tmp_buffer);
 // 
-// 	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»À´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+// 	//Â¸Ã¹Â¾Ãcsf_connect_bufferÂµÃ„Â±ÃªÃ–Â¾ÃÂ»Ã€Â´Ã…ÃÂ¶ÃÃ’Ã¬Â²Â½Ã“Ã«ÃÂ¬Â²Â½
 // 	if (buffer.get_is_sync()) {
 // 		return sync_write(tmp_buffer.get_buffer(), buffer.get_length(), callback);
 // 	}
@@ -439,17 +439,17 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ²Â¢Â´Ã¦Ã”ÃšÃ–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÃÂ»Ã–ÃƒÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÂ¡ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buf    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄÖ¸¶¨»º´æµØÖ·
+* @param buf    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
 *
-* @param len    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄÖ¸¶¨»º´æ³¤¶È
-* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+* @param len    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::read(csf_uchar* buf, const csf_uint32 len, const csf_connect_callback& callback) {
 // 
-// 	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+// 	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 // 	if (csf_nullptr == buf
 // 		|| len <= 0) {
 // 		exception_callback(shared_from_this()
@@ -458,7 +458,7 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 		return csf_failure;
 // 	}
 // 
-// 	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»À´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+// 	//Â¸Ã¹Â¾Ãcsf_connect_bufferÂµÃ„Â±ÃªÃ–Â¾ÃÂ»Ã€Â´Ã…ÃÂ¶ÃÃ’Ã¬Â²Â½Ã“Ã«ÃÂ¬Â²Â½
 // 	if (csf_nullptr == callback) {
 // 		return sync_read(buf, len, callback);
 // 	}
@@ -470,21 +470,21 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ²Â¢Â´Ã¦Ã”ÃšÃ–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÃÂ»Ã–ÃƒÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÂ¡ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄcsf_buffer
-* @param len    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄÖ¸¶¨»º´æ³¤¶È
-* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„csf_buffer
+* @param len    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::read(csf_buffer& buffer, const csf_uint32 len, const csf_connect_callback& callback) {
 // 
-// 	//Ê£Óà¿Õ¼ä³ä×ãÊ±£¬ÔòÖ±½Ó´¦Àí
+// 	//ÃŠÂ£Ã“Ã Â¿Ã•Â¼Ã¤Â³Ã¤Ã—Ã£ÃŠÂ±Â£Â¬Ã”Ã²Ã–Â±Â½Ã“Â´Â¦Ã€Ã­
 // 	if (buffer.avail() >= len) {
 // 		return read(buffer.get_buffer(), len, callback);
 // 	}
 // 	else {
-// 		//Èç¹ûÊ£ÓàµÄ¿Õ¼ä²»×ã£¬Ôò±¨³öÒì³£
+// 		//ÃˆÃ§Â¹Ã»ÃŠÂ£Ã“Ã ÂµÃ„Â¿Ã•Â¼Ã¤Â²Â»Ã—Ã£Â£Â¬Ã”Ã²Â±Â¨Â³Ã¶Ã’Ã¬Â³Â£
 // 		exception_callback(shared_from_this()
 // 			, callback
 // 			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
@@ -497,21 +497,21 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ²Â¢Â´Ã¦Ã”ÃšÃ–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÃÂ»Ã–ÃƒÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÂ¡ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param csfstr    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄcsf_csfstring
-* @param len    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄÖ¸¶¨»º´æ³¤¶È
-* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+* @param csfstr    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„csf_csfstring
+* @param len    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::read(csf_csfstring& csfstr, const csf_uint32 len, const csf_connect_callback& callback) {
 // 
-// 	//Ê£Óà¿Õ¼ä³ä×ãÊ±£¬ÔòÖ±½Ó´¦Àí
+// 	//ÃŠÂ£Ã“Ã Â¿Ã•Â¼Ã¤Â³Ã¤Ã—Ã£ÃŠÂ±Â£Â¬Ã”Ã²Ã–Â±Â½Ã“Â´Â¦Ã€Ã­
 // 	if (csfstr.length() >= len) {
 // 		return read(csfstr.get_buffer(), len, callback);
 // 	}
 // 	else {
-// 		//Èç¹ûÊ£ÓàµÄ¿Õ¼ä²»×ã£¬Ôò±¨³öÒì³£
+// 		//ÃˆÃ§Â¹Ã»ÃŠÂ£Ã“Ã ÂµÃ„Â¿Ã•Â¼Ã¤Â²Â»Ã—Ã£Â£Â¬Ã”Ã²Â±Â¨Â³Ã¶Ã’Ã¬Â³Â£
 // 		exception_callback(shared_from_this()
 // 			, callback
 // 			, csf_ip_connect_error(csf_connect_error::csf_connect_code_not_enough_space
@@ -524,16 +524,16 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÁ´±íÖĞ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ²Â¢Â´Ã¦Ã”ÃšÃ–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÃÂ´Â±Ã­Ã–ÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÂ¡ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param chain    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄcsf_csfstring
-* @param len    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄÖ¸¶¨»º´æ³¤¶È
-* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+* @param chain    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„csf_csfstring
+* @param len    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::read(csf_chain& chain, const csf_uint32 len, const csf_connect_callback& callback) {
 // 
-// 	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+// 	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 // 	if (len <= 0) {
 // 		exception_callback(shared_from_this()
 // 			, callback
@@ -545,7 +545,7 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 	csf_int32		tmp_length = 0;
 // 	csf_buffer		tmp_buffer(len);
 // 
-// 	//chainÖ»ÄÜ½øĞĞÍ¬²½½ÓÊÕºÍ±£´æ´¦Àí
+// 	//chainÃ–Â»Ã„ÃœÂ½Ã¸ÃÃÃÂ¬Â²Â½Â½Ã“ÃŠÃ•ÂºÃÂ±Â£Â´Ã¦Â´Â¦Ã€Ã­
 // 	tmp_length = read(tmp_buffer, len, csf_nullptr);
 // 	if (tmp_length >= (csf_int32)len) {
 // 		chain.add(tmp_buffer);
@@ -565,16 +565,16 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ²Â¢Â´Ã¦Ã”ÃšÃ–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÃÂ»Ã–ÃƒÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÂ¡ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾¶ÁÈ¡Êı¾İ´æ·ÅµÄ»º´æ¶ÔÏó
+* @param buffer    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Â·Ã…ÂµÃ„Â»ÂºÂ´Ã¦Â¶Ã”ÃÃ³
 *
-* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+* @param callback    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_uchar>& buffer, const csf_connect_callback& callback) {
 // 
-// 	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+// 	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 // 	if (!buffer.is_valid()) {
 // 		exception_callback(shared_from_this()
 // 			, callback
@@ -582,10 +582,10 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 				, "not enough storage available"));
 // 		return csf_failure;
 // 	}
-// 	//¸üĞÂfilled±êÖ¾Î»
+// 	//Â¸Ã¼ÃÃ‚filledÂ±ÃªÃ–Â¾ÃÂ»
 // 	set_is_filled(buffer.get_is_filled());
 // 
-// 	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»À´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+// 	//Â¸Ã¹Â¾Ãcsf_connect_bufferÂµÃ„Â±ÃªÃ–Â¾ÃÂ»Ã€Â´Ã…ÃÂ¶ÃÃ’Ã¬Â²Â½Ã“Ã«ÃÂ¬Â²Â½
 // 	if (buffer.get_is_sync()) {
 // 		return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
 // 	}
@@ -598,15 +598,15 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ²Â¢Â´Ã¦Ã”ÃšÃ–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÃÂ»Ã–ÃƒÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÂ¡ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄ»º´æ¶ÔÏó
-* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„Â»ÂºÂ´Ã¦Â¶Ã”ÃÃ³
+* @param callback    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 //  csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback) {
 //  
-//  	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+//  	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 //  	if (!buffer.is_valid()) {
 //  		exception_callback(shared_from_this()
 //  			, callback
@@ -615,18 +615,18 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 //  		return csf_failure;
 //  	}
 //  
-//  	//Èç¹û½ÓÊÕ³¤¶ÈÎª¿Õ£¨buffer.get_length()Îª0£©£¬Ôò±íÊ¾²ÉÓÃËŞÖ÷ÈİÆ÷µÄ¿ÕÏĞ¿Õ¼ä´óĞ¡¡£
-//  	//ÕâÑù´¦ÀíÖ÷ÒªÎª¼õÉÙÊÕ·¢²Ù×÷Ê±µÄÊ¹ÓÃ³É±¾£¬ÓÃ»§²»ÓÃ¼ÇµÃ±ØĞëµ÷ÓÃbuffer.set_length()º¯Êı¡£µ«µ×²ãµÄ×Ô¶¯´¦Àí£¬Í¬Ê±ÒıÈëÁË³ÌĞòµÄ²»È·¶¨ĞÔ¡£
-//  	//·¢ËÍÄ¬ÈÏ³¤¶ÈÎªËŞÖ÷ÈİÆ÷ÖĞÊı¾İµÄ³¤¶È
-//  	//½ÓÊÕÄ¬ÈÏ³¤¶ÈÎªËŞÖ÷ÈİÆ÷ÖĞ¿ÕÏĞ¿Õ¼äµÄ³¤¶È
+//  	//ÃˆÃ§Â¹Ã»Â½Ã“ÃŠÃ•Â³Â¤Â¶ÃˆÃÂªÂ¿Ã•Â£Â¨buffer.get_length()ÃÂª0Â£Â©Â£Â¬Ã”Ã²Â±Ã­ÃŠÂ¾Â²Ã‰Ã“ÃƒÃ‹ÃÃ–Ã·ÃˆÃÃ†Ã·ÂµÃ„Â¿Ã•ÃÃÂ¿Ã•Â¼Ã¤Â´Ã³ÃÂ¡Â¡Â£
+//  	//Ã•Ã¢Ã‘Ã¹Â´Â¦Ã€Ã­Ã–Ã·Ã’ÂªÃÂªÂ¼ÃµÃ‰Ã™ÃŠÃ•Â·Â¢Â²Ã™Ã—Ã·ÃŠÂ±ÂµÃ„ÃŠÂ¹Ã“ÃƒÂ³Ã‰Â±Â¾Â£Â¬Ã“ÃƒÂ»Â§Â²Â»Ã“ÃƒÂ¼Ã‡ÂµÃƒÂ±Ã˜ÃÃ«ÂµÃ·Ã“Ãƒbuffer.set_length()ÂºÂ¯ÃŠÃ½Â¡Â£ÂµÂ«ÂµÃ—Â²Ã£ÂµÃ„Ã—Ã”Â¶Â¯Â´Â¦Ã€Ã­Â£Â¬ÃÂ¬ÃŠÂ±Ã’Ã½ÃˆÃ«ÃÃ‹Â³ÃŒÃÃ²ÂµÃ„Â²Â»ÃˆÂ·Â¶Â¨ÃÃ”Â¡Â£
+//  	//Â·Â¢Ã‹ÃÃ„Â¬ÃˆÃÂ³Â¤Â¶ÃˆÃÂªÃ‹ÃÃ–Ã·ÃˆÃÃ†Ã·Ã–ÃÃŠÃ½Â¾ÃÂµÃ„Â³Â¤Â¶Ãˆ
+//  	//Â½Ã“ÃŠÃ•Ã„Â¬ÃˆÃÂ³Â¤Â¶ÃˆÃÂªÃ‹ÃÃ–Ã·ÃˆÃÃ†Ã·Ã–ÃÂ¿Ã•ÃÃÂ¿Ã•Â¼Ã¤ÂµÃ„Â³Â¤Â¶Ãˆ
 //  	if (buffer.get_length() <= 0 && buffer.avail() > 0) {
 //  		buffer.set_length(buffer.avail());
 //  	}
 //  
-//  	//¸üĞÂfilled±êÖ¾Î»
+//  	//Â¸Ã¼ÃÃ‚filledÂ±ÃªÃ–Â¾ÃÂ»
 //  	set_is_filled(buffer.get_is_filled());
 //  
-//  	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»À´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+//  	//Â¸Ã¹Â¾Ãcsf_connect_bufferÂµÃ„Â±ÃªÃ–Â¾ÃÂ»Ã€Â´Ã…ÃÂ¶ÃÃ’Ã¬Â²Â½Ã“Ã«ÃÂ¬Â²Â½
 //  	if (buffer.get_is_sync()) {
 //  		//return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
 //  		return sync_read(buffer, callback);
@@ -640,15 +640,15 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ²Â¢Â´Ã¦Ã”ÃšÃ–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÃÂ»Ã–ÃƒÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÂ¡ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄ»º´æ¶ÔÏó
-* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„Â»ÂºÂ´Ã¦Â¶Ã”ÃÃ³
+* @param callback    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_csfstring>& buffer, const csf_connect_callback& callback) {
 // 
-// 	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+// 	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 // 	if (!buffer.is_valid()) {
 // 		exception_callback(shared_from_this()
 // 			, callback
@@ -656,10 +656,10 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 				, "not enough storage available"));
 // 		return csf_failure;
 // 	}
-// 	//¸üĞÂfilled±êÖ¾Î»
+// 	//Â¸Ã¼ÃÃ‚filledÂ±ÃªÃ–Â¾ÃÂ»
 // 	set_is_filled(buffer.get_is_filled());
 // 
-// 	//¸ù¾İcsf_connect_bufferµÄ±êÖ¾Î»À´ÅĞ¶ÏÒì²½ÓëÍ¬²½
+// 	//Â¸Ã¹Â¾Ãcsf_connect_bufferÂµÃ„Â±ÃªÃ–Â¾ÃÂ»Ã€Â´Ã…ÃÂ¶ÃÃ’Ã¬Â²Â½Ã“Ã«ÃÂ¬Â²Â½
 // 	if (buffer.get_is_sync()) {
 // 		return sync_read(buffer.get_buffer(), buffer.get_length(), callback);
 // 	}
@@ -671,15 +671,15 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÁ´±íÖĞ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ²Â¢Â´Ã¦Ã”ÃšÃ–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÃÂ´Â±Ã­Ã–ÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÂ¡ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄ»º´æ¶ÔÏó
-* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ´Ã¦Ã”ÃšÂµÃ„Â»ÂºÂ´Ã¦Â¶Ã”ÃÃ³
+* @param callback    Â±Ã­ÃŠÂ¾Â¶ÃÃˆÂ¡ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::read(csf_connect_buffer<csf_chain>& buffer, const csf_connect_callback& callback) {
 // 
-// 	//ÏÈÅĞ¶ÏÊı¾İµÄºÏ·¨ĞÔ£¬Ö®ºóÔÙ´¦Àí
+// 	//ÃÃˆÃ…ÃÂ¶ÃÃŠÃ½Â¾ÃÂµÃ„ÂºÃÂ·Â¨ÃÃ”Â£Â¬Ã–Â®ÂºÃ³Ã”Ã™Â´Â¦Ã€Ã­
 // 	if (!buffer.is_valid()) {
 // 		exception_callback(shared_from_this()
 // 			, callback
@@ -694,12 +694,12 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* ±íÊ¾Ğ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Â±Ã­ÃŠÂ¾ÃÂ´ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÂµÃ„Ã„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buf    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param len    ±íÊ¾ÄÚÈİ»º´æµÄ³¤¶È
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buf    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param len    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦ÂµÃ„Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::sync_write(const csf_uchar* buf
 // 	, const csf_uint32 len
@@ -712,7 +712,7 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 
 // 	get_write_timeout().flush_time();
 // 
-// 	//Ñ­»··¢ËÍÊı¾İÄÚÈİ£¬Ö±µ½Êı¾İ·¢ËÍÍê³ÉÎªÖ¹
+// 	//Ã‘Â­Â»Â·Â·Â¢Ã‹ÃÃŠÃ½Â¾ÃÃ„ÃšÃˆÃÂ£Â¬Ã–Â±ÂµÂ½ÃŠÃ½Â¾ÃÂ·Â¢Ã‹ÃÃÃªÂ³Ã‰ÃÂªÃ–Â¹
 // 	while (tmp_send_length < (csf_int32)len)
 // 	{
 // 		tmp_length = get_socket().send(
@@ -735,12 +735,12 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* ±íÊ¾Ğ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Â±Ã­ÃŠÂ¾ÃÂ´ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÂµÃ„Ã„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buf    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param len    ±íÊ¾ÄÚÈİ»º´æµÄ³¤¶È
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buf    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param len    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦ÂµÃ„Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::async_write(const csf_uchar* buf
 // 	, const csf_uint32 len
@@ -748,7 +748,7 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 
 // 	get_write_timeout().flush_time();
 // 
-// 	//ÕâÀïÖ÷ÒªÊÇÊı¾İÁ¿Ò»´ó£¬¾Í·¢ËÍ²»ÍêÈ«ÁË¡£ÓÈÆäÔÚlinuxÆ½Ì¨ÏÂ¸üÈİÒ×³öÏÖÕâ¸öÎÊÌâ
+// 	//Ã•Ã¢Ã€Ã¯Ã–Ã·Ã’ÂªÃŠÃ‡ÃŠÃ½Â¾ÃÃÂ¿Ã’Â»Â´Ã³Â£Â¬Â¾ÃÂ·Â¢Ã‹ÃÂ²Â»ÃÃªÃˆÂ«ÃÃ‹Â¡Â£Ã“ÃˆÃ†Ã¤Ã”ÃšlinuxÃ†Â½ÃŒÂ¨ÃÃ‚Â¸Ã¼ÃˆÃÃ’Ã—Â³Ã¶ÃÃ–Ã•Ã¢Â¸Ã¶ÃÃŠÃŒÃ¢
 // 	get_socket().async_write_some(boost::asio::buffer(buf, len)
 // 		, boost::bind(&csf_tcp_connect::async_write_callback
 // 			, this
@@ -763,14 +763,14 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º´¦ÀíÒì²½Ğ´´¦Àí»Øµ÷º¯Êı
-* ·µ»Ø£º0±íÊ¾´¦Àí³É¹¦£»·Ç0±íÊ¾´¦ÀíÊ§°Ü
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ´Â¦Ã€Ã­Ã’Ã¬Â²Â½ÃÂ´Â´Â¦Ã€Ã­Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
+* Â·ÂµÂ»Ã˜Â£Âº0Â±Ã­ÃŠÂ¾Â´Â¦Ã€Ã­Â³Ã‰Â¹Â¦Â£Â»Â·Ã‡0Â±Ã­ÃŠÂ¾Â´Â¦Ã€Ã­ÃŠÂ§Â°Ãœ
 *
-* @param buf		 ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param src_len	 ±íÊ¾ĞèÒª±»´¦ÀíµÄÔ´ÄÚÈİ»º´æµÄ³¤¶È
-* @param callback    ±íÊ¾Òì³£´¦Àí¾ä±úĞÅÏ¢
-* @param error_code  ±íÊ¾boostµÄ´íÎóĞÅÏ¢
-* @param write_len   ±íÊ¾µ±Ç°Êµ¼ÊĞ´µÄ»º´æ³¤¶È
+* @param buf		 Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param src_len	 Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ±Â»Â´Â¦Ã€Ã­ÂµÃ„Ã”Â´Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦ÂµÃ„Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾Ã’Ã¬Â³Â£Â´Â¦Ã€Ã­Â¾Ã¤Â±ÃºÃÃ…ÃÂ¢
+* @param error_code  Â±Ã­ÃŠÂ¾boostÂµÃ„Â´Ã­ÃÃ³ÃÃ…ÃÂ¢
+* @param write_len   Â±Ã­ÃŠÂ¾ÂµÂ±Ã‡Â°ÃŠÂµÂ¼ÃŠÃÂ´ÂµÃ„Â»ÂºÂ´Ã¦Â³Â¤Â¶Ãˆ
 */
 // csf_bool csf_tcp_connect::async_write_callback(const csf_uchar* buf
 // 	, const csf_uint32 src_len
@@ -778,18 +778,18 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 	, const boost::system::error_code& error_code
 // 	, csf_uint32 write_len) {
 // 
-// 	//Èç¹û´¦Àí´íÎó£¬Ôò°´ÕÕ´íÎó´¦Àí
+// 	//ÃˆÃ§Â¹Ã»Â´Â¦Ã€Ã­Â´Ã­ÃÃ³Â£Â¬Ã”Ã²Â°Â´Ã•Ã•Â´Ã­ÃÃ³Â´Â¦Ã€Ã­
 // 	if (error_code) {
 // 		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 // 		return csf_false;
 // 	}
-// 	//Èç¹ûÒÑ¾­·¢ËÍÍê³ÉËùÓĞÊı¾İ£¬ÔòÕı³£»Øµ÷·µ»Ø
+// 	//ÃˆÃ§Â¹Ã»Ã’Ã‘Â¾Â­Â·Â¢Ã‹ÃÃÃªÂ³Ã‰Ã‹Ã¹Ã“ÃÃŠÃ½Â¾ÃÂ£Â¬Ã”Ã²Ã•Ã½Â³Â£Â»Ã˜ÂµÃ·Â·ÂµÂ»Ã˜
 // 	if (write_len >= src_len) {
 // 		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 // 		return csf_true;
 // 	}
 // 	else {
-// 		//Èç¹ûÃ»ÓĞ·¢ËÍÍêÈ«£¬»¹ÓĞ²¿·ÖÊı¾İ£¬Ôò¼ÌĞø·¢ËÍ
+// 		//ÃˆÃ§Â¹Ã»ÃƒÂ»Ã“ÃÂ·Â¢Ã‹ÃÃÃªÃˆÂ«Â£Â¬Â»Â¹Ã“ÃÂ²Â¿Â·Ã–ÃŠÃ½Â¾ÃÂ£Â¬Ã”Ã²Â¼ÃŒÃÃ¸Â·Â¢Ã‹Ã
 // 		async_write(buf + write_len, src_len - write_len, callback);
 // 	}
 // 
@@ -798,12 +798,12 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºÍ¬²½¶ÁÈ¡Êı¾İ£¬²¢·ÅÈëÖ¸¶¨»º´æ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃÂ¬Â²Â½Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ£Â¬Â²Â¢Â·Ã…ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦Â¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buf    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param len    ±íÊ¾ÄÚÈİ»º´æµÄ³¤¶È
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buf    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param len    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦ÂµÃ„Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::sync_read(csf_uchar* buf
 // 	, const csf_uint32 len
@@ -818,17 +818,17 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 
 // 		get_read_timeout().flush_time();
 // 
-// 		//½ÓÊÕÊı¾İ
+// 		//Â½Ã“ÃŠÃ•ÃŠÃ½Â¾Ã
 // 		tmp_length = get_socket().receive(boost::asio::buffer(buf + tmp_receive_length, len - tmp_receive_length)
 // 			, 0
 // 			, tmp_error_code);
 // 		if (tmp_error_code) {
-// 			//Èç¹û³öÏÖÍ¨ĞÅ´íÎó£¬Ôò´íÎó´¦Àí
+// 			//ÃˆÃ§Â¹Ã»Â³Ã¶ÃÃ–ÃÂ¨ÃÃ…Â´Ã­ÃÃ³Â£Â¬Ã”Ã²Â´Ã­ÃÃ³Â´Â¦Ã€Ã­
 // 			exception_callback(shared_from_this(), callback, csf_ip_connect_error(tmp_error_code));
 // 			return csf_failure;
 // 		}
 // 		else if (tmp_receive_length <= 0) {
-// 			//Èç¹û³öÏÖÊı¾İÄÚÈİ´íÎó£¬ÔòÁíÍâ´¦Àí
+// 			//ÃˆÃ§Â¹Ã»Â³Ã¶ÃÃ–ÃŠÃ½Â¾ÃÃ„ÃšÃˆÃÂ´Ã­ÃÃ³Â£Â¬Ã”Ã²ÃÃ­ÃÃ¢Â´Â¦Ã€Ã­
 // 			csf_ip_connect_error			tmp_error;
 // 
 // 			tmp_error.set_error(csf_connect_error::csf_connect_code_operation_error
@@ -838,23 +838,23 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 			return csf_failure;
 // 		}
 // 		else {
-// 			//ÀÛ¼ÓÊı¾İ³¤¶È
+// 			//Ã€Ã›Â¼Ã“ÃŠÃ½Â¾ÃÂ³Â¤Â¶Ãˆ
 // 			tmp_receive_length += tmp_length;
 // 		}
 // 
-// 	} while ((csf_int32)len > tmp_receive_length && csf_true == get_is_filled());		//ÅĞ¶ÏÊÇ·ñÌî³äÂú£¬Èç¹ûĞèÒªÔòÑ­»·´¦ÀíÖ±µ½Ìî³äÂú
+// 	} while ((csf_int32)len > tmp_receive_length && csf_true == get_is_filled());		//Ã…ÃÂ¶ÃÃŠÃ‡Â·Ã±ÃŒÃ®Â³Ã¤Ã‚ÃºÂ£Â¬ÃˆÃ§Â¹Ã»ÃÃ¨Ã’ÂªÃ”Ã²Ã‘Â­Â»Â·Â´Â¦Ã€Ã­Ã–Â±ÂµÂ½ÃŒÃ®Â³Ã¤Ã‚Ãº
 // 
 // 	return tmp_receive_length;
 // }
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºÒì²½¶ÁÈ¡Êı¾İ£¬²¢·ÅÈëÖ¸¶¨»º´æ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃ’Ã¬Â²Â½Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ£Â¬Â²Â¢Â·Ã…ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦Â¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buf    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param len    ±íÊ¾ÄÚÈİ»º´æµÄ³¤¶È
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buf    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param len    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦ÂµÃ„Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 // csf_int32 csf_tcp_connect::async_read(csf_uchar* buf
 // 	, const csf_uint32 len
@@ -876,14 +876,14 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º´¦ÀíÒì²½¶Á´¦Àí»Øµ÷º¯Êı
-* ·µ»Ø£º0±íÊ¾´¦Àí³É¹¦£»·Ç0±íÊ¾´¦ÀíÊ§°Ü
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÂ´Â¦Ã€Ã­Ã’Ã¬Â²Â½Â¶ÃÂ´Â¦Ã€Ã­Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
+* Â·ÂµÂ»Ã˜Â£Âº0Â±Ã­ÃŠÂ¾Â´Â¦Ã€Ã­Â³Ã‰Â¹Â¦Â£Â»Â·Ã‡0Â±Ã­ÃŠÂ¾Â´Â¦Ã€Ã­ÃŠÂ§Â°Ãœ
 *
-* @param buf		 ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param buf_len	 ±íÊ¾ĞèÒª±»´¦ÀíµÄÔ´ÄÚÈİ»º´æµÄ³¤¶È
-* @param callback    ±íÊ¾Òì³£´¦Àí¾ä±úĞÅÏ¢
-* @param error_code  ±íÊ¾boostµÄ´íÎóĞÅÏ¢
-* @param read_len   ±íÊ¾µ±Ç°Êµ¼ÊĞ´µÄ»º´æ³¤¶È
+* @param buf		 Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param buf_len	 Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ±Â»Â´Â¦Ã€Ã­ÂµÃ„Ã”Â´Ã„ÃšÃˆÃÂ»ÂºÂ´Ã¦ÂµÃ„Â³Â¤Â¶Ãˆ
+* @param callback    Â±Ã­ÃŠÂ¾Ã’Ã¬Â³Â£Â´Â¦Ã€Ã­Â¾Ã¤Â±ÃºÃÃ…ÃÂ¢
+* @param error_code  Â±Ã­ÃŠÂ¾boostÂµÃ„Â´Ã­ÃÃ³ÃÃ…ÃÂ¢
+* @param read_len   Â±Ã­ÃŠÂ¾ÂµÂ±Ã‡Â°ÃŠÂµÂ¼ÃŠÃÂ´ÂµÃ„Â»ÂºÂ´Ã¦Â³Â¤Â¶Ãˆ
 */
 // csf_bool csf_tcp_connect::async_read_callback(csf_uchar* buf
 // 	, const csf_uint32 buf_len
@@ -891,25 +891,25 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 // 	, const boost::system::error_code& error_code
 // 	, csf_uint32 read_len) {
 // 
-// 	//Èç¹û´¦Àí´íÎó£¬Ôò°´ÕÕ´íÎó´¦Àí
+// 	//ÃˆÃ§Â¹Ã»Â´Â¦Ã€Ã­Â´Ã­ÃÃ³Â£Â¬Ã”Ã²Â°Â´Ã•Ã•Â´Ã­ÃÃ³Â´Â¦Ã€Ã­
 // 	if (error_code) {
 // 		exception_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 // 		return csf_false;
 // 	}
 // 
-// 	//Èç¹ûĞèÒª½ÓÊÕËùÓĞÊı¾İ£¬Ôò¼ÌĞø½ÓÊÕ£¬Ö±µ½ÍêÕû½ÓÊÕÍêÈ«
+// 	//ÃˆÃ§Â¹Ã»ÃÃ¨Ã’ÂªÂ½Ã“ÃŠÃ•Ã‹Ã¹Ã“ÃÃŠÃ½Â¾ÃÂ£Â¬Ã”Ã²Â¼ÃŒÃÃ¸Â½Ã“ÃŠÃ•Â£Â¬Ã–Â±ÂµÂ½ÃÃªÃ•Ã»Â½Ã“ÃŠÃ•ÃÃªÃˆÂ«
 // 	if (csf_false == get_is_filled()) {
 // 		async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 // 		return csf_true;
 // 	}
 // 	else {
-// 		//Èç¹ûÒÑ¾­·¢ËÍÍê³ÉËùÓĞÊı¾İ£¬ÔòÕı³£»Øµ÷·µ»Ø
+// 		//ÃˆÃ§Â¹Ã»Ã’Ã‘Â¾Â­Â·Â¢Ã‹ÃÃÃªÂ³Ã‰Ã‹Ã¹Ã“ÃÃŠÃ½Â¾ÃÂ£Â¬Ã”Ã²Ã•Ã½Â³Â£Â»Ã˜ÂµÃ·Â·ÂµÂ»Ã˜
 // 		if (read_len >= buf_len) {
 // 			async_callback(shared_from_this(), callback, csf_ip_connect_error(error_code));
 // 			return csf_true;
 // 		}
 // 		else {
-// 			//Èç¹ûÃ»ÓĞ·¢ËÍÍêÈ«£¬»¹ÓĞ²¿·ÖÊı¾İ£¬Ôò¼ÌĞø·¢ËÍ
+// 			//ÃˆÃ§Â¹Ã»ÃƒÂ»Ã“ÃÂ·Â¢Ã‹ÃÃÃªÃˆÂ«Â£Â¬Â»Â¹Ã“ÃÂ²Â¿Â·Ã–ÃŠÃ½Â¾ÃÂ£Â¬Ã”Ã²Â¼ÃŒÃÃ¸Â·Â¢Ã‹Ã
 // 			async_read(buf + read_len, buf_len - read_len, callback);
 // 		}
 // 	}
@@ -921,11 +921,11 @@ csf_int32 csf_tcp_connect::connect(const csf_url& url, const csf_connect_callbac
 
 
 /**
-* ±íÊ¾Ğ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Â±Ã­ÃŠÂ¾ÃÂ´ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÂµÃ„Ã„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 csf_int32 csf_tcp_connect::sync_write(csf_connect_buffer<csf_buffer>& buffer
 	, const csf_connect_callback& callback) {
@@ -939,7 +939,7 @@ csf_int32 csf_tcp_connect::sync_write(csf_connect_buffer<csf_buffer>& buffer
 
 	get_write_timeout().flush_time();
 
-	//Ñ­»··¢ËÍÊı¾İÄÚÈİ£¬Ö±µ½Êı¾İ·¢ËÍÍê³ÉÎªÖ¹
+	//Ã‘Â­Â»Â·Â·Â¢Ã‹ÃÃŠÃ½Â¾ÃÃ„ÃšÃˆÃÂ£Â¬Ã–Â±ÂµÂ½ÃŠÃ½Â¾ÃÂ·Â¢Ã‹ÃÃÃªÂ³Ã‰ÃÂªÃ–Â¹
 	while (tmp_send_length < (csf_int32)tmp_total_length)
 	{
 		tmp_length = get_socket().send(
@@ -962,18 +962,18 @@ csf_int32 csf_tcp_connect::sync_write(csf_connect_buffer<csf_buffer>& buffer
 
 
 /**
-* ±íÊ¾Ğ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+* Â±Ã­ÃŠÂ¾ÃÂ´ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦ÂµÃ„Ã„ÃšÃˆÃÂ¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦ÃÂ´ÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 csf_int32 csf_tcp_connect::async_write(csf_connect_buffer<csf_buffer>& buffer
 	, const csf_connect_callback& callback) {
 
 	get_write_timeout().flush_time();
 
-	//ÕâÀïÖ÷ÒªÊÇÊı¾İÁ¿Ò»´ó£¬¾Í·¢ËÍ²»ÍêÈ«ÁË¡£ÓÈÆäÔÚlinuxÆ½Ì¨ÏÂ¸üÈİÒ×³öÏÖÕâ¸öÎÊÌâ
+	//Ã•Ã¢Ã€Ã¯Ã–Ã·Ã’ÂªÃŠÃ‡ÃŠÃ½Â¾ÃÃÂ¿Ã’Â»Â´Ã³Â£Â¬Â¾ÃÂ·Â¢Ã‹ÃÂ²Â»ÃÃªÃˆÂ«ÃÃ‹Â¡Â£Ã“ÃˆÃ†Ã¤Ã”ÃšlinuxÃ†Â½ÃŒÂ¨ÃÃ‚Â¸Ã¼ÃˆÃÃ’Ã—Â³Ã¶ÃÃ–Ã•Ã¢Â¸Ã¶ÃÃŠÃŒÃ¢
 	get_socket().async_write_some(boost::asio::buffer(buffer.get_buffer()
 		, buffer.get_length())
 		, boost::bind(&csf_tcp_connect::async_write_callback
@@ -989,11 +989,11 @@ csf_int32 csf_tcp_connect::async_write(csf_connect_buffer<csf_buffer>& buffer
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºÍ¬²½¶ÁÈ¡Êı¾İ£¬²¢·ÅÈëÖ¸¶¨»º´æ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃÂ¬Â²Â½Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ£Â¬Â²Â¢Â·Ã…ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦Â¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 csf_int32 csf_tcp_connect::sync_read(csf_connect_buffer<csf_buffer>& buffer
 	, const csf_connect_callback& callback) {
@@ -1009,18 +1009,18 @@ csf_int32 csf_tcp_connect::sync_read(csf_connect_buffer<csf_buffer>& buffer
 
 		get_read_timeout().flush_time();
 
-		//½ÓÊÕÊı¾İ
+		//Â½Ã“ÃŠÃ•ÃŠÃ½Â¾Ã
 		tmp_length = get_socket().receive(boost::asio::buffer(tmp_buf + tmp_receive_length
 			, tmp_total_length - tmp_receive_length)
 			, 0
 			, tmp_error_code);
 		if (tmp_error_code) {
-			//Èç¹û³öÏÖÍ¨ĞÅ´íÎó£¬Ôò´íÎó´¦Àí
+			//ÃˆÃ§Â¹Ã»Â³Ã¶ÃÃ–ÃÂ¨ÃÃ…Â´Ã­ÃÃ³Â£Â¬Ã”Ã²Â´Ã­ÃÃ³Â´Â¦Ã€Ã­
 			exception_callback(shared_from_this(), callback, csf_ip_connect_error(tmp_error_code));
 			return csf_failure;
 		}
 		else if (tmp_length <= 0) {
-			//Èç¹û³öÏÖÊı¾İÄÚÈİ´íÎó£¬ÔòÁíÍâ´¦Àí
+			//ÃˆÃ§Â¹Ã»Â³Ã¶ÃÃ–ÃŠÃ½Â¾ÃÃ„ÃšÃˆÃÂ´Ã­ÃÃ³Â£Â¬Ã”Ã²ÃÃ­ÃÃ¢Â´Â¦Ã€Ã­
 			csf_ip_connect_error			tmp_error;
 
 			tmp_error.set_error(csf_connect_error::csf_connect_code_operation_error
@@ -1030,23 +1030,23 @@ csf_int32 csf_tcp_connect::sync_read(csf_connect_buffer<csf_buffer>& buffer
 			return csf_failure;
 		}
 		else {
-			//ÀÛ¼ÓÊı¾İ³¤¶È
+			//Ã€Ã›Â¼Ã“ÃŠÃ½Â¾ÃÂ³Â¤Â¶Ãˆ
 			tmp_receive_length += tmp_length;
 		}
 
 	} while ((csf_int32)tmp_total_length > tmp_receive_length
-		&& csf_true == buffer.get_is_filled());		//ÅĞ¶ÏÊÇ·ñÌî³äÂú£¬Èç¹ûĞèÒªÔòÑ­»·´¦ÀíÖ±µ½Ìî³äÂú
+		&& csf_true == buffer.get_is_filled());		//Ã…ÃÂ¶ÃÃŠÃ‡Â·Ã±ÃŒÃ®Â³Ã¤Ã‚ÃºÂ£Â¬ÃˆÃ§Â¹Ã»ÃÃ¨Ã’ÂªÃ”Ã²Ã‘Â­Â»Â·Â´Â¦Ã€Ã­Ã–Â±ÂµÂ½ÃŒÃ®Â³Ã¤Ã‚Ãº
 
 	return tmp_receive_length;
 }
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºÒì²½¶ÁÈ¡Êı¾İ£¬²¢·ÅÈëÖ¸¶¨»º´æ¡£
-* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈëµÄÊı¾İ³¤¶È£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃ’Ã¬Â²Â½Â¶ÃÃˆÂ¡ÃŠÃ½Â¾ÃÂ£Â¬Â²Â¢Â·Ã…ÃˆÃ«Ã–Â¸Â¶Â¨Â»ÂºÂ´Ã¦Â¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÂ¡Ã“ÃšÂµÃˆÃ“Ãš0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»Â´Ã³Ã“Ãš0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â¶ÃÃˆÃ«ÂµÃ„ÃŠÃ½Â¾ÃÂ³Â¤Â¶ÃˆÂ£Â»
 *
-* @param buffer    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param buffer    Â±Ã­ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â»ÂºÂ´Ã¦ÂµÃ˜Ã–Â·
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 csf_int32 csf_tcp_connect::async_read(csf_connect_buffer<csf_buffer>& buffer
 	, const csf_connect_callback& callback) {
@@ -1067,11 +1067,11 @@ csf_int32 csf_tcp_connect::async_read(csf_connect_buffer<csf_buffer>& buffer
 
 
 /**
-* ±íÊ¾Ô¶³ÌµÄÖ÷»úµØÖ·
+* Â±Ã­ÃŠÂ¾Ã”Â¶Â³ÃŒÂµÃ„Ã–Ã·Â»ÃºÂµÃ˜Ã–Â·
 */
 const csf_url& csf_tcp_connect::get_remote_url() const {
 
-	//ÅĞ¶ÏÏÖÔÚµÄµØÖ·ÊÇ·ñ´æÔÚ£¬´æÔÚÔòÖ±½Ó·µ»Ø
+	//Ã…ÃÂ¶ÃÃÃ–Ã”ÃšÂµÃ„ÂµÃ˜Ã–Â·ÃŠÃ‡Â·Ã±Â´Ã¦Ã”ÃšÂ£Â¬Â´Ã¦Ã”ÃšÃ”Ã²Ã–Â±Â½Ã“Â·ÂµÂ»Ã˜
 	if (csf_ip_connect::get_remote_url().get_url().empty()
 		&& get_socket().is_open()) {
 
@@ -1085,11 +1085,11 @@ const csf_url& csf_tcp_connect::get_remote_url() const {
 
 
 /**
-* ±íÊ¾±¾µØµÄÖ÷»úµØÖ·
+* Â±Ã­ÃŠÂ¾Â±Â¾ÂµÃ˜ÂµÃ„Ã–Ã·Â»ÃºÂµÃ˜Ã–Â·
 */
 const csf_url& csf_tcp_connect::get_local_url() const {
 
-	//ÅĞ¶ÏÏÖÔÚµÄµØÖ·ÊÇ·ñ´æÔÚ£¬´æÔÚÔòÖ±½Ó·µ»Ø
+	//Ã…ÃÂ¶ÃÃÃ–Ã”ÃšÂµÃ„ÂµÃ˜Ã–Â·ÃŠÃ‡Â·Ã±Â´Ã¦Ã”ÃšÂ£Â¬Â´Ã¦Ã”ÃšÃ”Ã²Ã–Â±Â½Ã“Â·ÂµÂ»Ã˜
 	if (csf_ip_connect::get_local_url().get_url().empty()
 		&& get_socket().is_open()) {
 
@@ -1103,10 +1103,10 @@ const csf_url& csf_tcp_connect::get_local_url() const {
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºÒì²½tcp¼àÌıµÄaccept´¦Àíº¯Êı¡£
-* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃ’Ã¬Â²Â½tcpÂ¼Ã ÃŒÃ½ÂµÃ„acceptÂ´Â¦Ã€Ã­ÂºÂ¯ÃŠÃ½Â¡Â£
+* Â·ÂµÂ»Ã˜Â£Âº0Â±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â£Â»Â·Ã‡0Â±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»
 *
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
 */
 csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callback callback) {
 
@@ -1115,7 +1115,7 @@ csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callb
 
 	while (csf_true) {
 		try {
-			//ÕâÀïÖ÷Òª½â¾öÓĞĞ©Ê±ºònewÊ§°ÜµÄÎÊÌâ
+			//Ã•Ã¢Ã€Ã¯Ã–Ã·Ã’ÂªÂ½Ã¢Â¾Ã¶Ã“ÃÃÂ©ÃŠÂ±ÂºÃ²newÃŠÂ§Â°ÃœÂµÃ„ÃÃŠÃŒÃ¢
 			tmp_connect = new csf_tcp_connect(this);
 			if (tmp_connect) {
 				break;
@@ -1137,7 +1137,7 @@ csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callb
 		}
 	}
 
-	//ÎªÃ¿¸öÁ¬½ÓÌí¼ÓÒ»¸öÊ±¼ä´Á£¬Ö÷ÒªÎªÁË·½±ã³¬Ê±¡¢¿ÕÁ¬½ÓµÈ´¦Àí
+	//ÃÂªÃƒÂ¿Â¸Ã¶ÃÂ¬Â½Ã“ÃŒÃ­Â¼Ã“Ã’Â»Â¸Ã¶ÃŠÂ±Â¼Ã¤Â´ÃÂ£Â¬Ã–Ã·Ã’ÂªÃÂªÃÃ‹Â·Â½Â±Ã£Â³Â¬ÃŠÂ±Â¡Â¢Â¿Ã•ÃÂ¬Â½Ã“ÂµÃˆÂ´Â¦Ã€Ã­
 	get_acceptor()->async_accept(
 		tmp_connect->get_socket()
 		, boost::bind(&csf_tcp_connect::accept_handle
@@ -1151,12 +1151,12 @@ csf::core::base::csf_int32 csf_tcp_connect::async_accept(const csf_connect_callb
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£ºÒì²½tcp¼àÌıµÄaccept»Øµ÷´¦Àíº¯Êı¡£
-* ·µ»Ø£ºÎŞ
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÃŠÃ‡Â£ÂºÃ’Ã¬Â²Â½tcpÂ¼Ã ÃŒÃ½ÂµÃ„acceptÂ»Ã˜ÂµÃ·Â´Â¦Ã€Ã­ÂºÂ¯ÃŠÃ½Â¡Â£
+* Â·ÂµÂ»Ã˜Â£ÂºÃÃ
 *
-* @param connect_ptr    ±íÊ¾µ±Ç°ÍøÂçÍ¨ĞÅÁ¬½Ó¶ÔÏó
-* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
-* @param ec    ±íÊ¾µ±Ç°µÄ´íÎóĞÅÏ¢
+* @param connect_ptr    Â±Ã­ÃŠÂ¾ÂµÂ±Ã‡Â°ÃÃ¸Ã‚Ã§ÃÂ¨ÃÃ…ÃÂ¬Â½Ã“Â¶Ã”ÃÃ³
+* @param callback    Â±Ã­ÃŠÂ¾ÃÃ¨Ã’ÂªÂ·ÂµÂ»Ã˜ÂµÃ„Â»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½
+* @param ec    Â±Ã­ÃŠÂ¾ÂµÂ±Ã‡Â°ÂµÃ„Â´Ã­ÃÃ³ÃÃ…ÃÂ¢
 */
 csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	, const csf_connect_callback callback
@@ -1173,10 +1173,10 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 		return;
 	}
 
-	//¼ÌĞøµÈ´ıÏÂÒ»¸ötcpÁ¬½ÓÇëÇó
+	//Â¼ÃŒÃÃ¸ÂµÃˆÂ´Ã½ÃÃ‚Ã’Â»Â¸Ã¶tcpÃÂ¬Â½Ã“Ã‡Ã«Ã‡Ã³
 	async_accept(callback);
 
-	//ÉèÖÃ¿ÕÁ¬½Ó³¬Ê±´¦Àí¡£Èç¹û³¬¹ı¸ÃÊ±¼ä£¬Ôò±íÊ¾¿ÕÁ¬½Ó£¬ĞèÒª¹Ø±Õ´¦Àí¡£
+	//Ã‰Ã¨Ã–ÃƒÂ¿Ã•ÃÂ¬Â½Ã“Â³Â¬ÃŠÂ±Â´Â¦Ã€Ã­Â¡Â£ÃˆÃ§Â¹Ã»Â³Â¬Â¹Ã½Â¸ÃƒÃŠÂ±Â¼Ã¤Â£Â¬Ã”Ã²Â±Ã­ÃŠÂ¾Â¿Ã•ÃÂ¬Â½Ã“Â£Â¬ÃÃ¨Ã’ÂªÂ¹Ã˜Â±Ã•Â´Â¦Ã€Ã­Â¡Â£
 	if (get_factory()) {
 
 		if (csf_failure == ((csf_ip_connect_factory*)get_factory())->insert((csf_connect_ptr)connect_ptr)) {
@@ -1213,17 +1213,17 @@ csf_void csf_tcp_connect::accept_handle(csf_tcp_connect_ptr connect_ptr
 	// 		, "accept %s."
 	// 		, connect_ptr->to_string().c_str());
 
-	//µ÷ÓÃ»Øµ÷º¯ÊıÍ¨Öª½ÓÊÕÊı¾İµÈ¸÷ÖÖ´¦Àí
+	//ÂµÃ·Ã“ÃƒÂ»Ã˜ÂµÃ·ÂºÂ¯ÃŠÃ½ÃÂ¨Ã–ÂªÂ½Ã“ÃŠÃ•ÃŠÃ½Â¾ÃÂµÃˆÂ¸Ã·Ã–Ã–Â´Â¦Ã€Ã­
 	async_callback((csf_connect_ptr&)connect_ptr, callback, csf_ip_connect_error());
 }
 
 
 /**
-* Ö÷Òª¹¦ÄÜ£º
-*    ±íÊ¾socketÁ¬½Ó¶ÔÏó
-* ·µ»Ø£º
-*    0£º±íÊ¾³É¹¦£»
-*    ·Ç0£º±íÊ¾Ê§°Ü£»
+* Ã–Ã·Ã’ÂªÂ¹Â¦Ã„ÃœÂ£Âº
+*    Â±Ã­ÃŠÂ¾socketÃÂ¬Â½Ã“Â¶Ã”ÃÃ³
+* Â·ÂµÂ»Ã˜Â£Âº
+*    0Â£ÂºÂ±Ã­ÃŠÂ¾Â³Ã‰Â¹Â¦Â£Â»
+*    Â·Ã‡0Â£ÂºÂ±Ã­ÃŠÂ¾ÃŠÂ§Â°ÃœÂ£Â»
 */
 csf_int32 csf_tcp_connect::close_socket() {
 
@@ -1235,8 +1235,8 @@ csf_int32 csf_tcp_connect::close_socket() {
 			boost::system::error_code			tmp_error_code;
 
 
-#if 0  //Ö÷ÒªÊÇboost_1_69_0ÖĞÃ»ÓĞget_socket().native() º¯Êı
-			//ÉèÖÃÎªÁ¢¼´¹Ø±Õ´¦Àí£¬±ÜÃâ³öÏÖÑÓÊ±¹Ø±ÕµÄÎÊÌâ
+#if 0  //Ã–Ã·Ã’ÂªÃŠÃ‡boost_1_69_0Ã–ÃÃƒÂ»Ã“Ãget_socket().native() ÂºÂ¯ÃŠÃ½
+			//Ã‰Ã¨Ã–ÃƒÃÂªÃÂ¢Â¼Â´Â¹Ã˜Â±Ã•Â´Â¦Ã€Ã­Â£Â¬Â±ÃœÃƒÃ¢Â³Ã¶ÃÃ–Ã‘Ã“ÃŠÂ±Â¹Ã˜Â±Ã•ÂµÃ„ÃÃŠÃŒÃ¢
 			tmp_ret_int = setsockopt(get_socket().native()
 				, SOL_SOCKET
 				, SO_LINGER
@@ -1244,7 +1244,7 @@ csf_int32 csf_tcp_connect::close_socket() {
 				, sizeof(struct linger));
 #endif
 
-			//È¡ÏûËùÓĞ´¦Àí£¬¹Ø±ÕÊÕ·¢£¬¹Ø±ÕÁ¬½Ó¶ÔÏó
+			//ÃˆÂ¡ÃÃ»Ã‹Ã¹Ã“ÃÂ´Â¦Ã€Ã­Â£Â¬Â¹Ã˜Â±Ã•ÃŠÃ•Â·Â¢Â£Â¬Â¹Ã˜Â±Ã•ÃÂ¬Â½Ã“Â¶Ã”ÃÃ³
 			get_socket().cancel();
 			get_socket().shutdown(boost::asio::socket_base::shutdown_both, tmp_error_code);
 			get_socket().close();

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: fangzhenmu@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 02-10ÔÂ-2018 14:17:59
+*Date: 02-10æœˆ-2018 14:17:59
 *
 *Description: Class(csf_stream_connect)
 *
@@ -33,9 +33,9 @@ csf_stream_connect::~csf_stream_connect() {
 
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_stream_connect::init(const csf_configure_manager * conf_mg) {
 
@@ -44,10 +44,10 @@ csf::core::base::csf_int32 csf_stream_connect::init(const csf_configure_manager 
 
 
 /**
- * ±íÊ¾´ò¿ªÁ¬½ÓĞÅÏ¢.
- * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+ * è¡¨ç¤ºæ‰“å¼€è¿æ¥ä¿¡æ¯.
+ * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
  * 
- * @param url    ±íÊ¾Á¬½ÓµØÖ·
+ * @param url    è¡¨ç¤ºè¿æ¥åœ°å€
  */
 csf_int32 csf_stream_connect::open(const csf_url& url) {
 
@@ -56,8 +56,8 @@ csf_int32 csf_stream_connect::open(const csf_url& url) {
 
 
 /**
- * ±íÊ¾¹Ø±ÕÁ¬½Ó.
- * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+ * è¡¨ç¤ºå…³é—­è¿æ¥.
+ * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
  */
 csf_int32 csf_stream_connect::close() {
 
@@ -66,9 +66,9 @@ csf_int32 csf_stream_connect::close() {
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_stream_connect::start(const csf_configure_manager * conf_mg) {
 
@@ -77,8 +77,8 @@ csf::core::base::csf_int32 csf_stream_connect::start(const csf_configure_manager
 
 
 /**
- * ±íÊ¾ÉèÖÃÁ¬½ÓµÄÊôĞÔÏîÄ¿ĞÅÏ¢¡£
- * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+ * è¡¨ç¤ºè®¾ç½®è¿æ¥çš„å±æ€§é¡¹ç›®ä¿¡æ¯ã€‚
+ * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ã€‚
  */
 csf_int32 csf_stream_connect::set_option() {
 
@@ -87,9 +87,9 @@ csf_int32 csf_stream_connect::set_option() {
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_stream_connect::stop(const csf_configure_manager * conf_mg) {
 
@@ -98,8 +98,8 @@ csf::core::base::csf_int32 csf_stream_connect::stop(const csf_configure_manager 
 
 
 /**
- * ±íÊ¾»ñÈ¡Á¬½ÓµÄÊôĞÔÏîÄ¿ĞÅÏ¢¡£
- * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+ * è¡¨ç¤ºè·å–è¿æ¥çš„å±æ€§é¡¹ç›®ä¿¡æ¯ã€‚
+ * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ã€‚
  */
 csf_int32 csf_stream_connect::get_option() {
 

@@ -23,27 +23,20 @@
 
 
 #ifdef __cplusplus
+
 #include <iostream>
 #include <functional>
-#endif
 
 
-#ifdef __cplusplus
 namespace csf
 {
 	namespace core
 	{
 		namespace base
 		{
-#endif
-#ifdef __cplusplus
+
 			#define csf_function						std::function
 			#define csf_bind							std::bind
-#endif
-
-
-
-#ifdef __cplusplus
 		}
 	}
 }

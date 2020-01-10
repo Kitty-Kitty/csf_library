@@ -136,7 +136,7 @@ namespace csf
 				 *
 				 * @param str
 				 */
-				inline static csf_string& clear_head_tail_space(csf_string& str) {
+				inline static csf_string clear_head_tail_space(csf_string str) {
 
 					str.erase(0, str.find_first_not_of(" "));
 					str.erase(str.find_last_not_of(" ") + 1);

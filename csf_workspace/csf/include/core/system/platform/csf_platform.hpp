@@ -73,6 +73,23 @@ namespace csf
 					 *    当前程序存放目录地址字符串，如果获取失败，则目录地址字符串为空。
 					 */
 					static csf_string current_path();
+					/**
+					 * 功能：
+					 *    获取当前进程的PID数值，用于记录使用
+					 * 返回：
+					 *    返回当前进程的PID数值，成功则返回非0；失败则返回0；
+					 */
+					static csf_uint32 get_pid();
+					/**
+					 * 功能：
+					 *    保存pid等信息到文件中
+					 * 返回：
+					 *    csf_true  ：  表示保存pid信息成功；
+					 *    csf_false ：  表示保存pid信息失败；
+					 *
+					 * @param file    表示需要将信息保存的目的文件地址
+					 */
+					static csf_bool save_pid(csf_string file);
 				};
 
 			}

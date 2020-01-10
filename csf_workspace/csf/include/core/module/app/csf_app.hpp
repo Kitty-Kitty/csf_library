@@ -22,7 +22,6 @@
 
 #include "csf_time.hpp"
 #include "csf_module_manager.hpp"
-#include "csf_vm.hpp"
 #include "csf_app_interface.hpp"
 #include "csf_logger.hpp"
 #include "csf_device_base.hpp"
@@ -35,6 +34,7 @@ namespace csf
 	{
 		namespace module
 		{
+			class csf_vm;
 			/**
 			* 表示当前app的根配置文件的别名
 			*/
@@ -325,6 +325,38 @@ namespace csf
 
 					return csf_string(tmp_buf);
 				}
+				/**
+				 * 表示当前启动app的csf_vm虚拟机的进程pid。如果没有，则默认为0。
+				 */
+				inline csf_uint32 get_vm_pid() {
+
+					return m_vm_pid;
+				}
+				/**
+				 * 表示当前启动app的csf_vm虚拟机的进程pid。如果没有，则默认为0。
+				 *
+				 * @param newVal
+				 */
+				inline void set_vm_pid(csf_uint32 newVal) {
+
+					m_vm_pid = newVal;
+				}
+				/**
+				 * 表示系统运行虚拟机
+				 */
+				inline csf_vm * get_vm() {
+
+					return m_vm;
+				}
+				/**
+				 * 表示系统运行虚拟机
+				 *
+				 * @param newVal
+				 */
+				inline void set_vm(csf_vm * newVal) {
+
+					m_vm = newVal;
+				}
 			protected:
 				/**
 				* 表示当前的工作目录地址
@@ -412,7 +444,14 @@ namespace csf
 				* @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
 				*/
 				csf_bool init_work_directory(csf::core::system::csf_configure_manager& configure_manager);
-
+				/**
+				 * 功能：
+				 *    保存当前app信息到指定文件中。
+				 * 返回：
+				 *    true  ：  表示成功；
+				 *    false ：  表示失败。
+				 */
+				csf_bool save_information();
 			private:
 				/**
 				 * 表示当前的工作目录地址
@@ -434,6 +473,10 @@ namespace csf
 				 * 表示系统运行虚拟机
 				 */
 				csf::core::module::csf_vm *m_vm = csf_nullptr;
+				/**
+				 * 表示当前启动app的csf_vm虚拟机的进程pid。如果没有，则默认为0。
+				 */
+				csf_uint32 m_vm_pid = 0;
 				/**
 				 * 系统日志系统
 				 */

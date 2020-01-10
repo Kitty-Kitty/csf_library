@@ -145,6 +145,12 @@
     <Filter Include="src\core\system\platform">
       <UniqueIdentifier>{9256eae0-e5ce-4869-9669-5eaf92082db1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core\module\vm">
+      <UniqueIdentifier>{9f2378d2-3e61-4541-af16-e939987a7636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core\module\vm">
+      <UniqueIdentifier>{60298580-d7bf-40a5-b478-f934df2b2ade}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\core\base\csf_buffer.hpp">
@@ -247,9 +253,6 @@
       <Filter>include\core\module</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\core\module\csf_module_version.hpp">
-      <Filter>include\core\module</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\core\module\csf_vm.hpp">
       <Filter>include\core\module</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\core\module\app\csf_app.hpp">
@@ -642,6 +645,18 @@
     <ClInclude Include="..\..\..\include\core\system\platform\csf_windows_platform.hpp">
       <Filter>include\core\system\platform</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\vm\csf_vm.hpp">
+      <Filter>include\core\module\vm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\vm\csf_master.hpp">
+      <Filter>include\core\module\vm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\vm\csf_shared_memory.hpp">
+      <Filter>include\core\module\vm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\core\module\vm\csf_slave.hpp">
+      <Filter>include\core\module\vm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\core\base\csf_collector.cpp">
@@ -723,9 +738,6 @@
       <Filter>src\core\module</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\module\csf_module_version.cpp">
-      <Filter>src\core\module</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\core\module\csf_vm.cpp">
       <Filter>src\core\module</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\utils\csf_markup_xml.cpp">
@@ -934,6 +946,18 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\system\platform\csf_windows_platform.cpp">
       <Filter>src\core\system\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\vm\csf_vm.cpp">
+      <Filter>src\core\module\vm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\vm\csf_master.cpp">
+      <Filter>src\core\module\vm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\vm\csf_shared_memory.cpp">
+      <Filter>src\core\module\vm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\module\vm\csf_slave.cpp">
+      <Filter>src\core\module\vm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

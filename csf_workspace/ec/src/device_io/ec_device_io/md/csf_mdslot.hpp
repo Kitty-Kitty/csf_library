@@ -70,12 +70,7 @@ namespace ec
 			 */
 			inline void set_name(std::string newVal) {
 
-				if (newVal.length() > sizeof(m_name)) {
-					csf_strncpy(m_name, newVal.c_str(), sizeof(m_name));
-				}
-				else {
-					csf_strncpy(m_name, newVal.c_str(), newVal.length());
-				}
+				csf_strncpy(m_name, newVal.c_str(), csf_sizeof(m_name) - 1);
 			}
 			/**
 			 * 功能：清除内存管理器中的所有内存对象，释放内存管理器中保存的所有内存

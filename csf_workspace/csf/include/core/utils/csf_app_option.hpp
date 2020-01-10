@@ -88,22 +88,57 @@ namespace csf
 				*    无
 				*/
 				virtual void add_options();
-
 				/**
-				* 功能：
-				*    打印app使用参数提示信息
-				* 返回：
-				*    无
-				*/
-				virtual void help();
-
+				 * 功能：
+				 *    打印app使用参数提示信息
+				 * 返回：
+				 *    无
+				 *
+				 * @param vm    表示当前的参数列表
+				 * @param key    表示当前参数的名称
+				 */
+				virtual void help(variables_map& vm, std::string key);
 				/**
-				* 功能：
-				*    打印app版本号信息
-				* 返回：
-				*    无
-				*/
-				virtual void version();
+				 * 功能：
+				 *    打印app版本号信息
+				 * 返回：
+				 *    无
+				 *
+				 * @param vm    表示当前的参数列表
+				 * @param key    表示当前参数的名称
+				 */
+				virtual void version(variables_map& vm, std::string key);
+				/**
+				 * 功能：
+				 *    设置当前app的名称
+				 * 返回：
+				 *    无
+				 *
+				 * @param vm    表示当前的参数列表
+				 * @param key    表示当前参数的名称
+				 */
+				virtual void name(variables_map& vm, std::string key);
+				/**
+				 * 功能：
+				 *    设置当前app所属的vm对象
+				 * 返回：
+				 *    无
+				 *
+				 * @param vm    表示当前的参数列表
+				 * @param key    表示当前参数的名称
+				 */
+				virtual void vm_pid(variables_map& vm, std::string key);
+				/**
+				 * 功能：
+				 *    设置当前app所属的vm对象地址指针
+				 * 返回：
+				 *    无
+				 *
+				 * @param vm    表示当前的参数列表
+				 * @param key    表示当前参数的名称
+				 */
+				virtual void vm_instance(variables_map& vm, std::string key);
+
 			private:
 				/**
 				 *
@@ -128,7 +163,7 @@ namespace csf
 				/**
 				* 表示当前关键字所对应的处理函数对应列表
 				*/
-				inline std::map<std::string, std::function<void()>>& get_function_map() {
+				inline std::map<std::string, std::function<void(variables_map&, std::string )>>& get_function_map() {
 
 					return m_function_map;
 				}
@@ -145,7 +180,7 @@ namespace csf
 				/**
 				* 表示当前关键字所对应的处理函数对应列表
 				*/
-				std::map<std::string, std::function<void()>> m_function_map;
+				std::map<std::string, std::function<void(variables_map&, std::string )>> m_function_map;
 			};
 
 		}

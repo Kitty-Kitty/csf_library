@@ -36,6 +36,7 @@ using csf::core::module::csf_app_option;
 bool csf_app_option::get_option(int argc, char** argv) {
 
 	variables_map		tmp_vm;
+	csf_bool			tmp_boot_ret = false;
 
 
 	if (argc <= 1 && !isconfigured()) {
@@ -43,7 +44,7 @@ bool csf_app_option::get_option(int argc, char** argv) {
 		std::cout << "usage  : app [OPTION]... [VAR=VALUE]..." << std::endl << std::endl;
 		std::cout << "example: app -f /etc/csf_configs.xml -t xml" << std::endl << std::endl;
 
-		help();
+		help(tmp_vm, "");
 		return false;
 	}
 
@@ -52,19 +53,20 @@ bool csf_app_option::get_option(int argc, char** argv) {
 	//更新存储器 tmp_vm
 	notify(tmp_vm);
 
+	//遍历所有配置项处理函数
 	for (auto tmp_function : get_function_map()) {
 		if (tmp_vm.count(tmp_function.first)) {
-			tmp_function.second();
+			tmp_function.second(tmp_vm, tmp_function.first);
 		}
 	}
 
+	//设置当前app的配置文件
 	if (tmp_vm.count("file") && tmp_vm.count("format")) {
-		configure(tmp_vm["file"].as<std::string>()
+		tmp_boot_ret = configure(tmp_vm["file"].as<std::string>()
 			, tmp_vm["format"].as<std::string>());
-		return true;
 	}
-	
-	return false;
+
+	return tmp_boot_ret;
 }
 
 
@@ -89,12 +91,16 @@ bool csf_app_option::isconfigured() {
  *    打印app使用参数提示信息
  * 返回：
  *    无
+ *
+ * @param vm    表示当前的参数列表
+ * @param key    表示当前参数的名称
  */
-void csf_app_option::help() {
+void csf_app_option::help(variables_map& vm, std::string key) {
+
 	std::cout << get_app().get_version().get_strver() << std::endl;
 	std::cout << get_description() << std::endl;
 	std::cout << std::endl << std::endl;
-	std::cout << "example: " <<get_app().get_name() << " -f /etc/csf_configs.xml -t xml" << std::endl;
+	std::cout << "example: " << get_app().get_name() << " -f /etc/csf_configs.xml -t xml" << std::endl;
 }
 
 
@@ -103,14 +109,61 @@ void csf_app_option::help() {
  *    打印app版本号信息
  * 返回：
  *    无
+ *
+ * @param vm    表示当前的参数列表
+ * @param key    表示当前参数的名称
  */
-void csf_app_option::version() {
+void csf_app_option::version(variables_map& vm, std::string key) {
+
 	//printf("%s\r\n", get_app().to_string().c_str());
 	std::cout << get_app().get_version().get_strver();
-	std::cout << "   (" << get_app().get_version().get_build() << ")"<< std::endl;
+	std::cout << "   (" << get_app().get_version().get_build() << ")" << std::endl;
 
 	std::cout << std::endl << std::endl;
 	std::cout << get_app().get_version().to_string() << std::endl;
+}
+
+
+/**
+ * 功能：
+ *    设置当前app的名称
+ * 返回：
+ *    无
+ *
+ * @param vm    表示当前的参数列表
+ * @param key    表示当前参数的名称
+ */
+void csf_app_option::name(variables_map& vm, std::string key) {
+	get_app().set_name(vm[key].as<std::string>());
+}
+
+
+/**
+ * 功能：
+ *    设置当前app所属的vm对象
+ * 返回：
+ *    无
+ *
+ * @param vm    表示当前的参数列表
+ * @param key    表示当前参数的名称
+ */
+void csf_app_option::vm_pid(variables_map& vm, std::string key) {
+	get_app().set_vm_pid(vm[key].as<std::uint32_t>());
+}
+
+
+/**
+ * 功能：
+ *    设置当前app所属的vm对象地址指针
+ * 返回：
+ *    无
+ *
+ * @param vm    表示当前的参数列表
+ * @param key    表示当前参数的名称
+ */
+void csf_app_option::vm_instance(variables_map& vm, std::string key) {
+	get_app().set_vm(reinterpret_cast<csf_vm*>(vm[key].as<std::uint64_t>()));
+	//get_app().set_vm(vm[key].as<csf_vm*>());
 }
 
 
@@ -142,9 +195,20 @@ void csf_app_option::add_options() {
 		("version,v", "display version information and exit")
 		("file,f", value<std::string>(), "configure file")
 		("format,t", value<std::string>()->default_value("xml"), "configure file format")
+		("vm_pid,p", value<std::uint32_t>()->default_value(0), "vm pid")
+		("vm_instance,i", value<std::uint64_t>()->default_value(0), "vm instance point")
+		("name,n", value<std::string>()->default_value(""), "app name")
 		;
 
 	//将处理函数添加到列表中
-	get_function_map().insert(std::make_pair("help", std::bind(&csf_app_option::help, this)));
-	get_function_map().insert(std::make_pair("version", std::bind(&csf_app_option::version, this)));
+	get_function_map().insert(std::make_pair("help"
+		, std::bind(&csf_app_option::help, this, std::placeholders::_1, std::placeholders::_2)));
+	get_function_map().insert(std::make_pair("version"
+		, std::bind(&csf_app_option::version, this, std::placeholders::_1, std::placeholders::_2)));
+	get_function_map().insert(std::make_pair("vm_pid"
+		, std::bind(&csf_app_option::vm_pid, this, std::placeholders::_1, std::placeholders::_2)));
+	get_function_map().insert(std::make_pair("vm_instance"
+		, std::bind(&csf_app_option::vm_instance, this, std::placeholders::_1, std::placeholders::_2)));
+	get_function_map().insert(std::make_pair("name"
+		, std::bind(&csf_app_option::name, this, std::placeholders::_1, std::placeholders::_2)));
 }
