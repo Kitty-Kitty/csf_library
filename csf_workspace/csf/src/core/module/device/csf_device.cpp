@@ -126,13 +126,17 @@ csf_bool csf_device::init_device_io(const csf_string& mid, csf_device_io* device
  	}
  
  	//开始初始化设备
+	csf_log(notice, "init device_io[%s]...", device_io->get_version().to_string().c_str());
+
  	tmp_int_ret = device_io->init(get_configure_manager());
  	if (csf_failure == tmp_int_ret) {
  		csf_log(warning, "init %s failed!", device_io->to_string().c_str());
+		csf_log(warning, "init device_io[%s] failed!", device_io->get_version().to_string().c_str());
  		return csf_false;
  	}
  	else {
  		csf_log(notice, "init %s succeed!", device_io->to_string().c_str());
+		csf_log(notice, "init device_io[%s] succeed!", device_io->get_version().to_string().c_str());
  	}
 
 	return csf_true;
@@ -156,13 +160,17 @@ csf_bool csf_device::start_device_io(const csf_string& mid, csf_device_io* devic
 	}
 
 	//开始初始化设备
+	csf_log(notice, "start device_io[%s]...", device_io->get_version().to_string().c_str());
+
 	tmp_int_ret = device_io->start(get_configure_manager());
 	if (csf_failure == tmp_int_ret) {
 		csf_log(warning, "start %s failed!", device_io->to_string().c_str());
+		csf_log(warning, "start device_io[%s] failed!", device_io->get_version().to_string().c_str());
 		return csf_false;
 	}
 	else {
 		csf_log(notice, "start %s succeed!", device_io->to_string().c_str());
+		csf_log(notice, "start device_io[%s] succeed!", device_io->get_version().to_string().c_str());
 	}
 
 	return csf_true;

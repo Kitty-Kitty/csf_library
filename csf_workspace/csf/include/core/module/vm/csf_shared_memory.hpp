@@ -23,6 +23,7 @@
 
 #include <boost/interprocess/managed_shared_memory.hpp>
 #include "csf_typedef.h"
+#include "csf_default.h"
 
 using namespace csf::core::base;
 using namespace boost::interprocess;
@@ -52,7 +53,7 @@ namespace csf
 				 * 返回：
 				 *    0  ：  表示成功；
 				 *   非0 ：  表示失败；
-				 * 
+				 *
 				 * @param name    表示共享内存的名称
 				 * @param size    表示共享内存的空间大小
 				 */
@@ -64,13 +65,81 @@ namespace csf
 				 *    无
 				 */
 				void destroy();
+				/**
+				 * 功能：
+				 *    在共享内存中创建一个指定类型对象
+				 * 返回：
+				 *    对象指针
+				 *
+				 * @param name    表示共享内存对象的名称
+				 */
+				template <typename TypeName>
+				TypeName* create_object(csf_string name) {
+					return create_object(name, 1);
+				}
+				/**
+				 * 功能：
+				 *    在共享内存中创建指定类型对象
+				 * 返回：
+				 *    对象指针
+				 *
+				 * @param name    表示共享内存对象的名称
+				 * @param number    表示共享内存对象的个数
+				 */
+				template <typename TypeName>
+				TypeName* create_object(csf_string name, csf_uint32 number) {
 
+					TypeName	*tmp_objects = csf_nullptr;
+
+					if (get_smm()) {
+						tmp_objects = get_smm()->construct<TypeName>
+							(name.c_str())		//name of the object
+							[number]			//number of elements
+							();					//same arguments for all objects
+					}
+
+					return tmp_objects;
+				}
+				/**
+				 * 功能：
+				 *    销毁共享内存中对象
+				 * 返回：
+				 *    无
+				 *
+				 * @param name
+				 */
+				template <typename TypeName>
+				csf_void destroy_object(csf_string name) {
+					if (get_smm()) {
+						get_smm()->destroy<TypeName>(name);
+					}
+				}
+				/**
+				 * 表示当前共享内存的名称
+				 */
+				inline csf_string get_name() {
+
+					return m_name;
+				}
+			protected:
+				/**
+				 * 表示当前共享内存的名称
+				 *
+				 * @param newVal
+				 */
+				inline void set_name(csf_string newVal) {
+
+					m_name = newVal;
+				}
 			private:
 				/**
 				 * 表示共享内存对象指针
 				 */
 				managed_shared_memory* m_smm = csf_nullptr;
-
+				/**
+				 * 表示当前共享内存的名称
+				 */
+				csf_string m_name = "";
 				/**
 				 * 表示共享内存对象指针
 				 */
@@ -80,7 +149,7 @@ namespace csf
 				}
 				/**
 				 * 表示共享内存对象指针
-				 * 
+				 *
 				 * @param newVal
 				 */
 				inline void set_smm(managed_shared_memory* newVal) {

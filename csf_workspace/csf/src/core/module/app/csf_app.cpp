@@ -48,13 +48,7 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 	/*		3、程序运行时自带的参数；											*/
 	/* 该优先级的定义主要是方便满足程序的维护需求       						*/
 	/************************************************************************/
-	tmp_bool_ret = init_work_directory(get_config_mg());
-	if (csf_false == tmp_bool_ret) {
-		return csf_failure;
-	}
-
-	//表示保存当前app信息到指定文件中
-	tmp_bool_ret = save_information();
+	tmp_bool_ret = init_work_directory();
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
@@ -67,6 +61,14 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 
 	//加载启动日志系统，为程序提供日志服务
 	tmp_bool_ret = init_logger(get_config_mg(), get_work_directory());
+	if (csf_false == tmp_bool_ret) {
+		return csf_failure;
+	}
+
+	csf_log(notice, "init app[%s]...", get_version().to_string().c_str());
+
+	//表示保存当前app信息到指定文件中
+	tmp_bool_ret = save_information();
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
@@ -98,6 +100,8 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 
 #endif
 
+	csf_log(notice, "init app[%s] succeed!", get_version().to_string().c_str());
+
 	return  csf_succeed;
 }
 
@@ -120,6 +124,8 @@ csf::core::base::csf_int32 csf_app::start(const csf_configure_manager* conf_mg) 
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
+
+	csf_log(notice, "start app[%s] succeed!", get_version().to_string().c_str());
 
 	return  csf_succeed;
 }
@@ -268,9 +274,8 @@ csf_bool csf_app::init_bootloader(csf::core::system::csf_configure_manager& conf
 * 功能：该函数主要用于初始化app的当前工作目录
 * 返回：true表示初始化成功；false表示初始化失败。
 *
-* @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
 */
-csf_bool csf_app::init_work_directory(csf::core::system::csf_configure_manager& configure_manager) {
+csf_bool csf_app::init_work_directory() {
 
 	csf_string							tmp_string_ret = "";
 	csf_int32							tmp_int_ret = csf_failure;

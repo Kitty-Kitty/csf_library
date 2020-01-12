@@ -215,6 +215,7 @@
     <ClInclude Include="..\..\..\include\core\module\vm\csf_shared_memory.hpp" />
     <ClInclude Include="..\..\..\include\core\module\vm\csf_slave.hpp" />
     <ClInclude Include="..\..\..\include\core\module\vm\csf_vm.hpp" />
+    <ClInclude Include="..\..\..\include\core\module\vm\csf_vm_option.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_divider.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_divider_manager.hpp" />
     <ClInclude Include="..\..\..\include\core\service\csf_request.hpp" />
@@ -345,6 +346,7 @@
     <ClCompile Include="..\..\..\src\core\module\vm\csf_shared_memory.cpp" />
     <ClCompile Include="..\..\..\src\core\module\vm\csf_slave.cpp" />
     <ClCompile Include="..\..\..\src\core\module\vm\csf_vm.cpp" />
+    <ClCompile Include="..\..\..\src\core\module\vm\csf_vm_option.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_divider.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_divider_manager.cpp" />
     <ClCompile Include="..\..\..\src\core\service\csf_request.cpp" />

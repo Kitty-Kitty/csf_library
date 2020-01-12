@@ -101,6 +101,7 @@ void csf_app_option::help(variables_map& vm, std::string key) {
 	std::cout << get_description() << std::endl;
 	std::cout << std::endl << std::endl;
 	std::cout << "example: " << get_app().get_name() << " -f /etc/csf_configs.xml -t xml" << std::endl;
+	exit(0);
 }
 
 
@@ -121,6 +122,7 @@ void csf_app_option::version(variables_map& vm, std::string key) {
 
 	std::cout << std::endl << std::endl;
 	std::cout << get_app().get_version().to_string() << std::endl;
+	exit(0);
 }
 
 

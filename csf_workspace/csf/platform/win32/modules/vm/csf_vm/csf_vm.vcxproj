@@ -64,6 +64,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\props\libcsf.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -123,17 +124,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.hpp" />
-  </ItemGroup>
-  <ItemGroup>
     <Xml Include="..\..\..\..\..\src\modules\vm\csf_vm\config\csf_configs.xml" />
     <Xml Include="..\..\..\..\..\src\modules\vm\csf_vm\config\csf_log.xml" />
     <Xml Include="..\..\..\..\..\src\modules\vm\csf_vm\config\csf_vm.xml">
       <SubType>Designer</SubType>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

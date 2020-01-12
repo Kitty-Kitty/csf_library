@@ -376,7 +376,7 @@ csf_void csf_logger::set_configure_manager(const csf_configure_manager* new_valu
 * @param _fmt_	表示日志格式化字符串，类型printf("_fmt_", args)中的_fmt_字符串
 * @param ...	表示日志格式化参数列表，类型printf("_fmt_", args)中的args列表
 */
-void csf_logger::write(int _level_, int _code_, char *_fmt_, ...) {
+void csf_logger::write(int _level_, int _code_, const char *_fmt_, ...) {
 
 	if (_level_ >= get_level()) {
 

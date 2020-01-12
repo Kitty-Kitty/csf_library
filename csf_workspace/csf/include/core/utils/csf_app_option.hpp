@@ -138,6 +138,20 @@ namespace csf
 				 * @param key    表示当前参数的名称
 				 */
 				virtual void vm_instance(variables_map& vm, std::string key);
+				/**
+				* 表示app运行参数描述信息
+				*/
+				inline options_description& get_description() {
+
+					return m_description;
+				}
+				/**
+				* 表示当前关键字所对应的处理函数对应列表
+				*/
+				inline std::map<std::string, std::function<void(variables_map&, std::string)>>& get_function_map() {
+
+					return m_function_map;
+				}
 
 			private:
 				/**
@@ -152,20 +166,6 @@ namespace csf
 				inline csf_app& get_app() {
 
 					return m_app;
-				}
-				/**
-				* 表示app运行参数描述信息
-				*/
-				inline options_description& get_description() {
-
-					return m_description;
-				}
-				/**
-				* 表示当前关键字所对应的处理函数对应列表
-				*/
-				inline std::map<std::string, std::function<void(variables_map&, std::string )>>& get_function_map() {
-
-					return m_function_map;
 				}
 
 			private:

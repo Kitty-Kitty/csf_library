@@ -15,16 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <Xml Include="..\..\..\..\..\src\modules\vm\csf_vm\config\csf_vm.xml">
       <Filter>config</Filter>
     </Xml>
@@ -34,5 +24,15 @@
     <Xml Include="..\..\..\..\..\src\modules\vm\csf_vm\config\csf_log.xml">
       <Filter>config</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

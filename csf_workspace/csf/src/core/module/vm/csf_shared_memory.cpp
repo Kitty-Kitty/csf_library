@@ -24,18 +24,15 @@ using csf::core::module::csf_shared_memory;
 
 
 csf_shared_memory::csf_shared_memory()
-	: m_smm(csf_nullptr) {
+	: m_smm(csf_nullptr)
+	, m_name("") {
 
 }
-
 
 
 csf_shared_memory::~csf_shared_memory() {
 
 }
-
-
-
 
 
 /**
@@ -50,6 +47,18 @@ csf_shared_memory::~csf_shared_memory() {
  */
 csf_int32 csf_shared_memory::create(csf_string name, csf_uint32 size) {
 
+	//先释放原来的共享内存资源
+	destroy();
+
+	//创建一个共享内存对象
+	set_smm(new managed_shared_memory(create_only, name.c_str(), size));
+	if (csf_nullptr == get_smm()) {
+		return csf_failure;
+	}
+	else {
+		set_name(name);
+	}
+
 	return 0;
 }
 
@@ -61,5 +70,8 @@ csf_int32 csf_shared_memory::create(csf_string name, csf_uint32 size) {
  *    无
  */
 void csf_shared_memory::destroy() {
-
+	if (get_smm()) {
+		shared_memory_object::remove(get_name().c_str());
+		set_smm(csf_nullptr);
+	}
 }

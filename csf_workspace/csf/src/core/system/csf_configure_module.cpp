@@ -144,6 +144,7 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 				tmp_element = const_cast<csf::core::system::csf_element*>(&element);
 			}
 			
+			csf_log(notice, "configure module[%s]...", tmp_device_base->get_version().to_string().c_str());
 			//配置模块的信息
 			tmp_int_return = tmp_device_base->configure(*tmp_element);
 			if (tmp_int_return) {
@@ -153,6 +154,8 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 					, tmp_string_name.c_str()
 					, tmp_string_mid.c_str()
 					, tmp_int_return);
+
+				csf_log(error, "configure module[%s] failed!", tmp_device_base->get_version().to_string().c_str());
 
 				module_manager.destory(tmp_device_base);
 
@@ -164,6 +167,8 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 					, tmp_device_base
 					, tmp_string_name.c_str()
 					, tmp_string_mid.c_str());
+
+				csf_log(notice, "configure module[%s] succeed!", tmp_device_base->get_version().to_string().c_str());
 			}
 		}		
 	}

@@ -498,13 +498,17 @@ csf_bool csf_app_bootloader::init_devices(csf_app& app
 		}
 
 		//开始初始化设备
+		csf_log(notice, "init device[%s]...", tmp_iter.second->get_version().to_string().c_str());
+
 		tmp_int_ret = tmp_iter.second->init(&configure_manager);
 		if (csf_failure == tmp_int_ret) {
 			csf_log(warning, "init %s failed!", tmp_iter.second->to_string().c_str());
+			csf_log(warning, "init device[%s] failed!", tmp_iter.second->get_version().to_string().c_str());
 			return csf_false;
 		}
 		else {
 			csf_log(notice, "init %s succeed!", tmp_iter.second->to_string().c_str());
+			csf_log(notice, "init device[%s] succeed!", tmp_iter.second->get_version().to_string().c_str());
 		}
 	}
 
@@ -533,10 +537,17 @@ csf_bool csf_app_bootloader::start_devices(csf_app& app
 		}
 
 		//启动设备
+		csf_log(notice, "start device[%s]...", tmp_iter.second->get_version().to_string().c_str());
+
 		tmp_int_ret = tmp_iter.second->start(&configure_manager);
 		if (csf_failure == tmp_int_ret) {
-
+			csf_log(warning, "start %s failed!", tmp_iter.second->to_string().c_str());
+			csf_log(warning, "start device[%s] failed!", tmp_iter.second->get_version().to_string().c_str());
 			return csf_false;
+		}
+		else {
+			csf_log(notice, "start %s succeed!", tmp_iter.second->to_string().c_str());
+			csf_log(notice, "start device[%s] succeed!", tmp_iter.second->get_version().to_string().c_str());
 		}
 	}
 

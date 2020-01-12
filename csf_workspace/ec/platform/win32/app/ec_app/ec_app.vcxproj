@@ -126,10 +126,10 @@
     <Xml Include="..\..\..\..\config\csf_system.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\src\app\app.hpp" />
+    <ClCompile Include="..\..\..\..\src\app\app.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\src\app\app.cpp" />
+    <ClInclude Include="..\..\..\..\src\app\app.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

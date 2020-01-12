@@ -386,7 +386,7 @@ namespace csf
 				* @param _fmt_	表示日志格式化字符串，类型printf("_fmt_", args)中的_fmt_字符串
 				* @param ...	表示日志格式化参数列表，类型printf("_fmt_", args)中的args列表
 				*/
-				static void write(int _level_, int _code_, char *_fmt_, ...);
+				static void write(int _level_, int _code_, const char *_fmt_, ...);
 			protected:
 				/**
 				* 表示日志级别对应的名称列表内容。

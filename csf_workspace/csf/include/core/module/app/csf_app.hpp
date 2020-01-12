@@ -38,7 +38,7 @@ namespace csf
 			/**
 			* 表示当前app的根配置文件的别名
 			*/
-			#define CSF_APP_ROOT_CONFIGURE_FILE_NAME_STRING				"_root_configure_file_"
+#define CSF_APP_ROOT_CONFIGURE_FILE_NAME_STRING				"_root_configure_file_"
 
 			/**
 			 * 表示应用程序的的抽象模型app对象，一个app表示一个应用程序
@@ -357,6 +357,13 @@ namespace csf
 
 					m_vm = newVal;
 				}
+				/**
+				* 功能：该函数主要用于初始化app的当前工作目录
+				* 返回：true表示初始化成功；false表示初始化失败。
+				*
+				*/
+				csf_bool init_work_directory();
+
 			protected:
 				/**
 				* 表示当前的工作目录地址
@@ -437,13 +444,6 @@ namespace csf
 				* @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
 				*/
 				csf_bool init_bootloader(csf::core::system::csf_configure_manager& configure_manager);
-				/**
-				* 功能：该函数主要用于初始化app的当前工作目录
-				* 返回：true表示初始化成功；false表示初始化失败。
-				*
-				* @param configure_manager    表示解析配置文件信息后，需要保存的目标对象configure_manager
-				*/
-				csf_bool init_work_directory(csf::core::system::csf_configure_manager& configure_manager);
 				/**
 				 * 功能：
 				 *    保存当前app信息到指定文件中。

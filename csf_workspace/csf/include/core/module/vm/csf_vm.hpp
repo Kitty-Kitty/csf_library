@@ -24,6 +24,7 @@ csf_vm的处理逻辑相对固定，主要初始化环境操作，为系统运�
 #define CSF_VM_H_INCLUDED_
 
 #include "csf_app.hpp"
+#include "csf_shared_memory.hpp"
 
 namespace csf
 {
@@ -53,7 +54,7 @@ namespace csf
 				 * 返回：
 				 *    0   ：表示成功
 				 *    非0 ：表示失败
-				 * 
+				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
 				virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr);
@@ -63,7 +64,7 @@ namespace csf
 				 * 返回：
 				 *    0   ：表示成功
 				 *    非0 ：表示失败
-				 * 
+				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
 				virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr);
@@ -73,16 +74,44 @@ namespace csf
 				 * 返回：
 				 *    0   ：表示成功
 				 *    非0 ：表示失败
-				 * 
+				 *
 				 * @param conf_mg    表示配置文件信息
 				 */
 				virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
+				/**
+				 * 功能：
+				 *    该函数主要用于初始化vm的名称
+				 * 返回：
+				 *    true  :  表示初始化成功；
+				 *    false :  表示初始化失败。
+				 */
+				csf_bool init_vm_name();
 
+			protected:
+				/**
+				 * 表示当前vm对象使用的共享内存
+				 */
+				inline csf_shared_memory& get_sm() {
+
+					return m_sm;
+				}
+				/**
+				 * 功能：
+				 *    初始化共享内存资源
+				 * 返回：
+				 *    true  :  表示成功；
+				 *    false :  表示失败；
+				 */
+				csf_bool init_shared_memory();
 			private:
 				/**
 				 * 表示当前已经运行的客户进程
 				 */
 				csf_slave* m_slaves[64] = {csf_nullptr, };
+				/**
+				 * 表示当前vm对象使用的共享内存
+				 */
+				csf::core::module::csf_shared_memory m_sm;
 
 			};
 
