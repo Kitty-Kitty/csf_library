@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 28-7ÔÂ-2018 14:23:52
+*Date: 28-7æœˆ-2018 14:23:52
 *
-*Description: Class(csf_work_process) ±íÊ¾¹¤×÷½ø³ÌÄÚÈİ£¬Ö÷ÒªÊµÏÖÏà¹Ø½ø³ÌµÄ´¦Àí
+*Description: Class(csf_work_process) è¡¨ç¤ºå·¥ä½œè¿›ç¨‹å†…å®¹ï¼Œä¸»è¦å®ç°ç›¸å…³è¿›ç¨‹çš„å¤„ç†
 *
 *Others:
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace process
 		{
 			/**
-			 * ±íÊ¾¹¤×÷½ø³ÌÄÚÈİ£¬Ö÷ÒªÊµÏÖÏà¹Ø½ø³ÌµÄ´¦Àí
+			 * è¡¨ç¤ºå·¥ä½œè¿›ç¨‹å†…å®¹ï¼Œä¸»è¦å®ç°ç›¸å…³è¿›ç¨‹çš„å¤„ç†
 			 * @author fangzhenmu@aliyun.com
 			 * @version 1.0
-			 * @created 28-7ÔÂ-2018 14:23:52
+			 * @created 28-7æœˆ-2018 14:23:52
 			 */
 			class csf_work_process : public csf::core::module::device::csf_process
 			{

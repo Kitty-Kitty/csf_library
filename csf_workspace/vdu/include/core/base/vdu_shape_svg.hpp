@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 24-9ÔÂ-2018 14:09:58
+*Date: 24-9æœˆ-2018 14:09:58
 *
-*Description: Class(vdu_shape_svg) ±íÊ¾svgÌØÓĞµÄvdu_shapeÊı¾İÀàĞÍ
+*Description: Class(vdu_shape_svg) è¡¨ç¤ºsvgç‰¹æœ‰çš„vdu_shapeæ•°æ®ç±»å‹
 *
 *Others:
 *
@@ -32,10 +32,10 @@ namespace vdu
 		namespace base
 		{
 			/**
-			 * ±íÊ¾svgÌØÓĞµÄvdu_shapeÊı¾İÀàĞÍ
+			 * è¡¨ç¤ºsvgç‰¹æœ‰çš„vdu_shapeæ•°æ®ç±»å‹
 			 * @author fangzhenmu
 			 * @version 1.0
-			 * @created 24-9ÔÂ-2018 14:09:58
+			 * @created 24-9æœˆ-2018 14:09:58
 			 */
 			class vdu_shape_svg : public vdu::core::base::vdu_shape
 			{

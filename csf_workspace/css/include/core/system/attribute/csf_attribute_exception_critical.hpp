@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 05-7ÔÂ-2018 20:09:27
+*Date: 05-7æœˆ-2018 20:09:27
 *
 *Description: Class(csf_attribute_exception_critical)
 *
@@ -31,10 +31,10 @@ namespace csf
 			namespace attribute
 			{
 				/**
-				 * ±íÊ¾³öÏÖ´íÎó£¬³ı·ÇÅäÖÃ»Øµ÷£¬·ñÔòÖ±½ÓÅ×³öÒì³£¡£
+				 * è¡¨ç¤ºå‡ºç°é”™è¯¯ï¼Œé™¤éé…ç½®å›è°ƒï¼Œå¦åˆ™ç›´æ¥æŠ›å‡ºå¼‚å¸¸ã€‚
 				 * @author Administrator
 				 * @version 1.0
-				 * @created 05-7ÔÂ-2018 20:09:27
+				 * @created 05-7æœˆ-2018 20:09:27
 				 */
 				class csf_attribute_exception_critical : public csf::core::system::attribute::csf_attribute_exception
 				{
@@ -50,7 +50,7 @@ namespace csf
 
 						csf_log_ex(warning, csf_log_code_warning , "%s", tmp_buf);
 
-						//ÕâÀïÍ¨¹ıÍË³ö³Ì¶ÈµÄ·½Ê½´¦Àí£¬ÒÔ´ïµ½ÑÏÖØ´íÎóµÄÌØµã
+						//è¿™é‡Œé€šè¿‡é€€å‡ºç¨‹åº¦çš„æ–¹å¼å¤„ç†ï¼Œä»¥è¾¾åˆ°ä¸¥é‡é”™è¯¯çš„ç‰¹ç‚¹
 						//throw tmp_buf;
 						exit(1);
 					}) {
@@ -59,7 +59,7 @@ namespace csf
 
 					/**
 					*
-					* @param callback    ±íÊ¾Òì³£»Øµ÷º¯Êı
+					* @param callback    è¡¨ç¤ºå¼‚å¸¸å›è°ƒå‡½æ•°
 					*
 					*/
 					explicit csf_attribute_exception_critical(const csf::core::system::attribute::csf_attribute_exception_callback callback)

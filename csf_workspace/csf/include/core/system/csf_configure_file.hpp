@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 30-6ÔÂ-2018 11:58:29
+*Date: 30-6æœˆ-2018 11:58:29
 *
-*Description: Class(csf_configure_file) ±íÊ¾ÅäÖÃÎÄ¼ş£¬Ò»¸öÎÄ¼şÒ»¸öconfigure_file¶ÔÏó
+*Description: Class(csf_configure_file) è¡¨ç¤ºé…ç½®æ–‡ä»¶ï¼Œä¸€ä¸ªæ–‡ä»¶ä¸€ä¸ªconfigure_fileå¯¹è±¡
 *
 *Others:
 *
@@ -33,10 +33,10 @@ namespace csf
 		namespace system
 		{
 			/**
-			 * ±íÊ¾ÅäÖÃÎÄ¼ş£¬Ò»¸öÎÄ¼şÒ»¸öconfigure_file¶ÔÏó
+			 * è¡¨ç¤ºé…ç½®æ–‡ä»¶ï¼Œä¸€ä¸ªæ–‡ä»¶ä¸€ä¸ªconfigure_fileå¯¹è±¡
 			 * @author fz
 			 * @version 1.0
-			 * @created 30-6ÔÂ-2018 11:58:29
+			 * @created 30-6æœˆ-2018 11:58:29
 			 */
 			class csf_configure_file : public csf::core::system::csf_configure_interface, public csf::core::base::csf_csftype_template<csf_configure_file>
 			{
@@ -53,11 +53,11 @@ namespace csf
 				}
 
 				/**
-				 * °üº¬Èı¸öÊôĞÔµÄ¹¹Ôìº¯Êı
+				 * åŒ…å«ä¸‰ä¸ªå±æ€§çš„æ„é€ å‡½æ•°
 				 * 
-				 * @param name    ±íÊ¾¸ÃÅäÖÃÏîµÄÃû³Æ
-				 * @param file_path    ±íÊ¾ÅäÖÃÎÄ¼şµÄÎÄ¼şÂ·¾¶
-				 * @param format    ±íÊ¾ÅäÖÃÎÄ¼şµÄÎÄ¼ş¸ñÊ½£¬ÓÃÓÚÖ¸µ¼ÎÄ¼şµÄ½âÎö
+				 * @param name    è¡¨ç¤ºè¯¥é…ç½®é¡¹çš„åç§°
+				 * @param file_path    è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ–‡ä»¶è·¯å¾„
+				 * @param format    è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ–‡ä»¶æ ¼å¼ï¼Œç”¨äºæŒ‡å¯¼æ–‡ä»¶çš„è§£æ
 				 */
 				inline explicit csf_configure_file(const csf_char* name, const csf_char* file_path, const csf_char* format)
 					: m_name(name)
@@ -66,25 +66,25 @@ namespace csf
 
 				}
 				/**
-				 * °üº¬Èı¸öÊôĞÔµÄ¹¹Ôìº¯Êı
+				 * åŒ…å«ä¸‰ä¸ªå±æ€§çš„æ„é€ å‡½æ•°
 				 * 
-				 * @param name    ±íÊ¾¸ÃÅäÖÃÏîµÄÃû³Æ
-				 * @param file_path    ±íÊ¾ÅäÖÃÎÄ¼şµÄÎÄ¼şÂ·¾¶
-				 * @param format    ±íÊ¾ÅäÖÃÎÄ¼şµÄÎÄ¼ş¸ñÊ½£¬ÓÃÓÚÖ¸µ¼ÎÄ¼şµÄ½âÎö
+				 * @param name    è¡¨ç¤ºè¯¥é…ç½®é¡¹çš„åç§°
+				 * @param file_path    è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ–‡ä»¶è·¯å¾„
+				 * @param format    è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ–‡ä»¶æ ¼å¼ï¼Œç”¨äºæŒ‡å¯¼æ–‡ä»¶çš„è§£æ
 				 */
 				inline explicit csf_configure_file(const csf_string& name, const csf_string& file_path, const csf_string& format)
 					: csf_configure_file(name.c_str(), file_path.c_str(), format.c_str()){
 
 				}
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄÄ¿Â¼µØÖ·
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„ç›®å½•åœ°å€
 				 */
 				inline csf_string& get_file_path() {
 
 					return m_file_path;
 				}
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄÄ¿Â¼µØÖ·
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„ç›®å½•åœ°å€
 				 * 
 				 * @param new_value
 				 */
@@ -93,14 +93,14 @@ namespace csf
 					m_file_path = new_value;
 				}
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄ¸ñÊ½
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ ¼å¼
 				 */
 				inline csf_string& get_format() {
 
 					return m_format;
 				}
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄ¸ñÊ½
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ ¼å¼
 				 * 
 				 * @param new_value
 				 */
@@ -109,14 +109,14 @@ namespace csf
 					m_format = new_value;
 				}
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄÃüÃû£¬ÓÃÓÚ·á¸»ÅäÖÃÎÄ¼şµÄ´¦Àí
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„å‘½åï¼Œç”¨äºä¸°å¯Œé…ç½®æ–‡ä»¶çš„å¤„ç†
 				 */
 				inline csf_string& get_name() {
 
 					return m_name;
 				}
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄÃüÃû£¬ÓÃÓÚ·á¸»ÅäÖÃÎÄ¼şµÄ´¦Àí
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„å‘½åï¼Œç”¨äºä¸°å¯Œé…ç½®æ–‡ä»¶çš„å¤„ç†
 				 * 
 				 * @param new_value
 				 */
@@ -125,7 +125,7 @@ namespace csf
 					m_name = new_value;
 				}
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄÃüÃû£¬ÓÃÓÚ·á¸»ÅäÖÃÎÄ¼şµÄ´¦Àí
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„å‘½åï¼Œç”¨äºä¸°å¯Œé…ç½®æ–‡ä»¶çš„å¤„ç†
 				 * 
 				 * @param new_value
 				 */
@@ -134,7 +134,7 @@ namespace csf
 					m_name = new_value;
 				}
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄ¸ñÊ½
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ ¼å¼
 				 * 
 				 * @param new_value
 				 */
@@ -143,7 +143,7 @@ namespace csf
 					m_format = new_value;
 				}
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄÄ¿Â¼µØÖ·
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„ç›®å½•åœ°å€
 				 * 
 				 * @param new_value
 				 */
@@ -152,8 +152,8 @@ namespace csf
 					m_file_path = new_value;
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñÎª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾Îª¿Õ£»false±íÊ¾²»Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ä¸ºç©ºã€‚
 				*/
 				inline virtual csf_bool is_null() {
 
@@ -165,8 +165,8 @@ namespace csf
 					return csf_false;
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñ²»Îª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾²»Îª¿Õ£»false±íÊ¾Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ºç©ºã€‚
 				*/
 				inline virtual csf_bool not_null() {
 
@@ -174,15 +174,15 @@ namespace csf
 				}
 			private:
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄÄ¿Â¼µØÖ·
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„ç›®å½•åœ°å€
 				 */
 				csf_string m_file_path = "";
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄ¸ñÊ½
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ ¼å¼
 				 */
 				csf_string m_format = "";
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄÃüÃû£¬ÓÃÓÚ·á¸»ÅäÖÃÎÄ¼şµÄ´¦Àí
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„å‘½åï¼Œç”¨äºä¸°å¯Œé…ç½®æ–‡ä»¶çš„å¤„ç†
 				 */
 				csf_string m_name = "";
 

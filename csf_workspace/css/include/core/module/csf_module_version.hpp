@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 30-6ÔÂ-2018 17:49:52
+*Date: 30-6æœˆ-2018 17:49:52
 *
 *Description: Class(csf_module_version)
 *
@@ -31,10 +31,10 @@ namespace csf
 		namespace module
 		{
 			/**
-			 * ±íÊ¾Ä£¿é°æ±¾ĞÅÏ¢
+			 * è¡¨ç¤ºæ¨¡å—ç‰ˆæœ¬ä¿¡æ¯
 			 * @author fz
 			 * @version 1.0
-			 * @created 30-6ÔÂ-2018 17:49:52
+			 * @created 30-6æœˆ-2018 17:49:52
 			 */
 			class csf_module_version
 			{
@@ -57,14 +57,14 @@ namespace csf
 					return m_compile;
 				}
 				/**
-				 * Ä£¿é°æ±¾Êı×Ö±àÂë
+				 * æ¨¡å—ç‰ˆæœ¬æ•°å­—ç¼–ç 
 				 */
 				inline csf_uint32 get_version() {
 
 					return m_version;
 				}
 				/**
-				 * Ä£¿é°æ±¾Êı×Ö±àÂë
+				 * æ¨¡å—ç‰ˆæœ¬æ•°å­—ç¼–ç 
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -73,7 +73,7 @@ namespace csf
 					m_version = newVal;
 				}
 				/**
-				 * Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				 * æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				 */
 				inline csf_string & get_description() {
 
@@ -84,14 +84,14 @@ namespace csf
 					return  "";
 				}
 				/**
-				 * Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
+				 * æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
 				 */
 				inline csf_string& get_strver() {
 
 					return m_strver;
 				}
 				/**
-				 * Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				 * æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -100,7 +100,7 @@ namespace csf
 					m_description = newVal;
 				}
 				/**
-				 * Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
+				 * æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -109,7 +109,7 @@ namespace csf
 					m_strver = newVal;
 				}
 				/**
-				 * Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
+				 * æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -118,7 +118,7 @@ namespace csf
 					m_strver = newVal;
 				}
 				/**
-				 * Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				 * æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -163,23 +163,23 @@ namespace csf
 
 			private:
 				/**
-				 * Ä£¿é°æ±¾Êı×Ö±àÂë
+				 * æ¨¡å—ç‰ˆæœ¬æ•°å­—ç¼–ç 
 				 */
 				csf_uint32 m_version = 0;
 				/**
-				 * Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
+				 * æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
 				 */
 				csf::core::base::csf_string m_strver = "";
 				/**
-				 * ±íÊ¾Ä£¿é±àÒëÆ÷ĞÅÏ¢
+				 * è¡¨ç¤ºæ¨¡å—ç¼–è¯‘å™¨ä¿¡æ¯
 				 */
 				csf::core::base::csf_string m_compile = "";
 				/**
-				 * Ä£¿é±àÒëÏà¹ØĞÅÏ¢£¬Ö÷ÒªÊÇÊ±¼äĞÅÏ¢
+				 * æ¨¡å—ç¼–è¯‘ç›¸å…³ä¿¡æ¯ï¼Œä¸»è¦æ˜¯æ—¶é—´ä¿¡æ¯
 				 */
 				csf::core::base::csf_string m_build = "";
 				/**
-				 * Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				 * æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				 */
 				csf::core::base::csf_string m_description = "";
 

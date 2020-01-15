@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:38
+*Date: 27-6æœˆ-2018 17:28:38
 *
 *Description: Class(csf_csfmap)
 *
@@ -33,10 +33,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ±íÊ¾csf·â×°µÄmapÀàĞÍ
+			 * è¡¨ç¤ºcsfå°è£…çš„mapç±»å‹
 			 * @author Administrator
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:28:38
+			 * @created 27-6æœˆ-2018 17:28:38
 			 */
 			template <class Tkey, class Tvalue>
 			class csf_csfmap : public csf::core::base::csf_collector
@@ -45,31 +45,31 @@ namespace csf
 				typedef	typename csf_map<Tkey, Tvalue>::value_type		_map_value_type;
 			public:
 				/**
-				* ±íÊ¾Ä£¿éÀàĞÍÁĞ±íĞÅÏ¢
+				* è¡¨ç¤ºæ¨¡å—ç±»å‹åˆ—è¡¨ä¿¡æ¯
 				* @author fz
 				* @version 1.0
-				* @updated 12-7ÔÂ-2018 16:20:57
+				* @updated 12-7æœˆ-2018 16:20:57
 				*/
 				typedef enum csfmap_operation_enum
 				{
 					/**
-					* ±íÊ¾csfmapÎ´Öª×´Ì¬
+					* è¡¨ç¤ºcsfmapæœªçŸ¥çŠ¶æ€
 					*/
 					csfmap_operation_none = 0x00000000,
 					/**
-					* ±íÊ¾csfmapÍË³öÑ­»·
+					* è¡¨ç¤ºcsfmapé€€å‡ºå¾ªç¯
 					*/
 					csfmap_operation_break = 0x01000000,
 					/**
-					* ±íÊ¾csfmap·µ»ØÑ­»·
+					* è¡¨ç¤ºcsfmapè¿”å›å¾ªç¯
 					*/
 					csfmap_operation_return = 0x02000000,
 					/**
-					* ±íÊ¾csfmapÉ¾³ı½Úµã
+					* è¡¨ç¤ºcsfmapåˆ é™¤èŠ‚ç‚¹
 					*/
 					csfmap_operation_remove = 0x03000000,
 					/**
-					* ±íÊ¾csfmapĞø¼ÌÑ­»·
+					* è¡¨ç¤ºcsfmapç»­ç»§å¾ªç¯
 					*/
 					csfmap_operation_continue = 0x04000000,
 				} csfmap_operation;
@@ -83,10 +83,10 @@ namespace csf
 
 			public:
 				/**
-				* ±íÊ¾²åÈëÒ»¸öÊı¾İ
+				* è¡¨ç¤ºæ’å…¥ä¸€ä¸ªæ•°æ®
 				*
-				* @param key    ±íÊ¾mapµÄkey
-				* @param val    ±íÊ¾mapµÄvalue
+				* @param key    è¡¨ç¤ºmapçš„key
+				* @param val    è¡¨ç¤ºmapçš„value
 				*/
 				inline void insert(Tkey key, Tvalue val) {
 
@@ -95,9 +95,9 @@ namespace csf
 					m_map.insert(_map_value_type(key, val));
 				}
 				/**
-				* ±íÊ¾µ¯³öÒ»¸öÊı¾İ¶ÔÏó
+				* è¡¨ç¤ºå¼¹å‡ºä¸€ä¸ªæ•°æ®å¯¹è±¡
 				*
-				* @param key    ±íÊ¾mapµÄkey
+				* @param key    è¡¨ç¤ºmapçš„key
 				*/
 				csf_bool get(Tvalue &value, Tkey key) {
 
@@ -111,9 +111,9 @@ namespace csf
 					return tmp_ret;
 				}
 				/**
-				* ±íÊ¾²éÑ¯Ò»¸öÊı¾İ¶ÔÏó
+				* è¡¨ç¤ºæŸ¥è¯¢ä¸€ä¸ªæ•°æ®å¯¹è±¡
 				*
-				* @param key    ±íÊ¾mapµÄkey
+				* @param key    è¡¨ç¤ºmapçš„key
 				*/
 				csf_bool find(Tvalue &value, Tkey key) {
 
@@ -131,9 +131,9 @@ namespace csf
 					return csf_false;
 				}
 				/**
-				* ±íÊ¾²éÑ¯Ò»¸öÊı¾İ¶ÔÏóÊÇ·ñ´æÔÚ£¬´æÔÚ·µ»Øtrue£¬²»´æÔÚ·µ»Øfalse
+				* è¡¨ç¤ºæŸ¥è¯¢ä¸€ä¸ªæ•°æ®å¯¹è±¡æ˜¯å¦å­˜åœ¨ï¼Œå­˜åœ¨è¿”å›trueï¼Œä¸å­˜åœ¨è¿”å›false
 				*
-				* @param key    ±íÊ¾mapµÄkey
+				* @param key    è¡¨ç¤ºmapçš„key
 				*/
 				inline csf_bool have_key(Tkey key) {
 
@@ -150,9 +150,9 @@ namespace csf
 					}
 				}
 				/**
-				* ±íÊ¾Ñ­»·±éÀú´¦Àí¸÷¸ö½ÚµãÄÚÈİ
+				* è¡¨ç¤ºå¾ªç¯éå†å¤„ç†å„ä¸ªèŠ‚ç‚¹å†…å®¹
 				*
-				* @param key    ±íÊ¾mapµÄkey
+				* @param key    è¡¨ç¤ºmapçš„key
 				*/
 				void for_each(std::function<csfmap_operation(_map_iterator)> func) {
 
@@ -186,9 +186,9 @@ namespace csf
 					}
 				}
 				/**
-				* ±íÊ¾·µ»ØmapµÄÊı¾İ×ÜÊı
+				* è¡¨ç¤ºè¿”å›mapçš„æ•°æ®æ€»æ•°
 				*
-				* @param key    ±íÊ¾mapµÄkey
+				* @param key    è¡¨ç¤ºmapçš„key
 				*/
 				inline int size() {
 
@@ -196,9 +196,9 @@ namespace csf
 					return m_map.size();
 				}
 				/**
-				* ±íÊ¾Çå³ıËùÓĞÊı¾İ
+				* è¡¨ç¤ºæ¸…é™¤æ‰€æœ‰æ•°æ®
 				*
-				* @param key    ±íÊ¾mapµÄkey
+				* @param key    è¡¨ç¤ºmapçš„key
 				*/
 				inline bool clear() {
 
@@ -208,17 +208,17 @@ namespace csf
 					return csf_true;
 				}
 				/**
-				* ±íÊ¾Çå³ıÒ»¸öÖ¸¶¨Êı¾İÏî
+				* è¡¨ç¤ºæ¸…é™¤ä¸€ä¸ªæŒ‡å®šæ•°æ®é¡¹
 				*
-				* @param key    ±íÊ¾mapµÄkey
+				* @param key    è¡¨ç¤ºmapçš„key
 				*/
 				inline void remove(Tkey key) {
 					erase(key);
 				}
 				/**
-				* ±íÊ¾Çå³ıÒ»¸öÖ¸¶¨Êı¾İÏî
+				* è¡¨ç¤ºæ¸…é™¤ä¸€ä¸ªæŒ‡å®šæ•°æ®é¡¹
 				*
-				* @param key    ±íÊ¾mapµÄkey
+				* @param key    è¡¨ç¤ºmapçš„key
 				*/
 				inline void erase(Tkey key) {
 
@@ -229,11 +229,11 @@ namespace csf
 
 			protected:
 				/**
-				* ±íÊ¾±ê×¼mapÄÚÈİ
+				* è¡¨ç¤ºæ ‡å‡†mapå†…å®¹
 				*/
 				csf_map<Tkey, Tvalue>		m_map;
 				/**
-				* ±íÊ¾Ïß³Ì°²È«Ê¹ÓÃµÄ»¥³âËøÄÚÈİ
+				* è¡¨ç¤ºçº¿ç¨‹å®‰å…¨ä½¿ç”¨çš„äº’æ–¥é”å†…å®¹
 				*/
 				csf_shared_mutex			m_mutex;
 			};

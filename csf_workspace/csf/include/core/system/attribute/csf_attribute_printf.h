@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright:fz
 *
@@ -10,7 +10,7 @@
 *
 *Date:2018/07/02
 *
-*Description: create (csf_attribute_printf.h)Ö÷ÒªÓÃÓÚÊôĞÔÄ£¿éµÄÈÕÖ¾´òÓ¡
+*Description: create (csf_attribute_printf.h)ä¸»è¦ç”¨äºå±æ€§æ¨¡å—çš„æ—¥å¿—æ‰“å°
 *
 *Others:
 *
@@ -26,14 +26,14 @@
 
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸öÄ£¿é¹ÜÀíÆ÷µÄÈÕÖ¾½Ó¿Ú
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªæ¨¡å—ç®¡ç†å™¨çš„æ—¥å¿—æ¥å£
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _strlevel_	±íÊ¾ÈÕÖ¾¼¶±ğ×Ö·û´®,È¡ÖµÎª"debug", "normal", "info", "notice", "warning", "error", "critical"
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _fmt_		±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-* @param ...		±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+* @created 01-7æœˆ-2018 20:38:59
+* @param _strlevel_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«å­—ç¬¦ä¸²,å–å€¼ä¸º"debug", "normal", "info", "notice", "warning", "error", "critical"
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _fmt_		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+* @param ...		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 */
 #define csf_attribute_log(_strlevel_, _code_, _fmt_, ...)	do {		\
 	_csf_log_write_ex(_strlevel_, _code_, "%s " _fmt_, 					\

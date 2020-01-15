@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 17:41:45
+*Date: 01-7æœˆ-2018 17:41:45
 *
-*Description: Class(csf_configure_manager)±íÊ¾ÏµÍ³ËùÓĞÅäÖÃµÄ¹ÜÀíÆ÷
+*Description: Class(csf_configure_manager)è¡¨ç¤ºç³»ç»Ÿæ‰€æœ‰é…ç½®çš„ç®¡ç†å™¨
 *
 *Others:
 *
@@ -33,14 +33,14 @@ namespace csf
 		namespace system
 		{
 			/**
-			* ±íÊ¾Ä£¿éÅäÖÃÎÄ¼ş×Ö·û´®¶¨Òå
+			* è¡¨ç¤ºæ¨¡å—é…ç½®æ–‡ä»¶å­—ç¬¦ä¸²å®šä¹‰
 			*/
 			#define CSF_CONFIGURE_STRING(str)									#str
 			/**
-			 * ±íÊ¾ÏµÍ³ËùÓĞÅäÖÃµÄ¹ÜÀíÆ÷
+			 * è¡¨ç¤ºç³»ç»Ÿæ‰€æœ‰é…ç½®çš„ç®¡ç†å™¨
 			 * @author fz
 			 * @version 1.0
-			 * @created 01-7ÔÂ-2018 17:41:45
+			 * @created 01-7æœˆ-2018 17:41:45
 			 */
 			class csf_configure_manager
 			{
@@ -49,16 +49,16 @@ namespace csf
 				csf_configure_manager();
 				virtual ~csf_configure_manager();
 				/**
-				* ¹¦ÄÜ£º³õÊ¼»¯ÅäÖÃ¹ÜÀíÆ÷ÖĞµÄÆäËûÅäÖÃĞÅÏ¢£¬Ö÷ÒªÖ¸Ä£¿éÅäÖÃĞÅÏ¢£¬¸ºÔØÅäÖÃĞÅÏ¢²¿·ÖÄÚÈİ
-				* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+				* åŠŸèƒ½ï¼šåˆå§‹åŒ–é…ç½®ç®¡ç†å™¨ä¸­çš„å…¶ä»–é…ç½®ä¿¡æ¯ï¼Œä¸»è¦æŒ‡æ¨¡å—é…ç½®ä¿¡æ¯ï¼Œè´Ÿè½½é…ç½®ä¿¡æ¯éƒ¨åˆ†å†…å®¹
+				* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 				*/
 				csf_bool init();
 				/**
-				 * Ìí¼ÓÒ»¸öcsf_configureµ½configure_managerÖĞ¡£ÓÉÓÚconfigure_managerÔÚÌí¼ÓµÄÊ±ºòĞèÒª¸ù¾İnameÀ´ÅĞ¶Ï¸ÃÅäÖÃÎÄ¼şÊÇ·ñ
-				 * ÒÑ¾­ÔÚconfigure_managerÖĞ¡£
-				 * ÆäÖĞ·µ»Ø0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü¡£
+				 * æ·»åŠ ä¸€ä¸ªcsf_configureåˆ°configure_managerä¸­ã€‚ç”±äºconfigure_manageråœ¨æ·»åŠ çš„æ—¶å€™éœ€è¦æ ¹æ®nameæ¥åˆ¤æ–­è¯¥é…ç½®æ–‡ä»¶æ˜¯å¦
+				 * å·²ç»åœ¨configure_managerä¸­ã€‚
+				 * å…¶ä¸­è¿”å›0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ã€‚
 				 *
-				 * @param configure    ±íÊ¾ĞèÒª±»Ìí¼ÓµÄcsf_configure¶ÔÏó
+				 * @param configure    è¡¨ç¤ºéœ€è¦è¢«æ·»åŠ çš„csf_configureå¯¹è±¡
 				 */
 				inline csf_int32 add(const csf_configure& configure) {
 
@@ -66,16 +66,16 @@ namespace csf
 						return csf_failure;
 					}
 
-					//½«csf_configureÌí¼Óµ½ÁĞ±íÖĞ
+					//å°†csf_configureæ·»åŠ åˆ°åˆ—è¡¨ä¸­
 					m_configures[((csf_configure&)configure).get_configure_file().get_name()] = configure;
 					return csf_success;
 				}
 				/**
-				 * Ìí¼ÓÒ»¸öcsf_configure_fileµ½configure_managerÖĞ¡£ÓÉÓÚconfigure_manager²»±£´æconfigure_fileÎ´½â
-				 * ÎöµÄÎÄ¼ş£¬ËùÒÔÕâ¸öcsf_configure_fileĞèÒªÏÈ´´½¨Ò»¸öcsf_configureºó²ÅÄÜÌí¼Óµ½configure_managerÖĞ¡£
-				 * ÆäÖĞ·µ»Ø0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü¡£
+				 * æ·»åŠ ä¸€ä¸ªcsf_configure_fileåˆ°configure_managerä¸­ã€‚ç”±äºconfigure_managerä¸ä¿å­˜configure_fileæœªè§£
+				 * æçš„æ–‡ä»¶ï¼Œæ‰€ä»¥è¿™ä¸ªcsf_configure_fileéœ€è¦å…ˆåˆ›å»ºä¸€ä¸ªcsf_configureåæ‰èƒ½æ·»åŠ åˆ°configure_managerä¸­ã€‚
+				 * å…¶ä¸­è¿”å›0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ã€‚
 				 *
-				 * @param configure_file    ±íÊ¾ĞèÒª±»Ìí¼ÓµÄcsf_configure_file¶ÔÏó¡£
+				 * @param configure_file    è¡¨ç¤ºéœ€è¦è¢«æ·»åŠ çš„csf_configure_fileå¯¹è±¡ã€‚
 				 */
 				inline csf_int32 add(const csf_configure_file& configure_file) {
 
@@ -86,21 +86,21 @@ namespace csf
 					return add(csf_configure((csf_configure_file&)configure_file));
 				}
 				/**
-				 * ±íÊ¾´Óconfigure_managerÖĞÉ¾³ıÒ»¸öcsf_configure¡£ÕâÀïµÄÉ¾³ıÖ÷ÒªÊÇ¸ù¾İÅäÖÃÎÄ¼şµÄÃû³ÆnameÊôĞÔÉ¾³ı¡£
-				 * ÆäÖĞ·µ»Ø0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºä»configure_managerä¸­åˆ é™¤ä¸€ä¸ªcsf_configureã€‚è¿™é‡Œçš„åˆ é™¤ä¸»è¦æ˜¯æ ¹æ®é…ç½®æ–‡ä»¶çš„åç§°nameå±æ€§åˆ é™¤ã€‚
+				 * å…¶ä¸­è¿”å›0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ã€‚
 				 *
-				 * @param configure    ±íÊ¾ĞèÒª±»É¾³ıµÄcsf_configure¶ÔÏó
+				 * @param configure    è¡¨ç¤ºéœ€è¦è¢«åˆ é™¤çš„csf_configureå¯¹è±¡
 				 */
 				inline csf_int32 del(const csf_configure& configure) {
 
 					return del(((csf_configure&)configure).get_configure_file());
 				}
 				/**
-				 * ´Óconfigure_managerÖĞÉ¾³ıcsf_configure_fileÖ¸¶¨µÄÅäÖÃÎÄ¼ş¡£ÕâÀïµÄÉ¾³ıÖ÷ÒªÊÇ¸ù¾İÅäÖÃÎÄ¼şµÄÃû³ÆnameÊôĞÔÉ¾³ı¡£
+				 * ä»configure_managerä¸­åˆ é™¤csf_configure_fileæŒ‡å®šçš„é…ç½®æ–‡ä»¶ã€‚è¿™é‡Œçš„åˆ é™¤ä¸»è¦æ˜¯æ ¹æ®é…ç½®æ–‡ä»¶çš„åç§°nameå±æ€§åˆ é™¤ã€‚
 				 *
-				 * ÆäÖĞ·µ»Ø0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü¡£
+				 * å…¶ä¸­è¿”å›0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ã€‚
 				 *
-				 * @param configure_file    ±íÊ¾ĞèÒª±»É¾³ıÒ»¸öcsf_configure_file¶ÔÏóÖ¸¶¨µÄÅäÖÃÎÄ¼ş¡£
+				 * @param configure_file    è¡¨ç¤ºéœ€è¦è¢«åˆ é™¤ä¸€ä¸ªcsf_configure_fileå¯¹è±¡æŒ‡å®šçš„é…ç½®æ–‡ä»¶ã€‚
 				 */
 				inline csf_int32 del(const csf_configure_file& configure_file) {
 
@@ -108,26 +108,26 @@ namespace csf
 						return csf_failure;
 					}
 
-					//±íÊ¾¸ù¾İconfigureÃû³ÆÉ¾³ıÅäÖÃÎÄ¼şĞÅÏ¢
+					//è¡¨ç¤ºæ ¹æ®configureåç§°åˆ é™¤é…ç½®æ–‡ä»¶ä¿¡æ¯
 					get_configures().erase(((csf_configure_file&)configure_file).get_name());
 					return csf_success;
 				}
 				/**
-				* ±íÊ¾¸ù¾İitemsÊôĞÔÂ·¾¶²éÕÒÒ»¸öelement¡£
-				* ·µ»Ø£º·Çnull±íÊ¾Âú×ãitemsËùÓĞÂ·¾¶µÄ½Úµã£»null±íÊ¾Ã»ÓĞ²éÕÒµ½Âú×ãÂ·¾¶µÄ½Úµã£»
+				* è¡¨ç¤ºæ ¹æ®itemså±æ€§è·¯å¾„æŸ¥æ‰¾ä¸€ä¸ªelementã€‚
+				* è¿”å›ï¼šénullè¡¨ç¤ºæ»¡è¶³itemsæ‰€æœ‰è·¯å¾„çš„èŠ‚ç‚¹ï¼›nullè¡¨ç¤ºæ²¡æœ‰æŸ¥æ‰¾åˆ°æ»¡è¶³è·¯å¾„çš„èŠ‚ç‚¹ï¼›
 				*
-				* @param items    itemsÊôĞÔÂ·¾¶
+				* @param items    itemså±æ€§è·¯å¾„
 				*/
 				virtual const csf_element& find_element(const csf_list<csf_string>& items);
 				/**
-				* ±íÊ¾ÏµÍ³ÏŞÖÆÅäÖÃÏîÄ¿ÄÚÈİ
+				* è¡¨ç¤ºç³»ç»Ÿé™åˆ¶é…ç½®é¡¹ç›®å†…å®¹
 				*/
 				inline csf::core::system::csf_measure_configure& get_measure_configure() {
 
 					return m_measure_configure;
 				}
 				/**
-				* ±íÊ¾ÏµÍ³ÏŞÖÆÅäÖÃÏîÄ¿ÄÚÈİ
+				* è¡¨ç¤ºç³»ç»Ÿé™åˆ¶é…ç½®é¡¹ç›®å†…å®¹
 				*
 				* @param newVal
 				*/
@@ -136,17 +136,17 @@ namespace csf
 					m_measure_configure = newVal;
 				}
 				/**
-				* ¹¦ÄÜ£º¸ù¾İÄ£¿éÃû³Æ²éÑ¯Ä£¿éÅäÖÃĞÅÏ¢
-				* ·µ»Ø£º·Ç¿Õ¶ÔÏó±íÊ¾³É¹¦£»·Ç¶ÔÏó±íÊ¾Ê§°Ü£»
+				* åŠŸèƒ½ï¼šæ ¹æ®æ¨¡å—åç§°æŸ¥è¯¢æ¨¡å—é…ç½®ä¿¡æ¯
+				* è¿”å›ï¼šéç©ºå¯¹è±¡è¡¨ç¤ºæˆåŠŸï¼›éå¯¹è±¡è¡¨ç¤ºå¤±è´¥ï¼›
 				*
-				* @param name    ±íÊ¾Ä£¿éµÄÃû³Æ
+				* @param name    è¡¨ç¤ºæ¨¡å—çš„åç§°
 				*/
 				const csf_module_configure& find_module_configure(const csf_string& name);
 				/**
-				* ¹¦ÄÜ£º¸ù¾İÄ£¿éÃû³Æ²éÑ¯Ä£¿éÅäÖÃĞÅÏ¢
-				* ·µ»Ø£º·Ç¿Õ¶ÔÏó±íÊ¾³É¹¦£»·Ç¶ÔÏó±íÊ¾Ê§°Ü£»
+				* åŠŸèƒ½ï¼šæ ¹æ®æ¨¡å—åç§°æŸ¥è¯¢æ¨¡å—é…ç½®ä¿¡æ¯
+				* è¿”å›ï¼šéç©ºå¯¹è±¡è¡¨ç¤ºæˆåŠŸï¼›éå¯¹è±¡è¡¨ç¤ºå¤±è´¥ï¼›
 				*
-				* @param name    ±íÊ¾Ä£¿éµÄÃû³Æ
+				* @param name    è¡¨ç¤ºæ¨¡å—çš„åç§°
 				*/
 				inline const csf_module_configure& find_module_configure(const csf_char* name) {
 
@@ -158,56 +158,56 @@ namespace csf
 
 			protected:
 				/**
-				* ¹¦ÄÜ£º³õÊ¼»¯Ä£¿éÅäÖÃ¹ÜÀíÆ÷
-				* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+				* åŠŸèƒ½ï¼šåˆå§‹åŒ–æ¨¡å—é…ç½®ç®¡ç†å™¨
+				* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 				*
-				* @param module_configures    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-				* @param configures    ±íÊ¾µ±Ç°ÒÑ¾­½âÎöµÄÅäÖÃÎÄ¼şĞÅÏ¢
+				* @param module_configures    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+				* @param configures    è¡¨ç¤ºå½“å‰å·²ç»è§£æçš„é…ç½®æ–‡ä»¶ä¿¡æ¯
 				*/
 				csf_bool init_module_configures(csf_map<csf_string, csf_module_configure>& module_configures
 					, csf_map<csf_string, csf_configure>& configures);
 				/**
-				* ¹¦ÄÜ£º³õÊ¼»¯¸ºÔØÅäÖÃ¹ÜÀíÆ÷
-				* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+				* åŠŸèƒ½ï¼šåˆå§‹åŒ–è´Ÿè½½é…ç½®ç®¡ç†å™¨
+				* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 				*
-				* @param measure_configure    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-				* @param configures    ±íÊ¾µ±Ç°ÒÑ¾­½âÎöµÄÅäÖÃÎÄ¼şĞÅÏ¢
+				* @param measure_configure    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+				* @param configures    è¡¨ç¤ºå½“å‰å·²ç»è§£æçš„é…ç½®æ–‡ä»¶ä¿¡æ¯
 				*/
 				csf_bool init_measure_configure(csf_measure_configure& measure_configure
 					, csf_map<csf_string, csf_configure>& configures);
 				/**
-				* ¹¦ÄÜ£ºÏòÄ£¿éÅäÖÃ¹ÜÀíÆ÷ÖĞÌí¼ÓÒ»¸öÄ£¿éÅäÖÃĞÅÏ¢£¬Í¬Ê±±éÀúĞÅÏ¢ÏÂµÄËùÓĞ×ÓÄ£¿éĞÅÏ¢
-				* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+				* åŠŸèƒ½ï¼šå‘æ¨¡å—é…ç½®ç®¡ç†å™¨ä¸­æ·»åŠ ä¸€ä¸ªæ¨¡å—é…ç½®ä¿¡æ¯ï¼ŒåŒæ—¶éå†ä¿¡æ¯ä¸‹çš„æ‰€æœ‰å­æ¨¡å—ä¿¡æ¯
+				* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 				*
-				* @param module_configures    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-				* @param module_element    ±íÊ¾µ±Ç°»ñÈ¡µ½µÄÄ£¿éĞÅÏ¢
+				* @param module_configures    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+				* @param module_element    è¡¨ç¤ºå½“å‰è·å–åˆ°çš„æ¨¡å—ä¿¡æ¯
 				*/
 				csf_bool add_module_configures(csf_map<csf_string, csf_module_configure>& module_configures, csf_element& module_element);
 				/**
-				* ¹¦ÄÜ£ºÏòÄ£¿éÅäÖÃ¹ÜÀíÆ÷ÖĞÌí¼ÓÒ»¸öÄ£¿éÅäÖÃĞÅÏ¢
-				* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+				* åŠŸèƒ½ï¼šå‘æ¨¡å—é…ç½®ç®¡ç†å™¨ä¸­æ·»åŠ ä¸€ä¸ªæ¨¡å—é…ç½®ä¿¡æ¯
+				* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 				*
-				* @param module_configures    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-				* @param module_element    ±íÊ¾µ±Ç°»ñÈ¡µ½µÄÄ£¿éĞÅÏ¢
+				* @param module_configures    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+				* @param module_element    è¡¨ç¤ºå½“å‰è·å–åˆ°çš„æ¨¡å—ä¿¡æ¯
 				*/
 				csf_bool add_module_configure(csf_map<csf_string, csf_module_configure>& module_configures, csf_element& module_element);
 				/**
-				* ¹¦ÄÜ£ºÏòÄ£¿éÅäÖÃ¹ÜÀíÆ÷ÖĞÌí¼ÓÒ»¸öÄ£¿éÅäÖÃĞÅÏ¢£¬Í¬Ê±±éÀúĞÅÏ¢ÏÂµÄËùÓĞ×ÓÄ£¿éĞÅÏ¢
-				* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+				* åŠŸèƒ½ï¼šå‘æ¨¡å—é…ç½®ç®¡ç†å™¨ä¸­æ·»åŠ ä¸€ä¸ªæ¨¡å—é…ç½®ä¿¡æ¯ï¼ŒåŒæ—¶éå†ä¿¡æ¯ä¸‹çš„æ‰€æœ‰å­æ¨¡å—ä¿¡æ¯
+				* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 				*
-				* @param module_configures    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-				* @param items    ±íÊ¾µ±Ç°Ä£¿éĞÅÏ¢Â·¾¶
+				* @param module_configures    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+				* @param items    è¡¨ç¤ºå½“å‰æ¨¡å—ä¿¡æ¯è·¯å¾„
 				*/
 				csf_bool add_module_configures(csf_map<csf_string, csf_module_configure>& module_configures, const csf_list<csf_string>& items);
 				/**
-				* ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢ÁĞ±í
+				* è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯åˆ—è¡¨
 				*/
 				inline csf_map<csf_string, csf_configure>& get_configures() {
 
 					return m_configures;
 				}
 				/**
-				* ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢ÁĞ±í
+				* è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯åˆ—è¡¨
 				*
 				* @param newVal
 				*/
@@ -216,14 +216,14 @@ namespace csf
 					m_configures = newVal;
 				}
 				/**
-				* ±íÊ¾Ä£¿éÅäÖÃ¹ÜÀíÆ÷
+				* è¡¨ç¤ºæ¨¡å—é…ç½®ç®¡ç†å™¨
 				*/
 				inline csf_map<csf_string, csf_module_configure>& get_module_configures() {
 
 					return m_module_configures;
 				}
 				/**
-				* ±íÊ¾Ä£¿éÅäÖÃ¹ÜÀíÆ÷
+				* è¡¨ç¤ºæ¨¡å—é…ç½®ç®¡ç†å™¨
 				*
 				* @param newVal
 				*/
@@ -233,15 +233,15 @@ namespace csf
 				}
 			private:
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢ÁĞ±í
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯åˆ—è¡¨
 				 */
 				csf_map<csf_string, csf_configure> m_configures;
 				/**
-				 * ±íÊ¾Ä£¿éÅäÖÃ¹ÜÀíÆ÷
+				 * è¡¨ç¤ºæ¨¡å—é…ç½®ç®¡ç†å™¨
 				 */
 				csf_map<csf_string, csf_module_configure> m_module_configures;
 				/**
-				 * ±íÊ¾ĞÔÄÜÏŞÖÆÅäÖÃĞÅÏ¢
+				 * è¡¨ç¤ºæ€§èƒ½é™åˆ¶é…ç½®ä¿¡æ¯
 				 */
 				csf::core::system::csf_measure_configure m_measure_configure;
 			};

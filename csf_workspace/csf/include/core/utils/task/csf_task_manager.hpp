@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:51
+*Date: 19-7æœˆ-2018 20:11:51
 *
-*Description: Class(csf_task_manager) ±íÊ¾ÈÎÎñ¹ÜÀíÆ÷
+*Description: Class(csf_task_manager) è¡¨ç¤ºä»»åŠ¡ç®¡ç†å™¨
 *
 *Others:
 *
@@ -32,10 +32,10 @@ namespace csf
 			namespace task
 			{
 				/**
-				 * ±íÊ¾ÈÎÎñ¹ÜÀíÆ÷
+				 * è¡¨ç¤ºä»»åŠ¡ç®¡ç†å™¨
 				 * @author f
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:51
+				 * @created 19-7æœˆ-2018 20:11:51
 				 */
 				class csf_task_manager : public csf::core::module::csf_module
 				{
@@ -45,20 +45,20 @@ namespace csf
 					virtual ~csf_task_manager();
 
 					/**
-					 * ±íÊ¾ÅäÖÃĞÅÏ¢
+					 * è¡¨ç¤ºé…ç½®ä¿¡æ¯
 					 */
 					inline csf_configure_manager* get_configure_manager() {
 
 						return m_configure_manager;
 					}
 					/**
-					 * Ä£¿é³õÊ¼»¯
+					 * æ¨¡å—åˆå§‹åŒ–
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr);
 					/**
-					 * ±íÊ¾ÅäÖÃĞÅÏ¢
+					 * è¡¨ç¤ºé…ç½®ä¿¡æ¯
 					 * 
 					 * @param new_value
 					 */
@@ -67,26 +67,26 @@ namespace csf
 						m_configure_manager = (csf_configure_manager*)new_value;
 					}
 					/**
-					 * Ä£¿éÆô¶¯
+					 * æ¨¡å—å¯åŠ¨
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr);
 					/**
-					 * Ä£¿éÍ£Ö¹
+					 * æ¨¡å—åœæ­¢
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
 					/**
-					 * ±íÊ¾ÈÎÎñ¹ÜÀíÆ÷µÄ×´Ì¬ĞÅÏ¢
+					 * è¡¨ç¤ºä»»åŠ¡ç®¡ç†å™¨çš„çŠ¶æ€ä¿¡æ¯
 					 */
 					inline csf::core::utils::task::csf_task::csf_task_status get_status() {
 
 						return m_status;
 					}
 					/**
-					 * ±íÊ¾ÈÎÎñ¹ÜÀíÆ÷µÄ×´Ì¬ĞÅÏ¢
+					 * è¡¨ç¤ºä»»åŠ¡ç®¡ç†å™¨çš„çŠ¶æ€ä¿¡æ¯
 					 * 
 					 * @param new_value
 					 */
@@ -97,11 +97,11 @@ namespace csf
 
 				private:
 					/**
-					 * ±íÊ¾ÅäÖÃĞÅÏ¢
+					 * è¡¨ç¤ºé…ç½®ä¿¡æ¯
 					 */
 					csf_configure_manager* m_configure_manager = csf_null;
 					/**
-					 * ±íÊ¾ÈÎÎñ¹ÜÀíÆ÷µÄ×´Ì¬ĞÅÏ¢
+					 * è¡¨ç¤ºä»»åŠ¡ç®¡ç†å™¨çš„çŠ¶æ€ä¿¡æ¯
 					 */
 					csf::core::utils::task::csf_task::csf_task_status m_status = csf::core::utils::task::csf_task::csf_task_status::csf_task_status_none;
 

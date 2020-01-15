@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:46
+*Date: 27-6æœˆ-2018 17:28:46
 *
 *Description: Class(csf_network)
 *
@@ -37,9 +37,9 @@ csf_network::~csf_network() {
 
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_network::init(const csf_configure_manager * conf_mg) {
 
@@ -48,9 +48,9 @@ csf::core::base::csf_int32 csf_network::init(const csf_configure_manager * conf_
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_network::start(const csf_configure_manager * conf_mg) {
 
@@ -68,9 +68,9 @@ csf::core::base::csf_void csf_network::csf_module(csf::core::module::csf_module_
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_network::stop(const csf_configure_manager * conf_mg) {
 

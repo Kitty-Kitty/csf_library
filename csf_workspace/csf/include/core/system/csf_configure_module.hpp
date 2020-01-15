@@ -74,6 +74,17 @@ namespace csf
 					, csf::core::module::csf_module_manager& module_manager
 					, const csf::core::system::csf_element& element);
 				/**
+				 * 功能：
+				 *    销毁一个模块对象
+				 * 返回：
+				 *    0  ：  表示成功；
+				 *   非0 ：  表示失败；
+				 *
+				 * @param module_manager    表示模块管理器对象信息
+				 * @param module    表示模块对象
+				 */
+				static csf_int32 destroy_module(csf::core::module::csf_module_manager& module_manager, csf_module * module);
+				/**
 				* 主要功能是：
 				*    由于boost.
 				* log日志模块的处理问题，不支持dll和so模块输出，所以需要配置日志功能。在所有的device和device_io构造时，都需要执行该处理。如果后面更换了日志

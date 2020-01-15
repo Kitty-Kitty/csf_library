@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -24,7 +24,6 @@ csf_vm的处理逻辑相对固定，主要初始化环境操作，为系统运�
 #define CSF_VM_H_INCLUDED_
 
 #include "csf_app.hpp"
-#include "csf_shared_memory.hpp"
 
 namespace csf
 {
@@ -78,41 +77,100 @@ namespace csf
 				 * @param conf_mg    表示配置文件信息
 				 */
 				virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
-				/**
-				 * 功能：
-				 *    该函数主要用于初始化vm的名称
-				 * 返回：
-				 *    true  :  表示初始化成功；
-				 *    false :  表示初始化失败。
-				 */
-				csf_bool init_vm_name();
 
 			protected:
 				/**
-				 * 表示当前vm对象使用的共享内存
+				 * 功能：
+				 *    启动所有私服进程
+				 * 返回：
+				 *    true  ：  表示成功；
+				 *   false  ：  表示失败；
 				 */
-				inline csf_shared_memory& get_sm() {
-
-					return m_sm;
-				}
+				virtual csf_bool start_slaves();
 				/**
 				 * 功能：
-				 *    初始化共享内存资源
+				 *    停止所有私服进程
 				 * 返回：
-				 *    true  :  表示成功；
-				 *    false :  表示失败；
+				 *    true  ：  表示成功；
+				 *   false  ：  表示失败；
 				 */
-				csf_bool init_shared_memory();
-			private:
+				virtual csf_bool stop_slaves();
+				/**
+				 * 功能：
+				 *    启动指定的私服程序
+				 * 返回：
+				 *    true  ：  表示成功；
+				 *   false  ：  表示失败；
+				 *
+				 * @param element    表示当前需要启动的伺服信息
+				 */
+				virtual csf_bool start_slave(csf_element& element);
+				/**
+				 * 功能：
+				 *    根据名称停止指定的私服程序
+				 * 返回：
+				 *    true  ：  表示成功；
+				 *   false  ：  表示失败；
+				 *
+				 * @param name    表示当前需要停止的伺服名称
+				 */
+				virtual csf_bool stop_slave(csf_string& name);
+				/**
+				 * 功能：
+				 *    根据名称查找指定的私服信息
+				 * 返回：
+				 *    非null  ：  表示查找到的伺服对象；
+				 *      null  ：  表示不存在指定的伺服对象；
+				 *
+				 * @param name    表示伺服名称
+				 */
+				virtual csf_slave* find_slave(csf_string& name);
+				/**
+				 * 功能：
+				 *    插入指定的私服信息
+				 * 返回：
+				 *   true  ：  表示成功；
+				 *   false ：  表示失败；
+				 *
+				 * @param slave    表示伺服信息对象
+				 */
+				virtual csf_bool insert_slave(csf_slave* slave);
+				/**
+				 * 功能：
+				 *    根据名称启动指定的私服程序
+				 * 返回：
+				 *   true  ：  表示成功；
+				 *   false ：  表示失败；
+				 *
+				 * @param name    表示伺服名称
+				 */
+				virtual csf_bool start_slave(csf_string& name);
+				/**
+				 * 功能：
+				 *    启动指定的私服程序
+				 * 返回：
+				 *   true  ：  表示成功；
+				 *   false ：  表示失败；
+				 *
+				 * @param slave    表示伺服信息对象
+				 */
+				virtual csf_bool start_slave(csf_slave* slave);
+				/**
+				 * 功能：
+				 *    停止指定的私服程序
+				 * 返回：
+				 *   true  ：  表示成功；
+				 *   false ：  表示失败；
+				 *
+				 * @param slave    表示伺服信息对象
+				 */
+				virtual csf_bool stop_slave(csf_slave* slave);
+				
+			protected:
 				/**
 				 * 表示当前已经运行的客户进程
 				 */
 				csf_slave* m_slaves[64] = {csf_nullptr, };
-				/**
-				 * 表示当前vm对象使用的共享内存
-				 */
-				csf::core::module::csf_shared_memory m_sm;
-
 			};
 
 		}

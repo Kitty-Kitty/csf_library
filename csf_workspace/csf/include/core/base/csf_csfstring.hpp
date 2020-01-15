@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 21:34:05
+*Date: 27-6æœˆ-2018 21:34:05
 *
 *Description: Class(csf_csfstring)
 *
@@ -31,10 +31,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ±íÊ¾csfÊ¹ÓÃµÄstring
+			 * è¡¨ç¤ºcsfä½¿ç”¨çš„string
 			 * @author f
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 21:34:05
+			 * @created 27-6æœˆ-2018 21:34:05
 			 */
 			class csf_csfstring : public csf::core::base::csf_memblock
 			{
@@ -44,7 +44,7 @@ namespace csf
 
 				}
 				/**
-				 * ¸ù¾İchar*×Ö·û´®´´½¨csf_csfstring
+				 * æ ¹æ®char*å­—ç¬¦ä¸²åˆ›å»ºcsf_csfstring
 				 *
 				 * @param buf    buf
 				 */
@@ -53,9 +53,9 @@ namespace csf
 
 				}
 				/**
-				 * ¸ù¾İ»º´æµØÖ·ºÍ³¤¶È´´½¨Ò»¸öcsf_csfstring
+				 * æ ¹æ®ç¼“å­˜åœ°å€å’Œé•¿åº¦åˆ›å»ºä¸€ä¸ªcsf_csfstring
 				 *
-				 * @param buf    ±íÊ¾¸ù¾İ»º´æµØÖ·ºÍ³¤¶È´´½¨Ò»¸öcsf_csfstring
+				 * @param buf    è¡¨ç¤ºæ ¹æ®ç¼“å­˜åœ°å€å’Œé•¿åº¦åˆ›å»ºä¸€ä¸ªcsf_csfstring
 				 * @param len    len
 				 */
 				inline explicit csf_csfstring(const csf_uchar* buf, const csf_int32 len)
@@ -63,18 +63,18 @@ namespace csf
 
 				}
 				/**
-				 * ½«string×ª»»Îªcsf_csfstring
+				 * å°†stringè½¬æ¢ä¸ºcsf_csfstring
 				 *
-				 * @param str    ±íÊ¾ĞèÒª±»×ª»»µÄstring×Ö·û´®
+				 * @param str    è¡¨ç¤ºéœ€è¦è¢«è½¬æ¢çš„stringå­—ç¬¦ä¸²
 				 */
 				inline explicit csf_csfstring(const csf_string& str)
 					: csf_memblock((csf_uint32)str.length()) {
 					csf_strcpy((csf_char*)get_buffer(), str.c_str());
 				}
 				/**
-				 * ¸ù¾İ³¤¶È´´½¨Ò»¸öcsf_csfstring
+				 * æ ¹æ®é•¿åº¦åˆ›å»ºä¸€ä¸ªcsf_csfstring
 				 *
-				 * @param len    ±íÊ¾ĞèÒª´´½¨µÄcsf_csfstring»º´æµÄ³¤¶È
+				 * @param len    è¡¨ç¤ºéœ€è¦åˆ›å»ºçš„csf_csfstringç¼“å­˜çš„é•¿åº¦
 				 */
 				inline explicit csf_csfstring(const csf_int32 len)
 					: csf_memblock(len) {
@@ -84,40 +84,40 @@ namespace csf
 
 				}
 				/**
-				 * ±íÊ¾½«char*×Ö·û´®Ìí¼Óµ½csf_csfstrinÖĞ¡£
-				 * ·µ»Ø£º>=0±íÊ¾Êµ¼ÊÌí¼ÓµÄ×Ö·ûÊıÁ¿£»<0±íÊ¾´íÎóÂë£»
+				 * è¡¨ç¤ºå°†char*å­—ç¬¦ä¸²æ·»åŠ åˆ°csf_csfstrinä¸­ã€‚
+				 * è¿”å›ï¼š>=0è¡¨ç¤ºå®é™…æ·»åŠ çš„å­—ç¬¦æ•°é‡ï¼›<0è¡¨ç¤ºé”™è¯¯ç ï¼›
 				 *
-				 * @param buf    ±íÊ¾char*×Ö·û´®ÄÚÈİ
+				 * @param buf    è¡¨ç¤ºchar*å­—ç¬¦ä¸²å†…å®¹
 				 */
 				inline csf_int32 cat(const csf_char* buf) {
 
 					return 0;
 				}
 				/**
-				 * ½«»º´æµØÖ·µÄÖ¸¶¨³¤¶ÈÄÚÈİÌí¼Óµ½csf_csfstringÖĞ¡£
-				 * ·µ»Ø£º>=0±íÊ¾Êµ¼ÊÌí¼ÓµÄ×Ö·ûÊıÁ¿£»<0±íÊ¾´íÎóÂë£»
+				 * å°†ç¼“å­˜åœ°å€çš„æŒ‡å®šé•¿åº¦å†…å®¹æ·»åŠ åˆ°csf_csfstringä¸­ã€‚
+				 * è¿”å›ï¼š>=0è¡¨ç¤ºå®é™…æ·»åŠ çš„å­—ç¬¦æ•°é‡ï¼›<0è¡¨ç¤ºé”™è¯¯ç ï¼›
 				 *
-				 * @param buf    ±íÊ¾Ìí¼ÓÄÚÈİµÄ»º´æµØÖ·
-				 * @param len    ±íÊ¾Ìí¼ÓÄÚÈİµÄ»º´æ³¤¶È
+				 * @param buf    è¡¨ç¤ºæ·»åŠ å†…å®¹çš„ç¼“å­˜åœ°å€
+				 * @param len    è¡¨ç¤ºæ·»åŠ å†…å®¹çš„ç¼“å­˜é•¿åº¦
 				 */
 				inline csf_int32 cat(const csf_uchar* buf, const csf_uint32 len) {
 
 					return 0;
 				}
 				/**
-				 * ½«stringÄÚÈİÌí¼Óµ½csf_csfstringÖĞ¡£
-				 * ·µ»Ø£º>=0±íÊ¾Êµ¼ÊÌí¼ÓµÄ×Ö·ûÊıÁ¿£»<0±íÊ¾´íÎóÂë£»
+				 * å°†stringå†…å®¹æ·»åŠ åˆ°csf_csfstringä¸­ã€‚
+				 * è¿”å›ï¼š>=0è¡¨ç¤ºå®é™…æ·»åŠ çš„å­—ç¬¦æ•°é‡ï¼›<0è¡¨ç¤ºé”™è¯¯ç ï¼›
 				 *
-				 * @param str    ±íÊ¾ĞèÒªÌí¼ÓµÄstringÄÚÈİ
+				 * @param str    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„stringå†…å®¹
 				 */
 				inline csf_int32 cat(const csf_string str) {
 
 					return 0;
 				}
 				/**
-				 * ¸³Öµ²Ù×÷£¬´¦Àí·½Ê½ÊÇ½«¶ÔÏóµÄËùÓĞÄÚÈİ£¨±¾Éí½á¹¹ ºÍÄÚ´æÊı¾İ£©¿½±´Ò»·İ£¬
+				 * èµ‹å€¼æ“ä½œï¼Œå¤„ç†æ–¹å¼æ˜¯å°†å¯¹è±¡çš„æ‰€æœ‰å†…å®¹ï¼ˆæœ¬èº«ç»“æ„ å’Œå†…å­˜æ•°æ®ï¼‰æ‹·è´ä¸€ä»½ï¼Œ
 				 *
-				 * @param csfstr    ĞèÒª±»¸³ÖµµÄ¶ÔÏó
+				 * @param csfstr    éœ€è¦è¢«èµ‹å€¼çš„å¯¹è±¡
 				 */
 				inline csf_csfstring& operator =(const csf_csfstring& csfstr) {
 
@@ -128,16 +128,16 @@ namespace csf
 					return *this;
 				}
 				/**
-				 * ±íÊ¾»ñÈ¡Ö¸¶¨³¤¶ÈµÄ»º´æµØÖ·
+				 * è¡¨ç¤ºè·å–æŒ‡å®šé•¿åº¦çš„ç¼“å­˜åœ°å€
 				 *
-				 * @param len    ±íÊ¾Ö¸¶¨³¤¶È
+				 * @param len    è¡¨ç¤ºæŒ‡å®šé•¿åº¦
 				 */
 				inline csf_uchar* position(const csf_uint32 len) {
 
 					return  NULL;
 				}
 				/**
-				 * ½«csf_csfstringÄÚÈİ×ª»»Îªstring
+				 * å°†csf_csfstringå†…å®¹è½¬æ¢ä¸ºstring
 				 */
 				inline csf_string to_string() {
 
@@ -149,13 +149,13 @@ namespace csf
 					return "";
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜ£º
-				*    ¸ñÊ½»¯csfstring×Ö·û´®ÄÚÈİ
-				* ·µ»Ø£º
-				*    <0 £º±íÊ¾Ê§°Ü£»
-				*    >=0£º±íÊ¾´¦ÀíºóµÄ×Ö·û´®³¤¶È
+				* ä¸»è¦åŠŸèƒ½ï¼š
+				*    æ ¼å¼åŒ–csfstringå­—ç¬¦ä¸²å†…å®¹
+				* è¿”å›ï¼š
+				*    <0 ï¼šè¡¨ç¤ºå¤±è´¥ï¼›
+				*    >=0ï¼šè¡¨ç¤ºå¤„ç†åçš„å­—ç¬¦ä¸²é•¿åº¦
 				*
-				* @param fmt    ±íÊ¾¸ñÊ½»¯×Ö·û´®
+				* @param fmt    è¡¨ç¤ºæ ¼å¼åŒ–å­—ç¬¦ä¸²
 				* @param ...
 				*/
 				inline csf_int32 format(const csf_char* fmt, ...) {
@@ -174,18 +174,18 @@ namespace csf
 
 					va_end(tmp_marker);
 
-					//Èç¹û·µ»ØÕıÖµ£¬Ôò±íÊ¾µ±Ç°µÄ×Ö·û´®
+					//å¦‚æœè¿”å›æ­£å€¼ï¼Œåˆ™è¡¨ç¤ºå½“å‰çš„å­—ç¬¦ä¸²
 					return tmp_int;
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜ£º
-				*    ¸ñÊ½»¯csfstring×Ö·û´®ÄÚÈİ
-				* ·µ»Ø£º
-				*    <0 £º±íÊ¾Ê§°Ü£»
-				*    >=0£º±íÊ¾´¦ÀíºóµÄ×Ö·û´®³¤¶È
+				* ä¸»è¦åŠŸèƒ½ï¼š
+				*    æ ¼å¼åŒ–csfstringå­—ç¬¦ä¸²å†…å®¹
+				* è¿”å›ï¼š
+				*    <0 ï¼šè¡¨ç¤ºå¤±è´¥ï¼›
+				*    >=0ï¼šè¡¨ç¤ºå¤„ç†åçš„å­—ç¬¦ä¸²é•¿åº¦
 				*
-				* @param fmt    ±íÊ¾¸ñÊ½»¯×Ö·û´®
-				* @param args   ±íÊ¾²ÎÊıÁĞ±í
+				* @param fmt    è¡¨ç¤ºæ ¼å¼åŒ–å­—ç¬¦ä¸²
+				* @param args   è¡¨ç¤ºå‚æ•°åˆ—è¡¨
 				*/
 				inline csf_int32 format(const csf_char* fmt, va_list args) {
 
@@ -201,25 +201,25 @@ namespace csf
 						, fmt
 						, args);
 					if (tmp_int < 0) {
-						//Èç¹û·µ»Ø¸ºÖµ£¬Ôò±íÊ¾Ê§°Ü
+						//å¦‚æœè¿”å›è´Ÿå€¼ï¼Œåˆ™è¡¨ç¤ºå¤±è´¥
 						return tmp_int;
 					}
 
-					//Èç¹û·µ»ØÕıÖµ£¬Ôò±íÊ¾µ±Ç°µÄ×Ö·û´®
+					//å¦‚æœè¿”å›æ­£å€¼ï¼Œåˆ™è¡¨ç¤ºå½“å‰çš„å­—ç¬¦ä¸²
 					return tmp_int;
 				}
 				
 				/**
-				* ±íÊ¾ÈİÆ÷ÊÇ·ñÎª¿Õ£¬Îª¿Õ·µ»Øtrue,·ñÔò·µ»Øfalse¡£³¤¶ÈÎª0»ònullÎª¿Õ£¬·µ»Øtrue¡£
+				* è¡¨ç¤ºå®¹å™¨æ˜¯å¦ä¸ºç©ºï¼Œä¸ºç©ºè¿”å›true,å¦åˆ™è¿”å›falseã€‚é•¿åº¦ä¸º0æˆ–nullä¸ºç©ºï¼Œè¿”å›trueã€‚
 				*/
 				inline virtual csf_bool empty() {
 
-					//Èç¹ûbufferÎª¿Õ£¬Ôò·µ»ØÕıÈ·
+					//å¦‚æœbufferä¸ºç©ºï¼Œåˆ™è¿”å›æ­£ç¡®
 					if (csf_memblock::empty()) {
 						return csf_true;
 					}
 
-					//Èç¹ûbuffer²»Îª¿Õ£¬¶øÄÚÈİÎª¿Õ£¬Ò²·µ»ØÕıÈ·
+					//å¦‚æœbufferä¸ä¸ºç©ºï¼Œè€Œå†…å®¹ä¸ºç©ºï¼Œä¹Ÿè¿”å›æ­£ç¡®
 					if (get_buffer() && 0 == *get_buffer()) {
 						return csf_true;
 					}

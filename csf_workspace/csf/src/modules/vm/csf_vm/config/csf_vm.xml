@@ -4,9 +4,14 @@
   <!--表示当前虚拟机的名称-->
   <name>csf_vm</name>
     
-  <!--表示客户程序列表-->
+  <!--表示伺服程序列表-->
   <slaves>
-    <slave name="ec_app" command="E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\csf\platform\win32\x64\Debug\ec_app.exe" arguments=" -f E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_configs.xml  -t xml"/>
+    <!--伺服程序信息-->
+    <slave>
+      <name>ec_app</name>
+      <command>E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\csf\platform\win32\x64\Debug\ec_app.exe</command>
+      <arguments> -f E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_configs.xml  -t xml</arguments>
+    </slave>
 
   </slaves>
   

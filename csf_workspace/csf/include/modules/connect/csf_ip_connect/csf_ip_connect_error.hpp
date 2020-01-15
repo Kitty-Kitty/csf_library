@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 02-10ÔÂ-2018 18:50:10
+*Date: 02-10æœˆ-2018 18:50:10
 *
-*Description: Class(csf_ip_connect_error) ±íÊ¾ip_connectµÄ´íÎóĞÅÏ¢
+*Description: Class(csf_ip_connect_error) è¡¨ç¤ºip_connectçš„é”™è¯¯ä¿¡æ¯
 *
 *Others:
 *
@@ -31,10 +31,10 @@ namespace csf
 		namespace connect
 		{
 			/**
-			 * ±íÊ¾ip_connectµÄ´íÎóĞÅÏ¢
+			 * è¡¨ç¤ºip_connectçš„é”™è¯¯ä¿¡æ¯
 			 * @author f
 			 * @version 1.0
-			 * @created 02-10ÔÂ-2018 18:50:10
+			 * @created 02-10æœˆ-2018 18:50:10
 			 */
 			class csf_ip_connect_error : public csf::core::module::connect::csf_connect_error
 			{
@@ -49,26 +49,26 @@ namespace csf
 
 				/**
 				 * 
-				 * @param boost_error    ±íÊ¾boost error_code´íÎó
+				 * @param boost_error    è¡¨ç¤ºboost error_codeé”™è¯¯
 				 */
 				inline explicit csf_ip_connect_error(const boost::system::error_code& boost_error) {
 					set_error_code(boost_error);
 				}
 				/**
-				* ±íÊ¾¸ù¾İ´íÎóÂë£¨code£©ºÍ´íÎóÃèÊö£¨description£©´´½¨Ò»¸öcsf_error¡£
+				* è¡¨ç¤ºæ ¹æ®é”™è¯¯ç ï¼ˆcodeï¼‰å’Œé”™è¯¯æè¿°ï¼ˆdescriptionï¼‰åˆ›å»ºä¸€ä¸ªcsf_errorã€‚
 				*
-				* @param code    ±íÊ¾´íÎóÂë±àÂë
-				* @param description    ±íÊ¾´íÎóÃèÊöĞÅÏ¢
+				* @param code    è¡¨ç¤ºé”™è¯¯ç ç¼–ç 
+				* @param description    è¡¨ç¤ºé”™è¯¯æè¿°ä¿¡æ¯
 				*/
 				inline explicit csf_ip_connect_error(const csf_int32 code, const csf_string& description)
 					: csf_connect_error(code, description) {
 
 				}
 				/**
-				* ±íÊ¾¸ù¾İ´íÎóÂë£¨code£©ºÍ´íÎóÃèÊö£¨description£©´´½¨Ò»¸öcsf_error¡£
+				* è¡¨ç¤ºæ ¹æ®é”™è¯¯ç ï¼ˆcodeï¼‰å’Œé”™è¯¯æè¿°ï¼ˆdescriptionï¼‰åˆ›å»ºä¸€ä¸ªcsf_errorã€‚
 				*
-				* @param code    ±íÊ¾´íÎóÂë±àÂë
-				* @param description    ±íÊ¾´íÎóÃèÊöĞÅÏ¢
+				* @param code    è¡¨ç¤ºé”™è¯¯ç ç¼–ç 
+				* @param description    è¡¨ç¤ºé”™è¯¯æè¿°ä¿¡æ¯
 				*/
 				inline explicit csf_ip_connect_error(const csf_int32 code, const csf_char* description)
 					: csf_connect_error(code, description) {
@@ -76,7 +76,7 @@ namespace csf
 				}
 				/**
 				 * 
-				 * @param boost_error    ±íÊ¾boost error_code´íÎó
+				 * @param boost_error    è¡¨ç¤ºboost error_codeé”™è¯¯
 				 */
 				inline csf_void set_error_code(const boost::system::error_code& boost_error) {
 					if (boost_error) {

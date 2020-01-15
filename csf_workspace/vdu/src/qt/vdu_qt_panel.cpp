@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: f
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 24-9ÔÂ-2018 11:24:36
+*Date: 24-9æœˆ-2018 11:24:36
 *
 *Description: Class(vdu_qt_panel)
 *
@@ -38,13 +38,13 @@ vdu_qt_panel::~vdu_qt_panel() {
 
 
 /**
-* Ä£¿é³õÊ¼»¯
+* æ¨¡å—åˆå§‹åŒ–
 *
-* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 */
 csf::core::base::csf_int32 vdu_qt_panel::init(const csf_configure_manager* conf_mg) {
 
-	//´´½¨ºÍ³õÊ¼»¯svg item
+	//åˆ›å»ºå’Œåˆå§‹åŒ–svg item
 	try
 	{
 		set_item(new QGraphicsSvgItem());
@@ -69,7 +69,7 @@ csf::core::base::csf_int32 vdu_qt_panel::init(const csf_configure_manager* conf_
 		return csf_failure;
 	}
 
-	//´´½¨ºÍ³õÊ¼»¯render
+	//åˆ›å»ºå’Œåˆå§‹åŒ–render
 	try
 	{
 		set_render(new QSvgRenderer());
@@ -100,9 +100,9 @@ csf::core::base::csf_int32 vdu_qt_panel::init(const csf_configure_manager* conf_
 
 
 /**
-* Ä£¿éÆô¶¯
+* æ¨¡å—å¯åŠ¨
 *
-* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 */
 csf::core::base::csf_int32 vdu_qt_panel::start(const csf_configure_manager* conf_mg) {
 
@@ -112,9 +112,9 @@ csf::core::base::csf_int32 vdu_qt_panel::start(const csf_configure_manager* conf
 
 
 /**
-* Ä£¿éÍ£Ö¹
+* æ¨¡å—åœæ­¢
 *
-* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 */
 csf::core::base::csf_int32 vdu_qt_panel::stop(const csf_configure_manager* conf_mg) {
 

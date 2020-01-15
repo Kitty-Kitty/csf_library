@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <iostream>
@@ -28,7 +28,7 @@ class QSvgRenderer;
 QT_END_NAMESPACE
 
 
-//Ä¬ÈÏµÄ»º´æ´óĞ¡
+//é»˜è®¤çš„ç¼“å­˜å¤§å°
 //#define		DEFAULT_BUFFER_LENGTH							50 * 1024 * 1024
 #define		DEFAULT_BUFFER_LENGTH							3840 * 2160 * 4
 #define		TEST_VER										"1.0"
@@ -36,7 +36,7 @@ QT_END_NAMESPACE
 char		svg_file[1024] = { 0, };
 char		*output_file = "out.png";
 
-//Í¨µÀÖĞ´¦Àísvg xml¸ñÊ½Êı¾İ
+//é€šé“ä¸­å¤„ç†svg xmlæ ¼å¼æ•°æ®
 int read_file(char *file_name, char *buf, int buf_length)
 {
 	FILE					*tmp_fd;
@@ -107,7 +107,7 @@ int write_file(char *file_name, const char *buf, int buf_length)
 #include <unistd.h>
 #include <getopt.h>
 
-//²Ù×÷ÌáÊ¾
+//æ“ä½œæç¤º
 void usage()
 {
 	fprintf(stderr, "Usage:	  test_hi3536_vdu [OPTION]\n\n"
@@ -120,7 +120,7 @@ void usage()
 	exit(0);
 }
 
-//ÉèÖÃÊäÈëÅäÖÃÏî´¦Àí
+//è®¾ç½®è¾“å…¥é…ç½®é¡¹å¤„ç†
 int setopt(int argc, char *argv[])
 {
 	int		tmp_ret = 0;
@@ -252,8 +252,8 @@ int main(int argc, char *argv[])
 
 
 #ifdef WIN32
-	// ÉèÖÃ OpenGL °æ±¾ĞÅÏ¢
-	// ×¢Òâ: format ±ØĞëÔÚ show() µ÷ÓÃÇ°ÉèÖÃ
+	// è®¾ç½® OpenGL ç‰ˆæœ¬ä¿¡æ¯
+	// æ³¨æ„: format å¿…é¡»åœ¨ show() è°ƒç”¨å‰è®¾ç½®
 	tmp_format.setRenderableType(QSurfaceFormat::OpenGL);
 	tmp_format.setProfile(QSurfaceFormat::CoreProfile);
 	//tmp_format.setProfile(QGLFormat::CoreProfile);
@@ -261,8 +261,8 @@ int main(int argc, char *argv[])
 	tmp_format.setSwapBehavior(QSurfaceFormat::DoubleBuffer);
 	tmp_format.setVersion(1, 1);
 #else
-	// ÉèÖÃ OpenGL °æ±¾ĞÅÏ¢
-	// ×¢Òâ: format ±ØĞëÔÚ show() µ÷ÓÃÇ°ÉèÖÃ
+	// è®¾ç½® OpenGL ç‰ˆæœ¬ä¿¡æ¯
+	// æ³¨æ„: format å¿…é¡»åœ¨ show() è°ƒç”¨å‰è®¾ç½®
 	tmp_format.setRenderableType(QSurfaceFormat::OpenGLES);
 	tmp_format.setProfile(QSurfaceFormat::CoreProfile);
 	tmp_format.setDepthBufferSize(32);
@@ -304,7 +304,7 @@ int main(int argc, char *argv[])
 
 	printf("load() begin! %s\r\n", print_time());
 
-	//¼ÓÔØsvgÎÄ¼şÁ÷Êı¾İ
+	//åŠ è½½svgæ–‡ä»¶æµæ•°æ®
 	if (!tmp_svg_renderer.load(QByteArray((const char*)tmp_buf, strlen(tmp_buf)))) {
 		printf("load svg stream error.\r\n");
 		return -3;

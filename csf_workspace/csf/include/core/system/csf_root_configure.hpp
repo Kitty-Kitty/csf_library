@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 14-7ÔÂ-2018 11:29:48
+*Date: 14-7æœˆ-2018 11:29:48
 *
-*Description: Class(csf_root_configure) ±íÊ¾ÏµÍ³µÄ¸ùÅäÖÃÎÄ¼ş´¦ÀíÄ£¿é£¬Ö÷Òª´¦Àí³ÌĞòµÄ¸ùÅäÖÃÎÄ¼şÄÚÈİ¡£
+*Description: Class(csf_root_configure) è¡¨ç¤ºç³»ç»Ÿçš„æ ¹é…ç½®æ–‡ä»¶å¤„ç†æ¨¡å—ï¼Œä¸»è¦å¤„ç†ç¨‹åºçš„æ ¹é…ç½®æ–‡ä»¶å†…å®¹ã€‚
 *
 *Others:
 *
@@ -30,33 +30,33 @@ namespace csf
 		namespace system
 		{
 			/**
-			 * ±íÊ¾ÏµÍ³µÄ¸ùÅäÖÃÎÄ¼ş´¦ÀíÄ£¿é£¬Ö÷Òª´¦Àí³ÌĞòµÄ¸ùÅäÖÃÎÄ¼şÄÚÈİ¡£
+			 * è¡¨ç¤ºç³»ç»Ÿçš„æ ¹é…ç½®æ–‡ä»¶å¤„ç†æ¨¡å—ï¼Œä¸»è¦å¤„ç†ç¨‹åºçš„æ ¹é…ç½®æ–‡ä»¶å†…å®¹ã€‚
 			 * @author fangzhenmu@aliyun.com
 			 * @version 1.0
-			 * @created 14-7ÔÂ-2018 11:29:48
+			 * @created 14-7æœˆ-2018 11:29:48
 			 */
 			class csf_root_configure
 			{
 
 			public:
 				/**
-				 * ±íÊ¾¸ùÅäÖÃÎÄ¼şÊôĞÔÃû³Æ¶¨Òå
+				 * è¡¨ç¤ºæ ¹é…ç½®æ–‡ä»¶å±æ€§åç§°å®šä¹‰
 				 * @author f
 				 * @version 1.0
-				 * @created 14-7ÔÂ-2018 11:29:48
+				 * @created 14-7æœˆ-2018 11:29:48
 				 */
 				enum csf_root_configure_attribute_string
 				{
 					/**
-					 * ±íÊ¾ÊôĞÔÖĞµÄname×Ö·û´®
+					 * è¡¨ç¤ºå±æ€§ä¸­çš„nameå­—ç¬¦ä¸²
 					 */
 					csf_root_configure_attribute_string_name = 0x00,
 					/**
-					 * ±íÊ¾ÊôĞÔÖĞµÄfile×Ö·û´®
+					 * è¡¨ç¤ºå±æ€§ä¸­çš„fileå­—ç¬¦ä¸²
 					 */
 					csf_root_configure_attribute_string_file,
 					/**
-					 * ±íÊ¾ÊôĞÔÖĞµÄformat×Ö·û´®
+					 * è¡¨ç¤ºå±æ€§ä¸­çš„formatå­—ç¬¦ä¸²
 					 */
 					csf_root_configure_attribute_string_format
 				};
@@ -71,61 +71,61 @@ namespace csf
 				}
 
 				/**
-				 * ¸ù¾İ¸ùÅäÖÃÎÄ¼şĞÅÏ¢´´½¨Ò»¸öapp
+				 * æ ¹æ®æ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯åˆ›å»ºä¸€ä¸ªapp
 				 * 
-				 * @param root_configure_file    ±íÊ¾µ±Ç°app¸ùÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param root_configure_file    è¡¨ç¤ºå½“å‰appæ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				inline explicit csf_root_configure(csf_configure_file& root_configure_file) {
 
 				}
 				/**
-				 * ¸ù¾İ¸ùÅäÖÃÎÄ¼şĞÅÏ¢´´½¨Ò»¸öapp
+				 * æ ¹æ®æ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯åˆ›å»ºä¸€ä¸ªapp
 				 * 
-				 * @param path    ±íÊ¾µ±Ç°app¸ùÅäÖÃÎÄ¼şµÄÎÄ¼şÂ·¾¶
-				 * @param format    ±íÊ¾¸ùÅäÖÃÎÄ¼şµÄÎÄ¼ş¸ñÊ½
+				 * @param path    è¡¨ç¤ºå½“å‰appæ ¹é…ç½®æ–‡ä»¶çš„æ–‡ä»¶è·¯å¾„
+				 * @param format    è¡¨ç¤ºæ ¹é…ç½®æ–‡ä»¶çš„æ–‡ä»¶æ ¼å¼
 				 */
 				inline explicit csf_root_configure(csf_string& path, csf_string& format) {
 
 				}
 				/**
-				 * ¸ù¾İ¸ùÅäÖÃÎÄ¼şĞÅÏ¢´´½¨Ò»¸öapp
+				 * æ ¹æ®æ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯åˆ›å»ºä¸€ä¸ªapp
 				 * 
-				 * @param format    ±íÊ¾¸ùÅäÖÃÎÄ¼şµÄÎÄ¼ş¸ñÊ½
-				 * @param path    ±íÊ¾µ±Ç°app¸ùÅäÖÃÎÄ¼şµÄÎÄ¼şÂ·¾¶
+				 * @param format    è¡¨ç¤ºæ ¹é…ç½®æ–‡ä»¶çš„æ–‡ä»¶æ ¼å¼
+				 * @param path    è¡¨ç¤ºå½“å‰appæ ¹é…ç½®æ–‡ä»¶çš„æ–‡ä»¶è·¯å¾„
 				 */
 				inline explicit csf_root_configure(const csf_char* format, const csf_char* path) {
 
 				}
 				/**
-				 * ±íÊ¾appµÄ¸ùÅäÖÃÎÄ¼şĞÅÏ¢£¬Ö÷Òª±£´æappµÄ¸÷ÖÖÅäÖÃÎÄ¼şĞÅÏ¢¡£
+				 * è¡¨ç¤ºappçš„æ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯ï¼Œä¸»è¦ä¿å­˜appçš„å„ç§é…ç½®æ–‡ä»¶ä¿¡æ¯ã€‚
 				 */
 				inline csf_configure_file& get_root_configure_file() {
 
 					return m_root_configure_file;
 				}
 				/**
-				* ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚ³õÊ¼»¯appµÄÅäÖÃÎÄ¼ş£¬»ñÈ¡ÅäÖÃÎÄ¼şÖĞ±£´æµÄÊôĞÔĞÅÏ¢¡£
-				* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+				* è¯¥å‡½æ•°ä¸»è¦ç”¨äºåˆå§‹åŒ–appçš„é…ç½®æ–‡ä»¶ï¼Œè·å–é…ç½®æ–‡ä»¶ä¸­ä¿å­˜çš„å±æ€§ä¿¡æ¯ã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 				*
-				* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
-				* @param root_configure_file    ±íÊ¾µ±Ç°app¸ùÅäÖÃÎÄ¼şĞÅÏ¢
+				* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
+				* @param root_configure_file    è¡¨ç¤ºå½“å‰appæ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯
 				*/
 				csf_bool init_configure_manager(csf::core::system::csf_configure_manager& configure_manager, csf_configure_file& root_configure_file);
 				/**
-				 * ¹¦ÄÜ£º
-				 *    ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚ½âÎöÒ»¸öÅäÖÃÎÄ¼ş£¬»ñÈ¡ÅäÖÃÎÄ¼şÖĞ±£´æµÄÊôĞÔĞÅÏ¢¡£
-				 * ·µ»Ø£º
-				 *    true  £º±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»
-				 *    false £º±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+				 * åŠŸèƒ½ï¼š
+				 *    è¯¥å‡½æ•°ä¸»è¦ç”¨äºè§£æä¸€ä¸ªé…ç½®æ–‡ä»¶ï¼Œè·å–é…ç½®æ–‡ä»¶ä¸­ä¿å­˜çš„å±æ€§ä¿¡æ¯ã€‚
+				 * è¿”å›ï¼š
+				 *    true  ï¼šè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›
+				 *    false ï¼šè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 				 *
-				 * @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
-				 * @param configure_file    ±íÊ¾µ±Ç°app¸ùÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
+				 * @param configure_file    è¡¨ç¤ºå½“å‰appæ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				csf_bool parse_configure_file(csf::core::system::csf_configure_manager& configure_manager, csf_configure_file& configure_file);
 
 			protected:
 				/**
-				 * ±íÊ¾appµÄ¸ùÅäÖÃÎÄ¼şĞÅÏ¢£¬Ö÷Òª±£´æappµÄ¸÷ÖÖÅäÖÃÎÄ¼şĞÅÏ¢¡£
+				 * è¡¨ç¤ºappçš„æ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯ï¼Œä¸»è¦ä¿å­˜appçš„å„ç§é…ç½®æ–‡ä»¶ä¿¡æ¯ã€‚
 				 * 
 				 * @param new_value
 				 */
@@ -134,7 +134,7 @@ namespace csf
 					m_root_configure_file = new_value;
 				}
 				/**
-				 * ±íÊ¾Ö÷ÅäÖÃÎÄ¼şÎÄ¼şÁĞ±í½ÚµãµÄÂ·¾¶ĞÅÏ¢¡£
+				 * è¡¨ç¤ºä¸»é…ç½®æ–‡ä»¶æ–‡ä»¶åˆ—è¡¨èŠ‚ç‚¹çš„è·¯å¾„ä¿¡æ¯ã€‚
 				 */
 				inline const csf_list<csf_string>& get_configure_files_items() {
 
@@ -143,15 +143,15 @@ namespace csf
 
 			private:
 				/**
-				 * ±íÊ¾appµÄ¸ùÅäÖÃÎÄ¼şĞÅÏ¢£¬Ö÷Òª±£´æappµÄ¸÷ÖÖÅäÖÃÎÄ¼şĞÅÏ¢¡£
+				 * è¡¨ç¤ºappçš„æ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯ï¼Œä¸»è¦ä¿å­˜appçš„å„ç§é…ç½®æ–‡ä»¶ä¿¡æ¯ã€‚
 				 */
 				csf_configure_file m_root_configure_file;
 				/**
-				 * ±íÊ¾Ö÷ÅäÖÃÎÄ¼şÎÄ¼şÁĞ±í½ÚµãµÄÂ·¾¶ĞÅÏ¢¡£
+				 * è¡¨ç¤ºä¸»é…ç½®æ–‡ä»¶æ–‡ä»¶åˆ—è¡¨èŠ‚ç‚¹çš„è·¯å¾„ä¿¡æ¯ã€‚
 				 */
 				static const csf_list<csf_string> m_configure_files_items;
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµÄÊôĞÔ×Ö·û´®¶¨Òå.
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„å±æ€§å­—ç¬¦ä¸²å®šä¹‰.
 				 */
 				static const csf_string m_configure_file_attribute[];
 			};

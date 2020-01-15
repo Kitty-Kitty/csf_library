@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: f
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 04-11ÔÂ-2018 10:44:37
+*Date: 04-11æœˆ-2018 10:44:37
 *
 *Description: Class(csf_connect_timeout_manager)
 *
@@ -37,10 +37,10 @@ csf_connect_timeout_manager::~csf_connect_timeout_manager() {
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º´ÓÁ¬½ÓÈİÆ÷ÖĞÒÆ³ıÒ»¸öµÄÁ¬½Ó¶ÔÏó£¬¸ÃÉ¾³ı²Ù×÷Ö»ÊÇ½«Á¬½ÓÉèÖÃÎªÁ¢¼´³¬Ê±£¬¶ø²»ÊÇÖ±½ÓµÄÉ¾³ı²Ù×÷¡£ÕæÕıµÄÉ¾³ıĞèÒªµÈ´ı³¬Ê±´¦ÀíÍê³É¡£
-* ·µ»Ø£º0±íÊ¾³É¹¦»ñÈ¡Á¬½Ó¶ÔÏó£»·Ç0±íÊ¾´íÎó£»
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šä»è¿æ¥å®¹å™¨ä¸­ç§»é™¤ä¸€ä¸ªçš„è¿æ¥å¯¹è±¡ï¼Œè¯¥åˆ é™¤æ“ä½œåªæ˜¯å°†è¿æ¥è®¾ç½®ä¸ºç«‹å³è¶…æ—¶ï¼Œè€Œä¸æ˜¯ç›´æ¥çš„åˆ é™¤æ“ä½œã€‚çœŸæ­£çš„åˆ é™¤éœ€è¦ç­‰å¾…è¶…æ—¶å¤„ç†å®Œæˆã€‚
+* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸè·å–è¿æ¥å¯¹è±¡ï¼›é0è¡¨ç¤ºé”™è¯¯ï¼›
 *
-* @param timeout    ±íÊ¾É¾³ıµÄ³¬Ê±¶ÔÏó
+* @param timeout    è¡¨ç¤ºåˆ é™¤çš„è¶…æ—¶å¯¹è±¡
 */
 csf_int32 csf_connect_timeout_manager::remove(csf_connect_timeout& timeout) {
 
@@ -52,7 +52,7 @@ csf_int32 csf_connect_timeout_manager::remove(csf_connect_timeout& timeout) {
 	{
 		csf_unqiue_lock<decltype(m_collector_mutex)> tmp_lock(m_collector_mutex);
 
-		//²éÑ¯ÈİÆ÷ÖĞÊÇ·ñ´æÔÚĞèÒªµÄkey¶ÔÏó£¬Èç¹û´æÔÚÔò½Ó×Å²éÑ¯ÏàËÆ¶ÔÏó£¬±éÀú´¦Àí
+		//æŸ¥è¯¢å®¹å™¨ä¸­æ˜¯å¦å­˜åœ¨éœ€è¦çš„keyå¯¹è±¡ï¼Œå¦‚æœå­˜åœ¨åˆ™æ¥ç€æŸ¥è¯¢ç›¸ä¼¼å¯¹è±¡ï¼Œéå†å¤„ç†
 		tmp_iter = get_connect_collector().find(&timeout);
 		if (tmp_iter == get_connect_collector().end()) {
 			return csf_failure;
@@ -67,26 +67,26 @@ csf_int32 csf_connect_timeout_manager::remove(csf_connect_timeout& timeout) {
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º³¬Ê±Ïß³Ì´¦Àíº¯Êı½Ó¿Ú
-* ·µ»Ø£ºÎŞ
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šè¶…æ—¶çº¿ç¨‹å¤„ç†å‡½æ•°æ¥å£
+* è¿”å›ï¼šæ— 
 */
 csf_void csf_connect_timeout_manager::expired_process_cycle() {
 
 	csf_connect_wrapper_ptr										tmp_wrapper;
-	csf_int32													tmp_cycle_times = 0;				//±íÊ¾±¾´Î´¦ÀíĞèÒª±éÀúµÄ¸öÊı
+	csf_int32													tmp_cycle_times = 0;				//è¡¨ç¤ºæœ¬æ¬¡å¤„ç†éœ€è¦éå†çš„ä¸ªæ•°
 
 
-	//¸Ã´¦ÀíÊÇÒ»¸ö¶àÏß³Ì·½Ê½½øĞĞµÄ£¬ËùÒÔÃ¿¸öÏß³Ìµ±Ç°´¦ÀíÈÎÎñÊıÁ¿¼ÆËã¹«Ê½Îª£º
-	//µ±Ç°´¦ÀíÊıÁ¿=(µ±Ç°µÄ×ÜÁ¬½ÓÊı + Ïß³ÌÊıÁ¿) / Ïß³ÌÊıÁ¿£»
-	//ÆäÖĞÖ÷ÒªÄ¿µÄÊÇ£º
-	//1¡¢±£Ö¤ËùÓĞÏß³Ì¶¼ÖÁÉÙÖ´ĞĞÒ»´Î£»
-	//2¡¢µ±Ç°µÄ×ÜÁ¬½ÓÊı / Ïß³ÌÊıÁ¿  ²»Õû³ıµ¼ÖÂ×îºóµÄÁ¬½ÓÊı¾İ¾ÃÔ¶²»±»´¦Àí
+	//è¯¥å¤„ç†æ˜¯ä¸€ä¸ªå¤šçº¿ç¨‹æ–¹å¼è¿›è¡Œçš„ï¼Œæ‰€ä»¥æ¯ä¸ªçº¿ç¨‹å½“å‰å¤„ç†ä»»åŠ¡æ•°é‡è®¡ç®—å…¬å¼ä¸ºï¼š
+	//å½“å‰å¤„ç†æ•°é‡=(å½“å‰çš„æ€»è¿æ¥æ•° + çº¿ç¨‹æ•°é‡) / çº¿ç¨‹æ•°é‡ï¼›
+	//å…¶ä¸­ä¸»è¦ç›®çš„æ˜¯ï¼š
+	//1ã€ä¿è¯æ‰€æœ‰çº¿ç¨‹éƒ½è‡³å°‘æ‰§è¡Œä¸€æ¬¡ï¼›
+	//2ã€å½“å‰çš„æ€»è¿æ¥æ•° / çº¿ç¨‹æ•°é‡  ä¸æ•´é™¤å¯¼è‡´æœ€åçš„è¿æ¥æ•°æ®ä¹…è¿œä¸è¢«å¤„ç†
 	tmp_cycle_times = (get_connect_queue().size() + get_thread_pool().get_thread_number()) / get_thread_pool().get_thread_number();
 	for (csf_int32 i = 0; i < tmp_cycle_times; i++) {
 
 		if (!get_connect_queue().pop_front(tmp_wrapper)) {
-			//Èç¹ûÈ¡×îÇ°µÄÒ»¸öÊ§°Ü£¬ÔòÄ¬ÈÏ¶ÓÁĞÖĞÃ»ÓĞ¿É´¦ÀíÁ¬½ÓÊı¾İ
-			//Ò»ÖÖ¿ÉÄÜÊÇ±»ÆäËûÏß³Ì´¦ÀíÁË
+			//å¦‚æœå–æœ€å‰çš„ä¸€ä¸ªå¤±è´¥ï¼Œåˆ™é»˜è®¤é˜Ÿåˆ—ä¸­æ²¡æœ‰å¯å¤„ç†è¿æ¥æ•°æ®
+			//ä¸€ç§å¯èƒ½æ˜¯è¢«å…¶ä»–çº¿ç¨‹å¤„ç†äº†
 			csf_msleep((csf_uint32)get_idle_interval());
 
 			return;
@@ -95,17 +95,17 @@ csf_void csf_connect_timeout_manager::expired_process_cycle() {
 		process_connect_wrapper(tmp_wrapper);
 	}
 
-	//Èç¹û¿ÕÏĞ£¬Ôò½øĞĞĞİÃß´¦Àí
+	//å¦‚æœç©ºé—²ï¼Œåˆ™è¿›è¡Œä¼‘çœ å¤„ç†
 	csf_msleep((csf_uint32)get_idle_interval());
 }
 
 
 /**
-* Ö÷Òª¹¦ÄÜÊÇ£º
-*    Õë¶ÔÖ¸¶¨µÄconnect_wrapper½øĞĞÊÇ·ñ³¬Ê±µÄ´¦Àí
-* ·µ»Ø£ºÎŞ
+* ä¸»è¦åŠŸèƒ½æ˜¯ï¼š
+*    é’ˆå¯¹æŒ‡å®šçš„connect_wrapperè¿›è¡Œæ˜¯å¦è¶…æ—¶çš„å¤„ç†
+* è¿”å›ï¼šæ— 
 *
-* @param wrapper    ±íÊ¾µ±Ç°ĞèÒª±»´¦ÀíÁ¬½Ó¶ÔÏó
+* @param wrapper    è¡¨ç¤ºå½“å‰éœ€è¦è¢«å¤„ç†è¿æ¥å¯¹è±¡
 */
 csf_void csf_connect_timeout_manager::process_connect_wrapper(csf_connect_wrapper_ptr& wrapper) {
 
@@ -118,10 +118,10 @@ csf_void csf_connect_timeout_manager::process_connect_wrapper(csf_connect_wrappe
 		return;
 	}
 
-	//¸üĞÂÒ»ÏÂµ±Ç°Ê±¼ä£¬ÓÃÓÚÅĞ¶ÏÊÇ·ñ³¬Ê±
+	//æ›´æ–°ä¸€ä¸‹å½“å‰æ—¶é—´ï¼Œç”¨äºåˆ¤æ–­æ˜¯å¦è¶…æ—¶
 	tmp_time = csf::core::utils::time::system_time::get_time();
 
-	//Èç¹ûÊ±¼äÎª0±íÊ¾Î´ÅäÖÃ£¬ÔòÅäÖÃÒ»¸öÊ±¼ä¡£¸üĞÂ½ÚµãĞÅÏ¢£¬µÈ´ı²»´Î³¬Ê±´¦Àí¡£
+	//å¦‚æœæ—¶é—´ä¸º0è¡¨ç¤ºæœªé…ç½®ï¼Œåˆ™é…ç½®ä¸€ä¸ªæ—¶é—´ã€‚æ›´æ–°èŠ‚ç‚¹ä¿¡æ¯ï¼Œç­‰å¾…ä¸æ¬¡è¶…æ—¶å¤„ç†ã€‚
 	if (0 == wrapper->get_timeout().get_time()) {
 
 		wrapper->get_timeout().set_time(tmp_time);
@@ -130,14 +130,14 @@ csf_void csf_connect_timeout_manager::process_connect_wrapper(csf_connect_wrappe
 		return;
 	}
 
-	//ÅĞ¶Ï¹ıÆÚÔò¶ÔÏàÓ¦µÄÁ¬½Ó¶ÔÏó½øĞĞ´¦Àí
+	//åˆ¤æ–­è¿‡æœŸåˆ™å¯¹ç›¸åº”çš„è¿æ¥å¯¹è±¡è¿›è¡Œå¤„ç†
 	if (!wrapper->get_timeout().is_expired(tmp_time)) {
 		get_connect_queue().push_back(wrapper);
 		return;
 	}
 	else {
 
-		//ÕâÀïÈ¡³ö¹ıÆÚ¶ÔÏó½øĞĞ´¦Àí
+		//è¿™é‡Œå–å‡ºè¿‡æœŸå¯¹è±¡è¿›è¡Œå¤„ç†
 		if (csf_succeed == remove(wrapper->get_timeout())) {
 			tmp_is_timeout = csf_true;
 		}
@@ -153,9 +153,9 @@ csf_void csf_connect_timeout_manager::process_connect_wrapper(csf_connect_wrappe
 			return;
 		}
 
-		//¶ÔÏàÓ¦µÄ¹ıÆÚ¶ÔÏó½øĞĞ´¦Àí¡£
-		//Èç¹û³¬Ê±¶ÔÏóÖĞµÄ»Øµ÷º¯Êı²»Îª¿Õ£¬Ôòµ÷ÓÃ»Øµ÷º¯Êı½øĞĞ´¦Àí¡£
-		//Èç¹ûÃ»ÓĞ»Øµ÷º¯Êı£¬ÔòÖ±½Ó¹Ø±ÕÁ¬½Ó´¦Àí
+		//å¯¹ç›¸åº”çš„è¿‡æœŸå¯¹è±¡è¿›è¡Œå¤„ç†ã€‚
+		//å¦‚æœè¶…æ—¶å¯¹è±¡ä¸­çš„å›è°ƒå‡½æ•°ä¸ä¸ºç©ºï¼Œåˆ™è°ƒç”¨å›è°ƒå‡½æ•°è¿›è¡Œå¤„ç†ã€‚
+		//å¦‚æœæ²¡æœ‰å›è°ƒå‡½æ•°ï¼Œåˆ™ç›´æ¥å…³é—­è¿æ¥å¤„ç†
 		tmp_callback = wrapper->get_timeout().get_handle();
 		if (csf_nullptr == tmp_callback) {
 			wrapper->get_connect_ptr()->close();

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:46
+*Date: 19-7æœˆ-2018 20:11:46
 *
-*Description: Class(csf_mutex) ±íÊ¾»¥³âÁ¿
+*Description: Class(csf_mutex) è¡¨ç¤ºäº’æ–¥é‡
 *
 *Others:
 *
@@ -36,10 +36,10 @@ namespace csf
 			namespace thread
 			{
 				/**
-				 * ±íÊ¾»¥³âÁ¿
+				 * è¡¨ç¤ºäº’æ–¥é‡
 				 * @author Administrator
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:46
+				 * @created 19-7æœˆ-2018 20:11:46
 				 */
 				class csf_mutex
 				{

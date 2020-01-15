@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:41
+*Date: 19-7æœˆ-2018 20:11:41
 *
-*Description: Class(csf_lock) ÃèÊö»¥³âËøĞÅÏ¢
+*Description: Class(csf_lock) æè¿°äº’æ–¥é”ä¿¡æ¯
 *
 *Others:
 *
@@ -37,10 +37,10 @@ namespace csf
 				typedef	csf_shared_lock<csf_shared_mutex>				csf_read_lock;
 				typedef	csf_unqiue_lock<csf_shared_mutex>				csf_write_lock;
 				/**	
-				 * ÃèÊö»¥³âËøĞÅÏ¢
+				 * æè¿°äº’æ–¥é”ä¿¡æ¯
 				 * @author f
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:41
+				 * @created 19-7æœˆ-2018 20:11:41
 				 */
 				class csf_lock
 				{

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 14:06:44
+*Date: 01-7æœˆ-2018 14:06:44
 *
 *Description: Class(csf_configure_parser)
 *
@@ -36,35 +36,35 @@ namespace csf
 		namespace system
 		{
 			/**
-			 * ±íÊ¾ÀàĞÍ×ª»»ÀàÄÚÈİ£¬Ö÷Òª¸ºÔğ¼¸¸öÖØÒªÊı¾İÀàĞÍµÄ½âÎöºÍ×ª»»
+			 * è¡¨ç¤ºç±»å‹è½¬æ¢ç±»å†…å®¹ï¼Œä¸»è¦è´Ÿè´£å‡ ä¸ªé‡è¦æ•°æ®ç±»å‹çš„è§£æå’Œè½¬æ¢
 			 * @author Administrator
 			 * @version 1.0
-			 * @created 01-7ÔÂ-2018 14:06:44
+			 * @created 01-7æœˆ-2018 14:06:44
 			 */
 			class csf_configure_parser
 			{
 
 			public:
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍÁĞ±í
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹åˆ—è¡¨
 				 * @author f
 				 * @version 1.0
-				 * @created 01-7ÔÂ-2018 14:06:44
+				 * @created 01-7æœˆ-2018 14:06:44
 				 */
 				typedef enum csf_configure_format_type_enum
 				{
 					/**
-					 * ±íÊ¾Î´¶¨ÒåµÄÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍ
+					 * è¡¨ç¤ºæœªå®šä¹‰çš„é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹
 					 */
 					csf_configure_format_type_none = 0x00000000,
 					/**
-					 * ±íÊ¾xml¸ñÊ½µÄÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍ
+					 * è¡¨ç¤ºxmlæ ¼å¼çš„é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹
 					 */
 					csf_configure_format_type_xml = 0x00000001
 				} csf_configure_format_type;
 
 				/**
-				* ±íÊ¾¶¨ÒåµÄÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍºÍÀàĞÍ±àºÅµÄ¶ÔÓ¦¹ØÏµ
+				* è¡¨ç¤ºå®šä¹‰çš„é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹å’Œç±»å‹ç¼–å·çš„å¯¹åº”å…³ç³»
 				*/
 				#define CSF_CONFIGURE_FORMAT_TYPE_NAME(CSF_CONFIGURE_FORMAT_TYPE_NAME_MAP)		\
 					CSF_CONFIGURE_FORMAT_TYPE_NAME_MAP(none, "")								\
@@ -74,65 +74,65 @@ namespace csf
 				virtual ~csf_configure_parser();
 
 				/**
-				 * ±íÊ¾½«configure_fileÖĞµÄÎÄ¼şÄÚÈİ×ª»»Îªcsf_elementÄÚÈİ¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎóÂë¡£
+				 * è¡¨ç¤ºå°†configure_fileä¸­çš„æ–‡ä»¶å†…å®¹è½¬æ¢ä¸ºcsf_elementå†…å®¹ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ç ã€‚
 				 * 
-				 * @param element    ±íÊ¾´æ´¢×îÖÕ½á¹ûµÄcsf_element¶ÔÏó
-				 * @param configure_file    ±íÊ¾Ô´ÎÄ¼şÃèÊöĞÅÏ¢
+				 * @param element    è¡¨ç¤ºå­˜å‚¨æœ€ç»ˆç»“æœçš„csf_elementå¯¹è±¡
+				 * @param configure_file    è¡¨ç¤ºæºæ–‡ä»¶æè¿°ä¿¡æ¯
 				 */
 				csf_int32 parse(csf_element& element, const csf_configure_file& configure_file);
 				/**
-				 * ½«ÅäÖÃÎÄ¼şĞÅÏ¢±£´æµ½ÎÄ¼şÖĞ
+				 * å°†é…ç½®æ–‡ä»¶ä¿¡æ¯ä¿å­˜åˆ°æ–‡ä»¶ä¸­
 				 * 
-				 * @param configure_file    ±íÊ¾ĞèÒª±£´æµÄÎÄ¼şĞÅÏ¢
-				 * @param element    ±íÊ¾ĞèÒª±£´æµÄÅäÖÃĞÅÏ¢
+				 * @param configure_file    è¡¨ç¤ºéœ€è¦ä¿å­˜çš„æ–‡ä»¶ä¿¡æ¯
+				 * @param element    è¡¨ç¤ºéœ€è¦ä¿å­˜çš„é…ç½®ä¿¡æ¯
 				 */
 				csf_int32 save(const csf_configure_file& configure_file, const csf_element& element);
 				/**
-				 * ±íÊ¾»ñÈ¡ÅäÖÃÎÄ¼şµÄÎÄ¼ş¸ñÊ½
+				 * è¡¨ç¤ºè·å–é…ç½®æ–‡ä»¶çš„æ–‡ä»¶æ ¼å¼
 				 * 
-				 * @param format    ±íÊ¾ĞèÒª»ñÈ¡µÄÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍÊı¾İ
+				 * @param format    è¡¨ç¤ºéœ€è¦è·å–çš„é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹æ•°æ®
 				 */
 				inline csf_configure_parser::csf_configure_format_type format(const csf_string& fmt) {
 
 					return  format(fmt.c_str());
 				}
 				/**
-				 * ±íÊ¾»ñÈ¡ÅäÖÃÎÄ¼şµÄÎÄ¼ş¸ñÊ½
+				 * è¡¨ç¤ºè·å–é…ç½®æ–‡ä»¶çš„æ–‡ä»¶æ ¼å¼
 				 * 
-				 * @param format    ±íÊ¾ĞèÒª»ñÈ¡µÄÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍÊı¾İ
+				 * @param format    è¡¨ç¤ºéœ€è¦è·å–çš„é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹æ•°æ®
 				 */
 				csf_configure_parser::csf_configure_format_type format(const csf_char* fmt);
 				/**
-				* ¸ù¾İÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍ×ª»»¸ñÊ½ÀàĞÍ×Ö·û´®
+				* æ ¹æ®é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹è½¬æ¢æ ¼å¼ç±»å‹å­—ç¬¦ä¸²
 				*
-				* @param fmt    ±íÊ¾ĞèÒª»ñÈ¡µÄÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍ
+				* @param fmt    è¡¨ç¤ºéœ€è¦è·å–çš„é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹
 				*/
 				csf_string format(const csf_configure_parser::csf_configure_format_type fmt);
 
 			protected:
 				/**
-				* ±íÊ¾½«configure_fileÖĞµÄXMLÎÄ¼şÄÚÈİ×ª»»Îªcsf_elementÄÚÈİ¡£
-				* ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎóÂë¡£
+				* è¡¨ç¤ºå°†configure_fileä¸­çš„XMLæ–‡ä»¶å†…å®¹è½¬æ¢ä¸ºcsf_elementå†…å®¹ã€‚
+				* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ç ã€‚
 				*
-				* @param element    ±íÊ¾´æ´¢×îÖÕ½á¹ûµÄcsf_element¶ÔÏó
-				* @param configure_file    ±íÊ¾Ô´ÎÄ¼şÃèÊöĞÅÏ¢
+				* @param element    è¡¨ç¤ºå­˜å‚¨æœ€ç»ˆç»“æœçš„csf_elementå¯¹è±¡
+				* @param configure_file    è¡¨ç¤ºæºæ–‡ä»¶æè¿°ä¿¡æ¯
 				*/
 				csf_int32 parse_xml(csf_element& element, const csf_configure_file& configure_file);
 				/**
-				* ±íÊ¾½«configure_fileÖĞµÄÎÄ¼şÄÚÈİ×ª»»Îªcsf_elementÄÚÈİ¡£
-				* ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎóÂë¡£
+				* è¡¨ç¤ºå°†configure_fileä¸­çš„æ–‡ä»¶å†…å®¹è½¬æ¢ä¸ºcsf_elementå†…å®¹ã€‚
+				* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ç ã€‚
 				*
-				* @param element    ±íÊ¾´æ´¢×îÖÕ½á¹ûµÄcsf_element¶ÔÏó
-				* @param markup    ±íÊ¾CMarkup½âÎöµÄXMLÎÄ¼ş¶ÔÏó
+				* @param element    è¡¨ç¤ºå­˜å‚¨æœ€ç»ˆç»“æœçš„csf_elementå¯¹è±¡
+				* @param markup    è¡¨ç¤ºCMarkupè§£æçš„XMLæ–‡ä»¶å¯¹è±¡
 				*/
 				csf_int32 parse(csf_element& element, CMarkup& markup);
 			private:
 				/**
-				 * ¹¦ÄÜ£º
-				 *    É¾³ı×Ö·û´®Ç°ºóµÄ¿Õ¸ñ
-				 * ·µ»Ø£º
-				 *    ·µ»ØÇ°ºóÃ»ÓĞ¿Õ¸ñµÄ×Ö·û´®
+				 * åŠŸèƒ½ï¼š
+				 *    åˆ é™¤å­—ç¬¦ä¸²å‰åçš„ç©ºæ ¼
+				 * è¿”å›ï¼š
+				 *    è¿”å›å‰åæ²¡æœ‰ç©ºæ ¼çš„å­—ç¬¦ä¸²
 				 *
 				 * @param str
 				 */

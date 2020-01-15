@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 17:41:45
+*Date: 01-7æœˆ-2018 17:41:45
 *
 *Description: Class(csf_configure_manager)
 *
@@ -36,17 +36,17 @@ csf_configure_manager::~csf_configure_manager() {
 }
 
 /**
-* ±íÊ¾¸ù¾İitemsÊôĞÔÂ·¾¶²éÕÒÒ»¸öelement¡£
-* ·µ»Ø£º·Çnull±íÊ¾Âú×ãitemsËùÓĞÂ·¾¶µÄ½Úµã£»null±íÊ¾Ã»ÓĞ²éÕÒµ½Âú×ãÂ·¾¶µÄ½Úµã£»
+* è¡¨ç¤ºæ ¹æ®itemså±æ€§è·¯å¾„æŸ¥æ‰¾ä¸€ä¸ªelementã€‚
+* è¿”å›ï¼šénullè¡¨ç¤ºæ»¡è¶³itemsæ‰€æœ‰è·¯å¾„çš„èŠ‚ç‚¹ï¼›nullè¡¨ç¤ºæ²¡æœ‰æŸ¥æ‰¾åˆ°æ»¡è¶³è·¯å¾„çš„èŠ‚ç‚¹ï¼›
 *
-* @param items    itemsÊôĞÔÂ·¾¶
+* @param items    itemså±æ€§è·¯å¾„
 */
 const csf_element& csf_configure_manager::find_element(const csf_list<csf_string>& items) {
 
 	csf_element				*tmp_element = csf_nullptr;
 
 
-	//Ñ­»·±éÀúËùÓĞÁĞ±í£¬²éÕÒ·ûºÏÂ·¾¶ĞèÇóµÄ½Úµã
+	//å¾ªç¯éå†æ‰€æœ‰åˆ—è¡¨ï¼ŒæŸ¥æ‰¾ç¬¦åˆè·¯å¾„éœ€æ±‚çš„èŠ‚ç‚¹
 	for (auto &tmp_configure : get_configures()) {
 		tmp_element = (csf_element*)&(tmp_configure.second.find_element(items));
 		if (tmp_element->not_null()) {
@@ -60,21 +60,21 @@ const csf_element& csf_configure_manager::find_element(const csf_list<csf_string
 
 
 /**
-* ¹¦ÄÜ£º³õÊ¼»¯ÅäÖÃ¹ÜÀíÆ÷ÖĞµÄÆäËûÅäÖÃĞÅÏ¢£¬Ö÷ÒªÖ¸Ä£¿éÅäÖÃĞÅÏ¢£¬¸ºÔØÅäÖÃĞÅÏ¢²¿·ÖÄÚÈİ
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+* åŠŸèƒ½ï¼šåˆå§‹åŒ–é…ç½®ç®¡ç†å™¨ä¸­çš„å…¶ä»–é…ç½®ä¿¡æ¯ï¼Œä¸»è¦æŒ‡æ¨¡å—é…ç½®ä¿¡æ¯ï¼Œè´Ÿè½½é…ç½®ä¿¡æ¯éƒ¨åˆ†å†…å®¹
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 */
 csf_bool csf_configure_manager::init() {
 
 	csf_bool					tmp_bool_ret = csf_false;
 
 
-	//ÅĞ¶ÏÅäÖÃĞÅÏ¢ÁĞ±íµÄºÏ·¨ĞÔ£¬Èç¹ûÎª¿ÕÔòÖ±½Ó·µ»Ø´íÎó
+	//åˆ¤æ–­é…ç½®ä¿¡æ¯åˆ—è¡¨çš„åˆæ³•æ€§ï¼Œå¦‚æœä¸ºç©ºåˆ™ç›´æ¥è¿”å›é”™è¯¯
 	if (get_configures().empty()) {
 		csf_log_ex(error, csf_log_code_error, "configures is null");
 		return csf_false;
 	}
 
-	//¿ªÊ¼³õÊ¼»¯Ä£¿éÅäÖÃ¹ÜÀíÆ÷ĞÅÏ¢
+	//å¼€å§‹åˆå§‹åŒ–æ¨¡å—é…ç½®ç®¡ç†å™¨ä¿¡æ¯
 	tmp_bool_ret = init_module_configures(get_module_configures(), get_configures());
 	if (!tmp_bool_ret) {
 		return csf_false;
@@ -83,7 +83,7 @@ csf_bool csf_configure_manager::init() {
 		csf_log_ex(notice, csf_log_code_notice, "init module configures succeed!");
 	}
 
-	//¿ªÊ¼³õÊ¼»¯¸ºÔØÅäÖÃ¹ÜÀíÆ÷ĞÅÏ¢
+	//å¼€å§‹åˆå§‹åŒ–è´Ÿè½½é…ç½®ç®¡ç†å™¨ä¿¡æ¯
 	tmp_bool_ret = init_measure_configure(get_measure_configure(), get_configures());
 	if (!tmp_bool_ret) {
 		return csf_false;
@@ -97,11 +97,11 @@ csf_bool csf_configure_manager::init() {
 
 
 /**
-* ¹¦ÄÜ£º³õÊ¼»¯Ä£¿éÅäÖÃ¹ÜÀíÆ÷
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+* åŠŸèƒ½ï¼šåˆå§‹åŒ–æ¨¡å—é…ç½®ç®¡ç†å™¨
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 *
-* @param module_configures    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-* @param configures    ±íÊ¾µ±Ç°ÒÑ¾­½âÎöµÄÅäÖÃÎÄ¼şĞÅÏ¢
+* @param module_configures    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+* @param configures    è¡¨ç¤ºå½“å‰å·²ç»è§£æçš„é…ç½®æ–‡ä»¶ä¿¡æ¯
 */
 csf_bool csf_configure_manager::init_module_configures(csf_map<csf_string, csf_module_configure>& module_configures
 	, csf_map<csf_string, csf_configure>& configures) {
@@ -109,7 +109,7 @@ csf_bool csf_configure_manager::init_module_configures(csf_map<csf_string, csf_m
 	csf_bool						tmp_bool_ret = csf_false;
 
 
-	//¿ªÊ¼³õÊ¼»¯Ä£¿éÅäÖÃ²¿·ÖÄÚÈİ
+	//å¼€å§‹åˆå§‹åŒ–æ¨¡å—é…ç½®éƒ¨åˆ†å†…å®¹
 	tmp_bool_ret = add_module_configures(get_module_configures(), csf_list<csf_string>{CSF_CONFIGURE_STRING(modules_configure)});
 	if (!tmp_bool_ret) {
 		csf_log_ex(warning, csf_log_code_warning, "add module configures failed!");
@@ -121,11 +121,11 @@ csf_bool csf_configure_manager::init_module_configures(csf_map<csf_string, csf_m
 
 
 /**
-* ¹¦ÄÜ£º³õÊ¼»¯¸ºÔØÅäÖÃ¹ÜÀíÆ÷
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+* åŠŸèƒ½ï¼šåˆå§‹åŒ–è´Ÿè½½é…ç½®ç®¡ç†å™¨
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 *
-* @param measure_configure    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-* @param configures    ±íÊ¾µ±Ç°ÒÑ¾­½âÎöµÄÅäÖÃÎÄ¼şĞÅÏ¢
+* @param measure_configure    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+* @param configures    è¡¨ç¤ºå½“å‰å·²ç»è§£æçš„é…ç½®æ–‡ä»¶ä¿¡æ¯
 */
 csf_bool csf_configure_manager::init_measure_configure(csf_measure_configure& measure_configure
 	, csf_map<csf_string, csf_configure>& configures) {
@@ -166,11 +166,11 @@ csf_bool csf_configure_manager::init_measure_configure(csf_measure_configure& me
 
 
 /**
-* ¹¦ÄÜ£ºÏòÄ£¿éÅäÖÃ¹ÜÀíÆ÷ÖĞÌí¼ÓÒ»¸öÄ£¿éÅäÖÃĞÅÏ¢£¬Í¬Ê±±éÀúĞÅÏ¢ÏÂµÄËùÓĞ×ÓÄ£¿éĞÅÏ¢
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+* åŠŸèƒ½ï¼šå‘æ¨¡å—é…ç½®ç®¡ç†å™¨ä¸­æ·»åŠ ä¸€ä¸ªæ¨¡å—é…ç½®ä¿¡æ¯ï¼ŒåŒæ—¶éå†ä¿¡æ¯ä¸‹çš„æ‰€æœ‰å­æ¨¡å—ä¿¡æ¯
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 *
-* @param module_configures    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-* @param module_element    ±íÊ¾µ±Ç°»ñÈ¡µ½µÄÄ£¿éĞÅÏ¢
+* @param module_configures    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+* @param module_element    è¡¨ç¤ºå½“å‰è·å–åˆ°çš„æ¨¡å—ä¿¡æ¯
 */
 csf_bool csf_configure_manager::add_module_configures(csf_map<csf_string, csf_module_configure>& module_configures
 	, csf_element& module_element) {
@@ -178,7 +178,7 @@ csf_bool csf_configure_manager::add_module_configures(csf_map<csf_string, csf_mo
 	csf_element						*tmp_element_ret = &module_element;
 
 
-	//ÏÈÅĞ¶Ï×Ô¼ºÊÇ·ñÎªÄ£¿é½Úµã£¬Èç¹ûÊÇÔòÌí¼Ó
+	//å…ˆåˆ¤æ–­è‡ªå·±æ˜¯å¦ä¸ºæ¨¡å—èŠ‚ç‚¹ï¼Œå¦‚æœæ˜¯åˆ™æ·»åŠ 
 	if (tmp_element_ret->is_null()) {
 		return csf_false;
 	}
@@ -188,7 +188,7 @@ csf_bool csf_configure_manager::add_module_configures(csf_map<csf_string, csf_mo
 		}
 	}
 
-	//±éÀúËùÓĞ×Ó½ÚµãÄÚÈİ
+	//éå†æ‰€æœ‰å­èŠ‚ç‚¹å†…å®¹
 	for (auto &tmp_element : tmp_element_ret->get_children()) {
 		add_module_configures(module_configures, tmp_element);
 	}
@@ -198,11 +198,11 @@ csf_bool csf_configure_manager::add_module_configures(csf_map<csf_string, csf_mo
 
 
 /**
-* ¹¦ÄÜ£ºÏòÄ£¿éÅäÖÃ¹ÜÀíÆ÷ÖĞÌí¼ÓÒ»¸öÄ£¿éÅäÖÃĞÅÏ¢
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+* åŠŸèƒ½ï¼šå‘æ¨¡å—é…ç½®ç®¡ç†å™¨ä¸­æ·»åŠ ä¸€ä¸ªæ¨¡å—é…ç½®ä¿¡æ¯
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 *
-* @param module_configures    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-* @param module_element    ±íÊ¾µ±Ç°»ñÈ¡µ½µÄÄ£¿éĞÅÏ¢
+* @param module_configures    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+* @param module_element    è¡¨ç¤ºå½“å‰è·å–åˆ°çš„æ¨¡å—ä¿¡æ¯
 */
 csf_bool csf_configure_manager::add_module_configure(csf_map<csf_string, csf_module_configure>& module_configures
 	, csf_element& module_element) {
@@ -211,7 +211,7 @@ csf_bool csf_configure_manager::add_module_configure(csf_map<csf_string, csf_mod
 	csf_string						tmp_string_file = "";
 
 
-	//Ğ£ÑéÊı¾İµÄºÏ·¨ĞÔ£¬Ã»ÓĞÎÊÌâÔò²åÈëµ½Ä£¿éÁĞ±íÖĞ
+	//æ ¡éªŒæ•°æ®çš„åˆæ³•æ€§ï¼Œæ²¡æœ‰é—®é¢˜åˆ™æ’å…¥åˆ°æ¨¡å—åˆ—è¡¨ä¸­
 	if (module_element.is_null()) {
 		return csf_false;
 	}
@@ -237,11 +237,11 @@ csf_bool csf_configure_manager::add_module_configure(csf_map<csf_string, csf_mod
 
 
 /**
-* ¹¦ÄÜ£ºÏòÄ£¿éÅäÖÃ¹ÜÀíÆ÷ÖĞÌí¼ÓÒ»¸öÄ£¿éÅäÖÃĞÅÏ¢£¬Í¬Ê±±éÀúĞÅÏ¢ÏÂµÄËùÓĞ×ÓÄ£¿éĞÅÏ¢
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü
+* åŠŸèƒ½ï¼šå‘æ¨¡å—é…ç½®ç®¡ç†å™¨ä¸­æ·»åŠ ä¸€ä¸ªæ¨¡å—é…ç½®ä¿¡æ¯ï¼ŒåŒæ—¶éå†ä¿¡æ¯ä¸‹çš„æ‰€æœ‰å­æ¨¡å—ä¿¡æ¯
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥
 *
-* @param module_configures    ±íÊ¾´¦Àíºó±£´æÊä³öµÄÄ£¿éÅäÖÃĞÅÏ¢
-* @param items    ±íÊ¾µ±Ç°Ä£¿éĞÅÏ¢Â·¾¶
+* @param module_configures    è¡¨ç¤ºå¤„ç†åä¿å­˜è¾“å‡ºçš„æ¨¡å—é…ç½®ä¿¡æ¯
+* @param items    è¡¨ç¤ºå½“å‰æ¨¡å—ä¿¡æ¯è·¯å¾„
 */
 csf_bool csf_configure_manager::add_module_configures(csf_map<csf_string, csf_module_configure>& module_configures
 	, const csf_list<csf_string>& items) {
@@ -262,17 +262,17 @@ csf_bool csf_configure_manager::add_module_configures(csf_map<csf_string, csf_mo
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÄ£¿éÃû³Æ²éÑ¯Ä£¿éÅäÖÃĞÅÏ¢
-* ·µ»Ø£º·Ç¿Õ¶ÔÏó±íÊ¾³É¹¦£»·Ç¶ÔÏó±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼šæ ¹æ®æ¨¡å—åç§°æŸ¥è¯¢æ¨¡å—é…ç½®ä¿¡æ¯
+* è¿”å›ï¼šéç©ºå¯¹è±¡è¡¨ç¤ºæˆåŠŸï¼›éå¯¹è±¡è¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param name    ±íÊ¾Ä£¿éµÄÃû³Æ
+* @param name    è¡¨ç¤ºæ¨¡å—çš„åç§°
 */
 const csf_module_configure& csf_configure_manager::find_module_configure(const csf_string& name) {
 
 	csf_map<csf_string, csf_module_configure>::iterator				tmp_iter;
 
 
-	//ÕâÀïµÄ²éÑ¯¿¼ÂÇÏß³Ì°²È«µÄÔ­ÒòÊÇÏµÍ³µÄÄ£¿éÅäÖÃĞÅÏ¢ÔÚÏµÍ³Æô¶¯ºó¾Í¹Ì¶¨²»±ä
+	//è¿™é‡Œçš„æŸ¥è¯¢è€ƒè™‘çº¿ç¨‹å®‰å…¨çš„åŸå› æ˜¯ç³»ç»Ÿçš„æ¨¡å—é…ç½®ä¿¡æ¯åœ¨ç³»ç»Ÿå¯åŠ¨åå°±å›ºå®šä¸å˜
 	tmp_iter = get_module_configures().find(name);
 	if (tmp_iter != get_module_configures().end()) {
 		return tmp_iter->second;

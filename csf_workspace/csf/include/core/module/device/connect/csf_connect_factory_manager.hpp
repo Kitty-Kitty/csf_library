@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 12:54:37
+*Date: 01-10æœˆ-2018 12:54:37
 *
-*Description: Class(csf_connect_factory_manager) ±íÊ¾Á¬½Ó¹¤³§¹ÜÀíÆ÷
+*Description: Class(csf_connect_factory_manager) è¡¨ç¤ºè¿æ¥å·¥å‚ç®¡ç†å™¨
 *
 *Others:
 *
@@ -36,10 +36,10 @@ namespace csf
 			namespace connect
 			{
 				/**
-				 * ±íÊ¾Á¬½Ó¹¤³§¹ÜÀíÆ÷
+				 * è¡¨ç¤ºè¿æ¥å·¥å‚ç®¡ç†å™¨
 				 * @author f
 				 * @version 1.0
-				 * @created 01-10ÔÂ-2018 12:54:37
+				 * @created 01-10æœˆ-2018 12:54:37
 				 */
 				class csf_connect_factory_manager : public csf::core::module::csf_manager
 					, public csf::core::module::connect::csf_connect_factory_manager_interface
@@ -55,9 +55,9 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÅäÖÃ¹ÜÀíÆ÷´´½¨Ò»¸ö¹ÜÀí¶ÔÏó
+					* æ ¹æ®é…ç½®ç®¡ç†å™¨åˆ›å»ºä¸€ä¸ªç®¡ç†å¯¹è±¡
 					*
-					* @param configure_manager    ±íÊ¾ÅäÖÃ¹ÜÀíÆ÷µØÖ·ĞÅÏ¢
+					* @param configure_manager    è¡¨ç¤ºé…ç½®ç®¡ç†å™¨åœ°å€ä¿¡æ¯
 					*/
 					inline explicit csf_connect_factory_manager(const csf_configure_manager* configure_manager)
 						: csf_manager(configure_manager)
@@ -65,10 +65,10 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÅäÖÃ¹ÜÀíÆ÷´´½¨Ò»¸ö¹ÜÀí¶ÔÏó
+					* æ ¹æ®é…ç½®ç®¡ç†å™¨åˆ›å»ºä¸€ä¸ªç®¡ç†å¯¹è±¡
 					*
-					* @param configure_manager    ±íÊ¾ÅäÖÃ¹ÜÀíÆ÷µØÖ·ĞÅÏ¢
-					* @param app    ±íÊ¾¸ÃÄ£¿éËùÊôµÄapp¶ÔÏóµØÖ·
+					* @param configure_manager    è¡¨ç¤ºé…ç½®ç®¡ç†å™¨åœ°å€ä¿¡æ¯
+					* @param app    è¡¨ç¤ºè¯¥æ¨¡å—æ‰€å±çš„appå¯¹è±¡åœ°å€
 					*/
 					inline explicit csf_connect_factory_manager(const csf_configure_manager* configure_manager
 						, const csf_app* app)
@@ -77,78 +77,78 @@ namespace csf
 
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º³õÊ¼»¯Ä£¿é¹ÜÀíÆ÷
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆå§‹åŒ–æ¨¡å—ç®¡ç†å™¨
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					* @param app    ±íÊ¾¸ÃÄ£¿éËùÊôµÄapp¶ÔÏóµØÖ·
+					* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
+					* @param app    è¡¨ç¤ºè¯¥æ¨¡å—æ‰€å±çš„appå¯¹è±¡åœ°å€
 					*/
 					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg, const csf_app* app);
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÆô¶¯Ä£¿é¹ÜÀíÆ÷
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¯åŠ¨æ¨¡å—ç®¡ç†å™¨
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					* @param app    ±íÊ¾¸ÃÄ£¿éËùÊôµÄapp¶ÔÏóµØÖ·
+					* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
+					* @param app    è¡¨ç¤ºè¯¥æ¨¡å—æ‰€å±çš„appå¯¹è±¡åœ°å€
 					*/
 					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg, const csf_app* app);
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÍ£Ö¹Ä£¿é¹ÜÀíÆ÷
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåœæ­¢æ¨¡å—ç®¡ç†å™¨
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					*/
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º´´½¨ËùÓĞµÄÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ›å»ºæ‰€æœ‰çš„è¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param app    ±íÊ¾ËùÊôµÄappĞÅÏ¢
-					* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
+					* @param app    è¡¨ç¤ºæ‰€å±çš„appä¿¡æ¯
+					* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
 					*/
 					csf_bool create_connect_factories(csf_app& app, csf_configure_manager& configure_manager);
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º´´½¨Ò»¸öÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ›å»ºä¸€ä¸ªè¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param app    ±íÊ¾ËùÊôµÄappĞÅÏ¢
-					* @param element    ±íÊ¾µ±Ç°µÄdevice½ÚµãÄÚÈİ
+					* @param app    è¡¨ç¤ºæ‰€å±çš„appä¿¡æ¯
+					* @param element    è¡¨ç¤ºå½“å‰çš„deviceèŠ‚ç‚¹å†…å®¹
 					*/
 					csf_bool create_connect_factory(csf_app& app, const csf_element& element);
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÆô¶¯ÍøÂçÁ¬½Ó¹¤³§¶ÔÏó
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¯åŠ¨ç½‘ç»œè¿æ¥å·¥å‚å¯¹è±¡
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param connect_factory    ±íÊ¾ÍøÂçÁ¬½Ó¹¤³§¶ÔÏó
+					* @param connect_factory    è¡¨ç¤ºç½‘ç»œè¿æ¥å·¥å‚å¯¹è±¡
 					*/
 					csf_bool start_connect_factory(csf_connect_factory* connect_factory);
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º´´½¨¸ÃÁ¬½Ó¹¤³§¶ÔÏóËù°üº¬µÄËùÓĞÍøÂçÁ¬½Ó¶ÔÏó
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ›å»ºè¯¥è¿æ¥å·¥å‚å¯¹è±¡æ‰€åŒ…å«çš„æ‰€æœ‰ç½‘ç»œè¿æ¥å¯¹è±¡
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param app    ±íÊ¾ËùÊôµÄappĞÅÏ¢
-					* @param factory    ±íÊ¾µ±Ç°´¦ÀíµÄÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* @param element    ±íÊ¾µ±Ç°µÄdevice½ÚµãÄÚÈİ
+					* @param app    è¡¨ç¤ºæ‰€å±çš„appä¿¡æ¯
+					* @param factory    è¡¨ç¤ºå½“å‰å¤„ç†çš„è¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* @param element    è¡¨ç¤ºå½“å‰çš„deviceèŠ‚ç‚¹å†…å®¹
 					*/
 					csf_bool create_listen_list(csf_app& app, csf_connect_factory& factory, const csf_element& element);
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º´´½¨Ò»¸öÁ¬½ÓÀà¶ÔÏó
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ›å»ºä¸€ä¸ªè¿æ¥ç±»å¯¹è±¡
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥
 					*
-					* @param app    ±íÊ¾ËùÊôµÄappĞÅÏ¢
-					* @param factory    ±íÊ¾µ±Ç°´¦ÀíµÄÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* @param element    ±íÊ¾µ±Ç°µÄdevice½ÚµãÄÚÈİ
+					* @param app    è¡¨ç¤ºæ‰€å±çš„appä¿¡æ¯
+					* @param factory    è¡¨ç¤ºå½“å‰å¤„ç†çš„è¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* @param element    è¡¨ç¤ºå½“å‰çš„deviceèŠ‚ç‚¹å†…å®¹
 					*/
 					csf_bool create_listen(csf_app& app, csf_connect_factory& factory, const csf_element& element);
 					/**
-					* ±íÊ¾¸ÃÄ£¿éËùÊôµÄapp¶ÔÏóµØÖ·
+					* è¡¨ç¤ºè¯¥æ¨¡å—æ‰€å±çš„appå¯¹è±¡åœ°å€
 					*/
 					inline csf_app* get_app() {
 
 						return m_app;
 					}
 					/**
-					* ±íÊ¾¸ÃÄ£¿éËùÊôµÄapp¶ÔÏóµØÖ·
+					* è¡¨ç¤ºè¯¥æ¨¡å—æ‰€å±çš„appå¯¹è±¡åœ°å€
 					*
 					* @param new_value
 					*/
@@ -157,32 +157,32 @@ namespace csf
 						m_app = (csf_app*)new_value;
 					}
 					/**
-					* ±íÊ¾Á¬½Ó¹¤³§¹ÜÀíÆ÷±£´æµÄ¶ÔÏóÁĞ±í
+					* è¡¨ç¤ºè¿æ¥å·¥å‚ç®¡ç†å™¨ä¿å­˜çš„å¯¹è±¡åˆ—è¡¨
 					*/
 					inline csf_unordered_map<csf_string, csf_connect_factory*>& get_factories() {
 
 						return m_factories;
 					}
 					/**
-					* ±íÊ¾Í¨¹ıÅäÖÃÎÄ¼ş´´½¨µÄÁ¬½Ó¶ÔÏó±£´æµÄ¶ÔÏóÁĞ±í
+					* è¡¨ç¤ºé€šè¿‡é…ç½®æ–‡ä»¶åˆ›å»ºçš„è¿æ¥å¯¹è±¡ä¿å­˜çš„å¯¹è±¡åˆ—è¡¨
 					*/
 					inline csf_unordered_map<csf_string, csf_connect_ptr>& get_connectes() {
 
 						return m_connectes;
 					}
 					/**
-					* ±íÊ¾×¢²áĞèÒªÊ¹ÓÃµÄ´¦Àí¾ä±ú
+					* è¡¨ç¤ºæ³¨å†Œéœ€è¦ä½¿ç”¨çš„å¤„ç†å¥æŸ„
 					*/
 					inline csf_unordered_map<csf_string, csf_connect_callback>& get_handles() {
 
 						return m_handles;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÏòÁ¬½Ó¹¤³§ÁĞ±íÖĞÌí¼ÓÒ»¸öÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå‘è¿æ¥å·¥å‚åˆ—è¡¨ä¸­æ·»åŠ ä¸€ä¸ªè¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param name    ±íÊ¾Á¬½Ó¹¤³§Àà¶ÔÏóÃû³Æ
-					* @param factory    ±íÊ¾Á¬½Ó¹¤³§Àà¶ÔÏóÖ¸Õë
+					* @param name    è¡¨ç¤ºè¿æ¥å·¥å‚ç±»å¯¹è±¡åç§°
+					* @param factory    è¡¨ç¤ºè¿æ¥å·¥å‚ç±»å¯¹è±¡æŒ‡é’ˆ
 					*/
 					inline csf_bool add_factory(csf_string name, csf_connect_factory* factory) {
 
@@ -191,10 +191,10 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İÃû³Æ´ÓÁ¬½Ó¹¤³§ÁĞ±íÖĞ²éÕÒÒ»¸öÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* ·µ»Ø£º·Çnull±íÊ¾³É¹¦£»null±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®åç§°ä»è¿æ¥å·¥å‚åˆ—è¡¨ä¸­æŸ¥æ‰¾ä¸€ä¸ªè¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* è¿”å›ï¼šénullè¡¨ç¤ºæˆåŠŸï¼›nullè¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param name    ±íÊ¾Á¬½Ó¹¤³§Àà¶ÔÏóÃû³Æ
+					* @param name    è¡¨ç¤ºè¿æ¥å·¥å‚ç±»å¯¹è±¡åç§°
 					*/
 					inline csf_connect_factory* find_factory(csf_string name) {
 
@@ -211,10 +211,10 @@ namespace csf
 						return  csf_nullptr;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İÃû³Æ´ÓÁ¬½Ó¹¤³§ÁĞ±íÖĞÉ¾³ıÒ»¸öÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®åç§°ä»è¿æ¥å·¥å‚åˆ—è¡¨ä¸­åˆ é™¤ä¸€ä¸ªè¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param name    ±íÊ¾Á¬½Ó¹¤³§Àà¶ÔÏóÃû³Æ
+					* @param name    è¡¨ç¤ºè¿æ¥å·¥å‚ç±»å¯¹è±¡åç§°
 					*/
 					inline csf_bool remove_factory(csf_string name) {
 
@@ -229,20 +229,20 @@ namespace csf
 						else {
 							tmp_factory = tmp_iter->second;
 							get_factories().erase(tmp_iter);
-							get_app()->get_module_manager().destory(tmp_factory);
+							get_app()->get_module_manager().destroy(tmp_factory);
 						}
 							
 						return csf_true;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º´ÓÁ¬½Ó¹¤³§ÁĞ±íÖĞÉ¾³ıËùÓĞÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šä»è¿æ¥å·¥å‚åˆ—è¡¨ä¸­åˆ é™¤æ‰€æœ‰è¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 					*/
 					inline csf_bool clear_factory() {
 
 						for (auto tmp_iter : get_factories()) {
 							if (csf_nullptr != tmp_iter.second) {
-								get_app()->get_module_manager().destory(tmp_iter.second);
+								get_app()->get_module_manager().destroy(tmp_iter.second);
 							}
 						}
 
@@ -251,30 +251,30 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º´´½¨Ò»¸öÁ¬½ÓÀà¶ÔÏó
-					* ·µ»Ø£º·Çm_null_connect_ptr±íÊ¾³É¹¦£»m_null_connect_ptr±íÊ¾Ê§°Ü
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ›å»ºä¸€ä¸ªè¿æ¥ç±»å¯¹è±¡
+					* è¿”å›ï¼šém_null_connect_ptrè¡¨ç¤ºæˆåŠŸï¼›m_null_connect_ptrè¡¨ç¤ºå¤±è´¥
 					*
-					* @param factory    ±íÊ¾µ±Ç°´¦ÀíµÄÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* @param element    ±íÊ¾ĞèÒª´´½¨µÄÁ¬½Ó¶ÔÏóÅäÖÃĞÅÏ¢
+					* @param factory    è¡¨ç¤ºå½“å‰å¤„ç†çš„è¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* @param element    è¡¨ç¤ºéœ€è¦åˆ›å»ºçš„è¿æ¥å¯¹è±¡é…ç½®ä¿¡æ¯
 					*/
 					csf_connect_ptr create_connect(csf_connect_factory& factory, const csf_element& element);
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º±íÊ¾¼àÌıÒ»¸öÁ¬½ÓÀà¶ÔÏó
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü´íÎóÂë
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šè¡¨ç¤ºç›‘å¬ä¸€ä¸ªè¿æ¥ç±»å¯¹è±¡
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥é”™è¯¯ç 
 					*
-					* @param connect    ±íÊ¾µ±Ç°´¦ÀíµÄÁ¬½Ó¹¤³§Àà¶ÔÏó
-					* @param handle    ±íÊ¾Á¬½Ó¶ÔÏóµÄ»Øµ÷¾ä±ú
-					* @param element    ±íÊ¾ĞèÒª´´½¨µÄÁ¬½Ó¶ÔÏóÅäÖÃĞÅÏ¢
+					* @param connect    è¡¨ç¤ºå½“å‰å¤„ç†çš„è¿æ¥å·¥å‚ç±»å¯¹è±¡
+					* @param handle    è¡¨ç¤ºè¿æ¥å¯¹è±¡çš„å›è°ƒå¥æŸ„
+					* @param element    è¡¨ç¤ºéœ€è¦åˆ›å»ºçš„è¿æ¥å¯¹è±¡é…ç½®ä¿¡æ¯
 					*/
 					csf::core::base::csf_int32 listen_connect(csf_connect_ptr& connect
 						, csf_connect_callback handle
 						, const csf_element& element);
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÏòÁ¬½ÓÁĞ±íÖĞÌí¼ÓÒ»¸öÁ¬½ÓÀà¶ÔÏó
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå‘è¿æ¥åˆ—è¡¨ä¸­æ·»åŠ ä¸€ä¸ªè¿æ¥ç±»å¯¹è±¡
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param name    ±íÊ¾Á¬½ÓÀà¶ÔÏóÃû³Æ
-					* @param connect_ptr    ±íÊ¾Á¬½ÓÀà¶ÔÏóÖ¸Õë
+					* @param name    è¡¨ç¤ºè¿æ¥ç±»å¯¹è±¡åç§°
+					* @param connect_ptr    è¡¨ç¤ºè¿æ¥ç±»å¯¹è±¡æŒ‡é’ˆ
 					*/
 					inline csf_bool add_connect(csf_string name, csf_connect_ptr connect_ptr) {
 
@@ -283,10 +283,10 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İÃû³Æ´ÓÁ¬½ÓÁĞ±íÖĞ²éÕÒÒ»¸öÁ¬½ÓÀà¶ÔÏó
-					* ·µ»Ø£º·Çnull±íÊ¾³É¹¦£»null±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®åç§°ä»è¿æ¥åˆ—è¡¨ä¸­æŸ¥æ‰¾ä¸€ä¸ªè¿æ¥ç±»å¯¹è±¡
+					* è¿”å›ï¼šénullè¡¨ç¤ºæˆåŠŸï¼›nullè¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param name    ±íÊ¾Á¬½ÓÀà¶ÔÏóÃû³Æ
+					* @param name    è¡¨ç¤ºè¿æ¥ç±»å¯¹è±¡åç§°
 					*/
 					inline csf_connect_ptr find_connect(csf_string name) {
 
@@ -303,10 +303,10 @@ namespace csf
 						return m_null_connect_ptr;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İÃû³Æ´ÓÁ¬½ÓÁĞ±íÖĞÉ¾³ıÒ»¸öÁ¬½ÓÀà¶ÔÏó
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®åç§°ä»è¿æ¥åˆ—è¡¨ä¸­åˆ é™¤ä¸€ä¸ªè¿æ¥ç±»å¯¹è±¡
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param name    ±íÊ¾Á¬½ÓÀà¶ÔÏóÃû³Æ
+					* @param name    è¡¨ç¤ºè¿æ¥ç±»å¯¹è±¡åç§°
 					*/
 					inline csf_bool remove_connect(csf_string name) {
 
@@ -324,8 +324,8 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º´ÓÁ¬½ÓÁĞ±íÖĞÉ¾³ıËùÓĞÁ¬½ÓÀà¶ÔÏó
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šä»è¿æ¥åˆ—è¡¨ä¸­åˆ é™¤æ‰€æœ‰è¿æ¥ç±»å¯¹è±¡
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 					*/
 					inline csf_bool clear_connect() {
 
@@ -334,11 +334,11 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÏò¾ä±úÁĞ±íÖĞÌí¼ÓÒ»¸ö¾ä±ú
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå‘å¥æŸ„åˆ—è¡¨ä¸­æ·»åŠ ä¸€ä¸ªå¥æŸ„
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param name    ±íÊ¾¾ä±úÃû³Æ
-					* @param handle    ±íÊ¾¾ä±úÖ¸Õë
+					* @param name    è¡¨ç¤ºå¥æŸ„åç§°
+					* @param handle    è¡¨ç¤ºå¥æŸ„æŒ‡é’ˆ
 					*/
 					inline csf_bool add_handle(csf_string name, csf_connect_callback handle) {
 
@@ -347,10 +347,10 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İÃû³Æ´Ó¾ä±úÁĞ±íÖĞ²éÕÒÒ»¸ö¾ä±ú
-					* ·µ»Ø£º·Çnull±íÊ¾³É¹¦£»null±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®åç§°ä»å¥æŸ„åˆ—è¡¨ä¸­æŸ¥æ‰¾ä¸€ä¸ªå¥æŸ„
+					* è¿”å›ï¼šénullè¡¨ç¤ºæˆåŠŸï¼›nullè¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param name    ±íÊ¾¾ä±úÃû³Æ
+					* @param name    è¡¨ç¤ºå¥æŸ„åç§°
 					*/
 					inline csf_connect_callback find_handle(csf_string name) {
 
@@ -369,10 +369,10 @@ namespace csf
 						return  csf_nullptr;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İÃû³Æ´Ó¾ä±úÁĞ±íÖĞÉ¾³ıÒ»¸ö¾ä±ú
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®åç§°ä»å¥æŸ„åˆ—è¡¨ä¸­åˆ é™¤ä¸€ä¸ªå¥æŸ„
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param name    ±íÊ¾¾ä±úÃû³Æ
+					* @param name    è¡¨ç¤ºå¥æŸ„åç§°
 					*/
 					inline csf_bool remove_handle(csf_string name) {
 
@@ -390,8 +390,8 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º´Ó¾ä±úÁĞ±íÖĞÉ¾³ıËùÓĞ¾ä±ú
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šä»å¥æŸ„åˆ—è¡¨ä¸­åˆ é™¤æ‰€æœ‰å¥æŸ„
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 					*/
 					inline csf_bool clear_handle() {
 
@@ -401,19 +401,19 @@ namespace csf
 					}
 				private:
 					/**
-					* ±íÊ¾¸ÃÄ£¿éËùÊôµÄapp¶ÔÏóµØÖ·
+					* è¡¨ç¤ºè¯¥æ¨¡å—æ‰€å±çš„appå¯¹è±¡åœ°å€
 					*/
 					csf_app* m_app = csf_nullptr;
 					/**
-					* ±íÊ¾Á¬½Ó¹¤³§¹ÜÀíÆ÷±£´æµÄ¶ÔÏóÁĞ±í
+					* è¡¨ç¤ºè¿æ¥å·¥å‚ç®¡ç†å™¨ä¿å­˜çš„å¯¹è±¡åˆ—è¡¨
 					*/
 					csf_unordered_map<csf_string, csf_connect_factory*> m_factories;
 					/**
-					* ±íÊ¾Í¨¹ıÅäÖÃÎÄ¼ş´´½¨µÄÁ¬½Ó¶ÔÏó±£´æµÄ¶ÔÏóÁĞ±í
+					* è¡¨ç¤ºé€šè¿‡é…ç½®æ–‡ä»¶åˆ›å»ºçš„è¿æ¥å¯¹è±¡ä¿å­˜çš„å¯¹è±¡åˆ—è¡¨
 					*/
 					csf_unordered_map<csf_string, csf_connect_ptr> m_connectes;
 					/**
-					* ±íÊ¾×¢²áĞèÒªÊ¹ÓÃµÄ´¦Àí¾ä±ú
+					* è¡¨ç¤ºæ³¨å†Œéœ€è¦ä½¿ç”¨çš„å¤„ç†å¥æŸ„
 					*/
 					csf_unordered_map<csf_string, csf_connect_callback> m_handles;
 				};

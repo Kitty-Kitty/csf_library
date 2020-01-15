@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 05-7ÔÂ-2018 20:09:26
+*Date: 05-7æœˆ-2018 20:09:26
 *
 *Description: Class(csf_attribute_exception)
 *
@@ -34,17 +34,17 @@ namespace csf
 		{
 			namespace attribute
 			{
-				//±íÊ¾Òì³£´¦Àí»Øµ÷º¯Êı
+				//è¡¨ç¤ºå¼‚å¸¸å¤„ç†å›è°ƒå‡½æ•°
 				typedef csf_function<csf_void(csf_attribute&)>	csf_attribute_exception_callback;
 
-				//±íÊ¾attribute exception×Ö·û´®¸ñÊ½»¯»º´æµÄÄ¬ÈÏ³¤¶È
+				//è¡¨ç¤ºattribute exceptionå­—ç¬¦ä¸²æ ¼å¼åŒ–ç¼“å­˜çš„é»˜è®¤é•¿åº¦
 				#define csf_attribute_exception_string_length					256
 
 				/**
-				 * ±íÊ¾ÊôĞÔ½âÎöÒì³£µÄ´¦Àí·½Ê½
+				 * è¡¨ç¤ºå±æ€§è§£æå¼‚å¸¸çš„å¤„ç†æ–¹å¼
 				 * @author Administrator
 				 * @version 1.0
-				 * @created 05-7ÔÂ-2018 20:09:26
+				 * @created 05-7æœˆ-2018 20:09:26
 				 */
 				class csf_attribute_exception : public csf::core::base::csf_csftype_template<csf_attribute_exception>
 				{
@@ -56,7 +56,7 @@ namespace csf
 					}
 					/**
 					*
-					* @param callback    ±íÊ¾Òì³£»Øµ÷º¯Êı
+					* @param callback    è¡¨ç¤ºå¼‚å¸¸å›è°ƒå‡½æ•°
 					*
 					*/
 					inline explicit csf_attribute_exception(const csf::core::system::attribute::csf_attribute_exception_callback callback) 
@@ -67,14 +67,14 @@ namespace csf
 					}
 
 					/**
-					* ±íÊ¾Òì³£»Øµ÷º¯Êı
+					* è¡¨ç¤ºå¼‚å¸¸å›è°ƒå‡½æ•°
 					*/
 					inline csf::core::system::attribute::csf_attribute_exception_callback& get_callback() {
 
 						return m_callback;
 					}
 					/**
-					* ±íÊ¾Òì³£»Øµ÷º¯Êı
+					* è¡¨ç¤ºå¼‚å¸¸å›è°ƒå‡½æ•°
 					*
 					* @param newVal
 					*/
@@ -83,8 +83,8 @@ namespace csf
 						m_callback = newVal;
 					}
 					/**
-					* ±íÊ¾ÅĞ¶ÏÊÇ·ñÎª¿Õ¡£
-					* ·µ»Ø£ºtrue±íÊ¾Îª¿Õ£»false±íÊ¾²»Îª¿Õ¡£
+					* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ºç©ºã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ä¸ºç©ºã€‚
 					*/
 					inline virtual csf_bool is_null() {
 
@@ -94,8 +94,8 @@ namespace csf
 						return csf_false;
 					}
 					/**
-					* ±íÊ¾ÅĞ¶ÏÊÇ·ñ²»Îª¿Õ¡£
-					* ·µ»Ø£ºtrue±íÊ¾²»Îª¿Õ£»false±íÊ¾Îª¿Õ¡£
+					* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ä¸ºç©ºã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºä¸ä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ºç©ºã€‚
 					*/
 					inline virtual csf_bool not_null() {
 
@@ -103,14 +103,14 @@ namespace csf
 					}
 
 					/**
-					* ±íÊ¾Ö´ĞĞÒì³£´¦Àí²Ù×÷¡£
-					* ·µ»Ø£ºtrue±íÊ¾Ö´ĞĞ³É¹¦£»false±íÊ¾Ö´ĞĞÊ§°Ü¡£
+					* è¡¨ç¤ºæ‰§è¡Œå¼‚å¸¸å¤„ç†æ“ä½œã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºæ‰§è¡ŒæˆåŠŸï¼›falseè¡¨ç¤ºæ‰§è¡Œå¤±è´¥ã€‚
 					*
-					* @param attribute    ±íÊ¾ĞèÒª±»´¦ÀíµÄÊôĞÔ¶ÔÏó
+					* @param attribute    è¡¨ç¤ºéœ€è¦è¢«å¤„ç†çš„å±æ€§å¯¹è±¡
 					*/
 					inline csf_bool run(const csf_attribute& attribute) {
 
-						//Èç¹û»Øµ÷º¯Êı²»Îª¿Õ£¬Ôò±íÊ¾¿ÉÒÔÔËĞĞ»Øµ÷º¯Êı
+						//å¦‚æœå›è°ƒå‡½æ•°ä¸ä¸ºç©ºï¼Œåˆ™è¡¨ç¤ºå¯ä»¥è¿è¡Œå›è°ƒå‡½æ•°
 						if (is_null()) {
 							return csf_false;
 						}
@@ -121,7 +121,7 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* ±íÊ¾Òì³£µÄÄ¬ÈÏ´¦Àí¶ÔÏó
+					* è¡¨ç¤ºå¼‚å¸¸çš„é»˜è®¤å¤„ç†å¯¹è±¡
 					*/
 					inline static const csf_attribute_exception& get_default() {
 
@@ -129,11 +129,11 @@ namespace csf
 					}
 				private:
 					/**
-					 * ±íÊ¾Òì³£»Øµ÷º¯Êı
+					 * è¡¨ç¤ºå¼‚å¸¸å›è°ƒå‡½æ•°
 					 */
 					csf::core::system::attribute::csf_attribute_exception_callback m_callback = csf_nullptr;
 					/**
-					* ±íÊ¾Òì³£µÄÄ¬ÈÏ´¦Àí¶ÔÏó
+					* è¡¨ç¤ºå¼‚å¸¸çš„é»˜è®¤å¤„ç†å¯¹è±¡
 					*/
 					static const csf_attribute_exception m_default;
 				};

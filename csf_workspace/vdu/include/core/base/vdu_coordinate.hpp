@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 24-9ÔÂ-2018 14:09:56
+*Date: 24-9æœˆ-2018 14:09:56
 *
-*Description: Class(vdu_coordinate) ±íÊ¾×ø±êĞÅÏ¢
+*Description: Class(vdu_coordinate) è¡¨ç¤ºåæ ‡ä¿¡æ¯
 *
 *Others:
 *
@@ -30,10 +30,10 @@ namespace vdu
 		namespace base
 		{
 			/**
-			 * ±íÊ¾×ø±êĞÅÏ¢
+			 * è¡¨ç¤ºåæ ‡ä¿¡æ¯
 			 * @author fangzhenmu
 			 * @version 1.0
-			 * @created 24-9ÔÂ-2018 14:09:56
+			 * @created 24-9æœˆ-2018 14:09:56
 			 */
 			class vdu_coordinate
 			{
@@ -51,14 +51,14 @@ namespace vdu
 				}
 
 				/**
-				 * ±íÊ¾×ø±êxÖáÊı¾İ
+				 * è¡¨ç¤ºåæ ‡xè½´æ•°æ®
 				 */
 				inline csf_double& get_x() {
 
 					return m_x;
 				}
 				/**
-				 * ±íÊ¾×ø±êxÖáÊı¾İ
+				 * è¡¨ç¤ºåæ ‡xè½´æ•°æ®
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -67,14 +67,14 @@ namespace vdu
 					m_x = newVal;
 				}
 				/**
-				 * ±íÊ¾×ø±êyÖáÊı¾İ
+				 * è¡¨ç¤ºåæ ‡yè½´æ•°æ®
 				 */
 				inline csf_double& get_y() {
 
 					return m_y;
 				}
 				/**
-				 * ±íÊ¾×ø±êyÖáÊı¾İ
+				 * è¡¨ç¤ºåæ ‡yè½´æ•°æ®
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -83,14 +83,14 @@ namespace vdu
 					m_y = newVal;
 				}
 				/**
-				 * ±íÊ¾×ø±êzÖáÊı¾İ
+				 * è¡¨ç¤ºåæ ‡zè½´æ•°æ®
 				 */
 				inline csf_double& get_z() {
 
 					return m_z;
 				}
 				/**
-				 * ±íÊ¾×ø±êzÖáÊı¾İ
+				 * è¡¨ç¤ºåæ ‡zè½´æ•°æ®
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -99,14 +99,14 @@ namespace vdu
 					m_z = newVal;
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£ºÉèÖÃ×ø±êµÄÊıÖµ
-				* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç±íÊ¾´íÎó£»
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šè®¾ç½®åæ ‡çš„æ•°å€¼
+				* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›éè¡¨ç¤ºé”™è¯¯ï¼›
 				*
-				* @param x    ±íÊ¾×ø±êxÖáÊı¾İ
+				* @param x    è¡¨ç¤ºåæ ‡xè½´æ•°æ®
 				*
-				* @param y    ±íÊ¾×ø±êyÖáÊı¾İ
+				* @param y    è¡¨ç¤ºåæ ‡yè½´æ•°æ®
 				*
-				* @param z    ±íÊ¾×ø±êzÖáÊı¾İ
+				* @param z    è¡¨ç¤ºåæ ‡zè½´æ•°æ®
 				*
 				*/
 				inline csf_int32 set_coordinate(const csf_double& x, const csf_double& y, const csf_double& z = 0.0) {
@@ -119,15 +119,15 @@ namespace vdu
 				}
 			private:
 				/**
-				 * ±íÊ¾×ø±êxÖáÊı¾İ
+				 * è¡¨ç¤ºåæ ‡xè½´æ•°æ®
 				 */
 				csf_double m_x = 0.0;
 				/**
-				 * ±íÊ¾×ø±êyÖáÊı¾İ
+				 * è¡¨ç¤ºåæ ‡yè½´æ•°æ®
 				 */
 				csf_double m_y = 0.0;
 				/**
-				 * ±íÊ¾×ø±êzÖáÊı¾İ
+				 * è¡¨ç¤ºåæ ‡zè½´æ•°æ®
 				 */
 				csf_double m_z = 0.0;
 

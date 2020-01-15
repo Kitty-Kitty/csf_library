@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:49
+*Date: 27-6æœˆ-2018 17:28:49
 *
 *Description: Class(csf_sqlite)
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace database
 		{
 			/**
-			 * ±íÊ¾sqliteÊı¾İ¿â²Ù×÷³éÏóÄÚÈİ
+			 * è¡¨ç¤ºsqliteæ•°æ®åº“æ“ä½œæŠ½è±¡å†…å®¹
 			 * @author fangzhenmu@aliyun.com
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:28:49
+			 * @created 27-6æœˆ-2018 17:28:49
 			 */
 			class csf_sqlite : public csf::core::module::device::csf_database
 			{

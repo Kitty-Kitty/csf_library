@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -25,7 +25,6 @@ csf_vm的处理逻辑相对固定，主要初始化环境操作，为系统运�
 
 #include "csf_typedef.h"
 #include "csf_default.h"
-#include "csf_shared_memory.hpp"
 #include "csf_vm.hpp"
 
 using namespace csf::core::base;
@@ -144,28 +143,21 @@ namespace csf
 				}
 				/**
 				 * 功能：
-				 *    处理当前进程的输入参数信息。
-				 * 返回：
-				 *    0   ：表示成功；
-				 *    非0 ：表示失败；
-				 */
-				csf::core::base::csf_int32 process_option();
-				/**
-				 * 功能：
-				 *    初始化共享内存资源
+				 *    该函数主要用于启动master中的所有vm
 				 * 返回：
 				 *    true  :  表示成功；
-				 *    false :  表示失败；
+				 *    false :  表示失败。
 				 */
-				csf_bool init_shared_memory();
-			private:
+				virtual csf_bool start_vm();
 				/**
-				 * 表示当前vm对象使用的共享内存
+				 * 功能：
+				 *    该函数主要用于停止master中的所有vm
+				 * 返回：
+				 *    true  :  表示成功；
+				 *    false :  表示失败。
 				 */
-				inline csf_shared_memory& get_sm() {
+				virtual csf_bool stop_vm();
 
-					return m_sm;
-				}
 				/**
 				 * 表示当前主机的名称
 				 */
@@ -183,10 +175,6 @@ namespace csf
 					m_name = newVal;
 				}
 			private:
-				/**
-				 * 表示当前vm对象使用的共享内存
-				 */
-				csf::core::module::csf_shared_memory m_sm;
 				/**
 				 * 表示当前程序的运行参数个数
 				 */

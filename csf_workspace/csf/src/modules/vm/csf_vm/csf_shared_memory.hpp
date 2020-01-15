@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -21,7 +21,9 @@
 #if !defined(CSF_SHARED_MEMORY_H_INCLUDED_)
 #define CSF_SHARED_MEMORY_H_INCLUDED_
 
+#include <iostream>
 #include <boost/interprocess/managed_shared_memory.hpp>
+#include <boost/interprocess/offset_ptr.hpp>
 #include "csf_typedef.h"
 #include "csf_default.h"
 
@@ -30,9 +32,9 @@ using namespace boost::interprocess;
 
 namespace csf
 {
-	namespace core
+	namespace modules
 	{
-		namespace module
+		namespace vm
 		{
 			/**
 			 * 实现共享内存的管理操作。在csf框架中，共享内存除了共享数据外，还用于运行时判断。
@@ -75,7 +77,7 @@ namespace csf
 				 */
 				template <typename TypeName>
 				TypeName* create_object(csf_string name) {
-					return create_object(name, 1);
+					return create_object<TypeName>(name, 1);
 				}
 				/**
 				 * 功能：
@@ -89,13 +91,14 @@ namespace csf
 				template <typename TypeName>
 				TypeName* create_object(csf_string name, csf_uint32 number) {
 
-					TypeName	*tmp_objects = csf_nullptr;
+					TypeName* tmp_objects = csf_nullptr;
 
 					if (get_smm()) {
-						tmp_objects = get_smm()->construct<TypeName>
-							(name.c_str())		//name of the object
-							[number]			//number of elements
+ 						tmp_objects = get_smm()->construct<TypeName>
+ 							(name.c_str())		//name of the object
+ 							[number]			//number of elements
 							();					//same arguments for all objects
+						//tmp_objects = get_smm()->construct<TypeName>(name.c_str())[number]();
 					}
 
 					return tmp_objects;
@@ -109,9 +112,10 @@ namespace csf
 				 * @param name
 				 */
 				template <typename TypeName>
-				csf_void destroy_object(csf_string name) {
+				csf_void destroy_object(csf_string name, TypeName* object) {
 					if (get_smm()) {
-						get_smm()->destroy<TypeName>(name);
+						//get_smm()->destroy<TypeName>(name);
+						get_smm()->destroy_ptr(object);
 					}
 				}
 				/**

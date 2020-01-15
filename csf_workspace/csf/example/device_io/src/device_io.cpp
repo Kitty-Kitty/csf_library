@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 24-7ÔÂ-2018 22:17:27
+*Date: 24-7æœˆ-2018 22:17:27
 *
-*Description: Class(device_io) ±íÊ¾Éè±¸µÄ×ÓÉè±¸ÄÚÈİ¡£
+*Description: Class(device_io) è¡¨ç¤ºè®¾å¤‡çš„å­è®¾å¤‡å†…å®¹ã€‚
 *
 *Others:
 *
@@ -37,10 +37,10 @@ device_io::~device_io() {
 
 
 /**
- * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+ * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
  * 
- * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
- * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+ * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+ * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
  */
 csf_int32 device_io::del(const csf_element& element, const csf_device_operation_callback callback) {
 
@@ -49,9 +49,9 @@ csf_int32 device_io::del(const csf_element& element, const csf_device_operation_
 
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 device_io::init(const csf_configure_manager * conf_mg) {
 
@@ -60,10 +60,10 @@ csf::core::base::csf_int32 device_io::init(const csf_configure_manager * conf_mg
 
 
 /**
- * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+ * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
  * 
- * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
- * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+ * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+ * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
  */
 csf_int32 device_io::ctrl(const csf_element& element, const csf_device_operation_callback callback) {
 
@@ -72,9 +72,9 @@ csf_int32 device_io::ctrl(const csf_element& element, const csf_device_operation
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 device_io::start(const csf_configure_manager * conf_mg) {
 
@@ -83,9 +83,9 @@ csf::core::base::csf_int32 device_io::start(const csf_configure_manager * conf_m
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 device_io::stop(const csf_configure_manager * conf_mg) {
 
@@ -94,10 +94,10 @@ csf::core::base::csf_int32 device_io::stop(const csf_configure_manager * conf_mg
 
 
 /**
- * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+ * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
  * 
- * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
- * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+ * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+ * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
  */
 csf_int32 device_io::update(const csf_element& element, const csf_device_operation_callback callback) {
 
@@ -106,10 +106,10 @@ csf_int32 device_io::update(const csf_element& element, const csf_device_operati
 
 
 /**
- * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+ * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
  * 
- * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
- * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+ * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+ * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
  */
 csf_int32 device_io::add(const csf_element& element, const csf_device_operation_callback callback) {
 

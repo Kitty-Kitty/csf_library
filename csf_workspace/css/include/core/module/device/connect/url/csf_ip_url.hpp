@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 11-7ÔÂ-2018 22:36:10
+*Date: 11-7æœˆ-2018 22:36:10
 *
 *Description: Class(csf_ip_url) 
 *
@@ -33,7 +33,7 @@ namespace csf
 				/**
 				 * @author f
 				 * @version 1.0
-				 * @created 11-7ÔÂ-2018 22:36:10
+				 * @created 11-7æœˆ-2018 22:36:10
 				 */
 				class csf_ip_url : public csf_url
 				{
@@ -43,14 +43,14 @@ namespace csf
 					virtual ~csf_ip_url();
 
 					/**
-					 * ±íÊ¾IPµØÖ·×Ö·û´®
+					 * è¡¨ç¤ºIPåœ°å€å­—ç¬¦ä¸²
 					 */
 					inline csf_string & get_ip() {
 
 						return m_ip;
 					}
 					/**
-					 * ±íÊ¾IPµØÖ·×Ö·û´®
+					 * è¡¨ç¤ºIPåœ°å€å­—ç¬¦ä¸²
 					 * 
 					 * @param newVal
 					 */
@@ -59,14 +59,14 @@ namespace csf
 						m_ip = newVal;
 					}
 					/**
-					 * »ñÈ¡¶Ë¿ÚÊı¾İ
+					 * è·å–ç«¯å£æ•°æ®
 					 */
 					inline csf::core::base::csf_ushort get_port() {
 
 						return m_port;
 					}
 					/**
-					 * ÉèÖÃ¶Ë¿ÚÊı¾İ
+					 * è®¾ç½®ç«¯å£æ•°æ®
 					 * 
 					 * @param newVal
 					 */
@@ -75,13 +75,13 @@ namespace csf
 						m_port = newVal;
 					}
 					/**
-					 * ±íÊ¾½âÎöµØÖ·º¯Êı
+					 * è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
 					 * 
-					 * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+					 * @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
 					 */
 					virtual csf_int32 parse(const csf_string& url);
 					/**
-					 * ±íÊ¾IPµØÖ·×Ö·û´®
+					 * è¡¨ç¤ºIPåœ°å€å­—ç¬¦ä¸²
 					 * 
 					 * @param newVal
 					 */
@@ -90,19 +90,19 @@ namespace csf
 						m_ip = newVal;
 					}
 					/**
-					 * ±íÊ¾½âÎöµØÖ·º¯Êı
+					 * è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
 					 * 
-					 * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+					 * @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
 					 */
 					virtual csf_int32 parse(const csf_char* url);
 
 				private:
 					/**
-					 * ±íÊ¾IPµØÖ·×Ö·û´®
+					 * è¡¨ç¤ºIPåœ°å€å­—ç¬¦ä¸²
 					 */
 					csf::core::base::csf_string m_ip = "";
 					/**
-					 * ±íÊ¾ÍøÂçµØÖ·µÄ¶Ë¿ÚÊı¾İ
+					 * è¡¨ç¤ºç½‘ç»œåœ°å€çš„ç«¯å£æ•°æ®
 					 */
 					csf::core::base::csf_ushort m_port = 0;
 

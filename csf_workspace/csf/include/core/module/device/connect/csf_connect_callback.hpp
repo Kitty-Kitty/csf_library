@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 12:54:37
+*Date: 01-10æœˆ-2018 12:54:37
 *
-*Description: Class(csf_connect_callback) ±íÊ¾Á¬½ÓµÄ·µ»Øº¯Êı
+*Description: Class(csf_connect_callback) è¡¨ç¤ºè¿æ¥çš„è¿”å›å‡½æ•°
 *
 *Others:
 *
@@ -38,45 +38,45 @@ namespace csf
 			namespace connect
 			{
 				/**
-				* ±íÊ¾¶¨ÒåÒ»¸öÍøÂçÁ¬½ÓÀà
+				* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªç½‘ç»œè¿æ¥ç±»
 				* @author fangzhenmu@aliyun.com
 				* @version 1.0
-				* @created 01-10ÔÂ-2018 12:54:36
+				* @created 01-10æœˆ-2018 12:54:36
 				*/
 				class csf_connect;
 				/**
-				* ±íÊ¾¶¨ÒåÒ»¸öÍøÂçÁ¬½Ó¹¤³§Àà
+				* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªç½‘ç»œè¿æ¥å·¥å‚ç±»
 				* @author fangzhenmu@aliyun.com
 				* @version 1.0
-				* @created 01-10ÔÂ-2018 12:54:36
+				* @created 01-10æœˆ-2018 12:54:36
 				*/
 				class csf_connect_factory;
 				/**
-				* ±íÊ¾¶¨ÒåÒ»¸öÍøÂçÁ¬½Ó¹¤³§Àà¹ÜÀíÆ÷
+				* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªç½‘ç»œè¿æ¥å·¥å‚ç±»ç®¡ç†å™¨
 				* @author fangzhenmu@aliyun.com
 				* @version 1.0
-				* @created 01-10ÔÂ-2018 12:54:36
+				* @created 01-10æœˆ-2018 12:54:36
 				*/
 				class csf_connect_factory_manager;
 				/**
-				* ±íÊ¾¶¨ÒåÒ»¸öÍøÂçÁ¬½ÓÖÇÄÜÖ¸Õë
+				* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªç½‘ç»œè¿æ¥æ™ºèƒ½æŒ‡é’ˆ
 				* @author fangzhenmu@aliyun.com
 				* @version 1.0
-				* @created 01-10ÔÂ-2018 12:54:36
+				* @created 01-10æœˆ-2018 12:54:36
 				*/
 				typedef	csf_shared_ptr<csf_connect>				csf_connect_ptr;
 				/**
-				* ±íÊ¾¶¨ÒåÒ»¸öÍøÂçÁ¬½Ó¹¤³§ÀàÖÇÄÜÖ¸Õë
+				* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªç½‘ç»œè¿æ¥å·¥å‚ç±»æ™ºèƒ½æŒ‡é’ˆ
 				* @author fangzhenmu@aliyun.com
 				* @version 1.0
-				* @created 01-10ÔÂ-2018 12:54:36
+				* @created 01-10æœˆ-2018 12:54:36
 				*/
 				typedef	csf_shared_ptr<csf_connect_factory>		csf_connect_factory_ptr;
 				/**
-				 * ±íÊ¾Á¬½ÓµÄ·µ»Øº¯Êı
+				 * è¡¨ç¤ºè¿æ¥çš„è¿”å›å‡½æ•°
 				 * @author f
 				 * @version 1.0
-				 * @created 01-10ÔÂ-2018 12:54:37
+				 * @created 01-10æœˆ-2018 12:54:37
 				 */
 				typedef csf_function<csf_int32(csf_connect_ptr
 					, csf_connect_error&)> 	csf_connect_callback;

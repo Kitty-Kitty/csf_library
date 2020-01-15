@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 14-7ÔÂ-2018 11:29:48
+*Date: 14-7æœˆ-2018 11:29:48
 *
-*Description: Class(csf_root_configure) ±íÊ¾ÏµÍ³µÄ¸ùÅäÖÃÎÄ¼ş´¦ÀíÄ£¿é£¬Ö÷Òª´¦Àí³ÌĞòµÄ¸ùÅäÖÃÎÄ¼şÄÚÈİ¡£
+*Description: Class(csf_root_configure) è¡¨ç¤ºç³»ç»Ÿçš„æ ¹é…ç½®æ–‡ä»¶å¤„ç†æ¨¡å—ï¼Œä¸»è¦å¤„ç†ç¨‹åºçš„æ ¹é…ç½®æ–‡ä»¶å†…å®¹ã€‚
 *
 *Others:
 *
@@ -24,12 +24,12 @@ using csf::core::system::csf_root_configure;
 
 
 /**
-* ±íÊ¾Ö÷ÅäÖÃÎÄ¼şÎÄ¼şÁĞ±í½ÚµãµÄÂ·¾¶ĞÅÏ¢¡£
+* è¡¨ç¤ºä¸»é…ç½®æ–‡ä»¶æ–‡ä»¶åˆ—è¡¨èŠ‚ç‚¹çš„è·¯å¾„ä¿¡æ¯ã€‚
 */
 const csf_list<csf_string> csf_root_configure::m_configure_files_items = { "configures", "configure_files" };
 
 /**
-* ±íÊ¾ÅäÖÃÎÄ¼şµÄÊôĞÔ×Ö·û´®¶¨Òå.
+* è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„å±æ€§å­—ç¬¦ä¸²å®šä¹‰.
 */
 const csf_string csf_root_configure::m_configure_file_attribute[] = { "name", "file", "format" };
 
@@ -38,11 +38,11 @@ const csf_string csf_root_configure::m_configure_file_attribute[] = { "name", "f
 
 
 /**
- * ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚ³õÊ¼»¯appµÄÅäÖÃÎÄ¼ş£¬»ñÈ¡ÅäÖÃÎÄ¼şÖĞ±£´æµÄÊôĞÔĞÅÏ¢¡£
- * ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+ * è¯¥å‡½æ•°ä¸»è¦ç”¨äºåˆå§‹åŒ–appçš„é…ç½®æ–‡ä»¶ï¼Œè·å–é…ç½®æ–‡ä»¶ä¸­ä¿å­˜çš„å±æ€§ä¿¡æ¯ã€‚
+ * è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
  *
- * @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
- * @param root_configure_file    ±íÊ¾µ±Ç°app¸ùÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
+ * @param root_configure_file    è¡¨ç¤ºå½“å‰appæ ¹é…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf_bool csf_root_configure::init_configure_manager(csf::core::system::csf_configure_manager& configure_manager, csf_configure_file& root_configure_file) {
 
@@ -51,14 +51,14 @@ csf_bool csf_root_configure::init_configure_manager(csf::core::system::csf_confi
 	csf_configure						tmp_configure;
 
 
-	//Èç¹û¸ùÅäÖÃÎÄ¼şÎª¿Õ£¬Ôò±íÊ¾´íÎóÖ±½Ó·µ»Ø
+	//å¦‚æœæ ¹é…ç½®æ–‡ä»¶ä¸ºç©ºï¼Œåˆ™è¡¨ç¤ºé”™è¯¯ç›´æ¥è¿”å›
 	if (root_configure_file.is_null()) {
 		csf_log_ex(critical, csf_log_code_critical,
 			"root configure file is null");
 		return csf_false;
 	}
 
-	//½âÎö¸ùÅäÖÃÎÄ¼şÄÚÈİ
+	//è§£ææ ¹é…ç½®æ–‡ä»¶å†…å®¹
 	tmp_int_ret = tmp_configure.set_configure_file(root_configure_file);
 	if (csf_failure == tmp_int_ret) {
 		csf_log_ex(critical, csf_log_code_critical,
@@ -74,10 +74,10 @@ csf_bool csf_root_configure::init_configure_manager(csf::core::system::csf_confi
 			root_configure_file.get_file_path().c_str());
 	}
 
-	//½«½âÎöµÄconfigureÅäÖÃÎÄ¼şÄÚÈİÌí¼Óµ½configure_managerÖĞ
+	//å°†è§£æçš„configureé…ç½®æ–‡ä»¶å†…å®¹æ·»åŠ åˆ°configure_managerä¸­
 	configure_manager.add(tmp_configure);
 
-	//»ñÈ¡Ö¸¶¨ÅäÖÃÎÄ¼şÁĞ±íµÄ½Úµã
+	//è·å–æŒ‡å®šé…ç½®æ–‡ä»¶åˆ—è¡¨çš„èŠ‚ç‚¹
 	tmp_element = tmp_configure.find_element(get_configure_files_items());
 	if (tmp_element.is_null()) {
 		csf_log_ex(critical, csf_log_code_critical,
@@ -86,14 +86,14 @@ csf_bool csf_root_configure::init_configure_manager(csf::core::system::csf_confi
 		return csf_false;
 	}
 
-	//±íÊ¾±éÀúËùÓĞ×Ó½ÚµãÄÚÈİ£¬½âÎöĞèÒªµÄÅäÖÃÎÄ¼şÄÚÈİ
+	//è¡¨ç¤ºéå†æ‰€æœ‰å­èŠ‚ç‚¹å†…å®¹ï¼Œè§£æéœ€è¦çš„é…ç½®æ–‡ä»¶å†…å®¹
 	for (auto &tmp_file : tmp_element.get_children()) {
 
 		if (tmp_file.is_null()) {
 			continue;
 		}
 
-		//´´½¨Ò»¸öconfigure_file¶ÔÏó£¬Îª´¦ÀíÒ»¸öÅäÖÃÎÄ¼ş
+		//åˆ›å»ºä¸€ä¸ªconfigure_fileå¯¹è±¡ï¼Œä¸ºå¤„ç†ä¸€ä¸ªé…ç½®æ–‡ä»¶
 		csf_configure_file			tmp_item_file(
 			tmp_file.find(m_configure_file_attribute[csf_root_configure_attribute_string_name]),
 			tmp_file.find(m_configure_file_attribute[csf_root_configure_attribute_string_file]),
@@ -104,7 +104,7 @@ csf_bool csf_root_configure::init_configure_manager(csf::core::system::csf_confi
 			continue;
 		}
 
-		//½âÎö×ÓÅäÖÃÎÄ¼şÄÚÈİ
+		//è§£æå­é…ç½®æ–‡ä»¶å†…å®¹
 		csf_configure				tmp_item_configure;
 
 		tmp_int_ret = tmp_item_configure.set_configure_file(tmp_item_file);
@@ -122,7 +122,7 @@ csf_bool csf_root_configure::init_configure_manager(csf::core::system::csf_confi
 				tmp_item_file.get_file_path().c_str());
 		}
 
-		//½«½âÎöµÄconfigureÅäÖÃÎÄ¼şÄÚÈİÌí¼Óµ½configure_managerÖĞ
+		//å°†è§£æçš„configureé…ç½®æ–‡ä»¶å†…å®¹æ·»åŠ åˆ°configure_managerä¸­
 		configure_manager.add(tmp_item_configure);
 	}
 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:38
+*Date: 27-6æœˆ-2018 17:28:38
 *
 *Description: Class(csf_csflist)
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ±íÊ¾csf·â±ÕµÄlistÀà
+			 * è¡¨ç¤ºcsfå°é—­çš„listç±»
 			 * @author Administrator
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:28:38
+			 * @created 27-6æœˆ-2018 17:28:38
 			 */
 			class csf_csflist : public csf::core::base::csf_collector
 			{

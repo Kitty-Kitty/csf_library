@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 30-6ÔÂ-2018 17:49:52
+*Date: 30-6æœˆ-2018 17:49:52
 *
 *Description: Class(csf_module_version)
 *
@@ -31,10 +31,10 @@ namespace csf
 		namespace module
 		{
 			/**
-			 * ±íÊ¾Ä£¿é°æ±¾ĞÅÏ¢
+			 * è¡¨ç¤ºæ¨¡å—ç‰ˆæœ¬ä¿¡æ¯
 			 * @author fz
 			 * @version 1.0
-			 * @created 30-6ÔÂ-2018 17:49:52
+			 * @created 30-6æœˆ-2018 17:49:52
 			 */
 			class csf_module_version : public csf::core::base::_csf_version_
 			{
@@ -44,11 +44,11 @@ namespace csf
 
 				}
 				/**
-				* @param version    Ä£¿éµÄ°æ±¾ÊıÖµĞÅÏ¢
-				* @param strver    Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
-				* @param compile    ±íÊ¾Ä£¿é±àÒëÆ÷ĞÅÏ¢
-				* @param build    Ä£¿é±àÒëÏà¹ØĞÅÏ¢£¬Ö÷ÒªÊÇÊ±¼äĞÅÏ¢
-				* @param description    Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				* @param version    æ¨¡å—çš„ç‰ˆæœ¬æ•°å€¼ä¿¡æ¯
+				* @param strver    æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
+				* @param compile    è¡¨ç¤ºæ¨¡å—ç¼–è¯‘å™¨ä¿¡æ¯
+				* @param build    æ¨¡å—ç¼–è¯‘ç›¸å…³ä¿¡æ¯ï¼Œä¸»è¦æ˜¯æ—¶é—´ä¿¡æ¯
+				* @param description    æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				*/
 				inline csf_module_version(const csf_int32 version
 					, const csf_string strver

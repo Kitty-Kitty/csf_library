@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:43
+*Date: 27-6æœˆ-2018 17:28:43
 *
 *Description: Class(csf_message)
 *
@@ -39,10 +39,10 @@ csf_message::~csf_message() {
 
 
 /**
- * ¸ù¾İcsf_message_typeºÍcallback´´½¨Ò»¸öcsf_message
+ * æ ¹æ®csf_message_typeå’Œcallbackåˆ›å»ºä¸€ä¸ªcsf_message
  * 
- * @param type    ±íÊ¾messageµÄÀàĞÍ
- * @param callback    ±íÊ¾messageµÄ»Øµ÷º¯Êı
+ * @param type    è¡¨ç¤ºmessageçš„ç±»å‹
+ * @param callback    è¡¨ç¤ºmessageçš„å›è°ƒå‡½æ•°
  */
 csf_message::csf_message(const csf_message_type type, const csf::core::system::message::csf_message_callback callback) {
 
@@ -50,10 +50,10 @@ csf_message::csf_message(const csf_message_type type, const csf::core::system::m
 
 
 /**
- * ¸ù¾İcsf_message_typeºÍcallback´´½¨Ò»¸öcsf_message
+ * æ ¹æ®csf_message_typeå’Œcallbackåˆ›å»ºä¸€ä¸ªcsf_message
  * 
- * @param type    ±íÊ¾messageµÄÀàĞÍ
- * @param callback    ±íÊ¾messageµÄ»Øµ÷º¯Êı
+ * @param type    è¡¨ç¤ºmessageçš„ç±»å‹
+ * @param callback    è¡¨ç¤ºmessageçš„å›è°ƒå‡½æ•°
  * @param element
  */
 csf_message::csf_message(const csf_message_type type, const csf::core::system::message::csf_message_callback callback, const csf_element& element) {

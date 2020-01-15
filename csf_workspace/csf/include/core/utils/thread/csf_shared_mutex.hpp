@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:49
+*Date: 19-7æœˆ-2018 20:11:49
 *
-*Description: Class(csf_shared_mutex) ±íÊ¾¹²Ïí»¥³âËøÄÚÈİ
+*Description: Class(csf_shared_mutex) è¡¨ç¤ºå…±äº«äº’æ–¥é”å†…å®¹
 *
 *Others:
 *
@@ -34,10 +34,10 @@ namespace csf
 				//typedef	std::shared_mutex				csf_shared_mutex;		//C++17
 				typedef		boost::shared_mutex				csf_shared_mutex;
 				/**
-				 * ±íÊ¾¹²Ïí»¥³âËøÄÚÈİ
+				 * è¡¨ç¤ºå…±äº«äº’æ–¥é”å†…å®¹
 				 * @author fz
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:49
+				 * @created 19-7æœˆ-2018 20:11:49
 				 */
 #if 0
 				class csf_shared_mutex

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 14-7ÔÂ-2018 10:30:55
+*Date: 14-7æœˆ-2018 10:30:55
 *
-*Description: Class(csf_container_convert) ±íÊ¾ÈİÆ÷µÄ×ª»»´¦ÀíÄ£¿é£¬Ö÷ÒªÊµÏÖÈİÆ÷»¯×Ö·û´®µÈ¹¦ÄÜ¡£
+*Description: Class(csf_container_convert) è¡¨ç¤ºå®¹å™¨çš„è½¬æ¢å¤„ç†æ¨¡å—ï¼Œä¸»è¦å®ç°å®¹å™¨åŒ–å­—ç¬¦ä¸²ç­‰åŠŸèƒ½ã€‚
 *
 *Others:
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ±íÊ¾ÈİÆ÷µÄ×ª»»´¦ÀíÄ£¿é£¬Ö÷ÒªÊµÏÖÈİÆ÷»¯×Ö·û´®µÈ¹¦ÄÜ¡£
+			 * è¡¨ç¤ºå®¹å™¨çš„è½¬æ¢å¤„ç†æ¨¡å—ï¼Œä¸»è¦å®ç°å®¹å™¨åŒ–å­—ç¬¦ä¸²ç­‰åŠŸèƒ½ã€‚
 			 * @author f
 			 * @version 1.0
-			 * @created 14-7ÔÂ-2018 10:30:55
+			 * @created 14-7æœˆ-2018 10:30:55
 			 */
 			template<typename ContainerType>
 			class csf_container_convert
@@ -40,9 +40,9 @@ namespace csf
 
 			public:
 				/**
-				* ±íÊ¾¸ùÄ¿±êÈİÆ÷¶ÔÏó
+				* è¡¨ç¤ºæ ¹ç›®æ ‡å®¹å™¨å¯¹è±¡
 				*
-				* @param container    ±íÊ¾Ä¿±êÈİÆ÷¶ÔÏó
+				* @param container    è¡¨ç¤ºç›®æ ‡å®¹å™¨å¯¹è±¡
 				*/
 				inline explicit csf_container_convert(const ContainerType& container)
 					: m_container((ContainerType&)container) {
@@ -54,7 +54,7 @@ namespace csf
 				}
 
 				/**
-				 * ¸Ãº¯ÊıÖ÷ÒªÊµÏÖ½«ÈİÆ÷¶ÔÏó×ª»»Îª×Ö·û´®ÄÚÈİ¡£
+				 * è¯¥å‡½æ•°ä¸»è¦å®ç°å°†å®¹å™¨å¯¹è±¡è½¬æ¢ä¸ºå­—ç¬¦ä¸²å†…å®¹ã€‚
 				 */
 				csf_string to_string() {
 
@@ -65,17 +65,17 @@ namespace csf
 
 					for (auto &tmp_item : get_container()) {
 
-						//±íÊ¾×ª»»³É×Ö·ûµÄÆğÊ¼±ê¼Ç
+						//è¡¨ç¤ºè½¬æ¢æˆå­—ç¬¦çš„èµ·å§‹æ ‡è®°
 						if (!i) {
 							tmp_ret_string += "{ ";
 						}
 
-						//±íÊ¾ÈİÆ÷±£´æµÄÊıÖµ
+						//è¡¨ç¤ºå®¹å™¨ä¿å­˜çš„æ•°å€¼
 						tmp_ret_string += "\"";
 						tmp_ret_string += tmp_item;
 						tmp_ret_string += "\"";
 
-						//±íÊ¾×ª»»³É×Ö·ûµÄ½áÊø±ê¼Ç
+						//è¡¨ç¤ºè½¬æ¢æˆå­—ç¬¦çš„ç»“æŸæ ‡è®°
 						if (i == (tmp_size - 1)) {
 							tmp_ret_string += " }";
 						}
@@ -89,7 +89,7 @@ namespace csf
 					return tmp_ret_string;
 				}
 				/**
-				 * ±íÊ¾×ª»»Æ÷ĞèÒª´¦ÀíµÄÄ¿±ê¶ÔÏó¡£
+				 * è¡¨ç¤ºè½¬æ¢å™¨éœ€è¦å¤„ç†çš„ç›®æ ‡å¯¹è±¡ã€‚
 				 */
 				inline ContainerType& get_container() {
 
@@ -99,14 +99,14 @@ namespace csf
 
 			private:
 				/**
-				 * ±íÊ¾×ª»»Æ÷ĞèÒª´¦ÀíµÄÄ¿±ê¶ÔÏó¡£
+				 * è¡¨ç¤ºè½¬æ¢å™¨éœ€è¦å¤„ç†çš„ç›®æ ‡å¯¹è±¡ã€‚
 				 */
 				ContainerType& m_container;
 
 				/**
-				 * ±íÊ¾×ª»»Æ÷ĞèÒª´¦ÀíµÄÄ¿±ê¶ÔÏó¡£
+				 * è¡¨ç¤ºè½¬æ¢å™¨éœ€è¦å¤„ç†çš„ç›®æ ‡å¯¹è±¡ã€‚
 				 * 
-				 * @param newVal    ±íÊ¾Ä¿±êÈİÆ÷¶ÔÏó
+				 * @param newVal    è¡¨ç¤ºç›®æ ‡å®¹å™¨å¯¹è±¡
 				 */
 				inline void set_container(const ContainerType& newVal) {
 

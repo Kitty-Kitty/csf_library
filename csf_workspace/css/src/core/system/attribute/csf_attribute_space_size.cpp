@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 11-7ÔÂ-2018 10:47:28
+*Date: 11-7æœˆ-2018 10:47:28
 *
 *Description: Class(csf_attribute_space_size)
 *
@@ -24,7 +24,7 @@ using csf::core::system::attribute::csf_attribute_space_size;
 
 
 /**
-* ±íÊ¾¿Õ¼äµ¥Î»Ãû³Æ¶¨Òå
+* è¡¨ç¤ºç©ºé—´å•ä½åç§°å®šä¹‰
 */
 const csf_unordered_map<csf_string, csf_attribute_space_size::csf_space_size_unit> csf_attribute_space_size::m_unit_name = {
 	{ "none", csf_space_size_unit_none },
@@ -36,19 +36,19 @@ const csf_unordered_map<csf_string, csf_attribute_space_size::csf_space_size_uni
 	{ "PB", csf_space_size_unit_pb }
 };
 /**
-* ±íÊ¾¸ÃÖÖ¸ñÊ½Êı¾İµÄËµÃ÷
+* è¡¨ç¤ºè¯¥ç§æ ¼å¼æ•°æ®çš„è¯´æ˜
 */
 const csf_string csf_attribute_space_size::m_usage = "usage: number unit(B|KB|MB|GB|TB|PB) . for example: 100MB";
 /**
- * ´ÓÄÚÈİÖĞ½âÎöĞèÒªµÄ²ÎÊı¡£
- * ·µ»Ø£ºture±íÊ¾½âÎö³É¹¦£»false±íÊ¾½âÎöÊ§°Ü¡£
+ * ä»å†…å®¹ä¸­è§£æéœ€è¦çš„å‚æ•°ã€‚
+ * è¿”å›ï¼štureè¡¨ç¤ºè§£ææˆåŠŸï¼›falseè¡¨ç¤ºè§£æå¤±è´¥ã€‚
  * 
- * @param content    ±íÊ¾ĞèÒª½âÎöµÄÄÚÈİĞÅÏ¢
+ * @param content    è¡¨ç¤ºéœ€è¦è§£æçš„å†…å®¹ä¿¡æ¯
  */
 csf_bool csf_attribute_space_size::parse_parametes(const csf_string& content) {
 
 	/**
-	* ±íÊ¾ºËÑé¸ñÊ½ºÍ½ØÈ¡×Ö·û´®ÕıÔò±í´ïÊ½
+	* è¡¨ç¤ºæ ¸éªŒæ ¼å¼å’Œæˆªå–å­—ç¬¦ä¸²æ­£åˆ™è¡¨è¾¾å¼
 	*/
 	std::regex					tmp_regex("(\\d+)(B|KB|MB|GB|TB|PB)");
 	std::smatch					tmp_match_result;
@@ -58,16 +58,16 @@ csf_bool csf_attribute_space_size::parse_parametes(const csf_string& content) {
 		return csf_false;
 	}
 
-	//Ê¹ÓÃÕıÔò±í´ïÊ½ºËÑéÊı¾İ½á¹¹ºÍÌáÈ¡²ÎÊı
+	//ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼æ ¸éªŒæ•°æ®ç»“æ„å’Œæå–å‚æ•°
 	if (!std::regex_match(content, tmp_match_result, tmp_regex)) {
-		//ÕıÔò±í´ïÊ½Æ¥ÅäÊ§°Ü£¬±íÊ¾Êı¾İ¸ñÊ½´íÎó
+		//æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…å¤±è´¥ï¼Œè¡¨ç¤ºæ•°æ®æ ¼å¼é”™è¯¯
 		csf_attribute_log(warning, csf_log_code_warning
 			, "content format error. %s"
 			, get_usage().c_str());
 		return csf_false;
 	}
 	else {
-		//Èç¹ûmatchÌáÈ¡µÄ²ÎÊıĞ¡ÓÚµÈÓÚĞèÒªµÄ²ÎÊı¸öÊı£¬Ôò±íÊ¾´íÎó
+		//å¦‚æœmatchæå–çš„å‚æ•°å°äºç­‰äºéœ€è¦çš„å‚æ•°ä¸ªæ•°ï¼Œåˆ™è¡¨ç¤ºé”™è¯¯
 		if (tmp_match_result.size() <= csf_attribute_space_size_parametes_size) {
 			csf_attribute_log(warning, csf_log_code_warning
 				, "content format error. parametes number[%d <= %d]. %s"
@@ -77,9 +77,9 @@ csf_bool csf_attribute_space_size::parse_parametes(const csf_string& content) {
 			return csf_false;
 		}
 
-		//»ñÈ¡"100KB"¸ñÊ½Êı¾İÖĞµÄ"100","KB"Á½¸ö×Ö·û¶Î¡£
-		//ÆäÖĞtmp_match_result[1]µÄ1¾ÍÊÇ"100"ÊıÖµÄÚÈİ£»
-		//ÆäÖĞtmp_match_result[2]µÄ2¾ÍÊÇ"KB"µÄµ¥Î»ÄÚÈİ£»
+		//è·å–"100KB"æ ¼å¼æ•°æ®ä¸­çš„"100","KB"ä¸¤ä¸ªå­—ç¬¦æ®µã€‚
+		//å…¶ä¸­tmp_match_result[1]çš„1å°±æ˜¯"100"æ•°å€¼å†…å®¹ï¼›
+		//å…¶ä¸­tmp_match_result[2]çš„2å°±æ˜¯"KB"çš„å•ä½å†…å®¹ï¼›
 		if (!get_parametes(tmp_match_result[1].str(), tmp_match_result[2].str())) {
 			csf_attribute_log(warning, csf_log_code_warning,
 				, "content format error. get parametes failed. %s"
@@ -92,11 +92,11 @@ csf_bool csf_attribute_space_size::parse_parametes(const csf_string& content) {
 
 
 /**
- * »ñÈ¡ÊıÖµºÍµ¥Î»Ïà¹ØÄÚÈİ¡£
- * ·µ»Ø£ºtrue±íÊ¾´¦Àí³É¹¦£»false±íÊ¾´¦ÀíÊ§°Ü¡£
+ * è·å–æ•°å€¼å’Œå•ä½ç›¸å…³å†…å®¹ã€‚
+ * è¿”å›ï¼štrueè¡¨ç¤ºå¤„ç†æˆåŠŸï¼›falseè¡¨ç¤ºå¤„ç†å¤±è´¥ã€‚
  * 
- * @param val    ±íÊ¾ĞèÒª´¦ÀíµÄÊıÖµÄÚÈİ
- * @param unit    ±íÊ¾¸ÃÊıÖµµÄµ¥Î»×Ö·û
+ * @param val    è¡¨ç¤ºéœ€è¦å¤„ç†çš„æ•°å€¼å†…å®¹
+ * @param unit    è¡¨ç¤ºè¯¥æ•°å€¼çš„å•ä½å­—ç¬¦
  */
 csf_bool csf_attribute_space_size::get_parametes(const csf_string& val, const csf_string& unit) {
 
@@ -105,7 +105,7 @@ csf_bool csf_attribute_space_size::get_parametes(const csf_string& val, const cs
 	csf_attribute_space_size::csf_space_size_unit		tmp_unit = csf_attribute_space_size::csf_space_size_unit::csf_space_size_unit_none;
 
 
-	//ºËÑéÊı¾İµÄºÏ·¨ĞÔ¡£Èç¹û²ÎÊıÊıÖµÎª¿Õ£¬Ôò·µ»Ø´íÎó
+	//æ ¸éªŒæ•°æ®çš„åˆæ³•æ€§ã€‚å¦‚æœå‚æ•°æ•°å€¼ä¸ºç©ºï¼Œåˆ™è¿”å›é”™è¯¯
 	if (val.empty() || unit.empty()) {
 		csf_attribute_log(warning, csf_log_code_warning,
 			"value[%s] or unit[%s] is null.",
@@ -114,7 +114,7 @@ csf_bool csf_attribute_space_size::get_parametes(const csf_string& val, const cs
 		return csf_false;
 	}
 
-	//½«×Ö·û´®µÄÊ±¼äµ¥Î»¸ñÊ½×ª»»ÎªÊı×ÖÀàĞÍµ¥Î»
+	//å°†å­—ç¬¦ä¸²çš„æ—¶é—´å•ä½æ ¼å¼è½¬æ¢ä¸ºæ•°å­—ç±»å‹å•ä½
 	tmp_unit = convert(unit);
 	if (csf_attribute_space_size::csf_space_size_unit::csf_space_size_unit_none == tmp_unit) {
 		csf_attribute_log(warning, csf_log_code_warning,
@@ -123,7 +123,7 @@ csf_bool csf_attribute_space_size::get_parametes(const csf_string& val, const cs
 		return csf_false;
 	}
 
-	//½«×Ö·û´®Êı×Ö×ª»»Îªint64¸ñÊ½µÄÊıÖµ
+	//å°†å­—ç¬¦ä¸²æ•°å­—è½¬æ¢ä¸ºint64æ ¼å¼çš„æ•°å€¼
 	tmp_value = csf_atoint64(val.c_str());
 	if (tmp_value < 0) {
 		csf_attribute_log(warning, csf_log_code_warning,
@@ -132,14 +132,14 @@ csf_bool csf_attribute_space_size::get_parametes(const csf_string& val, const cs
 		return csf_false;
 	}
 
-	//½«Ô´Ê±¼äµ¥Î»Êı¾İ×ª»»ÎªÄ¿±êµ¥Î»Ê±¼äÊı¾İ
+	//å°†æºæ—¶é—´å•ä½æ•°æ®è½¬æ¢ä¸ºç›®æ ‡å•ä½æ—¶é—´æ•°æ®
 	if (csf_false == convert(tmp_dest, get_unit(), tmp_value, tmp_unit)) {
 		csf_attribute_log(warning, csf_log_code_warning,
 			"convert time format failed.");
 		return csf_false;
 	}
 	else {
-		//Èç¹û×ª»»³É¹¦Ôò±£´æÊı¾İ
+		//å¦‚æœè½¬æ¢æˆåŠŸåˆ™ä¿å­˜æ•°æ®
 		set_value(tmp_dest);
 	}
 
@@ -148,24 +148,24 @@ csf_bool csf_attribute_space_size::get_parametes(const csf_string& val, const cs
 
 
 /**
- * ±íÊ¾´¦Àícsf_attributeÊôĞÔ²Ù×÷¡£ÕâÀïÓëcsf_attribute_templateÖĞ²»Í¬µÄÊÇ£¬ÕâÀïÌí¼ÓÒ»²ãprocess_numberº¯ÊıÖ÷ÒªÊÇÎªÁË
- * ÊµÏÖÊı¾İ±ß½çµÄÍ³Ò»´¦Àí¡£
- * ·µ»Ø£ºtrue±íÊ¾Ê§°Ü£»false±íÊ¾³É¹¦¡£
+ * è¡¨ç¤ºå¤„ç†csf_attributeå±æ€§æ“ä½œã€‚è¿™é‡Œä¸csf_attribute_templateä¸­ä¸åŒçš„æ˜¯ï¼Œè¿™é‡Œæ·»åŠ ä¸€å±‚process_numberå‡½æ•°ä¸»è¦æ˜¯ä¸ºäº†
+ * å®ç°æ•°æ®è¾¹ç•Œçš„ç»Ÿä¸€å¤„ç†ã€‚
+ * è¿”å›ï¼štrueè¡¨ç¤ºå¤±è´¥ï¼›falseè¡¨ç¤ºæˆåŠŸã€‚
  * 
- * @param configure_manager    ±íÊ¾±£´æÅäÖÃ¹ÜÀíÆ÷¶ÔÏó
- * @param alias    ±íÊ¾µ±Ç°ÊôĞÔ±ğÃû£¬Èç¹ûÊôĞÔÃû³ÆÎª¿ÕÔòÔòÊ¹ÓÃ¸Ã±ğÃû¡£
+ * @param configure_manager    è¡¨ç¤ºä¿å­˜é…ç½®ç®¡ç†å™¨å¯¹è±¡
+ * @param alias    è¡¨ç¤ºå½“å‰å±æ€§åˆ«åï¼Œå¦‚æœå±æ€§åç§°ä¸ºç©ºåˆ™åˆ™ä½¿ç”¨è¯¥åˆ«åã€‚
  */
 csf_bool csf_attribute_space_size::process_number(const csf_configure_manager& configure_manager, const csf_string& alias) {
 
 	csf_string					tmp_content = "";
 
 
-	//µ÷ÓÃ»ù´¡¿âµÄ³õÊ¼»¯º¯Êı»ñÈ¡ÄÚÈİÊıÖµ£¬Ö÷ÒªÊÇ»ñÈ¡contentÊıÖµ
+	//è°ƒç”¨åŸºç¡€åº“çš„åˆå§‹åŒ–å‡½æ•°è·å–å†…å®¹æ•°å€¼ï¼Œä¸»è¦æ˜¯è·å–contentæ•°å€¼
 	if (csf_false == csf_attribute::init(configure_manager, alias)) {
 		return csf_false;
 	}
 
-	//É¾³ıÄÚÈİÖĞµÄËùÓĞ¿Õ°××Ö·û
+	//åˆ é™¤å†…å®¹ä¸­çš„æ‰€æœ‰ç©ºç™½å­—ç¬¦
 	tmp_content = shrink(get_content());
 	if (tmp_content.empty()) {
 		csf_attribute_log(warning, csf_log_code_warning,
@@ -173,7 +173,7 @@ csf_bool csf_attribute_space_size::process_number(const csf_configure_manager& c
 		return csf_false;
 	}
 
-	//½âÎö´ÓÅäÖÃÎÄ¼şÖĞ¶ÁÈ¡µÄÊôĞÔÊı¾İ
+	//è§£æä»é…ç½®æ–‡ä»¶ä¸­è¯»å–çš„å±æ€§æ•°æ®
 	if (csf_false == parse_parametes(tmp_content)) {
 		return csf_false;
 	}

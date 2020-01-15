@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 24-9ÔÂ-2018 14:09:58
+*Date: 24-9æœˆ-2018 14:09:58
 *
-*Description: Class(vdu_shape_convert) Ö÷ÒªÊµÏÖ½«ÆäËûµÄÊı¾İ¸ñÊ½×ª»»Îªvdu_shapeÊı¾İÀàĞÍ
+*Description: Class(vdu_shape_convert) ä¸»è¦å®ç°å°†å…¶ä»–çš„æ•°æ®æ ¼å¼è½¬æ¢ä¸ºvdu_shapeæ•°æ®ç±»å‹
 *
 *Others:
 *
@@ -30,10 +30,10 @@ namespace vdu
 		namespace base
 		{
 			/**
-			 * Ö÷ÒªÊµÏÖ½«ÆäËûµÄÊı¾İ¸ñÊ½×ª»»Îªvdu_shapeÊı¾İÀàĞÍ
+			 * ä¸»è¦å®ç°å°†å…¶ä»–çš„æ•°æ®æ ¼å¼è½¬æ¢ä¸ºvdu_shapeæ•°æ®ç±»å‹
 			 * @author fangzhenmu
 			 * @version 1.0
-			 * @created 24-9ÔÂ-2018 14:09:58
+			 * @created 24-9æœˆ-2018 14:09:58
 			 */
 			class vdu_shape_convert
 			{

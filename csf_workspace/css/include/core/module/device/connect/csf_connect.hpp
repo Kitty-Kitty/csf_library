@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:36
+*Date: 27-6æœˆ-2018 17:28:36
 *
 *Description: Class(csf_connect)
 *
@@ -34,10 +34,10 @@ namespace csf
 			namespace device
 			{
 				/**
-				 * ±íÊ¾Í¨ĞÅ¿âÄÚÈİ
+				 * è¡¨ç¤ºé€šä¿¡åº“å†…å®¹
 				 * @author fangzhenmu@aliyun.com
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:36
+				 * @created 27-6æœˆ-2018 17:28:36
 				 */
 				class csf_connect : public csf::core::module::device::csf_connect_interface
 				{
@@ -47,9 +47,9 @@ namespace csf
 					virtual ~csf_connect();
 
 					/**
-					 * ±íÊ¾Í¨¹ıfactory´´½¨Ò»¸öconnect
+					 * è¡¨ç¤ºé€šè¿‡factoryåˆ›å»ºä¸€ä¸ªconnect
 					 * 
-					 * @param factory    ±íÊ¾ĞèÒª´´½¨connectµÄ¹¤³§Àà
+					 * @param factory    è¡¨ç¤ºéœ€è¦åˆ›å»ºconnectçš„å·¥å‚ç±»
 					 */
 					csf_void csf_connect(csf_connect_factory* factory);
 					inline csf::core::system::csf_configure_manager get_configure_manager() {
@@ -57,9 +57,9 @@ namespace csf
 						return m_configure_manager;
 					}
 					/**
-					 * Ä£¿é³õÊ¼»¯
+					 * æ¨¡å—åˆå§‹åŒ–
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
 					/**
@@ -71,26 +71,26 @@ namespace csf
 						m_configure_manager = newVal;
 					}
 					/**
-					 * Ä£¿éÆô¶¯
+					 * æ¨¡å—å¯åŠ¨
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * Ä£¿éÍ£Ö¹
+					 * æ¨¡å—åœæ­¢
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * ±íÊ¾Á¬½ÓµÄÀàĞÍ
+					 * è¡¨ç¤ºè¿æ¥çš„ç±»å‹
 					 */
 					inline csf::core::module::device::csf_connect_type get_type() {
 
 						return m_type;
 					}
 					/**
-					 * ±íÊ¾Á¬½ÓµÄÀàĞÍ
+					 * è¡¨ç¤ºè¿æ¥çš„ç±»å‹
 					 * 
 					 * @param newVal
 					 */
@@ -105,24 +105,24 @@ namespace csf
 					 */
 					csf_int32 set_remote_url(csf_url& newVal);
 					/**
-					 * ±íÊ¾±¾µØµÄÖ÷»úµØÖ·
+					 * è¡¨ç¤ºæœ¬åœ°çš„ä¸»æœºåœ°å€
 					 */
 					csf_url& get_local_url();
 					/**
-					 * ±íÊ¾±¾µØµÄÖ÷»úµØÖ·
+					 * è¡¨ç¤ºæœ¬åœ°çš„ä¸»æœºåœ°å€
 					 * 
 					 * @param newVal
 					 */
 					csf_int32 set_local_url(csf_url& newVal);
 					/**
-					 * ±íÊ¾Í¬²½±êÖ¾Î»£¬Éè±¸¸Ã±êÊ¶Î»À´Ç¿ÖÆÍ¨ĞÅ²ÉÓÃÍ¬²½·¢ËÍ¡£µ±sync=true±íÊ¾²ÉÓÃÍ¬²½·½Ê½·¢ËÍ¡£
+					 * è¡¨ç¤ºåŒæ­¥æ ‡å¿—ä½ï¼Œè®¾å¤‡è¯¥æ ‡è¯†ä½æ¥å¼ºåˆ¶é€šä¿¡é‡‡ç”¨åŒæ­¥å‘é€ã€‚å½“sync=trueè¡¨ç¤ºé‡‡ç”¨åŒæ­¥æ–¹å¼å‘é€ã€‚
 					 */
 					inline csf_bool get_sync() {
 
 						return m_sync;
 					}
 					/**
-					 * ±íÊ¾Í¬²½±êÖ¾Î»£¬Éè±¸¸Ã±êÊ¶Î»À´Ç¿ÖÆÍ¨ĞÅ²ÉÓÃÍ¬²½·¢ËÍ¡£µ±sync=true±íÊ¾²ÉÓÃÍ¬²½·½Ê½·¢ËÍ¡£
+					 * è¡¨ç¤ºåŒæ­¥æ ‡å¿—ä½ï¼Œè®¾å¤‡è¯¥æ ‡è¯†ä½æ¥å¼ºåˆ¶é€šä¿¡é‡‡ç”¨åŒæ­¥å‘é€ã€‚å½“sync=trueè¡¨ç¤ºé‡‡ç”¨åŒæ­¥æ–¹å¼å‘é€ã€‚
 					 * 
 					 * @param newVal
 					 */
@@ -131,14 +131,14 @@ namespace csf
 						m_sync = newVal;
 					}
 					/**
-					 * ±íÊ¾ÍøÂçµÄ×´Ì¬ĞÅÏ¢
+					 * è¡¨ç¤ºç½‘ç»œçš„çŠ¶æ€ä¿¡æ¯
 					 */
 					inline csf_uint32 get_status() {
 
 						return m_status;
 					}
 					/**
-					 * ±íÊ¾ÍøÂçµÄ×´Ì¬ĞÅÏ¢
+					 * è¡¨ç¤ºç½‘ç»œçš„çŠ¶æ€ä¿¡æ¯
 					 * 
 					 * @param newVal
 					 */
@@ -147,11 +147,11 @@ namespace csf
 						m_status = newVal;
 					}
 					/**
-					 * ±íÊ¾´´½¨connectµÄ¹¤³§ÀàµØÖ·
+					 * è¡¨ç¤ºåˆ›å»ºconnectçš„å·¥å‚ç±»åœ°å€
 					 */
 					csf_connect_factory* get_factory();
 					/**
-					 * ±íÊ¾´´½¨connectµÄ¹¤³§ÀàµØÖ·
+					 * è¡¨ç¤ºåˆ›å»ºconnectçš„å·¥å‚ç±»åœ°å€
 					 * 
 					 * @param newVal
 					 */
@@ -163,211 +163,211 @@ namespace csf
 					 */
 					void set_read_timeout(csf_uint32 newVal);
 					/**
-					 * ±íÊ¾Ğ´³¬Ê±Ê±¼ä£¬µ¥Î»ÎªºÁÃë¡£
+					 * è¡¨ç¤ºå†™è¶…æ—¶æ—¶é—´ï¼Œå•ä½ä¸ºæ¯«ç§’ã€‚
 					 */
 					csf_uint32 get_write_timeout();
 					/**
-					 * ±íÊ¾Ğ´³¬Ê±Ê±¼ä£¬µ¥Î»ÎªºÁÃë¡£
+					 * è¡¨ç¤ºå†™è¶…æ—¶æ—¶é—´ï¼Œå•ä½ä¸ºæ¯«ç§’ã€‚
 					 * 
 					 * @param newVal
 					 */
 					void set_write_timeout(csf_uint32 newVal);
 					/**
-					 * ±íÊ¾´ò¿ªÁ¬½ÓĞÅÏ¢
+					 * è¡¨ç¤ºæ‰“å¼€è¿æ¥ä¿¡æ¯
 					 * 
-					 * @param url    ±íÊ¾Á¬½ÓµØÖ·
+					 * @param url    è¡¨ç¤ºè¿æ¥åœ°å€
 					 */
 					virtual void open(const csf_url& url);
 					/**
-					 * ±íÊ¾¹Ø±ÕÁ¬½Ó
+					 * è¡¨ç¤ºå…³é—­è¿æ¥
 					 */
 					virtual csf::core::base::csf_uint32 close();
 					/**
-					 * ±íÊ¾¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÁ´±íÖĞ
+					 * è¡¨ç¤ºè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜é“¾è¡¨ä¸­
 					 * 
-					 * @param chain    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄcsf_csfstring
-					 * @param url    ±íÊ¾·¢ËÍÊı¾İµÄÔ¶¶ËµØÖ·
-					 * @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+					 * @param chain    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„csf_csfstring
+					 * @param url    è¡¨ç¤ºå‘é€æ•°æ®çš„è¿œç«¯åœ°å€
+					 * @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 read(const csf_chain& chain, const csf_url& url, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾Ğ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ
+					 * è¡¨ç¤ºå†™å…¥æŒ‡å®šç¼“å­˜çš„å†…å®¹
 					 * 
-					 * @param buf    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-					 * @param len    ±íÊ¾ÄÚÈİ»º´æµÄ³¤¶È
-					 * @param url    ±íÊ¾ĞèÒª·¢ËÍÊı¾İµÄÄ¿µÄµØÖ·
-					 * @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+					 * @param buf    è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜åœ°å€
+					 * @param len    è¡¨ç¤ºå†…å®¹ç¼“å­˜çš„é•¿åº¦
+					 * @param url    è¡¨ç¤ºéœ€è¦å‘é€æ•°æ®çš„ç›®çš„åœ°å€
+					 * @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, const csf_url& url, const csf_connect_callback callback = csf_null);
 					virtual void set_option();
 					virtual void get_option();
 					/**
-					 * ±íÊ¾Ğ´Èëcsf_bufferÄÚÈİ
+					 * è¡¨ç¤ºå†™å…¥csf_bufferå†…å®¹
 					 * 
-					 * @param buffer    ±íÊ¾ĞèÒªĞ´ÈëµÄcsf_bufferÄÚÈİ
-					 * @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+					 * @param buffer    è¡¨ç¤ºéœ€è¦å†™å…¥çš„csf_bufferå†…å®¹
+					 * @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 write(const csf_buffer& buffer, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾·¢ËÍcsf_csfstringÄÚÈİ
+					 * è¡¨ç¤ºå‘é€csf_csfstringå†…å®¹
 					 * 
-					 * @param csfstr    ±íÊ¾csf_csfstringµÄÄÚÈİ
-					 * @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+					 * @param csfstr    è¡¨ç¤ºcsf_csfstringçš„å†…å®¹
+					 * @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 write(const csf_csfstring& csfstr, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾·¢ËÍcsf_csfstringÄÚÈİ
+					 * è¡¨ç¤ºå‘é€csf_csfstringå†…å®¹
 					 * 
-					 * @param chain    ±íÊ¾csf_chainµÄÄÚÈİ
-					 * @param url    ±íÊ¾ĞèÒª·¢ËÍÊı¾İµÄÄ¿µÄµØÖ·
-					 * @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+					 * @param chain    è¡¨ç¤ºcsf_chainçš„å†…å®¹
+					 * @param url    è¡¨ç¤ºéœ€è¦å‘é€æ•°æ®çš„ç›®çš„åœ°å€
+					 * @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 write(const csf_chain& chain, const csf_url& url, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾Ğ´Èëcsf_bufferÄÚÈİ
+					 * è¡¨ç¤ºå†™å…¥csf_bufferå†…å®¹
 					 * 
-					 * @param buffer    ±íÊ¾ĞèÒªĞ´ÈëµÄcsf_bufferÄÚÈİ
-					 * @param url    ±íÊ¾ĞèÒª·¢ËÍÊı¾İµÄÄ¿µÄµØÖ·
-					 * @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+					 * @param buffer    è¡¨ç¤ºéœ€è¦å†™å…¥çš„csf_bufferå†…å®¹
+					 * @param url    è¡¨ç¤ºéœ€è¦å‘é€æ•°æ®çš„ç›®çš„åœ°å€
+					 * @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 write(const csf_buffer& buffer, const csf_url& url, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾Ğ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ
+					 * è¡¨ç¤ºå†™å…¥æŒ‡å®šç¼“å­˜çš„å†…å®¹
 					 * 
-					 * @param buf    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-					 * @param len    ±íÊ¾ÄÚÈİ»º´æµÄ³¤¶È
-					 * @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+					 * @param buf    è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜åœ°å€
+					 * @param len    è¡¨ç¤ºå†…å®¹ç¼“å­˜çš„é•¿åº¦
+					 * @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 write(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ
+					 * è¡¨ç¤ºè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜ä½ç½®
 					 * 
-					 * @param buf    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄÖ¸¶¨»º´æµØÖ·
+					 * @param buf    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„æŒ‡å®šç¼“å­˜åœ°å€
 					 * 
-					 * @param len    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄÖ¸¶¨»º´æ³¤¶È
-					 * @param url    ±íÊ¾·¢ËÍÊı¾İµÄÔ¶¶ËµØÖ·
-					 * @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+					 * @param len    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„æŒ‡å®šç¼“å­˜é•¿åº¦
+					 * @param url    è¡¨ç¤ºå‘é€æ•°æ®çš„è¿œç«¯åœ°å€
+					 * @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 read(const csf_uchar* buf, const csf_uint32 len, const csf_url& url, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ
+					 * è¡¨ç¤ºè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜ä½ç½®
 					 * 
-					 * @param buffer    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄcsf_buffer
-					 * @param url    ±íÊ¾·¢ËÍÊı¾İµÄÔ¶¶ËµØÖ·
-					 * @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+					 * @param buffer    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„csf_buffer
+					 * @param url    è¡¨ç¤ºå‘é€æ•°æ®çš„è¿œç«¯åœ°å€
+					 * @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 read(const csf_buffer& buffer, const csf_url& url, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ
+					 * è¡¨ç¤ºè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜ä½ç½®
 					 * 
-					 * @param buffer    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄcsf_buffer
-					 * @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+					 * @param buffer    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„csf_buffer
+					 * @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 read(const csf_buffer& buffer, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ
+					 * è¡¨ç¤ºè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜ä½ç½®
 					 * 
-					 * @param buf    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄÖ¸¶¨»º´æµØÖ·
+					 * @param buf    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„æŒ‡å®šç¼“å­˜åœ°å€
 					 * 
-					 * @param len    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄÖ¸¶¨»º´æ³¤¶È
-					 * @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+					 * @param len    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„æŒ‡å®šç¼“å­˜é•¿åº¦
+					 * @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 read(const csf_uchar* buf, const csf_uint32 len, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ
+					 * è¡¨ç¤ºè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜ä½ç½®
 					 * 
-					 * @param csfstr    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄcsf_csfstring
-					 * @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+					 * @param csfstr    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„csf_csfstring
+					 * @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 read(const csf_csfstring& csfstr, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾·¢ËÍcsf_csfstringÄÚÈİ
+					 * è¡¨ç¤ºå‘é€csf_csfstringå†…å®¹
 					 * 
-					 * @param csfstr    ±íÊ¾csf_csfstringµÄÄÚÈİ
-					 * @param url    ±íÊ¾ĞèÒª·¢ËÍÊı¾İµÄÄ¿µÄµØÖ·
-					 * @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+					 * @param csfstr    è¡¨ç¤ºcsf_csfstringçš„å†…å®¹
+					 * @param url    è¡¨ç¤ºéœ€è¦å‘é€æ•°æ®çš„ç›®çš„åœ°å€
+					 * @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 write(const csf_csfstring& csfstr, const csf_url& url, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾ÉèÖÃ¶Á³¬Ê±Ê±¼ä
+					 * è¡¨ç¤ºè®¾ç½®è¯»è¶…æ—¶æ—¶é—´
 					 * 
 					 * @param timeout_ms
-					 * @param callback    ±íÊ¾³¬Ê±»Øµ÷º¯Êı¡£
+					 * @param callback    è¡¨ç¤ºè¶…æ—¶å›è°ƒå‡½æ•°ã€‚
 					 */
 					virtual csf_int32 set_read_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback);
 					/**
-					 * ±íÊ¾·¢ËÍcsf_csfstringÄÚÈİ
+					 * è¡¨ç¤ºå‘é€csf_csfstringå†…å®¹
 					 * 
-					 * @param chain    ±íÊ¾csf_chainµÄÄÚÈİ
-					 * @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+					 * @param chain    è¡¨ç¤ºcsf_chainçš„å†…å®¹
+					 * @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 write(const csf_chain& chain, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾ÉèÖÃĞ´³¬Ê±Ê±¼ä
+					 * è¡¨ç¤ºè®¾ç½®å†™è¶…æ—¶æ—¶é—´
 					 * 
 					 * @param timeout_ms
-					 * @param callback    ±íÊ¾³¬Ê±»Øµ÷º¯Êı¡£
+					 * @param callback    è¡¨ç¤ºè¶…æ—¶å›è°ƒå‡½æ•°ã€‚
 					 */
 					virtual csf_int32 set_write_timeout(const csf_uint32 timeout_ms, const csf_connect_callback callback);
 					/**
-					 * ±íÊ¾¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ
+					 * è¡¨ç¤ºè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜ä½ç½®
 					 * 
-					 * @param csfstr    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄcsf_csfstring
-					 * @param url    ±íÊ¾·¢ËÍÊı¾İµÄÔ¶¶ËµØÖ·
-					 * @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+					 * @param csfstr    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„csf_csfstring
+					 * @param url    è¡¨ç¤ºå‘é€æ•°æ®çš„è¿œç«¯åœ°å€
+					 * @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 read(const csf_csfstring& csfstr, const csf_url& url, const csf_connect_callback callback = csf_null);
 					/**
-					 * ±íÊ¾¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÁ´±íÖĞ
+					 * è¡¨ç¤ºè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜é“¾è¡¨ä¸­
 					 * 
-					 * @param chain    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄcsf_csfstring
-					 * @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+					 * @param chain    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„csf_csfstring
+					 * @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 read(const csf_chain& chain, const csf_connect_callback callback = csf_null);
 
 				private:
 					/**
-					 * ±íÊ¾Á¬½ÓµÄÀàĞÍ
+					 * è¡¨ç¤ºè¿æ¥çš„ç±»å‹
 					 */
 					csf::core::module::device::csf_connect_type m_type = csf_connect_type_none;
 					/**
-					 * ±íÊ¾Ô¶¶ËµÄÖ÷»úµØÖ·
+					 * è¡¨ç¤ºè¿œç«¯çš„ä¸»æœºåœ°å€
 					 */
 					csf::core::module::device::csf_url m_remote_url;
 					/**
-					 * ±íÊ¾±¾µØµÄÖ÷»úµØÖ·
+					 * è¡¨ç¤ºæœ¬åœ°çš„ä¸»æœºåœ°å€
 					 */
 					csf::core::module::device::csf_url m_local_url;
 					/**
-					 * ±íÊ¾Í¬²½±êÖ¾Î»£¬Éè±¸¸Ã±êÊ¶Î»À´Ç¿ÖÆÍ¨ĞÅ²ÉÓÃÍ¬²½·¢ËÍ¡£µ±sync=true±íÊ¾²ÉÓÃÍ¬²½·½Ê½·¢ËÍ¡£
+					 * è¡¨ç¤ºåŒæ­¥æ ‡å¿—ä½ï¼Œè®¾å¤‡è¯¥æ ‡è¯†ä½æ¥å¼ºåˆ¶é€šä¿¡é‡‡ç”¨åŒæ­¥å‘é€ã€‚å½“sync=trueè¡¨ç¤ºé‡‡ç”¨åŒæ­¥æ–¹å¼å‘é€ã€‚
 					 */
 					csf_bool m_sync = csf_false;
 					/**
-					 * ±íÊ¾ÍøÂçµÄ×´Ì¬ĞÅÏ¢
+					 * è¡¨ç¤ºç½‘ç»œçš„çŠ¶æ€ä¿¡æ¯
 					 */
 					csf_uint32 m_status = 0;
 					/**
-					 * ±íÊ¾´´½¨connectµÄ¹¤³§ÀàµØÖ·
+					 * è¡¨ç¤ºåˆ›å»ºconnectçš„å·¥å‚ç±»åœ°å€
 					 */
 					csf_connect_factory* m_factory = csf_null;
 					/**
-					 * ±íÊ¾¶Á³¬Ê±Ê±¼ä£¬µ¥Î»ÎªºÁÃë¡£
+					 * è¡¨ç¤ºè¯»è¶…æ—¶æ—¶é—´ï¼Œå•ä½ä¸ºæ¯«ç§’ã€‚
 					 */
 					csf_uint32 m_read_timeout = 0;
 					/**
-					 * ±íÊ¾Ğ´³¬Ê±Ê±¼ä£¬µ¥Î»ÎªºÁÃë¡£
+					 * è¡¨ç¤ºå†™è¶…æ—¶æ—¶é—´ï¼Œå•ä½ä¸ºæ¯«ç§’ã€‚
 					 */
 					csf_uint32 m_write_timeout = 0;
 					/**
-					 * ±íÊ¾¶Á³¬Ê±¶¨Ê±Æ÷¡£
+					 * è¡¨ç¤ºè¯»è¶…æ—¶å®šæ—¶å™¨ã€‚
 					 */
 					csf_deadline_timer m_read_timer;
 					/**
-					 * ±íÊ¾Ğ´³¬Ê±¶¨Ê±Æ÷¡£
+					 * è¡¨ç¤ºå†™è¶…æ—¶å®šæ—¶å™¨ã€‚
 					 */
 					csf_deadline_timer m_write_timer;
 					/**
-					 * ±íÊ¾Á¬½ÓµÄ¹¤³§¶ÔÏó
+					 * è¡¨ç¤ºè¿æ¥çš„å·¥å‚å¯¹è±¡
 					 */
 					csf::core::module::device::csf_connect_factory *m_connect_factory;
 

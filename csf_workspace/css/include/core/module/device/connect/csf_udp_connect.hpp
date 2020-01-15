@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:53
+*Date: 27-6æœˆ-2018 17:28:53
 *
 *Description: Class(csf_udp_connect)
 *
@@ -31,10 +31,10 @@ namespace csf
 			namespace device
 			{
 				/**
-				 * ±íÊ¾udpÁ¬½Ó
+				 * è¡¨ç¤ºudpè¿žæŽ¥
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:53
+				 * @created 27-6æœˆ-2018 17:28:53
 				 */
 				class csf_udp_connect : public csf::core::module::device::csf_dgram_connect
 				{

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 04-7ÔÂ-2018 22:13:15
+*Date: 04-7æœˆ-2018 22:13:15
 *
 *Description: Class(csf_attribute_boundary)
 *
@@ -25,13 +25,13 @@ using csf::core::system::attribute::csf_attribute_boundary;
 
 
 /**
-* ±íÊ¾ÅäÖÃ¸÷¸ö·ûºÅ´ú±í¼°¶ÔÓ¦µÄ²Ù×÷·û
+* è¡¨ç¤ºé…ç½®å„ä¸ªç¬¦å·ä»£è¡¨åŠå¯¹åº”çš„æ“ä½œç¬¦
 * @author fz
 * @version 1.0
-* @created 04-7ÔÂ-2018 22:13:15
+* @created 04-7æœˆ-2018 22:13:15
 */
 std::map<std::string, std::function<csf_bool(const csf_int64, const csf_int64, const csf_int64)>> _functions = {
-	//´¦Àí¡°()¡±µÄÁ½±ß²»µÈÇé¿ö£¬ÀıÈç:(-n, 100)
+	//å¤„ç†â€œ()â€çš„ä¸¤è¾¹ä¸ç­‰æƒ…å†µï¼Œä¾‹å¦‚:(-n, 100)
 	{ "()", [&](const csf_int64 val, const csf_int64 lower, const csf_int64 upper) -> csf_bool {
 			if (lower < val && val < upper) {
 				return csf_true;
@@ -39,7 +39,7 @@ std::map<std::string, std::function<csf_bool(const csf_int64, const csf_int64, c
 			return csf_false;
 		}
 	},
-	//´¦Àí¡°[)¡±Çé¿ö£¬ÀıÈç:[0, 100)
+	//å¤„ç†â€œ[)â€æƒ…å†µï¼Œä¾‹å¦‚:[0, 100)
 	{ "[)", [&](const csf_int64 val, const csf_int64 lower, const csf_int64 upper) -> csf_bool {
 			if (lower <= val && val < upper) {
 				return csf_true;
@@ -47,7 +47,7 @@ std::map<std::string, std::function<csf_bool(const csf_int64, const csf_int64, c
 			return csf_false;
 		}
 	},
-	//´¦Àí¡°(]¡±Çé¿ö£¬ÀıÈç:(0, 100]
+	//å¤„ç†â€œ(]â€æƒ…å†µï¼Œä¾‹å¦‚:(0, 100]
 	{ "(]", [&](const csf_int64 val, const csf_int64 lower, const csf_int64 upper) -> csf_bool {
 			if (lower < val && val <= upper) {
 				return csf_true;
@@ -55,7 +55,7 @@ std::map<std::string, std::function<csf_bool(const csf_int64, const csf_int64, c
 			return csf_false;
 		}
 	},
-	//´¦Àí¡°[]¡±Çé¿ö£¬ÀıÈç:[0, 100]
+	//å¤„ç†â€œ[]â€æƒ…å†µï¼Œä¾‹å¦‚:[0, 100]
 	{ "[]", [&](const csf_int64 val, const csf_int64 lower, const csf_int64 upper) -> csf_bool {
 			if (lower <= val && val <= upper) {
 				return csf_true;
@@ -68,19 +68,19 @@ std::map<std::string, std::function<csf_bool(const csf_int64, const csf_int64, c
 const std::map < std::string, std::function<csf_bool(const csf_int64, const csf_int64, const csf_int64)>> csf_attribute_boundary::m_functions = _functions;
 
 /**
-* ±íÊ¾boundaryµÄÊ¹ÓÃËµÃ÷
+* è¡¨ç¤ºboundaryçš„ä½¿ç”¨è¯´æ˜
 * @author fz
 * @version 1.0
-* @created 04-7ÔÂ-2018 22:13:15
+* @created 04-7æœˆ-2018 22:13:15
 */
 const csf_string csf_attribute_boundary::m_usage = "usage: (lower_boundary, upper_boundary] . for example: (0, 100] or (-n, 100]";
 
 /**
-* ±íÊ¾¸ù¾İÏŞÖÆ×Ö·û´®´´½¨Ğ£Ñé¶ÔÏó¡£
-* ÆäÖĞ¸ñÊ½²ÉÓÃÊı×ÖÇø¼ä¸ñÊ½£¬ÀıÈç:(-n, 100), [0, 100]¡£ÆäÖĞ¡°(¡±±íÊ¾²»µÈÓÚ±ß½ç£»¡°[¡±±íÊ¾µÈÓÚ±ß½ç²Ù×÷¡£
+* è¡¨ç¤ºæ ¹æ®é™åˆ¶å­—ç¬¦ä¸²åˆ›å»ºæ ¡éªŒå¯¹è±¡ã€‚
+* å…¶ä¸­æ ¼å¼é‡‡ç”¨æ•°å­—åŒºé—´æ ¼å¼ï¼Œä¾‹å¦‚:(-n, 100), [0, 100]ã€‚å…¶ä¸­â€œ(â€è¡¨ç¤ºä¸ç­‰äºè¾¹ç•Œï¼›â€œ[â€è¡¨ç¤ºç­‰äºè¾¹ç•Œæ“ä½œã€‚
 *
-* @param boundary    ÆäÖĞ×Ö·û´®ÃèÊöµÄÏŞÖÆ±íÊ¾¡£
-* ÆäÖĞ¸ñÊ½²ÉÓÃÊı×ÖÇø¼ä¸ñÊ½£¬ÀıÈç:(-n, 100), [0, 100]¡£ÆäÖĞ¡°(¡±±íÊ¾²»µÈÓÚ±ß½ç£»¡°[¡±±íÊ¾µÈÓÚ±ß½ç²Ù×÷¡£
+* @param boundary    å…¶ä¸­å­—ç¬¦ä¸²æè¿°çš„é™åˆ¶è¡¨ç¤ºã€‚
+* å…¶ä¸­æ ¼å¼é‡‡ç”¨æ•°å­—åŒºé—´æ ¼å¼ï¼Œä¾‹å¦‚:(-n, 100), [0, 100]ã€‚å…¶ä¸­â€œ(â€è¡¨ç¤ºä¸ç­‰äºè¾¹ç•Œï¼›â€œ[â€è¡¨ç¤ºç­‰äºè¾¹ç•Œæ“ä½œã€‚
 */
 csf_bool csf_attribute_boundary::parse(const csf_char* boundary) {
 
@@ -95,7 +95,7 @@ csf_bool csf_attribute_boundary::parse(const csf_char* boundary) {
 		return csf_false;
 	}
 
-	//´¦ÀíÎŞ·¨Ê¶±ğµÄ×Ö·û£¬±£Áô¿ÉÊ¶±ğµÄ×Ö·û
+	//å¤„ç†æ— æ³•è¯†åˆ«çš„å­—ç¬¦ï¼Œä¿ç•™å¯è¯†åˆ«çš„å­—ç¬¦
 	while (*tmp_pos != '\0') {
 		if (!csf_char_no_space(*tmp_pos)) {
 			++tmp_pos;
@@ -104,36 +104,36 @@ csf_bool csf_attribute_boundary::parse(const csf_char* boundary) {
 		*tmp_dest++ = *tmp_pos++;
 	}
 
-	//ÅĞ¶ÏÊı¾İ³¤¶ÈÎª0£¬±íÊ¾Ã»ÓĞ¿ÉÄÜµÄºÏ·¨×Ö·û´®£¬ÔòÖ±½Ó·µ»Ø´íÎó
+	//åˆ¤æ–­æ•°æ®é•¿åº¦ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯èƒ½çš„åˆæ³•å­—ç¬¦ä¸²ï¼Œåˆ™ç›´æ¥è¿”å›é”™è¯¯
 	if (csf_strlen(tmp_buf) <= 0) {
 		return csf_false;
 	}
 
-	//´¦ÀíãĞÖµÏŞÖÆ×Ö·ûÄÚÈİ
+	//å¤„ç†é˜ˆå€¼é™åˆ¶å­—ç¬¦å†…å®¹
 	return parse_parametes(tmp_buf);
 }
 
 /**
-* ±íÊ¾¸ù¾İÏŞÖÆ×Ö·û´®´´½¨Ğ£Ñé¶ÔÏó¡£
-* ÆäÖĞ¸ñÊ½²ÉÓÃÊı×ÖÇø¼ä¸ñÊ½£¬ÀıÈç:(-n, 100), [0, 100]¡£ÆäÖĞ¡°(¡±±íÊ¾²»µÈÓÚ±ß½ç£»¡°[¡±±íÊ¾µÈÓÚ±ß½ç²Ù×÷¡£
-* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+* è¡¨ç¤ºæ ¹æ®é™åˆ¶å­—ç¬¦ä¸²åˆ›å»ºæ ¡éªŒå¯¹è±¡ã€‚
+* å…¶ä¸­æ ¼å¼é‡‡ç”¨æ•°å­—åŒºé—´æ ¼å¼ï¼Œä¾‹å¦‚:(-n, 100), [0, 100]ã€‚å…¶ä¸­â€œ(â€è¡¨ç¤ºä¸ç­‰äºè¾¹ç•Œï¼›â€œ[â€è¡¨ç¤ºç­‰äºè¾¹ç•Œæ“ä½œã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 *
-* @param boundary    ÆäÖĞ×Ö·û´®ÃèÊöµÄÏŞÖÆ±íÊ¾¡£
-* ÆäÖĞ¸ñÊ½²ÉÓÃÊı×ÖÇø¼ä¸ñÊ½£¬ÀıÈç:(-n, 100), [0, 100]¡£ÆäÖĞ¡°(¡±±íÊ¾²»µÈÓÚ±ß½ç£»¡°[¡±±íÊ¾µÈÓÚ±ß½ç²Ù×÷¡£
+* @param boundary    å…¶ä¸­å­—ç¬¦ä¸²æè¿°çš„é™åˆ¶è¡¨ç¤ºã€‚
+* å…¶ä¸­æ ¼å¼é‡‡ç”¨æ•°å­—åŒºé—´æ ¼å¼ï¼Œä¾‹å¦‚:(-n, 100), [0, 100]ã€‚å…¶ä¸­â€œ(â€è¡¨ç¤ºä¸ç­‰äºè¾¹ç•Œï¼›â€œ[â€è¡¨ç¤ºç­‰äºè¾¹ç•Œæ“ä½œã€‚
 *
 */
 csf_bool csf_attribute_boundary::parse_parametes(const csf_string boundary) {
 
 	/**
-	* ±íÊ¾ºËÑé¸ñÊ½ºÍ½ØÈ¡×Ö·û´®ÕıÔò±í´ïÊ½
+	* è¡¨ç¤ºæ ¸éªŒæ ¼å¼å’Œæˆªå–å­—ç¬¦ä¸²æ­£åˆ™è¡¨è¾¾å¼
 	*/
 	std::regex					tmp_regex("(\\(|\\[)(-n|\\d+),(n|\\+n|\\d+)(\\)|\\])");
 	std::smatch					tmp_match_result;
 
 
-	//Ê¹ÓÃÕıÔò±í´ïÊ½ºËÑéÊı¾İ½á¹¹ºÍÌáÈ¡²ÎÊı
+	//ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼æ ¸éªŒæ•°æ®ç»“æ„å’Œæå–å‚æ•°
 	if (!std::regex_match(boundary, tmp_match_result, tmp_regex)) {
-		//ÕıÔò±í´ïÊ½Æ¥ÅäÊ§°Ü£¬±íÊ¾Êı¾İ¸ñÊ½´íÎó
+		//æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…å¤±è´¥ï¼Œè¡¨ç¤ºæ•°æ®æ ¼å¼é”™è¯¯
 		set_error(csf_errno_none,
 			"bounary[%s] format error. %s",
 			boundary.c_str(),
@@ -141,7 +141,7 @@ csf_bool csf_attribute_boundary::parse_parametes(const csf_string boundary) {
 		return csf_false;
 	}
 	else {
-		//Èç¹ûmatchÌáÈ¡µÄ²ÎÊıĞ¡ÓÚµÈÓÚĞèÒªµÄ²ÎÊı¸öÊı£¬Ôò±íÊ¾´íÎó
+		//å¦‚æœmatchæå–çš„å‚æ•°å°äºç­‰äºéœ€è¦çš„å‚æ•°ä¸ªæ•°ï¼Œåˆ™è¡¨ç¤ºé”™è¯¯
 		if (tmp_match_result.size() <= csf_boundary_parametes_size) {
 			set_error(csf_errno_none,
 				"bounary[%s] format error. reason: parametes number[%d <= %d]. %s",
@@ -152,9 +152,9 @@ csf_bool csf_attribute_boundary::parse_parametes(const csf_string boundary) {
 			return csf_false;
 		}
 
-		//»ñÈ¡"(-n, 100]"¸ñÊ½Êı¾İÖĞµÄ"(]"Á½¸ö×Ö·û¡£
-		//ÆäÖĞtmp_match_result[1]µÄ1¾ÍÊÇ"("µÄÎ»ÖÃ±àºÅ£»
-		//ÆäÖĞtmp_match_result[4]µÄ4¾ÍÊÇ"]"µÄÎ»ÖÃ±àºÅ£»
+		//è·å–"(-n, 100]"æ ¼å¼æ•°æ®ä¸­çš„"(]"ä¸¤ä¸ªå­—ç¬¦ã€‚
+		//å…¶ä¸­tmp_match_result[1]çš„1å°±æ˜¯"("çš„ä½ç½®ç¼–å·ï¼›
+		//å…¶ä¸­tmp_match_result[4]çš„4å°±æ˜¯"]"çš„ä½ç½®ç¼–å·ï¼›
 		if (!get_function(tmp_match_result[1].str() + tmp_match_result[4].str())) {
 			set_error(csf_errno_none,
 				"bounary[%s] format error. reason: not found function. %s",
@@ -163,9 +163,9 @@ csf_bool csf_attribute_boundary::parse_parametes(const csf_string boundary) {
 			return csf_false;
 		}
 
-		//»ñÈ¡"(-n, 100]"¸ñÊ½Êı¾İÖĞµÄ"-n","100"Á½¸ö×Ö·û¶Î¡£
-		//ÆäÖĞtmp_match_result[2]µÄ1¾ÍÊÇ"-n"µÄÎ»ÖÃ±àºÅ£»
-		//ÆäÖĞtmp_match_result[3]µÄ4¾ÍÊÇ"100"µÄÎ»ÖÃ±àºÅ£»
+		//è·å–"(-n, 100]"æ ¼å¼æ•°æ®ä¸­çš„"-n","100"ä¸¤ä¸ªå­—ç¬¦æ®µã€‚
+		//å…¶ä¸­tmp_match_result[2]çš„1å°±æ˜¯"-n"çš„ä½ç½®ç¼–å·ï¼›
+		//å…¶ä¸­tmp_match_result[3]çš„4å°±æ˜¯"100"çš„ä½ç½®ç¼–å·ï¼›
 		if (!get_parametes(tmp_match_result[2].str(), tmp_match_result[3].str())) {
 // 			set_error(csf_errno_none,
 // 				"bounary[%s] format error. reason: get paramentes failed. %s",
@@ -178,15 +178,15 @@ csf_bool csf_attribute_boundary::parse_parametes(const csf_string boundary) {
 }
 
 /**
-* ¸ù¾İ´«ÈëµÄãĞÖµ±ß½çÊı¾İ×Ö·û´®ÌáÈ¡Êı¾İ¡£ÆäÖĞ-n×ª»¯Îªint64µÄ×îĞ¡Öµ£»+n×ª»¯Îªint64µÄ×î´óÖµ¡£
-* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+* æ ¹æ®ä¼ å…¥çš„é˜ˆå€¼è¾¹ç•Œæ•°æ®å­—ç¬¦ä¸²æå–æ•°æ®ã€‚å…¶ä¸­-nè½¬åŒ–ä¸ºint64çš„æœ€å°å€¼ï¼›+nè½¬åŒ–ä¸ºint64çš„æœ€å¤§å€¼ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 *
-* @param lower	ãĞÖµµÄ×îĞ¡Öµ
-* @param upper	ãĞÖµµÄ×î´óÖµ
+* @param lower	é˜ˆå€¼çš„æœ€å°å€¼
+* @param upper	é˜ˆå€¼çš„æœ€å¤§å€¼
 */
 csf_bool csf_attribute_boundary::get_parametes(const csf_string& lower, const csf_string& upper) {
 
-	//ÅĞ¶ÏÊÇ·ñÎª×îĞ¡Öµ£¬Èç¹û²»ÊÇ£¬Ôò¼ÆËãÊıÖµ
+	//åˆ¤æ–­æ˜¯å¦ä¸ºæœ€å°å€¼ï¼Œå¦‚æœä¸æ˜¯ï¼Œåˆ™è®¡ç®—æ•°å€¼
 	if (!lower.empty() && lower != std::string("-n")) {
 		set_lower_bound(csf_atoint64(lower.c_str()));
 	}
@@ -194,7 +194,7 @@ csf_bool csf_attribute_boundary::get_parametes(const csf_string& lower, const cs
 		set_lower_bound(csf_min_int64);
 	}
 
-	//ÅĞ¶ÏÊÇ·ñÎª×î´óÖµ£¬Èç¹û²»ÊÇ£¬Ôò¼ÆËãÊıÖµ
+	//åˆ¤æ–­æ˜¯å¦ä¸ºæœ€å¤§å€¼ï¼Œå¦‚æœä¸æ˜¯ï¼Œåˆ™è®¡ç®—æ•°å€¼
 	if (!upper.empty() && upper != std::string("n") && upper != std::string("+n")) {
 		set_upper_bound(csf_atoint64(upper.c_str()));
 	}
@@ -202,7 +202,7 @@ csf_bool csf_attribute_boundary::get_parametes(const csf_string& lower, const cs
 		set_upper_bound(csf_max_int64);
 	}
 
-	//Ğ£ÑéÁ½¸ö±ß½çÖµµÄÊıÖµ´óĞ¡
+	//æ ¡éªŒä¸¤ä¸ªè¾¹ç•Œå€¼çš„æ•°å€¼å¤§å°
 	if (get_lower_bound() > get_upper_bound()) {
 
 		set_error(csf_errno_none

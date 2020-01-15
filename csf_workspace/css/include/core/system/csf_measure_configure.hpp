@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 12:10:40
+*Date: 01-7æœˆ-2018 12:10:40
 *
-*Description: Class(csf_measure_configure)±íÊ¾ÏµÍ³ĞÔÄÜÅäÖÃÏî
+*Description: Class(csf_measure_configure)è¡¨ç¤ºç³»ç»Ÿæ€§èƒ½é…ç½®é¡¹
 *
 *Others:
 *
@@ -34,14 +34,14 @@ namespace csf
 	{
 		namespace system
 		{
-			//±íÊ¾measure_configure×Ö·û´®¸ñÊ½»¯»º´æµÄÄ¬ÈÏ³¤¶È
+			//è¡¨ç¤ºmeasure_configureå­—ç¬¦ä¸²æ ¼å¼åŒ–ç¼“å­˜çš„é»˜è®¤é•¿åº¦
 			#define csf_measure_configure_string_length					256
 
 			/**
-			 * ±íÊ¾ÏµÍ³ĞÔÄÜÅäÖÃÏî
+			 * è¡¨ç¤ºç³»ç»Ÿæ€§èƒ½é…ç½®é¡¹
 			 * @author f
 			 * @version 1.0
-			 * @created 01-7ÔÂ-2018 12:10:40
+			 * @created 01-7æœˆ-2018 12:10:40
 			 */
 			class csf_measure_configure
 			{
@@ -60,14 +60,14 @@ namespace csf
 
 				}
 				/**
-				 * ±íÊ¾Éè±¸deviceµÄ×î´óÊıÁ¿
+				 * è¡¨ç¤ºè®¾å¤‡deviceçš„æœ€å¤§æ•°é‡
 				 */
 				inline csf_uint32 get_device_limit() {
 
 					return m_device_limit;
 				}
 				/**
-				 * ±íÊ¾Éè±¸deviceµÄ×î´óÊıÁ¿
+				 * è¡¨ç¤ºè®¾å¤‡deviceçš„æœ€å¤§æ•°é‡
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -76,14 +76,14 @@ namespace csf
 					m_device_limit = newVal;
 				}
 				/**
-				 * ±íÊ¾Éè±¸device_ioµÄ×î´óÊıÁ¿
+				 * è¡¨ç¤ºè®¾å¤‡device_ioçš„æœ€å¤§æ•°é‡
 				 */
 				inline csf_uint32 get_device_io_limit() {
 
 					return m_device_io_limit;
 				}
 				/**
-				 * ±íÊ¾Éè±¸device_ioµÄ×î´óÊıÁ¿
+				 * è¡¨ç¤ºè®¾å¤‡device_ioçš„æœ€å¤§æ•°é‡
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -92,14 +92,14 @@ namespace csf
 					m_device_io_limit = newVal;
 				}
 				/**
-				 * ±íÊ¾¶¨Ê±Æ÷µÄÊ±¼ä¾«¶È£¬¾ÍÊÇ¶¨Ê±Æ÷Ã¿Ò»´Î²éÑ¯µÄ¼ä¸ô
+				 * è¡¨ç¤ºå®šæ—¶å™¨çš„æ—¶é—´ç²¾åº¦ï¼Œå°±æ˜¯å®šæ—¶å™¨æ¯ä¸€æ¬¡æŸ¥è¯¢çš„é—´éš”
 				 */
 				inline csf_uint64 get_timer_resolution() {
 
 					return m_timer_resolution;
 				}
 				/**
-				 * ±íÊ¾¶¨Ê±Æ÷µÄÊ±¼ä¾«¶È£¬¾ÍÊÇ¶¨Ê±Æ÷Ã¿Ò»´Î²éÑ¯µÄ¼ä¸ô
+				 * è¡¨ç¤ºå®šæ—¶å™¨çš„æ—¶é—´ç²¾åº¦ï¼Œå°±æ˜¯å®šæ—¶å™¨æ¯ä¸€æ¬¡æŸ¥è¯¢çš„é—´éš”
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -108,14 +108,14 @@ namespace csf
 					m_timer_resolution = newVal;
 				}
 				/**
-				 * ±íÊ¾ÏµÍ³Ê±¼äµÄÊ±¼ä¾«¶È£¬Ö÷ÒªÊÇÓÃÓÚÏµÍ³×ÔÉíÎ¬»¤µÄÊ±¼äÄÚÈİ
+				 * è¡¨ç¤ºç³»ç»Ÿæ—¶é—´çš„æ—¶é—´ç²¾åº¦ï¼Œä¸»è¦æ˜¯ç”¨äºç³»ç»Ÿè‡ªèº«ç»´æŠ¤çš„æ—¶é—´å†…å®¹
 				 */
 				inline csf_uint64 get_time_resolution() {
 
 					return m_time_resolution;
 				}
 				/**
-				 * ±íÊ¾ÏµÍ³Ê±¼äµÄÊ±¼ä¾«¶È£¬Ö÷ÒªÊÇÓÃÓÚÏµÍ³×ÔÉíÎ¬»¤µÄÊ±¼äÄÚÈİ
+				 * è¡¨ç¤ºç³»ç»Ÿæ—¶é—´çš„æ—¶é—´ç²¾åº¦ï¼Œä¸»è¦æ˜¯ç”¨äºç³»ç»Ÿè‡ªèº«ç»´æŠ¤çš„æ—¶é—´å†…å®¹
 				 * 
 				 * @param newVal    newVal
 				 */
@@ -124,14 +124,14 @@ namespace csf
 					m_time_resolution = newVal;
 				}
 				/**
-				 * ±íÊ¾Á¬½ÓµÄ¼«ÏŞÊı¾İ
+				 * è¡¨ç¤ºè¿æ¥çš„æé™æ•°æ®
 				 */
 				inline csf_uint32 get_connect_limit() {
 
 					return m_connect_limit;
 				}
 				/**
-				 * ±íÊ¾Á¬½ÓµÄ¼«ÏŞÊı¾İ
+				 * è¡¨ç¤ºè¿æ¥çš„æé™æ•°æ®
 				 * 
 				 * @param newVal
 				 */
@@ -140,7 +140,7 @@ namespace csf
 					m_connect_limit = newVal;
 				}
 				/**
-				* ±íÊ¾½«¸ºÔØĞÅÏ¢¸ñÊ½»¯Êä³ö
+				* è¡¨ç¤ºå°†è´Ÿè½½ä¿¡æ¯æ ¼å¼åŒ–è¾“å‡º
 				*/
 				inline csf_string to_string() {
 
@@ -159,23 +159,23 @@ namespace csf
 				}
 			private:
 				/**
-				 * ±íÊ¾Éè±¸deviceµÄ×î´óÊıÁ¿
+				 * è¡¨ç¤ºè®¾å¤‡deviceçš„æœ€å¤§æ•°é‡
 				 */
 				csf_uint32 m_device_limit = csf_default_device_limit;
 				/**
-				 * ±íÊ¾Éè±¸device_ioµÄ×î´óÊıÁ¿
+				 * è¡¨ç¤ºè®¾å¤‡device_ioçš„æœ€å¤§æ•°é‡
 				 */
 				csf_uint32 m_device_io_limit = csf_default_device_io_limit;
 				/**
-				 * ±íÊ¾¶¨Ê±Æ÷µÄÊ±¼ä¾«¶È£¬¾ÍÊÇ¶¨Ê±Æ÷Ã¿Ò»´Î²éÑ¯µÄ¼ä¸ô£¬µ¥Î»£ººÁÃë¡£
+				 * è¡¨ç¤ºå®šæ—¶å™¨çš„æ—¶é—´ç²¾åº¦ï¼Œå°±æ˜¯å®šæ—¶å™¨æ¯ä¸€æ¬¡æŸ¥è¯¢çš„é—´éš”ï¼Œå•ä½ï¼šæ¯«ç§’ã€‚
 				 */
 				csf_uint64 m_timer_resolution = csf_default_timer_resolution;
 				/**
-				 * ±íÊ¾Á¬½ÓµÄ¼«ÏŞÊı¾İ
+				 * è¡¨ç¤ºè¿æ¥çš„æé™æ•°æ®
 				 */
 				csf_uint32 m_connect_limit = csf_default_connect_limit;
 				/**
-				 * ±íÊ¾ÏµÍ³Ê±¼äµÄÊ±¼ä¾«¶È£¬Ö÷ÒªÊÇÓÃÓÚÏµÍ³×ÔÉíÎ¬»¤µÄÊ±¼äÄÚÈİ£¬µ¥Î»£ººÁÃë¡£
+				 * è¡¨ç¤ºç³»ç»Ÿæ—¶é—´çš„æ—¶é—´ç²¾åº¦ï¼Œä¸»è¦æ˜¯ç”¨äºç³»ç»Ÿè‡ªèº«ç»´æŠ¤çš„æ—¶é—´å†…å®¹ï¼Œå•ä½ï¼šæ¯«ç§’ã€‚
 				 */
 				csf_uint64 m_time_resolution = csf_default_time_resolution;
 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,16 +8,16 @@
 *
 *Version: 1.0
 *
-*Date: 06-7ÔÂ-2018 19:29:31
+*Date: 06-7æœˆ-2018 19:29:31
 *
-*Description: Class(csf_attribute_manager) ±íÊ¾Ä£¿éµÄÊôĞÔ¹ÜÀíÆ÷£¬Ö÷ÒªÌá¹©Ä£¿éÅäÖÃÊôĞÔÍ³Ò»¹ÜÀí£¬°üÀ¨Ôö¡¢É¾¡¢²é¡¢¸ÄµÈ¡£
-* ±íÊ¾Ä£¿éµÄÊôĞÔ¹ÜÀíÆ÷£¬Ö÷ÒªÌá¹©Ä£¿éÅäÖÃÊôĞÔÍ³Ò»¹ÜÀí£¬°üÀ¨Ôö¡¢É¾¡¢²é¡¢¸ÄµÈ¡£
-* ¸ÃÄ£¿éÖ÷ÒªÎª·½±ãÅäÖÃÏîµÄ¹ÜÀí£¬ÒıÈëÁËÈı²¿·ÖĞÅÏ¢£¬°üÀ¨£ºÖ÷ÅäÖÃ¹ÜÀíÆ÷(m_configure_manager*)¡¢¸ùÊôĞÔ¶ÔÏó(m_root_element*)¡¢¸ù
-* Â·¾¶ĞÅÏ¢(m_root_items)¡£
-* ´¦ÀíÁ÷³ÌÎª£º
-*   1¡¢ËùÓĞÊôĞÔÂ·¾¶Ïà¶ÔÓÚm_root_itemsËùÖ¸¶¨µÄÂ·¾¶;
-*   2¡¢root_elementÓÅÏÈ¼¶¸ßÓÚconfigure_manager;Èç¹û´æÔÚm_root_element*Ôò´Óroot_element*ÖĞ²éÕÒÊôĞÔÖµ;
-*   3¡¢Èç¹û²»´æÔÚroot_element*Ôò´Óconfigure_manager*ÖĞ²éÕÒÊôĞÔÖµ;
+*Description: Class(csf_attribute_manager) è¡¨ç¤ºæ¨¡å—çš„å±æ€§ç®¡ç†å™¨ï¼Œä¸»è¦æä¾›æ¨¡å—é…ç½®å±æ€§ç»Ÿä¸€ç®¡ç†ï¼ŒåŒ…æ‹¬å¢ã€åˆ ã€æŸ¥ã€æ”¹ç­‰ã€‚
+* è¡¨ç¤ºæ¨¡å—çš„å±æ€§ç®¡ç†å™¨ï¼Œä¸»è¦æä¾›æ¨¡å—é…ç½®å±æ€§ç»Ÿä¸€ç®¡ç†ï¼ŒåŒ…æ‹¬å¢ã€åˆ ã€æŸ¥ã€æ”¹ç­‰ã€‚
+* è¯¥æ¨¡å—ä¸»è¦ä¸ºæ–¹ä¾¿é…ç½®é¡¹çš„ç®¡ç†ï¼Œå¼•å…¥äº†ä¸‰éƒ¨åˆ†ä¿¡æ¯ï¼ŒåŒ…æ‹¬ï¼šä¸»é…ç½®ç®¡ç†å™¨(m_configure_manager*)ã€æ ¹å±æ€§å¯¹è±¡(m_root_element*)ã€æ ¹
+* è·¯å¾„ä¿¡æ¯(m_root_items)ã€‚
+* å¤„ç†æµç¨‹ä¸ºï¼š
+*   1ã€æ‰€æœ‰å±æ€§è·¯å¾„ç›¸å¯¹äºm_root_itemsæ‰€æŒ‡å®šçš„è·¯å¾„;
+*   2ã€root_elementä¼˜å…ˆçº§é«˜äºconfigure_manager;å¦‚æœå­˜åœ¨m_root_element*åˆ™ä»root_element*ä¸­æŸ¥æ‰¾å±æ€§å€¼;
+*   3ã€å¦‚æœä¸å­˜åœ¨root_element*åˆ™ä»configure_manager*ä¸­æŸ¥æ‰¾å±æ€§å€¼;
 *
 *Others:
 *
@@ -46,16 +46,16 @@ namespace csf
 			namespace attribute
 			{
 				/**
-				* ±íÊ¾Ä£¿éµÄÊôĞÔ¹ÜÀíÆ÷£¬Ö÷ÒªÌá¹©Ä£¿éÅäÖÃÊôĞÔÍ³Ò»¹ÜÀí£¬°üÀ¨Ôö¡¢É¾¡¢²é¡¢¸ÄµÈ¡£
-				* ¸ÃÄ£¿éÖ÷ÒªÎª·½±ãÅäÖÃÏîµÄ¹ÜÀí£¬ÒıÈëÁËÈı²¿·ÖĞÅÏ¢£¬°üÀ¨£ºÖ÷ÅäÖÃ¹ÜÀíÆ÷(m_configure_manager*)¡¢¸ùÊôĞÔ¶ÔÏó(m_root_element*)¡¢¸ù
-				* Â·¾¶ĞÅÏ¢(m_root_items)¡£
-				* ´¦ÀíÁ÷³ÌÎª£º
-				*   1¡¢ËùÓĞÊôĞÔÂ·¾¶Ïà¶ÔÓÚm_root_itemsËùÖ¸¶¨µÄÂ·¾¶;
-				*   2¡¢root_elementÓÅÏÈ¼¶¸ßÓÚconfigure_manager;Èç¹û´æÔÚm_root_element*Ôò´Óroot_element*ÖĞ²éÕÒÊôĞÔÖµ;
-				*   3¡¢Èç¹û²»´æÔÚroot_element*Ôò´Óconfigure_manager*ÖĞ²éÕÒÊôĞÔÖµ;
+				* è¡¨ç¤ºæ¨¡å—çš„å±æ€§ç®¡ç†å™¨ï¼Œä¸»è¦æä¾›æ¨¡å—é…ç½®å±æ€§ç»Ÿä¸€ç®¡ç†ï¼ŒåŒ…æ‹¬å¢ã€åˆ ã€æŸ¥ã€æ”¹ç­‰ã€‚
+				* è¯¥æ¨¡å—ä¸»è¦ä¸ºæ–¹ä¾¿é…ç½®é¡¹çš„ç®¡ç†ï¼Œå¼•å…¥äº†ä¸‰éƒ¨åˆ†ä¿¡æ¯ï¼ŒåŒ…æ‹¬ï¼šä¸»é…ç½®ç®¡ç†å™¨(m_configure_manager*)ã€æ ¹å±æ€§å¯¹è±¡(m_root_element*)ã€æ ¹
+				* è·¯å¾„ä¿¡æ¯(m_root_items)ã€‚
+				* å¤„ç†æµç¨‹ä¸ºï¼š
+				*   1ã€æ‰€æœ‰å±æ€§è·¯å¾„ç›¸å¯¹äºm_root_itemsæ‰€æŒ‡å®šçš„è·¯å¾„;
+				*   2ã€root_elementä¼˜å…ˆçº§é«˜äºconfigure_manager;å¦‚æœå­˜åœ¨m_root_element*åˆ™ä»root_element*ä¸­æŸ¥æ‰¾å±æ€§å€¼;
+				*   3ã€å¦‚æœä¸å­˜åœ¨root_element*åˆ™ä»configure_manager*ä¸­æŸ¥æ‰¾å±æ€§å€¼;
 				* @author fz
 				* @version 1.0
-				* @updated 03-10ÔÂ-2018 15:04:13
+				* @updated 03-10æœˆ-2018 15:04:13
 				*/
 				class csf_attribute_manager : public csf::core::module::csf_manager
 					, public csf::core::system::attribute::csf_attribute_manager_interface
@@ -71,9 +71,9 @@ namespace csf
 						clear();
 					}
 					/**
-					 * ±í´´½¨µÄÊ±ºò¸³ÖµÅäÖÃ¹ÜÀíÆ÷
+					 * è¡¨åˆ›å»ºçš„æ—¶å€™èµ‹å€¼é…ç½®ç®¡ç†å™¨
 					 *
-					 * @param configure_manager    ±íÊ¾ÅäÖÃ¹ÜÀíÆ÷µØÖ·
+					 * @param configure_manager    è¡¨ç¤ºé…ç½®ç®¡ç†å™¨åœ°å€
 					 */
 					inline explicit csf_attribute_manager(const csf::core::system::csf_configure_manager* configure_manager)
 						: csf_manager((csf::core::system::csf_configure_manager*)configure_manager)
@@ -81,10 +81,10 @@ namespace csf
 
 					}
 					/**
-					* ±í´´½¨µÄÊ±ºò¸³ÖµÅäÖÃ¹ÜÀíÆ÷
+					* è¡¨åˆ›å»ºçš„æ—¶å€™èµ‹å€¼é…ç½®ç®¡ç†å™¨
 					*
-					* @param configure_manager    ±íÊ¾ÅäÖÃ¹ÜÀíÆ÷µØÖ·
-					* @param root_items    ±íÊ¾ÊôĞÔ¹ÜÀíÆ÷ÖĞ¸ùÂ·¾¶ĞÅÏ¢
+					* @param configure_manager    è¡¨ç¤ºé…ç½®ç®¡ç†å™¨åœ°å€
+					* @param root_items    è¡¨ç¤ºå±æ€§ç®¡ç†å™¨ä¸­æ ¹è·¯å¾„ä¿¡æ¯
 					*/
 					inline explicit csf_attribute_manager(const csf::core::system::csf_configure_manager* configure_manager
 						, const std::list<csf_string> root_items)
@@ -94,12 +94,12 @@ namespace csf
 
 					}
 					/**
-					* ±í´´½¨µÄÊ±ºò¸³ÖµÅäÖÃ¹ÜÀíÆ÷
+					* è¡¨åˆ›å»ºçš„æ—¶å€™èµ‹å€¼é…ç½®ç®¡ç†å™¨
 					*
-					* @param root_element    ±íÊ¾ÅäÖÃÏîµÄ¸ù½Úµã¶ÔÏó¡£¸ÃÅäÖÃĞÅÏ¢ÓÅÏÈÓë"csf_configure_manager*
-					* m_configure_manager"ÅäÖÃĞÅÏ¢¡£Èç¹ûÅäÖÃÁË¸Ã¶ÔÏó£¬ÔòÓÅÏÈ²ÉÓÃ¸ÃĞÅÏ¢¡£ËùÓĞÅäÖÃÏî¶¼³ö¸Ã¶ÔÏóÖĞ»ñÈ¡¡£
+					* @param root_element    è¡¨ç¤ºé…ç½®é¡¹çš„æ ¹èŠ‚ç‚¹å¯¹è±¡ã€‚è¯¥é…ç½®ä¿¡æ¯ä¼˜å…ˆä¸"csf_configure_manager*
+					* m_configure_manager"é…ç½®ä¿¡æ¯ã€‚å¦‚æœé…ç½®äº†è¯¥å¯¹è±¡ï¼Œåˆ™ä¼˜å…ˆé‡‡ç”¨è¯¥ä¿¡æ¯ã€‚æ‰€æœ‰é…ç½®é¡¹éƒ½å‡ºè¯¥å¯¹è±¡ä¸­è·å–ã€‚
 					*
-					* @param root_items    ±íÊ¾ÊôĞÔ¹ÜÀíÆ÷ÖĞ¸ùÂ·¾¶ĞÅÏ¢
+					* @param root_items    è¡¨ç¤ºå±æ€§ç®¡ç†å™¨ä¸­æ ¹è·¯å¾„ä¿¡æ¯
 					*/
 					inline explicit csf_attribute_manager(const csf_element* root_element
 						, const std::list<csf_string> root_items = std::list<csf_string>())
@@ -108,12 +108,12 @@ namespace csf
 
 					}
 					/**
-					 * º¯Êı¹¦ÄÜÎª£ºÏòattribute_managerÖĞÌí¼ÓÒ»¸öÊôĞÔ¡£
-					 * ×¢Òâ£º±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´£¬·ñÔò²Ù×÷Ê§°Ü¡£
-					 * ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+					 * å‡½æ•°åŠŸèƒ½ä¸ºï¼šå‘attribute_managerä¸­æ·»åŠ ä¸€ä¸ªå±æ€§ã€‚
+					 * æ³¨æ„ï¼šè¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ï¼Œå¦åˆ™æ“ä½œå¤±è´¥ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					 *
-					 * @param name    ±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					 * @param attribute    ±íÊ¾Ìí¼ÓµÄÊôĞÔ¶ÔÏó
+					 * @param name    è¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					 * @param attribute    è¡¨ç¤ºæ·»åŠ çš„å±æ€§å¯¹è±¡
 					 */
  					template <class AttributeType>
  					inline csf_bool add(const csf_string& name, AttributeType attribute) {
@@ -125,24 +125,24 @@ namespace csf
  						return add<AttributeType>(name.c_str(), attribute);
  					}
 					/**
-					 * º¯Êı¹¦ÄÜÎª£ºÏòattribute_managerÖĞÌí¼ÓÒ»¸öÊôĞÔ¡£
-					 * ×¢Òâ£º±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´£¬·ñÔò²Ù×÷Ê§°Ü¡£
-					 * ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+					 * å‡½æ•°åŠŸèƒ½ä¸ºï¼šå‘attribute_managerä¸­æ·»åŠ ä¸€ä¸ªå±æ€§ã€‚
+					 * æ³¨æ„ï¼šè¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ï¼Œå¦åˆ™æ“ä½œå¤±è´¥ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					 *
-					 * @param name    ±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					 * @param attribute    ±íÊ¾Ìí¼ÓµÄÊôĞÔ¶ÔÏó
+					 * @param name    è¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					 * @param attribute    è¡¨ç¤ºæ·»åŠ çš„å±æ€§å¯¹è±¡
 					 */
 					template <class AttributeType>
 					csf_bool add(const csf_char* name, AttributeType attribute) {
 
-						//ºËÑéÃû³ÆÊı¾İµÄºÏ·¨ĞÔ
+						//æ ¸éªŒåç§°æ•°æ®çš„åˆæ³•æ€§
 						if (!name || csf_strlen(name) <= 0 || attribute.is_null()) {
 							csf_log_ex(warning, csf_log_code_warning
 								, "add attribute failed. reason: attribute/name is null!");
 							return csf_false;
 						}
 
-						//²éÑ¯¸ÃÃû³ÆÊôĞÔÊÇ·ñÒÑ¾­´æÔÚ£¬Èç¹ûÒÑ¾­´æÔÚÔò·µ»ØÊ§°Ü
+						//æŸ¥è¯¢è¯¥åç§°å±æ€§æ˜¯å¦å·²ç»å­˜åœ¨ï¼Œå¦‚æœå·²ç»å­˜åœ¨åˆ™è¿”å›å¤±è´¥
 						if (((csf_attribute&)find(name)).not_null()) {
 							csf_log_ex(warning, csf_log_code_warning
 								, "add name[ \"%s\" ] %s failed. reason: attribute existed!"
@@ -152,7 +152,7 @@ namespace csf
 							return exception_attribute(name, attribute);
 						}
 
-						//Èç¹ûÊıÖµÎª¿Õ£¬ÔòĞèÒªÖØĞÂ»ñÈ¡ÊôĞÔÊıÖµ
+						//å¦‚æœæ•°å€¼ä¸ºç©ºï¼Œåˆ™éœ€è¦é‡æ–°è·å–å±æ€§æ•°å€¼
 						if (attribute.get_content().empty()) {
 							if (!get_configure_manager()) {
 								csf_log_ex(warning, csf_log_code_warning
@@ -173,36 +173,36 @@ namespace csf
 							}
 						}
 
-						//´´½¨Ò»¸öĞÂÄÜ¶ÔÏó£¬²¢½«ÊôĞÔĞÅÏ¢¸üĞÂµ½ÊôĞÔÁĞ±íÖĞ
+						//åˆ›å»ºä¸€ä¸ªæ–°èƒ½å¯¹è±¡ï¼Œå¹¶å°†å±æ€§ä¿¡æ¯æ›´æ–°åˆ°å±æ€§åˆ—è¡¨ä¸­
 						return insert_attribute(name, attribute);
 					}
 					/**
-					* º¯Êı¹¦ÄÜÎª£ºÏòattribute_managerÖĞÌí¼ÓÒ»¸öÊôĞÔ¡£
-					* ×¢Òâ£º±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´£¬·ñÔò²Ù×÷Ê§°Ü¡£
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šå‘attribute_managerä¸­æ·»åŠ ä¸€ä¸ªå±æ€§ã€‚
+					* æ³¨æ„ï¼šè¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ï¼Œå¦åˆ™æ“ä½œå¤±è´¥ã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					*
-					* @param name    ±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					* @param attribute    ±íÊ¾Ìí¼ÓµÄÊôĞÔ¶ÔÏó
+					* @param name    è¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					* @param attribute    è¡¨ç¤ºæ·»åŠ çš„å±æ€§å¯¹è±¡
 					*/
  					virtual csf_bool add(const csf_string& name, csf_attribute& attribute) {
  						return add(name.c_str(), attribute);
  					}
 					/**
-					* º¯Êı¹¦ÄÜÎª£ºÏòattribute_managerÖĞÌí¼ÓÒ»¸öÊôĞÔ¡£
-					* ×¢Òâ£º±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´£¬·ñÔò²Ù×÷Ê§°Ü¡£
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šå‘attribute_managerä¸­æ·»åŠ ä¸€ä¸ªå±æ€§ã€‚
+					* æ³¨æ„ï¼šè¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ï¼Œå¦åˆ™æ“ä½œå¤±è´¥ã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					*
-					* @param name    ±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					* @param attribute    ±íÊ¾Ìí¼ÓµÄÊôĞÔ¶ÔÏó
+					* @param name    è¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					* @param attribute    è¡¨ç¤ºæ·»åŠ çš„å±æ€§å¯¹è±¡
 					*/
  					virtual csf_bool add(const csf_char* name, csf_attribute& attribute) {
  						return add<csf_attribute>(name, attribute);
  					}
 					/**
-					 * º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_managerÖĞÉ¾³ıÒ»¸öÊôĞÔ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾É¾³ı³É¹¦£¨²»´æÔÚ¸ÃÃû³ÆÊôĞÔÄ¬ÈÏ·µ»Ø³É¹¦£©£»false±íÊ¾Ê§°Ü¡£
+					 * å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerä¸­åˆ é™¤ä¸€ä¸ªå±æ€§ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºåˆ é™¤æˆåŠŸï¼ˆä¸å­˜åœ¨è¯¥åç§°å±æ€§é»˜è®¤è¿”å›æˆåŠŸï¼‰ï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					 *
-					 * @param name    ±íÊ¾ĞèÒªÉ¾³ıµÄÊôĞÔÃû³Æ
+					 * @param name    è¡¨ç¤ºéœ€è¦åˆ é™¤çš„å±æ€§åç§°
 					 */
 					inline virtual csf_bool del(const csf_string& name) {
 
@@ -213,17 +213,17 @@ namespace csf
 						return del(name.c_str());
 					}
 					/**
-					 * º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_managerÖĞÉ¾³ıÒ»¸öÊôĞÔ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾É¾³ı³É¹¦£¨²»´æÔÚ¸ÃÃû³ÆÊôĞÔÄ¬ÈÏ·µ»Ø³É¹¦£©£»false±íÊ¾Ê§°Ü¡£
+					 * å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerä¸­åˆ é™¤ä¸€ä¸ªå±æ€§ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºåˆ é™¤æˆåŠŸï¼ˆä¸å­˜åœ¨è¯¥åç§°å±æ€§é»˜è®¤è¿”å›æˆåŠŸï¼‰ï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					 *
-					 * @param name    ±íÊ¾ĞèÒªÉ¾³ıµÄÊôĞÔÃû³Æ
+					 * @param name    è¡¨ç¤ºéœ€è¦åˆ é™¤çš„å±æ€§åç§°
 					 */
 					virtual csf_bool del(const csf_char* name);
 					/**
-					 * º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_managerÖĞ²éÑ¯Ò»¸öÊôĞÔ¡£
-					 * ·µ»Ø£ºÒ»¸öÊôĞÔ¶ÔÏó¡£
+					 * å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerä¸­æŸ¥è¯¢ä¸€ä¸ªå±æ€§ã€‚
+					 * è¿”å›ï¼šä¸€ä¸ªå±æ€§å¯¹è±¡ã€‚
 					 *
-					 * @param name    ±íÊ¾ÊôĞÔÃû³Æ
+					 * @param name    è¡¨ç¤ºå±æ€§åç§°
 					 */
 					inline virtual const csf_attribute& find(const csf_string& name) {
 
@@ -234,18 +234,18 @@ namespace csf
 						return find(name.c_str());
 					}
 					/**
-					 * º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_managerÖĞ²éÑ¯Ò»¸öÊôĞÔ¡£
-					 * ·µ»Ø£ºÒ»¸öÊôĞÔ¶ÔÏó¡£
+					 * å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerä¸­æŸ¥è¯¢ä¸€ä¸ªå±æ€§ã€‚
+					 * è¿”å›ï¼šä¸€ä¸ªå±æ€§å¯¹è±¡ã€‚
 					 *
-					 * @param name    ±íÊ¾ĞèÒªµÄÊôĞÔÃû³Æ
+					 * @param name    è¡¨ç¤ºéœ€è¦çš„å±æ€§åç§°
 					 */
 					const csf_attribute& find(const csf_char* name);
 					/**
-					 * º¯Êı¹¦ÄÜÎª£º¸üĞÂattribute_managerÖĞÒ»¸öÊôĞÔĞÅÏ¢¡£
-					 * ·µ»Ø£ºtrue±íÊ¾´æÔÚÇÒ¸üĞÂ³É¹¦£»false±íÊ¾²»´æÔÚ»òÊ§°Ü¡£
+					 * å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ›´æ–°attribute_managerä¸­ä¸€ä¸ªå±æ€§ä¿¡æ¯ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºå­˜åœ¨ä¸”æ›´æ–°æˆåŠŸï¼›falseè¡¨ç¤ºä¸å­˜åœ¨æˆ–å¤±è´¥ã€‚
 					 *
-					 * @param name    ±íÊ¾ÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					 * @param attribute    ±íÊ¾ÊôĞÔ¶ÔÏó
+					 * @param name    è¡¨ç¤ºå±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					 * @param attribute    è¡¨ç¤ºå±æ€§å¯¹è±¡
 					 */
 					template <class AttributeType>
 					inline csf_bool update(const csf_string& name, AttributeType& attribute) {
@@ -257,11 +257,11 @@ namespace csf
 						return update(name.c_str(), attribute);
 					}
 					/**
-					 * º¯Êı¹¦ÄÜÎª£º¸üĞÂattribute_managerÖĞÒ»¸öÊôĞÔĞÅÏ¢¡£
-					 * ·µ»Ø£ºtrue±íÊ¾´æÔÚÇÒ¸üĞÂ³É¹¦£»false±íÊ¾²»´æÔÚ»òÊ§°Ü¡£
+					 * å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ›´æ–°attribute_managerä¸­ä¸€ä¸ªå±æ€§ä¿¡æ¯ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºå­˜åœ¨ä¸”æ›´æ–°æˆåŠŸï¼›falseè¡¨ç¤ºä¸å­˜åœ¨æˆ–å¤±è´¥ã€‚
 					 *
-					 * @param name    ±íÊ¾ÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					 * @param attribute    ±íÊ¾ÊôĞÔ¶ÔÏó
+					 * @param name    è¡¨ç¤ºå±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					 * @param attribute    è¡¨ç¤ºå±æ€§å¯¹è±¡
 					 */
 					template <class AttributeType>
 					csf_bool update(const csf_char* name, AttributeType& attribute) {
@@ -269,14 +269,14 @@ namespace csf
 						csf_unordered_map<csf_string, csf_attribute*>::iterator		tmp_iter;
 
 
-						//ºËÑéÃû³ÆÊı¾İµÄºÏ·¨ĞÔ
+						//æ ¸éªŒåç§°æ•°æ®çš„åˆæ³•æ€§
 						if (!name || csf_strlen(name) <= 0) {
 							csf_log_ex(warning, csf_log_code_warning
 								, "add attribute failed. attribute/name is null!");
 							return csf_false;
 						}
 
-						//²éÑ¯¸ÃÃû³ÆÊôĞÔÊÇ·ñÒÑ¾­´æÔÚ£¬Èç¹ûÒÑ¾­´æÔÚÔò·µ»ØÊ§°Ü
+						//æŸ¥è¯¢è¯¥åç§°å±æ€§æ˜¯å¦å·²ç»å­˜åœ¨ï¼Œå¦‚æœå·²ç»å­˜åœ¨åˆ™è¿”å›å¤±è´¥
 						tmp_iter = get_attributes().find(name);
 						if (tmp_iter == get_attributes().end()) {
 							csf_log_ex(warning, csf_log_code_warning
@@ -307,33 +307,33 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* º¯Êı¹¦ÄÜÎª£º¸üĞÂattribute_managerÖĞÒ»¸öÊôĞÔĞÅÏ¢¡£
-					* ·µ»Ø£ºtrue±íÊ¾´æÔÚÇÒ¸üĞÂ³É¹¦£»false±íÊ¾²»´æÔÚ»òÊ§°Ü¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ›´æ–°attribute_managerä¸­ä¸€ä¸ªå±æ€§ä¿¡æ¯ã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºå­˜åœ¨ä¸”æ›´æ–°æˆåŠŸï¼›falseè¡¨ç¤ºä¸å­˜åœ¨æˆ–å¤±è´¥ã€‚
 					*
-					* @param name    ±íÊ¾ÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					* @param attribute    ±íÊ¾ÊôĞÔ¶ÔÏó
+					* @param name    è¡¨ç¤ºå±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					* @param attribute    è¡¨ç¤ºå±æ€§å¯¹è±¡
 					*/
 					virtual csf_bool update(const csf_string& name, csf_attribute& attribute) {
 						return update(name.c_str(), attribute);
 					}
 					/**
-					* º¯Êı¹¦ÄÜÎª£º¸üĞÂattribute_managerÖĞÒ»¸öÊôĞÔĞÅÏ¢¡£
-					* ·µ»Ø£ºtrue±íÊ¾´æÔÚÇÒ¸üĞÂ³É¹¦£»false±íÊ¾²»´æÔÚ»òÊ§°Ü¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ›´æ–°attribute_managerä¸­ä¸€ä¸ªå±æ€§ä¿¡æ¯ã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºå­˜åœ¨ä¸”æ›´æ–°æˆåŠŸï¼›falseè¡¨ç¤ºä¸å­˜åœ¨æˆ–å¤±è´¥ã€‚
 					*
-					* @param name    ±íÊ¾ÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					* @param attribute    ±íÊ¾ÊôĞÔ¶ÔÏó
+					* @param name    è¡¨ç¤ºå±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					* @param attribute    è¡¨ç¤ºå±æ€§å¯¹è±¡
 					*/
 					virtual csf_bool update(const csf_char* name, csf_attribute& attribute) {
 						return update<csf_attribute>(name, attribute);
 					}
 					/**
-					* º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_manager»ñÈ¡Ò»¸öÊôĞÔÊıÖµ¡£
-					* ¸Ãº¯ÊıÖ±½Ó·µ»ØÒ»¸öÖ¸¶¨ÀàĞÍÊıÖµ£¬Èç¹ûÊôĞÔ²»´æÔÚÔò·µ»ØÄ¬ÈÏ¿ÕÖµ¡£¿ÕÖµÁĞ±í£ºbool[false]£¬string[""]£¬int[0]£¬time[0]£¬space_
-					* size[0]¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerè·å–ä¸€ä¸ªå±æ€§æ•°å€¼ã€‚
+					* è¯¥å‡½æ•°ç›´æ¥è¿”å›ä¸€ä¸ªæŒ‡å®šç±»å‹æ•°å€¼ï¼Œå¦‚æœå±æ€§ä¸å­˜åœ¨åˆ™è¿”å›é»˜è®¤ç©ºå€¼ã€‚ç©ºå€¼åˆ—è¡¨ï¼šbool[false]ï¼Œstring[""]ï¼Œint[0]ï¼Œtime[0]ï¼Œspace_
+					* size[0]ã€‚
 					*
-					* ·µ»Ø£º·µ»ØÖ¸¶¨ÊôĞÔµÄÊıÖµ
+					* è¿”å›ï¼šè¿”å›æŒ‡å®šå±æ€§çš„æ•°å€¼
 					*
-					* @param name    ±íÊ¾ÊôĞÔÃû³Æ
+					* @param name    è¡¨ç¤ºå±æ€§åç§°
 					*/
 					template <class AttributeType>
 					inline auto get_value(const csf_string& name) -> decltype(std::declval<AttributeType>().get_value()) {
@@ -341,13 +341,13 @@ namespace csf
 							, decltype(std::declval<AttributeType>().get_value())>(name.c_str());
 					}
 					/**
-					* º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_manager»ñÈ¡Ò»¸öÊôĞÔÊıÖµ¡£
-					* ¸Ãº¯ÊıÖ±½Ó·µ»ØÒ»¸öÖ¸¶¨ÀàĞÍÊıÖµ£¬Èç¹ûÊôĞÔ²»´æÔÚÔò·µ»ØÄ¬ÈÏ¿ÕÖµ¡£¿ÕÖµÁĞ±í£ºbool[false]£¬string[""]£¬int[0]£¬time[0]£¬space_
-					* size[0]¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerè·å–ä¸€ä¸ªå±æ€§æ•°å€¼ã€‚
+					* è¯¥å‡½æ•°ç›´æ¥è¿”å›ä¸€ä¸ªæŒ‡å®šç±»å‹æ•°å€¼ï¼Œå¦‚æœå±æ€§ä¸å­˜åœ¨åˆ™è¿”å›é»˜è®¤ç©ºå€¼ã€‚ç©ºå€¼åˆ—è¡¨ï¼šbool[false]ï¼Œstring[""]ï¼Œint[0]ï¼Œtime[0]ï¼Œspace_
+					* size[0]ã€‚
 					*
-					* ·µ»Ø£º·µ»ØÖ¸¶¨ÊôĞÔµÄÊıÖµ
+					* è¿”å›ï¼šè¿”å›æŒ‡å®šå±æ€§çš„æ•°å€¼
 					*
-					* @param name    ±íÊ¾ÊôĞÔÃû³Æ
+					* @param name    è¡¨ç¤ºå±æ€§åç§°
 					*/
 					template <class AttributeType>
 					inline auto get_value(const csf_char* name) -> decltype(std::declval<AttributeType>().get_value()) {
@@ -357,7 +357,7 @@ namespace csf
 
 						if (attr.is_null()) {
 
-							//´´½¨Ò»¸öÖ¸¶¨ÀàĞÍµÄ¿Õ¶ÔÏó·µ»ØÄ¬ÈÏÊı¾İ
+							//åˆ›å»ºä¸€ä¸ªæŒ‡å®šç±»å‹çš„ç©ºå¯¹è±¡è¿”å›é»˜è®¤æ•°æ®
 							static AttributeType			tmp_ret(name);
 							return tmp_ret.get_value();
 						}
@@ -366,13 +366,13 @@ namespace csf
 						}
 					}
 					/**
-					* º¯Êı¹¦ÄÜÎª£º¸ù¾İattribute»ñÈ¡Ò»¸öÊôĞÔÊıÖµ¡£
-					* ¸Ãº¯ÊıÖ±½Ó·µ»ØÒ»¸öÖ¸¶¨ÀàĞÍÊıÖµ£¬Èç¹ûÊôĞÔ²»´æÔÚÔò·µ»ØÄ¬ÈÏ¿ÕÖµ¡£¿ÕÖµÁĞ±í£ºbool[false]£¬string[""]£¬int[0]£¬time[0]£¬space_
-					* size[0]¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®attributeè·å–ä¸€ä¸ªå±æ€§æ•°å€¼ã€‚
+					* è¯¥å‡½æ•°ç›´æ¥è¿”å›ä¸€ä¸ªæŒ‡å®šç±»å‹æ•°å€¼ï¼Œå¦‚æœå±æ€§ä¸å­˜åœ¨åˆ™è¿”å›é»˜è®¤ç©ºå€¼ã€‚ç©ºå€¼åˆ—è¡¨ï¼šbool[false]ï¼Œstring[""]ï¼Œint[0]ï¼Œtime[0]ï¼Œspace_
+					* size[0]ã€‚
 					*
-					* ·µ»Ø£º·µ»ØÖ¸¶¨ÊôĞÔµÄÊıÖµ
+					* è¿”å›ï¼šè¿”å›æŒ‡å®šå±æ€§çš„æ•°å€¼
 					*
-					* @param attribute    ±íÊ¾ÊôĞÔ¶ÔÏó
+					* @param attribute    è¡¨ç¤ºå±æ€§å¯¹è±¡
 					*/
 					template <class AttributeType>
 					inline auto get_value(csf_attribute& attribute) -> decltype(std::declval<AttributeType>().get_value()) {
@@ -380,25 +380,25 @@ namespace csf
 						return dynamic_cast<AttributeType&>(attribute).get_value();
 					}
 					/**
-					* º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_managerÖĞ²éÑ¯Ò»¸öÊôĞÔ²¢·µ»ØÊôĞÔÄÚÈİ¡£
-					* ·µ»Ø£º×Ö·û´®ÄÚÈİ¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerä¸­æŸ¥è¯¢ä¸€ä¸ªå±æ€§å¹¶è¿”å›å±æ€§å†…å®¹ã€‚
+					* è¿”å›ï¼šå­—ç¬¦ä¸²å†…å®¹ã€‚
 					*
-					* @param name    ±íÊ¾ĞèÒªµÄÊôĞÔÃû³Æ
+					* @param name    è¡¨ç¤ºéœ€è¦çš„å±æ€§åç§°
 					*/
 					virtual csf_string get_content(const csf_char* name);
 					/**
-					* º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_managerÖĞ²éÑ¯Ò»¸öÊôĞÔ²¢·µ»ØÊôĞÔÄÚÈİ¡£
-					* ·µ»Ø£º×Ö·û´®ÄÚÈİ¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerä¸­æŸ¥è¯¢ä¸€ä¸ªå±æ€§å¹¶è¿”å›å±æ€§å†…å®¹ã€‚
+					* è¿”å›ï¼šå­—ç¬¦ä¸²å†…å®¹ã€‚
 					*
-					* @param name    ±íÊ¾ĞèÒªµÄÊôĞÔÃû³Æ
+					* @param name    è¡¨ç¤ºéœ€è¦çš„å±æ€§åç§°
 					*/
 					inline virtual csf_string get_content(const csf_string& name) {
 
 						return get_content(name.c_str());
 					}
 					/**
-					* ±íÊ¾Çå¿ÕÅäÖÃ¹ÜÀíÆ÷ÖĞµÄËùÓĞÄÚÈİ¡£
-					* ·µ»Ø£ºtrue±íÊ¾´¦Àí³É¹¦£»false±íÊ¾´¦ÀíÊ§°Ü
+					* è¡¨ç¤ºæ¸…ç©ºé…ç½®ç®¡ç†å™¨ä¸­çš„æ‰€æœ‰å†…å®¹ã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºå¤„ç†æˆåŠŸï¼›falseè¡¨ç¤ºå¤„ç†å¤±è´¥
 					*/
 					inline csf_bool clear() {
 
@@ -414,14 +414,14 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					* ±íÊ¾ÅäÖÃÏîµÄ¸ù½Úµã¶ÔÏó
+					* è¡¨ç¤ºé…ç½®é¡¹çš„æ ¹èŠ‚ç‚¹å¯¹è±¡
 					*/
 					inline csf_element* get_root_element() {
 
 						return m_root_element;
 					}
 					/**
-					* ±íÊ¾ÅäÖÃÏîµÄ¸ù½Úµã¶ÔÏó
+					* è¡¨ç¤ºé…ç½®é¡¹çš„æ ¹èŠ‚ç‚¹å¯¹è±¡
 					*
 					* @param new_value
 					*/
@@ -430,14 +430,14 @@ namespace csf
 						m_root_element = (csf_element*)new_value;
 					}
 					/**
-					* ±íÊ¾Ä£¿éÖ¸¶¨µÄitemsËùÏà¶ÔµÄ¸ùÂ·¾¶ĞÅÏ¢¡£Èç¹ûÖ¸¶¨¸ÃĞÅÏ¢£¬Ôò¸ÃÄ£¿éµÄÅäÖÃĞÅÏ¢¶¼ÊÇÏà¶Ô¸ÃÂ·¾¶ĞÅÏ¢¡£
+					* è¡¨ç¤ºæ¨¡å—æŒ‡å®šçš„itemsæ‰€ç›¸å¯¹çš„æ ¹è·¯å¾„ä¿¡æ¯ã€‚å¦‚æœæŒ‡å®šè¯¥ä¿¡æ¯ï¼Œåˆ™è¯¥æ¨¡å—çš„é…ç½®ä¿¡æ¯éƒ½æ˜¯ç›¸å¯¹è¯¥è·¯å¾„ä¿¡æ¯ã€‚
 					*/
 					inline std::list<csf_string>& get_root_items() {
 
 						return m_root_items;
 					}
 					/**
-					* ±íÊ¾Ä£¿éÖ¸¶¨µÄitemsËùÏà¶ÔµÄ¸ùÂ·¾¶ĞÅÏ¢¡£Èç¹ûÖ¸¶¨¸ÃĞÅÏ¢£¬Ôò¸ÃÄ£¿éµÄÅäÖÃĞÅÏ¢¶¼ÊÇÏà¶Ô¸ÃÂ·¾¶ĞÅÏ¢¡£
+					* è¡¨ç¤ºæ¨¡å—æŒ‡å®šçš„itemsæ‰€ç›¸å¯¹çš„æ ¹è·¯å¾„ä¿¡æ¯ã€‚å¦‚æœæŒ‡å®šè¯¥ä¿¡æ¯ï¼Œåˆ™è¯¥æ¨¡å—çš„é…ç½®ä¿¡æ¯éƒ½æ˜¯ç›¸å¯¹è¯¥è·¯å¾„ä¿¡æ¯ã€‚
 					*
 					* @param new_value
 					*/
@@ -447,8 +447,8 @@ namespace csf
 					}
 					/**
 					*
-					* @param cm    ±íÊ¾»ù´¡ÅäÖÃ¹ÜÀíĞÅÏ¢¶ÔÏó
-					* @param root_items    ±íÊ¾ÊôĞÔ¹ÜÀíÆ÷ÖĞ¸ùÂ·¾¶ĞÅÏ¢
+					* @param cm    è¡¨ç¤ºåŸºç¡€é…ç½®ç®¡ç†ä¿¡æ¯å¯¹è±¡
+					* @param root_items    è¡¨ç¤ºå±æ€§ç®¡ç†å™¨ä¸­æ ¹è·¯å¾„ä¿¡æ¯
 					*/
 					inline void set_configure_manager(const csf::core::system::csf_configure_manager* cm
 						, const std::list<csf_string> root_items) {
@@ -458,10 +458,10 @@ namespace csf
 					}
 					/**
 					*
-					* @param root_element    ±íÊ¾ÅäÖÃÏîµÄ¸ù½Úµã¶ÔÏó¡£¸ÃÅäÖÃĞÅÏ¢ÓÅÏÈÓë"csf_configure_manager*
-					* m_configure_manager"ÅäÖÃĞÅÏ¢¡£Èç¹ûÅäÖÃÁË¸Ã¶ÔÏó£¬ÔòÓÅÏÈ²ÉÓÃ¸ÃĞÅÏ¢¡£ËùÓĞÅäÖÃÏî¶¼³ö¸Ã¶ÔÏóÖĞ»ñÈ¡¡£
+					* @param root_element    è¡¨ç¤ºé…ç½®é¡¹çš„æ ¹èŠ‚ç‚¹å¯¹è±¡ã€‚è¯¥é…ç½®ä¿¡æ¯ä¼˜å…ˆä¸"csf_configure_manager*
+					* m_configure_manager"é…ç½®ä¿¡æ¯ã€‚å¦‚æœé…ç½®äº†è¯¥å¯¹è±¡ï¼Œåˆ™ä¼˜å…ˆé‡‡ç”¨è¯¥ä¿¡æ¯ã€‚æ‰€æœ‰é…ç½®é¡¹éƒ½å‡ºè¯¥å¯¹è±¡ä¸­è·å–ã€‚
 					*
-					* @param root_items    ±íÊ¾ÊôĞÔ¹ÜÀíÆ÷ÖĞ¸ùÂ·¾¶ĞÅÏ¢
+					* @param root_items    è¡¨ç¤ºå±æ€§ç®¡ç†å™¨ä¸­æ ¹è·¯å¾„ä¿¡æ¯
 					*/
 					inline void set_root_element(const csf_element* root_element
 						, const std::list<csf_string> root_items) {
@@ -470,8 +470,8 @@ namespace csf
 						set_root_items(root_items);
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İÊôĞÔÁĞ±íÖĞµÄÊı¾İÅĞ¶Ï¸ÃÄ£¿éÊÇ·ñÒÑ¾­ÅäÖÃ¹ı
-					* ·µ»Ø£ºtrue±íÊ¾ÊôĞÔÁĞ±íÓĞÊı¾İ£¬ÒÑ¾­ÅäÖÃ¹ı£»false±íÊ¾ÊôĞÔÁĞ±íÃ»ÓĞ²ÎÊı£¬Ã»ÓĞÅäÖÃ¹ı
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®å±æ€§åˆ—è¡¨ä¸­çš„æ•°æ®åˆ¤æ–­è¯¥æ¨¡å—æ˜¯å¦å·²ç»é…ç½®è¿‡
+					* è¿”å›ï¼štrueè¡¨ç¤ºå±æ€§åˆ—è¡¨æœ‰æ•°æ®ï¼Œå·²ç»é…ç½®è¿‡ï¼›falseè¡¨ç¤ºå±æ€§åˆ—è¡¨æ²¡æœ‰å‚æ•°ï¼Œæ²¡æœ‰é…ç½®è¿‡
 					*/
 					inline csf_bool is_configured() {
 
@@ -483,7 +483,7 @@ namespace csf
 					}
 				protected:
 					/**
-					 * ±íÊ¾ÅäÖÃµÄÊôĞÔÁĞ±í£¬·½±ã²éÕÒ¸÷¸öÊôĞÔÄÚÈİ
+					 * è¡¨ç¤ºé…ç½®çš„å±æ€§åˆ—è¡¨ï¼Œæ–¹ä¾¿æŸ¥æ‰¾å„ä¸ªå±æ€§å†…å®¹
 					 */
 					inline csf_unordered_map<csf_string, csf_attribute*>& get_attributes() {
 
@@ -492,20 +492,20 @@ namespace csf
 
 				private:
 					/**
-					* ±íÊ¾ÅäÖÃÏîµÄ¸ù½Úµã¶ÔÏó¡£¸ÃÅäÖÃĞÅÏ¢ÓÅÏÈÓë"csf_configure_manager*
-					* m_configure_manager"ÅäÖÃĞÅÏ¢¡£Èç¹ûÅäÖÃÁË¸Ã¶ÔÏó£¬ÔòÓÅÏÈ²ÉÓÃ¸ÃĞÅÏ¢¡£ËùÓĞÅäÖÃÏî¶¼³ö¸Ã¶ÔÏóÖĞ»ñÈ¡¡£
+					* è¡¨ç¤ºé…ç½®é¡¹çš„æ ¹èŠ‚ç‚¹å¯¹è±¡ã€‚è¯¥é…ç½®ä¿¡æ¯ä¼˜å…ˆä¸"csf_configure_manager*
+					* m_configure_manager"é…ç½®ä¿¡æ¯ã€‚å¦‚æœé…ç½®äº†è¯¥å¯¹è±¡ï¼Œåˆ™ä¼˜å…ˆé‡‡ç”¨è¯¥ä¿¡æ¯ã€‚æ‰€æœ‰é…ç½®é¡¹éƒ½å‡ºè¯¥å¯¹è±¡ä¸­è·å–ã€‚
 					*/
 					csf_element* m_root_element = csf_nullptr;
 					/**
-					 * ±íÊ¾ÅäÖÃµÄÊôĞÔÁĞ±í£¬·½±ã²éÕÒ¸÷¸öÊôĞÔÄÚÈİ
+					 * è¡¨ç¤ºé…ç½®çš„å±æ€§åˆ—è¡¨ï¼Œæ–¹ä¾¿æŸ¥æ‰¾å„ä¸ªå±æ€§å†…å®¹
 					 */
 					csf_unordered_map<csf_string, csf_attribute*> m_attributes;
 					/**
-					* ±íÊ¾Ä£¿éÖ¸¶¨µÄitemsËùÏà¶ÔµÄ¸ùÂ·¾¶ĞÅÏ¢¡£Èç¹ûÖ¸¶¨¸ÃĞÅÏ¢£¬Ôò¸ÃÄ£¿éµÄÅäÖÃĞÅÏ¢¶¼ÊÇÏà¶Ô¸ÃÂ·¾¶ĞÅÏ¢¡£
+					* è¡¨ç¤ºæ¨¡å—æŒ‡å®šçš„itemsæ‰€ç›¸å¯¹çš„æ ¹è·¯å¾„ä¿¡æ¯ã€‚å¦‚æœæŒ‡å®šè¯¥ä¿¡æ¯ï¼Œåˆ™è¯¥æ¨¡å—çš„é…ç½®ä¿¡æ¯éƒ½æ˜¯ç›¸å¯¹è¯¥è·¯å¾„ä¿¡æ¯ã€‚
 					*/
 					std::list<csf_string> m_root_items;
 					/**
-					 * ±íÊ¾ÅäÖÃµÄÊôĞÔÁĞ±í£¬·½±ã²éÕÒ¸÷¸öÊôĞÔÄÚÈİ
+					 * è¡¨ç¤ºé…ç½®çš„å±æ€§åˆ—è¡¨ï¼Œæ–¹ä¾¿æŸ¥æ‰¾å„ä¸ªå±æ€§å†…å®¹
 					 *
 					 * @param new_value
 					 */
@@ -514,12 +514,12 @@ namespace csf
 						m_attributes = new_value;
 					}
 					/**
-					* º¯Êı¹¦ÄÜÎª£ºÏòattribute_managerÖĞÌí¼ÓÒ»¸öÊôĞÔ¡£
-					* ×¢Òâ£º±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´£¬·ñÔò²Ù×÷Ê§°Ü¡£
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šå‘attribute_managerä¸­æ·»åŠ ä¸€ä¸ªå±æ€§ã€‚
+					* æ³¨æ„ï¼šè¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ï¼Œå¦åˆ™æ“ä½œå¤±è´¥ã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					*
-					* @param name    ±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					* @param attribute    ±íÊ¾Ìí¼ÓµÄÊôĞÔ¶ÔÏó
+					* @param name    è¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					* @param attribute    è¡¨ç¤ºæ·»åŠ çš„å±æ€§å¯¹è±¡
 					*/
 					template <class AttributeType>
 					inline csf_bool exception_attribute(const csf_char* name, AttributeType& attribute) {
@@ -533,12 +533,12 @@ namespace csf
 
 
 					/**
-					* º¯Êı¹¦ÄÜÎª£ºÏòattribute_managerÖĞÌí¼ÓÒ»¸öÊôĞÔ¡£
-					* ×¢Òâ£º±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´£¬·ñÔò²Ù×÷Ê§°Ü¡£
-					* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+					* å‡½æ•°åŠŸèƒ½ä¸ºï¼šå‘attribute_managerä¸­æ·»åŠ ä¸€ä¸ªå±æ€§ã€‚
+					* æ³¨æ„ï¼šè¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ï¼Œå¦åˆ™æ“ä½œå¤±è´¥ã€‚
+					* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					*
-					* @param name    ±íÊ¾Ìí¼ÓµÄÊôĞÔÃû³Æ£¬ÔÚÒ»¸öattribute_managerÖĞ±ØĞë±£Ö¤Î¨Ò»²»ÖØ¸´¡£
-					* @param attribute    ±íÊ¾Ìí¼ÓµÄÊôĞÔ¶ÔÏó
+					* @param name    è¡¨ç¤ºæ·»åŠ çš„å±æ€§åç§°ï¼Œåœ¨ä¸€ä¸ªattribute_managerä¸­å¿…é¡»ä¿è¯å”¯ä¸€ä¸é‡å¤ã€‚
+					* @param attribute    è¡¨ç¤ºæ·»åŠ çš„å±æ€§å¯¹è±¡
 					*/
 					template <class AttributeType>
 					csf_bool insert_attribute(const csf_char* name, AttributeType& attribute) {
@@ -546,7 +546,7 @@ namespace csf
 						AttributeType			*tmp_new = csf_nullptr;
 
 
-						//´´½¨Ò»¸öĞÂÄÜ¶ÔÏó£¬²¢½«ÊôĞÔĞÅÏ¢¸üĞÂµ½ÊôĞÔÁĞ±íÖĞ
+						//åˆ›å»ºä¸€ä¸ªæ–°èƒ½å¯¹è±¡ï¼Œå¹¶å°†å±æ€§ä¿¡æ¯æ›´æ–°åˆ°å±æ€§åˆ—è¡¨ä¸­
 						tmp_new = new AttributeType(attribute);
 						if (!tmp_new) {
 							csf_log_ex(warning, csf_log_code_warning

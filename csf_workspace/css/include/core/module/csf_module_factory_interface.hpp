@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 16:49:58
+*Date: 01-7æœˆ-2018 16:49:58
 *
 *Description: Interface(csf_module_factory_interface)
 *
@@ -32,10 +32,10 @@ namespace csf
 		namespace module
 		{
 			/**
-			 * ±íÊ¾Ä£¿é´´½¨¹¤³§µÄ²Ù×÷½Ó¿Ú
+			 * è¡¨ç¤ºæ¨¡å—åˆ›å»ºå·¥å‚çš„æ“ä½œæ¥å£
 			 * @author fangzhenmu@aliyun.com
 			 * @version 1.0
-			 * @created 01-7ÔÂ-2018 16:49:58
+			 * @created 01-7æœˆ-2018 16:49:58
 			 */
 			class csf_module_factory_interface : public csf::core::module::csf_interface
 			{
@@ -50,17 +50,17 @@ namespace csf
 				}
 
 				/**
-				 * Ïú»ÙÄ£¿é²Ù×÷¡£
-				 * ·µ»Ø£º0±íÊ¾ÕıÈ·£»<0±íÊ¾´íÎóÂë£»
+				 * é”€æ¯æ¨¡å—æ“ä½œã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæ­£ç¡®ï¼›<0è¡¨ç¤ºé”™è¯¯ç ï¼›
 				 * 
-				 * @param module    ±íÊ¾ĞèÒªÏú»ÙµÄÄ£¿éµØÖ·
+				 * @param module    è¡¨ç¤ºéœ€è¦é”€æ¯çš„æ¨¡å—åœ°å€
 				 */
 				virtual csf_int32 destory(const csf_module * module) =0;
 				/**
-				 * ´´½¨Ä£¿é²Ù×÷¡£
-				 * ·µ»Ø£º·Ç¿Õ±íÊ¾´´½¨µÄÄ£¿éµØÖ·£»¿Õ±íÊ¾´íÎó£»
+				 * åˆ›å»ºæ¨¡å—æ“ä½œã€‚
+				 * è¿”å›ï¼šéç©ºè¡¨ç¤ºåˆ›å»ºçš„æ¨¡å—åœ°å€ï¼›ç©ºè¡¨ç¤ºé”™è¯¯ï¼›
 				 * 
-				 * @param configure_manager    ±íÊ¾Ä£¿éµÄÅäÖÃÏîĞÅÏ¢
+				 * @param configure_manager    è¡¨ç¤ºæ¨¡å—çš„é…ç½®é¡¹ä¿¡æ¯
 				 */
 				virtual csf_module * create(const csf_configure_manager * configure_manager) =0;
 

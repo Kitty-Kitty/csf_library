@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:52
+*Date: 19-7æœˆ-2018 20:11:52
 *
-*Description: Class(csf_thread_group) ±íÊ¾Ïß³Ì×é¹ÜÀíÆ÷
+*Description: Class(csf_thread_group) è¡¨ç¤ºçº¿ç¨‹ç»„ç®¡ç†å™¨
 *
 *Others:
 *
@@ -38,10 +38,10 @@ namespace csf
 			namespace thread
 			{
 				/**
-				 * ±íÊ¾Ïß³Ì×é¹ÜÀíÆ÷
+				 * è¡¨ç¤ºçº¿ç¨‹ç»„ç®¡ç†å™¨
 				 * @author f
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:52
+				 * @created 19-7æœˆ-2018 20:11:52
 				 */
 				class csf_thread_group
 				{
@@ -51,14 +51,14 @@ namespace csf
 					virtual ~csf_thread_group();
 
 					/**
-					 * ±íÊ¾±£´æµÄÏß³Ì¼¯ºÏ
+					 * è¡¨ç¤ºä¿å­˜çš„çº¿ç¨‹é›†åˆ
 					 */
 					inline csf_set<csf_thread*>& get_threads() {
 
 						return m_threads;
 					}
 					/**
-					 * ±íÊ¾±£´æµÄÏß³Ì¼¯ºÏ
+					 * è¡¨ç¤ºä¿å­˜çš„çº¿ç¨‹é›†åˆ
 					 * 
 					 * @param newVal
 					 */
@@ -67,25 +67,25 @@ namespace csf
 						m_threads = newVal;
 					}
 					/**
-					 * ±íÊ¾»ñÈ¡Ïß³Ì×éÖĞµÄÏß³ÌÊıÁ¿
+					 * è¡¨ç¤ºè·å–çº¿ç¨‹ç»„ä¸­çš„çº¿ç¨‹æ•°é‡
 					 */
 					inline csf_uint32 size() {
 
 						return 0;
 					}
 					/**
-					 * ±íÊ¾µ±Ç°Ïß³ÌÊÇ·ñÔÚÏß³Ì×éÖĞ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾ÒÑ¾­´æÔÚÏß³Ì×éÖĞ£»false±íÊ¾²»´æÔÚ¡£
+					 * è¡¨ç¤ºå½“å‰çº¿ç¨‹æ˜¯å¦åœ¨çº¿ç¨‹ç»„ä¸­ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºå·²ç»å­˜åœ¨çº¿ç¨‹ç»„ä¸­ï¼›falseè¡¨ç¤ºä¸å­˜åœ¨ã€‚
 					 */
 					inline csf_bool is_this_thread_in() {
 
 						return csf_true;
 					}
 					/**
-					 * ±íÊ¾Ö¸¶¨Ïß³ÌÊÇ·ñÔÚÏß³Ì×éÖĞ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾ÒÑ¾­´æÔÚÏß³Ì×éÖĞ£»false±íÊ¾²»´æÔÚ¡£
+					 * è¡¨ç¤ºæŒ‡å®šçº¿ç¨‹æ˜¯å¦åœ¨çº¿ç¨‹ç»„ä¸­ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºå·²ç»å­˜åœ¨çº¿ç¨‹ç»„ä¸­ï¼›falseè¡¨ç¤ºä¸å­˜åœ¨ã€‚
 					 * 
-					 * @param thrd    ±íÊ¾ĞèÒª±»²éÕÒµÄÏß³Ì
+					 * @param thrd    è¡¨ç¤ºéœ€è¦è¢«æŸ¥æ‰¾çš„çº¿ç¨‹
 					 */
 					inline csf_bool is_thread_in(const csf_thread* thrd) {
 
@@ -93,48 +93,48 @@ namespace csf
 					}
 					/**
 					 * 
-					 * @param func    Ïß³ÌÖ´ĞĞº¯Êı
+					 * @param func    çº¿ç¨‹æ‰§è¡Œå‡½æ•°
 					 */
 					template <typename F>
 					csf_thread* create_thread(F func) {
 						return csf_nullptr;
 					}
 					/**
-					 * ±íÊ¾Ìí¼ÓÖ¸¶¨Ïß³Ìµ½Ïß³Ì×éÖĞ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+					 * è¡¨ç¤ºæ·»åŠ æŒ‡å®šçº¿ç¨‹åˆ°çº¿ç¨‹ç»„ä¸­ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					 * 
-					 * @param thrd    ±íÊ¾ĞèÒª±»´¦ÀíµÄÏß³Ì
+					 * @param thrd    è¡¨ç¤ºéœ€è¦è¢«å¤„ç†çš„çº¿ç¨‹
 					 */
 					inline csf_bool add_thread(const csf_thread* thrd) {
 
 						return csf_true;
 					}
 					/**
-					 * ±íÊ¾É¾³ıÖ¸¶¨Ïß³Ìµ½Ïß³Ì×éÖĞ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+					 * è¡¨ç¤ºåˆ é™¤æŒ‡å®šçº¿ç¨‹åˆ°çº¿ç¨‹ç»„ä¸­ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 					 * 
-					 * @param thrd    ±íÊ¾ĞèÒª±»´¦ÀíµÄÏß³Ì
+					 * @param thrd    è¡¨ç¤ºéœ€è¦è¢«å¤„ç†çš„çº¿ç¨‹
 					 */
 					inline csf_bool remove_thread(const csf_thread* thrd) {
 
 						return csf_true;
 					}
 					/**
-					 * µÈ´ıËùÓĞÏß³Ì½áÊø
+					 * ç­‰å¾…æ‰€æœ‰çº¿ç¨‹ç»“æŸ
 					 */
 					inline csf_void join_all() {
 
 					}
 					/**
-					 * µÈ´ıËùÓĞÏß³Ì½áÊø£¬Èç¹ûµÈ´ı³¬Ê±ÔòÇ¿ÖÆÖÕÖ¹¡£
+					 * ç­‰å¾…æ‰€æœ‰çº¿ç¨‹ç»“æŸï¼Œå¦‚æœç­‰å¾…è¶…æ—¶åˆ™å¼ºåˆ¶ç»ˆæ­¢ã€‚
 					 * 
-					 * @param timeout    ±íÊ¾µÈ´ı³¬Ê±Ê±¼ä£¬µ¥Î»ºÁÃë¡£
+					 * @param timeout    è¡¨ç¤ºç­‰å¾…è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’ã€‚
 					 */
 					inline csf_void timed_join_all(const csf_uint64 timeout) {
 
 					}
 					/**
-					 * Ç¿ÖÆÖÕÖ¹ËùÓĞÏß³Ì
+					 * å¼ºåˆ¶ç»ˆæ­¢æ‰€æœ‰çº¿ç¨‹
 					 */
 					inline csf_void interrupt_all() {
 
@@ -142,11 +142,11 @@ namespace csf
 
 				private:
 					/**
-					 * ±íÊ¾±£´æµÄÏß³Ì¼¯ºÏ
+					 * è¡¨ç¤ºä¿å­˜çš„çº¿ç¨‹é›†åˆ
 					 */
 					csf_set<csf_thread*> m_threads;
 					/**
-					 * ±íÊ¾ÓÃÓÚ¶àÏß³Ì°²È«µÄ»¥³âÁ¿
+					 * è¡¨ç¤ºç”¨äºå¤šçº¿ç¨‹å®‰å…¨çš„äº’æ–¥é‡
 					 */
 					csf::core::utils::thread::csf_mutex m_mtx;
 

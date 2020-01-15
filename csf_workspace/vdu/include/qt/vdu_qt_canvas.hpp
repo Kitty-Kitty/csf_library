@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 24-9ÔÂ-2018 11:48:22
+*Date: 24-9æœˆ-2018 11:48:22
 *
-*Description: Class(vdu_qt_canvas) ±íÊ¾»ùÓÚQTÊµÏÖµÄÊ¸Á¿´¦Àí»­²¼
+*Description: Class(vdu_qt_canvas) è¡¨ç¤ºåŸºäºQTå®ç°çš„çŸ¢é‡å¤„ç†ç”»å¸ƒ
 *
 *Others:
 *
@@ -30,10 +30,10 @@ namespace vdu
 	namespace qt
 	{
 		/**
-		 * ±íÊ¾»ùÓÚQTÊµÏÖµÄÊ¸Á¿´¦Àí»­²¼
+		 * è¡¨ç¤ºåŸºäºQTå®ç°çš„çŸ¢é‡å¤„ç†ç”»å¸ƒ
 		 * @author f
 		 * @version 1.0
-		 * @created 24-9ÔÂ-2018 11:48:22
+		 * @created 24-9æœˆ-2018 11:48:22
 		 */
 		class vdu_qt_canvas : public vdu::core::vdu_canvas
 		{
@@ -43,140 +43,140 @@ namespace vdu
 			virtual ~vdu_qt_canvas();
 
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£º´´½¨Ò»¸öÖ¸¶¨»­²ã
-			 * ·µ»Ø£º·Ç¿Õ±íÊ¾³É¹¦£»csf_nullptr±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ›å»ºä¸€ä¸ªæŒ‡å®šç”»å±‚
+			 * è¿”å›ï¼šéç©ºè¡¨ç¤ºæˆåŠŸï¼›csf_nullptrè¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param index    ±íÊ¾ĞèÒª´´½¨µÄ»­²ãË÷ÒıºÅ
+			 * @param index    è¡¨ç¤ºéœ€è¦åˆ›å»ºçš„ç”»å±‚ç´¢å¼•å·
 			 */
 			virtual vdu_panel* create_panel(const csf_int32 index);
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£º´´½¨Ò»¸ö¶¥²ã»­²ã
-			 * ·µ»Ø£º·Ç¿Õ±íÊ¾³É¹¦£»csf_nullptr±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ›å»ºä¸€ä¸ªé¡¶å±‚ç”»å±‚
+			 * è¿”å›ï¼šéç©ºè¡¨ç¤ºæˆåŠŸï¼›csf_nullptrè¡¨ç¤ºå¤±è´¥ï¼›
 			 */
 			inline virtual vdu_panel* create_top_panel() {
 
 				return  csf_nullptr;
 			}
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£º´´½¨Ò»¸öµ×²ã»­²ã
-			 * ·µ»Ø£º·Ç¿Õ±íÊ¾³É¹¦£»csf_nullptr±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ›å»ºä¸€ä¸ªåº•å±‚ç”»å±‚
+			 * è¿”å›ï¼šéç©ºè¡¨ç¤ºæˆåŠŸï¼›csf_nullptrè¡¨ç¤ºå¤±è´¥ï¼›
 			 */
 			inline virtual vdu_panel* create_bottom_panel() {
 
 				return  csf_nullptr;
 			}
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£ºÏú»ÙÒ»¸öÖ¸¶¨»­²ã
-			 * ·µ»Ø£º0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šé”€æ¯ä¸€ä¸ªæŒ‡å®šç”»å±‚
+			 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param panel    ±íÊ¾ĞèÒªÏú»ÙµÄ»­²ãÖ¸Õë
+			 * @param panel    è¡¨ç¤ºéœ€è¦é”€æ¯çš„ç”»å±‚æŒ‡é’ˆ
 			 */
 			virtual csf_int32 destory_panel(const vdu_panel* panel);
 			/**
-			 * Ä£¿é³õÊ¼»¯
+			 * æ¨¡å—åˆå§‹åŒ–
 			 * 
-			 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			 */
 			virtual csf::core::base::csf_int32 init(const csf_configure_manager* conf_mg = csf_nullptr);
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£º¸üĞÂ»­²ãµÄË÷ÒıºÅ
-			 * ·µ»Ø£º0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ›´æ–°ç”»å±‚çš„ç´¢å¼•å·
+			 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param panel    ±íÊ¾ĞèÒª±»¸üĞÂµÄ»­²ã¶ÔÏó
-			 * @param index    ±íÊ¾»­²ãË÷ÒıºÅ
+			 * @param panel    è¡¨ç¤ºéœ€è¦è¢«æ›´æ–°çš„ç”»å±‚å¯¹è±¡
+			 * @param index    è¡¨ç¤ºç”»å±‚ç´¢å¼•å·
 			 */
 			virtual csf_int32 update_panel(const vdu_panel* panel, const csf_int32 index);
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İ»­²ã¶ÔÏó£¬½»»»Á½¸ö»­²ã´ÎĞò
-			 * ·µ»Ø£º0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®ç”»å±‚å¯¹è±¡ï¼Œäº¤æ¢ä¸¤ä¸ªç”»å±‚æ¬¡åº
+			 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param first    ±íÊ¾ĞèÒª½»»»µÄµÚÒ»¸ö»­²ã¶ÔÏó
-			 * @param second    ±íÊ¾ĞèÒª½»»»µÄµÚ¶ş¸ö»­²ã¶ÔÏó
+			 * @param first    è¡¨ç¤ºéœ€è¦äº¤æ¢çš„ç¬¬ä¸€ä¸ªç”»å±‚å¯¹è±¡
+			 * @param second    è¡¨ç¤ºéœ€è¦äº¤æ¢çš„ç¬¬äºŒä¸ªç”»å±‚å¯¹è±¡
 			 */
 			virtual csf_int32 shift_panel(const vdu_panel* first, const vdu_panel* second);
 			/**
-			 * Ä£¿éÆô¶¯
+			 * æ¨¡å—å¯åŠ¨
 			 * 
-			 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			 */
 			virtual csf::core::base::csf_int32 start(const csf_configure_manager* conf_mg = csf_nullptr);
 			/**
-			 * Ä£¿éÍ£Ö¹
+			 * æ¨¡å—åœæ­¢
 			 * 
-			 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			 */
 			virtual csf::core::base::csf_int32 stop(const csf_configure_manager* conf_mg = csf_nullptr);
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İË÷ÒıºÅ²éÑ¯Ö¸¶¨»­²ã
-			 * ·µ»Ø£º·Ç¿Õ±íÊ¾³É¹¦£»csf_nullptr±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®ç´¢å¼•å·æŸ¥è¯¢æŒ‡å®šç”»å±‚
+			 * è¿”å›ï¼šéç©ºè¡¨ç¤ºæˆåŠŸï¼›csf_nullptrè¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param index    ±íÊ¾»­²ãË÷ÒıºÅ
+			 * @param index    è¡¨ç¤ºç”»å±‚ç´¢å¼•å·
 			 */
 			virtual vdu_panel* find_panel(const csf_int32 index);
 			/**
-			 * ±íÊ¾QTµÄapplication¶ÔÏó
+			 * è¡¨ç¤ºQTçš„applicationå¯¹è±¡
 			 */
 			inline QApplication* get_app() {
 
 				return m_app;
 			}
 			/**
-			 * ±íÊ¾Í¼ĞÎµÄÊÓÍ¼¶ÔÏó
+			 * è¡¨ç¤ºå›¾å½¢çš„è§†å›¾å¯¹è±¡
 			 */
 			inline QGraphicsView* get_view() {
 
 				return m_view;
 			}
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£º½«Ö¸¶¨»­²ãÉè±¸Îª¶¥²ã
-			 * ·µ»Ø£º0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå°†æŒ‡å®šç”»å±‚è®¾å¤‡ä¸ºé¡¶å±‚
+			 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param panel    ±íÊ¾»­²ãÖ¸Õë
+			 * @param panel    è¡¨ç¤ºç”»å±‚æŒ‡é’ˆ
 			 */
 			virtual csf_int32 set_top(const vdu_panel* panel);
 			/**
-			 * ±íÊ¾Í¼ĞÎ³¡¾°
+			 * è¡¨ç¤ºå›¾å½¢åœºæ™¯
 			 */
 			inline QGraphicsScene* get_scene() {
 
 				return m_scene;
 			}
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£º½«Ö¸¶¨»­²ãÉè±¸Îªµ×²ã
-			 * ·µ»Ø£º0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå°†æŒ‡å®šç”»å±‚è®¾å¤‡ä¸ºåº•å±‚
+			 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param panel    ±íÊ¾»­²ãÖ¸Õë
+			 * @param panel    è¡¨ç¤ºç”»å±‚æŒ‡é’ˆ
 			 */
 			virtual csf_int32 set_bottom(const vdu_panel* panel);
 
 		protected:
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İ»­²ãË÷ÒıºÅ£¬Ìí¼ÓÖ¸¶¨µÄ»­²ã
-			 * ·µ»Ø£º0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®ç”»å±‚ç´¢å¼•å·ï¼Œæ·»åŠ æŒ‡å®šçš„ç”»å±‚
+			 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param index    ±íÊ¾»­²ãË÷ÒıºÅ
-			 * @param panel    ±íÊ¾»­²ã¶ÔÏó
+			 * @param index    è¡¨ç¤ºç”»å±‚ç´¢å¼•å·
+			 * @param panel    è¡¨ç¤ºç”»å±‚å¯¹è±¡
 			 */
 			inline virtual csf_int32 add_panel(const csf_int32 index, const vdu_panel* panel) {
 
 				return 0;
 			}
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£ºÌí¼ÓÖ¸¶¨µÄ»­²ã
-			 * ·µ»Ø£º0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ·»åŠ æŒ‡å®šçš„ç”»å±‚
+			 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param panel    ±íÊ¾»­²ã¶ÔÏó
+			 * @param panel    è¡¨ç¤ºç”»å±‚å¯¹è±¡
 			 */
 			virtual csf_int32 add_panel(const vdu_panel* panel);
 			/**
-			 * Ö÷Òª¹¦ÄÜÊÇ£ºÉ¾³ıÒ»¸öÖ¸¶¨»­²ã
-			 * ·µ»Ø£º0±íÊ¾³É¹¦£»ÆäËû±íÊ¾Ê§°Ü£»
+			 * ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ é™¤ä¸€ä¸ªæŒ‡å®šç”»å±‚
+			 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›å…¶ä»–è¡¨ç¤ºå¤±è´¥ï¼›
 			 * 
-			 * @param panel    ±íÊ¾»­²ãÖ¸Õë
+			 * @param panel    è¡¨ç¤ºç”»å±‚æŒ‡é’ˆ
 			 */
 			virtual csf_int32 delete_panel(const vdu_panel* panel);
 			/**
-			* ±íÊ¾QTµÄapplication¶ÔÏó
+			* è¡¨ç¤ºQTçš„applicationå¯¹è±¡
 			*
 			* @param newVal
 			*/
@@ -185,7 +185,7 @@ namespace vdu
 				m_app = newVal;
 			}
 			/**
-			* ±íÊ¾Í¼ĞÎµÄÊÓÍ¼¶ÔÏó
+			* è¡¨ç¤ºå›¾å½¢çš„è§†å›¾å¯¹è±¡
 			*
 			* @param newVal
 			*/
@@ -194,7 +194,7 @@ namespace vdu
 				m_view = newVal;
 			}
 			/**
-			* ±íÊ¾Í¼ĞÎ³¡¾°
+			* è¡¨ç¤ºå›¾å½¢åœºæ™¯
 			*
 			* @param newVal
 			*/
@@ -204,15 +204,15 @@ namespace vdu
 			}
 		private:
 			/**
-			 * ±íÊ¾QTµÄapplication¶ÔÏó
+			 * è¡¨ç¤ºQTçš„applicationå¯¹è±¡
 			 */
 			QApplication* m_app = csf_nullptr;
 			/**
-			 * ±íÊ¾Í¼ĞÎµÄÊÓÍ¼¶ÔÏó
+			 * è¡¨ç¤ºå›¾å½¢çš„è§†å›¾å¯¹è±¡
 			 */
 			QGraphicsView* m_view = csf_nullptr;
 			/**
-			 * ±íÊ¾Í¼ĞÎ³¡¾°
+			 * è¡¨ç¤ºå›¾å½¢åœºæ™¯
 			 */
 			QGraphicsScene* m_scene = csf_nullptr;
 

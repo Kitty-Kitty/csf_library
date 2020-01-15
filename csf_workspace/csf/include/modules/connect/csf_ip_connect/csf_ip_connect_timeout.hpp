@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 21-10ÔÂ-2018 14:31:55
+*Date: 21-10æœˆ-2018 14:31:55
 *
-*Description: Class(csf_ip_connect_timeout) ±íÊ¾ip_connectµÄ³¬Ê±¶ÔÏó
+*Description: Class(csf_ip_connect_timeout) è¡¨ç¤ºip_connectçš„è¶…æ—¶å¯¹è±¡
 *
 *Others:
 *
@@ -31,19 +31,19 @@ namespace csf
 		namespace connect
 		{
 			/**
-			 * ±íÊ¾ip_connectµÄ³¬Ê±¶ÔÏó
+			 * è¡¨ç¤ºip_connectçš„è¶…æ—¶å¯¹è±¡
 			 * @author f
 			 * @version 1.0
-			 * @created 21-10ÔÂ-2018 14:31:55
+			 * @created 21-10æœˆ-2018 14:31:55
 			 */
 			class csf_ip_connect_timeout : public csf::core::module::connect::csf_connect_timeout
 			{
 			public:
 				/**
-				* ±íÊ¾ÀëÏß¶¨Ê±Æ÷
+				* è¡¨ç¤ºç¦»çº¿å®šæ—¶å™¨
 				* @author f
 				* @version 1.0
-				* @updated 01-10ÔÂ-2018 15:12:05
+				* @updated 01-10æœˆ-2018 15:12:05
 				*/
 				typedef boost::asio::deadline_timer			csf_deadline_timer;
 			public:
@@ -51,23 +51,23 @@ namespace csf
 
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İio_service´´½¨Ò»¸ötimeout¶ÔÏó
-				* ·µ»Ø£ºÎŞ
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®io_serviceåˆ›å»ºä¸€ä¸ªtimeoutå¯¹è±¡
+				* è¿”å›ï¼šæ— 
 				*
-				* @param io_service    ±íÊ¾boostµÄio_service¶ÔÏó
+				* @param io_service    è¡¨ç¤ºboostçš„io_serviceå¯¹è±¡
 				*/
 				inline explicit csf_ip_connect_timeout(boost::asio::io_service& io_service)
 					: m_deadline_timer(io_service) {
 
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£º¸ù¾İio_serviceºÍ»ùÌåĞÅÏ¢´´½¨Ò»¸ötimeout¶ÔÏó
-				* ·µ»Ø£ºÎŞ
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šæ ¹æ®io_serviceå’ŒåŸºä½“ä¿¡æ¯åˆ›å»ºä¸€ä¸ªtimeoutå¯¹è±¡
+				* è¿”å›ï¼šæ— 
 				*
-				* @param io_service    ±íÊ¾boostµÄio_service¶ÔÏó
-				* @param time    ±íÊ¾µ±Ç°³¬Ê±µÄÊ±¼äÊıÖµ£¬µ¥Î»ÎªºÁÃë£¨ms£©
+				* @param io_service    è¡¨ç¤ºboostçš„io_serviceå¯¹è±¡
+				* @param time    è¡¨ç¤ºå½“å‰è¶…æ—¶çš„æ—¶é—´æ•°å€¼ï¼Œå•ä½ä¸ºæ¯«ç§’ï¼ˆmsï¼‰
 				*
-				* @param handle    ±íÊ¾³¬Ê±ºóµÄ»Øµ÷º¯Êı
+				* @param handle    è¡¨ç¤ºè¶…æ—¶åçš„å›è°ƒå‡½æ•°
 				*/
 				inline explicit csf_ip_connect_timeout(boost::asio::io_service& io_service
 					, const csf_uint32 time
@@ -77,7 +77,7 @@ namespace csf
 
 				}
 				/**
-				* ±íÊ¾³¬Ê±¶¨Ê±Æ÷¶ÔÏó
+				* è¡¨ç¤ºè¶…æ—¶å®šæ—¶å™¨å¯¹è±¡
 				*/
 				inline csf_deadline_timer& get_deadline_timer() {
 
@@ -86,7 +86,7 @@ namespace csf
 
 			private:
 				/**
-				 * ±íÊ¾³¬Ê±¶¨Ê±Æ÷¶ÔÏó
+				 * è¡¨ç¤ºè¶…æ—¶å®šæ—¶å™¨å¯¹è±¡
 				 */
 				csf_deadline_timer m_deadline_timer;
 

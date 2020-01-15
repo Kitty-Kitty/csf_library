@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright:fz
 *
@@ -10,7 +10,7 @@
 *
 *Date:2018/06/27
 *
-*Description: create (csf_stddef.h)±íÊ¾¶ÔÒ»Ð©±ê×¼¿âµÄÖØ¶¨Òå
+*Description: create (csf_stddef.h)è¡¨ç¤ºå¯¹ä¸€äº›æ ‡å‡†åº“çš„é‡å®šä¹‰
 *
 *Others:
 *
@@ -61,9 +61,9 @@ namespace csf
 #define	csf_ntohs							ntohs
 #define	csf_rand							rand
 #if defined(WIN32)
-#define	csf_msleep(millsec)					Sleep(millsec)				//ºÁÃëµ¥Î»
+#define	csf_msleep(millsec)					Sleep(millsec)				//æ¯«ç§’å•ä½
 #else
-#define	csf_msleep(millsec)					usleep(millsec * 1000)		//ºÁÃëµ¥Î»
+#define	csf_msleep(millsec)					usleep(millsec * 1000)		//æ¯«ç§’å•ä½
 #endif
 #define	csf_srand()							srand((uint32_t)time(NULL));
 #define	csf_sprintf							sprintf
@@ -87,7 +87,7 @@ namespace csf
 #endif
 
 
-//ºËÑé×Ö·û´®·Ç¿Õ°××Ö·û£¬ascii ÊýÖµ·¶Î§[33, 126]£¬¼´[!, ~].·Ç¿ÕÎªtrue£¬¿ÕÎªfalse
+//æ ¸éªŒå­—ç¬¦ä¸²éžç©ºç™½å­—ç¬¦ï¼Œascii æ•°å€¼èŒƒå›´[33, 126]ï¼Œå³[!, ~].éžç©ºä¸ºtrueï¼Œç©ºä¸ºfalse
 #define csf_char_no_space(ch)				((ch) >= 33 && (ch) <= 126)
 
 #if defined(WIN32)

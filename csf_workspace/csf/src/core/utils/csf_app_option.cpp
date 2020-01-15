@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: f
 *
@@ -18,6 +18,8 @@
 *
 *******************************************************************************/
 
+//#include <boost/lexical_cast.hpp> 
+#include <stdlib.h>
 #include "csf_app_option.hpp"
 
 using csf::core::module::csf_app_option;
@@ -164,7 +166,34 @@ void csf_app_option::vm_pid(variables_map& vm, std::string key) {
  * @param key    表示当前参数的名称
  */
 void csf_app_option::vm_instance(variables_map& vm, std::string key) {
-	get_app().set_vm(reinterpret_cast<csf_vm*>(vm[key].as<std::uint64_t>()));
+
+	std::string			tmp_instance = vm[key].as<std::string>();
+
+	if (!tmp_instance.empty()) {
+		tmp_instance.erase(0, tmp_instance.find_first_not_of(" "));
+		if (tmp_instance.find("0x")) {
+			tmp_instance = "0x" + tmp_instance;
+		}
+		//tmp_instance.erase(0, tmp_instance.find_first_not_of("0x"));
+		
+		if (csf_sizeof(std::uint32_t) == csf_sizeof(csf_vm*)) {
+			get_app().set_vm(reinterpret_cast<csf_vm*>(strtol(tmp_instance.c_str(), NULL, 0)));
+			////hisiv500的工具链gcc 4.9不支持std::stoull
+			//get_app().set_vm(reinterpret_cast<csf_vm*>(std::stoul(tmp_instance, 0, 0)));
+			//uint32_t tmp_point = boost::lexical_cast<hex_stoul<uint32_t>>(tmp_instance);
+			//get_app().set_vm(reinterpret_cast<csf_vm*>(tmp_point));
+		}
+		else {
+			get_app().set_vm(reinterpret_cast<csf_vm*>(strtoll(tmp_instance.c_str(), NULL, 0)));
+			//hisiv500的工具链gcc 4.9不支持std::stoull
+			//get_app().set_vm(reinterpret_cast<csf_vm*>(std::stoull(tmp_instance, 0, 0)));
+			//tmp_instance = "123F5";
+			//uint64_t tmp_point = boost::lexical_cast<hex_stoul<uint32_t>>(tmp_instance);
+			//get_app().set_vm(reinterpret_cast<csf_vm*>(tmp_point));
+		}
+		
+	}
+	
 	//get_app().set_vm(vm[key].as<csf_vm*>());
 }
 
@@ -198,7 +227,7 @@ void csf_app_option::add_options() {
 		("file,f", value<std::string>(), "configure file")
 		("format,t", value<std::string>()->default_value("xml"), "configure file format")
 		("vm_pid,p", value<std::uint32_t>()->default_value(0), "vm pid")
-		("vm_instance,i", value<std::uint64_t>()->default_value(0), "vm instance point")
+		("vm_instance,i", value<std::string>()->default_value(""), "vm instance point")
 		("name,n", value<std::string>()->default_value(""), "app name")
 		;
 

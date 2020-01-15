@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:35
+*Date: 27-6æœˆ-2018 17:28:35
 *
 *Description: Class(csf_collector)
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ±íÊ¾ÊÕ¼¯Æ÷³éÏóÀà
+			 * è¡¨ç¤ºæ”¶é›†å™¨æŠ½è±¡ç±»
 			 * @author Administrator
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:28:35
+			 * @created 27-6æœˆ-2018 17:28:35
 			 */
 			class csf_collector : public csf::core::base::csf_collector_interface
 			{
@@ -42,12 +42,12 @@ namespace csf
 				virtual ~csf_collector();
 
 				/**
-				 * ²éÑ¯ÊÕ¼¯Æ÷µÄÔªËØ×Ü¸öÊý¡£
-				 * ·µ»Ø£º>=0±íÊ¾ÔªËØµÄ×Ü¸öÊý¡£
+				 * æŸ¥è¯¢æ”¶é›†å™¨çš„å…ƒç´ æ€»ä¸ªæ•°ã€‚
+				 * è¿”å›žï¼š>=0è¡¨ç¤ºå…ƒç´ çš„æ€»ä¸ªæ•°ã€‚
 				 */
 				virtual csf_int32 size();
 				/**
-				 * ±íÊ¾Çå¿ÕÊÕ¼¯Æ÷ÖÐµÄËùÓÐÔªËØ
+				 * è¡¨ç¤ºæ¸…ç©ºæ”¶é›†å™¨ä¸­çš„æ‰€æœ‰å…ƒç´ 
 				 */
 				virtual csf_bool clear();
 

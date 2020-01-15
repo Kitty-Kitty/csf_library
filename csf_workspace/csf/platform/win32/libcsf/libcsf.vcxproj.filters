@@ -651,9 +651,6 @@
     <ClInclude Include="..\..\..\include\core\module\vm\csf_master.hpp">
       <Filter>include\core\module\vm</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\core\module\vm\csf_shared_memory.hpp">
-      <Filter>include\core\module\vm</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\core\module\vm\csf_slave.hpp">
       <Filter>include\core\module\vm</Filter>
     </ClInclude>
@@ -954,9 +951,6 @@
       <Filter>src\core\module\vm</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\module\vm\csf_master.cpp">
-      <Filter>src\core\module\vm</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\core\module\vm\csf_shared_memory.cpp">
       <Filter>src\core\module\vm</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\core\module\vm\csf_slave.cpp">

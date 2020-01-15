@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 05-7ÔÂ-2018 20:09:26
+*Date: 05-7æœˆ-2018 20:09:26
 *
 *Description: Class(csf_attribute_bool)
 *
@@ -34,38 +34,38 @@ csf_attribute_bool::~csf_attribute_bool() {
 }
 
 /**
-* ±íÊ¾²¼¶ûÎªÕæÀàĞÍÊı¾İµÄ×Ö·û´®ÊıÖµ
+* è¡¨ç¤ºå¸ƒå°”ä¸ºçœŸç±»å‹æ•°æ®çš„å­—ç¬¦ä¸²æ•°å€¼
 */
 const csf_string csf_attribute_bool::m_true_string = "true|yes";
 /**
-* ±íÊ¾²¼¶ûÎª¼ÙÀàĞÍÊı¾İµÄ×Ö·û´®ÊıÖµ
+* è¡¨ç¤ºå¸ƒå°”ä¸ºå‡ç±»å‹æ•°æ®çš„å­—ç¬¦ä¸²æ•°å€¼
 */
 const csf_string csf_attribute_bool::m_false_string = "false|no";
 
 
 /**
-* ±íÊ¾´¦Àícsf_attributeÊôĞÔ²Ù×÷¡£ÕâÀïÓëcsf_attributeÖĞ²»Í¬µÄÊÇ£¬ÕâÀïÌí¼ÓÒ»²ãprocess_attributeº¯ÊıÖ÷ÒªÊÇÎªÁËÊµÏÖÒì³££¨e
-* xception£©µÄÍ³Ò»´¦Àí¡£µ±Òì³£³öÏÖÊ±£¬Ö±½Ó¸ù¾İ·µ»Ø´íÎó£¬µ÷ÓÃÒì³£´¦Àíº¯Êı¡£
-* ·µ»Ø£ºtrue±íÊ¾Ê§°Ü£»false±íÊ¾³É¹¦¡£
+* è¡¨ç¤ºå¤„ç†csf_attributeå±æ€§æ“ä½œã€‚è¿™é‡Œä¸csf_attributeä¸­ä¸åŒçš„æ˜¯ï¼Œè¿™é‡Œæ·»åŠ ä¸€å±‚process_attributeå‡½æ•°ä¸»è¦æ˜¯ä¸ºäº†å®ç°å¼‚å¸¸ï¼ˆe
+* xceptionï¼‰çš„ç»Ÿä¸€å¤„ç†ã€‚å½“å¼‚å¸¸å‡ºç°æ—¶ï¼Œç›´æ¥æ ¹æ®è¿”å›é”™è¯¯ï¼Œè°ƒç”¨å¼‚å¸¸å¤„ç†å‡½æ•°ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºå¤±è´¥ï¼›falseè¡¨ç¤ºæˆåŠŸã€‚
 *
-* @param configure_manager    ±íÊ¾±£´æÅäÖÃ¹ÜÀíÆ÷¶ÔÏó
-* @param alias    ±íÊ¾µ±Ç°ÊôĞÔ±ğÃû£¬Èç¹ûÊôĞÔÃû³ÆÎª¿ÕÔòÔòÊ¹ÓÃ¸Ã±ğÃû¡£
+* @param configure_manager    è¡¨ç¤ºä¿å­˜é…ç½®ç®¡ç†å™¨å¯¹è±¡
+* @param alias    è¡¨ç¤ºå½“å‰å±æ€§åˆ«åï¼Œå¦‚æœå±æ€§åç§°ä¸ºç©ºåˆ™åˆ™ä½¿ç”¨è¯¥åˆ«åã€‚
 */
 csf_bool csf_attribute_bool::process_attribute(const csf_configure_manager& configure_manager
 	, const csf_string& alias) {
 
-	//µ÷ÓÃ»ù´¡¿âµÄ³õÊ¼»¯º¯Êı»ñÈ¡ÄÚÈİÊıÖµ£¬Ö÷ÒªÊÇ»ñÈ¡contentÊıÖµ
+	//è°ƒç”¨åŸºç¡€åº“çš„åˆå§‹åŒ–å‡½æ•°è·å–å†…å®¹æ•°å€¼ï¼Œä¸»è¦æ˜¯è·å–contentæ•°å€¼
 	if (csf_false == csf_attribute::init(configure_manager, alias)) {
 		return csf_false;
 	}
 
-	//ÅĞ¶ÏÅäÖÃµÄ×Ö·ûÊÇ·ñÔÚtrue×Ö·û´®ÖĞ£¬Èç¹ûÔÚÔò±íÊ¾true
+	//åˆ¤æ–­é…ç½®çš„å­—ç¬¦æ˜¯å¦åœ¨trueå­—ç¬¦ä¸²ä¸­ï¼Œå¦‚æœåœ¨åˆ™è¡¨ç¤ºtrue
 	if (m_true_string.find(get_content()) != m_true_string.npos) {
 		set_value(csf_true);
 		return csf_true;
 	}
 
-	//ÅĞ¶ÏÅäÖÃµÄ×Ö·ûÊÇ·ñÔÚfalse×Ö·û´®ÖĞ£¬Èç¹ûÔÚÔò±íÊ¾false
+	//åˆ¤æ–­é…ç½®çš„å­—ç¬¦æ˜¯å¦åœ¨falseå­—ç¬¦ä¸²ä¸­ï¼Œå¦‚æœåœ¨åˆ™è¡¨ç¤ºfalse
 	if (m_false_string.find(get_content()) != m_false_string.npos) {
 		set_value(csf_false);
 		return csf_true;

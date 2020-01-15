@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 17:33:42
+*Date: 01-7æœˆ-2018 17:33:42
 *
 *Description: Class(csf_app)
 *
@@ -27,9 +27,9 @@ using csf::core::module::app::csf_app;
 
 
 /**
-* Ä£¿é³õÊ¼»¯
+* æ¨¡å—åˆå§‹åŒ–
 *
-* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 */
 csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 
@@ -37,20 +37,20 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 	csf_string							tmp_string_ret = "";
 
 
-	//½âÎöÅäÖÃÎÄ¼ş£¬½«ËùÓĞĞÅÏ¢±£´æµ½configure_managerÖĞ
+	//è§£æé…ç½®æ–‡ä»¶ï¼Œå°†æ‰€æœ‰ä¿¡æ¯ä¿å­˜åˆ°configure_managerä¸­
 	tmp_bool_ret = init_configure_manager(get_config_mg(), get_root_configure_file());
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
 
 	/************************************************************************/
-	/* ³ÌĞòµ±Ç°¹¤×÷Ä¿Â¼Ö÷ÒªÓĞÈı¸ö·½ÃæÊı¾İÀ´Ô´£¬ÓÅÏÈ¼¶ÒÀ´ÎÈçÏÂ£º                 */
-	/*		1¡¢»·¾³±äÁ¿»ñÈ¡£»													*/
-	/*		2¡¢ÅäÖÃÎÄ¼ş»ñÈ¡£»													*/
-	/*		3¡¢³ÌĞòÔËĞĞÊ±×Ô´øµÄ²ÎÊı£»											*/
-	/* ¸ÃÓÅÏÈ¼¶µÄ¶¨ÒåÖ÷ÒªÊÇ·½±ãÂú×ã³ÌĞòµÄÎ¬»¤ĞèÇó       						*/
+	/* ç¨‹åºå½“å‰å·¥ä½œç›®å½•ä¸»è¦æœ‰ä¸‰ä¸ªæ–¹é¢æ•°æ®æ¥æºï¼Œä¼˜å…ˆçº§ä¾æ¬¡å¦‚ä¸‹ï¼š                 */
+	/*		1ã€ç¯å¢ƒå˜é‡è·å–ï¼›													*/
+	/*		2ã€é…ç½®æ–‡ä»¶è·å–ï¼›													*/
+	/*		3ã€ç¨‹åºè¿è¡Œæ—¶è‡ªå¸¦çš„å‚æ•°ï¼›											*/
+	/* è¯¥ä¼˜å…ˆçº§çš„å®šä¹‰ä¸»è¦æ˜¯æ–¹ä¾¿æ»¡è¶³ç¨‹åºçš„ç»´æŠ¤éœ€æ±‚       						*/
 	/************************************************************************/
-	//»ñÈ¡ÏµÍ³µÄ¹¤×÷¸ùÄ¿Â¼µØÖ·£¬²¢ÅäÖÃµ½ÈÕÖ¾ÏµÍ³ÖĞ
+	//è·å–ç³»ç»Ÿçš„å·¥ä½œæ ¹ç›®å½•åœ°å€ï¼Œå¹¶é…ç½®åˆ°æ—¥å¿—ç³»ç»Ÿä¸­
 	get_attribute_manager().add("work_directory"
 		, csf_attribute_string(csf_list<csf_string>({ "configures", "work_directory" })));;
 
@@ -59,19 +59,19 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 		set_work_directory(tmp_string_ret);
 	}
 	
-	//¼ÓÔØÆô¶¯ÈÕÖ¾ÏµÍ³£¬Îª³ÌĞòÌá¹©ÈÕÖ¾·şÎñ
+	//åŠ è½½å¯åŠ¨æ—¥å¿—ç³»ç»Ÿï¼Œä¸ºç¨‹åºæä¾›æ—¥å¿—æœåŠ¡
 	tmp_bool_ret = init_logger(get_config_mg(), get_work_directory());
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
 	
-	//¿ªÊ¼³õÊ¼»¯ÏµÍ³Ä£¿é¡¢¸ºÔØÏŞÖÆÏà¹ØĞÅÏ¢
+	//å¼€å§‹åˆå§‹åŒ–ç³»ç»Ÿæ¨¡å—ã€è´Ÿè½½é™åˆ¶ç›¸å…³ä¿¡æ¯
 	tmp_bool_ret = get_config_mg().init();
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
 
-	//¿ªÊ¼³õÊ¼»¯ÏµÍ³Ä£¿é¹¤³§¹ÜÀíÆ÷
+	//å¼€å§‹åˆå§‹åŒ–ç³»ç»Ÿæ¨¡å—å·¥å‚ç®¡ç†å™¨
 	tmp_bool_ret = init_module_manager(get_config_mg());
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
@@ -93,9 +93,9 @@ csf::core::base::csf_int32 csf_app::init(const csf_configure_manager* conf_mg) {
 
 
 /**
-* Ä£¿éÆô¶¯
+* æ¨¡å—å¯åŠ¨
 *
-* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 */
 csf::core::base::csf_int32 csf_app::start(const csf_configure_manager* conf_mg) {
 
@@ -104,9 +104,9 @@ csf::core::base::csf_int32 csf_app::start(const csf_configure_manager* conf_mg) 
 
 
 /**
-* Ä£¿éÍ£Ö¹
+* æ¨¡å—åœæ­¢
 *
-* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 */
 csf::core::base::csf_int32 csf_app::stop(const csf_configure_manager* conf_mg) {
 
@@ -115,26 +115,26 @@ csf::core::base::csf_int32 csf_app::stop(const csf_configure_manager* conf_mg) {
 
 
 /**
-* ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚ³õÊ¼»¯appµÄÈÕÖ¾ÏµÍ³¡£
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÈÕÖ¾ÏµÍ³³É¹¦£»false±íÊ¾³õÊ¼»¯ÈÕÖ¾ÏµÍ³Ê§°Ü¡£
+* è¯¥å‡½æ•°ä¸»è¦ç”¨äºåˆå§‹åŒ–appçš„æ—¥å¿—ç³»ç»Ÿã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æ—¥å¿—ç³»ç»ŸæˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–æ—¥å¿—ç³»ç»Ÿå¤±è´¥ã€‚
 *
-* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
-* @param work_directory    ±íÊ¾³ÌĞòÄ¬ÈÏµÄ¹¤×÷¸ùÄ¿Â¼µØÖ·
+* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
+* @param work_directory    è¡¨ç¤ºç¨‹åºé»˜è®¤çš„å·¥ä½œæ ¹ç›®å½•åœ°å€
 */
 csf_bool csf_app::init_logger(csf::core::system::csf_configure_manager& configure_manager, csf_string work_directory) {
 
 	csf_int32					tmp_int32_ret = 0;
 
 
-	//ÅäÖÃloggerµÄÅäÖÃ¹ÜÀíÆ÷µØÖ·£¬ÈÃÈÕÖ¾ÏµÍ³Ò²ÓĞÊôĞÔÅäÖÃĞÅÏ¢
+	//é…ç½®loggerçš„é…ç½®ç®¡ç†å™¨åœ°å€ï¼Œè®©æ—¥å¿—ç³»ç»Ÿä¹Ÿæœ‰å±æ€§é…ç½®ä¿¡æ¯
 	get_logger().set_configure_manager(&get_config_mg());
 
-	//Èç¹û³ÌĞòÅäÖÃÁË¹¤×÷¸ùÄ¿Â¼£¬ÔòĞèÒªÅäÖÃµ½ÈÕÖ¾ÏµÍ³ÖĞ
+	//å¦‚æœç¨‹åºé…ç½®äº†å·¥ä½œæ ¹ç›®å½•ï¼Œåˆ™éœ€è¦é…ç½®åˆ°æ—¥å¿—ç³»ç»Ÿä¸­
 	if (!work_directory.empty()) {
 		get_logger().set_path(work_directory);
 	}
 
-	//ÏÈ³õÊ¼»¯ÈÕÖ¾ÏµÍ³£¬²é¿´ÊÇ·ñ´æÔÚÎÊÌâ
+	//å…ˆåˆå§‹åŒ–æ—¥å¿—ç³»ç»Ÿï¼ŒæŸ¥çœ‹æ˜¯å¦å­˜åœ¨é—®é¢˜
 	tmp_int32_ret = get_logger().init(&get_config_mg());
 	if (tmp_int32_ret) {
 		csf_log_ex(critical, csf_log_code_critical, "init logger failed!");
@@ -144,7 +144,7 @@ csf_bool csf_app::init_logger(csf::core::system::csf_configure_manager& configur
 		csf_log_ex(notice, csf_log_code_notice, "init logger succeed!");
 	}
 
-	//³õÊ¼»¯ÈÕÖ¾ÏµÍ³³É¹¦£¬Ôò¿ªÊ¼Æô¶¯ÈÕÖ¾ÏµÍ³
+	//åˆå§‹åŒ–æ—¥å¿—ç³»ç»ŸæˆåŠŸï¼Œåˆ™å¼€å§‹å¯åŠ¨æ—¥å¿—ç³»ç»Ÿ
 	tmp_int32_ret = get_logger().start(&get_config_mg());
 	if (tmp_int32_ret) {
 		csf_log_ex(critical, csf_log_code_critical, "start logger failed!");
@@ -159,17 +159,17 @@ csf_bool csf_app::init_logger(csf::core::system::csf_configure_manager& configur
 
 
 /**
-* ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚ³õÊ¼»¯appµÄÄ£¿é¹ÜÀíÆ÷
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯³É¹¦£»false±íÊ¾³õÊ¼»¯Ê§°Ü¡£
+* è¯¥å‡½æ•°ä¸»è¦ç”¨äºåˆå§‹åŒ–appçš„æ¨¡å—ç®¡ç†å™¨
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–å¤±è´¥ã€‚
 *
-* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
+* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
 */
 csf_bool csf_app::init_module_manager(csf::core::system::csf_configure_manager& configure_manager) {
 
 	csf_int32					tmp_int_ret = csf_failure;
 
 
-	//³õÊ¼»¯Ä£¿é¹¤³§¹ÜÀíÆ÷ĞÅÏ¢
+	//åˆå§‹åŒ–æ¨¡å—å·¥å‚ç®¡ç†å™¨ä¿¡æ¯
 	tmp_int_ret = get_module_manager().init(get_configure_manager());
 	if (tmp_int_ret) {
 		csf_log_ex(error, csf_log_code_error
@@ -181,7 +181,7 @@ csf_bool csf_app::init_module_manager(csf::core::system::csf_configure_manager& 
 			, "module manager init succeed!");
 	}
 
-	//Æô¶¯Ä£¿é¹¤³§¹ÜÀíÆ÷ĞÅÏ¢
+	//å¯åŠ¨æ¨¡å—å·¥å‚ç®¡ç†å™¨ä¿¡æ¯
 	tmp_int_ret = get_module_manager().start(get_configure_manager());
 	if (tmp_int_ret) {
 		csf_log_ex(error, csf_log_code_error
@@ -198,10 +198,10 @@ csf_bool csf_app::init_module_manager(csf::core::system::csf_configure_manager& 
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÉè±¸Ãû³Æ²éÑ¯Ö¸¶¨Éè±¸µØÖ·
-* ·µ»Ø£º·Ç¿Õ±íÊ¾³É¹¦£»¿Õ±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼šæ ¹æ®è®¾å¤‡åç§°æŸ¥è¯¢æŒ‡å®šè®¾å¤‡åœ°å€
+* è¿”å›ï¼šéç©ºè¡¨ç¤ºæˆåŠŸï¼›ç©ºè¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param mid    ±íÊ¾Éè±¸Ãû³Æ
+* @param mid    è¡¨ç¤ºè®¾å¤‡åç§°
 */
 csf_device* csf_app::find_device(const csf_string& mid) {
 
@@ -224,10 +224,10 @@ csf_device* csf_app::find_device(const csf_string& mid) {
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÉè±¸Ãû³ÆÌí¼ÓÖ¸¶¨Éè±¸µØÖ·µ½Éè±¸ÁĞ±íÖĞ
-* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼šæ ¹æ®è®¾å¤‡åç§°æ·»åŠ æŒ‡å®šè®¾å¤‡åœ°å€åˆ°è®¾å¤‡åˆ—è¡¨ä¸­
+* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param mid    ±íÊ¾Éè±¸Ãû³Æ
+* @param mid    è¡¨ç¤ºè®¾å¤‡åç§°
 * @param device
 */
 csf_bool csf_app::add_device(const csf_string& mid, const csf_void* device) {
@@ -235,12 +235,12 @@ csf_bool csf_app::add_device(const csf_string& mid, const csf_void* device) {
 	csf_device					*tmp_device = csf_nullptr;
 
 
-	//Ğ£ÑéÊı¾İºÏ·¨ĞÔ
+	//æ ¡éªŒæ•°æ®åˆæ³•æ€§
 	if (!device || mid.empty()) {
 		return csf_false;
 	}
 
-	//²éÕÒ¸ÃÃû³ÆµÄÉè±¸ÊÇ·ñ´æÔÚ
+	//æŸ¥æ‰¾è¯¥åç§°çš„è®¾å¤‡æ˜¯å¦å­˜åœ¨
 	tmp_device = find_device(mid);
 	if (tmp_device) {
 		return csf_false;
@@ -248,7 +248,7 @@ csf_bool csf_app::add_device(const csf_string& mid, const csf_void* device) {
 	
 	csf_unqiue_lock<decltype(m_devices_mutex)>			tmp_lock(m_devices_mutex);
 
-	//Éè±¸²»´æÔÚÔò²åÈëĞÂÉè±¸
+	//è®¾å¤‡ä¸å­˜åœ¨åˆ™æ’å…¥æ–°è®¾å¤‡
 	get_devices().insert(csf_unordered_map<csf_string, csf_device*>::value_type((csf_string&)mid, (csf_device*)device));
 
 	return csf_true;
@@ -256,24 +256,24 @@ csf_bool csf_app::add_device(const csf_string& mid, const csf_void* device) {
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÉè±¸Ãû³ÆÉ¾³ıÖ¸¶¨Éè±¸µØÖ·
-* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼šæ ¹æ®è®¾å¤‡åç§°åˆ é™¤æŒ‡å®šè®¾å¤‡åœ°å€
+* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param mid    ±íÊ¾Éè±¸Ãû³Æ
+* @param mid    è¡¨ç¤ºè®¾å¤‡åç§°
 */
 csf_bool csf_app::del_device(const csf_string& mid) {
 	
 	csf_unordered_map<csf_string, csf_device*>::iterator			tmp_iter;
 
 
-	//Ğ£ÑéÊı¾İºÏ·¨ĞÔ
+	//æ ¡éªŒæ•°æ®åˆæ³•æ€§
 	if (mid.empty()) {
 		return csf_false;
 	}
 
 	csf_unqiue_lock<decltype(m_devices_mutex)>			tmp_lock(m_devices_mutex);
 
-	//²éÕÒÉè±¸£¬²¢É¾³ı
+	//æŸ¥æ‰¾è®¾å¤‡ï¼Œå¹¶åˆ é™¤
 	tmp_iter = get_devices().find(mid);
 	if (tmp_iter != get_devices().end()) {
 		get_devices().erase(tmp_iter);

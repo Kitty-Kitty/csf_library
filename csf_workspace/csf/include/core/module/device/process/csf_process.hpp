@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:47
+*Date: 27-6æœˆ-2018 17:28:47
 *
 *Description: Class(csf_process)
 *
@@ -32,10 +32,10 @@ namespace csf
 			namespace device
 			{
 				/**
-				 * ±íÊ¾´¦Àí½ø³Ì³éÏó
+				 * è¡¨ç¤ºå¤„ç†è¿›ç¨‹æŠ½è±¡
 				 * @author fangzhenmu@aliyun.com
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:47
+				 * @created 27-6æœˆ-2018 17:28:47
 				 */
 				class csf_process : public csf::core::module::csf_device, public csf::core::module::device::csf_process_interface
 				{
@@ -44,10 +44,10 @@ namespace csf
 					csf_process();
 					virtual ~csf_process();
 					/**
-					* ±íÊ¾¸ù¾İÅäÖÃÎÄ¼şºÍÀàĞÍ´´½¨Éè±¸Ä£¿é
+					* è¡¨ç¤ºæ ¹æ®é…ç½®æ–‡ä»¶å’Œç±»å‹åˆ›å»ºè®¾å¤‡æ¨¡å—
 					*
-					* @param configure_manager    ±íÊ¾ÅäÖÃÎÄ¼şÄÚÈİ
-					* @param type    ±íÊ¾Ä£¿éµÄÀàĞÍ
+					* @param configure_manager    è¡¨ç¤ºé…ç½®æ–‡ä»¶å†…å®¹
+					* @param type    è¡¨ç¤ºæ¨¡å—çš„ç±»å‹
 					*/
 					inline explicit csf_process(const csf_configure_manager * configure_manager
 						, const csf::core::module::csf_device::csf_device_type type)
@@ -55,49 +55,49 @@ namespace csf
 
 					}
 					/**
-					 * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+					 * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
 					 * 
-					 * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
-					 * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+					 * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+					 * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 del(csf_element& element, csf_device_operation_callback callback);
 					/**
-					 * Ä£¿é³õÊ¼»¯
+					 * æ¨¡å—åˆå§‹åŒ–
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+					 * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
 					 * 
-					 * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
-					 * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+					 * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+					 * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 ctrl(csf_element& element, csf_device_operation_callback callback);
 					/**
-					 * Ä£¿éÆô¶¯
+					 * æ¨¡å—å¯åŠ¨
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * Ä£¿éÍ£Ö¹
+					 * æ¨¡å—åœæ­¢
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+					 * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
 					 * 
-					 * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
-					 * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+					 * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+					 * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 update(csf_element& element, csf_device_operation_callback callback);
 					/**
-					 * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+					 * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
 					 * 
-					 * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
-					 * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+					 * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+					 * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
 					 */
 					virtual csf_int32 add(csf_element& element, csf_device_operation_callback callback);
 

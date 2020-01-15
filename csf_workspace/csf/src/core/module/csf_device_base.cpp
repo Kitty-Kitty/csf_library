@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:40
+*Date: 27-6æœˆ-2018 17:28:40
 *
 *Description: Class(csf_device_base)
 *
@@ -24,13 +24,13 @@ using csf::core::module::csf_device_base;
 
 
 /**
-* ¹¦ÄÜ£º
-*    ¸ù¾İ¸ùÅäÖÃÏîµÄÃû³ÆÉèÖÃ¸ùÅäÖÃ½Úµã
-* ·µ»Ø£º
-*    true  £º ±íÊ¾³É¹¦£»
-*    false £º ±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼š
+*    æ ¹æ®æ ¹é…ç½®é¡¹çš„åç§°è®¾ç½®æ ¹é…ç½®èŠ‚ç‚¹
+* è¿”å›ï¼š
+*    true  ï¼š è¡¨ç¤ºæˆåŠŸï¼›
+*    false ï¼š è¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param root_configure_name    ±íÊ¾¸ù½ÚµãÃû³Æ
+* @param root_configure_name    è¡¨ç¤ºæ ¹èŠ‚ç‚¹åç§°
 */
 csf_bool csf_device_base::update_root_configure_by_name(csf_string root_configure_name) {
 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:51
+*Date: 19-7æœˆ-2018 20:11:51
 *
-*Description: Class(csf_thread) ±íÊ¾Ïß³ÌÀà
+*Description: Class(csf_thread) è¡¨ç¤ºçº¿ç¨‹ç±»
 *
 *Others:
 *
@@ -31,10 +31,10 @@ namespace csf
 			namespace thread
 			{
 				/**
-				 * ±íÊ¾Ïß³ÌÀà
+				 * è¡¨ç¤ºçº¿ç¨‹ç±»
 				 * @author f
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:51
+				 * @created 19-7æœˆ-2018 20:11:51
 				 */
 				class csf_thread
 				{
@@ -45,7 +45,7 @@ namespace csf
 
 				private:
 					/**
-					 * ±íÊ¾Ïß³Ì¹ÜÀí³Ø
+					 * è¡¨ç¤ºçº¿ç¨‹ç®¡ç†æ± 
 					 */
 					csf::core::utils::thread::csf_thread_group *m_thread_group;
 

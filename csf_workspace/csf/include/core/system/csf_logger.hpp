@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 20:38:59
+*Date: 01-7æœˆ-2018 20:38:59
 *
 *Description: Class(csf_logger)
 *
@@ -42,84 +42,84 @@
 
 
 /**
-* ±íÊ¾ÈÕÖ¾µÄ´íÎóÂëĞÅÏ¢
+* è¡¨ç¤ºæ—¥å¿—çš„é”™è¯¯ç ä¿¡æ¯
 * @author fz
 * @version 1.0
-* @created 02-7ÔÂ-2018 16:50:37
+* @created 02-7æœˆ-2018 16:50:37
 */
 typedef enum
 {
 	/**
-	* ±íÊ¾µ÷ÊÔÎ´Öª´íÎóÂë
+	* è¡¨ç¤ºè°ƒè¯•æœªçŸ¥é”™è¯¯ç 
 	*/
 	csf_log_code_debug = 0,
 	/**
-	* ±íÊ¾Í¨ÓÃ´íÎóÂë
+	* è¡¨ç¤ºé€šç”¨é”™è¯¯ç 
 	*/
 	csf_log_code_normal = 10,
 	/**
-	* ±íÊ¾ÏûÏ¢´íÎóÂë
+	* è¡¨ç¤ºæ¶ˆæ¯é”™è¯¯ç 
 	*/
 	csf_log_code_info = 100,
 	/**
-	* ±íÊ¾Í¨Öªµ«²»ÑÏÖØ´íÎóÂë
+	* è¡¨ç¤ºé€šçŸ¥ä½†ä¸ä¸¥é‡é”™è¯¯ç 
 	*/
 	csf_log_code_notice = 200,
 	/**
-	* ±íÊ¾½ÏÑÏÖØ¸æ¾¯´íÎóÂë
+	* è¡¨ç¤ºè¾ƒä¸¥é‡å‘Šè­¦é”™è¯¯ç 
 	*/
 	csf_log_code_warning = 300,
 	/**
-	* ±íÊ¾ÑÏÖØ´íÎó´íÎóÂë
+	* è¡¨ç¤ºä¸¥é‡é”™è¯¯é”™è¯¯ç 
 	*/
 	csf_log_code_error = 400,
 	/**
-	* ±íÊ¾±ÀÀ£´íÎóÂë
+	* è¡¨ç¤ºå´©æºƒé”™è¯¯ç 
 	*/
 	csf_log_code_critical = 500
 } csf_log_code;
 
 
 /**
-* ±íÊ¾ÈÕÖ¾¼¶±ğÀàĞÍÁĞ±í
+* è¡¨ç¤ºæ—¥å¿—çº§åˆ«ç±»å‹åˆ—è¡¨
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
+* @created 01-7æœˆ-2018 20:38:59
 */
 typedef enum
 {
 	/**
-	* ±íÊ¾ÈÕÖ¾µÄdebug¼¶±ğ
+	* è¡¨ç¤ºæ—¥å¿—çš„debugçº§åˆ«
 	*/
 	csf_logger_level_debug = 0x00000000,
 	/**
-	* ±íÊ¾ÈÕÖ¾µÄnormal¼¶±ğ
+	* è¡¨ç¤ºæ—¥å¿—çš„normalçº§åˆ«
 	*/
 	csf_logger_level_normal,
 	/**
-	* ±íÊ¾ÈÕÖ¾µÄinfo¼¶±ğ
+	* è¡¨ç¤ºæ—¥å¿—çš„infoçº§åˆ«
 	*/
 	csf_logger_level_info,
 	/**
-	* ±íÊ¾ÈÕÖ¾µÄnotice¼¶±ğ
+	* è¡¨ç¤ºæ—¥å¿—çš„noticeçº§åˆ«
 	*/
 	csf_logger_level_notice,
 	/**
-	* ±íÊ¾ÈÕÖ¾µÄwarning¼¶±ğ
+	* è¡¨ç¤ºæ—¥å¿—çš„warningçº§åˆ«
 	*/
 	csf_logger_level_warning,
 	/**
-	* ±íÊ¾ÈÕÖ¾µÄerror¼¶±ğ
+	* è¡¨ç¤ºæ—¥å¿—çš„errorçº§åˆ«
 	*/
 	csf_logger_level_error,
 	/**
-	* ±íÊ¾ÈÕÖ¾µÄcritical¼¶±ğ
+	* è¡¨ç¤ºæ—¥å¿—çš„criticalçº§åˆ«
 	*/
 	csf_logger_level_critical
 } csf_logger_level;
 
 
-//¼¶±ğ¶ÔÓ¦µÄ×Ö·û´®£¬±íÊ¾ÈÕÖ¾¸ñÊ½ÖĞµÄ¡°ÈÕÖ¾¼¶±ğ¡±
+//çº§åˆ«å¯¹åº”çš„å­—ç¬¦ä¸²ï¼Œè¡¨ç¤ºæ—¥å¿—æ ¼å¼ä¸­çš„â€œæ—¥å¿—çº§åˆ«â€
 template< typename CharT, typename TraitsT >
 inline std::basic_ostream< CharT, TraitsT >& operator<< (
 	std::basic_ostream< CharT, TraitsT >& stream, csf_logger_level _level_) {
@@ -145,13 +145,13 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(log_scope, "Scope", boost::log::attributes::named_sc
 BOOST_LOG_ATTRIBUTE_KEYWORD(log_code, "Code", int)
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸öĞ´ÈÕÖ¾º¯Êı
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªå†™æ—¥å¿—å‡½æ•°
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _level_	±íÊ¾ÈÕÖ¾¼¶±ğ,È¡ÖµÎªcsf_logger_levelÀàĞÍ
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _string_	±íÊ¾ÈÕÖ¾´íÎóĞÅÏ¢
+* @created 01-7æœˆ-2018 20:38:59
+* @param _level_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«,å–å€¼ä¸ºcsf_logger_levelç±»å‹
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _string_	è¡¨ç¤ºæ—¥å¿—é”™è¯¯ä¿¡æ¯
 */
 #define	BOOST_LOG_WRITE(_level_, _code_, _string_)		do {							\
 	boost::log::sources::severity_logger<csf_logger_level> slg;							\
@@ -163,13 +163,13 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(log_code, "Code", int)
 
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸öĞ´ÈÕÖ¾º¯Êı,Í¬Ê±Ìí¼ÓÅĞ¶ÏÈÕÖ¾¼¶±ğ
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªå†™æ—¥å¿—å‡½æ•°,åŒæ—¶æ·»åŠ åˆ¤æ–­æ—¥å¿—çº§åˆ«
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _level_	±íÊ¾ÈÕÖ¾¼¶±ğ,È¡ÖµÎªcsf_logger_levelÀàĞÍ
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _string_	±íÊ¾ÈÕÖ¾´íÎóĞÅÏ¢
+* @created 01-7æœˆ-2018 20:38:59
+* @param _level_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«,å–å€¼ä¸ºcsf_logger_levelç±»å‹
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _string_	è¡¨ç¤ºæ—¥å¿—é”™è¯¯ä¿¡æ¯
 */
 #define	BOOST_LOG_WRITE_EX(_level_, _code_, _string_)	do {							\
 	if(_level_ >= csf::core::system::csf_logger::get_level()) {							\
@@ -196,11 +196,11 @@ namespace csf
 		namespace system
 		{
 			/**
-			* ±íÊ¾loggerµÄÊôĞÔÃû³Æ¶¨Òå
+			* è¡¨ç¤ºloggerçš„å±æ€§åç§°å®šä¹‰
 			*/
 			#define CSF_LOGGER_ATTRIBUTE_NAME(name)							"_csf_logger_attribute_"#name
 			/**
-			* ±íÊ¾loggerµÄÄ¿Â¼Ãû³Æ
+			* è¡¨ç¤ºloggerçš„ç›®å½•åç§°
 			*/
 #ifdef WIN32
 			#define CSF_LOGGER_DIRECTORY_NAME								"log\\"
@@ -209,10 +209,10 @@ namespace csf
 #endif
 			
 			/**
-			 * ±íÊ¾ÈÕÖ¾ÏµÍ³ÄÚÈİ
+			 * è¡¨ç¤ºæ—¥å¿—ç³»ç»Ÿå†…å®¹
 			 * @author f
 			 * @version 1.0
-			 * @created 01-7ÔÂ-2018 20:38:59
+			 * @created 01-7æœˆ-2018 20:38:59
 			 */
 			class csf_logger : public csf::core::module::csf_interface
 			{
@@ -222,52 +222,52 @@ namespace csf
 				virtual ~csf_logger();
 
 				/**
-				* ±íÊ¾¸ù¾İÅäÖÃÎÄ¼ş´´½¨ÈÕÖ¾Ä£¿é
+				* è¡¨ç¤ºæ ¹æ®é…ç½®æ–‡ä»¶åˆ›å»ºæ—¥å¿—æ¨¡å—
 				*
-				* @param configure_manager    ±íÊ¾ÅäÖÃÎÄ¼ş
-				* @param path    ±íÊ¾ÈÕÖ¾ÎÄ¼ş±£´æµÄÖ÷Ä¿Â¼Â·¾¶
+				* @param configure_manager    è¡¨ç¤ºé…ç½®æ–‡ä»¶
+				* @param path    è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶ä¿å­˜çš„ä¸»ç›®å½•è·¯å¾„
 				*/
 				explicit csf_logger(const csf_configure_manager* configure_manager, const csf_string path = "");
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµØÖ·
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶åœ°å€
 				 */
 				inline csf_configure_manager* get_configure_manager() {
 
 					return m_configure_manager;
 				}
 				/**
-				 * Ä£¿é³õÊ¼»¯
+				 * æ¨¡å—åˆå§‹åŒ–
 				 *
-				 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr);
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµØÖ·
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶åœ°å€
 				 *
 				 * @param new_value
 				 */
 				csf_void set_configure_manager(const csf_configure_manager* new_value);
 				/**
-				 * Ä£¿éÆô¶¯
+				 * æ¨¡å—å¯åŠ¨
 				 *
-				 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr);
 				/**
-				 * Ä£¿éÍ£Ö¹
+				 * æ¨¡å—åœæ­¢
 				 *
-				 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
 				/**
-				 * ±íÊ¾ÈÕÖ¾ÎÄ¼şµÄ»Ø¹ö´óĞ¡
+				 * è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶çš„å›æ»šå¤§å°
 				 */
 				inline csf_uint64 get_rotation_size() {
 
 					return m_rotation_size;
 				}
 				/**
-				 * ±íÊ¾ÈÕÖ¾ÎÄ¼şµÄ»Ø¹ö´óĞ¡
+				 * è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶çš„å›æ»šå¤§å°
 				 *
 				 * @param new_value
 				 */
@@ -276,14 +276,14 @@ namespace csf
 					m_rotation_size = new_value;
 				}
 				/**
-				 * ±íÊ¾´ÅÅÌ´æ´¢µÄ×î´ó´óĞ¡
+				 * è¡¨ç¤ºç£ç›˜å­˜å‚¨çš„æœ€å¤§å¤§å°
 				 */
 				inline csf_uint64 get_stored_max_size() {
 
 					return m_stored_max_size;
 				}
 				/**
-				 * ±íÊ¾´ÅÅÌ´æ´¢µÄ×î´ó´óĞ¡
+				 * è¡¨ç¤ºç£ç›˜å­˜å‚¨çš„æœ€å¤§å¤§å°
 				 *
 				 * @param new_value
 				 */
@@ -292,14 +292,14 @@ namespace csf
 					m_stored_max_size = new_value;
 				}
 				/**
-				 * ±íÊ¾´ÅÅÌµÄ×îĞ¡¿Õ¼ä´óĞ¡
+				 * è¡¨ç¤ºç£ç›˜çš„æœ€å°ç©ºé—´å¤§å°
 				 */
 				inline csf_uint64 get_disk_min_free_size() {
 
 					return m_disk_min_free_size;
 				}
 				/**
-				 * ±íÊ¾´ÅÅÌµÄ×îĞ¡¿Õ¼ä´óĞ¡
+				 * è¡¨ç¤ºç£ç›˜çš„æœ€å°ç©ºé—´å¤§å°
 				 *
 				 * @param new_value
 				 */
@@ -308,30 +308,30 @@ namespace csf
 					m_disk_min_free_size = new_value;
 				}
 				/**
-				* ±íÊ¾µ±Ç°ÏµÍ³µÄÈÕÖ¾¼¶±ğ£¬Ä¬ÈÏnotice¼¶±ğ
+				* è¡¨ç¤ºå½“å‰ç³»ç»Ÿçš„æ—¥å¿—çº§åˆ«ï¼Œé»˜è®¤noticeçº§åˆ«
 				*/
 				inline static csf_logger_level get_level() {
 
 					return m_level;
 				}
 				/**
-				* ±íÊ¾µ±Ç°ÏµÍ³µÄÈÕÖ¾¼¶±ğ£¬Ä¬ÈÏnotice¼¶±ğ
+				* è¡¨ç¤ºå½“å‰ç³»ç»Ÿçš„æ—¥å¿—çº§åˆ«ï¼Œé»˜è®¤noticeçº§åˆ«
 				*
-				* @param new_value    ±íÊ¾ÅäÖÃµÄÏµÍ³ÈÕÖ¾¼¶±ğ
+				* @param new_value    è¡¨ç¤ºé…ç½®çš„ç³»ç»Ÿæ—¥å¿—çº§åˆ«
 				*/
 				inline static void set_level(csf_logger_level new_value) {
 
 					m_level = new_value;
 				}
 				/**
-				* ±íÊ¾ÈÕÖ¾ÎÄ¼ş±£´æµÄÄ¿Â¼
+				* è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶ä¿å­˜çš„ç›®å½•
 				*/
 				inline csf_string& get_path() {
 
 					return m_path;
 				}
 				/**
-				* ±íÊ¾ÈÕÖ¾ÎÄ¼ş±£´æµÄÄ¿Â¼
+				* è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶ä¿å­˜çš„ç›®å½•
 				*
 				* @param new_value
 				*/
@@ -340,14 +340,14 @@ namespace csf
 					m_path = new_value;
 				}
 				/**
-				* ±íÊ¾ÈÕÖ¾ÎÄ¼şÃû¸ñÊ½
+				* è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶åæ ¼å¼
 				*/
 				inline csf_string& get_file_name_format() {
 
 					return m_file_name_format;
 				}
 				/**
-				* ±íÊ¾ÈÕÖ¾ÎÄ¼şÃû¸ñÊ½
+				* è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶åæ ¼å¼
 				*
 				* @param new_value
 				*/
@@ -356,51 +356,51 @@ namespace csf
 					m_file_name_format = new_value;
 				}
 				/**
-				* ÊôĞÔ¹ÜÀíÆ÷£¬ÈÕÖ¾±£´æÄ£¿éĞèÒªµÄÅäÖÃÊôĞÔÄÚÈİ
+				* å±æ€§ç®¡ç†å™¨ï¼Œæ—¥å¿—ä¿å­˜æ¨¡å—éœ€è¦çš„é…ç½®å±æ€§å†…å®¹
 				*/
 				inline csf_void* get_attribute_manager() {
 
 					return m_attribute_manager;
 				}
 				/**
-				* ±íÊ¾¿ØÖÆÌ¨Êä³ö
+				* è¡¨ç¤ºæ§åˆ¶å°è¾“å‡º
 				*/
 				inline boost::shared_ptr<text_sink> get_text_sink_ptr() {
 
 					return m_text_sink_ptr;
 				}
 				/**
-				* ±íÊ¾ÎÄ¼şÊä³ö
+				* è¡¨ç¤ºæ–‡ä»¶è¾“å‡º
 				*/
 				inline boost::shared_ptr<file_sink> get_file_sink_ptr() {
 
 					return m_file_sink_ptr;
 				}
 				/**
-				* ±íÊ¾¶¨ÒåÒ»¸öprintfĞ´ÈÕÖ¾º¯Êı,Í¬Ê±Ìí¼ÓÅĞ¶ÏÈÕÖ¾¼¶±ğ
+				* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªprintfå†™æ—¥å¿—å‡½æ•°,åŒæ—¶æ·»åŠ åˆ¤æ–­æ—¥å¿—çº§åˆ«
 				* @author f
 				* @version 1.0
-				* @created 01-7ÔÂ-2018 20:38:59
-				* @param _level_	±íÊ¾ÈÕÖ¾¼¶±ğ,È¡ÖµÎªcsf_logger_levelÀàĞÍ
-				* @param _code_	±íÊ¾ÈÕÖ¾´íÎóÂë
-				* @param _fmt_	±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-				* @param ...	±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+				* @created 01-7æœˆ-2018 20:38:59
+				* @param _level_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«,å–å€¼ä¸ºcsf_logger_levelç±»å‹
+				* @param _code_	è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+				* @param _fmt_	è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+				* @param ...	è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 				*/
 				static void write(int _level_, int _code_, const char *_fmt_, ...);
 			protected:
 				/**
-				* ±íÊ¾ÈÕÖ¾¼¶±ğ¶ÔÓ¦µÄÃû³ÆÁĞ±íÄÚÈİ¡£
+				* è¡¨ç¤ºæ—¥å¿—çº§åˆ«å¯¹åº”çš„åç§°åˆ—è¡¨å†…å®¹ã€‚
 				*/
 				inline const csf_unordered_map<csf_string, csf_logger_level>& get_level_name() {
 
 					return m_level_name;
 				}
 				/**
-				* ±íÊ¾Í¨¹ıÈÕÖ¾¼¶±ğµÄÃû³Æ×Ö·û´®»ñÈ¡¶ÔÓ¦µÄÊı×Ö¼¶±ğ¡£
-				* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü¡£
+				* è¡¨ç¤ºé€šè¿‡æ—¥å¿—çº§åˆ«çš„åç§°å­—ç¬¦ä¸²è·å–å¯¹åº”çš„æ•°å­—çº§åˆ«ã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 				*
-				* @param level    ±íÊ¾×ª»»ºó·µ»ØµÄÈÕÖ¾¼¶±ğÊıÖµ
-				* @param name    ±íÊ¾ĞèÒª±»×ª»»µÄÈÕÖ¾¼¶±ğÃû³Æ
+				* @param level    è¡¨ç¤ºè½¬æ¢åè¿”å›çš„æ—¥å¿—çº§åˆ«æ•°å€¼
+				* @param name    è¡¨ç¤ºéœ€è¦è¢«è½¬æ¢çš„æ—¥å¿—çº§åˆ«åç§°
 				*/
 				inline csf_bool convert(csf_logger_level& level, const csf_string name) {
 
@@ -418,51 +418,51 @@ namespace csf
 
 			private:
 				/**
-				 * ±íÊ¾ÅäÖÃÎÄ¼şµØÖ·
+				 * è¡¨ç¤ºé…ç½®æ–‡ä»¶åœ°å€
 				 */
 				csf_configure_manager* m_configure_manager = csf_nullptr;
 				/**
-				 * ±íÊ¾ÈÕÖ¾ÎÄ¼ş±£´æµÄÄ¿Â¼
+				 * è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶ä¿å­˜çš„ç›®å½•
 				 */
 				csf_string m_path = "";
 				/**
-				 * ±íÊ¾ÈÕÖ¾ÎÄ¼şµÄ»Ø¹ö´óĞ¡
+				 * è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶çš„å›æ»šå¤§å°
 				 */
 				csf_uint64 m_rotation_size = 0;
 				/**
-				 * ±íÊ¾´ÅÅÌ´æ´¢µÄ×î´ó´óĞ¡
+				 * è¡¨ç¤ºç£ç›˜å­˜å‚¨çš„æœ€å¤§å¤§å°
 				 */
 				csf_uint64 m_stored_max_size = 0;
 				/**
-				 * ±íÊ¾´ÅÅÌµÄ×îĞ¡¿Õ¼ä´óĞ¡
+				 * è¡¨ç¤ºç£ç›˜çš„æœ€å°ç©ºé—´å¤§å°
 				 */
 				csf_uint64 m_disk_min_free_size = 0;
 				/**
-				* ±íÊ¾µ±Ç°ÏµÍ³µÄÈÕÖ¾¼¶±ğ£¬Ä¬ÈÏnotice¼¶±ğ
+				* è¡¨ç¤ºå½“å‰ç³»ç»Ÿçš„æ—¥å¿—çº§åˆ«ï¼Œé»˜è®¤noticeçº§åˆ«
 				*/
 				static csf_logger_level m_level;
 				/**
-				* ±íÊ¾¿ØÖÆÌ¨Êä³ö
+				* è¡¨ç¤ºæ§åˆ¶å°è¾“å‡º
 				*/
 				boost::shared_ptr<text_sink> m_text_sink_ptr;
 				/**
-				* ±íÊ¾ÎÄ¼şÊä³ö
+				* è¡¨ç¤ºæ–‡ä»¶è¾“å‡º
 				*/
 				boost::shared_ptr<file_sink> m_file_sink_ptr;
 				/**
-				* ±íÊ¾ÈÕÖ¾ÎÄ¼şÃû¸ñÊ½
+				* è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶åæ ¼å¼
 				*/
 				csf_string m_file_name_format = "";
 				/**
-				* ÈÕÖ¾Ä£¿éĞèÒª°üº¬Ò»¸öÊôĞÔ¹ÜÀíÆ÷£¬´æ´¢ÈÕÖ¾Ä£¿éĞèÒªµÄÅäÖÃÊôĞÔÄÚÈİ
+				* æ—¥å¿—æ¨¡å—éœ€è¦åŒ…å«ä¸€ä¸ªå±æ€§ç®¡ç†å™¨ï¼Œå­˜å‚¨æ—¥å¿—æ¨¡å—éœ€è¦çš„é…ç½®å±æ€§å†…å®¹
 				*/
 				csf_void* m_attribute_manager;
 				/**
-				* ±íÊ¾ÈÕÖ¾¼¶±ğ¶ÔÓ¦µÄÃû³ÆÁĞ±íÄÚÈİ¡£
+				* è¡¨ç¤ºæ—¥å¿—çº§åˆ«å¯¹åº”çš„åç§°åˆ—è¡¨å†…å®¹ã€‚
 				*/
 				static const csf_unordered_map<csf_string, csf_logger_level> m_level_name;
 				/**
-				* ±íÊ¾¿ØÖÆÌ¨Êä³ö
+				* è¡¨ç¤ºæ§åˆ¶å°è¾“å‡º
 				*
 				* @param new_value
 				*/
@@ -471,7 +471,7 @@ namespace csf
 					m_text_sink_ptr = new_value;
 				}
 				/**
-				* ±íÊ¾ÎÄ¼şÊä³ö
+				* è¡¨ç¤ºæ–‡ä»¶è¾“å‡º
 				*
 				* @param new_value
 				*/
@@ -480,7 +480,7 @@ namespace csf
 					m_file_sink_ptr = new_value;
 				}
 				/**
-				* ÊôĞÔ¹ÜÀíÆ÷£¬ÈÕÖ¾±£´æÄ£¿éĞèÒªµÄÅäÖÃÊôĞÔÄÚÈİ
+				* å±æ€§ç®¡ç†å™¨ï¼Œæ—¥å¿—ä¿å­˜æ¨¡å—éœ€è¦çš„é…ç½®å±æ€§å†…å®¹
 				*
 				* @param new_value
 				*/

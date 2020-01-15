@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:52
+*Date: 19-7æœˆ-2018 20:11:52
 *
-*Description: Class(csf_times_task) ±íÊ¾Ö¸¶¨´ÎÊıµÄÈÎÎñ£¬ÓÃÓÚ¼ÇÂ¼´ÎÊı
+*Description: Class(csf_times_task) è¡¨ç¤ºæŒ‡å®šæ¬¡æ•°çš„ä»»åŠ¡ï¼Œç”¨äºè®°å½•æ¬¡æ•°
 *
 *Others:
 *
@@ -31,10 +31,10 @@ namespace csf
 			namespace task
 			{
 				/**
-				 * ±íÊ¾Ö¸¶¨´ÎÊıµÄÈÎÎñ£¬ÓÃÓÚ¼ÇÂ¼´ÎÊı
+				 * è¡¨ç¤ºæŒ‡å®šæ¬¡æ•°çš„ä»»åŠ¡ï¼Œç”¨äºè®°å½•æ¬¡æ•°
 				 * @author f
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:52
+				 * @created 19-7æœˆ-2018 20:11:52
 				 */
 				class csf_times_task : public csf::core::utils::task::csf_task
 				{
@@ -48,11 +48,11 @@ namespace csf
 						return m_times;
 					}
 					/**
-					 * ±íÊ¾´¦Àí½Ó¿Ú£¬µ±Ö»ÓĞis_process·µ»Øtrueºó²ÅÄÜprocess¡£
+					 * è¡¨ç¤ºå¤„ç†æ¥å£ï¼Œå½“åªæœ‰is_processè¿”å›trueåæ‰èƒ½processã€‚
 					 */
 					virtual csf_int32 process();
 					/**
-					 * ±íÊ¾ÊÇ·ñ½øĞĞ´¦Àí,Èç¹ûis_process·µ»Øtrue£¬²ÅÄÜÖ´ĞĞprocess¡£
+					 * è¡¨ç¤ºæ˜¯å¦è¿›è¡Œå¤„ç†,å¦‚æœis_processè¿”å›trueï¼Œæ‰èƒ½æ‰§è¡Œprocessã€‚
 					 */
 					virtual csf_bool is_process();
 					/**
@@ -64,18 +64,18 @@ namespace csf
 						m_times = newVal;
 					}
 					/**
-					 * ±íÊ¾µ±Ç°ÒÑ¾­ÔËĞĞµÄ´ÎÊı¼ÆÊı
+					 * è¡¨ç¤ºå½“å‰å·²ç»è¿è¡Œçš„æ¬¡æ•°è®¡æ•°
 					 */
 					inline csf_uint32 get_sequence() {
 
 						return m_sequence;
 					}
 					/**
-					 * ÅĞ¶ÏÊÇ·ñĞèÒªÉ¾³ı£¬Èç¹ûis_delete·µ»ØtrueÔòÉ¾³ıtask¡£
+					 * åˆ¤æ–­æ˜¯å¦éœ€è¦åˆ é™¤ï¼Œå¦‚æœis_deleteè¿”å›trueåˆ™åˆ é™¤taskã€‚
 					 */
 					virtual csf_bool is_delete();
 					/**
-					 * ±íÊ¾µ±Ç°ÒÑ¾­ÔËĞĞµÄ´ÎÊı¼ÆÊı
+					 * è¡¨ç¤ºå½“å‰å·²ç»è¿è¡Œçš„æ¬¡æ•°è®¡æ•°
 					 * 
 					 * @param newVal
 					 */
@@ -86,11 +86,11 @@ namespace csf
 
 				private:
 					/**
-					 * ±íÊ¾µ±Ç°ÒÑ¾­ÔËĞĞµÄ´ÎÊı¼ÆÊı
+					 * è¡¨ç¤ºå½“å‰å·²ç»è¿è¡Œçš„æ¬¡æ•°è®¡æ•°
 					 */
 					csf_uint32 m_sequence = 0;
 					/**
-					 * ±íÊ¾×î´óµÄÔËĞĞ´ÎÊı
+					 * è¡¨ç¤ºæœ€å¤§çš„è¿è¡Œæ¬¡æ•°
 					 */
 					csf_uint32 m_times = 0;
 

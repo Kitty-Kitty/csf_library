@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 30-6ÔÂ-2018 17:49:52
+*Date: 30-6æœˆ-2018 17:49:52
 *
 *Description: Class(_csf_version_)
 *
@@ -36,10 +36,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ±íÊ¾°æ±¾ĞÅÏ¢
+			 * è¡¨ç¤ºç‰ˆæœ¬ä¿¡æ¯
 			 * @author fz
 			 * @version 1.0
-			 * @created 30-6ÔÂ-2018 17:49:52
+			 * @created 30-6æœˆ-2018 17:49:52
 			 */
 			class _csf_version_
 			{
@@ -83,11 +83,11 @@ namespace csf
 
 				}
 				/**
-				* @param version    Ä£¿éµÄ°æ±¾ÊıÖµĞÅÏ¢
-				* @param strver    Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
-				* @param compile    ±íÊ¾Ä£¿é±àÒëÆ÷ĞÅÏ¢
-				* @param build    Ä£¿é±àÒëÏà¹ØĞÅÏ¢£¬Ö÷ÒªÊÇÊ±¼äĞÅÏ¢
-				* @param description    Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				* @param version    æ¨¡å—çš„ç‰ˆæœ¬æ•°å€¼ä¿¡æ¯
+				* @param strver    æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
+				* @param compile    è¡¨ç¤ºæ¨¡å—ç¼–è¯‘å™¨ä¿¡æ¯
+				* @param build    æ¨¡å—ç¼–è¯‘ç›¸å…³ä¿¡æ¯ï¼Œä¸»è¦æ˜¯æ—¶é—´ä¿¡æ¯
+				* @param description    æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				*/
 				inline _csf_version_(const csf_int32 version
 					, const csf_string strver
@@ -114,14 +114,14 @@ namespace csf
 					return m_compile;
 				}
 				/**
-				 * Ä£¿é°æ±¾Êı×Ö±àÂë
+				 * æ¨¡å—ç‰ˆæœ¬æ•°å­—ç¼–ç 
 				 */
 				inline csf_uint32 get_version() {
 
 					return m_version;
 				}
 				/**
-				 * Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				 * æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				 */
 				inline csf_string & get_description() {
 
@@ -132,7 +132,7 @@ namespace csf
 					//if (csf_strlen(m_format) <= 0) {
 					if ('\0' == m_format[0]) {
 
-						//¸ñÊ½Îª¡°csf_lib/v1.0-1000-gcc 4.8.0-20180102-base library¡±
+						//æ ¼å¼ä¸ºâ€œcsf_lib/v1.0-1000-gcc 4.8.0-20180102-base libraryâ€
 						csf_snprintf(m_format, csf_sizeof(m_format)
 							, "%s-%d-%s-%s-%s"
 							, get_strver().c_str()
@@ -145,28 +145,28 @@ namespace csf
 					return csf_string(m_format);
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£ºË¢ĞÂ¸ñÊ½»¯×Ö·û´®»º´æ¿Õ¼ä
-				* ·µ»Ø£ºÎŞ
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆ·æ–°æ ¼å¼åŒ–å­—ç¬¦ä¸²ç¼“å­˜ç©ºé—´
+				* è¿”å›ï¼šæ— 
 				*/
 				inline void flush_string() {
 
 					csf_memset(m_format, 0, csf_sizeof(m_format));
 				}
 				/**
-				 * Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
+				 * æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
 				 */
 				inline csf_string& get_strver() {
 
 					return m_strver;
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£ºÉèÖÃÄ£¿éµÄ°æ±¾ĞÅÏ¢
-				* ·µ»Ø£ºÎŞ·µ»Ø
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šè®¾ç½®æ¨¡å—çš„ç‰ˆæœ¬ä¿¡æ¯
+				* è¿”å›ï¼šæ— è¿”å›
 				*
-				* @param version    Ä£¿éµÄ°æ±¾ÊıÖµĞÅÏ¢
-				* @param strver    Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
-				* @param name			Ä£¿éµÄÃû³Æ
-				* @param description    Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				* @param version    æ¨¡å—çš„ç‰ˆæœ¬æ•°å€¼ä¿¡æ¯
+				* @param strver    æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
+				* @param name			æ¨¡å—çš„åç§°
+				* @param description    æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				*/
 				inline csf_void set_version(const csf_int32 version
 					, const csf_string strver
@@ -179,15 +179,15 @@ namespace csf
 					set_description(description);
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£ºÉèÖÃÄ£¿éµÄ°æ±¾ĞÅÏ¢
-				* ·µ»Ø£ºÎŞ·µ»Ø
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šè®¾ç½®æ¨¡å—çš„ç‰ˆæœ¬ä¿¡æ¯
+				* è¿”å›ï¼šæ— è¿”å›
 				*
-				* @param version    Ä£¿éµÄ°æ±¾ÊıÖµĞÅÏ¢
-				* @param strver    Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
-				* @param name    Ä£¿éµÄÃû³Æ
-				* @param compile    ±íÊ¾Ä£¿é±àÒëÆ÷ĞÅÏ¢
-				* @param build    Ä£¿é±àÒëÏà¹ØĞÅÏ¢£¬Ö÷ÒªÊÇÊ±¼äĞÅÏ¢
-				* @param description    Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				* @param version    æ¨¡å—çš„ç‰ˆæœ¬æ•°å€¼ä¿¡æ¯
+				* @param strver    æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
+				* @param name    æ¨¡å—çš„åç§°
+				* @param compile    è¡¨ç¤ºæ¨¡å—ç¼–è¯‘å™¨ä¿¡æ¯
+				* @param build    æ¨¡å—ç¼–è¯‘ç›¸å…³ä¿¡æ¯ï¼Œä¸»è¦æ˜¯æ—¶é—´ä¿¡æ¯
+				* @param description    æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				*/
 				inline csf_void set_version(const csf_int32 version
 					, const csf_string strver
@@ -205,14 +205,14 @@ namespace csf
 				}
 			protected:
 				/**
-				* ¹¦ÄÜ£º
-				*    ½«°æ±¾ĞÅÏ¢¸ñÊ½»¯³É×Ö·û´®£¬±£´æÔÚformat»º´æÖĞ
-				* ·µ»Ø£º
-				*    true £º±íÊ¾´¦Àí³É¹¦£»
-				*    false£º±íÊ¾´¦ÀíÊ§°Ü£»
+				* åŠŸèƒ½ï¼š
+				*    å°†ç‰ˆæœ¬ä¿¡æ¯æ ¼å¼åŒ–æˆå­—ç¬¦ä¸²ï¼Œä¿å­˜åœ¨formatç¼“å­˜ä¸­
+				* è¿”å›ï¼š
+				*    true ï¼šè¡¨ç¤ºå¤„ç†æˆåŠŸï¼›
+				*    falseï¼šè¡¨ç¤ºå¤„ç†å¤±è´¥ï¼›
 				*
-				* @param fmt    ±íÊ¾´íÎóÃèÊöĞÅÏ¢¸ñÊ½»¯×Ö·û´®
-				* @param ...    ±íÊ¾¸ñÊ½»¯²ÎÊıÄÚÈİ
+				* @param fmt    è¡¨ç¤ºé”™è¯¯æè¿°ä¿¡æ¯æ ¼å¼åŒ–å­—ç¬¦ä¸²
+				* @param ...    è¡¨ç¤ºæ ¼å¼åŒ–å‚æ•°å†…å®¹
 				*/
 				inline csf_bool format(const csf_char* fmt, ...) {
 
@@ -226,7 +226,7 @@ namespace csf
 
 					va_start(tmp_marker, fmt);
 					if (csf_vsnprintf(m_format, csf_sizeof(m_format), fmt, tmp_marker) < 0) {
-						//³¬¹ı×î´ó³¤¶Èºó£¬Ö»´òÓ¡²¿·ÖÄÚÈİ
+						//è¶…è¿‡æœ€å¤§é•¿åº¦åï¼Œåªæ‰“å°éƒ¨åˆ†å†…å®¹
 						m_format[csf_sizeof(m_format) - 2] = '.';
 						m_format[csf_sizeof(m_format) - 3] = '.';
 						m_format[csf_sizeof(m_format) - 4] = '.';
@@ -236,7 +236,7 @@ namespace csf
 					return csf_true;
 				}
 				/**
-				* Ä£¿é°æ±¾Êı×Ö±àÂë
+				* æ¨¡å—ç‰ˆæœ¬æ•°å­—ç¼–ç 
 				*
 				* @param new_value    new_value
 				*/
@@ -245,7 +245,7 @@ namespace csf
 					m_version = new_value;
 				}
 				/**
-				* Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				* æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				*
 				* @param new_value    new_value
 				*/
@@ -254,7 +254,7 @@ namespace csf
 					m_description = new_value;
 				}
 				/**
-				* Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
+				* æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
 				*
 				* @param new_value    new_value
 				*/
@@ -263,7 +263,7 @@ namespace csf
 					m_strver = new_value;
 				}
 				/**
-				* Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
+				* æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
 				*
 				* @param new_value    new_value
 				*/
@@ -272,7 +272,7 @@ namespace csf
 					m_strver = new_value;
 				}
 				/**
-				* Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				* æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				*
 				* @param new_value    new_value
 				*/
@@ -313,14 +313,14 @@ namespace csf
 					m_compile = new_value;
 				}
 				/**
-				* ±íÊ¾°æ±¾ĞÅÏ¢µÄ¸ñÊ½»¯×Ö·û´®
+				* è¡¨ç¤ºç‰ˆæœ¬ä¿¡æ¯çš„æ ¼å¼åŒ–å­—ç¬¦ä¸²
 				*/
 				inline csf_char* get_format() {
 
 					return m_format;
 				}
 				/**
-				* ±íÊ¾°æ±¾ĞÅÏ¢µÄ¸ñÊ½»¯×Ö·û´®
+				* è¡¨ç¤ºç‰ˆæœ¬ä¿¡æ¯çš„æ ¼å¼åŒ–å­—ç¬¦ä¸²
 				*
 				* @param new_value
 				*/
@@ -330,14 +330,14 @@ namespace csf
 					// 						, csf_strlen(new_value) < csf_sizeof(m_format) ? csf_strlen(new_value) : csf_sizeof(m_format));
 				}
 				/**
-				* Ä£¿éµÄÃû³Æ
+				* æ¨¡å—çš„åç§°
 				*/
 				inline csf::core::base::csf_string get_name() {
 
 					return m_name;
 				}
 				/**
-				* Ä£¿éµÄÃû³Æ
+				* æ¨¡å—çš„åç§°
 				*
 				* @param new_value
 				*/
@@ -347,31 +347,31 @@ namespace csf
 				}
 			private:
 				/**
-				 * Ä£¿é°æ±¾Êı×Ö±àÂë
+				 * æ¨¡å—ç‰ˆæœ¬æ•°å­—ç¼–ç 
 				 */
 				csf_uint32 m_version = 0;
 				/**
-				 * Ä£¿éµÄ°æ±¾×Ö·û´®ĞÅÏ¢
+				 * æ¨¡å—çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ä¿¡æ¯
 				 */
 				csf::core::base::csf_string m_strver = "";
 				/**
-				* Ä£¿éµÄÃû³Æ
+				* æ¨¡å—çš„åç§°
 				*/
 				csf::core::base::csf_string m_name = "";
 				/**
-				 * ±íÊ¾Ä£¿é±àÒëÆ÷ĞÅÏ¢
+				 * è¡¨ç¤ºæ¨¡å—ç¼–è¯‘å™¨ä¿¡æ¯
 				 */
 				csf::core::base::csf_string m_compile = "";
 				/**
-				 * Ä£¿é±àÒëÏà¹ØĞÅÏ¢£¬Ö÷ÒªÊÇÊ±¼äĞÅÏ¢
+				 * æ¨¡å—ç¼–è¯‘ç›¸å…³ä¿¡æ¯ï¼Œä¸»è¦æ˜¯æ—¶é—´ä¿¡æ¯
 				 */
 				csf::core::base::csf_string m_build = "";
 				/**
-				 * Ä£¿éµÄÆäËûÃèÊöĞÅÏ¢
+				 * æ¨¡å—çš„å…¶ä»–æè¿°ä¿¡æ¯
 				 */
 				csf::core::base::csf_string m_description = "";
 				/**
-				* ±íÊ¾°æ±¾ĞÅÏ¢µÄ¸ñÊ½»¯×Ö·û´®
+				* è¡¨ç¤ºç‰ˆæœ¬ä¿¡æ¯çš„æ ¼å¼åŒ–å­—ç¬¦ä¸²
 				*/
 				csf_char m_format[128] = { 0, };
 			};

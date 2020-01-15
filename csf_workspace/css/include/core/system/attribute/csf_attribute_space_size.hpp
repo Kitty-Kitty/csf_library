@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 11-7ÔÂ-2018 10:47:28
+*Date: 11-7æœˆ-2018 10:47:28
 *
 *Description: Class(csf_attribute_space_size)
 *
@@ -32,59 +32,59 @@ namespace csf
 			namespace attribute
 			{
 				/************************************************************************/
-				/* ĞèÒªÌáÈ¡µÄ²ÎÊı¸öÊı														*/
+				/* éœ€è¦æå–çš„å‚æ•°ä¸ªæ•°														*/
 				/************************************************************************/
-				#define csf_attribute_space_size_parametes_size						2		//±íÊ¾ĞèÒªÌáÈ¡µÄ²ÎÊı¸öÊı
+				#define csf_attribute_space_size_parametes_size						2		//è¡¨ç¤ºéœ€è¦æå–çš„å‚æ•°ä¸ªæ•°
 				
 				/**
-				 * ±íÊ¾¿Õ¼äÀàĞÍ¸ñÊ½Îª:ÊıÖµ+µ¥Î»¡£µ¥Î»°üÀ¨£¨B/KB/MB/GB/TB/PB£©·Ö±ğ±íÊ¾£¨×Ö½Ú/Ç§×Ö½Ú/Õ××Ö½Ú/¼ª×Ö½Ú/£©¡¢µ¥Î»ÑÏ¸ñÒªÇó´óÊ½¡£ÀıÈç:100MB
+				 * è¡¨ç¤ºç©ºé—´ç±»å‹æ ¼å¼ä¸º:æ•°å€¼+å•ä½ã€‚å•ä½åŒ…æ‹¬ï¼ˆB/KB/MB/GB/TB/PBï¼‰åˆ†åˆ«è¡¨ç¤ºï¼ˆå­—èŠ‚/åƒå­—èŠ‚/å…†å­—èŠ‚/å‰å­—èŠ‚/ï¼‰ã€å•ä½ä¸¥æ ¼è¦æ±‚å¤§å¼ã€‚ä¾‹å¦‚:100MB
 				 * @author fz
 				 * @version 1.0
-				 * @created 11-7ÔÂ-2018 10:47:28
+				 * @created 11-7æœˆ-2018 10:47:28
 				 */
 				class csf_attribute_space_size : public csf::core::system::attribute::csf_attribute_int64
 				{
 
 				public:
 					/**
-					 * ±íÊ¾¿Õ¼äµ¥Î»
+					 * è¡¨ç¤ºç©ºé—´å•ä½
 					 * @author f
 					 * @version 1.0
-					 * @created 11-7ÔÂ-2018 10:47:28
+					 * @created 11-7æœˆ-2018 10:47:28
 					 */
 					enum csf_space_size_unit
 					{
 						/**
-						 * ±íÊ¾Î´Öª¿Õ¼äµ¥Î»
+						 * è¡¨ç¤ºæœªçŸ¥ç©ºé—´å•ä½
 						 */
 						csf_space_size_unit_none = 0x00000000,
 						/**
-						 * ±íÊ¾×Ö½Úµ¥Î»
+						 * è¡¨ç¤ºå­—èŠ‚å•ä½
 						 */
 						csf_space_size_unit_b = 0x00000001,
 						/**
-						 * ±íÊ¾×Ö½Úµ¥Î»
+						 * è¡¨ç¤ºå­—èŠ‚å•ä½
 						 */
 						csf_space_size_unit_kb = 0x00000002,
 						/**
-						 * ±íÊ¾×Ö½Úµ¥Î»
+						 * è¡¨ç¤ºå­—èŠ‚å•ä½
 						 */
 						csf_space_size_unit_mb = 0x00000004,
 						/**
-						 * ±íÊ¾×Ö½Úµ¥Î»
+						 * è¡¨ç¤ºå­—èŠ‚å•ä½
 						 */
 						csf_space_size_unit_gb = 0x00000008,
 						/**
-						 * ±íÊ¾×Ö½Úµ¥Î»
+						 * è¡¨ç¤ºå­—èŠ‚å•ä½
 						 */
 						csf_space_size_unit_tb = 0x00000010,
 						/**
-						 * ±íÊ¾×Ö½Úµ¥Î»
+						 * è¡¨ç¤ºå­—èŠ‚å•ä½
 						 */
 						csf_space_size_unit_pb = 0x00000020
 					};
 
-					//¶¨Òå¸÷ÖÖ´óĞ¡µ¥Î»¿Ì¶ÈµÄ±ÈÀıÖµ
+					//å®šä¹‰å„ç§å¤§å°å•ä½åˆ»åº¦çš„æ¯”ä¾‹å€¼
 #define				CSF_SPACE_SIZE_UNIT_SCALE(CSF_SPACE_SIZE_UNIT_SCALE_MAP)						\
 					CSF_SPACE_SIZE_UNIT_SCALE_MAP(none, 1ll)										\
 					CSF_SPACE_SIZE_UNIT_SCALE_MAP(b,	1ll)										\
@@ -104,10 +104,10 @@ namespace csf
 					}
 
 					/**
-					* ¸ù¾İÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®ç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_space_size(const csf::core::system::attribute::csf_attribute_boundary& boundary = csf_attribute_boundary::get_null()
 						, const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
@@ -118,11 +118,11 @@ namespace csf
 					}
 
 					/**
-					* ¸ù¾İÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®ç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param unit    ±íÊ¾Ä¬ÈÏµÄ¿Õ¼äµ¥Î»
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param unit    è¡¨ç¤ºé»˜è®¤çš„ç©ºé—´å•ä½
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_space_size(const csf_space_size_unit unit = csf_space_size_unit_b
 						, const csf::core::system::attribute::csf_attribute_boundary& boundary = csf_attribute_boundary::get_null()
@@ -134,12 +134,12 @@ namespace csf
 					}
 
 					/**
-					* ¸ù¾İÃû³ÆºÍÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®åç§°å’Œç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param name    ±íÊ¾ÊôĞÔµÄÃû³Æ
-					* @param unit    ±íÊ¾Ä¬ÈÏµÄ¿Õ¼äµ¥Î»
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param name    è¡¨ç¤ºå±æ€§çš„åç§°
+					* @param unit    è¡¨ç¤ºé»˜è®¤çš„ç©ºé—´å•ä½
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_space_size(const csf_string& name
 						, const csf_space_size_unit unit = csf_space_size_unit_b
@@ -150,12 +150,12 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÃû³ÆºÍÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®åç§°å’Œç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param name    ±íÊ¾ÊôĞÔµÄÃû³Æ
-					* @param unit    ±íÊ¾Ä¬ÈÏµÄ¿Õ¼äµ¥Î»
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param name    è¡¨ç¤ºå±æ€§çš„åç§°
+					* @param unit    è¡¨ç¤ºé»˜è®¤çš„ç©ºé—´å•ä½
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_space_size(const csf_char* name
 						, const csf_space_size_unit unit = csf_space_size_unit_b
@@ -167,12 +167,12 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÊôĞÔÂ·¾¶¡¢ÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®å±æ€§è·¯å¾„ã€ç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param items    ±íÊ¾¸ÃÊôĞÔËù¶ÔÓ¦µÄÅäÖÃÎÄ¼ş½ÚµãÎ»ÖÃ
-					* @param unit    ±íÊ¾Ä¬ÈÏµÄ¿Õ¼äµ¥Î»
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param items    è¡¨ç¤ºè¯¥å±æ€§æ‰€å¯¹åº”çš„é…ç½®æ–‡ä»¶èŠ‚ç‚¹ä½ç½®
+					* @param unit    è¡¨ç¤ºé»˜è®¤çš„ç©ºé—´å•ä½
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_space_size(const csf_list<csf_string> items
 						, const csf_space_size_unit unit = csf_space_size_unit_b
@@ -184,13 +184,13 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÃû³Æ¡¢ÊôĞÔÂ·¾¶¡¢ÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®åç§°ã€å±æ€§è·¯å¾„ã€ç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param name    ±íÊ¾ÊôĞÔµÄÃû³Æ
-					* @param items    ±íÊ¾¸ÃÊôĞÔËù¶ÔÓ¦µÄÅäÖÃÎÄ¼ş½ÚµãÎ»ÖÃ
-					* @param unit    ±íÊ¾Ä¬ÈÏµÄ¿Õ¼äµ¥Î»
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param name    è¡¨ç¤ºå±æ€§çš„åç§°
+					* @param items    è¡¨ç¤ºè¯¥å±æ€§æ‰€å¯¹åº”çš„é…ç½®æ–‡ä»¶èŠ‚ç‚¹ä½ç½®
+					* @param unit    è¡¨ç¤ºé»˜è®¤çš„ç©ºé—´å•ä½
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_space_size(const csf_string& name
 						, const csf_list<csf_string> items
@@ -202,13 +202,13 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÃû³Æ¡¢ÊôĞÔÂ·¾¶¡¢ÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®åç§°ã€å±æ€§è·¯å¾„ã€ç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param name    ±íÊ¾ÊôĞÔµÄÃû³Æ
-					* @param items    ±íÊ¾¸ÃÊôĞÔËù¶ÔÓ¦µÄÅäÖÃÎÄ¼ş½ÚµãÎ»ÖÃ
-					* @param unit    ±íÊ¾Ä¬ÈÏµÄ¿Õ¼äµ¥Î»
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param name    è¡¨ç¤ºå±æ€§çš„åç§°
+					* @param items    è¡¨ç¤ºè¯¥å±æ€§æ‰€å¯¹åº”çš„é…ç½®æ–‡ä»¶èŠ‚ç‚¹ä½ç½®
+					* @param unit    è¡¨ç¤ºé»˜è®¤çš„ç©ºé—´å•ä½
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_space_size(const csf_char* name
 						, const csf_list<csf_string> items
@@ -221,14 +221,14 @@ namespace csf
 
 					}
 					/**
-					 * ±íÊ¾¿Õ¼äµÄµ¥Î»
+					 * è¡¨ç¤ºç©ºé—´çš„å•ä½
 					 */
 					inline csf_space_size_unit& get_unit() {
 
 						return m_unit;
 					}
 					/**
-					 * ±íÊ¾¿Õ¼äµÄµ¥Î»
+					 * è¡¨ç¤ºç©ºé—´çš„å•ä½
 					 * 
 					 * @param newVal
 					 */
@@ -237,17 +237,17 @@ namespace csf
 						m_unit = newVal;
 					}
 					/**
-					 * ´ÓÄÚÈİÖĞ½âÎöĞèÒªµÄ²ÎÊı¡£
-					 * ·µ»Ø£ºture±íÊ¾½âÎö³É¹¦£»false±íÊ¾½âÎöÊ§°Ü¡£
+					 * ä»å†…å®¹ä¸­è§£æéœ€è¦çš„å‚æ•°ã€‚
+					 * è¿”å›ï¼štureè¡¨ç¤ºè§£ææˆåŠŸï¼›falseè¡¨ç¤ºè§£æå¤±è´¥ã€‚
 					 * 
-					 * @param content    ±íÊ¾ĞèÒª½âÎöµÄÄÚÈİĞÅÏ¢
+					 * @param content    è¡¨ç¤ºéœ€è¦è§£æçš„å†…å®¹ä¿¡æ¯
 					 */
 					csf_bool parse_parametes(const csf_string& content);
 					/**
-					 * ´ÓÄÚÈİÖĞ½âÎöĞèÒªµÄ²ÎÊı¡£
-					 * ·µ»Ø£ºture±íÊ¾½âÎö³É¹¦£»false±íÊ¾½âÎöÊ§°Ü¡£
+					 * ä»å†…å®¹ä¸­è§£æéœ€è¦çš„å‚æ•°ã€‚
+					 * è¿”å›ï¼štureè¡¨ç¤ºè§£ææˆåŠŸï¼›falseè¡¨ç¤ºè§£æå¤±è´¥ã€‚
 					 * 
-					 * @param content    ±íÊ¾ĞèÒª½âÎöµÄÄÚÈİĞÅÏ¢
+					 * @param content    è¡¨ç¤ºéœ€è¦è§£æçš„å†…å®¹ä¿¡æ¯
 					 */
 					inline csf_bool parse_parametes(const csf_char* content) {
 
@@ -258,16 +258,16 @@ namespace csf
 						return parse_parametes(csf_string(content));
 					}
 					/**
-					 * ±íÊ¾Ê±¼äµ¥Î»Ãû³ÆµÄ¶ÔÓ¦ÁĞ±í
+					 * è¡¨ç¤ºæ—¶é—´å•ä½åç§°çš„å¯¹åº”åˆ—è¡¨
 					 */
 					inline const csf_unordered_map<csf_string, csf_space_size_unit>& get_unit_name() {
 
 						return m_unit_name;
 					}
 					/**
-					 * ±íÊ¾½«×Ö·û´®Ê±¼äµ¥Î»×ª»»ÎªÀàĞÍÊıÖµ
+					 * è¡¨ç¤ºå°†å­—ç¬¦ä¸²æ—¶é—´å•ä½è½¬æ¢ä¸ºç±»å‹æ•°å€¼
 					 * 
-					 * @param unit    ±íÊ¾ĞèÒª±»×ª»»µÄµ¥Î»×Ö·û´®
+					 * @param unit    è¡¨ç¤ºéœ€è¦è¢«è½¬æ¢çš„å•ä½å­—ç¬¦ä¸²
 					 */
 					inline csf_space_size_unit convert(const csf_string& unit) {
 
@@ -282,9 +282,9 @@ namespace csf
 						return csf_space_size_unit::csf_space_size_unit_none;
 					}
 					/**
-					 * ±íÊ¾½«×Ö·û´®Ê±¼äµ¥Î»×ª»»ÎªÀàĞÍÊıÖµ
+					 * è¡¨ç¤ºå°†å­—ç¬¦ä¸²æ—¶é—´å•ä½è½¬æ¢ä¸ºç±»å‹æ•°å€¼
 					 * 
-					 * @param unit    ±íÊ¾ĞèÒª±»×ª»»µÄµ¥Î»×Ö·û´®
+					 * @param unit    è¡¨ç¤ºéœ€è¦è¢«è½¬æ¢çš„å•ä½å­—ç¬¦ä¸²
 					 */
 					inline csf_space_size_unit convert(const csf_char* unit) {
 
@@ -295,13 +295,13 @@ namespace csf
 						return  convert(csf_string(unit));
 					}
 					/**
-					 * ±íÊ¾½«Ê±¼äÊıÖµ×ª»»ÎªÖ¸¶¨¸ñÊ½µÄÊ±¼äÊıÖµ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾×ª»»³É¹¦£»false±íÊ¾×ª»»Ê§°Ü£»
+					 * è¡¨ç¤ºå°†æ—¶é—´æ•°å€¼è½¬æ¢ä¸ºæŒ‡å®šæ ¼å¼çš„æ—¶é—´æ•°å€¼ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºè½¬æ¢æˆåŠŸï¼›falseè¡¨ç¤ºè½¬æ¢å¤±è´¥ï¼›
 					 * 
-					 * @param dest_value    ±íÊ¾×ª»»ºóµÄÄ¿±êµ¥Î»ÊıÖµ
-					 * @param dest_unit    ±íÊ¾×ª»»ºóµÄÄ¿±êÊıÖµµ¥Î»
-					 * @param src_value    ±íÊ¾ĞèÒª±»×ª»»µÄÔ´µ¥Î»ÊıÖµ
-					 * @param src_unit    ±íÊ¾Ô´ÊıÖµµ¥Î»
+					 * @param dest_value    è¡¨ç¤ºè½¬æ¢åçš„ç›®æ ‡å•ä½æ•°å€¼
+					 * @param dest_unit    è¡¨ç¤ºè½¬æ¢åçš„ç›®æ ‡æ•°å€¼å•ä½
+					 * @param src_value    è¡¨ç¤ºéœ€è¦è¢«è½¬æ¢çš„æºå•ä½æ•°å€¼
+					 * @param src_unit    è¡¨ç¤ºæºæ•°å€¼å•ä½
 					 */
 					inline csf_bool convert(csf_int64& dest_value, const csf_space_size_unit& dest_unit
 						, const csf_int64& src_value, const csf_space_size_unit& src_unit) {
@@ -309,12 +309,12 @@ namespace csf
 						csf_int64						tmp_value = 0;
 
 
-						//ÎªÊµÏÖ×ª»»£¬ÏÈ½«Ô´¸ñÊ½¿Õ¼äµ¥Î»×ª»»Îª×Ö½Ú
+						//ä¸ºå®ç°è½¬æ¢ï¼Œå…ˆå°†æºæ ¼å¼ç©ºé—´å•ä½è½¬æ¢ä¸ºå­—èŠ‚
 						if (csf_false == convert_to_bytes(tmp_value, src_value, src_unit)) {
 							return csf_false;
 						}
 
-						//ÎªÊµÏÖ×ª»»£¬½Ó×Å½«×Ö½Ú×ª»»ÎªÖ¸¶¨µÄ¿Õ¼äµ¥Î»
+						//ä¸ºå®ç°è½¬æ¢ï¼Œæ¥ç€å°†å­—èŠ‚è½¬æ¢ä¸ºæŒ‡å®šçš„ç©ºé—´å•ä½
 						if (csf_false == convert_from_bytes(tmp_value, dest_unit, tmp_value)) {
 							return csf_false;
 						}
@@ -324,9 +324,9 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					 * ±íÊ¾½«ÀàĞÍÊıÖµ×ª»»Îª×Ö·û´®Ê±¼äµ¥Î»
+					 * è¡¨ç¤ºå°†ç±»å‹æ•°å€¼è½¬æ¢ä¸ºå­—ç¬¦ä¸²æ—¶é—´å•ä½
 					 * 
-					 * @param unit    ±íÊ¾ĞèÒª±»×ª»»µÄµ¥Î»ÊıÖµ
+					 * @param unit    è¡¨ç¤ºéœ€è¦è¢«è½¬æ¢çš„å•ä½æ•°å€¼
 					 */
 					inline const csf_string convert(const csf_space_size_unit unit) {
 
@@ -338,7 +338,7 @@ namespace csf
 						return  csf_string_null;
 					}
 					/**
-					* º¯Êı¹¦ÄÜÊÇ½«csf_attributeÄÚÈİĞÅÏ¢¸ñÊ½»¯
+					* å‡½æ•°åŠŸèƒ½æ˜¯å°†csf_attributeå†…å®¹ä¿¡æ¯æ ¼å¼åŒ–
 					*/
 					inline csf_string to_string() {
 						csf_char				tmp_buf[csf_attribute_string_length] = { 0, };
@@ -355,16 +355,16 @@ namespace csf
 
 				protected:
 					/**
-					 * ±íÊ¾´¦Àícsf_attributeÊôĞÔ²Ù×÷¡£ÕâÀïÓëcsf_attribute_templateÖĞ²»Í¬µÄÊÇ£¬ÕâÀïÌí¼ÓÒ»²ãprocess_numberº¯ÊıÖ÷ÒªÊÇÎªÁË
-					 * ÊµÏÖÊı¾İ±ß½çµÄÍ³Ò»´¦Àí¡£
-					 * ·µ»Ø£ºtrue±íÊ¾Ê§°Ü£»false±íÊ¾³É¹¦¡£
+					 * è¡¨ç¤ºå¤„ç†csf_attributeå±æ€§æ“ä½œã€‚è¿™é‡Œä¸csf_attribute_templateä¸­ä¸åŒçš„æ˜¯ï¼Œè¿™é‡Œæ·»åŠ ä¸€å±‚process_numberå‡½æ•°ä¸»è¦æ˜¯ä¸ºäº†
+					 * å®ç°æ•°æ®è¾¹ç•Œçš„ç»Ÿä¸€å¤„ç†ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºå¤±è´¥ï¼›falseè¡¨ç¤ºæˆåŠŸã€‚
 					 * 
-					 * @param configure_manager    ±íÊ¾±£´æÅäÖÃ¹ÜÀíÆ÷¶ÔÏó
-					 * @param alias    ±íÊ¾µ±Ç°ÊôĞÔ±ğÃû£¬Èç¹ûÊôĞÔÃû³ÆÎª¿ÕÔòÔòÊ¹ÓÃ¸Ã±ğÃû¡£
+					 * @param configure_manager    è¡¨ç¤ºä¿å­˜é…ç½®ç®¡ç†å™¨å¯¹è±¡
+					 * @param alias    è¡¨ç¤ºå½“å‰å±æ€§åˆ«åï¼Œå¦‚æœå±æ€§åç§°ä¸ºç©ºåˆ™åˆ™ä½¿ç”¨è¯¥åˆ«åã€‚
 					 */
 					virtual csf_bool process_number(const csf_configure_manager& configure_manager, const csf_string& alias);
 					/**
-					* ±íÊ¾¸ÃÖÖ¸ñÊ½Êı¾İµÄËµÃ÷
+					* è¡¨ç¤ºè¯¥ç§æ ¼å¼æ•°æ®çš„è¯´æ˜
 					*/
 					inline const csf_string& get_usage() {
 
@@ -372,30 +372,30 @@ namespace csf
 					}
 				private:
 					/**
-					 * ±íÊ¾¿Õ¼äµÄµ¥Î»
+					 * è¡¨ç¤ºç©ºé—´çš„å•ä½
 					 */
 					csf_space_size_unit m_unit = csf_space_size_unit_none;
 					/**
-					 * ±íÊ¾Ê±¼äµ¥Î»Ãû³ÆµÄ¶ÔÓ¦ÁĞ±í
+					 * è¡¨ç¤ºæ—¶é—´å•ä½åç§°çš„å¯¹åº”åˆ—è¡¨
 					 */
 					static const csf_unordered_map<csf_string, csf_space_size_unit> m_unit_name;
 					/**
-					* ±íÊ¾¸ÃÖÖ¸ñÊ½Êı¾İµÄËµÃ÷
+					* è¡¨ç¤ºè¯¥ç§æ ¼å¼æ•°æ®çš„è¯´æ˜
 					*/
 					static const csf_string m_usage;
 					/**
-					 * »ñÈ¡ÊıÖµºÍµ¥Î»Ïà¹ØÄÚÈİ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾´¦Àí³É¹¦£»false±íÊ¾´¦ÀíÊ§°Ü¡£
+					 * è·å–æ•°å€¼å’Œå•ä½ç›¸å…³å†…å®¹ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºå¤„ç†æˆåŠŸï¼›falseè¡¨ç¤ºå¤„ç†å¤±è´¥ã€‚
 					 * 
-					 * @param val    ±íÊ¾ĞèÒª´¦ÀíµÄÊıÖµÄÚÈİ
-					 * @param unit    ±íÊ¾¸ÃÊıÖµµÄµ¥Î»×Ö·û
+					 * @param val    è¡¨ç¤ºéœ€è¦å¤„ç†çš„æ•°å€¼å†…å®¹
+					 * @param unit    è¡¨ç¤ºè¯¥æ•°å€¼çš„å•ä½å­—ç¬¦
 					 */
 					csf_bool get_parametes(const csf_string& val, const csf_string& unit);
 #if 0
 					/**
-					 * ±íÊ¾Ê±¼äµ¥Î»Ãû³ÆµÄ¶ÔÓ¦ÁĞ±í
+					 * è¡¨ç¤ºæ—¶é—´å•ä½åç§°çš„å¯¹åº”åˆ—è¡¨
 					 * 
-					 * @param newVal    ±íÊ¾Ê±¼äµ¥Î»Ãû³ÆµÄ¶ÔÓ¦ÁĞ±í
+					 * @param newVal    è¡¨ç¤ºæ—¶é—´å•ä½åç§°çš„å¯¹åº”åˆ—è¡¨
 					 */
 					inline csf_void set_unit_name(csf_unordered_map<csf_string, csf_space_size_unit>& newVal) {
 
@@ -403,12 +403,12 @@ namespace csf
 					}
 #endif
 					/**
-					 * ±íÊ¾½«Ê±¼äÊıÖµ×ª»»ÎªÄÉÃë¸ñÊ½µÄÊ±¼äÊıÖµ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾×ª»»³É¹¦£»false±íÊ¾×ª»»Ê§°Ü£»
+					 * è¡¨ç¤ºå°†æ—¶é—´æ•°å€¼è½¬æ¢ä¸ºçº³ç§’æ ¼å¼çš„æ—¶é—´æ•°å€¼ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºè½¬æ¢æˆåŠŸï¼›falseè¡¨ç¤ºè½¬æ¢å¤±è´¥ï¼›
 					 * 
-					 * @param dest_value    ±íÊ¾×ª»»ºóµÄÄ¿±êµ¥Î»ÊıÖµ£¬µ¥Î»ÎªÄÉÃë(ns)
-					 * @param src_value    ±íÊ¾ĞèÒª±»×ª»»µÄÔ´µ¥Î»ÊıÖµ
-					 * @param src_unit    ±íÊ¾Ô´ÊıÖµµ¥Î»
+					 * @param dest_value    è¡¨ç¤ºè½¬æ¢åçš„ç›®æ ‡å•ä½æ•°å€¼ï¼Œå•ä½ä¸ºçº³ç§’(ns)
+					 * @param src_value    è¡¨ç¤ºéœ€è¦è¢«è½¬æ¢çš„æºå•ä½æ•°å€¼
+					 * @param src_unit    è¡¨ç¤ºæºæ•°å€¼å•ä½
 					 */
 					inline csf_bool convert_to_bytes(csf_int64& dest_value, const csf_int64& src_value, const csf_space_size_unit& src_unit) {
 
@@ -428,12 +428,12 @@ namespace csf
 						return csf_true;
 					}
 					/**
-					 * ±íÊ¾½«ÄÉÃëÊ±¼äÊıÖµ×ª»»ÎªÖ¸¶¨¸ñÊ½µÄÊ±¼äÊıÖµ¡£
-					 * ·µ»Ø£ºtrue±íÊ¾×ª»»³É¹¦£»false±íÊ¾×ª»»Ê§°Ü£»
+					 * è¡¨ç¤ºå°†çº³ç§’æ—¶é—´æ•°å€¼è½¬æ¢ä¸ºæŒ‡å®šæ ¼å¼çš„æ—¶é—´æ•°å€¼ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºè½¬æ¢æˆåŠŸï¼›falseè¡¨ç¤ºè½¬æ¢å¤±è´¥ï¼›
 					 * 
-					 * @param dest_value    ±íÊ¾×ª»»ºóµÄÄ¿±êµ¥Î»ÊıÖµ
-					 * @param dest_unit    ±íÊ¾×ª»»ºóµÄÄ¿±êÊıÖµµ¥Î»
-					 * @param src_value    ±íÊ¾ĞèÒª±»×ª»»µÄÔ´µ¥Î»ÊıÖµ
+					 * @param dest_value    è¡¨ç¤ºè½¬æ¢åçš„ç›®æ ‡å•ä½æ•°å€¼
+					 * @param dest_unit    è¡¨ç¤ºè½¬æ¢åçš„ç›®æ ‡æ•°å€¼å•ä½
+					 * @param src_value    è¡¨ç¤ºéœ€è¦è¢«è½¬æ¢çš„æºå•ä½æ•°å€¼
 					 */
 					inline csf_bool convert_from_bytes(csf_int64& dest_value, const csf_space_size_unit& dest_unit, const csf_int64& src_value) {
 

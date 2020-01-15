@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 24-9ÔÂ-2018 14:09:59
+*Date: 24-9æœˆ-2018 14:09:59
 *
-*Description: Class(vdu_svg_convert) Ö÷Òª´¦ÀísvgÀàĞÍÊı¾İ×ª»»Îªvdu_shapeÀàĞÍ
+*Description: Class(vdu_svg_convert) ä¸»è¦å¤„ç†svgç±»å‹æ•°æ®è½¬æ¢ä¸ºvdu_shapeç±»å‹
 *
 *Others:
 *
@@ -32,10 +32,10 @@ namespace vdu
 		namespace base
 		{
 			/**
-			 * Ö÷Òª´¦ÀísvgÀàĞÍÊı¾İ×ª»»Îªvdu_shapeÀàĞÍ
+			 * ä¸»è¦å¤„ç†svgç±»å‹æ•°æ®è½¬æ¢ä¸ºvdu_shapeç±»å‹
 			 * @author fangzhenmu
 			 * @version 1.0
-			 * @created 24-9ÔÂ-2018 14:09:59
+			 * @created 24-9æœˆ-2018 14:09:59
 			 */
 			class vdu_svg_convert : public vdu::core::base::vdu_shape_convert
 			{

@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6��-2018 21:34:05
+*Date: 27-6月-2018 21:34:05
 *
 *Description: Class(csf_csfstring)
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ��ʾcsfʹ�õ�string
+			 * 表示csf使用的string
 			 * @author f
 			 * @version 1.0
-			 * @created 27-6��-2018 21:34:05
+			 * @created 27-6月-2018 21:34:05
 			 */
 			class csf_csfstring : public csf::core::base::csf_memblock
 			{
@@ -42,7 +42,7 @@ namespace csf
 
 				}
 				/**
-				 * ����char*�ַ�������csf_csfstring
+				 * 根据char*字符串创建csf_csfstring
 				 * 
 				 * @param buf    buf
 				 */
@@ -51,9 +51,9 @@ namespace csf
 
 				}
 				/**
-				 * ���ݻ����ַ�ͳ��ȴ���һ��csf_csfstring
+				 * 根据缓存地址和长度创建一个csf_csfstring
 				 * 
-				 * @param buf    ��ʾ���ݻ����ַ�ͳ��ȴ���һ��csf_csfstring
+				 * @param buf    表示根据缓存地址和长度创建一个csf_csfstring
 				 * @param len    len
 				 */
 				inline explicit csf_csfstring(const csf_uchar* buf, const csf_int32 len) 
@@ -61,18 +61,18 @@ namespace csf
 
 				}
 				/**
-				 * ��stringת��Ϊcsf_csfstring
+				 * 将string转换为csf_csfstring
 				 * 
-				 * @param str    ��ʾ��Ҫ��ת����string�ַ���
+				 * @param str    表示需要被转换的string字符串
 				 */
 				inline explicit csf_csfstring(const csf_string& str) 
 					: csf_memblock(str.length()) {
 					csf_strcpy((csf_char*)get_buffer(), str.c_str());
 				}
 				/**
-				 * ���ݳ��ȴ���һ��csf_csfstring
+				 * 根据长度创建一个csf_csfstring
 				 * 
-				 * @param len    ��ʾ��Ҫ������csf_csfstring����ĳ���
+				 * @param len    表示需要创建的csf_csfstring缓存的长度
 				 */
 				inline explicit csf_csfstring(const csf_int32 len) 
 					: csf_memblock(len) {
@@ -82,56 +82,56 @@ namespace csf
 
 				}
 				/**
-				 * ��ʾ��char*�ַ������ӵ�csf_csfstrin�С�
-				 * ���أ�>=0��ʾʵ�����ӵ��ַ�������<0��ʾ�����룻
+				 * 表示将char*字符串添加到csf_csfstrin中。
+				 * 返回：>=0表示实际添加的字符数量；<0表示错误码；
 				 * 
-				 * @param buf    ��ʾchar*�ַ�������
+				 * @param buf    表示char*字符串内容
 				 */
 				inline csf_int32 cat(const csf_char* buf) {
 
 					return 0;
 				}
 				/**
-				 * �������ַ��ָ�������������ӵ�csf_csfstring�С�
-				 * ���أ�>=0��ʾʵ�����ӵ��ַ�������<0��ʾ�����룻
+				 * 将缓存地址的指定长度内容添加到csf_csfstring中。
+				 * 返回：>=0表示实际添加的字符数量；<0表示错误码；
 				 * 
-				 * @param buf    ��ʾ�������ݵĻ����ַ
-				 * @param len    ��ʾ�������ݵĻ��泤��
+				 * @param buf    表示添加内容的缓存地址
+				 * @param len    表示添加内容的缓存长度
 				 */
 				inline csf_int32 cat(const csf_uchar* buf, const csf_uint32 len) {
 
 					return 0;
 				}
 				/**
-				 * ��string�������ӵ�csf_csfstring�С�
-				 * ���أ�>=0��ʾʵ�����ӵ��ַ�������<0��ʾ�����룻
+				 * 将string内容添加到csf_csfstring中。
+				 * 返回：>=0表示实际添加的字符数量；<0表示错误码；
 				 * 
-				 * @param str    ��ʾ��Ҫ���ӵ�string����
+				 * @param str    表示需要添加的string内容
 				 */
 				inline csf_int32 cat(const csf_string str) {
 
 					return 0;
 				}
 				/**
-				 * ��ֵ������������ʽ�ǽ�������������ݣ������ṹ ���ڴ����ݣ�����һ�ݣ�
+				 * 赋值操作，处理方式是将对象的所有内容（本身结构 和内存数据）拷贝一份，
 				 * 
-				 * @param csfstr    ��Ҫ����ֵ�Ķ���
+				 * @param csfstr    需要被赋值的对象
 				 */
 				inline csf_csfstring& operator =(const csf_csfstring& csfstr) {
 
 					return csf_csfstring();
 				}
 				/**
-				 * ��ʾ��ȡָ�����ȵĻ����ַ
+				 * 表示获取指定长度的缓存地址
 				 * 
-				 * @param len    ��ʾָ������
+				 * @param len    表示指定长度
 				 */
 				inline csf_uchar* position(const csf_uint32 len) {
 
 					return  NULL;
 				}
 				/**
-				 * ��csf_csfstring����ת��Ϊstring
+				 * 将csf_csfstring内容转换为string
 				 */
 				inline csf_string to_string() {
 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 20:38:59
+*Date: 01-7æœˆ-2018 20:38:59
 *
 *Description: Class(csf_logger)
 *
@@ -38,10 +38,10 @@ csf_logger::csf_logger()
 
 
 /**
-* ±íÊ¾¸ù¾İÅäÖÃÎÄ¼ş´´½¨ÈÕÖ¾Ä£¿é
+* è¡¨ç¤ºæ ¹æ®é…ç½®æ–‡ä»¶åˆ›å»ºæ—¥å¿—æ¨¡å—
 *
-* @param configure_manager    ±íÊ¾ÅäÖÃÎÄ¼ş
-* @param path    ±íÊ¾ÈÕÖ¾ÎÄ¼ş±£´æµÄÖ÷Ä¿Â¼Â·¾¶
+* @param configure_manager    è¡¨ç¤ºé…ç½®æ–‡ä»¶
+* @param path    è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶ä¿å­˜çš„ä¸»ç›®å½•è·¯å¾„
 */
 csf_logger::csf_logger(const csf_configure_manager* configure_manager, const csf_string path)
 	: m_configure_manager((csf_configure_manager*)configure_manager)
@@ -61,12 +61,12 @@ csf_logger::~csf_logger() {
 
 
 /**
-* ±íÊ¾µ±Ç°ÏµÍ³µÄÈÕÖ¾¼¶±ğ£¬Ä¬ÈÏnotice¼¶±ğ
+* è¡¨ç¤ºå½“å‰ç³»ç»Ÿçš„æ—¥å¿—çº§åˆ«ï¼Œé»˜è®¤noticeçº§åˆ«
 */
 csf_logger_level csf_logger::m_level = csf_logger_level::csf_logger_level_notice;
 
 /**
-* ±íÊ¾ÈÕÖ¾¼¶±ğ¶ÔÓ¦µÄÃû³ÆÁĞ±íÄÚÈİ¡£
+* è¡¨ç¤ºæ—¥å¿—çº§åˆ«å¯¹åº”çš„åç§°åˆ—è¡¨å†…å®¹ã€‚
 */
 const csf_unordered_map<csf_string, csf_logger_level> csf_logger::m_level_name = {
 	{ "debug", csf_logger_level_debug },
@@ -79,9 +79,9 @@ const csf_unordered_map<csf_string, csf_logger_level> csf_logger::m_level_name =
 };
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_mg) {
 
@@ -91,7 +91,7 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 	csf_logger_level				tmp_level = csf_logger_level::csf_logger_level_notice;
 
 
-	//Ğ£Ñé¸÷ÖÖÅäÖÃĞÅÏ¢µÄºÏ·¨ĞÔ
+	//æ ¡éªŒå„ç§é…ç½®ä¿¡æ¯çš„åˆæ³•æ€§
 	if (!get_configure_manager() || !get_attribute_manager()) {
 
 		csf_log_ex(critical, csf_log_code_critical
@@ -103,37 +103,37 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 	}
 
 	/************************************************************************/
-	/* ÉèÖÃÈÕÖ¾ÏµÍ³ĞèÒªµÄ¼¸¸öÅäÖÃÊôĞÔĞÅÏ¢                                     */
+	/* è®¾ç½®æ—¥å¿—ç³»ç»Ÿéœ€è¦çš„å‡ ä¸ªé…ç½®å±æ€§ä¿¡æ¯                                     */
 	/************************************************************************/
-	//±íÊ¾ÈÕÖ¾±£´æµÄÄ¿Â¼Î»ÖÃ,Èç¹û¸ÃÖµÎª¿ÕÔò²ÉÓÃÄ¬ÈÏµÄÏµÍ³Â·¾¶
+	//è¡¨ç¤ºæ—¥å¿—ä¿å­˜çš„ç›®å½•ä½ç½®,å¦‚æœè¯¥å€¼ä¸ºç©ºåˆ™é‡‡ç”¨é»˜è®¤çš„ç³»ç»Ÿè·¯å¾„
 	((csf_attribute_manager*)get_attribute_manager())->add(CSF_LOGGER_ATTRIBUTE_NAME(path)
 		, csf_attribute_string(std::list<csf_string>{ "log_configure", "path" }));
 
-	//±íÊ¾ÈÕÖ¾ÎÄ¼şµÄÃû³Æ¸ñÊ½
+	//è¡¨ç¤ºæ—¥å¿—æ–‡ä»¶çš„åç§°æ ¼å¼
 	((csf_attribute_manager*)get_attribute_manager())->add(CSF_LOGGER_ATTRIBUTE_NAME(format)
 		, csf_attribute_string(std::list<csf_string>{ "log_configure", "format" }
 			, csf_attribute_exception_critical()));
 
-	//ÈÕÖ¾¼¶±ğ£ºdebug/normal/info/notice/warning/error/critical
+	//æ—¥å¿—çº§åˆ«ï¼šdebug/normal/info/notice/warning/error/critical
 	((csf_attribute_manager*)get_attribute_manager())->add(CSF_LOGGER_ATTRIBUTE_NAME(level)
 		, csf_attribute_string(std::list<csf_string>{ "log_configure", "level" }
 			, csf_attribute_exception_critical()));
 
-	//±íÊ¾µ¥ÎÄ¼ş»Ø¹ö×î´ó´óĞ¡£¬¼´Ã¿¸öÎÄ¼şµÄ×î´ó´óĞ¡¡£×¢Òâ£º¸ÃÊıÖµÒªĞ¡ÓÚstored_max_size,×î´óÎª:1GB
+	//è¡¨ç¤ºå•æ–‡ä»¶å›æ»šæœ€å¤§å¤§å°ï¼Œå³æ¯ä¸ªæ–‡ä»¶çš„æœ€å¤§å¤§å°ã€‚æ³¨æ„ï¼šè¯¥æ•°å€¼è¦å°äºstored_max_size,æœ€å¤§ä¸º:1GB
 	((csf_attribute_manager*)get_attribute_manager())->add(CSF_LOGGER_ATTRIBUTE_NAME(rotation_size)
 			, csf_attribute_space_size(std::list<csf_string>{ "log_size", "rotation_size" }
 				, csf_attribute_space_size::csf_space_size_unit::csf_space_size_unit_b
 				, csf_attribute_boundary("(1000, n)")
 				, csf_attribute_exception_critical()));
 
-	//±íÊ¾ÈÕÖ¾Õ¼ÓÃ´ÅÅÌ×î´ó´óĞ¡£¬stored_max_size/rotation_size±íÊ¾±£´æµÄÈÕÖ¾ÎÄ¼şÊıÁ¿¡£×¢Òâ£º¸ÃÖµÒª´óÓÚrotation_size£¬×î´óÎª:1GB
+	//è¡¨ç¤ºæ—¥å¿—å ç”¨ç£ç›˜æœ€å¤§å¤§å°ï¼Œstored_max_size/rotation_sizeè¡¨ç¤ºä¿å­˜çš„æ—¥å¿—æ–‡ä»¶æ•°é‡ã€‚æ³¨æ„ï¼šè¯¥å€¼è¦å¤§äºrotation_sizeï¼Œæœ€å¤§ä¸º:1GB
 	((csf_attribute_manager*)get_attribute_manager())->add(CSF_LOGGER_ATTRIBUTE_NAME(stored_max_size)
 		, csf_attribute_space_size(std::list<csf_string>{ "log_size", "stored_max_size" }
 			, csf_attribute_space_size::csf_space_size_unit::csf_space_size_unit_b
 			, csf_attribute_boundary("(1000, n)")
 			, csf_attribute_exception_critical()));
 
-	//±íÊ¾´ÅÅÌ¿Õ¼ä×îĞ¡¶à´óµÄÊ±ºò²ÅÄÜĞ´ÈÕÖ¾¡£×¢Òâ£º¸ÃÖµÒª´óÓÚstored_max_size£¬×î´óÎª:1GB
+	//è¡¨ç¤ºç£ç›˜ç©ºé—´æœ€å°å¤šå¤§çš„æ—¶å€™æ‰èƒ½å†™æ—¥å¿—ã€‚æ³¨æ„ï¼šè¯¥å€¼è¦å¤§äºstored_max_sizeï¼Œæœ€å¤§ä¸º:1GB
 	((csf_attribute_manager*)get_attribute_manager())->add(CSF_LOGGER_ATTRIBUTE_NAME(drive_min_free_size)
 		, csf_attribute_space_size(std::list<csf_string>{ "log_size", "drive_min_free_size" }
 			, csf_attribute_space_size::csf_space_size_unit::csf_space_size_unit_b
@@ -142,7 +142,7 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 
 	/************************************************************************/
 
-	//¸ù¾İÅäÖÃÎÄ¼şµÄÅäÖÃÊı¾İ£¬ÉèÖÃÈÕÖ¾¼¶±ğ
+	//æ ¹æ®é…ç½®æ–‡ä»¶çš„é…ç½®æ•°æ®ï¼Œè®¾ç½®æ—¥å¿—çº§åˆ«
 	tmp_string_level = ((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_string>(CSF_LOGGER_ATTRIBUTE_NAME(level));
 	tmp_bool_ret = convert(tmp_level, tmp_string_level);
 	if (!tmp_bool_ret) {
@@ -155,7 +155,7 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 		set_level(tmp_level);
 	}
 
-	//¸ù¾İÅäÖÃÎÄ¼şÄÚÈİ£¬ÉèÖÃÈÕÖ¾ÎÄ¼şÃû¸ñÊ½
+	//æ ¹æ®é…ç½®æ–‡ä»¶å†…å®¹ï¼Œè®¾ç½®æ—¥å¿—æ–‡ä»¶åæ ¼å¼
 	tmp_string_ret = ((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_string>(CSF_LOGGER_ATTRIBUTE_NAME(format));
 	if (tmp_string_ret.empty()) {
 		csf_log_ex(critical, csf_log_code_critical
@@ -166,9 +166,9 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 		set_file_name_format(tmp_string_ret);
 	}
 
-	//¸ù¾İÅäÖÃÎÄ¼şÄÚÈİ£¬ÉèÖÃÈÕÖ¾ÎÄ¼ş±£´æÂ·¾¶
-	//ÓÅÏÈÊ¹ÓÃÈÕÖ¾ÅäÖÃÎÄ¼şÖĞµÄÈÕÖ¾±£´æµØÖ·¡£Èç¹û¸ÃÂ·¾¶Îª¿Õ£¬ÔòÊ¹ÓÃÒÑ¾­ÅäÖÃ³ÌĞòÖ¸¶¨Ä¿Â¼
-	//Èç¹ûÈÕÖ¾Ã»ÓĞÅäÖÃÈÎºÎÂ·¾¶ĞÅÏ¢£¬ÔòÈÕÖ¾ÏµÍ³ÎŞ·¨Õı³£¹¤×÷
+	//æ ¹æ®é…ç½®æ–‡ä»¶å†…å®¹ï¼Œè®¾ç½®æ—¥å¿—æ–‡ä»¶ä¿å­˜è·¯å¾„
+	//ä¼˜å…ˆä½¿ç”¨æ—¥å¿—é…ç½®æ–‡ä»¶ä¸­çš„æ—¥å¿—ä¿å­˜åœ°å€ã€‚å¦‚æœè¯¥è·¯å¾„ä¸ºç©ºï¼Œåˆ™ä½¿ç”¨å·²ç»é…ç½®ç¨‹åºæŒ‡å®šç›®å½•
+	//å¦‚æœæ—¥å¿—æ²¡æœ‰é…ç½®ä»»ä½•è·¯å¾„ä¿¡æ¯ï¼Œåˆ™æ—¥å¿—ç³»ç»Ÿæ— æ³•æ­£å¸¸å·¥ä½œ
 	tmp_string_ret = ((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_string>(CSF_LOGGER_ATTRIBUTE_NAME(path));
 	if (!tmp_string_ret.empty()) {
 		set_path(tmp_string_ret);
@@ -181,7 +181,7 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 		}
 	}
 
-	//ÉèÖÃ¸÷ÖÖ¿Õ¼ä²ÎÊıĞÅÏ¢
+	//è®¾ç½®å„ç§ç©ºé—´å‚æ•°ä¿¡æ¯
 	set_rotation_size(((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_space_size>(CSF_LOGGER_ATTRIBUTE_NAME(rotation_size)));
 	set_stored_max_size(((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_space_size>(CSF_LOGGER_ATTRIBUTE_NAME(stored_max_size)));
 	set_drive_min_free_size(((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_space_size>(CSF_LOGGER_ATTRIBUTE_NAME(drive_min_free_size)));
@@ -204,9 +204,9 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_mg) {
 
@@ -291,9 +291,9 @@ csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_logger::stop(const csf_configure_manager * conf_mg) {
 
@@ -302,7 +302,7 @@ csf::core::base::csf_int32 csf_logger::stop(const csf_configure_manager * conf_m
 
 
 /**
-* ±íÊ¾ÅäÖÃÎÄ¼şµØÖ·
+* è¡¨ç¤ºé…ç½®æ–‡ä»¶åœ°å€
 *
 * @param newVal
 */

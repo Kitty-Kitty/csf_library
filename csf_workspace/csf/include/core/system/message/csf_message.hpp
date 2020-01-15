@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:43
+*Date: 27-6æœˆ-2018 17:28:43
 *
 *Description: Class(csf_message)
 *
@@ -34,61 +34,61 @@ namespace csf
 			namespace message
 			{
 				/**
-				 * ±íÊ¾csfÄ£¿éÊ¹ÓÃµÄmessageÏûÏ¢¶ÓÁĞ£¬ÓÃÓÚÏûÏ¢µÄ´¦Àí¡£
+				 * è¡¨ç¤ºcsfæ¨¡å—ä½¿ç”¨çš„messageæ¶ˆæ¯é˜Ÿåˆ—ï¼Œç”¨äºæ¶ˆæ¯çš„å¤„ç†ã€‚
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:43
+				 * @created 27-6æœˆ-2018 17:28:43
 				 */
 				class csf_message
 				{
 
 				public:
 					/**
-					* ±íÊ¾ÏûÏ¢µÄÀàĞÍ
+					* è¡¨ç¤ºæ¶ˆæ¯çš„ç±»å‹
 					* @author f
 					* @version 1.0
-					* @updated 22-3ÔÂ-2019 15:22:05
+					* @updated 22-3æœˆ-2019 15:22:05
 					*/
 					typedef enum csf_message_type_enum
 					{
 						/**
-						* ±íÊ¾Î´ÖªµÄÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºæœªçŸ¥çš„æ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_none = 0x00000000,
 						/**
-						* ±íÊ¾Ìí¼ÓÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºæ·»åŠ æ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_add = 0x00010000,
 						/**
-						* ±íÊ¾É¾³ıÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºåˆ é™¤æ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_delete = 0x00020000,
 						/**
-						* ±íÊ¾¸üĞÂÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºæ›´æ–°æ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_update = 0x00040000,
 						/**
-						* ±íÊ¾¿ØÖÆÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºæ§åˆ¶æ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_ctrl = 0x00080000,
 						/**
-						* ±íÊ¾³õÊ¼»¯ÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºåˆå§‹åŒ–æ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_init = 0x00100000,
 						/**
-						* ±íÊ¾Æô¶¯ÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºå¯åŠ¨æ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_start = 0x00200000,
 						/**
-						* ±íÊ¾Í£Ö¹ÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºåœæ­¢æ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_stop = 0x00400000,
 						/**
-						* ±íÊ¾´´½¨ÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºåˆ›å»ºæ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_create = 0x00800000,
 						/**
-						* ±íÊ¾Ïú»ÙÏûÏ¢ÀàĞÍ
+						* è¡¨ç¤ºé”€æ¯æ¶ˆæ¯ç±»å‹
 						*/
 						csf_message_type_destroy = 0x01000000
 					}csf_message_type;
@@ -98,29 +98,29 @@ namespace csf
 					virtual ~csf_message();
 
 					/**
-					 * ¸ù¾İcsf_message_typeºÍcallback´´½¨Ò»¸öcsf_message
+					 * æ ¹æ®csf_message_typeå’Œcallbackåˆ›å»ºä¸€ä¸ªcsf_message
 					 * 
-					 * @param type    ±íÊ¾messageµÄÀàĞÍ
-					 * @param callback    ±íÊ¾messageµÄ»Øµ÷º¯Êı
+					 * @param type    è¡¨ç¤ºmessageçš„ç±»å‹
+					 * @param callback    è¡¨ç¤ºmessageçš„å›è°ƒå‡½æ•°
 					 */
 					csf_message(const csf_message_type type, const csf::core::system::message::csf_message_callback callback);
 					/**
-					 * ¸ù¾İcsf_message_typeºÍcallback´´½¨Ò»¸öcsf_message
+					 * æ ¹æ®csf_message_typeå’Œcallbackåˆ›å»ºä¸€ä¸ªcsf_message
 					 * 
-					 * @param type    ±íÊ¾messageµÄÀàĞÍ
-					 * @param callback    ±íÊ¾messageµÄ»Øµ÷º¯Êı
+					 * @param type    è¡¨ç¤ºmessageçš„ç±»å‹
+					 * @param callback    è¡¨ç¤ºmessageçš„å›è°ƒå‡½æ•°
 					 * @param element
 					 */
 					csf_message(const csf_message_type type, const csf::core::system::message::csf_message_callback callback, const csf_element& element);
 					/**
-					 * ±íÊ¾ÏûÏ¢»Øµ÷º¯Êı
+					 * è¡¨ç¤ºæ¶ˆæ¯å›è°ƒå‡½æ•°
 					 */
 					inline csf::core::system::message::csf_message_callback get_callback() {
 
 						return m_callback;
 					}
 					/**
-					 * ±íÊ¾ÏûÏ¢»Øµ÷º¯Êı
+					 * è¡¨ç¤ºæ¶ˆæ¯å›è°ƒå‡½æ•°
 					 * 
 					 * @param new_value
 					 */
@@ -129,14 +129,14 @@ namespace csf
 						m_callback = new_value;
 					}
 					/**
-					 * ±íÊ¾ÏûÏ¢µÄÀàĞÍ
+					 * è¡¨ç¤ºæ¶ˆæ¯çš„ç±»å‹
 					 */
 					inline csf_message_type get_type() {
 
 						return m_type;
 					}
 					/**
-					 * ±íÊ¾ÏûÏ¢µÄÀàĞÍ
+					 * è¡¨ç¤ºæ¶ˆæ¯çš„ç±»å‹
 					 * 
 					 * @param new_value
 					 */
@@ -145,14 +145,14 @@ namespace csf
 						m_type = new_value;
 					}
 					/**
-					 * ±íÊ¾message×Ô´øµÄĞÅÏ¢ÄÚÈİ
+					 * è¡¨ç¤ºmessageè‡ªå¸¦çš„ä¿¡æ¯å†…å®¹
 					 */
 					inline csf_element& get_element() {
 
 						return m_element;
 					}
 					/**
-					 * ±íÊ¾message×Ô´øµÄĞÅÏ¢ÄÚÈİ
+					 * è¡¨ç¤ºmessageè‡ªå¸¦çš„ä¿¡æ¯å†…å®¹
 					 * 
 					 * @param new_value
 					 */
@@ -163,15 +163,15 @@ namespace csf
 
 				private:
 					/**
-					 * ±íÊ¾ÏûÏ¢»Øµ÷º¯Êı
+					 * è¡¨ç¤ºæ¶ˆæ¯å›è°ƒå‡½æ•°
 					 */
 					csf::core::system::message::csf_message_callback m_callback = csf_null;
 					/**
-					 * ±íÊ¾ÏûÏ¢µÄÀàĞÍ
+					 * è¡¨ç¤ºæ¶ˆæ¯çš„ç±»å‹
 					 */
 					csf_message_type m_type = csf_message_type_none;
 					/**
-					 * ±íÊ¾message×Ô´øµÄĞÅÏ¢ÄÚÈİ
+					 * è¡¨ç¤ºmessageè‡ªå¸¦çš„ä¿¡æ¯å†…å®¹
 					 */
 					csf::core::system::csf_element m_element;
 

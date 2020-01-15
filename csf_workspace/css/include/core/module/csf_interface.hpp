@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 16:49:53
+*Date: 01-7æœˆ-2018 16:49:53
 *
 *Description: Interface(csf_interface)
 *
@@ -33,10 +33,10 @@ namespace csf
 		namespace module
 		{
 			/**
-			 * ±íÊ¾cfµÄ×¨ÓÃ²Ù×÷½Ó¿Ú
+			 * è¡¨ç¤ºcfçš„ä¸“ç”¨æ“ä½œæ¥å£
 			 * @author fz
 			 * @version 1.0
-			 * @created 01-7ÔÂ-2018 16:49:53
+			 * @created 01-7æœˆ-2018 16:49:53
 			 */
 			class csf_interface
 			{
@@ -51,21 +51,21 @@ namespace csf
 				}
 
 				/**
-				 * Ä£¿é³õÊ¼»¯
+				 * æ¨¡å—åˆå§‹åŒ–
 				 * 
-				 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr) =0;
 				/**
-				 * Ä£¿éÆô¶¯
+				 * æ¨¡å—å¯åŠ¨
 				 * 
-				 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr) =0;
 				/**
-				 * Ä£¿éÍ£Ö¹
+				 * æ¨¡å—åœæ­¢
 				 * 
-				 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr) =0;
 

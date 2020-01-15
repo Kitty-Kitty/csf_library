@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:50
+*Date: 19-7æœˆ-2018 20:11:50
 *
-*Description: Class(csf_task) ±íÊ¾¶¨Ê±ÈÎÎñ
+*Description: Class(csf_task) è¡¨ç¤ºå®šæ—¶ä»»åŠ¡
 *
 *Others:
 *
@@ -34,71 +34,71 @@ namespace csf
 			namespace task
 			{
 				/**
-				 * ±íÊ¾¶¨Ê±ÈÎÎñ
+				 * è¡¨ç¤ºå®šæ—¶ä»»åŠ¡
 				 * @author f
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:50
+				 * @created 19-7æœˆ-2018 20:11:50
 				 */
 				class csf_task : public csf::core::utils::task::csf_task_interface
 				{
 
 				public:
 					/**
-					 * ±íÊ¾¶¨Ê±Æ÷µÄ×´Ì¬Öµ
+					 * è¡¨ç¤ºå®šæ—¶å™¨çš„çŠ¶æ€å€¼
 					 * @author f
 					 * @version 1.0
-					 * @created 19-7ÔÂ-2018 20:11:50
+					 * @created 19-7æœˆ-2018 20:11:50
 					 */
 					enum csf_task_status
 					{
 						/**
-						 * ±íÊ¾Î´ÖªµÄÈÎÎñ×´Ì¬Öµ
+						 * è¡¨ç¤ºæœªçŸ¥çš„ä»»åŠ¡çŠ¶æ€å€¼
 						 */
 						csf_task_status_none = 0x00000000,
 						/**
-						 * ±íÊ¾³õÊ¼µÄÈÎÎñ×´Ì¬Öµ
+						 * è¡¨ç¤ºåˆå§‹çš„ä»»åŠ¡çŠ¶æ€å€¼
 						 */
 						csf_task_status_init = 0x00010000,
 						/**
-						 * ±íÊ¾¿ªÊ¼µÄÈÎÎñ×´Ì¬Öµ
+						 * è¡¨ç¤ºå¼€å§‹çš„ä»»åŠ¡çŠ¶æ€å€¼
 						 */
 						csf_task_status_start = 0x00020000,
 						/**
-						 * ±íÊ¾Í£Ö¹µÄÈÎÎñ×´Ì¬Öµ
+						 * è¡¨ç¤ºåœæ­¢çš„ä»»åŠ¡çŠ¶æ€å€¼
 						 */
 						csf_task_status_stop = 0x00040000
 					};
 
 					/**
-					 * ±íÊ¾ÈÎÎñµÄÀàĞÍ
+					 * è¡¨ç¤ºä»»åŠ¡çš„ç±»å‹
 					 * @author f
 					 * @version 1.0
-					 * @created 19-7ÔÂ-2018 20:11:50
+					 * @created 19-7æœˆ-2018 20:11:50
 					 */
 					enum csf_task_type
 					{
 						/**
-						 * ±íÊ¾Î´ÖªµÄÈÎÎñ×´Ì¬Öµ
+						 * è¡¨ç¤ºæœªçŸ¥çš„ä»»åŠ¡çŠ¶æ€å€¼
 						 */
 						csf_task_type_none = 0x00000000,
 						/**
-						 * ±íÊ¾Ö»Ö´ĞĞÒ»´ÎµÄÈÎÎñ×´Ì¬Öµ
+						 * è¡¨ç¤ºåªæ‰§è¡Œä¸€æ¬¡çš„ä»»åŠ¡çŠ¶æ€å€¼
 						 */
 						csf_task_type_once = 0x00010000,
 						/**
-						 * ±íÊ¾Ñ­»·Ö´ĞĞµÄÈÎÎñ£¬¸ÃÈÎÎñ½«ÎŞÏŞÑ­»·ÏÂÈ¥
+						 * è¡¨ç¤ºå¾ªç¯æ‰§è¡Œçš„ä»»åŠ¡ï¼Œè¯¥ä»»åŠ¡å°†æ— é™å¾ªç¯ä¸‹å»
 						 */
 						csf_task_type_loop = 0x00020000,
 						/**
-						 * ±íÊ¾Ò»¸öÎŞÏŞÑ­»·ÈÎÎñ£¬Õâ¸öÈÎÎñÔÚ·µ»Ø´íÎóÊ±£¬¾Í»á±»É¾³ı
+						 * è¡¨ç¤ºä¸€ä¸ªæ— é™å¾ªç¯ä»»åŠ¡ï¼Œè¿™ä¸ªä»»åŠ¡åœ¨è¿”å›é”™è¯¯æ—¶ï¼Œå°±ä¼šè¢«åˆ é™¤
 						 */
 						csf_task_type_loop_broken = csf_task_type_loop | 0x00000100,
 						/**
-						 * ±íÊ¾Ö¸¶¨´ÎÊıµÄÈÎÎñ£¬ÓÃÓÚ¼ÇÂ¼´ÎÊı
+						 * è¡¨ç¤ºæŒ‡å®šæ¬¡æ•°çš„ä»»åŠ¡ï¼Œç”¨äºè®°å½•æ¬¡æ•°
 						 */
 						csf_task_type_times = 0x00040000,
 						/**
-						 * ±íÊ¾¸ù¾İÊ±¼äµÄÈÎÎñ
+						 * è¡¨ç¤ºæ ¹æ®æ—¶é—´çš„ä»»åŠ¡
 						 */
 						csf_task_type_time = 0x00080000
 					};
@@ -108,25 +108,25 @@ namespace csf
 					virtual ~csf_task();
 
 					/**
-					 * ¸ù¾İtaskµÄÀàĞÍºÍÀàĞÍ´´½¨Ò»¸öÈÎÎñ
+					 * æ ¹æ®taskçš„ç±»å‹å’Œç±»å‹åˆ›å»ºä¸€ä¸ªä»»åŠ¡
 					 * 
-					 * @param manager    ±íÊ¾ÈÎÎñ¹ÜÀíÆ÷µÄµØÖ·
-					 * @param type    ±íÊ¾ÀàĞÍÊıÖµ
-					 * @param offset    ±íÊ¾ÈÎÎñ¼ä¸ôÊ±¼ä
-					 * @param interval    ÈÎÎñÖ´ĞĞµÄ¼ä¸ôÊ±¼ä
-					 * @param callback    ÈÎÎñµÄÖ´ĞĞ»Øµ÷º¯Êı
-					 * @param delete_callback    ÈÎÎñÉ¾³ıµÄÖ´ĞĞ»Øµ÷º¯Êı
+					 * @param manager    è¡¨ç¤ºä»»åŠ¡ç®¡ç†å™¨çš„åœ°å€
+					 * @param type    è¡¨ç¤ºç±»å‹æ•°å€¼
+					 * @param offset    è¡¨ç¤ºä»»åŠ¡é—´éš”æ—¶é—´
+					 * @param interval    ä»»åŠ¡æ‰§è¡Œçš„é—´éš”æ—¶é—´
+					 * @param callback    ä»»åŠ¡çš„æ‰§è¡Œå›è°ƒå‡½æ•°
+					 * @param delete_callback    ä»»åŠ¡åˆ é™¤çš„æ‰§è¡Œå›è°ƒå‡½æ•°
 					 */
 					csf_task(const csf_task_manager* manager, const csf_task_type type, const csf_time offset, const csf_time interval, const csf_task_callback callback, const csf_task_delete_callback delete_callback = csf_null);
 					/**
-					 * ±íÊ¾ÈÎÎñµÄÀàĞÍÊıÖµ
+					 * è¡¨ç¤ºä»»åŠ¡çš„ç±»å‹æ•°å€¼
 					 */
 					inline csf_task_type get_type() {
 
 						return m_type;
 					}
 					/**
-					 * ±íÊ¾ÈÎÎñµÄÀàĞÍÊıÖµ
+					 * è¡¨ç¤ºä»»åŠ¡çš„ç±»å‹æ•°å€¼
 					 * 
 					 * @param new_value
 					 */
@@ -135,22 +135,22 @@ namespace csf
 						m_type = new_value;
 					}
 					/**
-					 * ±íÊ¾ÈÎÎñµÄ×´Ì¬ÊıÖµ
+					 * è¡¨ç¤ºä»»åŠ¡çš„çŠ¶æ€æ•°å€¼
 					 */
 					inline csf::core::utils::task::csf_task::csf_task_status get_status() {
 
 						return m_status;
 					}
 					/**
-					 * ±íÊ¾´¦Àí½Ó¿Ú£¬µ±Ö»ÓĞis_process·µ»Øtrueºó²ÅÄÜprocess¡£
+					 * è¡¨ç¤ºå¤„ç†æ¥å£ï¼Œå½“åªæœ‰is_processè¿”å›trueåæ‰èƒ½processã€‚
 					 */
 					virtual csf_int32 process();
 					/**
-					 * ±íÊ¾ÊÇ·ñ½øĞĞ´¦Àí,Èç¹ûis_process·µ»Øtrue£¬²ÅÄÜÖ´ĞĞprocess¡£
+					 * è¡¨ç¤ºæ˜¯å¦è¿›è¡Œå¤„ç†,å¦‚æœis_processè¿”å›trueï¼Œæ‰èƒ½æ‰§è¡Œprocessã€‚
 					 */
 					virtual csf_bool is_process();
 					/**
-					 * ±íÊ¾ÈÎÎñµÄ×´Ì¬ÊıÖµ
+					 * è¡¨ç¤ºä»»åŠ¡çš„çŠ¶æ€æ•°å€¼
 					 * 
 					 * @param new_value
 					 */
@@ -159,18 +159,18 @@ namespace csf
 						m_status = new_value;
 					}
 					/**
-					 * ±íÊ¾ÈÎÎñµÄ»Øµ÷º¯Êı
+					 * è¡¨ç¤ºä»»åŠ¡çš„å›è°ƒå‡½æ•°
 					 */
 					inline csf::core::utils::task::csf_task_callback get_callback() {
 
 						return m_callback;
 					}
 					/**
-					 * ÅĞ¶ÏÊÇ·ñĞèÒªÉ¾³ı£¬Èç¹ûis_delete·µ»ØtrueÔòÉ¾³ıtask¡£
+					 * åˆ¤æ–­æ˜¯å¦éœ€è¦åˆ é™¤ï¼Œå¦‚æœis_deleteè¿”å›trueåˆ™åˆ é™¤taskã€‚
 					 */
 					virtual csf_bool is_delete();
 					/**
-					 * ±íÊ¾ÈÎÎñµÄ»Øµ÷º¯Êı
+					 * è¡¨ç¤ºä»»åŠ¡çš„å›è°ƒå‡½æ•°
 					 * 
 					 * @param new_value
 					 */
@@ -179,14 +179,14 @@ namespace csf
 						m_callback = new_value;
 					}
 					/**
-					 * ±íÊ¾ÈÎÎñÉ¾³ıºóµÄ»Øµ÷º¯Êı
+					 * è¡¨ç¤ºä»»åŠ¡åˆ é™¤åçš„å›è°ƒå‡½æ•°
 					 */
 					inline csf::core::utils::task::csf_task_delete_callback get_delete_callback() {
 
 						return m_delete_callback;
 					}
 					/**
-					 * ±íÊ¾ÈÎÎñÉ¾³ıºóµÄ»Øµ÷º¯Êı
+					 * è¡¨ç¤ºä»»åŠ¡åˆ é™¤åçš„å›è°ƒå‡½æ•°
 					 * 
 					 * @param new_value
 					 */
@@ -195,14 +195,14 @@ namespace csf
 						m_delete_callback = new_value;
 					}
 					/**
-					 * ±íÊ¾µ±Ç°µÄÊ±¼ä¹Ø¼üÊıÖµ£¬¼´µ±Ç°Ê±¼ä
+					 * è¡¨ç¤ºå½“å‰çš„æ—¶é—´å…³é”®æ•°å€¼ï¼Œå³å½“å‰æ—¶é—´
 					 */
 					inline csf_uint64 get_time() {
 
 						return m_time;
 					}
 					/**
-					 * ±íÊ¾µ±Ç°µÄÊ±¼ä¹Ø¼üÊıÖµ£¬¼´µ±Ç°Ê±¼ä
+					 * è¡¨ç¤ºå½“å‰çš„æ—¶é—´å…³é”®æ•°å€¼ï¼Œå³å½“å‰æ—¶é—´
 					 * 
 					 * @param new_value
 					 */
@@ -211,14 +211,14 @@ namespace csf
 						m_time = new_value;
 					}
 					/**
-					 * ±íÊ¾µÚÒ»´ÎÖ´ĞĞµÄÆ«ÒÆÊ±¼ä
+					 * è¡¨ç¤ºç¬¬ä¸€æ¬¡æ‰§è¡Œçš„åç§»æ—¶é—´
 					 */
 					inline csf_uint64 get_offset() {
 
 						return m_offset;
 					}
 					/**
-					 * ±íÊ¾µÚÒ»´ÎÖ´ĞĞµÄÆ«ÒÆÊ±¼ä
+					 * è¡¨ç¤ºç¬¬ä¸€æ¬¡æ‰§è¡Œçš„åç§»æ—¶é—´
 					 * 
 					 * @param new_value
 					 */
@@ -227,7 +227,7 @@ namespace csf
 						m_offset = new_value;
 					}
 					/**
-					 * Ö¸ÏòÒ»¸öÈÎÎñ¶ÔÏó
+					 * æŒ‡å‘ä¸€ä¸ªä»»åŠ¡å¯¹è±¡
 					 * 
 					 * @param new_value
 					 */
@@ -236,21 +236,21 @@ namespace csf
 						m_task = new_value;
 					}
 					/**
-					 * Ö¸ÏòÒ»¸ö×°ÊÎÕß¶ÔÏó
+					 * æŒ‡å‘ä¸€ä¸ªè£…é¥°è€…å¯¹è±¡
 					 */
 					inline csf_task* get_decorator() {
 
 						return m_decorator;
 					}
 					/**
-					 * ±íÊ¾ÈÎÎñµÄÖ´ĞĞ¼ä¸ôÊ±¼ä
+					 * è¡¨ç¤ºä»»åŠ¡çš„æ‰§è¡Œé—´éš”æ—¶é—´
 					 */
 					inline csf_uint64 get_interval() {
 
 						return m_interval;
 					}
 					/**
-					 * Ö¸ÏòÒ»¸ö×°ÊÎÕß¶ÔÏó
+					 * æŒ‡å‘ä¸€ä¸ªè£…é¥°è€…å¯¹è±¡
 					 * 
 					 * @param new_value
 					 */
@@ -259,7 +259,7 @@ namespace csf
 						m_decorator = new_value;
 					}
 					/**
-					 * ±íÊ¾ÈÎÎñµÄÖ´ĞĞ¼ä¸ôÊ±¼ä
+					 * è¡¨ç¤ºä»»åŠ¡çš„æ‰§è¡Œé—´éš”æ—¶é—´
 					 * 
 					 * @param new_value
 					 */
@@ -268,59 +268,59 @@ namespace csf
 						m_interval = new_value;
 					}
 					/**
-					 * ±íÊ¾ÈÎÎñËùÊôµÄÈÎÎñ¹ÜÀíÆ÷
+					 * è¡¨ç¤ºä»»åŠ¡æ‰€å±çš„ä»»åŠ¡ç®¡ç†å™¨
 					 */
 					csf_task_manager* get_task_manager();
 					/**
-					 * ±íÊ¾ÈÎÎñËùÊôµÄÈÎÎñ¹ÜÀíÆ÷
+					 * è¡¨ç¤ºä»»åŠ¡æ‰€å±çš„ä»»åŠ¡ç®¡ç†å™¨
 					 * 
 					 * @param new_value
 					 */
 					void set_task_manager(const csf_task_manager* new_value);
 					/**
-					 * ±íÊ¾´¦Àí½Ó¿Ú£¬µ±Ö»ÓĞis_delete·µ»Øtrueºó²ÅÄÜprocess_delete¡£
+					 * è¡¨ç¤ºå¤„ç†æ¥å£ï¼Œå½“åªæœ‰is_deleteè¿”å›trueåæ‰èƒ½process_deleteã€‚
 					 */
 					virtual csf_int32 process_delete();
 
 				private:
 					/**
-					 * ±íÊ¾ÈÎÎñµÄÀàĞÍÊıÖµ
+					 * è¡¨ç¤ºä»»åŠ¡çš„ç±»å‹æ•°å€¼
 					 */
 					csf_task_type m_type = csf_task_type_none;
 					/**
-					 * ±íÊ¾ÈÎÎñµÄ×´Ì¬ÊıÖµ
+					 * è¡¨ç¤ºä»»åŠ¡çš„çŠ¶æ€æ•°å€¼
 					 */
 					csf::core::utils::task::csf_task::csf_task_status m_status = csf_task_status_none;
 					/**
-					 * ±íÊ¾ÈÎÎñµÄ»Øµ÷º¯Êı
+					 * è¡¨ç¤ºä»»åŠ¡çš„å›è°ƒå‡½æ•°
 					 */
 					csf::core::utils::task::csf_task_callback m_callback = csf_null;
 					/**
-					 * ±íÊ¾ÈÎÎñÉ¾³ıºóµÄ»Øµ÷º¯Êı
+					 * è¡¨ç¤ºä»»åŠ¡åˆ é™¤åçš„å›è°ƒå‡½æ•°
 					 */
 					csf::core::utils::task::csf_task_delete_callback m_delete_callback = csf_null;
 					/**
-					 * ±íÊ¾µ±Ç°µÄÊ±¼ä¹Ø¼üÊıÖµ£¬¼´µ±Ç°Ê±¼ä£¬µ¥Î»ºÁÃë
+					 * è¡¨ç¤ºå½“å‰çš„æ—¶é—´å…³é”®æ•°å€¼ï¼Œå³å½“å‰æ—¶é—´ï¼Œå•ä½æ¯«ç§’
 					 */
 					csf_uint64 m_time = 0;
 					/**
-					 * ±íÊ¾µÚÒ»´ÎÖ´ĞĞµÄÆ«ÒÆÊ±¼ä£¬µ¥Î»ºÁÃë
+					 * è¡¨ç¤ºç¬¬ä¸€æ¬¡æ‰§è¡Œçš„åç§»æ—¶é—´ï¼Œå•ä½æ¯«ç§’
 					 */
 					csf_uint64 m_offset = 0;
 					/**
-					 * Ö¸ÏòÒ»¸ö×°ÊÎÕß¶ÔÏó
+					 * æŒ‡å‘ä¸€ä¸ªè£…é¥°è€…å¯¹è±¡
 					 */
 					csf_task* m_decorator = csf_null;
 					/**
-					 * ±íÊ¾ÈÎÎñµÄÖ´ĞĞ¼ä¸ôÊ±¼ä£¬µ¥Î»ºÁÃë
+					 * è¡¨ç¤ºä»»åŠ¡çš„æ‰§è¡Œé—´éš”æ—¶é—´ï¼Œå•ä½æ¯«ç§’
 					 */
 					csf_uint64 m_interval = 0;
 					/**
-					 * ±íÊ¾ÈÎÎñËùÊôµÄÈÎÎñ¹ÜÀíÆ÷
+					 * è¡¨ç¤ºä»»åŠ¡æ‰€å±çš„ä»»åŠ¡ç®¡ç†å™¨
 					 */
 					csf_task_manager* m_task_manager = csf_null;
 					/**
-					 * ±íÊ¾ËùÊôµÄÈÎÎñ¹ÜÀíÆ÷
+					 * è¡¨ç¤ºæ‰€å±çš„ä»»åŠ¡ç®¡ç†å™¨
 					 */
 					csf::core::utils::task::csf_task_manager *m_task_manager;
 

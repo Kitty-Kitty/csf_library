@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: fangzhenmu
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 23-9ÔÂ-2018 20:13:29
+*Date: 23-9æœˆ-2018 20:13:29
 *
 *Description: Class(vdu_canvas)
 *
@@ -39,7 +39,7 @@ vdu_canvas::~vdu_canvas() {
 
 /**
  * 
- * @param type    ±íÊ¾»­²¼µÄÀàĞÍ
+ * @param type    è¡¨ç¤ºç”»å¸ƒçš„ç±»å‹
  */
 vdu_canvas::vdu_canvas(const vdu_canvas_type type) {
 
@@ -47,9 +47,9 @@ vdu_canvas::vdu_canvas(const vdu_canvas_type type) {
 
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 vdu_canvas::init(const csf_configure_manager* conf_mg) {
 
@@ -58,9 +58,9 @@ csf::core::base::csf_int32 vdu_canvas::init(const csf_configure_manager* conf_mg
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 vdu_canvas::start(const csf_configure_manager* conf_mg) {
 
@@ -69,9 +69,9 @@ csf::core::base::csf_int32 vdu_canvas::start(const csf_configure_manager* conf_m
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 vdu_canvas::stop(const csf_configure_manager* conf_mg) {
 

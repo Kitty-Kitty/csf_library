@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 08-10ÔÂ-2018 20:52:07
+*Date: 08-10æœˆ-2018 20:52:07
 *
-*Description: Class(test_connect_factory_manager) Ö÷Òª¹¦ÄÜÓÃÓÚ²âÊÔconnect factory manager ÖĞµÄ×Ô¶¯ÅäÖÃ¹¦ÄÜ
+*Description: Class(test_connect_factory_manager) ä¸»è¦åŠŸèƒ½ç”¨äºæµ‹è¯•connect factory manager ä¸­çš„è‡ªåŠ¨é…ç½®åŠŸèƒ½
 *
 *Others:
 *
@@ -34,20 +34,20 @@ namespace csf
 		#define		CSF_TEST_VER					CSF_TEST_VAR "/" CSF_TEST_VERSION
 
 		/**
-		 * Ö÷Òª¹¦ÄÜÓÃÓÚ²âÊÔconnect factory manager ÖĞµÄ×Ô¶¯ÅäÖÃ¹¦ÄÜ
+		 * ä¸»è¦åŠŸèƒ½ç”¨äºæµ‹è¯•connect factory manager ä¸­çš„è‡ªåŠ¨é…ç½®åŠŸèƒ½
 		 * @author f
 		 * @version 1.0
-		 * @created 08-10ÔÂ-2018 20:52:07
+		 * @created 08-10æœˆ-2018 20:52:07
 		 */
 		class test_connect_factory_manager : public csf::core::module::csf_device
 		{
 
 		public:
 			/**
-			* ±íÊ¾¸ù¾İÅäÖÃÎÄ¼şºÍÀàĞÍ´´½¨Éè±¸Ä£¿é
+			* è¡¨ç¤ºæ ¹æ®é…ç½®æ–‡ä»¶å’Œç±»å‹åˆ›å»ºè®¾å¤‡æ¨¡å—
 			*
-			* @param configure_manager    ±íÊ¾ÅäÖÃÎÄ¼şÄÚÈİ
-			* @param type    ±íÊ¾Ä£¿éµÄÀàĞÍ
+			* @param configure_manager    è¡¨ç¤ºé…ç½®æ–‡ä»¶å†…å®¹
+			* @param type    è¡¨ç¤ºæ¨¡å—çš„ç±»å‹
 			*/
 			inline explicit test_connect_factory_manager(const csf_configure_manager * configure_manager)
 				: csf_device(configure_manager, csf_device_type_test) {
@@ -64,46 +64,46 @@ namespace csf
 			virtual ~test_connect_factory_manager();
 
 			/**
-			 * Ä£¿é³õÊ¼»¯
+			 * æ¨¡å—åˆå§‹åŒ–
 			 * 
-			 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			 */
 			virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_nullptr);
 			/**
-			 * Ä£¿éÆô¶¯
+			 * æ¨¡å—å¯åŠ¨
 			 * 
-			 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			 */
 			virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_nullptr);
 			/**
-			 * Ä£¿éÍ£Ö¹
+			 * æ¨¡å—åœæ­¢
 			 * 
-			 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			 */
 			virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr);
 			/**
-			* Ö÷Òª¹¦ÄÜÊÇ£ºtcp¼àÌı´¦Àí·µ»Ø½Ó¿Ú
-			* ·µ»Ø£º0±íÊ¾Õı³££»·Ç0±íÊ¾´íÎó
+			* ä¸»è¦åŠŸèƒ½æ˜¯ï¼štcpç›‘å¬å¤„ç†è¿”å›æ¥å£
+			* è¿”å›ï¼š0è¡¨ç¤ºæ­£å¸¸ï¼›é0è¡¨ç¤ºé”™è¯¯
 			*
-			* @param connect_ptr    ±íÊ¾µ±Ç°ÕıÔÚ´¦ÀíµÄÁ¬½Ó¶ÔÏó
-			* @param connect_error    ±íÊ¾µ±Ç°´¦ÀíµÄÒì³£ĞÅÏ¢
+			* @param connect_ptr    è¡¨ç¤ºå½“å‰æ­£åœ¨å¤„ç†çš„è¿æ¥å¯¹è±¡
+			* @param connect_error    è¡¨ç¤ºå½“å‰å¤„ç†çš„å¼‚å¸¸ä¿¡æ¯
 			*/
 			csf::core::base::csf_int32 tcp_handle(csf_connect_ptr connect_ptr, csf_connect_error& connect_error);
 			/**
-			* Ö÷Òª¹¦ÄÜÊÇ£ºudp¼àÌı´¦Àí·µ»Ø½Ó¿Ú
-			* ·µ»Ø£º0±íÊ¾Õı³££»·Ç0±íÊ¾´íÎó
+			* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šudpç›‘å¬å¤„ç†è¿”å›æ¥å£
+			* è¿”å›ï¼š0è¡¨ç¤ºæ­£å¸¸ï¼›é0è¡¨ç¤ºé”™è¯¯
 			*
-			* @param connect_ptr    ±íÊ¾µ±Ç°ÕıÔÚ´¦ÀíµÄÁ¬½Ó¶ÔÏó
-			* @param connect_error    ±íÊ¾µ±Ç°´¦ÀíµÄÒì³£ĞÅÏ¢
+			* @param connect_ptr    è¡¨ç¤ºå½“å‰æ­£åœ¨å¤„ç†çš„è¿æ¥å¯¹è±¡
+			* @param connect_error    è¡¨ç¤ºå½“å‰å¤„ç†çš„å¼‚å¸¸ä¿¡æ¯
 			*/
 			csf::core::base::csf_int32 udp_handle(csf_connect_ptr connect_ptr, csf_connect_error& connect_error);
 			/**
-			* Ö÷Òª¹¦ÄÜÊÇ£ºtcp¶ÁÊı¾İ·µ»Øº¯Êı
-			* ·µ»Ø£º´óÓÚµÈÓÚ0±íÊ¾³É¹¦£»Ğ¡ÓÚ0±íÊ¾´íÎó
+			* ä¸»è¦åŠŸèƒ½æ˜¯ï¼štcpè¯»æ•°æ®è¿”å›å‡½æ•°
+			* è¿”å›ï¼šå¤§äºç­‰äº0è¡¨ç¤ºæˆåŠŸï¼›å°äº0è¡¨ç¤ºé”™è¯¯
 			*
-			* @param connect_ptr    ±íÊ¾µ±Ç°ÕıÔÚ´¦ÀíµÄÁ¬½Ó¶ÔÏó
+			* @param connect_ptr    è¡¨ç¤ºå½“å‰æ­£åœ¨å¤„ç†çš„è¿æ¥å¯¹è±¡
 			* @param connect_buffer
-			* @param connect_error    ±íÊ¾µ±Ç°´¦ÀíµÄÒì³£ĞÅÏ¢
+			* @param connect_error    è¡¨ç¤ºå½“å‰å¤„ç†çš„å¼‚å¸¸ä¿¡æ¯
 			*/
 			csf::core::base::csf_int32 read_handle(
 				csf_connect_ptr connect_ptr
@@ -111,32 +111,32 @@ namespace csf
 				, csf_connect_buffer<csf_buffer>& connect_buffer
 				);
 			/**
-			* Ö÷Òª¹¦ÄÜÊÇ£ºtcp¶ÁÊı¾İ·µ»Øº¯Êı
-			* ·µ»Ø£º´óÓÚµÈÓÚ0±íÊ¾³É¹¦£»Ğ¡ÓÚ0±íÊ¾´íÎó
+			* ä¸»è¦åŠŸèƒ½æ˜¯ï¼štcpè¯»æ•°æ®è¿”å›å‡½æ•°
+			* è¿”å›ï¼šå¤§äºç­‰äº0è¡¨ç¤ºæˆåŠŸï¼›å°äº0è¡¨ç¤ºé”™è¯¯
 			*
-			* @param connect_ptr    ±íÊ¾µ±Ç°ÕıÔÚ´¦ÀíµÄÁ¬½Ó¶ÔÏó
+			* @param connect_ptr    è¡¨ç¤ºå½“å‰æ­£åœ¨å¤„ç†çš„è¿æ¥å¯¹è±¡
 			* @param connect_buffer
-			* @param connect_error    ±íÊ¾µ±Ç°´¦ÀíµÄÒì³£ĞÅÏ¢
+			* @param connect_error    è¡¨ç¤ºå½“å‰å¤„ç†çš„å¼‚å¸¸ä¿¡æ¯
 			*/
 			csf::core::base::csf_int32 tcp_read_handle(csf_connect_ptr connect_ptr
 				, csf_connect_error& connect_error
 				, csf_int32 len);
 			/**
-			* Ö÷Òª¹¦ÄÜÊÇ£ºÖ÷ÒªÊµÏÖÄ£¿éµÄÅäÖÃĞÅÏ¢´¦Àí½Ó¿Ú¡£
-			* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+			* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šä¸»è¦å®ç°æ¨¡å—çš„é…ç½®ä¿¡æ¯å¤„ç†æ¥å£ã€‚
+			* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 			*
-			* @param element    ±íÊ¾Ä£¿éµÄÅäÖÃĞÅÏ¢
+			* @param element    è¡¨ç¤ºæ¨¡å—çš„é…ç½®ä¿¡æ¯
 			*
-			* ³£ÓÃµÄÅäÖÃĞÅÏ¢±£´æ½á¹¹Îª£º
-			* <!--***¸Ã²¿·ÖÃèÊöÄ£¿éÅäÖÃĞÅÏ¢£¬ÊÇ±ØĞëÅäÖÃµÄÊı¾İÄÚÈİ***-->
+			* å¸¸ç”¨çš„é…ç½®ä¿¡æ¯ä¿å­˜ç»“æ„ä¸ºï¼š
+			* <!--***è¯¥éƒ¨åˆ†æè¿°æ¨¡å—é…ç½®ä¿¡æ¯ï¼Œæ˜¯å¿…é¡»é…ç½®çš„æ•°æ®å†…å®¹***-->
 			* <module>
-			*        <!--***±íÊ¾Ä£¿é¶ÔÓ¦µÄÄ£¿éÃû³ÆĞÅÏ¢***-->
+			*        <!--***è¡¨ç¤ºæ¨¡å—å¯¹åº”çš„æ¨¡å—åç§°ä¿¡æ¯***-->
 			*        <name>csf_connection</name>
-			*        <!--***±íÊ¾¸ÃÉè±¸Ä£¿éµÄÎ¨Ò»±êÊ¶×Ö·û´®£¬¸Ã×Ö·û´®³¤¶ÈÓ¦Ğ¡ÓÚµÈÓÚ64×Ö½Ú***-->
+			*        <!--***è¡¨ç¤ºè¯¥è®¾å¤‡æ¨¡å—çš„å”¯ä¸€æ ‡è¯†å­—ç¬¦ä¸²ï¼Œè¯¥å­—ç¬¦ä¸²é•¿åº¦åº”å°äºç­‰äº64å­—èŠ‚***-->
 			*        <mid>02000000-0000001</mid>
-			*        <!--±íÊ¾¸ÃÄ£¿éµÄÅäÖÃĞÅÏ¢£¬Ö÷ÒªÓÉÄ£¿éµÄconfigure½Ó¿Ú´¦Àí¡£¸ÃÄ£¿éµÄÅäÖÃÏîÄÚÈİÓÉÄ£¶ÔÓ¦µÄÄ£¿éÈ·¶¨-->
+			*        <!--è¡¨ç¤ºè¯¥æ¨¡å—çš„é…ç½®ä¿¡æ¯ï¼Œä¸»è¦ç”±æ¨¡å—çš„configureæ¥å£å¤„ç†ã€‚è¯¥æ¨¡å—çš„é…ç½®é¡¹å†…å®¹ç”±æ¨¡å¯¹åº”çš„æ¨¡å—ç¡®å®š-->
 			*        <configure>
-			*                <!--±íÊ¾Ïß³ÌÊıÁ¿-->
+			*                <!--è¡¨ç¤ºçº¿ç¨‹æ•°é‡-->
 			*                <thread_number>4</thread_number>
 			*        </configure>
 			* </module>
@@ -144,26 +144,26 @@ namespace csf
 			virtual csf_int32 configure(const csf_element& element);
 		private:
 			/**
-			* ±íÊ¾¶ÁÈ¡Êı¾İËùÊ¹ÓÃµÄ»Øµ÷º¯Êı¶ÔÏó
+			* è¡¨ç¤ºè¯»å–æ•°æ®æ‰€ä½¿ç”¨çš„å›è°ƒå‡½æ•°å¯¹è±¡
 			*/
 			csf_connect_callback m_read_function = csf_nullptr;
 			/**
-			* ±íÊ¾Ğ´Êı¾İËùÊ¹ÓÃµÄ»Øµ÷º¯Êı¶ÔÏó
+			* è¡¨ç¤ºå†™æ•°æ®æ‰€ä½¿ç”¨çš„å›è°ƒå‡½æ•°å¯¹è±¡
 			*/
 			csf_connect_callback m_write_function = csf_nullptr;
 			/**
-			* ±íÊ¾Ä£¿éÊ¹ÓÃµÄÁ¬½Ó¹ÜÀíÆ÷¶ÔÏó
+			* è¡¨ç¤ºæ¨¡å—ä½¿ç”¨çš„è¿æ¥ç®¡ç†å™¨å¯¹è±¡
 			*/
 			csf_connect_factory* m_connect_factory = csf_nullptr;
 			/**
-			* ±íÊ¾¶ÁÈ¡Êı¾İËùÊ¹ÓÃµÄ»Øµ÷º¯Êı¶ÔÏó
+			* è¡¨ç¤ºè¯»å–æ•°æ®æ‰€ä½¿ç”¨çš„å›è°ƒå‡½æ•°å¯¹è±¡
 			*/
 			inline csf_connect_callback& get_read_function() {
 
 				return m_read_function;
 			}
 			/**
-			* ±íÊ¾¶ÁÈ¡Êı¾İËùÊ¹ÓÃµÄ»Øµ÷º¯Êı¶ÔÏó
+			* è¡¨ç¤ºè¯»å–æ•°æ®æ‰€ä½¿ç”¨çš„å›è°ƒå‡½æ•°å¯¹è±¡
 			*
 			* @param new_value
 			*/
@@ -172,14 +172,14 @@ namespace csf
 				m_read_function = new_value;
 			}
 			/**
-			* ±íÊ¾Ğ´Êı¾İËùÊ¹ÓÃµÄ»Øµ÷º¯Êı¶ÔÏó
+			* è¡¨ç¤ºå†™æ•°æ®æ‰€ä½¿ç”¨çš„å›è°ƒå‡½æ•°å¯¹è±¡
 			*/
 			inline csf_connect_callback& get_write_function() {
 
 				return m_write_function;
 			}
 			/**
-			* ±íÊ¾Ğ´Êı¾İËùÊ¹ÓÃµÄ»Øµ÷º¯Êı¶ÔÏó
+			* è¡¨ç¤ºå†™æ•°æ®æ‰€ä½¿ç”¨çš„å›è°ƒå‡½æ•°å¯¹è±¡
 			*
 			* @param new_value
 			*/
@@ -188,14 +188,14 @@ namespace csf
 				m_write_function = new_value;
 			}
 			/**
-			* ±íÊ¾Ä£¿éÊ¹ÓÃµÄÁ¬½Ó¹ÜÀíÆ÷¶ÔÏó
+			* è¡¨ç¤ºæ¨¡å—ä½¿ç”¨çš„è¿æ¥ç®¡ç†å™¨å¯¹è±¡
 			*/
 			inline csf_connect_factory* get_connect_factory() {
 
 				return m_connect_factory;
 			}
 			/**
-			* ±íÊ¾Ä£¿éÊ¹ÓÃµÄÁ¬½Ó¹ÜÀíÆ÷¶ÔÏó
+			* è¡¨ç¤ºæ¨¡å—ä½¿ç”¨çš„è¿æ¥ç®¡ç†å™¨å¯¹è±¡
 			*
 			* @param new_value
 			*/

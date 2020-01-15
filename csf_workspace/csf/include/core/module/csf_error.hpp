@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 30-6ÔÂ-2018 17:22:42
+*Date: 30-6æœˆ-2018 17:22:42
 *
-*Description: Class(csf_error) ÃèÊö´íÎóĞÅÏ¢
+*Description: Class(csf_error) æè¿°é”™è¯¯ä¿¡æ¯
 *
 *Others:
 *
@@ -35,10 +35,10 @@ namespace csf
 		namespace module
 		{
 			/**
-			 * ÃèÊö´íÎóĞÅÏ¢
+			 * æè¿°é”™è¯¯ä¿¡æ¯
 			 * @author fz
 			 * @version 1.0
-			 * @created 30-6ÔÂ-2018 17:22:42
+			 * @created 30-6æœˆ-2018 17:22:42
 			 */
 			class csf_error
 			{
@@ -49,10 +49,10 @@ namespace csf
 
 				}
 				/**
-				 * ±íÊ¾¸ù¾İ´íÎóÂë£¨code£©ºÍ´íÎóÃèÊö£¨description£©´´½¨Ò»¸öcsf_error¡£
+				 * è¡¨ç¤ºæ ¹æ®é”™è¯¯ç ï¼ˆcodeï¼‰å’Œé”™è¯¯æè¿°ï¼ˆdescriptionï¼‰åˆ›å»ºä¸€ä¸ªcsf_errorã€‚
 				 *
-				 * @param code    ±íÊ¾´íÎóÂë±àÂë
-				 * @param description    ±íÊ¾´íÎóÃèÊöĞÅÏ¢
+				 * @param code    è¡¨ç¤ºé”™è¯¯ç ç¼–ç 
+				 * @param description    è¡¨ç¤ºé”™è¯¯æè¿°ä¿¡æ¯
 				 */
 				inline explicit csf_error(const csf_int32 code, const csf_string& description)
 					: m_code(code) {
@@ -60,10 +60,10 @@ namespace csf
 					csf_error(code, description.c_str());
 				}
 				/**
-				 * ±íÊ¾¸ù¾İ´íÎóÂë£¨code£©ºÍ´íÎóÃèÊö£¨description£©´´½¨Ò»¸öcsf_error¡£
+				 * è¡¨ç¤ºæ ¹æ®é”™è¯¯ç ï¼ˆcodeï¼‰å’Œé”™è¯¯æè¿°ï¼ˆdescriptionï¼‰åˆ›å»ºä¸€ä¸ªcsf_errorã€‚
 				 *
-				 * @param code    ±íÊ¾´íÎóÂë±àÂë
-				 * @param description    ±íÊ¾´íÎóÃèÊöĞÅÏ¢
+				 * @param code    è¡¨ç¤ºé”™è¯¯ç ç¼–ç 
+				 * @param description    è¡¨ç¤ºé”™è¯¯æè¿°ä¿¡æ¯
 				 */
 				inline explicit csf_error(const csf_int32 code, const csf_char* description)
 					: m_code(code) {
@@ -89,14 +89,14 @@ namespace csf
 					return csf_string(tmp_buf);
 				}
 				/**
-				 * ±íÊ¾´íÎó±àºÅ
+				 * è¡¨ç¤ºé”™è¯¯ç¼–å·
 				 */
 				inline csf_int32 get_code() {
 
 					return m_code;
 				}
 				/**
-				 * ±íÊ¾´íÎó±àºÅ
+				 * è¡¨ç¤ºé”™è¯¯ç¼–å·
 				 *
 				 * @param new_value    new_value
 				 */
@@ -105,15 +105,15 @@ namespace csf
 					m_code = new_value;
 				}
 				/**
-				 * ±íÊ¾´íÎóÔ­ÒòÃèÊöĞÅÏ¢
+				 * è¡¨ç¤ºé”™è¯¯åŸå› æè¿°ä¿¡æ¯
 				 */
 				inline csf_char* get_description() {
 
 					return m_descripion;
 				}
 				/**
-				 * ±íÊ¾´íÎóÔ­ÒòÃèÊöĞÅÏ¢
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºé”™è¯¯åŸå› æè¿°ä¿¡æ¯
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ã€‚
 				 *
 				 * @param new_value    new_value
 				 */
@@ -127,15 +127,15 @@ namespace csf
 					return csf_succeed;
 				}
 				/**
-				 * ±íÊ¾´íÎóÔ­ÒòÃèÊöĞÅÏ¢
+				 * è¡¨ç¤ºé”™è¯¯åŸå› æè¿°ä¿¡æ¯
 				 */
 				inline csf_string get_descripion() {
 
 					return m_descripion;
 				}
 				/**
-				 * ±íÊ¾´íÎóÔ­ÒòÃèÊöĞÅÏ¢
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºé”™è¯¯åŸå› æè¿°ä¿¡æ¯
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ã€‚
 				 *
 				 * @param new_value
 				 */
@@ -144,11 +144,11 @@ namespace csf
 					return set_description(new_value.c_str());
 				}
 				/**
-				* ±íÊ¾¸ù¾İ´íÎóÂë£¨code£©ºÍ´íÎóÃèÊö£¨description£©ÉèÖÃÒ»¸öcsf_error¡£
+				* è¡¨ç¤ºæ ¹æ®é”™è¯¯ç ï¼ˆcodeï¼‰å’Œé”™è¯¯æè¿°ï¼ˆdescriptionï¼‰è®¾ç½®ä¸€ä¸ªcsf_errorã€‚
 				*
-				* @param code    ±íÊ¾´íÎóÂë±àÂë
-				* @param fmt    ±íÊ¾´íÎóÃèÊöĞÅÏ¢¸ñÊ½»¯×Ö·û´®
-				* @param ...    ±íÊ¾¸ñÊ½»¯²ÎÊıÄÚÈİ
+				* @param code    è¡¨ç¤ºé”™è¯¯ç ç¼–ç 
+				* @param fmt    è¡¨ç¤ºé”™è¯¯æè¿°ä¿¡æ¯æ ¼å¼åŒ–å­—ç¬¦ä¸²
+				* @param ...    è¡¨ç¤ºæ ¼å¼åŒ–å‚æ•°å†…å®¹
 				*/
 				inline csf_bool set_error(const csf_int32 code, const csf_char* fmt, ...) {
 
@@ -162,7 +162,7 @@ namespace csf
 
 					va_start(tmp_marker, fmt);
 					if (csf_vsnprintf(tmp_buf, csf_sizeof(tmp_buf), fmt, tmp_marker) < 0) {
-						//³¬¹ı×î´ó³¤¶Èºó£¬Ö»´òÓ¡²¿·ÖÄÚÈİ
+						//è¶…è¿‡æœ€å¤§é•¿åº¦åï¼Œåªæ‰“å°éƒ¨åˆ†å†…å®¹
 						tmp_buf[csf_sizeof(tmp_buf) - 2] = '.';
 						tmp_buf[csf_sizeof(tmp_buf) - 3] = '.';
 						tmp_buf[csf_sizeof(tmp_buf) - 4] = '.';
@@ -175,10 +175,10 @@ namespace csf
 					return csf_true;
 				}
 				/**
-				* ±íÊ¾¸ù¾İ´íÎóÂë£¨code£©ºÍ´íÎóÃèÊö£¨description£©ÉèÖÃÒ»¸öcsf_error¡£
+				* è¡¨ç¤ºæ ¹æ®é”™è¯¯ç ï¼ˆcodeï¼‰å’Œé”™è¯¯æè¿°ï¼ˆdescriptionï¼‰è®¾ç½®ä¸€ä¸ªcsf_errorã€‚
 				*
-				* @param code    ±íÊ¾´íÎóÂë±àÂë
-				* @param description    ±íÊ¾´íÎóÃèÊöĞÅÏ¢
+				* @param code    è¡¨ç¤ºé”™è¯¯ç ç¼–ç 
+				* @param description    è¡¨ç¤ºé”™è¯¯æè¿°ä¿¡æ¯
 				*/
 				inline csf_bool set_error(const csf_int32 code, const csf_string& description) {
 
@@ -189,11 +189,11 @@ namespace csf
 				}
 			private:
 				/**
-				 * ±íÊ¾´íÎó±àºÅ
+				 * è¡¨ç¤ºé”™è¯¯ç¼–å·
 				 */
 				csf_int32 m_code = 0;
 				/**
-				 * ±íÊ¾´íÎóÔ­ÒòÃèÊöĞÅÏ¢
+				 * è¡¨ç¤ºé”™è¯¯åŸå› æè¿°ä¿¡æ¯
 				 */
 				csf_char m_descripion[csf_errno_max_length] = { 0 };
 

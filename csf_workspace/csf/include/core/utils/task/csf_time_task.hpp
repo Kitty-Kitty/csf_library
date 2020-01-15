@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:52
+*Date: 19-7æœˆ-2018 20:11:52
 *
-*Description: Class(csf_time_task) ±íÊ¾Ê±¼äÈÎÎñ
+*Description: Class(csf_time_task) è¡¨ç¤ºæ—¶é—´ä»»åŠ¡
 *
 *Others:
 *
@@ -31,10 +31,10 @@ namespace csf
 			namespace task
 			{
 				/**
-				 * ±íÊ¾Ê±¼äÈÎÎñ
+				 * è¡¨ç¤ºæ—¶é—´ä»»åŠ¡
 				 * @author f
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:52
+				 * @created 19-7æœˆ-2018 20:11:52
 				 */
 				class csf_time_task : public csf::core::utils::task::csf_task
 				{
@@ -44,26 +44,26 @@ namespace csf
 					virtual ~csf_time_task();
 
 					/**
-					 * ±íÊ¾´¦Àí½Ó¿Ú£¬µ±Ö»ÓĞis_process·µ»Øtrueºó²ÅÄÜprocess¡£
+					 * è¡¨ç¤ºå¤„ç†æ¥å£ï¼Œå½“åªæœ‰is_processè¿”å›trueåæ‰èƒ½processã€‚
 					 */
 					virtual csf_int32 process();
 					/**
-					 * ±íÊ¾ÊÇ·ñ½øĞĞ´¦Àí,Èç¹ûis_process·µ»Øtrue£¬²ÅÄÜÖ´ĞĞprocess¡£
+					 * è¡¨ç¤ºæ˜¯å¦è¿›è¡Œå¤„ç†,å¦‚æœis_processè¿”å›trueï¼Œæ‰èƒ½æ‰§è¡Œprocessã€‚
 					 */
 					virtual csf_bool is_process();
 					/**
-					 * ÅĞ¶ÏÊÇ·ñĞèÒªÉ¾³ı£¬Èç¹ûis_delete·µ»ØtrueÔòÉ¾³ıtask¡£
+					 * åˆ¤æ–­æ˜¯å¦éœ€è¦åˆ é™¤ï¼Œå¦‚æœis_deleteè¿”å›trueåˆ™åˆ é™¤taskã€‚
 					 */
 					virtual csf_bool is_delete();
 					/**
-					 * ±íÊ¾¿ªÊ¼Ê±¼ä
+					 * è¡¨ç¤ºå¼€å§‹æ—¶é—´
 					 */
 					inline csf_uint64 get_begin() {
 
 						return m_begin;
 					}
 					/**
-					 * ±íÊ¾¿ªÊ¼Ê±¼ä
+					 * è¡¨ç¤ºå¼€å§‹æ—¶é—´
 					 * 
 					 * @param new_value
 					 */
@@ -72,14 +72,14 @@ namespace csf
 						m_begin = new_value;
 					}
 					/**
-					 * ±íÊ¾Í£Ö¹Ê±¼ä
+					 * è¡¨ç¤ºåœæ­¢æ—¶é—´
 					 */
 					inline csf_uint64 get_end() {
 
 						return m_end;
 					}
 					/**
-					 * ±íÊ¾Í£Ö¹Ê±¼ä
+					 * è¡¨ç¤ºåœæ­¢æ—¶é—´
 					 * 
 					 * @param new_value
 					 */
@@ -90,11 +90,11 @@ namespace csf
 
 				private:
 					/**
-					 * ±íÊ¾¿ªÊ¼Ê±¼ä
+					 * è¡¨ç¤ºå¼€å§‹æ—¶é—´
 					 */
 					csf_uint64 m_begin = 0;
 					/**
-					 * ±íÊ¾Í£Ö¹Ê±¼ä
+					 * è¡¨ç¤ºåœæ­¢æ—¶é—´
 					 */
 					csf_uint64 m_end = 0;
 

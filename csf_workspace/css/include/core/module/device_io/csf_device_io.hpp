@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 17:33:47
+*Date: 01-7æœˆ-2018 17:33:47
 *
 *Description: Class(csf_device_io)
 *
@@ -33,29 +33,29 @@ namespace csf
 			namespace device_io
 			{
 				/**
-				 * ±íÊ¾Éè±¸ioµÄ³éÏó
+				 * è¡¨ç¤ºè®¾å¤‡ioçš„æŠ½è±¡
 				 * @author fangzhenmu@aliyun.com
 				 * @version 1.0
-				 * @created 01-7ÔÂ-2018 17:33:47
+				 * @created 01-7æœˆ-2018 17:33:47
 				 */
 				class csf_device_io : public csf::core::module::csf_device_base, public csf::core::module::device_io::csf_device_io_interface
 				{
 
 				public:
 					/**
-					* ±íÊ¾Éè±¸device_ioµÄÀàĞÍ
+					* è¡¨ç¤ºè®¾å¤‡device_ioçš„ç±»å‹
 					* @author f
 					* @version 1.0
-					* @created 12-7ÔÂ-2018 16:40:16
+					* @created 12-7æœˆ-2018 16:40:16
 					*/
 					enum csf_device_io_type
 					{
 						/**
-						* ±íÊ¾Éè±¸µÄdevice_ioµÄÎ´ÖªÀàĞÍ
+						* è¡¨ç¤ºè®¾å¤‡çš„device_ioçš„æœªçŸ¥ç±»å‹
 						*/
 						csf_device_io_type_none = csf_module_type_device_io | 0x00000000,
 						/**
-						* ±íÊ¾Éè±¸µÄdevice_ioµÄÍ¨ÓÃÀ©Õ¹
+						* è¡¨ç¤ºè®¾å¤‡çš„device_ioçš„é€šç”¨æ‰©å±•
 						*/
 						csf_device_io_type_general_extend = csf_device_io_type_none | 0x00010000
 					};
@@ -71,7 +71,7 @@ namespace csf
 					}
 
 					/**
-					 * ±íÊ¾device_ioËùÊôµÄappµØÖ·
+					 * è¡¨ç¤ºdevice_ioæ‰€å±çš„appåœ°å€
 					 * 
 					 * @param newVal
 					 */
@@ -79,14 +79,14 @@ namespace csf
 						m_app = (csf::core::module::app::csf_app*)newVal;
 					}
 					/**
-					 * ±íÊ¾Éè±¸ioËùÊôµÄdeviceµØÖ·ĞÅÏ¢
+					 * è¡¨ç¤ºè®¾å¤‡ioæ‰€å±çš„deviceåœ°å€ä¿¡æ¯
 					 */
 					inline csf::core::module::device::csf_device* get_device() {
 
 						return m_device;
 					}
 					/**
-					 * ±íÊ¾Éè±¸ioËùÊôµÄdeviceµØÖ·ĞÅÏ¢
+					 * è¡¨ç¤ºè®¾å¤‡ioæ‰€å±çš„deviceåœ°å€ä¿¡æ¯
 					 * 
 					 * @param newVal
 					 */
@@ -101,11 +101,11 @@ namespace csf
 
 				private:
 					/**
-					 * ±íÊ¾Éè±¸ioËùÊôµÄdeviceµØÖ·ĞÅÏ¢
+					 * è¡¨ç¤ºè®¾å¤‡ioæ‰€å±çš„deviceåœ°å€ä¿¡æ¯
 					 */
 					csf::core::module::device::csf_device* m_device = csf_nullptr;
 					/**
-					 * ±íÊ¾device_ioËùÊôµÄappµØÖ·
+					 * è¡¨ç¤ºdevice_ioæ‰€å±çš„appåœ°å€
 					 */
 					csf::core::module::app::csf_app* m_app = csf_nullptr;
 

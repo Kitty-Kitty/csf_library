@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:49
+*Date: 27-6æœˆ-2018 17:28:49
 *
 *Description: Class(csf_socket)
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace connect
 		{
 			/**
-			 * ±íÊ¾socketÍøÂçÍ¨ÐÅ¿âÄÚÈÝ
+			 * è¡¨ç¤ºsocketç½‘ç»œé€šä¿¡åº“å†…å®¹
 			 * @author fangzhenmu@aliyun.com
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:28:49
+			 * @created 27-6æœˆ-2018 17:28:49
 			 */
 			class csf_socket : public csf::core::module::device::csf_connect
 			{

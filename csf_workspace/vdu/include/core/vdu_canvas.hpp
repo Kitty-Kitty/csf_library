@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 23-9ÔÂ-2018 20:13:28
+*Date: 23-9æœˆ-2018 20:13:28
 *
-*Description: Class(vdu_canvas) ±íÊ¾Ê¸Á¿´¦Àí»­²¼
+*Description: Class(vdu_canvas) è¡¨ç¤ºçŸ¢é‡å¤„ç†ç”»å¸ƒ
 *
 *Others:
 *
@@ -31,29 +31,29 @@ namespace vdu
 	namespace core
 	{
 		/**
-		 * ±íÊ¾Ê¸Á¿´¦Àí»­²¼
+		 * è¡¨ç¤ºçŸ¢é‡å¤„ç†ç”»å¸ƒ
 		 * @author fangzhenmu
 		 * @version 1.0
-		 * @created 23-9ÔÂ-2018 20:13:28
+		 * @created 23-9æœˆ-2018 20:13:28
 		 */
 		class vdu_canvas : public vdu::core::vdu_panel, public csf::core::module::csf_app, public vdu::core::vdu_panel_manager, public vdu::core::vdu_canvas_interface
 		{
 
 		public:
 			/**
-			 * ±íÊ¾»­²¼ÀàĞÍÊı¾İ
+			 * è¡¨ç¤ºç”»å¸ƒç±»å‹æ•°æ®
 			 * @author f
 			 * @version 1.0
-			 * @created 23-9ÔÂ-2018 20:13:28
+			 * @created 23-9æœˆ-2018 20:13:28
 			 */
 			typedef enum vdu_canvas_type_enum
 			{
 				/**
-				 * ±íÊ¾Ä¬ÈÏµÄÎ´Öª»­²¼ÀàĞÍ
+				 * è¡¨ç¤ºé»˜è®¤çš„æœªçŸ¥ç”»å¸ƒç±»å‹
 				 */
 				vdu_canvas_type_none = 0x00000000,
 				/**
-				 * ±íÊ¾qt»­²¼ÀàĞÍ
+				 * è¡¨ç¤ºqtç”»å¸ƒç±»å‹
 				 */
 				vdu_canvas_type_qt = 0x00000001
 			} vdu_canvas_type;
@@ -64,37 +64,37 @@ namespace vdu
 
 			/**
 			 * 
-			 * @param type    ±íÊ¾»­²¼µÄÀàĞÍ
+			 * @param type    è¡¨ç¤ºç”»å¸ƒçš„ç±»å‹
 			 */
 			vdu_canvas(const vdu_canvas_type type);
 			/**
-			 * Ä£¿é³õÊ¼»¯
+			 * æ¨¡å—åˆå§‹åŒ–
 			 * 
-			 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			 */
 			virtual csf::core::base::csf_int32 init(const csf_configure_manager* conf_mg = csf_nullptr);
 			/**
-			 * Ä£¿éÆô¶¯
+			 * æ¨¡å—å¯åŠ¨
 			 * 
-			 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			 */
 			virtual csf::core::base::csf_int32 start(const csf_configure_manager* conf_mg = csf_nullptr);
 			/**
-			 * Ä£¿éÍ£Ö¹
+			 * æ¨¡å—åœæ­¢
 			 * 
-			 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			 */
 			virtual csf::core::base::csf_int32 stop(const csf_configure_manager* conf_mg = csf_nullptr);
 
 			/**
-			* ±íÊ¾»­²¼µÄÀàĞÍ
+			* è¡¨ç¤ºç”»å¸ƒçš„ç±»å‹
 			*/
 			inline vdu_canvas_type get_type() {
 
 				return m_type;
 			}
 			/**
-			* ±íÊ¾»­²¼µÄÀàĞÍ
+			* è¡¨ç¤ºç”»å¸ƒçš„ç±»å‹
 			*
 			* @param newVal
 			*/
@@ -105,7 +105,7 @@ namespace vdu
 
 		private:
 			/**
-			* ±íÊ¾»­²¼µÄÀàĞÍ
+			* è¡¨ç¤ºç”»å¸ƒçš„ç±»å‹
 			*/
 			vdu_canvas_type m_type = vdu_canvas_type_none;
 		};

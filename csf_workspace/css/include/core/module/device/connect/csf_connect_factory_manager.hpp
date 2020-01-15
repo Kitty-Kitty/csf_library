@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:37
+*Date: 27-6æœˆ-2018 17:28:37
 *
 *Description: Class(csf_connect_factory_manager)
 *
@@ -32,10 +32,10 @@ namespace csf
 			namespace device
 			{
 				/**
-				 * ±íÊ¾Á¬½Ó¹¤³§¹ÜÀíÆ÷
+				 * è¡¨ç¤ºè¿æ¥å·¥å‚ç®¡ç†å™¨
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:37
+				 * @created 27-6æœˆ-2018 17:28:37
 				 */
 				class csf_connect_factory_manager : public csf::core::module::csf_manager, public csf::core::module::device::csf_connect_factory_manager_interface
 				{
@@ -45,39 +45,39 @@ namespace csf
 					virtual ~csf_connect_factory_manager();
 
 					/**
-					 * Ä£¿é³õÊ¼»¯
+					 * æ¨¡å—åˆå§‹åŒ–
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * Ä£¿éÆô¶¯
+					 * æ¨¡å—å¯åŠ¨
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * Ä£¿éÍ£Ö¹
+					 * æ¨¡å—åœæ­¢
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * Ä£¿é³õÊ¼»¯
+					 * æ¨¡å—åˆå§‹åŒ–
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * Ä£¿éÆô¶¯
+					 * æ¨¡å—å¯åŠ¨
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * Ä£¿éÍ£Ö¹
+					 * æ¨¡å—åœæ­¢
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 

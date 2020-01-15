@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright:fz
 *
@@ -10,7 +10,7 @@
 *
 *Date:2018/07/02
 *
-*Description: create (csf_logger_define.hpp)Ö÷Òª±£´æÈÕÖ¾´òÓ¡µÄ¸÷ÖÖ½Ó¿Úº¯Êı
+*Description: create (csf_logger_define.hpp)ä¸»è¦ä¿å­˜æ—¥å¿—æ‰“å°çš„å„ç§æ¥å£å‡½æ•°
 *
 *Others:
 *
@@ -23,7 +23,7 @@
 
 
 /**
-* ±íÊ¾µ±Ç°ÏµÍ³ÖĞÃ¿ÌõÈÕÖ¾µÄ×î´ó³¤¶È
+* è¡¨ç¤ºå½“å‰ç³»ç»Ÿä¸­æ¯æ¡æ—¥å¿—çš„æœ€å¤§é•¿åº¦
 */
 #ifndef CSF_LOGGER_MAX_ERROR_STRING
 #define CSF_LOGGER_MAX_ERROR_STRING						102400
@@ -33,13 +33,13 @@
 
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸öĞ´ÈÕÖ¾º¯Êı
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªå†™æ—¥å¿—å‡½æ•°
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _level_	±íÊ¾ÈÕÖ¾¼¶±ğ,È¡ÖµÎªcsf_logger_levelÀàĞÍ
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _string_	±íÊ¾ÈÕÖ¾´íÎóĞÅÏ¢
+* @created 01-7æœˆ-2018 20:38:59
+* @param _level_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«,å–å€¼ä¸ºcsf_logger_levelç±»å‹
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _string_	è¡¨ç¤ºæ—¥å¿—é”™è¯¯ä¿¡æ¯
 */
 #define	BOOST_LOG_WRITE(_level_, _code_, _string_)		do {							\
 	boost::log::sources::severity_logger<csf_logger_level> slg;							\
@@ -51,13 +51,13 @@
 
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸öĞ´ÈÕÖ¾º¯Êı,Í¬Ê±Ìí¼ÓÅĞ¶ÏÈÕÖ¾¼¶±ğ
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªå†™æ—¥å¿—å‡½æ•°,åŒæ—¶æ·»åŠ åˆ¤æ–­æ—¥å¿—çº§åˆ«
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _level_	±íÊ¾ÈÕÖ¾¼¶±ğ,È¡ÖµÎªcsf_logger_levelÀàĞÍ
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _string_	±íÊ¾ÈÕÖ¾´íÎóĞÅÏ¢
+* @created 01-7æœˆ-2018 20:38:59
+* @param _level_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«,å–å€¼ä¸ºcsf_logger_levelç±»å‹
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _string_	è¡¨ç¤ºæ—¥å¿—é”™è¯¯ä¿¡æ¯
 */
 #define	BOOST_LOG_WRITE_EX(_level_, _code_, _string_)	do {							\
 	if(_level_ >= csf::core::system::csf_logger::get_level()) {							\
@@ -69,14 +69,14 @@
 #if 0
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸öprintfĞ´ÈÕÖ¾º¯Êı,Í¬Ê±Ìí¼ÓÅĞ¶ÏÈÕÖ¾¼¶±ğ
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªprintfå†™æ—¥å¿—å‡½æ•°,åŒæ—¶æ·»åŠ åˆ¤æ–­æ—¥å¿—çº§åˆ«
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _level_	±íÊ¾ÈÕÖ¾¼¶±ğ,È¡ÖµÎªcsf_logger_levelÀàĞÍ
-* @param _code_	±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _fmt_	±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-* @param ...	±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+* @created 01-7æœˆ-2018 20:38:59
+* @param _level_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«,å–å€¼ä¸ºcsf_logger_levelç±»å‹
+* @param _code_	è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _fmt_	è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+* @param ...	è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 */
 #define _csf_log_write(_level_, _code_, _fmt_, ...)	do {{								\
 	if(_level_ >= csf::core::system::csf_logger::get_level()) {							\
@@ -102,14 +102,14 @@ extern "C" {
 #endif
 
 	/**
-	* ±íÊ¾¶¨ÒåÒ»¸öprintfĞ´ÈÕÖ¾º¯Êı,Í¬Ê±Ìí¼ÓÅĞ¶ÏÈÕÖ¾¼¶±ğ
+	* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªprintfå†™æ—¥å¿—å‡½æ•°,åŒæ—¶æ·»åŠ åˆ¤æ–­æ—¥å¿—çº§åˆ«
 	* @author f
 	* @version 1.0
-	* @created 01-7ÔÂ-2018 20:38:59
-	* @param _level_	±íÊ¾ÈÕÖ¾¼¶±ğ,È¡ÖµÎªcsf_logger_levelÀàĞÍ
-	* @param _code_	±íÊ¾ÈÕÖ¾´íÎóÂë
-	* @param _fmt_	±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-	* @param ...	±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+	* @created 01-7æœˆ-2018 20:38:59
+	* @param _level_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«,å–å€¼ä¸ºcsf_logger_levelç±»å‹
+	* @param _code_	è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+	* @param _fmt_	è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+	* @param ...	è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 	*/
 	static void _csf_log_write(int _level_, int _code_, char *_fmt_, ...) {
 		if (_level_ >= csf::core::system::csf_logger::get_level()) {
@@ -135,14 +135,14 @@ extern "C" {
 #if 0
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸öprintfĞ´ÈÕÖ¾º¯Êı,Í¬Ê±Ìí¼ÓÅĞ¶ÏÈÕÖ¾¼¶±ğ
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªprintfå†™æ—¥å¿—å‡½æ•°,åŒæ—¶æ·»åŠ åˆ¤æ–­æ—¥å¿—çº§åˆ«
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _strlevel_	±íÊ¾ÈÕÖ¾¼¶±ğ×Ö·û´®,È¡ÖµÎª"debug", "normal", "info", "notice", "warning", "error", "critical"
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _fmt_		±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-* @param ...		±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+* @created 01-7æœˆ-2018 20:38:59
+* @param _strlevel_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«å­—ç¬¦ä¸²,å–å€¼ä¸º"debug", "normal", "info", "notice", "warning", "error", "critical"
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _fmt_		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+* @param ...		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 */
 #define _csf_log_write_ex(_strlevel_, _code_, _fmt_, ...)	do {{								\
 	_csf_log_write(csf_logger_level_##_strlevel_, _code_, "func[%s(%d):%s] " _fmt_,				\
@@ -152,14 +152,14 @@ extern "C" {
 #endif
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸öprintfĞ´ÈÕÖ¾º¯Êı,Í¬Ê±Ìí¼ÓÅĞ¶ÏÈÕÖ¾¼¶±ğ
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªprintfå†™æ—¥å¿—å‡½æ•°,åŒæ—¶æ·»åŠ åˆ¤æ–­æ—¥å¿—çº§åˆ«
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _strlevel_	±íÊ¾ÈÕÖ¾¼¶±ğ×Ö·û´®,È¡ÖµÎª"debug", "normal", "info", "notice", "warning", "error", "critical"
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _fmt_		±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-* @param ...		±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+* @created 01-7æœˆ-2018 20:38:59
+* @param _strlevel_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«å­—ç¬¦ä¸²,å–å€¼ä¸º"debug", "normal", "info", "notice", "warning", "error", "critical"
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _fmt_		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+* @param ...		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 */
 #define _csf_log_write_ex(_strlevel_, _code_, _fmt_, ...)	do {{							\
 	_csf_log_write(csf_logger_level_##_strlevel_, _code_, "func[%s:%d] " _fmt_,				\
@@ -169,39 +169,39 @@ extern "C" {
 
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸öÍ¨ÓÃµÄÈÕÖ¾½Ó¿Ú
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªé€šç”¨çš„æ—¥å¿—æ¥å£
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _strlevel_	±íÊ¾ÈÕÖ¾¼¶±ğ×Ö·û´®,È¡ÖµÎª"debug", "normal", "info", "notice", "warning", "error", "critical"
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _fmt_		±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-* @param ...		±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+* @created 01-7æœˆ-2018 20:38:59
+* @param _strlevel_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«å­—ç¬¦ä¸²,å–å€¼ä¸º"debug", "normal", "info", "notice", "warning", "error", "critical"
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _fmt_		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+* @param ...		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 */
 #define csf_log_ex(_strlevel_, _code_, _fmt_, ...)		_csf_log_write_ex(_strlevel_, _code_, _fmt_, ##__VA_ARGS__)
 
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸ö¼òµ¥Í¨ÓÃµÄÈÕÖ¾½Ó¿Ú
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªç®€å•é€šç”¨çš„æ—¥å¿—æ¥å£
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _strlevel_	±íÊ¾ÈÕÖ¾¼¶±ğ×Ö·û´®,È¡ÖµÎª"debug", "normal", "info", "notice", "warning", "error", "critical"
-* @param _fmt_		±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-* @param ...		±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+* @created 01-7æœˆ-2018 20:38:59
+* @param _strlevel_	è¡¨ç¤ºæ—¥å¿—çº§åˆ«å­—ç¬¦ä¸²,å–å€¼ä¸º"debug", "normal", "info", "notice", "warning", "error", "critical"
+* @param _fmt_		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+* @param ...		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 */
 #define csf_log(_strlevel_, _fmt_, ...)		_csf_log_write_ex(_strlevel_, csf_log_code_##_strlevel_, _fmt_, ##__VA_ARGS__)
 
 
 #ifdef USED_LOG_XXX
 /**
-* ±íÊ¾¶¨ÒåÒ»¸ö¸÷ÖÖÀàĞÍµÄÈÕÖ¾
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªå„ç§ç±»å‹çš„æ—¥å¿—
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _fmt_		±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-* @param ...		±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+* @created 01-7æœˆ-2018 20:38:59
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _fmt_		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+* @param ...		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 */
 
 #define _csf_log_debug(_code_, _fmt_, ...)		_csf_log_write_ex(debug, _code_, _fmt_, ##__VA_ARGS__)
@@ -221,13 +221,13 @@ extern "C" {
 
 
 /**
-* ±íÊ¾¶¨ÒåÒ»¸ö¸÷ÖÖÀàĞÍµÄÈÕÖ¾
+* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªå„ç§ç±»å‹çš„æ—¥å¿—
 * @author f
 * @version 1.0
-* @created 01-7ÔÂ-2018 20:38:59
-* @param _code_		±íÊ¾ÈÕÖ¾´íÎóÂë
-* @param _fmt_		±íÊ¾ÈÕÖ¾¸ñÊ½»¯×Ö·û´®£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄ_fmt_×Ö·û´®
-* @param ...		±íÊ¾ÈÕÖ¾¸ñÊ½»¯²ÎÊıÁĞ±í£¬ÀàĞÍprintf("_fmt_", args)ÖĞµÄargsÁĞ±í
+* @created 01-7æœˆ-2018 20:38:59
+* @param _code_		è¡¨ç¤ºæ—¥å¿—é”™è¯¯ç 
+* @param _fmt_		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„_fmt_å­—ç¬¦ä¸²
+* @param ...		è¡¨ç¤ºæ—¥å¿—æ ¼å¼åŒ–å‚æ•°åˆ—è¡¨ï¼Œç±»å‹printf("_fmt_", args)ä¸­çš„argsåˆ—è¡¨
 */
 #define csf_log_debug(_fmt_, ...)				_csf_log_debug(csf_log_code_debug, _fmt_, ...)		
 

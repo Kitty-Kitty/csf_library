@@ -157,7 +157,7 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 
 				csf_log(error, "configure module[%s] failed!", tmp_device_base->get_version().to_string().c_str());
 
-				module_manager.destory(tmp_device_base);
+				module_manager.destroy(tmp_device_base);
 
 				return csf_nullptr;
 			}
@@ -174,4 +174,40 @@ csf::core::module::csf_device_base* csf_configure_module::create_module(
 	}
 
 	return  tmp_device_base;
+}
+
+
+/**
+ * 功能：
+ *    销毁一个模块对象
+ * 返回：
+ *    0  ：  表示成功；
+ *   非0 ：  表示失败；
+ *
+ * @param module_manager    表示模块管理器对象信息
+ * @param module    表示模块对象
+ */
+csf_int32 csf_configure_module::destroy_module(csf::core::module::csf_module_manager& module_manager, csf_module * module) {
+
+	csf_int32					tmp_int_return = 0;
+
+
+	//根据名称创建模块对象
+	csf_log(notice, "destroy %s ...", module->to_string().c_str());
+
+	tmp_int_return = module_manager.destroy(module);
+	if (csf_failure == tmp_int_return) {
+		csf_log_ex(error, csf_log_code_error
+			, "destroy module[%p] failed!"
+			, module);
+		return csf_failure;
+	}
+	else {
+		csf_log_ex(notice, csf_log_code_notice
+			, "destroy module[%p] succeed!"
+			, module);
+		return csf_succeed;
+	}
+
+	return csf_succeed;
 }

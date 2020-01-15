@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 12:54:38
+*Date: 01-10æœˆ-2018 12:54:38
 *
 *Description: Interface(csf_connect_factory_manager_interface) 
 *
@@ -34,7 +34,7 @@ namespace csf
 				/**
 				 * @author f
 				 * @version 1.0
-				 * @created 01-10ÔÂ-2018 12:54:38
+				 * @created 01-10æœˆ-2018 12:54:38
 				 */
 				class csf_connect_factory_manager_interface
 				{
@@ -48,26 +48,26 @@ namespace csf
 
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£º³õÊ¼»¯Ä£¿é¹ÜÀíÆ÷
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåˆå§‹åŒ–æ¨¡å—ç®¡ç†å™¨
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					* @param app    ±íÊ¾¸ÃÄ£¿éËùÊôµÄapp¶ÔÏóµØÖ·
+					* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
+					* @param app    è¡¨ç¤ºè¯¥æ¨¡å—æ‰€å±çš„appå¯¹è±¡åœ°å€
 					*/
 					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg, const csf_app* app) = 0;
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÆô¶¯Ä£¿é¹ÜÀíÆ÷
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¯åŠ¨æ¨¡å—ç®¡ç†å™¨
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
-					* @param app    ±íÊ¾¸ÃÄ£¿éËùÊôµÄapp¶ÔÏóµØÖ·
+					* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
+					* @param app    è¡¨ç¤ºè¯¥æ¨¡å—æ‰€å±çš„appå¯¹è±¡åœ°å€
 					*/
 					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg, const csf_app* app) = 0;
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÍ£Ö¹Ä£¿é¹ÜÀíÆ÷
-					* ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåœæ­¢æ¨¡å—ç®¡ç†å™¨
+					* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 					*
-					* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					*/
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_nullptr) = 0;
 

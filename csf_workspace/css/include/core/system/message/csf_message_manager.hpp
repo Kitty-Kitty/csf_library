@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:44
+*Date: 27-6æœˆ-2018 17:28:44
 *
 *Description: Class(csf_message_manager)
 *
@@ -35,10 +35,10 @@ namespace csf
 			namespace message
 			{
 				/**
-				 * ±íÊ¾ÏûÏ¢¹ÜÀíÆ÷
+				 * è¡¨ç¤ºæ¶ˆæ¯ç®¡ç†å™¨
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:44
+				 * @created 27-6æœˆ-2018 17:28:44
 				 */
 				class csf_message_manager : public csf::core::system::message::csf_message_interface
 				{
@@ -49,47 +49,47 @@ namespace csf
 					csf::core::system::message::csf_message *m_csf_message;
 
 					/**
-					 * ±íÊ¾Ìí¼Ó»Øµ÷º¯Êı
+					 * è¡¨ç¤ºæ·»åŠ å›è°ƒå‡½æ•°
 					 * 
-					 * @param type    ±íÊ¾ÏûÏ¢µÄÀàĞÍ
+					 * @param type    è¡¨ç¤ºæ¶ˆæ¯çš„ç±»å‹
 					 */
 					csf_int32 add(const csf::core::system::message::csf_message_type type);
 					/**
-					 * ±íÊ¾ÅäÖÃ¹ÜÀíÆ÷
+					 * è¡¨ç¤ºé…ç½®ç®¡ç†å™¨
 					 */
 					inline csf_configure_manager* get_configure_manager() {
 
 						return m_configure_manager;
 					}
 					/**
-					 * Ä£¿é³õÊ¼»¯
+					 * æ¨¡å—åˆå§‹åŒ–
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * ±íÊ¾·¢ËÍÒ»¸ömessageÄÚÈİ
+					 * è¡¨ç¤ºå‘é€ä¸€ä¸ªmessageå†…å®¹
 					 * 
-					 * @param message    ±íÊ¾Ìí¼ÓµÄÏûÏ¢ÄÚÈİ
+					 * @param message    è¡¨ç¤ºæ·»åŠ çš„æ¶ˆæ¯å†…å®¹
 					 */
 					virtual csf_int32 post(const csf_message& message);
 					/**
-					 * ±íÊ¾Ìí¼Ó»Øµ÷º¯Êı
+					 * è¡¨ç¤ºæ·»åŠ å›è°ƒå‡½æ•°
 					 * 
-					 * @param type    ±íÊ¾ÏûÏ¢µÄÀàĞÍ
-					 * @param callback    ±íÊ¾»Øµ÷º¯Êı
+					 * @param type    è¡¨ç¤ºæ¶ˆæ¯çš„ç±»å‹
+					 * @param callback    è¡¨ç¤ºå›è°ƒå‡½æ•°
 					 */
 					csf_int32 del(const csf::core::system::message::csf_message_type type, const csf::core::system::message::csf_message_manager_callback callback);
 					/**
-					 * ¸ù¾İÀàĞÍ¡¢»Øµ÷º¯ÊıºÍĞÅÏ¢ÄÚÈİ´´½¨ÏûÏ¢
+					 * æ ¹æ®ç±»å‹ã€å›è°ƒå‡½æ•°å’Œä¿¡æ¯å†…å®¹åˆ›å»ºæ¶ˆæ¯
 					 * 
-					 * @param type    ±íÊ¾ÏûÏ¢ÀàĞÍ
-					 * @param callback    ±íÊ¾»Øµ÷º¯Êı
-					 * @param element    ±íÊ¾ÏûÏ¢ÄÚÈİ
+					 * @param type    è¡¨ç¤ºæ¶ˆæ¯ç±»å‹
+					 * @param callback    è¡¨ç¤ºå›è°ƒå‡½æ•°
+					 * @param element    è¡¨ç¤ºæ¶ˆæ¯å†…å®¹
 					 */
 					virtual csf_int32 post(const csf::core::system::message::csf_message_type type, const csf::core::system::message::csf_message_callback callback, const csf_element& element);
 					/**
-					 * ±íÊ¾ÅäÖÃ¹ÜÀíÆ÷
+					 * è¡¨ç¤ºé…ç½®ç®¡ç†å™¨
 					 * 
 					 * @param newVal
 					 */
@@ -98,27 +98,27 @@ namespace csf
 						m_configure_manager = newVal;
 					}
 					/**
-					 * Ä£¿éÆô¶¯
+					 * æ¨¡å—å¯åŠ¨
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * ±íÊ¾µ¯³öÏûÏ¢ÄÚÈİ
+					 * è¡¨ç¤ºå¼¹å‡ºæ¶ˆæ¯å†…å®¹
 					 */
 					virtual csf::core::system::message::csf_message pop();
 					/**
-					 * Ä£¿éÍ£Ö¹
+					 * æ¨¡å—åœæ­¢
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * ±íÊ¾½ÓÊÕµ½µÄÏûÏ¢±£´æµÄ¶ÓÁĞ
+					 * è¡¨ç¤ºæ¥æ”¶åˆ°çš„æ¶ˆæ¯ä¿å­˜çš„é˜Ÿåˆ—
 					 */
 					csf_queue<csf_message>& get_queue();
 					/**
-					 * ±íÊ¾½ÓÊÕµ½µÄÏûÏ¢±£´æµÄ¶ÓÁĞ
+					 * è¡¨ç¤ºæ¥æ”¶åˆ°çš„æ¶ˆæ¯ä¿å­˜çš„é˜Ÿåˆ—
 					 * 
 					 * @param newVal
 					 */
@@ -127,11 +127,11 @@ namespace csf
 
 				private:
 					/**
-					 * ±íÊ¾»Øµ÷º¯ÊıÁĞ±í
+					 * è¡¨ç¤ºå›è°ƒå‡½æ•°åˆ—è¡¨
 					 */
 					csf_map<csf_message_type, csf_message_manager_callback> m_callback_map;
 					/**
-					 * ±íÊ¾½ÓÊÕµ½µÄÏûÏ¢±£´æµÄ¶ÓÁĞ
+					 * è¡¨ç¤ºæ¥æ”¶åˆ°çš„æ¶ˆæ¯ä¿å­˜çš„é˜Ÿåˆ—
 					 */
 					csf_queue<csf_message> m_queue;
 					csf::core::utils::thread::csf_thread_group m_thread_group;

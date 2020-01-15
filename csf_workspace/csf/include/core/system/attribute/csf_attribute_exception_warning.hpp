@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 05-7ÔÂ-2018 20:09:27
+*Date: 05-7æœˆ-2018 20:09:27
 *
 *Description: Class(csf_attribute_exception_warning)
 *
@@ -31,10 +31,10 @@ namespace csf
 			namespace attribute
 			{
 				/**
-				 * ³öÏÖÒì³£´òÓ¡¸æ¾¯ĞÅÏ¢
+				 * å‡ºç°å¼‚å¸¸æ‰“å°å‘Šè­¦ä¿¡æ¯
 				 * @author Administrator
 				 * @version 1.0
-				 * @created 05-7ÔÂ-2018 20:09:27
+				 * @created 05-7æœˆ-2018 20:09:27
 				 */
 				class csf_attribute_exception_warning : public csf::core::system::attribute::csf_attribute_exception
 				{
@@ -51,7 +51,7 @@ namespace csf
 
 					/**
 					*
-					* @param callback    ±íÊ¾Òì³£»Øµ÷º¯Êı
+					* @param callback    è¡¨ç¤ºå¼‚å¸¸å›è°ƒå‡½æ•°
 					*
 					*/
 					explicit csf_attribute_exception_warning(const csf::core::system::attribute::csf_attribute_exception_callback callback)

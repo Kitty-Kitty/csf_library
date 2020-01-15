@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: f
 *
@@ -20,13 +20,13 @@
 
 #include "csf_shared_memory.hpp"
 
-using csf::core::module::csf_shared_memory;
+using csf::modules::vm::csf_shared_memory;
 
 
 csf_shared_memory::csf_shared_memory()
 	: m_smm(csf_nullptr)
 	, m_name("") {
-
+	destroy();
 }
 
 
@@ -47,11 +47,17 @@ csf_shared_memory::~csf_shared_memory() {
  */
 csf_int32 csf_shared_memory::create(csf_string name, csf_uint32 size) {
 
+	if (name.empty()) {
+		return csf_failure;
+	}
+
 	//先释放原来的共享内存资源
-	destroy();
+	//destroy();
+	shared_memory_object::remove(name.c_str());
 
 	//创建一个共享内存对象
 	set_smm(new managed_shared_memory(create_only, name.c_str(), size));
+	//set_smm(new managed_shared_memory(create_only, name.c_str(), 1024 * 1024));
 	if (csf_nullptr == get_smm()) {
 		return csf_failure;
 	}

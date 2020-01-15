@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:51
+*Date: 19-7æœˆ-2018 20:11:51
 *
-*Description: Interface(csf_task_interface) ±íÊ¾ÈÎÎñµÄ²Ù×÷½Ó¿Ú
+*Description: Interface(csf_task_interface) è¡¨ç¤ºä»»åŠ¡çš„æ“ä½œæ¥å£
 *
 *Others:
 *
@@ -33,10 +33,10 @@ namespace csf
 			namespace task
 			{
 				/**
-				 * ±íÊ¾ÈÎÎñµÄ²Ù×÷½Ó¿Ú
+				 * è¡¨ç¤ºä»»åŠ¡çš„æ“ä½œæ¥å£
 				 * @author f
 				 * @version 1.0
-				 * @created 19-7ÔÂ-2018 20:11:51
+				 * @created 19-7æœˆ-2018 20:11:51
 				 */
 				class csf_task_interface
 				{
@@ -51,19 +51,19 @@ namespace csf
 					}
 
 					/**
-					 * ±íÊ¾´¦Àí½Ó¿Ú£¬µ±Ö»ÓĞis_process·µ»Øtrueºó²ÅÄÜprocess¡£
+					 * è¡¨ç¤ºå¤„ç†æ¥å£ï¼Œå½“åªæœ‰is_processè¿”å›trueåæ‰èƒ½processã€‚
 					 */
 					virtual csf_int32 process() =0;
 					/**
-					 * ±íÊ¾ÊÇ·ñ½øĞĞ´¦Àí,Èç¹ûis_process·µ»Øtrue£¬²ÅÄÜÖ´ĞĞprocess¡£
+					 * è¡¨ç¤ºæ˜¯å¦è¿›è¡Œå¤„ç†,å¦‚æœis_processè¿”å›trueï¼Œæ‰èƒ½æ‰§è¡Œprocessã€‚
 					 */
 					virtual csf_bool is_process() =0;
 					/**
-					 * ±íÊ¾´¦Àí½Ó¿Ú£¬µ±Ö»ÓĞis_delete·µ»Øtrueºó²ÅÄÜprocess_delete¡£
+					 * è¡¨ç¤ºå¤„ç†æ¥å£ï¼Œå½“åªæœ‰is_deleteè¿”å›trueåæ‰èƒ½process_deleteã€‚
 					 */
 					virtual csf_int32 process_delete() =0;
 					/**
-					 * ÅĞ¶ÏÊÇ·ñĞèÒªÉ¾³ı£¬Èç¹ûis_delete·µ»ØtrueÔòÉ¾³ıtask¡£
+					 * åˆ¤æ–­æ˜¯å¦éœ€è¦åˆ é™¤ï¼Œå¦‚æœis_deleteè¿”å›trueåˆ™åˆ é™¤taskã€‚
 					 */
 					virtual csf_bool is_delete() =0;
 

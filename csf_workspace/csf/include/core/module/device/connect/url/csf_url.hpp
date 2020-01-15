@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 12:54:56
+*Date: 01-10æœˆ-2018 12:54:56
 *
-*Description: Class(csf_url) urlµØÖ·ĞÅÏ¢µÄ»ù´¡ÀàĞÅÏ¢
+*Description: Class(csf_url) urlåœ°å€ä¿¡æ¯çš„åŸºç¡€ç±»ä¿¡æ¯
 *
 *Others:
 *
@@ -32,33 +32,33 @@ namespace csf
 			namespace connect
 			{
 				/**
-				 * urlµØÖ·ĞÅÏ¢µÄ»ù´¡ÀàĞÅÏ¢
+				 * urlåœ°å€ä¿¡æ¯çš„åŸºç¡€ç±»ä¿¡æ¯
 				 * @author f
 				 * @version 1.0
-				 * @created 01-10ÔÂ-2018 12:54:56
+				 * @created 01-10æœˆ-2018 12:54:56
 				 */
 				class csf_url
 				{
 
 				public:
 					/**
-					 * ±íÊ¾urlÀàĞÍ
+					 * è¡¨ç¤ºurlç±»å‹
 					 * @author f
 					 * @version 1.0
-					 * @created 01-10ÔÂ-2018 12:54:56
+					 * @created 01-10æœˆ-2018 12:54:56
 					 */
 					typedef enum csf_url_type_enum
 					{
 						/**
-						 * ±íÊ¾¿ÕµØÖ·
+						 * è¡¨ç¤ºç©ºåœ°å€
 						 */
 						csf_url_type_none = 0x00000000,
 						/**
-						 * ±íÊ¾IPµØÖ·
+						 * è¡¨ç¤ºIPåœ°å€
 						 */
 						csf_url_type_ip = 0x00010000,
 						/**
-						 * ±íÊ¾´®¿ÚµØÖ·
+						 * è¡¨ç¤ºä¸²å£åœ°å€
 						 */
 						csf_url_type_serial = 0x00020000
 					} csf_url_type;
@@ -69,7 +69,7 @@ namespace csf
 
 					/**
 					 * 
-					 * @param type    ±íÊ¾Á¬½ÓµØÖ·ÀàĞÍ
+					 * @param type    è¡¨ç¤ºè¿æ¥åœ°å€ç±»å‹
 					 */
 					inline explicit csf_url(const csf::core::module::connect::csf_url::csf_url_type type)
 						: m_type(type)
@@ -77,20 +77,20 @@ namespace csf
 
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÍ¨¹ıurl×Ö·û´®Êı¾İÉèÖÃurl¶ÔÏó
-					* ·µ»Ø£ºÎŞÒì³£±íÊ¾³É¹¦£»Å×³öÒì³£±íÊ¾´íÎó
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šé€šè¿‡urlå­—ç¬¦ä¸²æ•°æ®è®¾ç½®urlå¯¹è±¡
+					* è¿”å›ï¼šæ— å¼‚å¸¸è¡¨ç¤ºæˆåŠŸï¼›æŠ›å‡ºå¼‚å¸¸è¡¨ç¤ºé”™è¯¯
 					*
-					* @param url    ±íÊ¾url×Ö·û´®Êı¾İ
+					* @param url    è¡¨ç¤ºurlå­—ç¬¦ä¸²æ•°æ®
 					*/
 					inline virtual csf_url& operator =(const csf_string& url) {
 
 						return  *this;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÍ¨¹ıurl×Ö·û´®Êı¾İÉèÖÃurl¶ÔÏó
-					* ·µ»Ø£ºÎŞÒì³£±íÊ¾³É¹¦£»Å×³öÒì³£±íÊ¾´íÎó
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šé€šè¿‡urlå­—ç¬¦ä¸²æ•°æ®è®¾ç½®urlå¯¹è±¡
+					* è¿”å›ï¼šæ— å¼‚å¸¸è¡¨ç¤ºæˆåŠŸï¼›æŠ›å‡ºå¼‚å¸¸è¡¨ç¤ºé”™è¯¯
 					*
-					* @param url    ±íÊ¾url×Ö·û´®Êı¾İ
+					* @param url    è¡¨ç¤ºurlå­—ç¬¦ä¸²æ•°æ®
 					*/
 					inline virtual csf_url& operator =(const csf_char* url) {
 
@@ -99,7 +99,7 @@ namespace csf
 						return  *this;
 					}
 					/**
-					 * ±íÊ¾urlµØÖ·µÄÀàĞÍĞÅÏ¢
+					 * è¡¨ç¤ºurlåœ°å€çš„ç±»å‹ä¿¡æ¯
 					 */
 					inline const csf::core::module::connect::csf_url::csf_url_type get_type() const {
 
@@ -107,14 +107,14 @@ namespace csf
 					}
 					
 					/**
-					 * ±íÊ¾urlµÄÍêÕû×Ö·û´®Êı¾İ
+					 * è¡¨ç¤ºurlçš„å®Œæ•´å­—ç¬¦ä¸²æ•°æ®
 					 */
 					inline const csf_string & get_url() const {
 
 						return m_url;
 					}
 					/**
-					 * ±íÊ¾urlµÄÍêÕû×Ö·û´®Êı¾İ
+					 * è¡¨ç¤ºurlçš„å®Œæ•´å­—ç¬¦ä¸²æ•°æ®
 					 * 
 					 * @param new_value
 					 */
@@ -125,7 +125,7 @@ namespace csf
 						return csf_succeed;
 					}
 					/**
-					 * ±íÊ¾urlµÄÍêÕû×Ö·û´®Êı¾İ
+					 * è¡¨ç¤ºurlçš„å®Œæ•´å­—ç¬¦ä¸²æ•°æ®
 					 * 
 					 * @param new_value
 					 */
@@ -136,9 +136,9 @@ namespace csf
 						return csf_succeed;
 					}
 					/**
-					* ±íÊ¾½âÎöµØÖ·º¯Êı
+					* è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
 					*
-					* @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+					* @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
 					*/
 					inline virtual csf_int32 parse(const csf_string& url) {
 
@@ -147,9 +147,9 @@ namespace csf
 						return csf_succeed;
 					}
 					/**
-					 * ±íÊ¾½âÎöµØÖ·º¯Êı
+					 * è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
 					 * 
-					 * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+					 * @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
 					 */
 					inline virtual csf_int32 parse(const csf_char* url) {
 
@@ -158,11 +158,11 @@ namespace csf
 						return csf_succeed;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜ£º
-					*    ÅĞ¶ÏurlµØÖ·ÊÇ·ñºÏ·¨
-					* ·µ»Ø£º
-					*    true £º±íÊ¾ºÏ·¨
-					*    false£º±íÊ¾²»ºÏ·¨
+					* ä¸»è¦åŠŸèƒ½ï¼š
+					*    åˆ¤æ–­urlåœ°å€æ˜¯å¦åˆæ³•
+					* è¿”å›ï¼š
+					*    true ï¼šè¡¨ç¤ºåˆæ³•
+					*    falseï¼šè¡¨ç¤ºä¸åˆæ³•
 					*/
 					inline virtual csf_bool is_valid() {
 
@@ -174,7 +174,7 @@ namespace csf
 					}
 				protected:
 					/**
-					 * ±íÊ¾urlµØÖ·µÄÀàĞÍĞÅÏ¢
+					 * è¡¨ç¤ºurlåœ°å€çš„ç±»å‹ä¿¡æ¯
 					 * 
 					 * @param new_value
 					 */
@@ -183,10 +183,10 @@ namespace csf
 						m_type = new_value;
 					}
 					/**
-					* ¹¦ÄÜ£º
-					*    Çå¿Õurl¶ÔÏóÖĞµÄÊı¾İ
-					* ·µ»Ø£º
-					*    ÎŞ
+					* åŠŸèƒ½ï¼š
+					*    æ¸…ç©ºurlå¯¹è±¡ä¸­çš„æ•°æ®
+					* è¿”å›ï¼š
+					*    æ— 
 					*/
 					inline virtual void clear() {
 						m_url = "";
@@ -194,11 +194,11 @@ namespace csf
 					}
 				private:
 					/**
-					 * ±íÊ¾urlµÄÍêÕû×Ö·û´®Êı¾İ
+					 * è¡¨ç¤ºurlçš„å®Œæ•´å­—ç¬¦ä¸²æ•°æ®
 					 */
 					csf::core::base::csf_string m_url = "";
 					/**
-					 * ±íÊ¾urlµØÖ·µÄÀàĞÍĞÅÏ¢
+					 * è¡¨ç¤ºurlåœ°å€çš„ç±»å‹ä¿¡æ¯
 					 */
 					csf::core::module::connect::csf_url::csf_url_type m_type = csf_url_type_none;
 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 04-11��-2018 10:45:10
+*Date: 04-11月-2018 10:45:10
 *
-*Description: Class(time_maker) ʱ������������Ҫ��������ϵͳʹ�õ�ʱ�䣬������ʵ��ʱ�䡢ϵͳʱ�䡢����ʱ��ȵȣ����и���ʱ�䵥λ�����루ms����
+*Description: Class(time_maker) 时间生成器，主要用于生成系统使用的时间，包括：实际时间、系统时间、运行时间等等；其中各种时间单位：毫秒（ms）。
 *
 *Others:
 *
@@ -48,24 +48,24 @@ namespace csf
 			namespace time
 			{
 				/************************************************************************/
-				/* ��ʾʱ���������Ĵ������ȣ���λ�����루ms����Ĭ��Ϊ��1000ms				*/
+				/* 表示时间生成器的处理精度，单位：毫秒（ms）。默认为：1000ms				*/
 				/************************************************************************/
-				#define csf_time_maker_resolution_ms		1000						//��ʾʱ���������Ĵ������ȣ���λ�����루ms����Ĭ��Ϊ��1000ms
+				#define csf_time_maker_resolution_ms		1000						//表示时间生成器的处理精度，单位：毫秒（ms）。默认为：1000ms
 				/**
-				 * ʱ������������Ҫ��������ϵͳʹ�õ�ʱ�䣬������ʵ��ʱ�䡢ϵͳʱ�䡢����ʱ��ȵȣ����и���ʱ�䵥λ�����루ms����
+				 * 时间生成器，主要用于生成系统使用的时间，包括：实际时间、系统时间、运行时间等等；其中各种时间单位：毫秒（ms）。
 				 * @author f
 				 * @version 1.0
-				 * @created 04-11��-2018 10:45:10
+				 * @created 04-11月-2018 10:45:10
 				 */
 				class time_maker
 				{
 				public:
 
 					/**
-					* ��ʾtime_maker���ͷ��࣬��Ҫ�����������delete�ͷš�
+					* 表示time_maker的释放类，主要负责单例对象的delete释放。
 					* @author f
 					* @version 1.0
-					* @created 04-11��-2018 14:22:43
+					* @created 04-11月-2018 14:22:43
 					*/
 					class time_maker_release
 					{
@@ -102,7 +102,7 @@ namespace csf
 
 				public:
 					/**
-					* ��ʾ��������ָ��
+					* 表示单例对象指针
 					*/
 					inline static time_maker* get_instance() {
 
@@ -128,15 +128,15 @@ namespace csf
 						return m_instance;
 					}
 					/**
-					* ��ʾʱ����������ʱ�侫�ȣ���Ҫ��������ʱ������ɾ��ȣ���λ�����루ms��
+					* 表示时间生成器的时间精度，主要描述各种时间的生成精度，单位：毫秒（ms）
 					*/
 					inline csf_uint64 get_time_resolution() const {
 
 						return m_time_resolution;
 					}
 					/**
-					* ��ʾʱ����������ʱ�侫�ȣ���Ҫ��������ʱ������ɾ��ȣ���λ�����루ms��
-					* ���ʱ����ֵΪ0�����ʾ����Ĭ��ʱ�侫��
+					* 表示时间生成器的时间精度，主要描述各种时间的生成精度，单位：毫秒（ms）
+					* 如果时间数值为0，则表示采用默认时间精度
 					*
 					* @param new_value
 					*/
@@ -150,30 +150,30 @@ namespace csf
 						}
 					}
 					/**
-					* ��ʾϵͳά�������ʱ�䡣��Ϊ��ʱ�������ϵͳʱ�����һ����ʱ���࣬���Ը�ʱ������ڲ���Ҫ�ܸ߾��ȵ����ʱ���ʱ�������Ӷ���ĳ�ʱ�����ִ����ĳ�ʱ��ʱ����������
-					* ��������ϵͳʱ��ʹ�á���λ�����루ms��
+					* 表示系统维护的相对时间。因为该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的相对时间计时（如连接对象的超时、各种处理的超时计时），而不能
+					* 当作操作系统时间使用。单位：毫秒（ms）
 					*/
 					inline csf_uint64 get_time() const {
 
 						return m_time;
 					}
 					/**
-					* ��ʾϵͳά����ϵͳʱ�䣬ͨ��ʵʱ��ȡϵͳʱ������ɡ���ʱ�������ϵͳʱ�����һ����ʱ���࣬���Ը�ʱ������ڲ���Ҫ�ܸ߾��ȵ�ϵͳʱ�䡣��λ�����루ms��
+					* 表示系统维护的系统时间，通过实时获取系统时间而生成。该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的系统时间。单位：毫秒（ms）
 					*/
 					inline csf_uint64 get_native_time() const {
 
 						return m_native_time;
 					}
 					/**
-					* ��ʾϵͳ������ʱ�䡣����ֵ���ڵ�һ��timeʱ�䡣����time��ȥbegin_time����ʱ��Ϊϵͳ��ĿǰΪֹ��������ʱ�䡣��λ�����루ms��
+					* 表示系统的启动时间。该数值等于第一个time时间。所以time减去begin_time所得时间为系统到目前为止的运行总时间。单位：毫秒（ms）
 					*/
 					inline csf_uint64 get_begin_time() const {
 
 						return m_begin_time;
 					}
 					/**
-					* ��Ҫ�����ǣ���ȡ��ǰ��ϵͳʱ��
-					* ���أ�0��ʾ�ɹ�����0��ʾʧ�ܣ�
+					* 主要功能是：获取当前的系统时间
+					* 返回：0表示成功；非0表示失败；
 					*
 					* @param tv
 					* @param tz
@@ -202,8 +202,8 @@ namespace csf
 						return 0;
 					}
 					/**
-					* ��Ҫ�����ǣ���ȡ��ǰ��ϵͳʱ��ĺ�����ֵ����λ�����루ms��
-					* ���أ���ǰϵͳʱ��ĺ�����ֵ
+					* 主要功能是：获取当前的系统时间的毫秒数值，单位：毫秒（ms）
+					* 返回：当前系统时间的毫秒数值
 					*/
 					inline static csf_uint64 gettimeofday_millsecond() {
 
@@ -215,45 +215,45 @@ namespace csf
 					}
 				private:
 					/**
-					* ��ʾʱ����������ʱ�侫�ȣ���Ҫ��������ʱ������ɾ��ȣ���λ�����루ms��
+					* 表示时间生成器的时间精度，主要描述各种时间的生成精度，单位：毫秒（ms）
 					*/
 					csf_atomic_uint64 m_time_resolution{ 0 };
 					/**
-					* ��ʾϵͳά�������ʱ�䡣��Ϊ��ʱ�������ϵͳʱ�����һ����ʱ���࣬���Ը�ʱ������ڲ���Ҫ�ܸ߾��ȵ����ʱ���ʱ�������Ӷ���ĳ�ʱ�����ִ����ĳ�ʱ��ʱ����������
-					* ��������ϵͳʱ��ʹ�á���λ�����루ms��
+					* 表示系统维护的相对时间。因为该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的相对时间计时（如连接对象的超时、各种处理的超时计时），而不能
+					* 当作操作系统时间使用。单位：毫秒（ms）
 					*/
 					csf_atomic_uint64 m_time{ 0 };
 					/**
-					* ��ʾϵͳά����ϵͳʱ�䣬ͨ��ʵʱ��ȡϵͳʱ������ɡ���ʱ�������ϵͳʱ�����һ����ʱ���࣬���Ը�ʱ������ڲ���Ҫ�ܸ߾��ȵ�ϵͳʱ�䡣��λ�����루ms��
+					* 表示系统维护的系统时间，通过实时获取系统时间而生成。该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的系统时间。单位：毫秒（ms）
 					*/
 					csf_atomic_uint64 m_native_time{ 0 };
 					/**
-					* ��ʾϵͳ������ʱ�䡣����ֵ���ڵ�һ��timeʱ�䡣����time��ȥbegin_time����ʱ��Ϊϵͳ��ĿǰΪֹ��������ʱ�䡣��λ�����루ms��
+					* 表示系统的启动时间。该数值等于第一个time时间。所以time减去begin_time所得时间为系统到目前为止的运行总时间。单位：毫秒（ms）
 					*/
 					csf_atomic_uint64 m_begin_time{ 0 };
 					/**
-					* ��ʾ��ǰ��ʱ�䴦���̣߳�����ʱ������ɴ���
+					* 表示当前的时间处理线程，用于时间和生成处理
 					*/
 					csf::core::utils::thread::csf_thread *m_time_thread = csf_nullptr;
 					/**
-					* ��ʾ��������ָ��
+					* 表示单例对象指针
 					*/
 					static time_maker* m_instance;
 					/**
-					* ��ʾtime_maker���ڲ��ͷŶ���
+					* 表示time_maker的内部释放对象
 					*/
 					time_maker_release m_instance_release;
 					/**
-					* ��ʾ����������ʻ�����
+					* 表示单例对象访问互斥量
 					*/
 					static csf::core::utils::thread::csf_shared_mutex m_mutex;
 					/**
-					* ��ʾ�̶߳�����ʻ�����
+					* 表示线程对象访问互斥量
 					*/
 					csf::core::utils::thread::csf_shared_mutex m_thread_mutex;
 					/**
-					* ��ʾϵͳά�������ʱ�䡣��Ϊ��ʱ�������ϵͳʱ�����һ����ʱ���࣬���Ը�ʱ������ڲ���Ҫ�ܸ߾��ȵ����ʱ���ʱ�������Ӷ���ĳ�ʱ�����ִ����ĳ�ʱ��ʱ����������
-					* ��������ϵͳʱ��ʹ�á�
+					* 表示系统维护的相对时间。因为该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的相对时间计时（如连接对象的超时、各种处理的超时计时），而不能
+					* 当作操作系统时间使用。
 					*
 					* @param new_value
 					*/
@@ -262,7 +262,7 @@ namespace csf
 						m_time = new_value;
 					}
 					/**
-					* ��ʾϵͳά����ϵͳʱ�䣬ͨ��ʵʱ��ȡϵͳʱ������ɡ���ʱ�������ϵͳʱ�����һ����ʱ���࣬���Ը�ʱ������ڲ���Ҫ�ܸ߾��ȵ�ϵͳʱ�䡣
+					* 表示系统维护的系统时间，通过实时获取系统时间而生成。该时间与操作系统时间存在一定的时间差距，所以该时间仅用于不需要很高精度的系统时间。
 					*
 					* @param new_value
 					*/
@@ -271,7 +271,7 @@ namespace csf
 						m_native_time = new_value;
 					}
 					/**
-					* ��ʾϵͳ������ʱ�䡣����ֵ���ڵ�һ��timeʱ�䡣����time��ȥbegin_time����ʱ��Ϊϵͳ��ĿǰΪֹ��������ʱ�䡣
+					* 表示系统的启动时间。该数值等于第一个time时间。所以time减去begin_time所得时间为系统到目前为止的运行总时间。
 					*
 					* @param new_value
 					*/
@@ -280,20 +280,20 @@ namespace csf
 						m_begin_time = new_value;
 					}
 					/**
-					* ��Ҫ�����ǣ�ʱ�������̴߳���������
-					* ��Ҫ��������Ϊ��1����ȡ����ʱ�䣬���±���ʱ�䣻2������ǰʱ������һ��ʱ��̶ȣ�
-					* ���أ���
+					* 主要功能是：时间生成线程处理函数。
+					* 主要处理过程为：1、获取本地时间，更新本地时间；2、将当前时间增加一个时间刻度；
+					* 返回：无
 					*/
 					csf_void time_cycle();
 					/**
-					* ��ʾ��ǰ��ʱ�䴦���̣߳�����ʱ������ɴ���
+					* 表示当前的时间处理线程，用于时间和生成处理
 					*/
 					inline csf::core::utils::thread::csf_thread* get_time_thread() {
 
 						return m_time_thread;
 					}
 					/**
-					* ��ʾ��ǰ��ʱ�䴦���̣߳�����ʱ������ɴ���
+					* 表示当前的时间处理线程，用于时间和生成处理
 					*
 					* @param new_value
 					*/
@@ -301,8 +301,8 @@ namespace csf
 						m_time_thread = new_value;
 					}
 					/**
-					* ��Ҫ�����ǣ���ʼ��time_maker����
-					* ���أ�0��ʾ�ɹ�����0��ʾʧ�ܣ�
+					* 主要功能是：初始化time_maker对象
+					* 返回：0表示成功；非0表示失败；
 					*/
 					inline csf_int32 init() {
 
@@ -313,8 +313,8 @@ namespace csf
 						return csf_succeed;
 					}
 					/**
-					* ��Ҫ�����ǣ�����time_maker����
-					* ���أ�0��ʾ�ɹ�����0��ʾʧ�ܣ�
+					* 主要功能是：启动time_maker对象
+					* 返回：0表示成功；非0表示失败；
 					*/
 					inline csf_int32 start() {
 
@@ -326,8 +326,8 @@ namespace csf
 						return csf_succeed;
 					}
 					/**
-					* ��Ҫ�����ǣ�ֹͣtime_maker����
-					* ���أ�0��ʾ�ɹ�����0��ʾʧ�ܣ�
+					* 主要功能是：停止time_maker对象
+					* 返回：0表示成功；非0表示失败；
 					*/
 					inline csf_int32 stop() {
 

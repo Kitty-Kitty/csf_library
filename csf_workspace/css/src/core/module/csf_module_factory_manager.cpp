@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:45
+*Date: 27-6æœˆ-2018 17:28:45
 *
 *Description: Class(csf_module_factory_manager)
 *
@@ -21,9 +21,9 @@
 
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf::core::module::csf_module_factory_manager::init(const csf_configure_manager * conf_mg) {
 
@@ -33,9 +33,9 @@ csf::core::base::csf_int32 csf::core::module::csf_module_factory_manager::init(c
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf::core::module::csf_module_factory_manager::start(const csf_configure_manager * conf_mg) {
 
@@ -45,9 +45,9 @@ csf::core::base::csf_int32 csf::core::module::csf_module_factory_manager::start(
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf::core::module::csf_module_factory_manager::stop(const csf_configure_manager * conf_mg) {
 
@@ -56,18 +56,18 @@ csf::core::base::csf_int32 csf::core::module::csf_module_factory_manager::stop(c
 
 
 /**
-* ´´½¨Ä£¿é²Ù×÷¡£
-* ·µ»Ø£º·Ç¿Õ±íÊ¾´´½¨µÄÄ£¿éµØÖ·£»¿Õ±íÊ¾´íÎó£»
+* åˆ›å»ºæ¨¡å—æ“ä½œã€‚
+* è¿”å›ï¼šéç©ºè¡¨ç¤ºåˆ›å»ºçš„æ¨¡å—åœ°å€ï¼›ç©ºè¡¨ç¤ºé”™è¯¯ï¼›
 *
-* @param name    ±íÊ¾ĞèÒª´´½¨µÄÄ£¿éÃû³Æ
+* @param name    è¡¨ç¤ºéœ€è¦åˆ›å»ºçš„æ¨¡å—åç§°
 */
 csf_module * csf::core::module::csf_module_factory_manager::create(const csf_string& name) {
 
 	csf_module_factory				*tmp_module_factory = csf_nullptr;
 
 
-	//Èç¹û¶ÔÓ¦µÄÄ£¿é¹¤³§ÒÑ¾­´´½¨£¬ÔòÖ±½Óµ÷ÓÃÄ£¿é¹¤³§´´½¨Ä£¿é¶ÔÏó
-	//Èç¹ûÃ»ÓĞ´´½¨ÔòÖØĞÂ´´½¨Ä£¿é¹¤³§£¬²¢²åÈë¹¤³§¹ÜÀíÁĞ±íÖĞ
+	//å¦‚æœå¯¹åº”çš„æ¨¡å—å·¥å‚å·²ç»åˆ›å»ºï¼Œåˆ™ç›´æ¥è°ƒç”¨æ¨¡å—å·¥å‚åˆ›å»ºæ¨¡å—å¯¹è±¡
+	//å¦‚æœæ²¡æœ‰åˆ›å»ºåˆ™é‡æ–°åˆ›å»ºæ¨¡å—å·¥å‚ï¼Œå¹¶æ’å…¥å·¥å‚ç®¡ç†åˆ—è¡¨ä¸­
 	tmp_module_factory = find(name);
 	if (!tmp_module_factory) {
 		csf_unqiue_lock<decltype(m_mutex)>			tmp_lock(m_mutex);
@@ -81,7 +81,7 @@ csf_module * csf::core::module::csf_module_factory_manager::create(const csf_str
 			return csf_nullptr;
 		}
 		else {
-			//ÕâÀï½«ĞÂ´´½¨µÄÄ£¿é¹¤³§£¬²åÈëµ½Ä£¿é¹¤³§¹ÜÀíÆ÷ÖĞ£¬ÒÔ·½±ãÏàÍ¬Ä£¿éµÄ´´½¨
+			//è¿™é‡Œå°†æ–°åˆ›å»ºçš„æ¨¡å—å·¥å‚ï¼Œæ’å…¥åˆ°æ¨¡å—å·¥å‚ç®¡ç†å™¨ä¸­ï¼Œä»¥æ–¹ä¾¿ç›¸åŒæ¨¡å—çš„åˆ›å»º
 			get_module_factories().insert(csf_unordered_map<csf_string, csf_module_factory*>::value_type(name, tmp_module_factory));
 		}
 	}
@@ -91,10 +91,10 @@ csf_module * csf::core::module::csf_module_factory_manager::create(const csf_str
 
 
 /**
- * ´´½¨Ä£¿é²Ù×÷¡£
- * ·µ»Ø£º·Ç¿Õ±íÊ¾´´½¨µÄÄ£¿éµØÖ·£»¿Õ±íÊ¾´íÎó£»
+ * åˆ›å»ºæ¨¡å—æ“ä½œã€‚
+ * è¿”å›ï¼šéç©ºè¡¨ç¤ºåˆ›å»ºçš„æ¨¡å—åœ°å€ï¼›ç©ºè¡¨ç¤ºé”™è¯¯ï¼›
  * 
- * @param type    ±íÊ¾ĞèÒª´´½¨µÄÄ£¿éÀàĞÍ
+ * @param type    è¡¨ç¤ºéœ€è¦åˆ›å»ºçš„æ¨¡å—ç±»å‹
  */
 csf_module * csf::core::module::csf_module_factory_manager::create(const csf_module::csf_module_type type) {
 
@@ -117,24 +117,24 @@ csf_module * csf::core::module::csf_module_factory_manager::create(const csf_mod
 
 
 /**
-* Ïú»ÙÄ£¿é²Ù×÷¡£
-* ·µ»Ø£º0±íÊ¾ÕıÈ·£»<0±íÊ¾´íÎóÂë£»
+* é”€æ¯æ¨¡å—æ“ä½œã€‚
+* è¿”å›ï¼š0è¡¨ç¤ºæ­£ç¡®ï¼›<0è¡¨ç¤ºé”™è¯¯ç ï¼›
 *
-* @param module    ±íÊ¾ĞèÒªÏú»ÙµÄÄ£¿éµØÖ·
+* @param module    è¡¨ç¤ºéœ€è¦é”€æ¯çš„æ¨¡å—åœ°å€
 */
 csf_int32 csf::core::module::csf_module_factory_manager::destory(const csf_module * module) {
 
 	csf_unordered_map<csf_string, csf_module_factory*>::iterator				tmp_iter;
 
 
-	//Ğ£ÑéÊäÈëÊı¾İµÄºÏ·¨ĞÔ
+	//æ ¡éªŒè¾“å…¥æ•°æ®çš„åˆæ³•æ€§
 	if (!module || ((csf_module*)module)->get_name().empty()) {
 		return csf_failure;
 	}
 
 	csf_shared_lock<decltype(m_mutex)>				tmp_lock(m_mutex);
 
-	//²éÕÒÄ£¿é¹¤³§£¬Ïú»ÙÄ£¿é¶ÔÏó
+	//æŸ¥æ‰¾æ¨¡å—å·¥å‚ï¼Œé”€æ¯æ¨¡å—å¯¹è±¡
 	tmp_iter = get_module_factories().find(((csf_module*)module)->get_name());
 	if (tmp_iter != get_module_factories().end()) {
 		if (tmp_iter->second) {
@@ -147,23 +147,23 @@ csf_int32 csf::core::module::csf_module_factory_manager::destory(const csf_modul
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÄ£¿éÃû³Æ²éÕÒÄ£¿é¹¤³§
+* åŠŸèƒ½ï¼šæ ¹æ®æ¨¡å—åç§°æŸ¥æ‰¾æ¨¡å—å·¥å‚
 *
-* @param name    Ä£¿éÃû³Æ
+* @param name    æ¨¡å—åç§°
 */
 csf_module_factory* csf::core::module::csf_module_factory_manager::find(const csf_string& name) {
 
 	csf_unordered_map<csf_string, csf_module_factory*>::iterator				tmp_iter;
 
 
-	//Ğ£ÑéÊäÈëÊı¾İµÄºÏ·¨ĞÔ
+	//æ ¡éªŒè¾“å…¥æ•°æ®çš„åˆæ³•æ€§
 	if (name.empty()) {
 		return csf_nullptr;
 	}
 
 	csf_shared_lock<decltype(m_mutex)>				tmp_lock(m_mutex);
 
-	//²éÕÒÄ£¿é¹¤³§¶ÔÏó
+	//æŸ¥æ‰¾æ¨¡å—å·¥å‚å¯¹è±¡
 	tmp_iter = get_module_factories().find(name);
 	if (tmp_iter != get_module_factories().end()) {
 		if (tmp_iter->second) {
@@ -176,20 +176,20 @@ csf_module_factory* csf::core::module::csf_module_factory_manager::find(const cs
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÄ£¿éÀàĞÍ²éÕÒÄ£¿é¹¤³§
+* åŠŸèƒ½ï¼šæ ¹æ®æ¨¡å—ç±»å‹æŸ¥æ‰¾æ¨¡å—å·¥å‚
 *
-* @param type    Ä£¿éÀàĞÍ
+* @param type    æ¨¡å—ç±»å‹
 */
 csf_module_factory* csf::core::module::csf_module_factory_manager::find(const csf::core::module::csf_module::csf_module_type type) {
 
-	//Ğ£ÑéÊäÈëÊı¾İµÄºÏ·¨ĞÔ
+	//æ ¡éªŒè¾“å…¥æ•°æ®çš„åˆæ³•æ€§
 	if (csf::core::module::csf_module::csf_module_type::csf_module_type_none == type) {
 		return csf_nullptr;
 	}
 
 	csf_shared_lock<decltype(m_mutex)>				tmp_lock(m_mutex);
 
-	//²éÕÒÄ£¿é¹¤³§¶ÔÏó
+	//æŸ¥æ‰¾æ¨¡å—å·¥å‚å¯¹è±¡
 	for (auto &tmp_iter : get_module_factories()) {
 		if (tmp_iter.second && type == tmp_iter.second->get_type()) {
 			return tmp_iter.second;
@@ -201,10 +201,10 @@ csf_module_factory* csf::core::module::csf_module_factory_manager::find(const cs
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÄ£¿éµÄÃû³Æ´´½¨Ò»¸öÄ£¿é¹¤³§¶ÔÏó
-* ·µ»Ø£º·Ç¿Õ±íÊ¾³É¹¦£»¿Õ±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼šæ ¹æ®æ¨¡å—çš„åç§°åˆ›å»ºä¸€ä¸ªæ¨¡å—å·¥å‚å¯¹è±¡
+* è¿”å›ï¼šéç©ºè¡¨ç¤ºæˆåŠŸï¼›ç©ºè¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param name    ±íÊ¾Ä£¿éµÄÃû³Æ
+* @param name    è¡¨ç¤ºæ¨¡å—çš„åç§°
 */
 csf_module_factory* csf::core::module::csf_module_factory_manager::create_module_factory(const csf_string& name) {
 
@@ -227,14 +227,14 @@ csf_module_factory* csf::core::module::csf_module_factory_manager::create_module
 
 
 /**
-* ¹¦ÄÜ£ºÏú»Ù¹¤³§¹ÜÀíÆ÷ÖĞµÄËùÓĞ×ÊÔ´£¬Ö÷ÒªÊÇÒÑ¾­´´½¨µÄÄ£¿é¹¤³§ÁĞ±í¡£
-* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼šé”€æ¯å·¥å‚ç®¡ç†å™¨ä¸­çš„æ‰€æœ‰èµ„æºï¼Œä¸»è¦æ˜¯å·²ç»åˆ›å»ºçš„æ¨¡å—å·¥å‚åˆ—è¡¨ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 */
 csf_void csf::core::module::csf_module_factory_manager::clear() {
 
 	csf_unqiue_lock<decltype(m_mutex)>				tmp_lock(m_mutex);
 
-	//²éÕÒÄ£¿é¹¤³§¶ÔÏó
+	//æŸ¥æ‰¾æ¨¡å—å·¥å‚å¯¹è±¡
 	for (auto &tmp_iter : get_module_factories()) {
 		if (tmp_iter.second) {
 			delete tmp_iter.second;

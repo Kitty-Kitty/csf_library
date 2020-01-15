@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 25-6ÔÂ-2018 17:11:08
+*Date: 25-6æœˆ-2018 17:11:08
 *
 *Description: Class(app)
 *
@@ -36,7 +36,11 @@ int main(int argc, char** argv)
 	//csf::core::module::csf_app			tmp_app("E:\\project_work\\arm_project\\kitty\\project\\trunk\\csf_library\\csf_workspace\\ec\\config\\csf_configs.xml", "xml");
 
 
-	//ÉèÖÃappµÄ°æ±¾ĞÅÏ¢
+	//æ¨¡æ‹Ÿå®ç°ç¨‹åºæ®µé”™è¯¯
+	//csf_int32			*tmp_value = NULL;
+	//csf_int32			tmp_dest = *tmp_value;
+
+	//è®¾ç½®appçš„ç‰ˆæœ¬ä¿¡æ¯
 	tmp_app.get_version().set_version(
 		csf_ec_version
 		, CSF_EC_VER
@@ -44,13 +48,13 @@ int main(int argc, char** argv)
 		, "ec app"
 	);
 
-	//½âÎö³ÌĞòÔËĞĞ²ÎÊı
+	//è§£æç¨‹åºè¿è¡Œå‚æ•°
 	if (!tmp_app_option.get_option(argc, argv)) {
 		csf_log(error, "app option error!");
 		return 0;
 	}
 
-	//¿ªÊ¼³õÊ¼»¯app
+	//å¼€å§‹åˆå§‹åŒ–app
 	tmp_bool = tmp_app.init(csf_nullptr);
 	if (tmp_bool) {
 		csf_log(error, "app init failed!");
@@ -59,7 +63,7 @@ int main(int argc, char** argv)
 		csf_log(notice, "app init succeed!");
 	}
 
-	//¿ªÊ¼ÔËĞĞapp
+	//å¼€å§‹è¿è¡Œapp
 	tmp_bool = tmp_app.start(csf_nullptr);
 	if (tmp_bool) {
 		csf_log(error, "app start failed!");

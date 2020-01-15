@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 30-6ÔÂ-2018 8:49:47
+*Date: 30-6æœˆ-2018 8:49:47
 *
 *Description: Class(csf_element)
 *
@@ -41,10 +41,10 @@ namespace csf
 		namespace system
 		{
 			/**
-			 * ±íÊ¾Êı¾İ¶ÔÏóÄÚÈİ
+			 * è¡¨ç¤ºæ•°æ®å¯¹è±¡å†…å®¹
 			 * @author fz
 			 * @version 1.0
-			 * @created 30-6ÔÂ-2018 8:49:47
+			 * @created 30-6æœˆ-2018 8:49:47
 			 */
 			class csf_element : public csf::core::base::csf_csftype_template<csf_element>
 			{
@@ -60,16 +60,16 @@ namespace csf
 				}
 
 				/**
-				 * ±íÊ¾Êı¾İ¶ÔÏó½ÚµãÃû³Æ
+				 * è¡¨ç¤ºæ•°æ®å¯¹è±¡èŠ‚ç‚¹åç§°
 				 */
 				inline csf_string& get_name() {
 
 					return m_name;
 				}
 				/**
-				 * Ìí¼ÓÒ»¸öÔªËØ¶ÔÏó¡£
+				 * æ·»åŠ ä¸€ä¸ªå…ƒç´ å¯¹è±¡ã€‚
 				 * 
-				 * @param element    ±íÊ¾ĞèÒª±»Ìí¼ÓµÄÔªËØ
+				 * @param element    è¡¨ç¤ºéœ€è¦è¢«æ·»åŠ çš„å…ƒç´ 
 				 */
 				inline virtual csf_int32 add(const csf_element& element) {
 
@@ -77,29 +77,29 @@ namespace csf
 					return csf_success;
 				}
 				/**
-				 * ±íÊ¾Êı¾İ¶ÔÏó½ÚµãÊı¾İÄÚÈİ
+				 * è¡¨ç¤ºæ•°æ®å¯¹è±¡èŠ‚ç‚¹æ•°æ®å†…å®¹
 				 */
 				inline csf_string& get_content() {
 
 					return m_content;
 				}
 				/**
-				 * ±íÊ¾Ìí¼ÓÒ»¸ö¸¸×Ó½áµã,½«childÌí¼Óµ½parentÖĞ¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºæ·»åŠ ä¸€ä¸ªçˆ¶å­ç»“ç‚¹,å°†childæ·»åŠ åˆ°parentä¸­ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ã€‚
 				 * 
-				 * @param parent    ±íÊ¾¸¸½áµã
-				 * @param child    ±íÊ¾×Ó½áµã
+				 * @param parent    è¡¨ç¤ºçˆ¶ç»“ç‚¹
+				 * @param child    è¡¨ç¤ºå­ç»“ç‚¹
 				 */
 				inline virtual csf_int32 add(csf_element& parent, const csf_element& child) {
 
 					return parent.add(child);
 				}
 				/**
-				 * ±íÊ¾Ìí¼ÓÒ»¸ö×Ó½áµã£¬Ìí¼Óµ½Ö¸¶¨parentÖĞ¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºæ·»åŠ ä¸€ä¸ªå­ç»“ç‚¹ï¼Œæ·»åŠ åˆ°æŒ‡å®šparentä¸­ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ã€‚
 				 * 
-				 * @param parent    ±íÊ¾¸¸½áµã
-				 * @param child    ±íÊ¾×Ó½áµã
+				 * @param parent    è¡¨ç¤ºçˆ¶ç»“ç‚¹
+				 * @param child    è¡¨ç¤ºå­ç»“ç‚¹
 				 */
 				inline virtual csf_int32 add(const csf_string& parent, const csf_element& child) {
 
@@ -113,11 +113,11 @@ namespace csf
 					return csf_failure;
 				}
 				/**
-				 * ±íÊ¾Ìí¼ÓÒ»¸ö×Ó½áµã£¬Ìí¼Óµ½Ö¸¶¨parentÖĞ¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºæ·»åŠ ä¸€ä¸ªå­ç»“ç‚¹ï¼Œæ·»åŠ åˆ°æŒ‡å®šparentä¸­ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ã€‚
 				 * 
-				 * @param parent    ±íÊ¾¸¸½áµã
-				 * @param child    ±íÊ¾×Ó½áµã
+				 * @param parent    è¡¨ç¤ºçˆ¶ç»“ç‚¹
+				 * @param child    è¡¨ç¤ºå­ç»“ç‚¹
 				 */
 				inline virtual csf_int32 add(const csf_char* parent, const csf_element& child) {
 
@@ -128,10 +128,10 @@ namespace csf
 					return add(csf_string(parent), child);
 				}
 				/**
-				 * ±íÊ¾Ìí¼ÓÒ»¸öÊôĞÔÊı¾İ
+				 * è¡¨ç¤ºæ·»åŠ ä¸€ä¸ªå±æ€§æ•°æ®
 				 * 
-				 * @param name    ±íÊ¾ĞèÒªÌí¼ÓµÄÊôĞÔÃû³Æ
-				 * @param val    ±íÊ¾ĞèÒªÌí¼ÓµÄÊôĞÔÊı¾İ
+				 * @param name    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„å±æ€§åç§°
+				 * @param val    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„å±æ€§æ•°æ®
 				 */
 				inline virtual csf_int32 add(const csf_string& name, const csf_string& val) {
 
@@ -142,10 +142,10 @@ namespace csf
 					return add(name.c_str(), val.c_str());
 				}
 				/**
-				 * ±íÊ¾Ìí¼ÓÒ»¸öÊôĞÔÊı¾İ
+				 * è¡¨ç¤ºæ·»åŠ ä¸€ä¸ªå±æ€§æ•°æ®
 				 * 
-				 * @param name    ±íÊ¾ĞèÒªÌí¼ÓµÄÊôĞÔÃû³Æ
-				 * @param val    ±íÊ¾ĞèÒªÌí¼ÓµÄÊôĞÔÊı¾İ
+				 * @param name    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„å±æ€§åç§°
+				 * @param val    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„å±æ€§æ•°æ®
 				 */
 				inline virtual csf_int32 add(const csf_char* name, const csf_char* val) {
 
@@ -158,15 +158,15 @@ namespace csf
 					return csf_success;
 				}
 				/**
-				 * ±íÊ¾Çå¿ÕÄÚÈİ
+				 * è¡¨ç¤ºæ¸…ç©ºå†…å®¹
 				 */
 				inline virtual csf_void clear() {
 					*this = get_null();
 				}
 				/**
-				 * ±íÊ¾²éÕÒÒ»¸öÊôĞÔÊıÖµ
+				 * è¡¨ç¤ºæŸ¥æ‰¾ä¸€ä¸ªå±æ€§æ•°å€¼
 				 * 
-				 * @param name    ±íÊ¾ĞèÒª²éÕÒµÄÊôĞÔÃû³Æ
+				 * @param name    è¡¨ç¤ºéœ€è¦æŸ¥æ‰¾çš„å±æ€§åç§°
 				 */
 				inline virtual const csf_string& find(const csf_string& name) {
 
@@ -177,9 +177,9 @@ namespace csf
 					return  find(name.c_str());
 				}
 				/**
-				 * ±íÊ¾²éÕÒÒ»¸öÊôĞÔÊıÖµ
+				 * è¡¨ç¤ºæŸ¥æ‰¾ä¸€ä¸ªå±æ€§æ•°å€¼
 				 * 
-				 * @param name    ±íÊ¾ĞèÒª²éÕÒµÄÊôĞÔÃû³Æ
+				 * @param name    è¡¨ç¤ºéœ€è¦æŸ¥æ‰¾çš„å±æ€§åç§°
 				 */
 				inline virtual const csf_string& find(const csf_char* name) {
 
@@ -197,24 +197,24 @@ namespace csf
 					return  csf_string_null;
 				}
 				/**
-				 * ±íÊ¾²éÕÒÒ»¸ö×Óelement
-				 * ·µ»Ø£º·Çnull±íÊ¾³É¹¦£»null±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºæŸ¥æ‰¾ä¸€ä¸ªå­element
+				 * è¿”å›ï¼šénullè¡¨ç¤ºæˆåŠŸï¼›nullè¡¨ç¤ºå¤±è´¥ã€‚
 				 * 
-				 * @param name    ±íÊ¾ĞèÒª²éÕÒµÄelementÃû³Æ
+				 * @param name    è¡¨ç¤ºéœ€è¦æŸ¥æ‰¾çš„elementåç§°
 				 */
 				inline virtual const csf_element& find_child(const csf_string& name) {
 
-					//Ãû³ÆÎª¿ÕÔò·µ»Ø¿Õ
+					//åç§°ä¸ºç©ºåˆ™è¿”å›ç©º
 					if (name.empty()) {
 						return get_null();
 					}
 
-					//ÅĞ¶Ïµ±Ç°Ä£¿éÊÇ·ñ¾ÍÊÇĞèÒª²éÕÒµÄÃû³Æ
+					//åˆ¤æ–­å½“å‰æ¨¡å—æ˜¯å¦å°±æ˜¯éœ€è¦æŸ¥æ‰¾çš„åç§°
 					if (get_name() == name) {
 						return *this;
 					}
 
-					//²éÕÒ×ÓÄ£¿éÁĞ±í
+					//æŸ¥æ‰¾å­æ¨¡å—åˆ—è¡¨
 					for (csf_element &tmp_iter : m_children) {
 						if (tmp_iter.get_name() == name) {
 							return tmp_iter;
@@ -223,10 +223,10 @@ namespace csf
 					return get_null();
 				}
 				/**
-				 * ±íÊ¾²éÕÒÒ»¸ö×Óelement
-				 * ·µ»Ø£º·Çnull±íÊ¾³É¹¦£»null±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºæŸ¥æ‰¾ä¸€ä¸ªå­element
+				 * è¿”å›ï¼šénullè¡¨ç¤ºæˆåŠŸï¼›nullè¡¨ç¤ºå¤±è´¥ã€‚
 				 * 
-				 * @param name    ±íÊ¾ĞèÒª²éÕÒµÄelementÃû³Æ
+				 * @param name    è¡¨ç¤ºéœ€è¦æŸ¥æ‰¾çš„elementåç§°
 				 */
 				inline virtual const csf_element& find_child(const csf_char* name) {
 
@@ -237,30 +237,30 @@ namespace csf
 					return find_child(csf_string(name));
 				}
 				/**
-				* ±íÊ¾²éÕÒÒ»¸öelement
-				* ·µ»Ø£º·Çnull±íÊ¾³É¹¦£»null±íÊ¾Ê§°Ü¡£
+				* è¡¨ç¤ºæŸ¥æ‰¾ä¸€ä¸ªelement
+				* è¿”å›ï¼šénullè¡¨ç¤ºæˆåŠŸï¼›nullè¡¨ç¤ºå¤±è´¥ã€‚
 				*
-				* @param name    ±íÊ¾ĞèÒª²éÕÒµÄelementÃû³Æ
+				* @param name    è¡¨ç¤ºéœ€è¦æŸ¥æ‰¾çš„elementåç§°
 				*/
 				virtual const csf_element& find_element(const csf_string& name);
 #if 0
 				/**
-				 * ±íÊ¾²éÕÒÒ»¸öelement
-				 * ·µ»Ø£º·Çnull±íÊ¾³É¹¦£»null±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºæŸ¥æ‰¾ä¸€ä¸ªelement
+				 * è¿”å›ï¼šénullè¡¨ç¤ºæˆåŠŸï¼›nullè¡¨ç¤ºå¤±è´¥ã€‚
 				 * 
-				 * @param name    ±íÊ¾ĞèÒª²éÕÒµÄelementÃû³Æ
+				 * @param name    è¡¨ç¤ºéœ€è¦æŸ¥æ‰¾çš„elementåç§°
 				 */
 				inline virtual const csf_element& find_element(const csf_string& name) {
 
 					csf_element						&tmp_element = (csf_element&)m_null;
 
-					//±íÊ¾ÏÈ²éÑ¯×Ó½áµã
+					//è¡¨ç¤ºå…ˆæŸ¥è¯¢å­ç»“ç‚¹
 					tmp_element = find_child(name);
 					if (tmp_element.not_null()) {
 						return tmp_element;
 					}
 
-					//´Ó×ÓÄ£¿éÖĞ±é²¼²éÕÒ×Ó¶ÔÏó
+					//ä»å­æ¨¡å—ä¸­éå¸ƒæŸ¥æ‰¾å­å¯¹è±¡
 					for (csf_element &tmp_iter : get_children()) {
 						tmp_element = tmp_iter.find_element(name);
 						if (tmp_element.not_null()) {
@@ -271,10 +271,10 @@ namespace csf
 				}
 #endif
 				/**
-				 * ±íÊ¾²éÕÒÒ»¸öelement
-				 * ·µ»Ø£º·Çnull±íÊ¾³É¹¦£»null±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºæŸ¥æ‰¾ä¸€ä¸ªelement
+				 * è¿”å›ï¼šénullè¡¨ç¤ºæˆåŠŸï¼›nullè¡¨ç¤ºå¤±è´¥ã€‚
 				 * 
-				 * @param name    ±íÊ¾ĞèÒª²éÕÒµÄelementÃû³Æ
+				 * @param name    è¡¨ç¤ºéœ€è¦æŸ¥æ‰¾çš„elementåç§°
 				 */
 				inline virtual const csf_element& find_element(const csf_char* name) {
 
@@ -284,14 +284,14 @@ namespace csf
 					return  find_element(csf_string(name));
 				}
 				/**
-				* ±íÊ¾¸ù¾İitemsÊôĞÔÂ·¾¶²éÕÒÒ»¸öelement¡£
-				* ·µ»Ø£º·Çnull±íÊ¾Âú×ãitemsËùÓĞÂ·¾¶µÄ½Úµã£»null±íÊ¾Ã»ÓĞ²éÕÒµ½Âú×ãÂ·¾¶µÄ½Úµã£»
+				* è¡¨ç¤ºæ ¹æ®itemså±æ€§è·¯å¾„æŸ¥æ‰¾ä¸€ä¸ªelementã€‚
+				* è¿”å›ï¼šénullè¡¨ç¤ºæ»¡è¶³itemsæ‰€æœ‰è·¯å¾„çš„èŠ‚ç‚¹ï¼›nullè¡¨ç¤ºæ²¡æœ‰æŸ¥æ‰¾åˆ°æ»¡è¶³è·¯å¾„çš„èŠ‚ç‚¹ï¼›
 				*
-				* @param items    itemsÊôĞÔÂ·¾¶
+				* @param items    itemså±æ€§è·¯å¾„
 				*/
 				virtual const csf_element& find_element(const csf_list<csf_string>& items);
 				/**
-				 * ±íÊ¾Êı¾İ¶ÔÏó½ÚµãÊı¾İÄÚÈİ
+				 * è¡¨ç¤ºæ•°æ®å¯¹è±¡èŠ‚ç‚¹æ•°æ®å†…å®¹
 				 * 
 				 * @param newVal
 				 */
@@ -300,7 +300,7 @@ namespace csf
 					m_content = newVal;
 				}
 				/**
-				 * ±íÊ¾Êı¾İ¶ÔÏó½ÚµãÃû³Æ
+				 * è¡¨ç¤ºæ•°æ®å¯¹è±¡èŠ‚ç‚¹åç§°
 				 * 
 				 * @param newVal
 				 */
@@ -309,7 +309,7 @@ namespace csf
 					m_name = newVal;
 				}
 				/**
-				 * ±íÊ¾Êı¾İ¶ÔÏó½ÚµãÃû³Æ
+				 * è¡¨ç¤ºæ•°æ®å¯¹è±¡èŠ‚ç‚¹åç§°
 				 * 
 				 * @param newVal
 				 */
@@ -318,7 +318,7 @@ namespace csf
 					m_name = newVal;
 				}
 				/**
-				 * ±íÊ¾Êı¾İ¶ÔÏó½ÚµãÊı¾İÄÚÈİ
+				 * è¡¨ç¤ºæ•°æ®å¯¹è±¡èŠ‚ç‚¹æ•°æ®å†…å®¹
 				 * 
 				 * @param newVal
 				 */
@@ -327,15 +327,15 @@ namespace csf
 					m_content = newVal;
 				}
 				/**
-				* ±íÊ¾×Ó½ÚµãÁĞ±í
+				* è¡¨ç¤ºå­èŠ‚ç‚¹åˆ—è¡¨
 				*/
 				inline csf_list<csf_element>& get_children() {
 
 					return m_children;
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñÎª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾Îª¿Õ£»false±íÊ¾²»Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ä¸ºç©ºã€‚
 				*/
 				inline csf_bool is_null() {
 
@@ -349,8 +349,8 @@ namespace csf
 					return csf_false;
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñ²»Îª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾²»Îª¿Õ£»false±íÊ¾Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ºç©ºã€‚
 				*/
 				inline csf_bool not_null() {
 
@@ -359,31 +359,31 @@ namespace csf
 
 			private:
 				/**
-				 * ±íÊ¾Êı¾İ¶ÔÏó½ÚµãÃû³Æ
+				 * è¡¨ç¤ºæ•°æ®å¯¹è±¡èŠ‚ç‚¹åç§°
 				 */
 				csf_string m_name = "";
 				/**
-				 * ±íÊ¾Êı¾İ¶ÔÏó½ÚµãÊı¾İÄÚÈİ
+				 * è¡¨ç¤ºæ•°æ®å¯¹è±¡èŠ‚ç‚¹æ•°æ®å†…å®¹
 				 */
 				csf_string m_content = "";
 				/**
-				 * ±íÊ¾×Ó½ÚµãÁĞ±í
+				 * è¡¨ç¤ºå­èŠ‚ç‚¹åˆ—è¡¨
 				 */
 				csf_list<csf_element> m_children;
 				/**
-				 * ±íÊ¾ÊôĞÔĞÅÏ¢ÄÚÈİ
+				 * è¡¨ç¤ºå±æ€§ä¿¡æ¯å†…å®¹
 				 */
 				csf_map<csf_string, csf_string> m_attributes;
 
 				/**
-				 * ±íÊ¾ÊôĞÔĞÅÏ¢ÄÚÈİ
+				 * è¡¨ç¤ºå±æ€§ä¿¡æ¯å†…å®¹
 				 */
 				inline csf_map<csf_string, csf_string>& get_attributes() {
 
 					return m_attributes;
 				}
 				/**
-				 * ±íÊ¾ÊôĞÔĞÅÏ¢ÄÚÈİ
+				 * è¡¨ç¤ºå±æ€§ä¿¡æ¯å†…å®¹
 				 * 
 				 * @param newVal
 				 */
@@ -392,7 +392,7 @@ namespace csf
 					m_attributes = newVal;
 				}
 				/**
-				 * ±íÊ¾×Ó½ÚµãÁĞ±í
+				 * è¡¨ç¤ºå­èŠ‚ç‚¹åˆ—è¡¨
 				 * 
 				 * @param newVal
 				 */

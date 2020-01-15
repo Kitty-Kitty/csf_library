@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 05-7ÔÂ-2018 20:09:26
+*Date: 05-7æœˆ-2018 20:09:26
 *
 *Description: Class(csf_attribute)
 *
@@ -28,11 +28,11 @@ using csf::core::system::attribute::csf_attribute;
 
 
 /**
-* ±íÊ¾³õÊ¼»¯csf_attribute¡£
-* ·µ»Ø£ºtrue±íÊ¾Ê§°Ü£»false±íÊ¾³É¹¦¡£
+* è¡¨ç¤ºåˆå§‹åŒ–csf_attributeã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºå¤±è´¥ï¼›falseè¡¨ç¤ºæˆåŠŸã€‚
 *
-* @param configure_manager    ±íÊ¾±£´æÅäÖÃ¹ÜÀíÆ÷¶ÔÏó
-* @param alias    ±íÊ¾µ±Ç°ÊôĞÔ±ğÃû£¬Èç¹ûÊôĞÔÃû³ÆÎª¿ÕÔòÔòÊ¹ÓÃ¸Ã±ğÃû¡£
+* @param configure_manager    è¡¨ç¤ºä¿å­˜é…ç½®ç®¡ç†å™¨å¯¹è±¡
+* @param alias    è¡¨ç¤ºå½“å‰å±æ€§åˆ«åï¼Œå¦‚æœå±æ€§åç§°ä¸ºç©ºåˆ™åˆ™ä½¿ç”¨è¯¥åˆ«åã€‚
 */
 csf_bool csf_attribute::init(const csf_configure_manager& configure_manager, const csf_string& alias) {
 
@@ -42,19 +42,19 @@ csf_bool csf_attribute::init(const csf_configure_manager& configure_manager, con
 
 
 /**
-* ±íÊ¾´ÓÅäÖÃ¹ÜÀíÆ÷ÖĞ»ñÈ¡ÅäÖÃÏîÄÚÈİ¡£
-* ·µ»Ø£ºtrue±íÊ¾»ñÈ¡µ½Ö¸¶¨ÅäÖÃÏîÊıÖµ£»false±íÊ¾Ã»ÓĞ»ñÈ¡µ½ÅäÖÃÏîÊıÖµ¡£
+* è¡¨ç¤ºä»é…ç½®ç®¡ç†å™¨ä¸­è·å–é…ç½®é¡¹å†…å®¹ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºè·å–åˆ°æŒ‡å®šé…ç½®é¡¹æ•°å€¼ï¼›falseè¡¨ç¤ºæ²¡æœ‰è·å–åˆ°é…ç½®é¡¹æ•°å€¼ã€‚
 *
-* @param configure_manager    ±íÊ¾±£´æÅäÖÃ¹ÜÀíÆ÷¶ÔÏó
-* @param items    ±íÊ¾ÅäÖÃÏîµÄÂ·¾¶ĞÅÏ¢
+* @param configure_manager    è¡¨ç¤ºä¿å­˜é…ç½®ç®¡ç†å™¨å¯¹è±¡
+* @param items    è¡¨ç¤ºé…ç½®é¡¹çš„è·¯å¾„ä¿¡æ¯
 */
 csf_bool csf_attribute::get_configure(csf_configure_manager& configure_manager, csf_list<csf_string>& items) {
 
 	csf_element					*tmp_element = csf_nullptr;
 
 
-	//´ÓÅäÖÃ¹ÜÀíÆ÷²éÕÒ·ûºÏÂ·¾¶µÄÊôĞÔÊıÖµ£¬²¢ÅĞ¶ÏÊıÖµÊÇ·ñÎª¿Õ
-	//Êı¾İ²»´æÔÚ»òÎª¿Õ¶¼·µ»Ø´íÎó
+	//ä»é…ç½®ç®¡ç†å™¨æŸ¥æ‰¾ç¬¦åˆè·¯å¾„çš„å±æ€§æ•°å€¼ï¼Œå¹¶åˆ¤æ–­æ•°å€¼æ˜¯å¦ä¸ºç©º
+	//æ•°æ®ä¸å­˜åœ¨æˆ–ä¸ºç©ºéƒ½è¿”å›é”™è¯¯
 	tmp_element = (csf_element*)&(configure_manager.find_element(items));
 	if (tmp_element->is_null()) {
 		csf_attribute_log(warning, csf_logger_level_warning,
@@ -76,14 +76,14 @@ csf_bool csf_attribute::get_configure(csf_configure_manager& configure_manager, 
 
 
 /**
-* ±íÊ¾´ÓÅäÖÃ¹ÜÀíÆ÷ÖĞ»ñÈ¡ÅäÖÃÏîÄÚÈİ¡£
-* ·µ»Ø£ºtrue±íÊ¾»ñÈ¡µ½Ö¸¶¨ÅäÖÃÏîÊıÖµ£»false±íÊ¾Ã»ÓĞ»ñÈ¡µ½ÅäÖÃÏîÊıÖµ¡£
+* è¡¨ç¤ºä»é…ç½®ç®¡ç†å™¨ä¸­è·å–é…ç½®é¡¹å†…å®¹ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºè·å–åˆ°æŒ‡å®šé…ç½®é¡¹æ•°å€¼ï¼›falseè¡¨ç¤ºæ²¡æœ‰è·å–åˆ°é…ç½®é¡¹æ•°å€¼ã€‚
 *
-* @param configure_manager    ±íÊ¾±£´æÅäÖÃ¹ÜÀíÆ÷¶ÔÏó
+* @param configure_manager    è¡¨ç¤ºä¿å­˜é…ç½®ç®¡ç†å™¨å¯¹è±¡
 */
 csf_bool csf_attribute::get_configure(csf_configure_manager& configure_manager) {
 
-	//ÅĞ¶ÏitemsÊÇ·ñÎª¿Õ£¬Èç¹ûÎª¿Õ£¬Ôò²ÉÓÃÃû³Æ×÷ÎªitemsÏî
+	//åˆ¤æ–­itemsæ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºï¼Œåˆ™é‡‡ç”¨åç§°ä½œä¸ºitemsé¡¹
 	if (get_items().empty()) {
 		if (get_name().empty()) {
 			csf_attribute_log(warning, csf_logger_level_warning,
@@ -95,17 +95,17 @@ csf_bool csf_attribute::get_configure(csf_configure_manager& configure_manager) 
 		}
 	}
 
-	//¸ù¾İitems»ñÈ¡ÅäÖÃÏî×Ö·ûÊıÖµ
+	//æ ¹æ®itemsè·å–é…ç½®é¡¹å­—ç¬¦æ•°å€¼
 	return get_configure(configure_manager, get_items());
 }
 
 
 /**
-* ±íÊ¾´ÓÅäÖÃ¹ÜÀíÆ÷ÖĞ»ñÈ¡ÅäÖÃÏîÄÚÈİ¡£
-* ·µ»Ø£ºtrue±íÊ¾»ñÈ¡µ½Ö¸¶¨ÅäÖÃÏîÊıÖµ£»false±íÊ¾Ã»ÓĞ»ñÈ¡µ½ÅäÖÃÏîÊıÖµ¡£
+* è¡¨ç¤ºä»é…ç½®ç®¡ç†å™¨ä¸­è·å–é…ç½®é¡¹å†…å®¹ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºè·å–åˆ°æŒ‡å®šé…ç½®é¡¹æ•°å€¼ï¼›falseè¡¨ç¤ºæ²¡æœ‰è·å–åˆ°é…ç½®é¡¹æ•°å€¼ã€‚
 *
-* @param element    ±íÊ¾±£´æÅäÖÃµÄÊôĞÔ¶ÔÏó
-* @param items    ±íÊ¾ÅäÖÃÏîµÄÂ·¾¶ĞÅÏ¢
+* @param element    è¡¨ç¤ºä¿å­˜é…ç½®çš„å±æ€§å¯¹è±¡
+* @param items    è¡¨ç¤ºé…ç½®é¡¹çš„è·¯å¾„ä¿¡æ¯
 */
 csf_bool csf_attribute::get_configure(csf_element& element, csf_list<csf_string>& items) {
 
@@ -118,7 +118,7 @@ csf_bool csf_attribute::get_configure(csf_element& element, csf_list<csf_string>
 		return csf_false;
 	}
 
-	//Ñ­»·±éÀúËùÓĞÁĞ±í£¬²éÕÒ·ûºÏÂ·¾¶ĞèÇóµÄ½Úµã
+	//å¾ªç¯éå†æ‰€æœ‰åˆ—è¡¨ï¼ŒæŸ¥æ‰¾ç¬¦åˆè·¯å¾„éœ€æ±‚çš„èŠ‚ç‚¹
 	tmp_element = (csf_element*)&(element.find_element(items));
 	if (tmp_element->is_null()) {
 		csf_attribute_log(warning, csf_logger_level_warning,

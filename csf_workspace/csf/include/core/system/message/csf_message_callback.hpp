@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:44
+*Date: 27-6æœˆ-2018 17:28:44
 *
 *Description: Class(csf_message_callback)
 *
@@ -34,24 +34,24 @@ namespace csf
 			namespace message
 			{
 				/**
-				* ±íÊ¾¶¨ÒåÒ»¸öÏûÏ¢Àà
+				* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªæ¶ˆæ¯ç±»
 				* @author fangzhenmu@aliyun.com
 				* @version 1.0
-				* @created 01-10ÔÂ-2018 12:54:36
+				* @created 01-10æœˆ-2018 12:54:36
 				*/
 				class csf_message;
 				/**
-				* ±íÊ¾¶¨ÒåÒ»¸öÏûÏ¢ÖÇÄÜÖ¸Õë
+				* è¡¨ç¤ºå®šä¹‰ä¸€ä¸ªæ¶ˆæ¯æ™ºèƒ½æŒ‡é’ˆ
 				* @author fangzhenmu@aliyun.com
 				* @version 1.0
-				* @created 01-10ÔÂ-2018 12:54:36
+				* @created 01-10æœˆ-2018 12:54:36
 				*/
 				typedef	csf_shared_ptr<csf_message>				csf_message_ptr;
 				/**
-				* ±íÊ¾ÏûÏ¢µÄ»Øµ÷º¯Êı
+				* è¡¨ç¤ºæ¶ˆæ¯çš„å›è°ƒå‡½æ•°
 				* @author f
 				* @version 1.0
-				* @created 01-10ÔÂ-2018 12:54:37
+				* @created 01-10æœˆ-2018 12:54:37
 				*/
 				typedef csf_function<csf_int32(csf_message_ptr
 					, csf_message_error&)> 	csf_message_callback;

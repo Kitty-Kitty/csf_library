@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 11-7ÔÂ-2018 11:09:59
+*Date: 11-7æœˆ-2018 11:09:59
 *
 *Description: Class(csf_attribute_int)
 *
@@ -25,15 +25,15 @@ using csf::core::system::attribute::csf_attribute_int;
 
 
 /**
- * ´ÓÄÚÈİÖĞ½âÎöĞèÒªµÄ²ÎÊı¡£
- * ·µ»Ø£ºture±íÊ¾½âÎö³É¹¦£»false±íÊ¾½âÎöÊ§°Ü¡£
+ * ä»å†…å®¹ä¸­è§£æéœ€è¦çš„å‚æ•°ã€‚
+ * è¿”å›ï¼štureè¡¨ç¤ºè§£ææˆåŠŸï¼›falseè¡¨ç¤ºè§£æå¤±è´¥ã€‚
  * 
- * @param content    ±íÊ¾ĞèÒª½âÎöµÄÄÚÈİĞÅÏ¢
+ * @param content    è¡¨ç¤ºéœ€è¦è§£æçš„å†…å®¹ä¿¡æ¯
  */
 csf_bool csf_attribute_int::parse_parametes(const csf_string& content) {
 
 	/**
-	* ±íÊ¾ºËÑé¸ñÊ½ºÍ½ØÈ¡×Ö·û´®ÕıÔò±í´ïÊ½
+	* è¡¨ç¤ºæ ¸éªŒæ ¼å¼å’Œæˆªå–å­—ç¬¦ä¸²æ­£åˆ™è¡¨è¾¾å¼
 	*/
 	std::regex					tmp_regex("(\\d+)");
 	std::smatch					tmp_match_result;
@@ -44,15 +44,15 @@ csf_bool csf_attribute_int::parse_parametes(const csf_string& content) {
 		return csf_false;
 	}
 
-	//Ê¹ÓÃÕıÔò±í´ïÊ½ºËÑéÊı¾İ½á¹¹ºÍÌáÈ¡²ÎÊı
+	//ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼æ ¸éªŒæ•°æ®ç»“æ„å’Œæå–å‚æ•°
 	if (!std::regex_match(content, tmp_match_result, tmp_regex)) {
-		//ÕıÔò±í´ïÊ½Æ¥ÅäÊ§°Ü£¬±íÊ¾Êı¾İ¸ñÊ½´íÎó
+		//æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…å¤±è´¥ï¼Œè¡¨ç¤ºæ•°æ®æ ¼å¼é”™è¯¯
 		csf_attribute_log(warning, csf_log_code_warning
 			, "content format error.");
 		return csf_false;
 	}
 	else {
-		//Èç¹ûmatchÌáÈ¡µÄ²ÎÊıĞ¡ÓÚµÈÓÚĞèÒªµÄ²ÎÊı¸öÊı£¬Ôò±íÊ¾´íÎó
+		//å¦‚æœmatchæå–çš„å‚æ•°å°äºç­‰äºéœ€è¦çš„å‚æ•°ä¸ªæ•°ï¼Œåˆ™è¡¨ç¤ºé”™è¯¯
 		if (tmp_match_result.size() <= csf_attribute_int_parametes_size) {
 			csf_attribute_log(warning, csf_log_code_warning
 				, "content format error. parametes number[%d <= %d]. %s"
@@ -61,7 +61,7 @@ csf_bool csf_attribute_int::parse_parametes(const csf_string& content) {
 			return csf_false;
 		}
 
-		//½«×Ö·û´®Êı×Ö×ª»»Îªint32¸ñÊ½µÄÊıÖµ
+		//å°†å­—ç¬¦ä¸²æ•°å­—è½¬æ¢ä¸ºint32æ ¼å¼çš„æ•°å€¼
 		tmp_value = csf_atoint32(tmp_match_result[1].str().c_str());
 		if (tmp_value < 0) {
 			csf_attribute_log(warning, csf_log_code_warning,
@@ -78,24 +78,24 @@ csf_bool csf_attribute_int::parse_parametes(const csf_string& content) {
 
 
 /**
- * ±íÊ¾´¦Àícsf_attributeÊôĞÔ²Ù×÷¡£ÕâÀïÓëcsf_attribute_templateÖĞ²»Í¬µÄÊÇ£¬ÕâÀïÌí¼ÓÒ»²ãprocess_numberº¯ÊıÖ÷ÒªÊÇÎªÁË
- * ÊµÏÖÊı¾İ±ß½çµÄÍ³Ò»´¦Àí¡£
- * ·µ»Ø£ºtrue±íÊ¾Ê§°Ü£»false±íÊ¾³É¹¦¡£
+ * è¡¨ç¤ºå¤„ç†csf_attributeå±æ€§æ“ä½œã€‚è¿™é‡Œä¸csf_attribute_templateä¸­ä¸åŒçš„æ˜¯ï¼Œè¿™é‡Œæ·»åŠ ä¸€å±‚process_numberå‡½æ•°ä¸»è¦æ˜¯ä¸ºäº†
+ * å®ç°æ•°æ®è¾¹ç•Œçš„ç»Ÿä¸€å¤„ç†ã€‚
+ * è¿”å›ï¼štrueè¡¨ç¤ºå¤±è´¥ï¼›falseè¡¨ç¤ºæˆåŠŸã€‚
  * 
- * @param configure_manager    ±íÊ¾±£´æÅäÖÃ¹ÜÀíÆ÷¶ÔÏó
- * @param alias    ±íÊ¾µ±Ç°ÊôĞÔ±ğÃû£¬Èç¹ûÊôĞÔÃû³ÆÎª¿ÕÔòÔòÊ¹ÓÃ¸Ã±ğÃû¡£
+ * @param configure_manager    è¡¨ç¤ºä¿å­˜é…ç½®ç®¡ç†å™¨å¯¹è±¡
+ * @param alias    è¡¨ç¤ºå½“å‰å±æ€§åˆ«åï¼Œå¦‚æœå±æ€§åç§°ä¸ºç©ºåˆ™åˆ™ä½¿ç”¨è¯¥åˆ«åã€‚
  */
 csf_bool csf_attribute_int::process_number(const csf_configure_manager& configure_manager, const csf_string& alias) {
 
 	csf_string					tmp_content = "";
 
 
-	//µ÷ÓÃ»ù´¡¿âµÄ³õÊ¼»¯º¯Êı»ñÈ¡ÄÚÈİÊıÖµ£¬Ö÷ÒªÊÇ»ñÈ¡contentÊıÖµ
+	//è°ƒç”¨åŸºç¡€åº“çš„åˆå§‹åŒ–å‡½æ•°è·å–å†…å®¹æ•°å€¼ï¼Œä¸»è¦æ˜¯è·å–contentæ•°å€¼
 	if (csf_false == csf_attribute::init(configure_manager, alias)) {
 		return csf_false;
 	}
 
-	//É¾³ıÄÚÈİÖĞµÄËùÓĞ¿Õ°××Ö·û
+	//åˆ é™¤å†…å®¹ä¸­çš„æ‰€æœ‰ç©ºç™½å­—ç¬¦
 	tmp_content = shrink(get_content());
 	if (tmp_content.empty()) {
 		csf_attribute_log(warning, csf_log_code_warning,
@@ -103,7 +103,7 @@ csf_bool csf_attribute_int::process_number(const csf_configure_manager& configur
 		return csf_false;
 	}
 
-	//½âÎö´ÓÅäÖÃÎÄ¼şÖĞ¶ÁÈ¡µÄÊôĞÔÊı¾İ
+	//è§£æä»é…ç½®æ–‡ä»¶ä¸­è¯»å–çš„å±æ€§æ•°æ®
 	if (csf_false == parse_parametes(tmp_content)) {
 		return csf_false;
 	}

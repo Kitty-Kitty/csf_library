@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:51
+*Date: 19-7æœˆ-2018 20:11:51
 *
-*Description: Class(csf_thread) ±íÊ¾Ïß³ÌÀà
+*Description: Class(csf_thread) è¡¨ç¤ºçº¿ç¨‹ç±»
 *
 *Others:
 *
@@ -34,43 +34,43 @@ namespace csf
 			namespace thread
 			{
 				/**
-				* ±íÊ¾Ïß³ÌÀà
+				* è¡¨ç¤ºçº¿ç¨‹ç±»
 				* @author f
 				* @version 1.0
-				* @created 21-10ÔÂ-2018 20:23:45
+				* @created 21-10æœˆ-2018 20:23:45
 				*/
 				class csf_thread : public boost::thread
 				{
 				public:
 					/**
-					* ±íÊ¾Ïß³ÌÔËĞĞµÄÓÃ»§º¯Êı¾ä±ú
+					* è¡¨ç¤ºçº¿ç¨‹è¿è¡Œçš„ç”¨æˆ·å‡½æ•°å¥æŸ„
 					* @author f
 					* @version 1.0
-					* @created 01-10ÔÂ-2018 12:54:37
+					* @created 01-10æœˆ-2018 12:54:37
 					*/
 					typedef csf_function<csf_void()> 	csf_thread_start_handle;
 					/**
-					* ±íÊ¾Ïß³Ì×´Ì¬ÁĞ±í
+					* è¡¨ç¤ºçº¿ç¨‹çŠ¶æ€åˆ—è¡¨
 					* @author f
 					* @version 1.0
-					* @updated 21-10ÔÂ-2018 22:31:00
+					* @updated 21-10æœˆ-2018 22:31:00
 					*/
 					typedef enum csf_thread_status_enum
 					{
 						/**
-						* ±íÊ¾Ïß³ÌÎ´³õÊ¼»¯×´Ì¬
+						* è¡¨ç¤ºçº¿ç¨‹æœªåˆå§‹åŒ–çŠ¶æ€
 						*/
 						csf_thread_status_none = 0x00,
 						/**
-						* ±íÊ¾Ïß³Ì³õÊ¼»¯×´Ì¬
+						* è¡¨ç¤ºçº¿ç¨‹åˆå§‹åŒ–çŠ¶æ€
 						*/
 						csf_thread_status_init = 0x01,
 						/**
-						* ±íÊ¾Ïß³ÌÔËĞĞ×´Ì¬
+						* è¡¨ç¤ºçº¿ç¨‹è¿è¡ŒçŠ¶æ€
 						*/
 						csf_thread_status_start = 0x02,
 						/**
-						* ±íÊ¾Ïß³ÌÍ£Ö¹×´Ì¬
+						* è¡¨ç¤ºçº¿ç¨‹åœæ­¢çŠ¶æ€
 						*/
 						csf_thread_status_stop = 0x04
 					} csf_thread_status;
@@ -86,8 +86,8 @@ namespace csf
 						join();
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÍ£Ö¹Ïß³Ì
-					* ·µ»Ø£ºÎŞ
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåœæ­¢çº¿ç¨‹
+					* è¿”å›ï¼šæ— 
 					*/
 					inline csf_int32 stop() {
 
@@ -96,8 +96,8 @@ namespace csf
 						return 0;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºµÈ´ıÏß³ÌÍË³ö
-					* ·µ»Ø£ºÎŞ
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šç­‰å¾…çº¿ç¨‹é€€å‡º
+					* è¿”å›ï¼šæ— 
 					*/
 					inline void join() {
 						if (stop()) {
@@ -105,8 +105,8 @@ namespace csf
 						}
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÈÃÏß³Ì¡°ÖĞ¶Ï¡±Í£Ö¹
-					* ·µ»Ø£ºÎŞ
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šè®©çº¿ç¨‹â€œä¸­æ–­â€åœæ­¢
+					* è¿”å›ï¼šæ— 
 					*/
 					inline void interrupt() {
 						if (stop()) {
@@ -117,7 +117,7 @@ namespace csf
 					}
 					/**
 					*
-					* @param timeout_ms    ±íÊ¾¶¨Ê±µÄµÈ´ıÖÕÖ¹
+					* @param timeout_ms    è¡¨ç¤ºå®šæ—¶çš„ç­‰å¾…ç»ˆæ­¢
 					*/
 					inline bool timed_join(const csf_uint64 timeout_ms) {
 
@@ -127,11 +127,11 @@ namespace csf
 						return true;
 					}
 					/**
-					* ¹¦ÄÜ£º
-					*    ÅĞ¶ÏÊÇ·ñÕıÔÚÔËĞĞ
-					* ·µ»Ø£º
-					*    true£º±íÊ¾ÕıÔÚÔËĞĞ£»
-					*    false£º±íÊ¾²»ÔÚÔËĞĞ
+					* åŠŸèƒ½ï¼š
+					*    åˆ¤æ–­æ˜¯å¦æ­£åœ¨è¿è¡Œ
+					* è¿”å›ï¼š
+					*    trueï¼šè¡¨ç¤ºæ­£åœ¨è¿è¡Œï¼›
+					*    falseï¼šè¡¨ç¤ºä¸åœ¨è¿è¡Œ
 					*/
 					inline bool is_start() {
 
@@ -141,11 +141,11 @@ namespace csf
 						return false;
 					}
 					/**
-					* ¹¦ÄÜ£º
-					*    ÅĞ¶ÏÊÇ·ñÒÑ¾­Í£Ö¹
-					* ·µ»Ø£º
-					*    true£º±íÊ¾ÒÑ¾­Í£Ö¹£»
-					*    false£º±íÊ¾»¹ÔÚÔËĞĞ
+					* åŠŸèƒ½ï¼š
+					*    åˆ¤æ–­æ˜¯å¦å·²ç»åœæ­¢
+					* è¿”å›ï¼š
+					*    trueï¼šè¡¨ç¤ºå·²ç»åœæ­¢ï¼›
+					*    falseï¼šè¡¨ç¤ºè¿˜åœ¨è¿è¡Œ
 					*/
 					inline bool is_stop() {
 
@@ -153,18 +153,18 @@ namespace csf
 					}
 				private:
 					/**
-					* ±íÊ¾Ïß³Ì×´Ì¬ĞÅÏ¢
+					* è¡¨ç¤ºçº¿ç¨‹çŠ¶æ€ä¿¡æ¯
 					*/
 					csf_thread_status m_status = csf_thread_status_none;
 					/**
-					* ±íÊ¾Ïß³Ì×´Ì¬ĞÅÏ¢
+					* è¡¨ç¤ºçº¿ç¨‹çŠ¶æ€ä¿¡æ¯
 					*/
 					inline csf_thread_status get_status() {
 
 						return m_status;
 					}
 					/**
-					* ±íÊ¾Ïß³Ì×´Ì¬ĞÅÏ¢
+					* è¡¨ç¤ºçº¿ç¨‹çŠ¶æ€ä¿¡æ¯
 					*
 					* @param new_value
 					*/
@@ -173,10 +173,10 @@ namespace csf
 						m_status = new_value;
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÆô¶¯ÔËĞĞÏß³Ì
-					* ·µ»Ø£ºÎŞ
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¯åŠ¨è¿è¡Œçº¿ç¨‹
+					* è¿”å›ï¼šæ— 
 					*
-					* @param func    ±íÊ¾Ïß³ÌµÄÔËĞĞº¯Êı
+					* @param func    è¡¨ç¤ºçº¿ç¨‹çš„è¿è¡Œå‡½æ•°
 					*/
 					void start(csf_thread_start_handle func) {
 
@@ -184,10 +184,10 @@ namespace csf
 						cycle(func);
 					}
 					/**
-					* Ö÷Òª¹¦ÄÜÊÇ£ºÏß³ÌÔËĞĞµÄÑ­»·º¯Êı
-					* ·µ»Ø£ºÎŞ
+					* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šçº¿ç¨‹è¿è¡Œçš„å¾ªç¯å‡½æ•°
+					* è¿”å›ï¼šæ— 
 					*
-					* @param func    ±íÊ¾Ïß³ÌµÄÔËĞĞº¯Êı
+					* @param func    è¡¨ç¤ºçº¿ç¨‹çš„è¿è¡Œå‡½æ•°
 					*/
 					template<typename TheadFunction>
 					inline void cycle(TheadFunction func) {

@@ -29,9 +29,33 @@
     <ClCompile Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\modules\vm\csf_vm\csf_common_master.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\modules\vm\csf_vm\csf_common_slave.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\modules\vm\csf_vm\csf_common_vm.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\modules\vm\csf_vm\csf_shared_memory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\src\modules\vm\csf_vm\vm.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\modules\vm\csf_vm\csf_common_master.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\modules\vm\csf_vm\csf_common_slave.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\modules\vm\csf_vm\csf_common_vm.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\modules\vm\csf_vm\csf_shared_memory.hpp">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

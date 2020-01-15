@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 05-7ÔÂ-2018 20:09:28
+*Date: 05-7æœˆ-2018 20:09:28
 *
 *Description: Class(csf_attribute_number)
 *
@@ -25,16 +25,16 @@
 using csf::core::system::attribute::csf_attribute_number;
 
 /**
-* ±íÊ¾´¦Àícsf_attributeÊôĞÔ²Ù×÷¡£ÕâÀïÓëcsf_attributeÖĞ²»Í¬µÄÊÇ£¬ÕâÀïÌí¼ÓÒ»²ãprocess_attributeº¯ÊıÖ÷ÒªÊÇÎªÁËÊµÏÖÒì³££¨e
-* xception£©µÄÍ³Ò»´¦Àí¡£µ±Òì³£³öÏÖÊ±£¬Ö±½Ó¸ù¾İ·µ»Ø´íÎó£¬µ÷ÓÃÒì³£´¦Àíº¯Êı¡£
-* ·µ»Ø£ºtrue±íÊ¾Ê§°Ü£»false±íÊ¾³É¹¦¡£
+* è¡¨ç¤ºå¤„ç†csf_attributeå±æ€§æ“ä½œã€‚è¿™é‡Œä¸csf_attributeä¸­ä¸åŒçš„æ˜¯ï¼Œè¿™é‡Œæ·»åŠ ä¸€å±‚process_attributeå‡½æ•°ä¸»è¦æ˜¯ä¸ºäº†å®ç°å¼‚å¸¸ï¼ˆe
+* xceptionï¼‰çš„ç»Ÿä¸€å¤„ç†ã€‚å½“å¼‚å¸¸å‡ºç°æ—¶ï¼Œç›´æ¥æ ¹æ®è¿”å›é”™è¯¯ï¼Œè°ƒç”¨å¼‚å¸¸å¤„ç†å‡½æ•°ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºå¤±è´¥ï¼›falseè¡¨ç¤ºæˆåŠŸã€‚
 *
-* @param configure_manager    ±íÊ¾±£´æÅäÖÃ¹ÜÀíÆ÷¶ÔÏó
-* @param alias    ±íÊ¾µ±Ç°ÊôĞÔ±ğÃû£¬Èç¹ûÊôĞÔÃû³ÆÎª¿ÕÔòÔòÊ¹ÓÃ¸Ã±ğÃû¡£
+* @param configure_manager    è¡¨ç¤ºä¿å­˜é…ç½®ç®¡ç†å™¨å¯¹è±¡
+* @param alias    è¡¨ç¤ºå½“å‰å±æ€§åˆ«åï¼Œå¦‚æœå±æ€§åç§°ä¸ºç©ºåˆ™åˆ™ä½¿ç”¨è¯¥åˆ«åã€‚
 */
 csf_bool csf_attribute_number::process_attribute(const csf_configure_manager& configure_manager, const csf_string& alias) {
 
-	//³õÊ¼»¯½âÎö±ß½çºËÑé
+	//åˆå§‹åŒ–è§£æè¾¹ç•Œæ ¸éªŒ
 	if (get_boundary().not_null()) {
 		if (!get_boundary().init()) {
 			csf_attribute_log(warning, csf_log_code_warning
@@ -45,12 +45,12 @@ csf_bool csf_attribute_number::process_attribute(const csf_configure_manager& co
 		}
 	}
 
-	//±íÊ¾½âÎöÊıÖµÄÚÈİ
+	//è¡¨ç¤ºè§£ææ•°å€¼å†…å®¹
 	if (csf_false == process_number(configure_manager, alias)) {
 		return csf_false;
 	}
 
-	//ºËÑéÊıÖµµÄ±ß½ç£¬ÅĞ¶ÏÊÇ·ñÔÚºÏ·¨±ß½çÄÚ
+	//æ ¸éªŒæ•°å€¼çš„è¾¹ç•Œï¼Œåˆ¤æ–­æ˜¯å¦åœ¨åˆæ³•è¾¹ç•Œå†…
 	if (get_boundary().not_null()) {
 		if (!get_boundary().process(get_value())) {
 			csf_attribute_log(warning, csf_log_code_warning

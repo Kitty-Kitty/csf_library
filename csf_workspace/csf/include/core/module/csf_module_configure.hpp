@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 16:21:03
+*Date: 01-7æœˆ-2018 16:21:03
 *
-*Description: Class(csf_module_configure)±íÊ¾Ä£¿éÅäÖÃĞÅÏ¢
+*Description: Class(csf_module_configure)è¡¨ç¤ºæ¨¡å—é…ç½®ä¿¡æ¯
 *
 *Others:
 *
@@ -32,10 +32,10 @@ namespace csf
 		namespace module
 		{
 			/**
-			 * ±íÊ¾Ä£¿éÅäÖÃĞÅÏ¢
+			 * è¡¨ç¤ºæ¨¡å—é…ç½®ä¿¡æ¯
 			 * @author f
 			 * @version 1.0
-			 * @created 01-7ÔÂ-2018 16:21:03
+			 * @created 01-7æœˆ-2018 16:21:03
 			 */
 			class csf_module_configure : public csf::core::base::csf_csftype_template<csf_module_configure>
 			{
@@ -53,12 +53,12 @@ namespace csf
 				}
 
 				/**
-				 * ¸ù¾İ¸÷ÖÖÊôĞÔ´´½¨Ä£¿éÅäÖÃ¶ÔÏó
+				 * æ ¹æ®å„ç§å±æ€§åˆ›å»ºæ¨¡å—é…ç½®å¯¹è±¡
 				 * 
-				 * @param name    ±íÊ¾Ä£¿éµÄÃû³Æ
-				 * @param file    ±íÊ¾Ä£¿éÎÄ¼şÂ·¾¶
-				 * @param child    ±íÊ¾Ä£¿éµÄ×ÓÄ£¿é
-				 * @param device    ±íÊ¾Éè±¸
+				 * @param name    è¡¨ç¤ºæ¨¡å—çš„åç§°
+				 * @param file    è¡¨ç¤ºæ¨¡å—æ–‡ä»¶è·¯å¾„
+				 * @param child    è¡¨ç¤ºæ¨¡å—çš„å­æ¨¡å—
+				 * @param device    è¡¨ç¤ºè®¾å¤‡
 				 */
 				inline csf_module_configure(const csf_string& name, const csf_string& file, const csf_string child = "", const csf_string device = "")
 					: m_name(name)
@@ -68,12 +68,12 @@ namespace csf
 
 				}
 				/**
-				 * ¸ù¾İ¸÷ÖÖÊôĞÔ´´½¨Ä£¿éÅäÖÃ¶ÔÏó
+				 * æ ¹æ®å„ç§å±æ€§åˆ›å»ºæ¨¡å—é…ç½®å¯¹è±¡
 				 * 
-				 * @param name    ±íÊ¾Ä£¿éµÄÃû³Æ
-				 * @param file    ±íÊ¾Ä£¿éÎÄ¼şÂ·¾¶
-				 * @param child    ±íÊ¾Ä£¿éµÄ×ÓÄ£¿é
-				 * @param device    ±íÊ¾Éè±¸
+				 * @param name    è¡¨ç¤ºæ¨¡å—çš„åç§°
+				 * @param file    è¡¨ç¤ºæ¨¡å—æ–‡ä»¶è·¯å¾„
+				 * @param child    è¡¨ç¤ºæ¨¡å—çš„å­æ¨¡å—
+				 * @param device    è¡¨ç¤ºè®¾å¤‡
 				 */
 				inline csf_module_configure(const csf_char* name, const csf_char* file, const csf_char* child = csf_null, const csf_char* device = csf_null)
 					: m_name(name)
@@ -83,14 +83,14 @@ namespace csf
 
 				}
 				/**
-				 * ±íÊ¾Ä£¿éµÄÃû³Æ
+				 * è¡¨ç¤ºæ¨¡å—çš„åç§°
 				 */
 				inline csf_string& get_name() {
 
 					return m_name;
 				}
 				/**
-				 * ±íÊ¾Ä£¿éµÄÃû³Æ
+				 * è¡¨ç¤ºæ¨¡å—çš„åç§°
 				 * 
 				 * @param new_value
 				 */
@@ -99,14 +99,14 @@ namespace csf
 					m_name = new_value;
 				}
 				/**
-				 * ±íÊ¾×ÓÄ£¿éĞÅÏ¢
+				 * è¡¨ç¤ºå­æ¨¡å—ä¿¡æ¯
 				 */
 				inline csf_string& get_child() {
 
 					return m_child;
 				}
 				/**
-				 * ±íÊ¾×ÓÄ£¿éĞÅÏ¢
+				 * è¡¨ç¤ºå­æ¨¡å—ä¿¡æ¯
 				 * 
 				 * @param new_value
 				 */
@@ -115,14 +115,14 @@ namespace csf
 					m_child = new_value;
 				}
 				/**
-				 * ±íÊ¾Éè±¸ĞÅÏ¢
+				 * è¡¨ç¤ºè®¾å¤‡ä¿¡æ¯
 				 */
 				inline csf_string& get_device() {
 
 					return m_device;
 				}
 				/**
-				 * ±íÊ¾Éè±¸ĞÅÏ¢
+				 * è¡¨ç¤ºè®¾å¤‡ä¿¡æ¯
 				 * 
 				 * @param new_value
 				 */
@@ -131,14 +131,14 @@ namespace csf
 					m_device = new_value;
 				}
 				/**
-				 * ±íÊ¾Ä£¿éµÄÎÄ¼şµØÖ·
+				 * è¡¨ç¤ºæ¨¡å—çš„æ–‡ä»¶åœ°å€
 				 */
 				inline csf_string& get_file() {
 
 					return m_file;
 				}
 				/**
-				 * ±íÊ¾Ä£¿éµÄÎÄ¼şµØÖ·
+				 * è¡¨ç¤ºæ¨¡å—çš„æ–‡ä»¶åœ°å€
 				 * 
 				 * @param new_value
 				 */
@@ -147,7 +147,7 @@ namespace csf
 					m_file = new_value;
 				}
 				/**
-				 * ±íÊ¾Ä£¿éµÄÃû³Æ
+				 * è¡¨ç¤ºæ¨¡å—çš„åç§°
 				 * 
 				 * @param new_value
 				 */
@@ -156,7 +156,7 @@ namespace csf
 					m_name = new_value;
 				}
 				/**
-				 * ±íÊ¾Ä£¿éµÄÎÄ¼şµØÖ·
+				 * è¡¨ç¤ºæ¨¡å—çš„æ–‡ä»¶åœ°å€
 				 * 
 				 * @param new_value
 				 */
@@ -165,7 +165,7 @@ namespace csf
 					m_file = new_value;
 				}
 				/**
-				 * ±íÊ¾Éè±¸ĞÅÏ¢
+				 * è¡¨ç¤ºè®¾å¤‡ä¿¡æ¯
 				 * 
 				 * @param new_value
 				 */
@@ -174,7 +174,7 @@ namespace csf
 					m_device = new_value;
 				}
 				/**
-				 * ±íÊ¾×ÓÄ£¿éĞÅÏ¢
+				 * è¡¨ç¤ºå­æ¨¡å—ä¿¡æ¯
 				 * 
 				 * @param new_value
 				 */
@@ -183,8 +183,8 @@ namespace csf
 					m_child = new_value;
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñÎª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾Îª¿Õ£»false±íÊ¾²»Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ä¸ºç©ºã€‚
 				*/
 				inline virtual csf_bool is_null() {
 
@@ -197,8 +197,8 @@ namespace csf
 					return csf_false;
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñ²»Îª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾²»Îª¿Õ£»false±íÊ¾Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ºç©ºã€‚
 				*/
 				inline virtual csf_bool not_null() {
 
@@ -206,19 +206,19 @@ namespace csf
 				}
 			private:
 				/**
-				 * ±íÊ¾Ä£¿éµÄÃû³Æ
+				 * è¡¨ç¤ºæ¨¡å—çš„åç§°
 				 */
 				csf_string m_name = "";
 				/**
-				 * ±íÊ¾×ÓÄ£¿éĞÅÏ¢
+				 * è¡¨ç¤ºå­æ¨¡å—ä¿¡æ¯
 				 */
 				csf_string m_child = "";
 				/**
-				 * ±íÊ¾Éè±¸ĞÅÏ¢
+				 * è¡¨ç¤ºè®¾å¤‡ä¿¡æ¯
 				 */
 				csf_string m_device = "";
 				/**
-				 * ±íÊ¾Ä£¿éµÄÎÄ¼şµØÖ·
+				 * è¡¨ç¤ºæ¨¡å—çš„æ–‡ä»¶åœ°å€
 				 */
 				csf_string m_file = "";
 

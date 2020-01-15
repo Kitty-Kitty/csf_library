@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 02-10ÔÂ-2018 18:25:40
+*Date: 02-10æœˆ-2018 18:25:40
 *
-*Description: Class(csf_connect_error) ÓÃÓÚÃèÊöÍøÂçÍ¨ĞÅ´íÎó
+*Description: Class(csf_connect_error) ç”¨äºæè¿°ç½‘ç»œé€šä¿¡é”™è¯¯
 *
 *Others:
 *
@@ -33,45 +33,45 @@ namespace csf
 			namespace connect
 			{
 				/**
-				 * ÓÃÓÚÃèÊöÍøÂçÍ¨ĞÅ´íÎó
+				 * ç”¨äºæè¿°ç½‘ç»œé€šä¿¡é”™è¯¯
 				 * @author f
 				 * @version 1.0
-				 * @created 02-10ÔÂ-2018 18:25:40
+				 * @created 02-10æœˆ-2018 18:25:40
 				 */
 				class csf_connect_error : public csf::core::module::csf_error
 				{
 				public:
 
 					/**
-					* ±íÊ¾Á¬½ÓµÄ´íÎó±àÂë
+					* è¡¨ç¤ºè¿æ¥çš„é”™è¯¯ç¼–ç 
 					* @author f
 					* @version 1.0
-					* @updated 04-11ÔÂ-2018 20:11:47
+					* @updated 04-11æœˆ-2018 20:11:47
 					*/
 					typedef enum csf_connect_code_enum
 					{
 						/**
-						* ±íÊ¾Î´ÖªµÄ´íÎó±àÂë
+						* è¡¨ç¤ºæœªçŸ¥çš„é”™è¯¯ç¼–ç 
 						*/
 						csf_connect_code_none = 0x00000000,
 						/**
-						* ±íÊ¾³¬Ê±´íÎó±àÂë
+						* è¡¨ç¤ºè¶…æ—¶é”™è¯¯ç¼–ç 
 						*/
 						csf_connect_code_timeout = 0x00000010,
 						/**
-						* ±íÊ¾´ò¿ª¼àÌıµØÖ·´íÎó±àÂë
+						* è¡¨ç¤ºæ‰“å¼€ç›‘å¬åœ°å€é”™è¯¯ç¼–ç 
 						*/
 						csf_connect_code_listen = 0x00000020,
 						/**
-						* ±íÊ¾´«Èë·Ç·¨²ÎÊı£¬²ÎÊıÎª¿Õ´íÎó
+						* è¡¨ç¤ºä¼ å…¥éæ³•å‚æ•°ï¼Œå‚æ•°ä¸ºç©ºé”™è¯¯
 						*/
 						csf_connect_code_invalid_parametes = 0x00000040,
 						/**
-						* ±íÊ¾´æ·ÅÊı¾İµÄ¿Õ¼ä²»×ã
+						* è¡¨ç¤ºå­˜æ”¾æ•°æ®çš„ç©ºé—´ä¸è¶³
 						*/
 						csf_connect_code_not_enough_space = 0x00000080,
 						/**
-						* ±íÊ¾½øĞĞµÄ´¦Àí´íÎó
+						* è¡¨ç¤ºè¿›è¡Œçš„å¤„ç†é”™è¯¯
 						*/
 						csf_connect_code_operation_error = 0x00000100
 					} csf_connect_code;
@@ -84,20 +84,20 @@ namespace csf
 
 					}
 					/**
-					* ±íÊ¾¸ù¾İ´íÎóÂë£¨code£©ºÍ´íÎóÃèÊö£¨description£©´´½¨Ò»¸öcsf_error¡£
+					* è¡¨ç¤ºæ ¹æ®é”™è¯¯ç ï¼ˆcodeï¼‰å’Œé”™è¯¯æè¿°ï¼ˆdescriptionï¼‰åˆ›å»ºä¸€ä¸ªcsf_errorã€‚
 					*
-					* @param code    ±íÊ¾´íÎóÂë±àÂë
-					* @param description    ±íÊ¾´íÎóÃèÊöĞÅÏ¢
+					* @param code    è¡¨ç¤ºé”™è¯¯ç ç¼–ç 
+					* @param description    è¡¨ç¤ºé”™è¯¯æè¿°ä¿¡æ¯
 					*/
 					inline explicit csf_connect_error(const csf_int32 code, const csf_string& description)
 						: csf_error(code, description) {
 
 					}
 					/**
-					* ±íÊ¾¸ù¾İ´íÎóÂë£¨code£©ºÍ´íÎóÃèÊö£¨description£©´´½¨Ò»¸öcsf_error¡£
+					* è¡¨ç¤ºæ ¹æ®é”™è¯¯ç ï¼ˆcodeï¼‰å’Œé”™è¯¯æè¿°ï¼ˆdescriptionï¼‰åˆ›å»ºä¸€ä¸ªcsf_errorã€‚
 					*
-					* @param code    ±íÊ¾´íÎóÂë±àÂë
-					* @param description    ±íÊ¾´íÎóÃèÊöĞÅÏ¢
+					* @param code    è¡¨ç¤ºé”™è¯¯ç ç¼–ç 
+					* @param description    è¡¨ç¤ºé”™è¯¯æè¿°ä¿¡æ¯
 					*/
 					inline explicit csf_connect_error(const csf_int32 code, const csf_char* description)
 						: csf_error(code, description) {

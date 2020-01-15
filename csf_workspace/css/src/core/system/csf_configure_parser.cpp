@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 14:06:44
+*Date: 01-7æœˆ-2018 14:06:44
 *
 *Description: Class(csf_configure_parser)
 *
@@ -38,29 +38,29 @@ csf_configure_parser::~csf_configure_parser() {
 
 
 /**
- * ±íÊ¾½«configure_fileÖĞµÄÎÄ¼şÄÚÈİ×ª»»Îªcsf_elementÄÚÈİ¡£
- * ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎóÂë¡£
+ * è¡¨ç¤ºå°†configure_fileä¸­çš„æ–‡ä»¶å†…å®¹è½¬æ¢ä¸ºcsf_elementå†…å®¹ã€‚
+ * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ç ã€‚
  *
- * @param element    ±íÊ¾´æ´¢×îÖÕ½á¹ûµÄcsf_element¶ÔÏó
- * @param configure_file    ±íÊ¾Ô´ÎÄ¼şÃèÊöĞÅÏ¢
+ * @param element    è¡¨ç¤ºå­˜å‚¨æœ€ç»ˆç»“æœçš„csf_elementå¯¹è±¡
+ * @param configure_file    è¡¨ç¤ºæºæ–‡ä»¶æè¿°ä¿¡æ¯
  */
 csf_int32 csf_configure_parser::parse(csf_element& element, const csf_configure_file& configure_file) {
 
 	csf_configure_format_type			tmp_fmt_type = csf_configure_format_type_none;
 
 
-	//Ğ£ÑéÊäÈë²ÎÊıµÄºÏ·¨ĞÔ
+	//æ ¡éªŒè¾“å…¥å‚æ•°çš„åˆæ³•æ€§
 	if (((csf_configure_file&)configure_file).is_null()) {
 		return csf_failure;
 	}
 
-	//»ñÈ¡ÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍÊı¾İ
+	//è·å–é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹æ•°æ®
 	tmp_fmt_type = format(((csf_configure_file&)configure_file).get_format());
 	if (csf_configure_format_type_none == tmp_fmt_type) {
 		return csf_failure;
 	}
 
-	//¸ù¾İÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍ£¬½âÎöÅäÖÃÎÄ¼şÄÚÈİ
+	//æ ¹æ®é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹ï¼Œè§£æé…ç½®æ–‡ä»¶å†…å®¹
 	switch (tmp_fmt_type) {
 
 	case csf_configure_format_type_xml:
@@ -77,10 +77,10 @@ csf_int32 csf_configure_parser::parse(csf_element& element, const csf_configure_
 
 
 /**
- * ½«ÅäÖÃÎÄ¼şĞÅÏ¢±£´æµ½ÎÄ¼şÖĞ
+ * å°†é…ç½®æ–‡ä»¶ä¿¡æ¯ä¿å­˜åˆ°æ–‡ä»¶ä¸­
  *
- * @param configure_file    ±íÊ¾ĞèÒª±£´æµÄÎÄ¼şĞÅÏ¢
- * @param element    ±íÊ¾ĞèÒª±£´æµÄÅäÖÃĞÅÏ¢
+ * @param configure_file    è¡¨ç¤ºéœ€è¦ä¿å­˜çš„æ–‡ä»¶ä¿¡æ¯
+ * @param element    è¡¨ç¤ºéœ€è¦ä¿å­˜çš„é…ç½®ä¿¡æ¯
  */
 csf_int32 csf_configure_parser::save(const csf_configure_file& configure_file, const csf_element& element) {
 
@@ -89,9 +89,9 @@ csf_int32 csf_configure_parser::save(const csf_configure_file& configure_file, c
 
 
 /**
- * ±íÊ¾»ñÈ¡ÅäÖÃÎÄ¼şµÄÎÄ¼ş¸ñÊ½
+ * è¡¨ç¤ºè·å–é…ç½®æ–‡ä»¶çš„æ–‡ä»¶æ ¼å¼
  *
- * @param format    ±íÊ¾ĞèÒª»ñÈ¡µÄÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍÊı¾İ
+ * @param format    è¡¨ç¤ºéœ€è¦è·å–çš„é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹æ•°æ®
  */
 #ifdef CSF_CONFIGURE_FORMAT_TYPE_NAME_MAP_GEN
 #undef CSF_CONFIGURE_FORMAT_TYPE_NAME_MAP_GEN
@@ -112,9 +112,9 @@ csf_configure_parser::csf_configure_format_type csf_configure_parser::format(con
 
 
 /**
-* ¸ù¾İÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍ×ª»»¸ñÊ½ÀàĞÍ×Ö·û´®
+* æ ¹æ®é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹è½¬æ¢æ ¼å¼ç±»å‹å­—ç¬¦ä¸²
 *
-* @param fmt    ±íÊ¾ĞèÒª»ñÈ¡µÄÅäÖÃÎÄ¼ş¸ñÊ½ÀàĞÍ
+* @param fmt    è¡¨ç¤ºéœ€è¦è·å–çš„é…ç½®æ–‡ä»¶æ ¼å¼ç±»å‹
 */
 #ifdef CSF_CONFIGURE_FORMAT_TYPE_NAME_MAP_GEN
 #undef CSF_CONFIGURE_FORMAT_TYPE_NAME_MAP_GEN
@@ -126,25 +126,25 @@ csf_string csf_configure_parser::format(const csf_configure_parser::csf_configur
 		CSF_CONFIGURE_FORMAT_TYPE_NAME(CSF_CONFIGURE_FORMAT_TYPE_NAME_MAP_GEN)
 	}
 
-	//Èç¹ûÃ»ÓĞ²éÕÒµ½£¬Ôò·µ»Ø¿ÕÀàĞÍ
+	//å¦‚æœæ²¡æœ‰æŸ¥æ‰¾åˆ°ï¼Œåˆ™è¿”å›ç©ºç±»å‹
 	return format(csf_configure_format_type_none);
 }
 #undef CSF_CONFIGURE_FORMAT_TYPE_NAME_MAP_GEN
 
 
 /**
-* ±íÊ¾½«configure_fileÖĞµÄXMLÎÄ¼şÄÚÈİ×ª»»Îªcsf_elementÄÚÈİ¡£
-* ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎóÂë¡£
+* è¡¨ç¤ºå°†configure_fileä¸­çš„XMLæ–‡ä»¶å†…å®¹è½¬æ¢ä¸ºcsf_elementå†…å®¹ã€‚
+* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ç ã€‚
 *
-* @param element    ±íÊ¾´æ´¢×îÖÕ½á¹ûµÄcsf_element¶ÔÏó
-* @param configure_file    ±íÊ¾Ô´ÎÄ¼şÃèÊöĞÅÏ¢
+* @param element    è¡¨ç¤ºå­˜å‚¨æœ€ç»ˆç»“æœçš„csf_elementå¯¹è±¡
+* @param configure_file    è¡¨ç¤ºæºæ–‡ä»¶æè¿°ä¿¡æ¯
 */
 csf_int32 csf_configure_parser::parse_xml(csf_element& element, const csf_configure_file& configure_file) {
 
 	CMarkup				tmp_markup_xml;
 
 
-	//´ò¿ªXMLÅäÖÃÎÄ¼şÄÚÈİ
+	//æ‰“å¼€XMLé…ç½®æ–‡ä»¶å†…å®¹
 	if (!tmp_markup_xml.Load(((csf_configure_file&)configure_file).get_file_path())) {
 		csf_log(warning, "parse xml file failed! reason: %s. file[%s]",
 			tmp_markup_xml.GetError().c_str(),
@@ -157,11 +157,11 @@ csf_int32 csf_configure_parser::parse_xml(csf_element& element, const csf_config
 }
 
 /**
-* ±íÊ¾½«configure_fileÖĞµÄÎÄ¼şÄÚÈİ×ª»»Îªcsf_elementÄÚÈİ¡£
-* ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎóÂë¡£
+* è¡¨ç¤ºå°†configure_fileä¸­çš„æ–‡ä»¶å†…å®¹è½¬æ¢ä¸ºcsf_elementå†…å®¹ã€‚
+* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ç ã€‚
 *
-* @param element    ±íÊ¾´æ´¢×îÖÕ½á¹ûµÄcsf_element¶ÔÏó
-* @param markup    ±íÊ¾CMarkup½âÎöµÄXMLÎÄ¼ş¶ÔÏó
+* @param element    è¡¨ç¤ºå­˜å‚¨æœ€ç»ˆç»“æœçš„csf_elementå¯¹è±¡
+* @param markup    è¡¨ç¤ºCMarkupè§£æçš„XMLæ–‡ä»¶å¯¹è±¡
 */
 csf_int32 csf_configure_parser::parse(csf_element& element, CMarkup& markup) {
 

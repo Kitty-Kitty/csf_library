@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 19:12:21
+*Date: 01-7æœˆ-2018 19:12:21
 *
 *Description: Class(csf_module_manager)
 *
@@ -22,9 +22,9 @@
 
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf::core::module::csf_module_manager::init(const csf_configure_manager * conf_mg) {
 
@@ -35,9 +35,9 @@ csf::core::base::csf_int32 csf::core::module::csf_module_manager::init(const csf
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf::core::module::csf_module_manager::start(const csf_configure_manager * conf_mg) {
 
@@ -46,7 +46,7 @@ csf::core::base::csf_int32 csf::core::module::csf_module_manager::start(const cs
 
 	set_configure_manager(conf_mg);
 
-	//³õÊ¼»¯Ä£¿é¹¤³§¹ÜÀíÆ÷
+	//åˆå§‹åŒ–æ¨¡å—å·¥å‚ç®¡ç†å™¨
 	tmp_int_ret = get_module_factory_manager().init(conf_mg);
 	if (csf_failure == tmp_int_ret) {
 		csf_log_ex(error, csf_log_code_error, "init factory manager failed!");
@@ -56,7 +56,7 @@ csf::core::base::csf_int32 csf::core::module::csf_module_manager::start(const cs
 		csf_log_ex(notice, csf_log_code_notice, "init factory manager succeed!");
 	}
 
-	//Æô¶¯Ä£¿é¹¤³§¹ÜÀíÆ÷
+	//å¯åŠ¨æ¨¡å—å·¥å‚ç®¡ç†å™¨
 	tmp_int_ret = get_module_factory_manager().start(conf_mg);
 	if (csf_failure == tmp_int_ret) {
 		csf_log_ex(error, csf_log_code_error, "start factory manager failed!");
@@ -71,9 +71,9 @@ csf::core::base::csf_int32 csf::core::module::csf_module_manager::start(const cs
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf::core::module::csf_module_manager::stop(const csf_configure_manager * conf_mg) {
 
@@ -82,7 +82,7 @@ csf::core::base::csf_int32 csf::core::module::csf_module_manager::stop(const csf
 
 
 /**
-* ¹¦ÄÜ£ºÇå¿ÕÄ£¿é¶ÔÏóÁĞ±íÖĞµÄËùÓĞÄ£¿é¶ÔÏó
+* åŠŸèƒ½ï¼šæ¸…ç©ºæ¨¡å—å¯¹è±¡åˆ—è¡¨ä¸­çš„æ‰€æœ‰æ¨¡å—å¯¹è±¡
 */
 csf_void csf::core::module::csf_module_manager::clear() {
 
@@ -90,7 +90,7 @@ csf_void csf::core::module::csf_module_manager::clear() {
 
 	for (auto &tmp_iter : get_modules()) {
 		if (tmp_iter) {
-			get_module_factory_manager().destory(tmp_iter);
+			get_module_factory_manager().destroy(tmp_iter);
 		}
 	}
 

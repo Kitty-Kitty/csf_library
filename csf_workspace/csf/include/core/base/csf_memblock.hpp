@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6��-2018 16:53:41
+*Date: 27-6月-2018 16:53:41
 *
 *Description: Class(csf_memblock)
 *
@@ -30,10 +30,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ��ʾcsfʹ�õ��ڴ�ռ���
+			 * 表示csf使用的内存空间类
 			 * @author f
 			 * @version 1.0
-			 * @created 27-6��-2018 16:53:41
+			 * @created 27-6月-2018 16:53:41
 			 */
 			class csf_memblock : public csf::core::base::csf_container
 			{
@@ -51,12 +51,12 @@ namespace csf
 				}
 
 				/**
-				 * ���ݻ����ַ�ͳ��ȴ�������
+				 * 根据缓存地址和长度创建对象
 				 * 
-				 * @param buf    ��ʾ���ݻ����ַ�ͳ��ȴ���һ��csf_csfstring
+				 * @param buf    表示根据缓存地址和长度创建一个csf_csfstring
 				 * @param len    len
 				 * @param is_free
-				 * ��ʾ�Ƿ��ڶ�������ʱ���ͷ��ڴ档true��ʾ��Ҫ�ͷţ�false��ʾ����Ҫ�ͷţ�Ĭ��Ϊtrue����Ϊfalseʱע���������ط���ʾ�ͷţ������ڴ�й¶��
+				 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 				 * 
 				 */
 				inline explicit csf_memblock(const csf_uchar* buf
@@ -75,9 +75,9 @@ namespace csf
 
 				}
 				/**
-				 * ���ݳ�������һ���ڴ棬����һ������
+				 * 根据长度申请一个内存，创建一个对象
 				 * 
-				 * @param len    ��ʾ��Ҫ������csf_csfstring����ĳ���
+				 * @param len    表示需要创建的csf_csfstring缓存的长度
 				 */
 				inline explicit csf_memblock(const csf_int32 len)
 					: m_buffer(csf_nullptr)
@@ -92,23 +92,23 @@ namespace csf
 					}
 				}
 				/**
-				* ��ʾ�ж��Ƿ�Ϊ�ա�
-				* ���أ�true��ʾΪ�գ�false��ʾ��Ϊ�ա�
+				* 表示判断是否为空。
+				* 返回：true表示为空；false表示不为空。
 				*/
 				inline csf_bool is_null() const {
 
 					return empty();
 				}
 				/**
-				* ��ʾ�ж��Ƿ�Ϊ�ա�
-				* ���أ�true��ʾ��Ϊ�գ�false��ʾΪ�ա�
+				* 表示判断是否不为空。
+				* 返回：true表示不为空；false表示为空。
 				*/
 				inline csf_bool not_null() const {
 
 					return !empty();
 				}
 				/**
-				 * ��ʾ�����Ƿ�Ϊ�գ�Ϊ�շ���true,���򷵻�false������Ϊ0��nullΪ�գ�����true��
+				 * 表示容器是否为空，为空返回true,否则返回false。长度为0或null为空，返回true。
 				 */
 				inline csf_bool empty() const {
 
@@ -119,29 +119,29 @@ namespace csf
 					return csf_false;
 				}
 				/**
-				 * ��ʾ��ȡ������ʵ�����ݳ��ȣ�û������Ϊ0
+				 * 表示获取容器的实际内容长度，没有内容为0
 				 */
 				inline csf_uint32 length() const {
 
 					return size();
 				}
 				/**
-				 * ��ʾ��ȡ�����Ŀռ䳤�ȡ�û��Ԥ�����ڴ���࣬��size=length������csf_string��length=size����Ԥ�����ڴ���࣬size>=lengt
-				 * h������csf_buffer��size>=length��
+				 * 表示获取容器的空间长度。没有预分配内存的类，则size=length，例如csf_string中length=size。而预分配内存的类，size>=lengt
+				 * h，例如csf_buffer中size>=length。
 				 */
 				inline csf_uint32 size() const {
 
 					return m_size;
 				}
 				/**
-				* ��ʾ�����������Щ����Ҫ�ͷſռ䣨���磺csf_chain������Щ�ռ�����õ�������������(���磺csf_buffer)��
-				* ִ��clear�󣬶����������ģ����Լ���ʹ�á������ִ��destroy�����󣬲�����Դ���ᱻ�ͷţ����ܵ��¶������������ܼ�������ʹ�á�
+				* 表示清空容器，有些类需要释放空间（例如：csf_chain），有些空间可重用的类则重置数据(例如：csf_buffer)。
+				* 执行clear后，对象还是完整的，可以继续使用。而相对执行destroy函数后，部分资源将会被释放，可能导致对象不完整，不能继续正常使用。
 				*/
 				inline csf_void clear() {
 					
 				}
 				/**
-				 * ��ʾ����ڴ�ռ�
+				 * 表示清空内存空间
 				 */
 				inline csf_void memzero() {
 
@@ -150,20 +150,20 @@ namespace csf
 					}
 				}
 				/**
-				 * ��ʾ�������ݵĻ����ַ
+				 * 表示保存内容的缓存地址
 				 */
 				inline csf_uchar* get_buffer() const {
 
 					return m_buffer;
 				}
 				/**
-				* ���ݻ����ַ�ͳ�������һ�����󣬸��¶�����Ϣ��
-				* ����:true��ʾ�ɹ���false��ʾʧ�ܡ�
+				* 根据缓存地址和长度配置一个对象，更新对象信息。
+				* 返回:true表示成功；false表示失败。
 				*
-				* @param buf    ��ʾ���ݻ����ַ�ͳ��ȴ���һ��csf_csfstring
+				* @param buf    表示根据缓存地址和长度创建一个csf_csfstring
 				* @param len    len
 				* @param is_free
-				* ��ʾ�Ƿ��ڶ�������ʱ���ͷ��ڴ档true��ʾ��Ҫ�ͷţ�false��ʾ����Ҫ�ͷţ�Ĭ��Ϊtrue����Ϊfalseʱע���������ط���ʾ�ͷţ������ڴ�й¶��
+				* 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 				*
 				*/
 				inline csf_bool set_buffer(const csf_uchar* buf, const csf_int32 len, const csf_bool is_free = csf_false) {
@@ -179,21 +179,21 @@ namespace csf
 					return csf_true;
 				}
 				/**
-				* ��ʾ�������ݵĻ��泤��
+				* 表示保存内容的缓存长度
 				*/
 				inline csf_uint32 get_size() const {
 
 					return m_size;
 				}
 				/**
-				 * ��ʾ�Ƿ��ڶ�������ʱ���ͷ��ڴ档true��ʾ��Ҫ�ͷţ�false��ʾ����Ҫ�ͷţ�Ĭ��Ϊtrue����Ϊfalseʱע���������ط���ʾ�ͷţ������ڴ�й¶��
+				 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 				 */
 				inline csf_bool get_is_free() const {
 
 					return m_is_free;
 				}
 				/**
-				 * ��ʾ�Ƿ��ڶ�������ʱ���ͷ��ڴ档true��ʾ��Ҫ�ͷţ�false��ʾ����Ҫ�ͷţ�Ĭ��Ϊtrue����Ϊfalseʱע���������ط���ʾ�ͷţ������ڴ�й¶��
+				 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 				 * 
 				 * @param new_value
 				 */
@@ -204,7 +204,7 @@ namespace csf
 
 			protected:
 				/**
-				* ��ʾ�������ݵĻ��泤��
+				* 表示保存内容的缓存长度
 				*
 				* @param new_value
 				*/
@@ -213,7 +213,7 @@ namespace csf
 					m_size = new_value;
 				}
 				/**
-				* ��ʾ�������ݵĻ����ַ
+				* 表示保存内容的缓存地址
 				*
 				* @param new_value    new_value
 				*/
@@ -222,9 +222,9 @@ namespace csf
 					m_buffer = (csf_uchar*)new_value;
 				}
 				/**
-				* ���´������󡣸��ݳ�������һ���ڴ棬����һ������
+				* 重新创建对象。根据长度申请一个内存，创建一个对象
 				*
-				* @param len    ��ʾ��Ҫ������csf_csfstring����ĳ���
+				* @param len    表示需要创建的csf_csfstring缓存的长度
 				*/
 				inline csf_void reset(const csf_int32 len) {
 
@@ -234,8 +234,8 @@ namespace csf
 					set_is_free(csf_true);
 				}
 				/**
-				* ��ʾ��������������clear��������⣬�������������ڴ�Ĺ��ܡ�
-				* ִ��clear�󣬶����������ģ����Լ���ʹ�á������ִ��destroy�����󣬲�����Դ���ᱻ�ͷţ����ܵ��¶������������ܼ�������ʹ�á�
+				* 表示销毁容器，除了clear清空数据外，更增加了销毁内存的功能。
+				* 执行clear后，对象还是完整的，可以继续使用。而相对执行destroy函数后，部分资源将会被释放，可能导致对象不完整，不能继续正常使用。
 				*/
 				inline virtual csf_void destroy() {
 
@@ -249,15 +249,15 @@ namespace csf
 				}
 			private:
 				/**
-				 * ��ʾ�������ݵĻ����ַ
+				 * 表示保存内容的缓存地址
 				 */
 				csf_uchar* m_buffer = csf_nullptr;
 				/**
-				 * ��ʾ�������ݵĻ��泤��
+				 * 表示保存内容的缓存长度
 				 */
 				csf_uint32 m_size = 0;
 				/**
-				 * ��ʾ�Ƿ��ڶ�������ʱ���ͷ��ڴ档true��ʾ��Ҫ�ͷţ�false��ʾ����Ҫ�ͷţ�Ĭ��Ϊtrue����Ϊfalseʱע���������ط���ʾ�ͷţ������ڴ�й¶��
+				 * 表示是否在对象销毁时，释放内存。true表示需要释放；false表示不需要释放；默认为true，当为false时注意在其他地方显示释放，避免内存泄露。
 				 */
 				csf_bool m_is_free = csf_true;
 

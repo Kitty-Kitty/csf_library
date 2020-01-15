@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:51
+*Date: 27-6æœˆ-2018 17:28:51
 *
 *Description: Class(csf_tcp_connect)
 *
@@ -31,10 +31,10 @@ namespace csf
 			namespace device
 			{
 				/**
-				 * ±íÊ¾tcpÁ¬½Ó
+				 * è¡¨ç¤ºtcpè¿žæŽ¥
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:51
+				 * @created 27-6æœˆ-2018 17:28:51
 				 */
 				class csf_tcp_connect : public csf::core::module::device::csf_stream_connect
 				{

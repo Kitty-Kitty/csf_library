@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -111,7 +111,7 @@ namespace csf
 				 * 表示当前进程所执行指令的参数信息。
 				 */
 				inline csf_string get_arguments() {
-					return m_command;
+					return m_arguments;
 				}
 				/**
 				 * 表示当前进程所执行指令的参数信息。
@@ -121,7 +121,14 @@ namespace csf
 				inline void set_arguments(csf_string& newVal) {
 					csf_strncpy(m_arguments, newVal.c_str(), csf_sizeof(m_arguments) - 1);
 				}
-
+				
+				/**
+				 * 功能：
+				 *    将slave信息转换为字符串
+				 * 返回：
+				 *    slave信息字符串
+				 */
+				virtual csf_string to_string();
 			private:
 				/**
 				 * 表示当前客户机的名称，用于唯一描述一个客户进程。
@@ -143,7 +150,7 @@ namespace csf
 				 * 表示当前进程所执行指令的参数信息。
 				 */
 				csf_char m_arguments[1024] = { 0, };
-
+				
 			};
 
 		}

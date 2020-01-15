@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <iostream>
@@ -27,14 +27,14 @@ class QSvgRenderer;
 QT_END_NAMESPACE
 
 
-//Ä¬ÈÏµÄ»º´æ´óĞ¡
+//é»˜è®¤çš„ç¼“å­˜å¤§å°
 #define		DEFAULT_BUFFER_LENGTH							50 * 1024 * 1024
 #define		TEST_VER										"1.0"
 
 char		svg_file[1024] = { 0, };
 char		*output_file = "out.png";
 
-//Í¨µÀÖĞ´¦Àísvg xml¸ñÊ½Êı¾İ
+//é€šé“ä¸­å¤„ç†svg xmlæ ¼å¼æ•°æ®
 int read_file(char *file_name, char *buf, int buf_length)
 {
 	FILE					*tmp_fd;
@@ -105,7 +105,7 @@ int write_file(char *file_name, const char *buf, int buf_length)
 #include <unistd.h>
 #include <getopt.h>
 
-//²Ù×÷ÌáÊ¾
+//æ“ä½œæç¤º
 void usage()
 {
 	fprintf(stderr, "Usage:	  test_hi3536_vdu [OPTION]\n\n"
@@ -118,7 +118,7 @@ void usage()
 	exit(0);
 }
 
-//ÉèÖÃÊäÈëÅäÖÃÏî´¦Àí
+//è®¾ç½®è¾“å…¥é…ç½®é¡¹å¤„ç†
 int setopt(int argc, char *argv[])
 {
 	int		tmp_ret = 0;
@@ -228,7 +228,7 @@ int main(int argc, char *argv[])
 
 	printf("program start. %s", print_time());	
 
-	//´´½¨application
+	//åˆ›å»ºapplication
 	try
 	{
 		tmp_app = new QApplication(tmp_argc, NULL);
@@ -239,15 +239,15 @@ int main(int argc, char *argv[])
 		}
 
 #ifdef WIN32
-		// ÉèÖÃ OpenGL °æ±¾ĞÅÏ¢
-		// ×¢Òâ: format ±ØĞëÔÚ show() µ÷ÓÃÇ°ÉèÖÃ
+		// è®¾ç½® OpenGL ç‰ˆæœ¬ä¿¡æ¯
+		// æ³¨æ„: format å¿…é¡»åœ¨ show() è°ƒç”¨å‰è®¾ç½®
 		//tmp_format.setRenderableType(QSurfaceFormat::OpenGL);
 		//tmp_format.setProfile(QSurfaceFormat::CoreProfile);
 		//tmp_format.setProfile(QSurfaceFormat::CompatibilityProfile);
 		tmp_format.setVersion(1, 1);
 #else
-		// ÉèÖÃ OpenGL °æ±¾ĞÅÏ¢
-		// ×¢Òâ: format ±ØĞëÔÚ show() µ÷ÓÃÇ°ÉèÖÃ
+		// è®¾ç½® OpenGL ç‰ˆæœ¬ä¿¡æ¯
+		// æ³¨æ„: format å¿…é¡»åœ¨ show() è°ƒç”¨å‰è®¾ç½®
 		//tmp_format.setRenderableType(QSurfaceFormat::OpenGLES);
 		//tmp_format.setProfile(QSurfaceFormat::CoreProfile);
 		//tmp_format.setProfile(QGLFormat::CoreProfile);
@@ -270,7 +270,7 @@ int main(int argc, char *argv[])
 		return -2;
 	}
 
-	//´´½¨ºÍ³õÊ¼»¯viewÊÓÍ¼¶ÔÏó
+	//åˆ›å»ºå’Œåˆå§‹åŒ–viewè§†å›¾å¯¹è±¡
 	try
 	{
 		tmp_view = new QGraphicsView();
@@ -352,7 +352,7 @@ int main(int argc, char *argv[])
 		return -2;
 	}
 
-	//´´½¨ºÍ³õÊ¼»¯scene³¡¾°¶ÔÏó
+	//åˆ›å»ºå’Œåˆå§‹åŒ–sceneåœºæ™¯å¯¹è±¡
 	try
 	{
 		tmp_scene = new QGraphicsScene(tmp_view);
@@ -373,7 +373,7 @@ int main(int argc, char *argv[])
 
 	QGraphicsSvgItem			*tmp_svg_item = NULL;
 
-	//´´½¨ºÍ³õÊ¼»¯svg item
+	//åˆ›å»ºå’Œåˆå§‹åŒ–svg item
 	try
 	{
 		tmp_svg_item = new QGraphicsSvgItem();
@@ -394,7 +394,7 @@ int main(int argc, char *argv[])
 
 	QSvgRenderer				*tmp_svg_renderer = NULL;
 
-	//´´½¨ºÍ³õÊ¼»¯render
+	//åˆ›å»ºå’Œåˆå§‹åŒ–render
 	try	{
 		tmp_svg_renderer = new QSvgRenderer();
 		if (tmp_svg_renderer) {
@@ -402,7 +402,7 @@ int main(int argc, char *argv[])
 				"create QSvgRenderer[0x%x] success.\r\n",
 				tmp_svg_renderer);
 
-			//ÉèÖÃSvgItemÄÚÈİĞÅÏ¢
+			//è®¾ç½®SvgItemå†…å®¹ä¿¡æ¯
   			//tmp_svg_item->setSharedRenderer(tmp_svg_renderer);
   			tmp_svg_item->setFlags(QGraphicsItem::ItemClipsToShape);
   			//tmp_svg_item->setCacheMode(QGraphicsItem::NoCache);
@@ -429,7 +429,7 @@ int main(int argc, char *argv[])
 
 	//QOpenGLPaintDevice *qopenglpaintdevice = new QOpenGLPaintDevice(1920, 1080);
 
-	//´´½¨painter
+	//åˆ›å»ºpainter
 	//QPainter tmp_painter(&tmp_image);
 	//qopenglpaintdevice->setSize(QSize(1920, 1080));
 	//QPainter tmp_painter(qopenglpaintdevice);
@@ -454,7 +454,7 @@ int main(int argc, char *argv[])
 			, print_time());
 	}
 
-	//¼ÓÔØsvgÎÄ¼şÁ÷Êı¾İ
+	//åŠ è½½svgæ–‡ä»¶æµæ•°æ®
 	if (!tmp_svg_renderer->load(QByteArray((const char*)tmp_buf, strlen(tmp_buf)))) {
 		printf("load svg stream error.\r\n");
 		return -3;
@@ -499,7 +499,7 @@ int main(int argc, char *argv[])
 #endif
 
 #if 0
-	//ÊÍ·Å×ÊÔ´
+	//é‡Šæ”¾èµ„æº
 	delete tmp_svg_renderer;
 	delete tmp_svg_item;
 	delete tmp_scene;

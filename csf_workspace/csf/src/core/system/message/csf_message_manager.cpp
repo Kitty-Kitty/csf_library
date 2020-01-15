@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:44
+*Date: 27-6æœˆ-2018 17:28:44
 *
 *Description: Class(csf_message_manager)
 *
@@ -37,9 +37,9 @@ csf_message_manager::~csf_message_manager() {
 
 
 /**
- * ±íÊ¾Ìí¼Ó»Øµ÷º¯Êı
+ * è¡¨ç¤ºæ·»åŠ å›è°ƒå‡½æ•°
  * 
- * @param type    ±íÊ¾ÏûÏ¢µÄÀàĞÍ
+ * @param type    è¡¨ç¤ºæ¶ˆæ¯çš„ç±»å‹
  */
 csf_int32 csf_message_manager::add(const csf_message::csf_message_type type) {
 
@@ -48,9 +48,9 @@ csf_int32 csf_message_manager::add(const csf_message::csf_message_type type) {
 
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_message_manager::init(const csf_configure_manager * conf_mg) {
 
@@ -59,9 +59,9 @@ csf::core::base::csf_int32 csf_message_manager::init(const csf_configure_manager
 
 
 /**
- * ±íÊ¾·¢ËÍÒ»¸ömessageÄÚÈİ
+ * è¡¨ç¤ºå‘é€ä¸€ä¸ªmessageå†…å®¹
  * 
- * @param message    ±íÊ¾Ìí¼ÓµÄÏûÏ¢ÄÚÈİ
+ * @param message    è¡¨ç¤ºæ·»åŠ çš„æ¶ˆæ¯å†…å®¹
  */
 csf_int32 csf_message_manager::post(const csf::core::system::message::csf_message& message) {
 
@@ -70,10 +70,10 @@ csf_int32 csf_message_manager::post(const csf::core::system::message::csf_messag
 
 
 /**
- * ±íÊ¾Ìí¼Ó»Øµ÷º¯Êı
+ * è¡¨ç¤ºæ·»åŠ å›è°ƒå‡½æ•°
  * 
- * @param type    ±íÊ¾ÏûÏ¢µÄÀàĞÍ
- * @param callback    ±íÊ¾»Øµ÷º¯Êı
+ * @param type    è¡¨ç¤ºæ¶ˆæ¯çš„ç±»å‹
+ * @param callback    è¡¨ç¤ºå›è°ƒå‡½æ•°
  */
 csf_int32 csf_message_manager::del(const csf_message::csf_message_type type, const csf::core::system::message::csf_message_manager_callback callback) {
 
@@ -82,11 +82,11 @@ csf_int32 csf_message_manager::del(const csf_message::csf_message_type type, con
 
 
 /**
- * ¸ù¾İÀàĞÍ¡¢»Øµ÷º¯ÊıºÍĞÅÏ¢ÄÚÈİ´´½¨ÏûÏ¢
+ * æ ¹æ®ç±»å‹ã€å›è°ƒå‡½æ•°å’Œä¿¡æ¯å†…å®¹åˆ›å»ºæ¶ˆæ¯
  * 
- * @param type    ±íÊ¾ÏûÏ¢ÀàĞÍ
- * @param callback    ±íÊ¾»Øµ÷º¯Êı
- * @param element    ±íÊ¾ÏûÏ¢ÄÚÈİ
+ * @param type    è¡¨ç¤ºæ¶ˆæ¯ç±»å‹
+ * @param callback    è¡¨ç¤ºå›è°ƒå‡½æ•°
+ * @param element    è¡¨ç¤ºæ¶ˆæ¯å†…å®¹
  */
 csf_int32 csf_message_manager::post(const csf_message::csf_message_type type, const csf::core::system::message::csf_message_callback callback, const csf_element& element) {
 
@@ -95,9 +95,9 @@ csf_int32 csf_message_manager::post(const csf_message::csf_message_type type, co
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_message_manager::start(const csf_configure_manager * conf_mg) {
 
@@ -106,7 +106,7 @@ csf::core::base::csf_int32 csf_message_manager::start(const csf_configure_manage
 
 
 /**
- * ±íÊ¾µ¯³öÏûÏ¢ÄÚÈİ
+ * è¡¨ç¤ºå¼¹å‡ºæ¶ˆæ¯å†…å®¹
  */
 csf::core::system::message::csf_message csf_message_manager::pop() {
 
@@ -115,9 +115,9 @@ csf::core::system::message::csf_message csf_message_manager::pop() {
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  * 
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_message_manager::stop(const csf_configure_manager * conf_mg) {
 
@@ -126,10 +126,10 @@ csf::core::base::csf_int32 csf_message_manager::stop(const csf_configure_manager
 
 
 /**
-* ¹¦ÄÜ£º
-*    ±íÊ¾´¦ÀíÏûÏ¢µÄº¯Êı
-* ·µ»Ø£º
-*    ÎŞ
+* åŠŸèƒ½ï¼š
+*    è¡¨ç¤ºå¤„ç†æ¶ˆæ¯çš„å‡½æ•°
+* è¿”å›ï¼š
+*    æ— 
 */
 csf_void csf_message_manager::process() {
 

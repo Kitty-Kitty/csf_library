@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:52
+*Date: 19-7æœˆ-2018 20:11:52
 *
-*Description: Class(csf_time_task) ±íÊ¾Ê±¼äÈÎÎñ
+*Description: Class(csf_time_task) è¡¨ç¤ºæ—¶é—´ä»»åŠ¡
 *
 *Others:
 *
@@ -39,7 +39,7 @@ csf_time_task::~csf_time_task() {
 
 
 /**
- * ±íÊ¾´¦Àí½Ó¿Ú£¬µ±Ö»ÓĞis_process·µ»Øtrueºó²ÅÄÜprocess¡£
+ * è¡¨ç¤ºå¤„ç†æ¥å£ï¼Œå½“åªæœ‰is_processè¿”å›trueåæ‰èƒ½processã€‚
  */
 csf_int32 csf_time_task::process() {
 
@@ -48,7 +48,7 @@ csf_int32 csf_time_task::process() {
 
 
 /**
- * ±íÊ¾ÊÇ·ñ½øĞĞ´¦Àí,Èç¹ûis_process·µ»Øtrue£¬²ÅÄÜÖ´ĞĞprocess¡£
+ * è¡¨ç¤ºæ˜¯å¦è¿›è¡Œå¤„ç†,å¦‚æœis_processè¿”å›trueï¼Œæ‰èƒ½æ‰§è¡Œprocessã€‚
  */
 csf_bool csf_time_task::is_process() {
 
@@ -57,7 +57,7 @@ csf_bool csf_time_task::is_process() {
 
 
 /**
- * ÅĞ¶ÏÊÇ·ñĞèÒªÉ¾³ı£¬Èç¹ûis_delete·µ»ØtrueÔòÉ¾³ıtask¡£
+ * åˆ¤æ–­æ˜¯å¦éœ€è¦åˆ é™¤ï¼Œå¦‚æœis_deleteè¿”å›trueåˆ™åˆ é™¤taskã€‚
  */
 csf_bool csf_time_task::is_delete() {
 

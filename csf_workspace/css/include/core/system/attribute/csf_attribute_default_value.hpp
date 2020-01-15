@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 08-7ÔÂ-2018 22:21:47
+*Date: 08-7æœˆ-2018 22:21:47
 *
 *Description: Class(csf_attribute_default_value)
 *
@@ -36,10 +36,10 @@ namespace csf
 			namespace attribute
 			{
 				/**
-				 * ±íÊ¾Òì³£·¢ÉúÎ´»ñÈ¡ÊôĞÔÖµÊ±£¬²ÉÓÃÄ¬ÈÏµÄÊıÖµ´úÌæ¡£
+				 * è¡¨ç¤ºå¼‚å¸¸å‘ç”Ÿæœªè·å–å±æ€§å€¼æ—¶ï¼Œé‡‡ç”¨é»˜è®¤çš„æ•°å€¼ä»£æ›¿ã€‚
 				 * @author Administrator
 				 * @version 1.0
-				 * @created 08-7ÔÂ-2018 22:21:47
+				 * @created 08-7æœˆ-2018 22:21:47
 				 */
 				template <class AttributeType, typename ValueType>
 				class csf_attribute_default_value : public csf::core::system::attribute::csf_attribute_exception_warning
@@ -63,16 +63,16 @@ namespace csf
 					}
 
 					/**
-					* ±íÊ¾Ä¬ÈÏµÄÊıÖµÀàĞÍ
+					* è¡¨ç¤ºé»˜è®¤çš„æ•°å€¼ç±»å‹
 					*/
 					inline ValueType& get_value() {
 
 						return m_value;
 					}
 					/**
-					* ±íÊ¾Ä¬ÈÏµÄÊıÖµÀàĞÍ
+					* è¡¨ç¤ºé»˜è®¤çš„æ•°å€¼ç±»å‹
 					*
-					* @param newVal    ±íÊ¾Ä¬ÈÏµÄÊıÖµ
+					* @param newVal    è¡¨ç¤ºé»˜è®¤çš„æ•°å€¼
 					*/
 					inline csf_void set_value(const ValueType& newVal) {
 
@@ -81,16 +81,16 @@ namespace csf
 
 				private:
 					/**
-					* ±íÊ¾Ä¬ÈÏµÄÊıÖµÀàĞÍ
+					* è¡¨ç¤ºé»˜è®¤çš„æ•°å€¼ç±»å‹
 					*/
 					ValueType m_value;
 				};
 
 				/**
-				* ±íÊ¾csf_attribute_boolËùÊ¹ÓÃµÄÄ¬ÈÏÖµÀàĞÍ¡£
+				* è¡¨ç¤ºcsf_attribute_boolæ‰€ä½¿ç”¨çš„é»˜è®¤å€¼ç±»å‹ã€‚
 				* @author Administrator
 				* @version 1.0
-				* @created 08-7ÔÂ-2018 22:21:47
+				* @created 08-7æœˆ-2018 22:21:47
 				*/
 				template <>
 				class csf_attribute_default_value<csf_attribute_bool, csf_bool>
@@ -99,10 +99,10 @@ namespace csf
 				};
 
 				/**
-				* ±íÊ¾csf_attribute_stringËùÊ¹ÓÃµÄÄ¬ÈÏÖµÀàĞÍ¡£
+				* è¡¨ç¤ºcsf_attribute_stringæ‰€ä½¿ç”¨çš„é»˜è®¤å€¼ç±»å‹ã€‚
 				* @author Administrator
 				* @version 1.0
-				* @created 08-7ÔÂ-2018 22:21:47
+				* @created 08-7æœˆ-2018 22:21:47
 				*/
 				template <>
 				class csf_attribute_default_value<csf_attribute_string, csf_string>
@@ -111,10 +111,10 @@ namespace csf
 				};
 
 				/**
-				* ±íÊ¾csf_attribute_intËùÊ¹ÓÃµÄÄ¬ÈÏÖµÀàĞÍ¡£
+				* è¡¨ç¤ºcsf_attribute_intæ‰€ä½¿ç”¨çš„é»˜è®¤å€¼ç±»å‹ã€‚
 				* @author Administrator
 				* @version 1.0
-				* @created 08-7ÔÂ-2018 22:21:47
+				* @created 08-7æœˆ-2018 22:21:47
 				*/
 				template <>
 				class csf_attribute_default_value<csf_attribute_int, csf_int32>
@@ -123,10 +123,10 @@ namespace csf
 				};
 
 				/**
-				* ±íÊ¾csf_attribute_timeËùÊ¹ÓÃµÄÄ¬ÈÏÖµÀàĞÍ¡£
+				* è¡¨ç¤ºcsf_attribute_timeæ‰€ä½¿ç”¨çš„é»˜è®¤å€¼ç±»å‹ã€‚
 				* @author Administrator
 				* @version 1.0
-				* @created 08-7ÔÂ-2018 22:21:47
+				* @created 08-7æœˆ-2018 22:21:47
 				*/
 				template <>
 				class csf_attribute_default_value<csf_attribute_time, csf_int64>
@@ -135,10 +135,10 @@ namespace csf
 				};
 
 				/**
-				* ±íÊ¾csf_attribute_space_sizeËùÊ¹ÓÃµÄÄ¬ÈÏÖµÀàĞÍ¡£
+				* è¡¨ç¤ºcsf_attribute_space_sizeæ‰€ä½¿ç”¨çš„é»˜è®¤å€¼ç±»å‹ã€‚
 				* @author Administrator
 				* @version 1.0
-				* @created 08-7ÔÂ-2018 22:21:47
+				* @created 08-7æœˆ-2018 22:21:47
 				*/
 				template <>
 				class csf_attribute_default_value<csf_attribute_space_size, csf_int64>

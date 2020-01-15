@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 17:33:47
+*Date: 01-7æœˆ-2018 17:33:47
 *
-*Description: Class(csf_device_io)±íÊ¾Éè±¸ioµÄ³éÏó
+*Description: Class(csf_device_io)è¡¨ç¤ºè®¾å¤‡ioçš„æŠ½è±¡
 *
 *Others:
 *
@@ -32,29 +32,29 @@ namespace csf
 		namespace module
 		{
 			/**
-			 * ±íÊ¾Éè±¸ioµÄ³éÏó
+			 * è¡¨ç¤ºè®¾å¤‡ioçš„æŠ½è±¡
 			 * @author fangzhenmu@aliyun.com
 			 * @version 1.0
-			 * @created 01-7ÔÂ-2018 17:33:47
+			 * @created 01-7æœˆ-2018 17:33:47
 			 */
 			class csf_device_io : public csf::core::module::csf_device_base, public csf::core::module::csf_device_io_interface
 			{
 
 			public:
 				/**
-				* ±íÊ¾Éè±¸device_ioµÄÀàĞÍ
+				* è¡¨ç¤ºè®¾å¤‡device_ioçš„ç±»å‹
 				* @author f
 				* @version 1.0
-				* @created 12-7ÔÂ-2018 16:40:16
+				* @created 12-7æœˆ-2018 16:40:16
 				*/
 				enum csf_device_io_type
 				{
 					/**
-					* ±íÊ¾Éè±¸µÄdevice_ioµÄÎ´ÖªÀàĞÍ
+					* è¡¨ç¤ºè®¾å¤‡çš„device_ioçš„æœªçŸ¥ç±»å‹
 					*/
 					csf_device_io_type_none = csf_module_type_device_io | 0x00000000,
 					/**
-					* ±íÊ¾Éè±¸µÄdevice_ioµÄÍ¨ÓÃÀ©Õ¹
+					* è¡¨ç¤ºè®¾å¤‡çš„device_ioçš„é€šç”¨æ‰©å±•
 					*/
 					csf_device_io_type_general_extend = csf_device_io_type_none | 0x00010000
 				};
@@ -66,9 +66,9 @@ namespace csf
 				}
 
 				/**
-				* ±íÊ¾¸ù¾İÅäÖÃÎÄ¼şºÍÀàĞÍ´´½¨Éè±¸Ä£¿é
+				* è¡¨ç¤ºæ ¹æ®é…ç½®æ–‡ä»¶å’Œç±»å‹åˆ›å»ºè®¾å¤‡æ¨¡å—
 				*
-				* @param configure_manager    ±íÊ¾ÅäÖÃÎÄ¼şÄÚÈİ
+				* @param configure_manager    è¡¨ç¤ºé…ç½®æ–‡ä»¶å†…å®¹
 				*/
 				inline explicit csf_device_io(const csf_configure_manager * configure_manager)
 
@@ -80,10 +80,10 @@ namespace csf
 				}
 
 				/**
-				* ±íÊ¾¸ù¾İÅäÖÃÎÄ¼şºÍÀàĞÍ´´½¨Éè±¸Ä£¿é
+				* è¡¨ç¤ºæ ¹æ®é…ç½®æ–‡ä»¶å’Œç±»å‹åˆ›å»ºè®¾å¤‡æ¨¡å—
 				*
-				* @param configure_manager    ±íÊ¾ÅäÖÃÎÄ¼şÄÚÈİ
-				* @param type    ±íÊ¾Ä£¿éµÄÀàĞÍ
+				* @param configure_manager    è¡¨ç¤ºé…ç½®æ–‡ä»¶å†…å®¹
+				* @param type    è¡¨ç¤ºæ¨¡å—çš„ç±»å‹
 				*/
 				inline explicit csf_device_io(const csf_configure_manager * configure_manager
 					, const csf::core::module::csf_module::csf_module_type type) 
@@ -101,7 +101,7 @@ namespace csf
 				}
 
 				/**
-				* ±íÊ¾device_ioËùÊôµÄappµØÖ·
+				* è¡¨ç¤ºdevice_ioæ‰€å±çš„appåœ°å€
 				*
 				* @param new_value
 				*/
@@ -110,14 +110,14 @@ namespace csf
 					m_app = (csf::core::module::csf_app*)new_value;
 				}
 				/**
-				 * ±íÊ¾Éè±¸ioËùÊôµÄdeviceµØÖ·ĞÅÏ¢
+				 * è¡¨ç¤ºè®¾å¤‡ioæ‰€å±çš„deviceåœ°å€ä¿¡æ¯
 				 */
 				inline csf::core::module::csf_device* get_device() {
 
 					return m_device;
 				}
 				/**
-				 * ±íÊ¾Éè±¸ioËùÊôµÄdeviceµØÖ·ĞÅÏ¢
+				 * è¡¨ç¤ºè®¾å¤‡ioæ‰€å±çš„deviceåœ°å€ä¿¡æ¯
 				 *
 				 * @param new_value
 				 */
@@ -130,8 +130,8 @@ namespace csf
 					return  m_app;
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£º½«Ä£¿éĞÅÏ¢¸ñÊ½»¯³É×Ö·û´®Êä³ö
-				* ·µ»Ø£ºÄ£¿éĞÅÏ¢×Ö·û´®
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå°†æ¨¡å—ä¿¡æ¯æ ¼å¼åŒ–æˆå­—ç¬¦ä¸²è¾“å‡º
+				* è¿”å›ï¼šæ¨¡å—ä¿¡æ¯å­—ç¬¦ä¸²
 				*/
 				inline virtual csf_string to_string() {
 
@@ -149,11 +149,11 @@ namespace csf
 				}
 			private:
 				/**
-				 * ±íÊ¾Éè±¸ioËùÊôµÄdeviceµØÖ·ĞÅÏ¢
+				 * è¡¨ç¤ºè®¾å¤‡ioæ‰€å±çš„deviceåœ°å€ä¿¡æ¯
 				 */
 				csf::core::module::csf_device* m_device = csf_nullptr;
 				/**
-				 * ±íÊ¾device_ioËùÊôµÄappµØÖ·
+				 * è¡¨ç¤ºdevice_ioæ‰€å±çš„appåœ°å€
 				 */
 				csf::core::module::csf_app* m_app = csf_nullptr;
 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 11-7ÔÂ-2018 14:45:30
+*Date: 11-7æœˆ-2018 14:45:30
 *
 *Description: Class(csf_attribute_string)
 *
@@ -33,10 +33,10 @@ namespace csf
 			namespace attribute
 			{
 				/**
-				 * ±íÊ¾×Ö·û´®ĞÔÀàĞÍ¡£
+				 * è¡¨ç¤ºå­—ç¬¦ä¸²æ€§ç±»å‹ã€‚
 				 * @author fz
 				 * @version 1.0
-				 * @created 11-7ÔÂ-2018 14:45:30
+				 * @created 11-7æœˆ-2018 14:45:30
 				 */
 				class csf_attribute_string : public csf::core::system::attribute::csf_attribute_template<csf_string>
 				{
@@ -51,10 +51,10 @@ namespace csf
 					}
 
 					/**
-					* ¸ù¾İÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®ç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_string(const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
 
@@ -62,11 +62,11 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÃû³ÆºÍÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®åç§°å’Œç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param name    ±íÊ¾ÊôĞÔµÄÃû³Æ
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param name    è¡¨ç¤ºå±æ€§çš„åç§°
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_string(const csf_string& name
 						, const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
@@ -75,11 +75,11 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÃû³ÆºÍÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®åç§°å’Œç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param name    ±íÊ¾ÊôĞÔµÄÃû³Æ
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param name    è¡¨ç¤ºå±æ€§çš„åç§°
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_string(const csf_char* name
 						, const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
@@ -88,12 +88,12 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÊôĞÔÂ·¾¶¡¢ÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®å±æ€§è·¯å¾„ã€ç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param items    ±íÊ¾¸ÃÊôĞÔËù¶ÔÓ¦µÄÅäÖÃÎÄ¼ş½ÚµãÎ»ÖÃ
+					* @param items    è¡¨ç¤ºè¯¥å±æ€§æ‰€å¯¹åº”çš„é…ç½®æ–‡ä»¶èŠ‚ç‚¹ä½ç½®
 					*
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_string(const csf_list<csf_string> items
 						, const csf::core::system::attribute::csf_attribute_exception& ex = csf_attribute_exception::get_null())
@@ -102,13 +102,13 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÃû³Æ¡¢ÊôĞÔÂ·¾¶¡¢ÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®åç§°ã€å±æ€§è·¯å¾„ã€ç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param name    ±íÊ¾ÊôĞÔµÄÃû³Æ
-					* @param items    ±íÊ¾¸ÃÊôĞÔËù¶ÔÓ¦µÄÅäÖÃÎÄ¼ş½ÚµãÎ»ÖÃ
+					* @param name    è¡¨ç¤ºå±æ€§çš„åç§°
+					* @param items    è¡¨ç¤ºè¯¥å±æ€§æ‰€å¯¹åº”çš„é…ç½®æ–‡ä»¶èŠ‚ç‚¹ä½ç½®
 					*
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_string(const csf_string& name
 						, const csf_list<csf_string> items
@@ -118,13 +118,13 @@ namespace csf
 
 					}
 					/**
-					* ¸ù¾İÃû³Æ¡¢ÊôĞÔÂ·¾¶¡¢ÀàĞÍ´´½¨Ò»¸ö¶ÔÏó
+					* æ ¹æ®åç§°ã€å±æ€§è·¯å¾„ã€ç±»å‹åˆ›å»ºä¸€ä¸ªå¯¹è±¡
 					*
-					* @param name    ±íÊ¾ÊôĞÔµÄÃû³Æ
-					* @param items    ±íÊ¾¸ÃÊôĞÔËù¶ÔÓ¦µÄÅäÖÃÎÄ¼ş½ÚµãÎ»ÖÃ
+					* @param name    è¡¨ç¤ºå±æ€§çš„åç§°
+					* @param items    è¡¨ç¤ºè¯¥å±æ€§æ‰€å¯¹åº”çš„é…ç½®æ–‡ä»¶èŠ‚ç‚¹ä½ç½®
 					*
-					* @param boundary    ±íÊ¾Êı×ÖÊôĞÔµÄ·¶Î§±ß½çºËÑéĞÅÏ¢
-					* @param ex    ±íÊ¾ÊôĞÔÒì³£´¦Àí¶ÔÏó
+					* @param boundary    è¡¨ç¤ºæ•°å­—å±æ€§çš„èŒƒå›´è¾¹ç•Œæ ¸éªŒä¿¡æ¯
+					* @param ex    è¡¨ç¤ºå±æ€§å¼‚å¸¸å¤„ç†å¯¹è±¡
 					*/
 					inline explicit csf_attribute_string(const csf_char* name
 						, const csf_list<csf_string> items
@@ -136,12 +136,12 @@ namespace csf
 
 				protected:
 					/**
-					 * ±íÊ¾´¦Àícsf_attributeÊôĞÔ²Ù×÷¡£ÕâÀïÓëcsf_attributeÖĞ²»Í¬µÄÊÇ£¬ÕâÀïÌí¼ÓÒ»²ãprocess_attributeº¯ÊıÖ÷ÒªÊÇÎªÁËÊµÏÖÒì³££¨e
-					 * xception£©µÄÍ³Ò»´¦Àí¡£µ±Òì³£³öÏÖÊ±£¬Ö±½Ó¸ù¾İ·µ»Ø´íÎó£¬µ÷ÓÃÒì³£´¦Àíº¯Êı¡£
-					 * ·µ»Ø£ºtrue±íÊ¾Ê§°Ü£»false±íÊ¾³É¹¦¡£
+					 * è¡¨ç¤ºå¤„ç†csf_attributeå±æ€§æ“ä½œã€‚è¿™é‡Œä¸csf_attributeä¸­ä¸åŒçš„æ˜¯ï¼Œè¿™é‡Œæ·»åŠ ä¸€å±‚process_attributeå‡½æ•°ä¸»è¦æ˜¯ä¸ºäº†å®ç°å¼‚å¸¸ï¼ˆe
+					 * xceptionï¼‰çš„ç»Ÿä¸€å¤„ç†ã€‚å½“å¼‚å¸¸å‡ºç°æ—¶ï¼Œç›´æ¥æ ¹æ®è¿”å›é”™è¯¯ï¼Œè°ƒç”¨å¼‚å¸¸å¤„ç†å‡½æ•°ã€‚
+					 * è¿”å›ï¼štrueè¡¨ç¤ºå¤±è´¥ï¼›falseè¡¨ç¤ºæˆåŠŸã€‚
 					 * 
-					 * @param configure_manager    ±íÊ¾±£´æÅäÖÃ¹ÜÀíÆ÷¶ÔÏó
-					 * @param alias    ±íÊ¾µ±Ç°ÊôĞÔ±ğÃû£¬Èç¹ûÊôĞÔÃû³ÆÎª¿ÕÔòÔòÊ¹ÓÃ¸Ã±ğÃû¡£
+					 * @param configure_manager    è¡¨ç¤ºä¿å­˜é…ç½®ç®¡ç†å™¨å¯¹è±¡
+					 * @param alias    è¡¨ç¤ºå½“å‰å±æ€§åˆ«åï¼Œå¦‚æœå±æ€§åç§°ä¸ºç©ºåˆ™åˆ™ä½¿ç”¨è¯¥åˆ«åã€‚
 					 */
 					csf_bool process_attribute(const csf_configure_manager& configure_manager, const csf_string& alias);
 

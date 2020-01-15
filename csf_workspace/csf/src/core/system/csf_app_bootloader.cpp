@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 20-7ÔÂ-2018 17:41:40
+*Date: 20-7æœˆ-2018 17:41:40
 *
-*Description: Class(csf_app_bootloader) ±íÊ¾ÏµÍ³Æô¶¯ÔËĞĞµÄapp³ÌĞòÅäÖÃÎÄ¼ş´¦Àí¡£ÀàËÆÆô¶¯Òıµ¼ÎÄ¼ş£¬ÓÃÓÚÃèÊöappĞèÒªÄ¬ÈÏÔËĞĞµÄdevice¼°¸÷¸öÄ£¿éĞèÒª¼ÓÔØµÄdevice_ioÄÚÈİ¡£
+*Description: Class(csf_app_bootloader) è¡¨ç¤ºç³»ç»Ÿå¯åŠ¨è¿è¡Œçš„appç¨‹åºé…ç½®æ–‡ä»¶å¤„ç†ã€‚ç±»ä¼¼å¯åŠ¨å¼•å¯¼æ–‡ä»¶ï¼Œç”¨äºæè¿°appéœ€è¦é»˜è®¤è¿è¡Œçš„deviceåŠå„ä¸ªæ¨¡å—éœ€è¦åŠ è½½çš„device_ioå†…å®¹ã€‚
 *
 *Others:
 *
@@ -28,11 +28,11 @@ const csf_list<csf_string> csf_app_bootloader::m_configure_files_items = { "app_
 
 
 /**
-* ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚ³õÊ¼»¯app¡£
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+* è¯¥å‡½æ•°ä¸»è¦ç”¨äºåˆå§‹åŒ–appã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 *
-* @param app    ±íÊ¾Ä¿±êapp¶ÔÏó
-* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
+* @param app    è¡¨ç¤ºç›®æ ‡appå¯¹è±¡
+* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
 */
 csf_bool csf_app_bootloader::init(csf::core::module::csf_app& app
 	, csf::core::system::csf_configure_manager& configure_manager) {
@@ -40,7 +40,7 @@ csf_bool csf_app_bootloader::init(csf::core::module::csf_app& app
 	csf_bool							tmp_bool_ret = csf_false;
 
 
-	//´´½¨Òıµ¼ÅäÖÃÎÄ¼şÖĞµÄËùÓĞÉè±¸Ä£¿éÁĞ±í
+	//åˆ›å»ºå¼•å¯¼é…ç½®æ–‡ä»¶ä¸­çš„æ‰€æœ‰è®¾å¤‡æ¨¡å—åˆ—è¡¨
 	tmp_bool_ret = create_devices(app, configure_manager);
 	if (csf_false == tmp_bool_ret) {
 		csf_log_ex(error, csf_log_code_error
@@ -52,7 +52,7 @@ csf_bool csf_app_bootloader::init(csf::core::module::csf_app& app
 			, "create_devices() succeed!");
 	}
 
-	//³õÊ¼»¯ĞèÒªÒıµ¼µÄÉè±¸Ä£¿éÁĞ±í
+	//åˆå§‹åŒ–éœ€è¦å¼•å¯¼çš„è®¾å¤‡æ¨¡å—åˆ—è¡¨
 	tmp_bool_ret = init_devices(app, configure_manager);
 	if (csf_false == tmp_bool_ret) {
 		csf_log_ex(error, csf_log_code_error
@@ -69,11 +69,11 @@ csf_bool csf_app_bootloader::init(csf::core::module::csf_app& app
 
 
 /**
- * ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚ³õÊ¼»¯app¡£
- * ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+ * è¯¥å‡½æ•°ä¸»è¦ç”¨äºåˆå§‹åŒ–appã€‚
+ * è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
  *
- * @param app    ±íÊ¾Ä¿±êapp¶ÔÏó
- * @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
+ * @param app    è¡¨ç¤ºç›®æ ‡appå¯¹è±¡
+ * @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
  */
 csf_bool csf_app_bootloader::start(csf::core::module::csf_app& app
 	, csf::core::system::csf_configure_manager& configure_manager) {
@@ -81,7 +81,7 @@ csf_bool csf_app_bootloader::start(csf::core::module::csf_app& app
 	csf_bool							tmp_bool_ret = csf_false;
 
 
-	//Æô¶¯ĞèÒªÒıµ¼µÄÉè±¸Ä£¿éÁĞ±í
+	//å¯åŠ¨éœ€è¦å¼•å¯¼çš„è®¾å¤‡æ¨¡å—åˆ—è¡¨
 	tmp_bool_ret = start_devices(app, configure_manager);
 	if (csf_false == tmp_bool_ret) {
 		csf_log_ex(error, csf_log_code_error
@@ -98,18 +98,18 @@ csf_bool csf_app_bootloader::start(csf::core::module::csf_app& app
 
 
 /**
- * ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚ³õÊ¼»¯app¡£
- * ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+ * è¯¥å‡½æ•°ä¸»è¦ç”¨äºåˆå§‹åŒ–appã€‚
+ * è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
  *
- * @param app    ±íÊ¾Ä¿±êapp¶ÔÏó
+ * @param app    è¡¨ç¤ºç›®æ ‡appå¯¹è±¡
  */
 csf_bool csf_app_bootloader::stop(csf::core::module::csf_app& app) {
 
 	csf_bool							tmp_bool_ret = csf_false;
 
 
-	//Æô¶¯ĞèÒªÒıµ¼µÄÉè±¸Ä£¿éÁĞ±í
-	tmp_bool_ret = start_devices(app, *get_configure_manager());
+	//åœæ­¢éœ€è¦å¼•å¯¼çš„è®¾å¤‡æ¨¡å—åˆ—è¡¨
+	tmp_bool_ret = stop_devices(app, *get_configure_manager());
 	if (csf_false == tmp_bool_ret) {
 		csf_log_ex(error, csf_log_code_error
 			, "start_devices() failed!");
@@ -125,11 +125,11 @@ csf_bool csf_app_bootloader::stop(csf::core::module::csf_app& app) {
 
 
 /**
-* ¹¦ÄÜ£º¸Ãº¯ÊıÖ÷Òª¸ù¾İÒıµ¼ÎÄ¼şÄÚÈİ´´½¨appµÄËùÊôËùÓĞÉè±¸Ä£¿é¡£
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+* åŠŸèƒ½ï¼šè¯¥å‡½æ•°ä¸»è¦æ ¹æ®å¼•å¯¼æ–‡ä»¶å†…å®¹åˆ›å»ºappçš„æ‰€å±æ‰€æœ‰è®¾å¤‡æ¨¡å—ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 *
-* @param app    ±íÊ¾Ä¿±êapp¶ÔÏó
-* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
+* @param app    è¡¨ç¤ºç›®æ ‡appå¯¹è±¡
+* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
 */
 csf_bool csf_app_bootloader::create_devices(csf::core::module::csf_app& app
 	, csf::core::system::csf_configure_manager& configure_manager) {
@@ -155,11 +155,11 @@ csf_bool csf_app_bootloader::create_devices(csf::core::module::csf_app& app
 
 
 /**
-* ¹¦ÄÜ£º¸Ãº¯ÊıÖ÷Òª¸ù¾İÒıµ¼ÎÄ¼şÄÚÈİ´´½¨Ò»¸öÉè±¸Ä£¿é¡£
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+* åŠŸèƒ½ï¼šè¯¥å‡½æ•°ä¸»è¦æ ¹æ®å¼•å¯¼æ–‡ä»¶å†…å®¹åˆ›å»ºä¸€ä¸ªè®¾å¤‡æ¨¡å—ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 *
-* @param app    ±íÊ¾Ä¿±êapp¶ÔÏó
-* @param element    ±íÊ¾µ±Ç°µÄdevice½ÚµãÄÚÈİ
+* @param app    è¡¨ç¤ºç›®æ ‡appå¯¹è±¡
+* @param element    è¡¨ç¤ºå½“å‰çš„deviceèŠ‚ç‚¹å†…å®¹
 */
 csf_bool csf_app_bootloader::create_device(csf::core::module::csf_app& app
 	, const csf_element& element) {
@@ -168,17 +168,17 @@ csf_bool csf_app_bootloader::create_device(csf::core::module::csf_app& app
 		return csf_false;
 	}
 
-	//ÅĞ¶Ïµ±Ç°ÊÇ·ñÎªdevice½Úµã£¬Èç¹ûÊÇÔòÌí¼ÓÉè±¸
+	//åˆ¤æ–­å½“å‰æ˜¯å¦ä¸ºdeviceèŠ‚ç‚¹ï¼Œå¦‚æœæ˜¯åˆ™æ·»åŠ è®¾å¤‡
 	if (CSF_CONFIGURE_STRING(device) == element.get_name()) {
 
 		return add_device(app, element);
 	}
 
-	//±éÀúËùÓĞ×Ó½ÚµãÄÚÈİ£¬Ìí¼ÓÉè±¸
+	//éå†æ‰€æœ‰å­èŠ‚ç‚¹å†…å®¹ï¼Œæ·»åŠ è®¾å¤‡
 	for (auto &tmp_elem : element.get_children()) {
 
-		//ÆäÖĞÈç¹ûÓĞÒ»¸öÄ£¿é´íÎó£¬ÔòÍË³öÆô¶¯¡£
-		//Æô¶¯Òıµ¼³ÌĞòĞèÒª±£Ö¤ËùÒÔÄ£¿é¶¼³É¹¦²ÅÄÜÔËĞĞ
+		//å…¶ä¸­å¦‚æœæœ‰ä¸€ä¸ªæ¨¡å—é”™è¯¯ï¼Œåˆ™é€€å‡ºå¯åŠ¨ã€‚
+		//å¯åŠ¨å¼•å¯¼ç¨‹åºéœ€è¦ä¿è¯æ‰€ä»¥æ¨¡å—éƒ½æˆåŠŸæ‰èƒ½è¿è¡Œ
 // 		if (csf_false == create_device(app, tmp_elem)) {
 // 			return csf_false;
 // 		}
@@ -190,12 +190,12 @@ csf_bool csf_app_bootloader::create_device(csf::core::module::csf_app& app
 
 
 /**
-* ¹¦ÄÜ£º¸Ãº¯ÊıÖ÷Òª¸ù¾İÒıµ¼ÎÄ¼şÄÚÈİ´´½¨appµÄËùÊôËùÓĞ×ÓÉè±¸Ä£¿é¡£
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+* åŠŸèƒ½ï¼šè¯¥å‡½æ•°ä¸»è¦æ ¹æ®å¼•å¯¼æ–‡ä»¶å†…å®¹åˆ›å»ºappçš„æ‰€å±æ‰€æœ‰å­è®¾å¤‡æ¨¡å—ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 *
-* @param device    ±íÊ¾ËùÊôµÄdeviceÉè±¸ĞÅÏ¢
-* @param element    ±íÊ¾µ±Ç°µÄdevice½ÚµãÄÚÈİ
-* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
+* @param device    è¡¨ç¤ºæ‰€å±çš„deviceè®¾å¤‡ä¿¡æ¯
+* @param element    è¡¨ç¤ºå½“å‰çš„deviceèŠ‚ç‚¹å†…å®¹
+* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
 */
 csf_bool csf_app_bootloader::create_device_ioes(csf::core::module::csf_device& device
 	, const csf_element& element
@@ -226,11 +226,11 @@ csf_bool csf_app_bootloader::create_device_ioes(csf::core::module::csf_device& d
 
 
 /**
-* ¹¦ÄÜ£º¸Ãº¯ÊıÖ÷Òª¸ù¾İÒıµ¼ÎÄ¼şÄÚÈİ´´½¨Ò»¸ö×ÓÉè±¸Ä£¿é¡£
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+* åŠŸèƒ½ï¼šè¯¥å‡½æ•°ä¸»è¦æ ¹æ®å¼•å¯¼æ–‡ä»¶å†…å®¹åˆ›å»ºä¸€ä¸ªå­è®¾å¤‡æ¨¡å—ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 *
-* @param device    ±íÊ¾ËùÊôµÄdeviceÉè±¸ĞÅÏ¢
-* @param element    ±íÊ¾µ±Ç°µÄdevice½ÚµãÄÚÈİ
+* @param device    è¡¨ç¤ºæ‰€å±çš„deviceè®¾å¤‡ä¿¡æ¯
+* @param element    è¡¨ç¤ºå½“å‰çš„deviceèŠ‚ç‚¹å†…å®¹
 */
 csf_bool csf_app_bootloader::create_device_io(csf::core::module::csf_device& device, const csf_element& element) {
 
@@ -238,7 +238,7 @@ csf_bool csf_app_bootloader::create_device_io(csf::core::module::csf_device& dev
 		return csf_false;
 	}
 
-	//ÅĞ¶Ïµ±Ç°ÊÇ·ñÎªdevice½Úµã£¬Èç¹ûÊÇÔòÌí¼ÓÉè±¸
+	//åˆ¤æ–­å½“å‰æ˜¯å¦ä¸ºdeviceèŠ‚ç‚¹ï¼Œå¦‚æœæ˜¯åˆ™æ·»åŠ è®¾å¤‡
 	if (CSF_CONFIGURE_STRING(device_io) == element.get_name()) {
 		return add_device_io(device, element);
 	}
@@ -248,11 +248,99 @@ csf_bool csf_app_bootloader::create_device_io(csf::core::module::csf_device& dev
 
 
 /**
-* ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚÌí¼ÓÒ»¸öÉè±¸µ½appÖĞ¡£
-* ·µ»Ø£ºtrue±íÊ¾Ìí¼Ó³É¹¦£»false±íÊ¾Ìí¼ÓÊ§°Ü¡£
+ * åŠŸèƒ½ï¼š
+ *    è¯¥å‡½æ•°åŠŸèƒ½æ˜¯é”€æ¯appçš„æ‰€å±æ‰€æœ‰è®¾å¤‡æ¨¡å—ã€‚
+ * è¿”å›ï¼š
+ *    true  ï¼š  è¡¨ç¤ºæˆåŠŸï¼›
+ *    false ï¼š  è¡¨ç¤ºå¤±è´¥ã€‚
+ *
+ * @param app    è¡¨ç¤ºæ‰€å±çš„appä¿¡æ¯
+ */
+csf_bool csf_app_bootloader::destroy_devices(csf_app& app) {
+
+	csf_int32					tmp_int_ret = csf_failure;
+
+
+	//ä¾æ¬¡éå†è®¾å¤‡ï¼Œåˆå§‹åŒ–è®¾å¤‡
+	for (auto &tmp_iter : app.get_devices()) {
+
+		if (!tmp_iter.second) {
+			continue;
+		}
+
+		//é”€æ¯è®¾å¤‡ä¸‹çš„å­è®¾å¤‡
+		tmp_int_ret = destroy_device_ioes(*tmp_iter.second);
+		if (csf_failure == tmp_int_ret) {
+
+			return csf_false;
+		}
+		else {
+			//åç»­å¤„ç†...
+		}
+	}
+
+	return csf_true;
+}
+
+
+/**
+ * åŠŸèƒ½ï¼š
+ *    è¯¥å‡½æ•°åŠŸèƒ½æ˜¯é”€æ¯appçš„æ‰€å±æ‰€æœ‰è®¾å¤‡å­æ¨¡å—ã€‚
+ * è¿”å›ï¼š
+ *    true  ï¼š  è¡¨ç¤ºæˆåŠŸï¼›
+ *    false ï¼š  è¡¨ç¤ºå¤±è´¥ã€‚
+ *
+ * @param device    è¡¨ç¤ºæ‰€å±çš„deviceè®¾å¤‡ä¿¡æ¯
+ */
+csf_bool csf_app_bootloader::destroy_device_ioes(csf_device& device) {
+
+	csf_int32					tmp_int_ret = csf_failure;
+
+
+	//ä¾æ¬¡éå†è®¾å¤‡ï¼Œåˆå§‹åŒ–è®¾å¤‡
+	for (auto &tmp_iter : device.get_device_ioes()) {
+
+		if (!tmp_iter.second) {
+			continue;
+		}
+
+		//é”€æ¯è®¾å¤‡
+		tmp_int_ret = destroy_module(device.get_app()->get_module_manager()
+			, tmp_iter.second);
+		if (csf_failure == tmp_int_ret) {
+
+			//return csf_false;
+		}
+		else {
+			//åç»­å¤„ç†...
+		}
+	}
+
+	return csf_true;
+}
+
+
+/**
+ * åŠŸèƒ½ï¼š
+ *    è¯¥å‡½æ•°ä¸»è¦é”€æ¯è®¾å¤‡å¯¹è±¡ã€‚
+ * è¿”å›ï¼š
+ *    0    ï¼š  è¡¨ç¤ºæˆåŠŸï¼›
+ *    é0  ï¼š  è¡¨ç¤ºå¤±è´¥ã€‚
+ *
+ * @param module_manager    è¡¨ç¤ºæ¨¡å—ç®¡ç†å™¨å¯¹è±¡ä¿¡æ¯
+ * @param module    è¡¨ç¤ºç›®æ ‡aapå¯¹è±¡
+ */
+csf_int32 csf_app_bootloader::destroy_module(csf::core::module::csf_module_manager& module_manager, csf_module* module) {
+	return csf_configure_module::destroy_module(module_manager, module);
+}
+
+
+/**
+* è¯¥å‡½æ•°ä¸»è¦ç”¨äºæ·»åŠ ä¸€ä¸ªè®¾å¤‡åˆ°appä¸­ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºæ·»åŠ æˆåŠŸï¼›falseè¡¨ç¤ºæ·»åŠ å¤±è´¥ã€‚
 *
-* @param app    ±íÊ¾Ä¿±êapp¶ÔÏó
-* @param element    ±íÊ¾Ä£¿éÅäÖÃĞÅÏ¢
+* @param app    è¡¨ç¤ºç›®æ ‡appå¯¹è±¡
+* @param element    è¡¨ç¤ºæ¨¡å—é…ç½®ä¿¡æ¯
 */
 csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, const csf_element& element) {
 
@@ -268,26 +356,26 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, const c
 		return csf_false;
 	}
 
-	//Ğ£Ñé¸ÃÄ£¿éÊÇ·ñÎªdeviceÄ£¿é¶ÔÏó¡£Èç¹ûÊÇÔòÌí¼Ó£»Èç¹û²»ÊÇÔòÄ£¿éÊÇ´íÎóµÄ£¬Ïú»Ù£»
+	//æ ¡éªŒè¯¥æ¨¡å—æ˜¯å¦ä¸ºdeviceæ¨¡å—å¯¹è±¡ã€‚å¦‚æœæ˜¯åˆ™æ·»åŠ ï¼›å¦‚æœä¸æ˜¯åˆ™æ¨¡å—æ˜¯é”™è¯¯çš„ï¼Œé”€æ¯ï¼›
 	if (!csf_device_base::is_device_base(tmp_device_base->get_type())) {
 		csf_log_ex(error, csf_log_code_error
 			, "add device failed! reason: module type[%d] faile!"
 			, tmp_device_base->get_type());
 
-		app.get_module_manager().destory(tmp_device_base);
+		app.get_module_manager().destroy(tmp_device_base);
 
 		return csf_false;
 	}
 	else {
 
-		//ÉèÖÃÉè±¸µÄappÊôĞÔ
+		//è®¾ç½®è®¾å¤‡çš„appå±æ€§
 		//dynamic_cast<csf::core::module::csf_device*>(tmp_device_base)->set_app(&app);
 		dynamic_cast<csf::core::module::csf_device*>(tmp_device_base)->set_app(&app);
 
-		//Ìí¼ÓÉè±¸µ½appÉè±¸ÁĞ±íÖĞ
+		//æ·»åŠ è®¾å¤‡åˆ°appè®¾å¤‡åˆ—è¡¨ä¸­
 		if (!add_device(app, dynamic_cast<csf::core::module::csf_device*>(tmp_device_base))) {
 
-			app.get_module_manager().destory(tmp_device_base);
+			app.get_module_manager().destroy(tmp_device_base);
 
 			return csf_false;
 		}
@@ -302,11 +390,11 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app, const c
 
 
 /**
-* ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚÌí¼ÓÒ»¸öÉè±¸µ½appÖĞ¡£
-* ·µ»Ø£ºtrue±íÊ¾Ìí¼Ó³É¹¦£»false±íÊ¾Ìí¼ÓÊ§°Ü¡£
+* è¯¥å‡½æ•°ä¸»è¦ç”¨äºæ·»åŠ ä¸€ä¸ªè®¾å¤‡åˆ°appä¸­ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºæ·»åŠ æˆåŠŸï¼›falseè¡¨ç¤ºæ·»åŠ å¤±è´¥ã€‚
 *
-* @param app    ±íÊ¾Ä¿±êapp¶ÔÏó
-* @param device    ±íÊ¾ĞèÌí¼ÓµÄÉè±¸µØÖ·
+* @param app    è¡¨ç¤ºç›®æ ‡appå¯¹è±¡
+* @param device    è¡¨ç¤ºéœ€æ·»åŠ çš„è®¾å¤‡åœ°å€
 */
 csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app
 	, const csf::core::module::csf_device* device) {
@@ -316,7 +404,7 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app
 		return csf_false;
 	}
 
-	//Ìí¼ÓÉè±¸µ½Éè±¸ÁĞ±íÖĞ
+	//æ·»åŠ è®¾å¤‡åˆ°è®¾å¤‡åˆ—è¡¨ä¸­
 
 	const_cast<csf::core::module::csf_device*>(device)->set_parent(&app);
 
@@ -345,11 +433,11 @@ csf_bool csf_app_bootloader::add_device(csf::core::module::csf_app& app
 
 
 /**
-* ¹¦ÄÜ£º¸Ãº¯ÊıÖ÷ÒªÓÃÓÚ´´½¨Ò»¸öÉè±¸¶ÔÏó¡£
-* ·µ»Ø£º·Ç¿Õ±íÊ¾³É¹¦£»¿Õ±íÊ¾Ê§°Ü¡£
+* åŠŸèƒ½ï¼šè¯¥å‡½æ•°ä¸»è¦ç”¨äºåˆ›å»ºä¸€ä¸ªè®¾å¤‡å¯¹è±¡ã€‚
+* è¿”å›ï¼šéç©ºè¡¨ç¤ºæˆåŠŸï¼›ç©ºè¡¨ç¤ºå¤±è´¥ã€‚
 *
-* @param app    ±íÊ¾Ä¿±êaap¶ÔÏó
-* @param name    ±íÊ¾Ä£¿éÃû³Æ
+* @param app    è¡¨ç¤ºç›®æ ‡aapå¯¹è±¡
+* @param name    è¡¨ç¤ºæ¨¡å—åç§°
 */
 csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::module::csf_app& app
 	, const csf_string& name) {
@@ -357,7 +445,7 @@ csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::modu
 	csf_module					*tmp_module = csf_nullptr;
 
 
-	//ºËÑéÊı¾İµÄºÏ·¨ĞÔ
+	//æ ¸éªŒæ•°æ®çš„åˆæ³•æ€§
 	if (name.empty()) {
 		csf_log_ex(error, csf_log_code_error
 			, "add device failed! reason: name[\"%s\"] is null!"
@@ -365,7 +453,7 @@ csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::modu
 		return csf_nullptr;
 	}
 
-	//¸ù¾İÃû³Æ´´½¨Ä£¿é¶ÔÏó
+	//æ ¹æ®åç§°åˆ›å»ºæ¨¡å—å¯¹è±¡
 	tmp_module = app.get_module_manager().create(name);
 	if (!tmp_module) {
 		csf_log_ex(error, csf_log_code_error
@@ -379,28 +467,28 @@ csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::modu
 			, name.c_str());
 	}
 
-	//Ğ£Ñé¸ÃÄ£¿éÊÇ·ñÎªdeviceÄ£¿é¶ÔÏó¡£Èç¹ûÊÇÔòÌí¼Ó£»Èç¹û²»ÊÇÔòÄ£¿éÊÇ´íÎóµÄ£¬Ïú»Ù£»
+	//æ ¡éªŒè¯¥æ¨¡å—æ˜¯å¦ä¸ºdeviceæ¨¡å—å¯¹è±¡ã€‚å¦‚æœæ˜¯åˆ™æ·»åŠ ï¼›å¦‚æœä¸æ˜¯åˆ™æ¨¡å—æ˜¯é”™è¯¯çš„ï¼Œé”€æ¯ï¼›
 	if (!csf_device_base::is_device_base(tmp_module->get_type())) {
 		csf_log_ex(error, csf_log_code_error
 			, "add device module[name:\"%s\"] failed! reason: module type[%d] faile!"
 			, name.c_str()
 			, tmp_module->get_type());
 
-		app.get_module_manager().destory(tmp_module);
+		app.get_module_manager().destroy(tmp_module);
 
 		return csf_nullptr;
 	}
 	else {
 
-		//Ìí¼ÓÉè±¸µ½Éè±¸ÁĞ±íÖĞ
+		//æ·»åŠ è®¾å¤‡åˆ°è®¾å¤‡åˆ—è¡¨ä¸­
 		((csf_device_base*)(tmp_module))->set_parent(&app);
 
-		//ÉèÖÃdeviceÉè±¸µÄapp¶ÔÏó
+		//è®¾ç½®deviceè®¾å¤‡çš„appå¯¹è±¡
 		if (csf_device_base::is_device(tmp_module->get_type())) {
 			((csf_device*)(tmp_module))->set_app(&app);
 		}
 
-		//ÉèÖÃdevice_ioÉè±¸µÄapp¶ÔÏó
+		//è®¾ç½®device_ioè®¾å¤‡çš„appå¯¹è±¡
 		if (csf_device_base::is_device_io(tmp_module->get_type())) {
 			((csf_device_io*)(tmp_module))->set_app(&app);
 		}
@@ -413,11 +501,11 @@ csf::core::module::csf_module* csf_app_bootloader::create_module(csf::core::modu
 
 
 /**
-* ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚÌí¼ÓÒ»¸öÉè±¸µ½deviceÖĞ¡£
-* ·µ»Ø£ºtrue±íÊ¾Ìí¼Ó³É¹¦£»false±íÊ¾Ìí¼ÓÊ§°Ü¡£
+* è¯¥å‡½æ•°ä¸»è¦ç”¨äºæ·»åŠ ä¸€ä¸ªè®¾å¤‡åˆ°deviceä¸­ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºæ·»åŠ æˆåŠŸï¼›falseè¡¨ç¤ºæ·»åŠ å¤±è´¥ã€‚
 *
-* @param device    ±íÊ¾Ä¿±êdevice¶ÔÏó
-* @param element    ±íÊ¾Ä£¿éÅäÖÃĞÅÏ¢
+* @param device    è¡¨ç¤ºç›®æ ‡deviceå¯¹è±¡
+* @param element    è¡¨ç¤ºæ¨¡å—é…ç½®ä¿¡æ¯
 */
 csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 	, const csf_element& element) {
@@ -441,7 +529,7 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 	tmp_device_io->set_parent(&device);
 	tmp_device_io->set_app(device.get_app());
 
-	//Ìí¼ÓÉè±¸¶ÔÏó£¬Èç¹û³É¹¦ÔòÌí¼ÓÆä×ÓÉè±¸
+	//æ·»åŠ è®¾å¤‡å¯¹è±¡ï¼Œå¦‚æœæˆåŠŸåˆ™æ·»åŠ å…¶å­è®¾å¤‡
 	if (!add_device_io(device, tmp_device_io)) {
 		return csf_false;
 	}
@@ -454,11 +542,11 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 
 
 /**
-* ¸Ãº¯ÊıÖ÷ÒªÓÃÓÚÌí¼ÓÒ»¸öÉè±¸µ½deviceÖĞ¡£
-* ·µ»Ø£ºtrue±íÊ¾Ìí¼Ó³É¹¦£»false±íÊ¾Ìí¼ÓÊ§°Ü¡£
+* è¯¥å‡½æ•°ä¸»è¦ç”¨äºæ·»åŠ ä¸€ä¸ªè®¾å¤‡åˆ°deviceä¸­ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºæ·»åŠ æˆåŠŸï¼›falseè¡¨ç¤ºæ·»åŠ å¤±è´¥ã€‚
 *
-* @param device    ±íÊ¾Ä¿±êaap¶ÔÏó
-* @param device_io    ±íÊ¾ĞèÌí¼ÓµÄÉè±¸µØÖ·
+* @param device    è¡¨ç¤ºç›®æ ‡aapå¯¹è±¡
+* @param device_io    è¡¨ç¤ºéœ€æ·»åŠ çš„è®¾å¤‡åœ°å€
 */
 csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 	, const csf::core::module::csf_device_io* device_io) {
@@ -467,7 +555,7 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 		return csf_false;
 	}
 
-	//Ìí¼ÓÉè±¸µ½Éè±¸ÁĞ±íÖĞ
+	//æ·»åŠ è®¾å¤‡åˆ°è®¾å¤‡åˆ—è¡¨ä¸­
 	const_cast<csf::core::module::csf_device_io*>(device_io)->set_app(get_app());
 	const_cast<csf::core::module::csf_device_io*>(device_io)->set_device(&device);
 
@@ -478,11 +566,11 @@ csf_bool csf_app_bootloader::add_device_io(csf::core::module::csf_device& device
 
 
 /**
-* ¹¦ÄÜ£º¸Ãº¯Êı³õÊ¼»¯appÖĞµÄËùÓĞÉè±¸¡£
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+* åŠŸèƒ½ï¼šè¯¥å‡½æ•°åˆå§‹åŒ–appä¸­çš„æ‰€æœ‰è®¾å¤‡ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 *
-* @param app    ±íÊ¾ËùÊôµÄappĞÅÏ¢
-* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
+* @param app    è¡¨ç¤ºæ‰€å±çš„appä¿¡æ¯
+* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
 */
 csf_bool csf_app_bootloader::init_devices(csf_app& app
 	, csf::core::system::csf_configure_manager& configure_manager) {
@@ -490,14 +578,14 @@ csf_bool csf_app_bootloader::init_devices(csf_app& app
 	csf_int32					tmp_int_ret = csf_failure;
 
 
-	//ÒÀ´Î±éÀúÉè±¸£¬³õÊ¼»¯Éè±¸
+	//ä¾æ¬¡éå†è®¾å¤‡ï¼Œåˆå§‹åŒ–è®¾å¤‡
 	for (auto &tmp_iter : app.get_devices()) {
 
 		if (!tmp_iter.second) {
 			continue;
 		}
 
-		//¿ªÊ¼³õÊ¼»¯Éè±¸
+		//å¼€å§‹åˆå§‹åŒ–è®¾å¤‡
 		csf_log(notice, "init device[%s]...", tmp_iter.second->get_version().to_string().c_str());
 
 		tmp_int_ret = tmp_iter.second->init(&configure_manager);
@@ -517,11 +605,11 @@ csf_bool csf_app_bootloader::init_devices(csf_app& app
 
 
 /**
-* ¹¦ÄÜ£º¸Ãº¯ÊıÆô¶¯appÖĞµÄËùÓĞÉè±¸¡£
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+* åŠŸèƒ½ï¼šè¯¥å‡½æ•°å¯åŠ¨appä¸­çš„æ‰€æœ‰è®¾å¤‡ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 *
-* @param app    ±íÊ¾ËùÊôµÄappĞÅÏ¢
-* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
+* @param app    è¡¨ç¤ºæ‰€å±çš„appä¿¡æ¯
+* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
 */
 csf_bool csf_app_bootloader::start_devices(csf_app& app
 	, csf::core::system::csf_configure_manager& configure_manager) {
@@ -529,14 +617,14 @@ csf_bool csf_app_bootloader::start_devices(csf_app& app
 	csf_int32					tmp_int_ret = csf_failure;
 
 
-	//ÒÀ´Î±éÀúÉè±¸£¬³õÊ¼»¯Éè±¸
+	//ä¾æ¬¡éå†è®¾å¤‡ï¼Œåˆå§‹åŒ–è®¾å¤‡
 	for (auto &tmp_iter : app.get_devices()) {
 
 		if (!tmp_iter.second) {
 			continue;
 		}
 
-		//Æô¶¯Éè±¸
+		//å¯åŠ¨è®¾å¤‡
 		csf_log(notice, "start device[%s]...", tmp_iter.second->get_version().to_string().c_str());
 
 		tmp_int_ret = tmp_iter.second->start(&configure_manager);
@@ -556,11 +644,11 @@ csf_bool csf_app_bootloader::start_devices(csf_app& app
 
 
 /**
-* ¹¦ÄÜ£º¸Ãº¯ÊıÍ£Ö¹appÖĞµÄËùÓĞÉè±¸¡£
-* ·µ»Ø£ºtrue±íÊ¾³õÊ¼»¯ÅäÖÃĞÅÏ¢³É¹¦£»false±íÊ¾³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü¡£
+* åŠŸèƒ½ï¼šè¯¥å‡½æ•°åœæ­¢appä¸­çš„æ‰€æœ‰è®¾å¤‡ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆå§‹åŒ–é…ç½®ä¿¡æ¯æˆåŠŸï¼›falseè¡¨ç¤ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚
 *
-* @param app    ±íÊ¾ËùÊôµÄappĞÅÏ¢
-* @param configure_manager    ±íÊ¾½âÎöÅäÖÃÎÄ¼şĞÅÏ¢ºó£¬ĞèÒª±£´æµÄÄ¿±ê¶ÔÏóconfigure_manager
+* @param app    è¡¨ç¤ºæ‰€å±çš„appä¿¡æ¯
+* @param configure_manager    è¡¨ç¤ºè§£æé…ç½®æ–‡ä»¶ä¿¡æ¯åï¼Œéœ€è¦ä¿å­˜çš„ç›®æ ‡å¯¹è±¡configure_manager
 */
 csf_bool csf_app_bootloader::stop_devices(csf_app& app
 	, csf::core::system::csf_configure_manager& configure_manager) {
@@ -568,21 +656,21 @@ csf_bool csf_app_bootloader::stop_devices(csf_app& app
 	csf_int32					tmp_int_ret = csf_failure;
 
 
-	//ÒÀ´Î±éÀúÉè±¸£¬³õÊ¼»¯Éè±¸
+	//ä¾æ¬¡éå†è®¾å¤‡ï¼Œåˆå§‹åŒ–è®¾å¤‡
 	for (auto &tmp_iter : app.get_devices()) {
 
 		if (!tmp_iter.second) {
 			continue;
 		}
 
-		//Í£Ö¹Éè±¸
+		//åœæ­¢è®¾å¤‡
 		tmp_int_ret = tmp_iter.second->stop(&configure_manager);
 		if (csf_failure == tmp_int_ret) {
 
 			return csf_false;
 		}
 		else {
-			//ºóĞø´¦Àí...
+			//åç»­å¤„ç†...
 		}
 	}
 

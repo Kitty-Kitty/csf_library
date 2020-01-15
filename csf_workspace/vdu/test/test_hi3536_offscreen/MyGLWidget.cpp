@@ -1,4 +1,4 @@
-
+Ôªø
 #include "MyGLWidget.hpp"
 
 
@@ -54,7 +54,7 @@ bool MyGLWidget::loadSvg(const QByteArray &contents)
 		printf("load() end. %s\r\n", print_time());
 	}
 
-	//”√svgŒƒº˛µƒ≥ﬂ¥Á∏¸–¬widget¥Û–°
+	//Áî®svgÊñá‰ª∂ÁöÑÂ∞∫ÂØ∏Êõ¥Êñ∞widgetÂ§ßÂ∞è
 	resize(svgRender.defaultSize());
 
 	return true;
@@ -86,16 +86,16 @@ char* MyGLWidget::print_time()
 void MyGLWidget::initializeGLFormat()
 {
 #ifdef WIN32
-	// …Ë÷√ OpenGL ∞Ê±æ–≈œ¢
-	// ◊¢“‚: format ±ÿ–Î‘⁄ show() µ˜”√«∞…Ë÷√
+	// ËÆæÁΩÆ OpenGL ÁâàÊú¨‰ø°ÊÅØ
+	// Ê≥®ÊÑè: format ÂøÖÈ°ªÂú® show() Ë∞ÉÁî®ÂâçËÆæÁΩÆ
 	format.setRenderableType(QSurfaceFormat::OpenGL);
 	format.setProfile(QSurfaceFormat::CoreProfile);
 	//format.setProfile(QGLFormat::CoreProfile);
 	//format.setProfile(QSurfaceFormat::CompatibilityProfile);
 	format.setVersion(1, 1);
 #else
-	// …Ë÷√ OpenGL ∞Ê±æ–≈œ¢
-	// ◊¢“‚: format ±ÿ–Î‘⁄ show() µ˜”√«∞…Ë÷√
+	// ËÆæÁΩÆ OpenGL ÁâàÊú¨‰ø°ÊÅØ
+	// Ê≥®ÊÑè: format ÂøÖÈ°ªÂú® show() Ë∞ÉÁî®ÂâçËÆæÁΩÆ
 	format.setRenderableType(QSurfaceFormat::OpenGLES);
 	//format.setProfile(QSurfaceFormat::CoreProfile);
 	//format.setProfile(QGLFormat::CoreProfile);
@@ -114,7 +114,7 @@ void MyGLWidget::initializeGL()
 
 	printContextInformation();
 
-	//≥ı ºopengl∞Ê±æœ‡πÿ–≈œ¢
+	//ÂàùÂßãopenglÁâàÊú¨Áõ∏ÂÖ≥‰ø°ÊÅØ
 	//initializeGLFormat();
 
 	printf("qglClearColor begin! %s\r\n", print_time());
@@ -244,18 +244,18 @@ void MyGLWidget::paintGL()
 
 }
 
-// ¥Ú”°œ‡πÿ–≈œ¢£¨µ˜ ‘”√
+// ÊâìÂç∞Áõ∏ÂÖ≥‰ø°ÊÅØÔºåË∞ÉËØïÁî®
 void MyGLWidget::printContextInformation()
 {
 	QString glType;
 	QString glVersion;
 	QString glProfile;
 
-	// ªÒ»°∞Ê±æ–≈œ¢
+	// Ëé∑ÂèñÁâàÊú¨‰ø°ÊÅØ
 	glType = (context()->isOpenGLES()) ? "OpenGL ES" : "OpenGL";
 	glVersion = reinterpret_cast<const char*>(glGetString(GL_VERSION));
 
-	// ªÒ»° Profile –≈œ¢
+	// Ëé∑Âèñ Profile ‰ø°ÊÅØ
 #define CASE(c) case QSurfaceFormat::c: glProfile = #c; break
 	switch (format.profile())
 	{

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 12:54:37
+*Date: 01-10æœˆ-2018 12:54:37
 *
 *Description: Interface(csf_connect_factory_interface) <ul>
 	<li></li>
@@ -42,7 +42,7 @@ namespace csf
 				 * </ul>
 				 * @author f
 				 * @version 1.0
-				 * @created 01-10ÔÂ-2018 12:54:37
+				 * @created 01-10æœˆ-2018 12:54:37
 				 */
 				class csf_connect_factory_interface : public csf::core::module::csf_interface
 				{
@@ -57,30 +57,30 @@ namespace csf
 					}
 
 					/**
-					 * ±íÊ¾¸ù¾İÁ¬½ÓÀàĞÍ´´½¨Ò»¸öÁ¬½Ó¡£³É¹¦·µ»Ø·Ç0£¬Ê§°Ü·µ»Ø0¡£
+					 * è¡¨ç¤ºæ ¹æ®è¿æ¥ç±»å‹åˆ›å»ºä¸€ä¸ªè¿æ¥ã€‚æˆåŠŸè¿”å›é0ï¼Œå¤±è´¥è¿”å›0ã€‚
 					 * 
-					 * @param type    ±íÊ¾Á¬½ÓÀàĞÍ
+					 * @param type    è¡¨ç¤ºè¿æ¥ç±»å‹
 					 */
 					virtual csf_connect_ptr create(const csf_connect::csf_connect_type type) =0;
 					/**
-					 * ±íÊ¾¸ù¾İÁ¬½ÓÀàĞÍ¡¢±¾µØµØÖ·´´½¨Ò»¸öÁ¬½Ó¡£³É¹¦·µ»Ø·Ç0£¬Ê§°Ü·µ»Ø0¡£
+					 * è¡¨ç¤ºæ ¹æ®è¿æ¥ç±»å‹ã€æœ¬åœ°åœ°å€åˆ›å»ºä¸€ä¸ªè¿æ¥ã€‚æˆåŠŸè¿”å›é0ï¼Œå¤±è´¥è¿”å›0ã€‚
 					 * 
-					 * @param type    ±íÊ¾Á¬½ÓÀàĞÍ
-					 * @param local_url    ±íÊ¾Á¬½Ó´ò¿ªµÄ±¾µØµØÖ·
+					 * @param type    è¡¨ç¤ºè¿æ¥ç±»å‹
+					 * @param local_url    è¡¨ç¤ºè¿æ¥æ‰“å¼€çš„æœ¬åœ°åœ°å€
 					 */
 					virtual csf_connect_ptr create(const csf_connect::csf_connect_type type, const csf_url& local_url) =0;
 					/**
-					 * ±íÊ¾¸ù¾İÁ¬½ÓÀàĞÍ¡¢±¾µØµØÖ·¡¢Ô¶³ÌµØÖ·´´½¨Ò»¸öÁ¬½Ó¡£³É¹¦·µ»Ø·Ç0£¬Ê§°Ü·µ»Ø0¡£
+					 * è¡¨ç¤ºæ ¹æ®è¿æ¥ç±»å‹ã€æœ¬åœ°åœ°å€ã€è¿œç¨‹åœ°å€åˆ›å»ºä¸€ä¸ªè¿æ¥ã€‚æˆåŠŸè¿”å›é0ï¼Œå¤±è´¥è¿”å›0ã€‚
 					 * 
-					 * @param type    ±íÊ¾Á¬½ÓÀàĞÍ
-					 * @param local_url    ±íÊ¾Á¬½Ó´ò¿ªµÄ±¾µØµØÖ·
-					 * @param remote_url    ±íÊ¾Á¬½Ó´ò¿ªµÄÔ¶³ÌµØÖ·
+					 * @param type    è¡¨ç¤ºè¿æ¥ç±»å‹
+					 * @param local_url    è¡¨ç¤ºè¿æ¥æ‰“å¼€çš„æœ¬åœ°åœ°å€
+					 * @param remote_url    è¡¨ç¤ºè¿æ¥æ‰“å¼€çš„è¿œç¨‹åœ°å€
 					 */
 					virtual csf_connect_ptr create(const csf_connect::csf_connect_type type, const csf_url& local_url, const csf_url& remote_url) =0;
 					/**
-					 * ±íÊ¾Ïú»ÙÍøÂçÁ¬½Ó£¬Ïú»Ù³É¹¦·µ»Ø0£¬Ê§°Ü·µ»Ø<0µÄÊıÖµ¡£
+					 * è¡¨ç¤ºé”€æ¯ç½‘ç»œè¿æ¥ï¼Œé”€æ¯æˆåŠŸè¿”å›0ï¼Œå¤±è´¥è¿”å›<0çš„æ•°å€¼ã€‚
 					 * 
-					 * @param connect    ±íÊ¾ĞèÒªÏú»ÙµÄÁ¬½Ó
+					 * @param connect    è¡¨ç¤ºéœ€è¦é”€æ¯çš„è¿æ¥
 					 */
 					virtual csf_int32 destroy(const csf_connect_ptr connect) =0;
 

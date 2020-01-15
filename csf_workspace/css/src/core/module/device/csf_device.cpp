@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 17:33:44
+*Date: 01-7æœˆ-2018 17:33:44
 *
 *Description: Class(csf_device)
 *
@@ -22,10 +22,10 @@
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÄ£¿éµÄmid²éÕÒÒ»¸öÉè±¸¶ÔÏó
-* ·µ»Ø£º·Ç¿Õ±íÊ¾³É¹¦£»¿Õ±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼šæ ¹æ®æ¨¡å—çš„midæŸ¥æ‰¾ä¸€ä¸ªè®¾å¤‡å¯¹è±¡
+* è¿”å›ï¼šéç©ºè¡¨ç¤ºæˆåŠŸï¼›ç©ºè¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param mid    ±íÊ¾Éè±¸µÄÄ£¿é±àºÅ
+* @param mid    è¡¨ç¤ºè®¾å¤‡çš„æ¨¡å—ç¼–å·
 */
 csf_device_io* csf::core::module::device::csf_device::find_device_io(const csf_string& mid) {
 
@@ -48,11 +48,11 @@ csf_device_io* csf::core::module::device::csf_device::find_device_io(const csf_s
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÄ£¿éµÄmidÏòdeviceÖĞ²åÈëÒ»¸öÉè±¸¶ÔÏó
-* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼šæ ¹æ®æ¨¡å—çš„midå‘deviceä¸­æ’å…¥ä¸€ä¸ªè®¾å¤‡å¯¹è±¡
+* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param mid    ±íÊ¾Éè±¸µÄÄ£¿é±àºÅ
-* @param device_io    ±íÊ¾device_ioÄ£¿é¶ÔÏóµØÖ·
+* @param mid    è¡¨ç¤ºè®¾å¤‡çš„æ¨¡å—ç¼–å·
+* @param device_io    è¡¨ç¤ºdevice_ioæ¨¡å—å¯¹è±¡åœ°å€
 */
 csf_bool csf::core::module::device::csf_device::add_device_io(const csf_string& mid, const csf_void* device_io) {
 
@@ -78,10 +78,10 @@ csf_bool csf::core::module::device::csf_device::add_device_io(const csf_string& 
 
 
 /**
-* ¹¦ÄÜ£º¸ù¾İÄ£¿éµÄmid´ÓÉè±¸ÁĞ±íÖĞÉ¾³ıÒ»¸öÉè±¸¶ÔÏó
-* ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾Ê§°Ü£»
+* åŠŸèƒ½ï¼šæ ¹æ®æ¨¡å—çš„midä»è®¾å¤‡åˆ—è¡¨ä¸­åˆ é™¤ä¸€ä¸ªè®¾å¤‡å¯¹è±¡
+* è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºå¤±è´¥ï¼›
 *
-* @param mid    ±íÊ¾Éè±¸µÄÄ£¿é±àºÅ
+* @param mid    è¡¨ç¤ºè®¾å¤‡çš„æ¨¡å—ç¼–å·
 */
 csf_bool csf::core::module::device::csf_device::del_device_io(const csf_string& mid) {
 

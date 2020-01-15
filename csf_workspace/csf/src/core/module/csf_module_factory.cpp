@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 01-7ÔÂ-2018 18:45:44
+*Date: 01-7æœˆ-2018 18:45:44
 *
 *Description: Class(csf_module_factory)
 *
@@ -36,9 +36,9 @@ using csf::core::module::csf_module_factory;
 
 
 /**
- * Ä£¿é³õÊ¼»¯
+ * æ¨¡å—åˆå§‹åŒ–
  *
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_module_factory::init(const csf_configure_manager* conf_mg) {
 
@@ -47,9 +47,9 @@ csf::core::base::csf_int32 csf_module_factory::init(const csf_configure_manager*
 
 
 /**
- * Ä£¿éÆô¶¯
+ * æ¨¡å—å¯åŠ¨
  *
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_module_factory::start(const csf_configure_manager* conf_mg) {
 
@@ -58,9 +58,9 @@ csf::core::base::csf_int32 csf_module_factory::start(const csf_configure_manager
 
 
 /**
- * Ä£¿éÍ£Ö¹
+ * æ¨¡å—åœæ­¢
  *
- * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+ * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
  */
 csf::core::base::csf_int32 csf_module_factory::stop(const csf_configure_manager* conf_mg) {
 
@@ -69,9 +69,9 @@ csf::core::base::csf_int32 csf_module_factory::stop(const csf_configure_manager*
 
 
 /**
-* ´´½¨Ä£¿é²Ù×÷¡£ ·µ»Ø£º·Ç¿Õ±íÊ¾´´½¨µÄÄ£¿éµØÖ·£»¿Õ±íÊ¾´íÎó£»
+* åˆ›å»ºæ¨¡å—æ“ä½œã€‚ è¿”å›ï¼šéç©ºè¡¨ç¤ºåˆ›å»ºçš„æ¨¡å—åœ°å€ï¼›ç©ºè¡¨ç¤ºé”™è¯¯ï¼›
 *
-* @param conf_mg    ±íÊ¾Ä£¿éµÄÅäÖÃÏîĞÅÏ¢
+* @param conf_mg    è¡¨ç¤ºæ¨¡å—çš„é…ç½®é¡¹ä¿¡æ¯
 */
 csf_module * csf_module_factory::create(const csf_configure_manager* conf_mg) {
 
@@ -84,7 +84,7 @@ csf_module * csf_module_factory::create(const csf_configure_manager* conf_mg) {
 		}
 	}
 
-	//´´½¨Ò»¸öÄ£¿é
+	//åˆ›å»ºä¸€ä¸ªæ¨¡å—
 	tmp_module = get_create_handle()(conf_mg);
 	if (!tmp_module) {
 		csf_module_factory_log(error, csf_log_code_error, "create module error.");
@@ -97,16 +97,16 @@ csf_module * csf_module_factory::create(const csf_configure_manager* conf_mg) {
 			, "create module[%p] succeed."
 			, tmp_module);
 	}
-	//´´½¨³É¹¦£¬Ôò¼ÆÊı¼ÓÒ»
+	//åˆ›å»ºæˆåŠŸï¼Œåˆ™è®¡æ•°åŠ ä¸€
 	up_count();
 
 	return tmp_module;
 }
 
 /**
- * ±íÊ¾¼ÓÔØ¶¯Ì¬¿âÄ£¿é¡£ ·µ»Ø£º·Ç¿Õ£¨csf_null£©±íÊ¾³É¹¦£»¿Õ(csf_null)±íÊ¾´íÎó£»
+ * è¡¨ç¤ºåŠ è½½åŠ¨æ€åº“æ¨¡å—ã€‚ è¿”å›ï¼šéç©ºï¼ˆcsf_nullï¼‰è¡¨ç¤ºæˆåŠŸï¼›ç©º(csf_null)è¡¨ç¤ºé”™è¯¯ï¼›
  *
- * @param path    ±íÊ¾¼ÓÔØÄ£¿éµÄÎÄ¼şÂ·¾¶
+ * @param path    è¡¨ç¤ºåŠ è½½æ¨¡å—çš„æ–‡ä»¶è·¯å¾„
  */
 csf_void* csf_module_factory::load(const csf_char* path) {
 
@@ -178,9 +178,9 @@ csf_void* csf_module_factory::load(const csf_char* path) {
 
 
 /**
- * Ğ¶ÔØÄ£¿é¾ä±ú
+ * å¸è½½æ¨¡å—å¥æŸ„
  *
- * @param symbol_handle    ±íÊ¾ĞèÒªĞ¶ÔØµÄ¶¯Ì¬¿â¾ä±ú
+ * @param symbol_handle    è¡¨ç¤ºéœ€è¦å¸è½½çš„åŠ¨æ€åº“å¥æŸ„
  */
 csf::core::base::csf_void csf_module_factory::unload(const csf_void* symbol_handle) {
 
@@ -206,10 +206,10 @@ csf::core::base::csf_void csf_module_factory::unload(const csf_void* symbol_hand
 
 
 /**
- * ²éÕÒ¶¯Ì¬¿âÖĞµÄ·ûºÅ¾ä±ú
+ * æŸ¥æ‰¾åŠ¨æ€åº“ä¸­çš„ç¬¦å·å¥æŸ„
  *
- * @param handle    ±íÊ¾¶¯Ì¬¿âÎÄ¼ş¾ä±ú
- * @param name    ±íÊ¾ĞèÒª»ñÈ¡µÄ·ûºÅÃû³Æ
+ * @param handle    è¡¨ç¤ºåŠ¨æ€åº“æ–‡ä»¶å¥æŸ„
+ * @param name    è¡¨ç¤ºéœ€è¦è·å–çš„ç¬¦å·åç§°
  */
 csf_void* csf_module_factory::find_symbol(const csf_void* handle, const csf_char* name) {
 
@@ -269,9 +269,9 @@ csf_void* csf_module_factory::find_symbol(const csf_void* handle, const csf_char
 
 
 /**
- * ±íÊ¾³õÊ¼»¯Ä£¿éµÄ´´½¨ºÍÏú»Ù¾ä±ú¡£ ·µ»Ø£ºtrue±íÊ¾³É¹¦£»false±íÊ¾´íÎó£»
+ * è¡¨ç¤ºåˆå§‹åŒ–æ¨¡å—çš„åˆ›å»ºå’Œé”€æ¯å¥æŸ„ã€‚ è¿”å›ï¼štrueè¡¨ç¤ºæˆåŠŸï¼›falseè¡¨ç¤ºé”™è¯¯ï¼›
  *
- * @param path    ±íÊ¾¼ÓÔØÄ£¿éµÄÎÄ¼şÂ·¾¶
+ * @param path    è¡¨ç¤ºåŠ è½½æ¨¡å—çš„æ–‡ä»¶è·¯å¾„
  */
 csf_bool csf_module_factory::init_handles(const csf_char* path) {
 
@@ -287,12 +287,12 @@ csf_bool csf_module_factory::init_handles(const csf_char* path) {
 
 	csf_unqiue_lock<decltype(m_mutex)>					tmp_lock(m_mutex);
 
-	//ÅĞ¶ÏÊÇ·ñÒÑ¾­¼ÓÔØÄ£¿é
+	//åˆ¤æ–­æ˜¯å¦å·²ç»åŠ è½½æ¨¡å—
 	if (is_load()) {
 		return csf_true;
 	}
 	else {
-		//Èç¹ûÎ´¼ÓÔØ£¬Ôò¼ÓÔØÄ£¿é£¬²¢»ñÈ¡¶¯Ì¬¿â¼ÓÔØ·µ»ØÎÄ¼ş¾ä±ú
+		//å¦‚æœæœªåŠ è½½ï¼Œåˆ™åŠ è½½æ¨¡å—ï¼Œå¹¶è·å–åŠ¨æ€åº“åŠ è½½è¿”å›æ–‡ä»¶å¥æŸ„
 		tmp_handle = load(path);
 		if (!tmp_handle) {
 			csf_module_factory_log(error, csf_log_code_error,
@@ -300,10 +300,10 @@ csf_bool csf_module_factory::init_handles(const csf_char* path) {
 				path);
 		}
 		else {
-			//ÅäÖÃ¶¯Ì¬¿â¼ÓÔØ·µ»ØÎÄ¼ş¾ä±ú
+			//é…ç½®åŠ¨æ€åº“åŠ è½½è¿”å›æ–‡ä»¶å¥æŸ„
 			set_symbol_handle(tmp_handle);
 
-			//´Ó¶¯Ì¬¿âÖĞ²éÕÒĞèÒªµÄcreate/destroy²Ù×÷·û¾ä±ú
+			//ä»åŠ¨æ€åº“ä¸­æŸ¥æ‰¾éœ€è¦çš„create/destroyæ“ä½œç¬¦å¥æŸ„
 			tmp_create_handle = find_symbol(get_symbol_handle(), csf_module_factory_create_handle_name);
 			tmp_destroy_handle = find_symbol(get_symbol_handle(), csf_module_factory_destroy_handle_name);
 			if (!tmp_create_handle || !tmp_destroy_handle) {
@@ -313,7 +313,7 @@ csf_bool csf_module_factory::init_handles(const csf_char* path) {
 					tmp_destroy_handle);
 			}
 			else {
-				//ÅäÖÃÁ½¸ö²Ù×÷·û(create/destroy)¾ä±ú
+				//é…ç½®ä¸¤ä¸ªæ“ä½œç¬¦(create/destroy)å¥æŸ„
 				set_create_handle((csf::core::module::csf_module_create_handle)tmp_create_handle);
 				set_destroy_handle((csf::core::module::csf_module_destroy_handle)tmp_destroy_handle);
 
@@ -333,7 +333,7 @@ csf_bool csf_module_factory::init_handles(const csf_char* path) {
 
 
 /**
-* ¹¦ÄÜ£ºÇå¿ÕÊÍ·ÅËùÓĞ×ÊÔ´
+* åŠŸèƒ½ï¼šæ¸…ç©ºé‡Šæ”¾æ‰€æœ‰èµ„æº
 */
 csf_void csf_module_factory::clear() {
 

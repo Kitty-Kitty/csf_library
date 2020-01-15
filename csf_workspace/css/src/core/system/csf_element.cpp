@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 30-6ÔÂ-2018 8:49:48
+*Date: 30-6æœˆ-2018 8:49:48
 *
 *Description: Class(csf_element)
 *
@@ -23,24 +23,24 @@ using csf::core::system::csf_element;
 
 
 /**
-* ±íÊ¾²éÕÒÒ»¸öelement
-* ·µ»Ø£º·Çnull±íÊ¾³É¹¦£»null±íÊ¾Ê§°Ü¡£
+* è¡¨ç¤ºæŸ¥æ‰¾ä¸€ä¸ªelement
+* è¿”å›ï¼šénullè¡¨ç¤ºæˆåŠŸï¼›nullè¡¨ç¤ºå¤±è´¥ã€‚
 *
-* @param name    ±íÊ¾ĞèÒª²éÕÒµÄelementÃû³Æ
+* @param name    è¡¨ç¤ºéœ€è¦æŸ¥æ‰¾çš„elementåç§°
 */
 const csf_element& csf_element::find_element(const csf_string& name) {
 
 	csf_element						*tmp_element = csf_nullptr;
 
 
-	//±íÊ¾ÏÈ²éÑ¯×Ó½áµã
+	//è¡¨ç¤ºå…ˆæŸ¥è¯¢å­ç»“ç‚¹
 	tmp_element = (csf_element*)&find_child(name);
 	if (tmp_element->not_null()) {
 
 		return *tmp_element;
 	}
 
-	//´Ó×ÓÄ£¿éÖĞ±é²¼²éÕÒ×Ó¶ÔÏó
+	//ä»å­æ¨¡å—ä¸­éå¸ƒæŸ¥æ‰¾å­å¯¹è±¡
 	for (csf_element &tmp_iter : get_children()) {
 
 		tmp_element = (csf_element*)&tmp_iter.find_element(name);
@@ -53,22 +53,22 @@ const csf_element& csf_element::find_element(const csf_string& name) {
 
 
 /**
-* ±íÊ¾¸ù¾İitemsÊôĞÔÂ·¾¶²éÕÒÒ»¸öelement¡£
-* ·µ»Ø£º·Çnull±íÊ¾Âú×ãitemsËùÓĞÂ·¾¶µÄ½Úµã£»null±íÊ¾Ã»ÓĞ²éÕÒµ½Âú×ãÂ·¾¶µÄ½Úµã£»
+* è¡¨ç¤ºæ ¹æ®itemså±æ€§è·¯å¾„æŸ¥æ‰¾ä¸€ä¸ªelementã€‚
+* è¿”å›ï¼šénullè¡¨ç¤ºæ»¡è¶³itemsæ‰€æœ‰è·¯å¾„çš„èŠ‚ç‚¹ï¼›nullè¡¨ç¤ºæ²¡æœ‰æŸ¥æ‰¾åˆ°æ»¡è¶³è·¯å¾„çš„èŠ‚ç‚¹ï¼›
 *
-* @param items    itemsÊôĞÔÂ·¾¶
+* @param items    itemså±æ€§è·¯å¾„
 */
 const csf_element& csf_element::find_element(const csf_list<csf_string>& items) {
 
 	csf_element						*tmp_element = this;
 
 
-	//Èç¹ûÇëÇóµÄÊôĞÔÂ·¾¶Îª¿Õ£¬ÔòÖ±½Ó·µ»Ø¿Õ
+	//å¦‚æœè¯·æ±‚çš„å±æ€§è·¯å¾„ä¸ºç©ºï¼Œåˆ™ç›´æ¥è¿”å›ç©º
 	if (items.empty()) {
 		return get_null();
 	}
 
-	//±éÀúÊôĞÔÂ·¾¶£¬²éÕÒÂú×ãÂ·¾¶µÄ½Úµã¶ÔÏó
+	//éå†å±æ€§è·¯å¾„ï¼ŒæŸ¥æ‰¾æ»¡è¶³è·¯å¾„çš„èŠ‚ç‚¹å¯¹è±¡
 	for (csf_string &tmp_item : (csf_list<csf_string>&)items) {
 		tmp_element = (csf_element*)&(tmp_element->find_element(tmp_item));
 		if (tmp_element->is_null()) {

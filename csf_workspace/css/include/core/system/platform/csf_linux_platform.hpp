@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:42
+*Date: 27-6æœˆ-2018 17:28:42
 *
 *Description: Class(csf_linux_platform)
 *
@@ -32,10 +32,10 @@ namespace csf
 			namespace platform
 			{
 				/**
-				 * ±íÊ¾linuxÏµÍ³ÃèÊö
+				 * è¡¨ç¤ºlinuxç³»ç»Ÿæè¿°
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:42
+				 * @created 27-6æœˆ-2018 17:28:42
 				 */
 				class csf_linux_platform : public csf::core::system::platform::csf_platform
 				{
@@ -49,9 +49,9 @@ namespace csf
 						return m_configure_manager;
 					}
 					/**
-					 * Ä£¿é³õÊ¼»¯
+					 * æ¨¡å—åˆå§‹åŒ–
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
 					/**
@@ -63,15 +63,15 @@ namespace csf
 						m_configure_manager = newVal;
 					}
 					/**
-					 * Ä£¿éÆô¶¯
+					 * æ¨¡å—å¯åŠ¨
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
 					/**
-					 * Ä£¿éÍ£Ö¹
+					 * æ¨¡å—åœæ­¢
 					 * 
-					 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+					 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 					 */
 					virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 30-6ÔÂ-2018 10:06:03
+*Date: 30-6æœˆ-2018 10:06:03
 *
 *Description: Class(csf_csftype)
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ±íÊ¾csf¶¨ÒåµÄ»ù´¡Êı¾İÀàĞÍ¡£
+			 * è¡¨ç¤ºcsfå®šä¹‰çš„åŸºç¡€æ•°æ®ç±»å‹ã€‚
 			 * @author f
 			 * @version 1.0
-			 * @created 30-6ÔÂ-2018 10:06:03
+			 * @created 30-6æœˆ-2018 10:06:03
 			 */
 			class csf_csftype : public csf::core::base::csf_null_interface
 			{
@@ -42,16 +42,16 @@ namespace csf
 				virtual ~csf_csftype();
 
 				/**
-				 * ±íÊ¾ÅĞ¶ÏÊÇ·ñÎª¿Õ¡£
-				 * ·µ»Ø£ºtrue±íÊ¾Îª¿Õ£»false±íÊ¾²»Îª¿Õ¡£
+				 * è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ºç©ºã€‚
+				 * è¿”å›ï¼štrueè¡¨ç¤ºä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ä¸ºç©ºã€‚
 				 */
 				inline virtual csf_bool is_null() {
 
 					return csf_true;
 				}
 				/**
-				 * ±íÊ¾ÅĞ¶ÏÊÇ·ñ²»Îª¿Õ¡£
-				 * ·µ»Ø£ºtrue±íÊ¾²»Îª¿Õ£»false±íÊ¾Îª¿Õ¡£
+				 * è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ä¸ºç©ºã€‚
+				 * è¿”å›ï¼štrueè¡¨ç¤ºä¸ä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ºç©ºã€‚
 				 */
 				inline virtual csf_bool not_null() {
 

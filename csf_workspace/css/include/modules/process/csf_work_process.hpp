@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:54
+*Date: 27-6æœˆ-2018 17:28:54
 *
 *Description: Class(csf_work_process)
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace process
 		{
 			/**
-			 * ±íÊ¾¹¤×÷½ø³ÌÄÚÈİ£¬Ö÷ÒªÊµÏÖÏà¹Ø½ø³ÌµÄ´¦Àí
+			 * è¡¨ç¤ºå·¥ä½œè¿›ç¨‹å†…å®¹ï¼Œä¸»è¦å®ç°ç›¸å…³è¿›ç¨‹çš„å¤„ç†
 			 * @author fangzhenmu@aliyun.com
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:28:54
+			 * @created 27-6æœˆ-2018 17:28:54
 			 */
 			class csf_work_process : public csf::core::module::device::csf_process
 			{

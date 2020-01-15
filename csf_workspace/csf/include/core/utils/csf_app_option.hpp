@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -35,6 +35,16 @@ namespace csf
 	{
 		namespace module
 		{
+			template <typename T>
+			struct hex_stoul {
+				T value;
+				operator T() const { return value; }
+				friend std::istream& operator>>(std::istream& in, hex_stoul& out) {
+					in >> std::hex >> out.value;
+					return in;
+				}
+			};
+
 			/**
 			 * 表示应用程序运行环境参数。主要实现可执行程序的参数解析相关内容
 			 * @author f

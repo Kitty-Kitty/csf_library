@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:01:18
+*Date: 27-6æœˆ-2018 17:01:18
 *
 *Description: Class(csf_container)
 *
@@ -30,10 +30,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ±íÊ¾ËùÓĞ·ÇcollectorÀàµÄ¸¸Àà¶ÔÏó
+			 * è¡¨ç¤ºæ‰€æœ‰écollectorç±»çš„çˆ¶ç±»å¯¹è±¡
 			 * @author Administrator
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:01:18
+			 * @created 27-6æœˆ-2018 17:01:18
 			 */
 			class csf_container : public csf::core::base::csf_container_interface
 				, public csf::core::base::csf_csftype_template<csf_container>
@@ -48,44 +48,44 @@ namespace csf
 				}
 
 				/**
-				 * ±íÊ¾ÈİÆ÷ÊÇ·ñÎª¿Õ£¬Îª¿Õ·µ»Øtrue,·ñÔò·µ»Øfalse¡£³¤¶ÈÎª0»ònullÎª¿Õ£¬·µ»Øtrue¡£
+				 * è¡¨ç¤ºå®¹å™¨æ˜¯å¦ä¸ºç©ºï¼Œä¸ºç©ºè¿”å›true,å¦åˆ™è¿”å›falseã€‚é•¿åº¦ä¸º0æˆ–nullä¸ºç©ºï¼Œè¿”å›trueã€‚
 				 */
 				inline virtual csf_bool empty() {
 
 					return csf_true;
 				}
 				/**
-				 * ±íÊ¾»ñÈ¡ÈİÆ÷µÄÊµ¼ÊÄÚÈİ³¤¶È£¬Ã»ÓĞÄÚÈİÎª0
+				 * è¡¨ç¤ºè·å–å®¹å™¨çš„å®é™…å†…å®¹é•¿åº¦ï¼Œæ²¡æœ‰å†…å®¹ä¸º0
 				 */
 				inline virtual csf_uint32 length() {
 
 					return 0;
 				}
 				/**
-				 * ±íÊ¾»ñÈ¡ÈİÆ÷µÄ¿Õ¼ä³¤¶È¡£Ã»ÓĞÔ¤·ÖÅäÄÚ´æµÄÀà£¬Ôòsize=length£¬ÀıÈçcsf_stringÖĞlength=size¡£¶øÔ¤·ÖÅäÄÚ´æµÄÀà£¬size>=lengt
-				 * h£¬ÀıÈçcsf_bufferÖĞsize>=length¡£
+				 * è¡¨ç¤ºè·å–å®¹å™¨çš„ç©ºé—´é•¿åº¦ã€‚æ²¡æœ‰é¢„åˆ†é…å†…å­˜çš„ç±»ï¼Œåˆ™size=lengthï¼Œä¾‹å¦‚csf_stringä¸­length=sizeã€‚è€Œé¢„åˆ†é…å†…å­˜çš„ç±»ï¼Œsize>=lengt
+				 * hï¼Œä¾‹å¦‚csf_bufferä¸­size>=lengthã€‚
 				 */
 				inline virtual csf_uint32 size() {
 
 					return 0;
 				}
 				/**
-				 * ±íÊ¾Çå¿ÕÈİÆ÷£¬ÓĞĞ©ÀàĞèÒªÊÍ·Å¿Õ¼ä£¨ÀıÈç£ºcsf_chain£©£¬ÓĞĞ©¿Õ¼ä¿ÉÖØÓÃµÄÀàÔòÖØÖÃÊı¾İ(ÀıÈç£ºcsf_buffer)¡£
+				 * è¡¨ç¤ºæ¸…ç©ºå®¹å™¨ï¼Œæœ‰äº›ç±»éœ€è¦é‡Šæ”¾ç©ºé—´ï¼ˆä¾‹å¦‚ï¼šcsf_chainï¼‰ï¼Œæœ‰äº›ç©ºé—´å¯é‡ç”¨çš„ç±»åˆ™é‡ç½®æ•°æ®(ä¾‹å¦‚ï¼šcsf_buffer)ã€‚
 				 */
 				inline virtual csf_void clear() {
 
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñÎª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾Îª¿Õ£»false±íÊ¾²»Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ä¸ºç©ºã€‚
 				*/
 				inline virtual csf_bool is_null() {
 
 					return csf_true;
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñ²»Îª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾²»Îª¿Õ£»false±íÊ¾Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ºç©ºã€‚
 				*/
 				inline virtual csf_bool not_null() {
 

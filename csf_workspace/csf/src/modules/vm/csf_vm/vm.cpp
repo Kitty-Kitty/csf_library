@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 25-6ÔÂ-2018 17:11:08
+*Date: 25-6æœˆ-2018 17:11:08
 *
 *Description: Class(vm)
 *
@@ -23,7 +23,7 @@
 
 #include "csf_vm_option.hpp"
 #include "vm.hpp"
-#include "csf_master.hpp"
+#include "csf_common_master.hpp"
 
 
 int main(int argc, char** argv)
@@ -32,13 +32,13 @@ int main(int argc, char** argv)
 	//csf::core::module::csf_app			tmp_vm("D:\\project_work\\project\\css_workspace\\common_server_framework\\csf_workspace\\csf\\example\\vm\\config\\csf_configs.xml", "xml");
 	//csf::core::module::csf_app			tmp_vm("D:\\project_work\\csf_workspace\\csf\\example\\vm\\config\\csf_configs.xml", "xml");
 	//csf::core::module::csf_app			tmp_vm("D:\\project_work\\csf_library\\csf_workspace\\csf\\example\\vm\\config\\csf_configs.xml", "xml");
-	csf::core::module::csf_master			tmp_master(argc, argv);
+	csf::modules::vm::csf_common_master		tmp_master(argc, argv);
 	csf::core::module::csf_vm				tmp_vm;
 	csf::core::module::csf_vm_option		tmp_vm_option(tmp_vm);
 	//csf::core::module::csf_app			tmp_vm("E:\\project_work\\arm_project\\kitty\\project\\trunk\\csf_library\\csf_workspace\\ec\\config\\csf_configs.xml", "xml");
 
 
-	//ÉèÖÃvmµÄ°æ±¾ĞÅÏ¢
+	//è®¾ç½®vmçš„ç‰ˆæœ¬ä¿¡æ¯
 	tmp_vm.get_version().set_version(
 		csf_vm_version
 		, CSF_VM_VER
@@ -46,25 +46,27 @@ int main(int argc, char** argv)
 		, "csf vm"
 	);
 
-	//½âÎö³ÌĞòÔËĞĞ²ÎÊı
+	//è§£æç¨‹åºè¿è¡Œå‚æ•°
 	if (!tmp_vm_option.get_option(argc, argv)) {
 		csf_log(error, "vm option error!");
-		return 0;
+		return -1;
 	}
 
-	//¿ªÊ¼³õÊ¼»¯vm
+	//å¼€å§‹åˆå§‹åŒ–vm
 	tmp_bool = tmp_master.init();
 	if (tmp_bool) {
 		csf_log(error, "vm init failed!");
+		return -1;
 	}
 	else {
 		csf_log(notice, "vm init succeed!");
 	}
 
-	//¿ªÊ¼ÔËĞĞvm
+	//å¼€å§‹è¿è¡Œvm
 	tmp_bool = tmp_master.start();
 	if (tmp_bool) {
 		csf_log(error, "vm start failed!");
+		return -1;
 	}
 	else {
 		csf_log(notice, "vm start succeed!");

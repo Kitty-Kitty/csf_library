@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 02-10ÔÂ-2018 14:17:45
+*Date: 02-10æœˆ-2018 14:17:45
 *
-*Description: Class(csf_dgram_connect) ±íÊ¾Í¨ĞÅ¿â£¬ÍøÂç±¨ÎÄÁ¬½ÓĞÅÏ¢ÄÚÈİ
+*Description: Class(csf_dgram_connect) è¡¨ç¤ºé€šä¿¡åº“ï¼Œç½‘ç»œæŠ¥æ–‡è¿æ¥ä¿¡æ¯å†…å®¹
 *
 *Others:
 *
@@ -30,10 +30,10 @@ namespace csf
 		namespace connect
 		{
 			/**
-			 * ±íÊ¾Í¨ĞÅ¿â£¬ÍøÂç±¨ÎÄÁ¬½ÓĞÅÏ¢ÄÚÈİ
+			 * è¡¨ç¤ºé€šä¿¡åº“ï¼Œç½‘ç»œæŠ¥æ–‡è¿æ¥ä¿¡æ¯å†…å®¹
 			 * @author fangzhenmu@aliyun.com
 			 * @version 1.0
-			 * @created 02-10ÔÂ-2018 14:17:45
+			 * @created 02-10æœˆ-2018 14:17:45
 			 */
 			class csf_dgram_connect : public csf::modules::connect::csf_ip_connect
 			{
@@ -43,52 +43,52 @@ namespace csf
 				virtual ~csf_dgram_connect();
 
 				/**
-				 * ±íÊ¾Í¨¹ıfactory´´½¨Ò»¸öconnect
+				 * è¡¨ç¤ºé€šè¿‡factoryåˆ›å»ºä¸€ä¸ªconnect
 				 * 
-				 * @param factory    ±íÊ¾ĞèÒª´´½¨connectµÄ¹¤³§Àà
+				 * @param factory    è¡¨ç¤ºéœ€è¦åˆ›å»ºconnectçš„å·¥å‚ç±»
 				 */
 				inline explicit csf_dgram_connect(csf_ip_connect_factory& factory, csf_connect_type type)
 					: csf_ip_connect(factory, type) {
 
 				}
 				/**
-				 * Ä£¿é³õÊ¼»¯
+				 * æ¨¡å—åˆå§‹åŒ–
 				 * 
-				 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				virtual csf::core::base::csf_int32 init(const csf_configure_manager * conf_mg = csf_null);
 				/**
-				 * ±íÊ¾´ò¿ªÁ¬½ÓĞÅÏ¢.
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+				 * è¡¨ç¤ºæ‰“å¼€è¿æ¥ä¿¡æ¯.
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 				 * 
-				 * @param url    ±íÊ¾Á¬½ÓµØÖ·
+				 * @param url    è¡¨ç¤ºè¿æ¥åœ°å€
 				 */
 				virtual csf_int32 open(const csf_url& url);
 				/**
-				 * ±íÊ¾¹Ø±ÕÁ¬½Ó.
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü£»
+				 * è¡¨ç¤ºå…³é—­è¿æ¥.
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ï¼›
 				 */
 				virtual csf_int32 close();
 				/**
-				 * Ä£¿éÆô¶¯
+				 * æ¨¡å—å¯åŠ¨
 				 * 
-				 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				virtual csf::core::base::csf_int32 start(const csf_configure_manager * conf_mg = csf_null);
 				/**
-				 * ±íÊ¾ÉèÖÃÁ¬½ÓµÄÊôĞÔÏîÄ¿ĞÅÏ¢¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºè®¾ç½®è¿æ¥çš„å±æ€§é¡¹ç›®ä¿¡æ¯ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ã€‚
 				 */
 				virtual csf_int32 set_option();
 				/**
-				 * Ä£¿éÍ£Ö¹
+				 * æ¨¡å—åœæ­¢
 				 * 
-				 * @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+				 * @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 				 */
 				virtual csf::core::base::csf_int32 stop(const csf_configure_manager * conf_mg = csf_null);
 				/**
-				 * ±íÊ¾»ñÈ¡Á¬½ÓµÄÊôĞÔÏîÄ¿ĞÅÏ¢¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»·Ç0±íÊ¾Ê§°Ü¡£
+				 * è¡¨ç¤ºè·å–è¿æ¥çš„å±æ€§é¡¹ç›®ä¿¡æ¯ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›é0è¡¨ç¤ºå¤±è´¥ã€‚
 				 */
 				virtual csf_int32 get_option();
 

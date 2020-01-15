@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <iostream>
@@ -43,7 +43,7 @@ protected:
 	void initializeGL();
 	void resizeGL(int w, int h);
 	void paintGL();
-	// ´òÓ¡Ïà¹ØĞÅÏ¢£¬µ÷ÊÔÓÃ
+	// æ‰“å°ç›¸å…³ä¿¡æ¯ï¼Œè°ƒè¯•ç”¨
 	void printContextInformation();
 private:
 	QSvgRenderer			svgRender;

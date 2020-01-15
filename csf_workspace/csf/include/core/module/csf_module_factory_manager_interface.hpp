@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:46
+*Date: 27-6æœˆ-2018 17:28:46
 *
 *Description: Interface(csf_module_factory_manager_interface)
 *
@@ -29,10 +29,10 @@ namespace csf
 		namespace module
 		{
 			/**
-			 * ±íÊ¾Ä£¿é¹¤³§¹ÜÀíÆ÷²Ù×÷½Ó¿ÚÄÚÈİ
+			 * è¡¨ç¤ºæ¨¡å—å·¥å‚ç®¡ç†å™¨æ“ä½œæ¥å£å†…å®¹
 			 * @author fz
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:28:46
+			 * @created 27-6æœˆ-2018 17:28:46
 			 */
 			class csf_module_factory_manager_interface : public csf::core::module::csf_module_manager_interface
 			{

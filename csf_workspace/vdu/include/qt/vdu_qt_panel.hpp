@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 24-9ÔÂ-2018 11:24:36
+*Date: 24-9æœˆ-2018 11:24:36
 *
-*Description: Class(vdu_qt_panel) ±íÊ¾»ùÓÚQTÊµÏÖµÄÊ¸Á¿´¦Àíµ¥ÔªÍ¼²ã
+*Description: Class(vdu_qt_panel) è¡¨ç¤ºåŸºäºQTå®ç°çš„çŸ¢é‡å¤„ç†å•å…ƒå›¾å±‚
 *
 *Others:
 *
@@ -30,10 +30,10 @@ namespace vdu
 	namespace qt
 	{
 		/**
-		 * ±íÊ¾»ùÓÚQTÊµÏÖµÄÊ¸Á¿´¦Àíµ¥ÔªÍ¼²ã
+		 * è¡¨ç¤ºåŸºäºQTå®ç°çš„çŸ¢é‡å¤„ç†å•å…ƒå›¾å±‚
 		 * @author f
 		 * @version 1.0
-		 * @created 24-9ÔÂ-2018 11:24:36
+		 * @created 24-9æœˆ-2018 11:24:36
 		 */
 		class vdu_qt_panel : public vdu::core::vdu_panel
 		{
@@ -42,32 +42,32 @@ namespace vdu
 			vdu_qt_panel();
 			virtual ~vdu_qt_panel();
 			/**
-			* Ä£¿é³õÊ¼»¯
+			* æ¨¡å—åˆå§‹åŒ–
 			*
-			* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			*/
 			virtual csf::core::base::csf_int32 init(const csf_configure_manager* conf_mg = csf_nullptr);
 			/**
-			* Ä£¿éÆô¶¯
+			* æ¨¡å—å¯åŠ¨
 			*
-			* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			*/
 			virtual csf::core::base::csf_int32 start(const csf_configure_manager* conf_mg = csf_nullptr);
 			/**
-			* Ä£¿éÍ£Ö¹
+			* æ¨¡å—åœæ­¢
 			*
-			* @param conf_mg    ±íÊ¾ÅäÖÃÎÄ¼şĞÅÏ¢
+			* @param conf_mg    è¡¨ç¤ºé…ç½®æ–‡ä»¶ä¿¡æ¯
 			*/
 			virtual csf::core::base::csf_int32 stop(const csf_configure_manager* conf_mg = csf_nullptr);
 			/**
-			 * ±íÊ¾Ò»¸ösvg renderÄÚÈİ
+			 * è¡¨ç¤ºä¸€ä¸ªsvg renderå†…å®¹
 			 */
 			inline QSvgRenderer* get_render() {
 
 				return m_render;
 			}
 			/**
-			 * ±íÊ¾Ò»¸ösvgÍ¼²ã¶ÔÏó
+			 * è¡¨ç¤ºä¸€ä¸ªsvgå›¾å±‚å¯¹è±¡
 			 */
 			inline QGraphicsSvgItem* get_item() {
 
@@ -75,7 +75,7 @@ namespace vdu
 			}
 		private:
 			/**
-			* ±íÊ¾Ò»¸ösvg renderÄÚÈİ
+			* è¡¨ç¤ºä¸€ä¸ªsvg renderå†…å®¹
 			*
 			* @param newVal
 			*/
@@ -84,7 +84,7 @@ namespace vdu
 				m_render = newVal;
 			}
 			/**
-			* ±íÊ¾Ò»¸ösvgÍ¼²ã¶ÔÏó
+			* è¡¨ç¤ºä¸€ä¸ªsvgå›¾å±‚å¯¹è±¡
 			*
 			* @param newVal
 			*/
@@ -94,11 +94,11 @@ namespace vdu
 			}
 		private:
 			/**
-			 * ±íÊ¾Ò»¸ösvgÍ¼²ã¶ÔÏó
+			 * è¡¨ç¤ºä¸€ä¸ªsvgå›¾å±‚å¯¹è±¡
 			 */
 			QGraphicsSvgItem* m_item = csf_nullptr;
 			/**
-			 * ±íÊ¾Ò»¸ösvg renderÄÚÈİ
+			 * è¡¨ç¤ºä¸€ä¸ªsvg renderå†…å®¹
 			 */
 			QSvgRenderer* m_render = csf_nullptr;
 

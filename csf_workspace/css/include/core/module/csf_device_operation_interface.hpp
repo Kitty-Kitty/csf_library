@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:40
+*Date: 27-6æœˆ-2018 17:28:40
 *
 *Description: Interface(csf_device_operation_interface)
 *
@@ -33,13 +33,13 @@ namespace csf
 	{
 		namespace module
 		{
-			//±íÊ¾Òì³£´¦Àí»Øµ÷º¯Êı
+			//è¡¨ç¤ºå¼‚å¸¸å¤„ç†å›è°ƒå‡½æ•°
 			typedef csf_function<csf_int32(csf_element& element)>	csf_device_operation_callback;
 			/**
-			 * ±íÊ¾Éè±¸²Ù×÷½Ó¿Ú
+			 * è¡¨ç¤ºè®¾å¤‡æ“ä½œæ¥å£
 			 * @author f
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:28:40
+			 * @created 27-6æœˆ-2018 17:28:40
 			 */
 			class csf_device_operation_interface
 			{
@@ -54,31 +54,31 @@ namespace csf
 				}
 
 				/**
-				 * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+				 * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
 				 * 
-				 * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
-				 * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+				 * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+				 * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
 				 */
 				virtual csf_int32 del(const csf_element& element, const csf_device_operation_callback callback) =0;
 				/**
-				 * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+				 * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
 				 * 
-				 * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
-				 * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+				 * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+				 * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
 				 */
 				virtual csf_int32 ctrl(const csf_element& element, const csf_device_operation_callback callback) =0;
 				/**
-				 * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+				 * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
 				 * 
-				 * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
-				 * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+				 * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+				 * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
 				 */
 				virtual csf_int32 update(const csf_element& element, const csf_device_operation_callback callback) =0;
 				/**
-				 * ±íÊ¾Éè±¸µÄÌí¼Ó²Ù×÷
+				 * è¡¨ç¤ºè®¾å¤‡çš„æ·»åŠ æ“ä½œ
 				 * 
-				 * @param element    ±íÊ¾Éè±¸Ìí¼Ó²Ù×÷
-				 * @param callback    ±íÊ¾Éè±¸²Ù×÷µÄ»Øµ÷º¯Êı
+				 * @param element    è¡¨ç¤ºè®¾å¤‡æ·»åŠ æ“ä½œ
+				 * @param callback    è¡¨ç¤ºè®¾å¤‡æ“ä½œçš„å›è°ƒå‡½æ•°
 				 */
 				virtual csf_int32 add(const csf_element& element, const csf_device_operation_callback callback) =0;
 

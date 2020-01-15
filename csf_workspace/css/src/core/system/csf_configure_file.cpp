@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 30-6ÔÂ-2018 11:58:29
+*Date: 30-6æœˆ-2018 11:58:29
 *
 *Description: Class(csf_configure_file)
 *
@@ -40,11 +40,11 @@ csf_configure_file::~csf_configure_file() {
 
 
 /**
- * °üº¬Èı¸öÊôĞÔµÄ¹¹Ôìº¯Êı
+ * åŒ…å«ä¸‰ä¸ªå±æ€§çš„æ„é€ å‡½æ•°
  * 
- * @param name    ±íÊ¾¸ÃÅäÖÃÏîµÄÃû³Æ
- * @param file_path    ±íÊ¾ÅäÖÃÎÄ¼şµÄÎÄ¼şÂ·¾¶
- * @param format    ±íÊ¾ÅäÖÃÎÄ¼şµÄÎÄ¼ş¸ñÊ½£¬ÓÃÓÚÖ¸µ¼ÎÄ¼şµÄ½âÎö
+ * @param name    è¡¨ç¤ºè¯¥é…ç½®é¡¹çš„åç§°
+ * @param file_path    è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ–‡ä»¶è·¯å¾„
+ * @param format    è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ–‡ä»¶æ ¼å¼ï¼Œç”¨äºæŒ‡å¯¼æ–‡ä»¶çš„è§£æ
  */
 csf_configure_file::csf_configure_file(const csf_char* name, const csf_char* file_path, const csf_char* format) {
 
@@ -52,11 +52,11 @@ csf_configure_file::csf_configure_file(const csf_char* name, const csf_char* fil
 
 
 /**
- * °üº¬Èı¸öÊôĞÔµÄ¹¹Ôìº¯Êı
+ * åŒ…å«ä¸‰ä¸ªå±æ€§çš„æ„é€ å‡½æ•°
  * 
- * @param name    ±íÊ¾¸ÃÅäÖÃÏîµÄÃû³Æ
- * @param file_path    ±íÊ¾ÅäÖÃÎÄ¼şµÄÎÄ¼şÂ·¾¶
- * @param format    ±íÊ¾ÅäÖÃÎÄ¼şµÄÎÄ¼ş¸ñÊ½£¬ÓÃÓÚÖ¸µ¼ÎÄ¼şµÄ½âÎö
+ * @param name    è¡¨ç¤ºè¯¥é…ç½®é¡¹çš„åç§°
+ * @param file_path    è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ–‡ä»¶è·¯å¾„
+ * @param format    è¡¨ç¤ºé…ç½®æ–‡ä»¶çš„æ–‡ä»¶æ ¼å¼ï¼Œç”¨äºæŒ‡å¯¼æ–‡ä»¶çš„è§£æ
  */
 csf_configure_file::csf_configure_file(const csf_string& name, const csf_string& file_path, const csf_string& format) {
 

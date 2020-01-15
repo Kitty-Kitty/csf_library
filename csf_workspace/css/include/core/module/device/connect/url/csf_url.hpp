@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 11-7ÔÂ-2018 22:10:25
+*Date: 11-7æœˆ-2018 22:10:25
 *
-*Description: Class(csf_url) urlµØÖ·ĞÅÏ¢µÄ»ù´¡ÀàĞÅÏ¢
+*Description: Class(csf_url) urlåœ°å€ä¿¡æ¯çš„åŸºç¡€ç±»ä¿¡æ¯
 *
 *Others:
 *
@@ -33,33 +33,33 @@ namespace csf
 			namespace device
 			{
 				/**
-				 * urlµØÖ·ĞÅÏ¢µÄ»ù´¡ÀàĞÅÏ¢
+				 * urlåœ°å€ä¿¡æ¯çš„åŸºç¡€ç±»ä¿¡æ¯
 				 * @author f
 				 * @version 1.0
-				 * @created 11-7ÔÂ-2018 22:10:25
+				 * @created 11-7æœˆ-2018 22:10:25
 				 */
 				class csf_url
 				{
 
 				public:
 					/**
-					 * ±íÊ¾urlÀàĞÍ
+					 * è¡¨ç¤ºurlç±»å‹
 					 * @author f
 					 * @version 1.0
-					 * @created 11-7ÔÂ-2018 22:10:25
+					 * @created 11-7æœˆ-2018 22:10:25
 					 */
 					enum csf_url_type
 					{
 						/**
-						 * ±íÊ¾¿ÕµØÖ·
+						 * è¡¨ç¤ºç©ºåœ°å€
 						 */
 						csf_url_type_none = 0,
 						/**
-						 * ±íÊ¾IPµØÖ·
+						 * è¡¨ç¤ºIPåœ°å€
 						 */
 						csf_url_type_ip,
 						/**
-						 * ±íÊ¾´®¿ÚµØÖ·
+						 * è¡¨ç¤ºä¸²å£åœ°å€
 						 */
 						csf_url_type_serial
 					};
@@ -76,7 +76,7 @@ namespace csf
 
 					/**
 					 * 
-					 * @param type    ±íÊ¾Á¬½ÓµØÖ·ÀàĞÍ
+					 * @param type    è¡¨ç¤ºè¿æ¥åœ°å€ç±»å‹
 					 */
 					inline explicit csf_url(csf_url_type type)
 						: m_url("")
@@ -84,30 +84,30 @@ namespace csf
 
 					}
 					/**
-					 * ±íÊ¾urlµØÖ·µÄÀàĞÍĞÅÏ¢
+					 * è¡¨ç¤ºurlåœ°å€çš„ç±»å‹ä¿¡æ¯
 					 */
 					inline csf_url_type get_type() {
 
 						return m_type;
 					}
 					/**
-					 * ±íÊ¾½âÎöµØÖ·º¯Êı
+					 * è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
 					 * 
-					 * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+					 * @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
 					 */
 					inline virtual csf_int32 parse(csf_string& url) {
 
 						return 0;
 					}
 					/**
-					 * ±íÊ¾urlµÄÍêÕû×Ö·û´®Êı¾İ
+					 * è¡¨ç¤ºurlçš„å®Œæ•´å­—ç¬¦ä¸²æ•°æ®
 					 */
 					inline csf_string & get_url() {
 
 						return m_url;
 					}
 					/**
-					 * ±íÊ¾urlµÄÍêÕû×Ö·û´®Êı¾İ
+					 * è¡¨ç¤ºurlçš„å®Œæ•´å­—ç¬¦ä¸²æ•°æ®
 					 * 
 					 * @param newVal
 					 */
@@ -116,7 +116,7 @@ namespace csf
 						m_url = newVal;
 					}
 					/**
-					 * ±íÊ¾urlµÄÍêÕû×Ö·û´®Êı¾İ
+					 * è¡¨ç¤ºurlçš„å®Œæ•´å­—ç¬¦ä¸²æ•°æ®
 					 * 
 					 * @param newVal
 					 */
@@ -125,9 +125,9 @@ namespace csf
 						m_url = newVal;
 					}
 					/**
-					 * ±íÊ¾½âÎöµØÖ·º¯Êı
+					 * è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
 					 * 
-					 * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+					 * @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
 					 */
 					inline virtual csf_int32 parse(csf_char* url) {
 
@@ -136,7 +136,7 @@ namespace csf
 
 				protected:
 					/**
-					 * ±íÊ¾urlµØÖ·µÄÀàĞÍĞÅÏ¢
+					 * è¡¨ç¤ºurlåœ°å€çš„ç±»å‹ä¿¡æ¯
 					 * 
 					 * @param newVal
 					 */
@@ -147,11 +147,11 @@ namespace csf
 
 				private:
 					/**
-					 * ±íÊ¾urlµÄÍêÕû×Ö·û´®Êı¾İ
+					 * è¡¨ç¤ºurlçš„å®Œæ•´å­—ç¬¦ä¸²æ•°æ®
 					 */
 					csf::core::base::csf_string m_url = "";
 					/**
-					 * ±íÊ¾urlµØÖ·µÄÀàĞÍĞÅÏ¢
+					 * è¡¨ç¤ºurlåœ°å€çš„ç±»å‹ä¿¡æ¯
 					 */
 					csf_url_type m_type = csf_url_type_none;
 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:35
+*Date: 27-6æœˆ-2018 17:28:35
 *
 *Description: Class(csf_chain)
 *
@@ -37,10 +37,10 @@ namespace csf
 		namespace base
 		{
 			/**
-			 * ±íÊ¾Á´±í½á¹¹Êı¾İ
+			 * è¡¨ç¤ºé“¾è¡¨ç»“æ„æ•°æ®
 			 * @author f
 			 * @version 1.0
-			 * @created 27-6ÔÂ-2018 17:28:35
+			 * @created 27-6æœˆ-2018 17:28:35
 			 */
 			class csf_chain : public csf::core::base::csf_container
 			{
@@ -54,23 +54,23 @@ namespace csf
 					clear();
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñÎª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾Îª¿Õ£»false±íÊ¾²»Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ä¸ºç©ºã€‚
 				*/
 				inline csf_bool is_null() {
 
 					return empty();
 				}
 				/**
-				* ±íÊ¾ÅĞ¶ÏÊÇ·ñ²»Îª¿Õ¡£
-				* ·µ»Ø£ºtrue±íÊ¾²»Îª¿Õ£»false±íÊ¾Îª¿Õ¡£
+				* è¡¨ç¤ºåˆ¤æ–­æ˜¯å¦ä¸ä¸ºç©ºã€‚
+				* è¿”å›ï¼štrueè¡¨ç¤ºä¸ä¸ºç©ºï¼›falseè¡¨ç¤ºä¸ºç©ºã€‚
 				*/
 				inline csf_bool not_null() {
 
 					return !empty();
 				}
 				/**
-				 * ±íÊ¾ÈİÆ÷ÊÇ·ñÎª¿Õ£¬Îª¿Õ·µ»Øtrue,·ñÔò·µ»Øfalse¡£³¤¶ÈÎª0»ònull¶¼Îª¿Õ£¬·µ»Øtrue¡£
+				 * è¡¨ç¤ºå®¹å™¨æ˜¯å¦ä¸ºç©ºï¼Œä¸ºç©ºè¿”å›true,å¦åˆ™è¿”å›falseã€‚é•¿åº¦ä¸º0æˆ–nulléƒ½ä¸ºç©ºï¼Œè¿”å›trueã€‚
 				 */
 				inline csf_bool empty() {
 
@@ -80,25 +80,25 @@ namespace csf
 					return csf_false;
 				}
 				/**
-				 * ±íÊ¾»ñÈ¡ÈİÆ÷µÄÊµ¼ÊÄÚÈİ³¤¶È£¬Ã»ÓĞÄÚÈİÎª0
+				 * è¡¨ç¤ºè·å–å®¹å™¨çš„å®é™…å†…å®¹é•¿åº¦ï¼Œæ²¡æœ‰å†…å®¹ä¸º0
 				 */
 				inline csf_uint32 length() {
 
 					return m_length;
 				}
 				/**
-				 * ±íÊ¾»ñÈ¡ÈİÆ÷µÄ¿Õ¼ä³¤¶È¡£Ã»ÓĞÔ¤·ÖÅäÄÚ´æµÄÀà£¬Ôòsize=length£¬ÀıÈçcsf_stringÖĞlength=size¡£¶øÔ¤·ÖÅäÄÚ´æµÄÀà£¬size>=lengt
-				 * h£¬ÀıÈçcsf_bufferÖĞsize>=length¡£
+				 * è¡¨ç¤ºè·å–å®¹å™¨çš„ç©ºé—´é•¿åº¦ã€‚æ²¡æœ‰é¢„åˆ†é…å†…å­˜çš„ç±»ï¼Œåˆ™size=lengthï¼Œä¾‹å¦‚csf_stringä¸­length=sizeã€‚è€Œé¢„åˆ†é…å†…å­˜çš„ç±»ï¼Œsize>=lengt
+				 * hï¼Œä¾‹å¦‚csf_bufferä¸­size>=lengthã€‚
 				 */
 				inline csf_uint32 size() {
 
 					return length();
 				}
 				/**
-				 * ±íÊ¾Ìí¼ÓÒ»¸öcsf_bufferµ½chainÖĞ¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎó¡£
+				 * è¡¨ç¤ºæ·»åŠ ä¸€ä¸ªcsf_bufferåˆ°chainä¸­ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ã€‚
 				 * 
-				 * @param buffer    ±íÊ¾ĞèÒªÌí¼ÓµÄcsf_bufferµØÖ·
+				 * @param buffer    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„csf_bufferåœ°å€
 				 */
 				inline csf_int32 add(csf_buffer* buffer) {
 
@@ -109,10 +109,10 @@ namespace csf
 					return add(*buffer);
 				}
 				/**
-				 * ±íÊ¾Ìí¼ÓÒ»¸öcsf_bufferµ½chainÖĞ¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎó¡£
+				 * è¡¨ç¤ºæ·»åŠ ä¸€ä¸ªcsf_bufferåˆ°chainä¸­ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ã€‚
 				 * 
-				 * @param buffer    ±íÊ¾ĞèÒªÌí¼ÓµÄcsf_buffer
+				 * @param buffer    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„csf_buffer
 				 */
 				inline csf_int32 add(csf_buffer& buffer) {
 
@@ -123,10 +123,10 @@ namespace csf
 					return csf_success;
 				}
 				/**
-				* ±íÊ¾´ÓchainÖĞÉ¾³ıÒ»¸öcsf_buffer¡£
-				* ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎó¡£
+				* è¡¨ç¤ºä»chainä¸­åˆ é™¤ä¸€ä¸ªcsf_bufferã€‚
+				* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ã€‚
 				*
-				* @param buffer    ±íÊ¾ĞèÒªÉ¾³ıµÄcsf_bufferµØÖ·
+				* @param buffer    è¡¨ç¤ºéœ€è¦åˆ é™¤çš„csf_bufferåœ°å€
 				*/
 				inline csf_int32 del(csf_buffer* buffer) {
 
@@ -137,10 +137,10 @@ namespace csf
 					return del(*buffer);
 				}
 				/**
-				* ±íÊ¾´ÓchainÖĞÉ¾³ıÒ»¸öcsf_buffer,ÆäÖĞchainµÄ²éÕÒ¸ù¾İËùÓĞÊôĞÔÏàÍ¬¡£
-				* ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎó¡£
+				* è¡¨ç¤ºä»chainä¸­åˆ é™¤ä¸€ä¸ªcsf_buffer,å…¶ä¸­chainçš„æŸ¥æ‰¾æ ¹æ®æ‰€æœ‰å±æ€§ç›¸åŒã€‚
+				* è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ã€‚
 				*
-				* @param buffer    ±íÊ¾ĞèÒªÌí¼ÓµÄcsf_buffer
+				* @param buffer    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„csf_buffer
 				*/
 				inline csf_int32 del(csf_buffer& buffer) {
 
@@ -160,7 +160,7 @@ namespace csf
 					return tmp_int_ret;
 				}
 				/**
-				 * Çå¿Õchain,²¢ÊÍ·ÅchainÖĞµÄËùÓĞ»º´æ¿Õ¼ä¡£
+				 * æ¸…ç©ºchain,å¹¶é‡Šæ”¾chainä¸­çš„æ‰€æœ‰ç¼“å­˜ç©ºé—´ã€‚
 				 */
 				inline csf_void clear() {
 
@@ -174,10 +174,10 @@ namespace csf
 					m_chain.clear();
 				}
 				/**
-				 * ±íÊ¾½«chain×ª»»Îªcsf_buffer
-				 * ·µ»Ø£º>=0±íÊ¾Êµ¼ÊÊı¾İµÄ³¤¶È£»<0±íÊ¾´íÎó£»
+				 * è¡¨ç¤ºå°†chainè½¬æ¢ä¸ºcsf_buffer
+				 * è¿”å›ï¼š>=0è¡¨ç¤ºå®é™…æ•°æ®çš„é•¿åº¦ï¼›<0è¡¨ç¤ºé”™è¯¯ï¼›
 				 * 
-				 * @param buffer    ±íÊ¾ĞèÒª±»±£´æµÄcsf_buffer¶ÔÏó
+				 * @param buffer    è¡¨ç¤ºéœ€è¦è¢«ä¿å­˜çš„csf_bufferå¯¹è±¡
 				 */
 				inline csf_int32 convert(csf_buffer& buffer) {
 
@@ -193,10 +193,10 @@ namespace csf
 					buffer.length();
 				}
 				/**
-				 * ±íÊ¾½«chain×ª»»Îªcsf_csfstring
-				 * ·µ»Ø£º>=0±íÊ¾Êµ¼ÊÊı¾İµÄ³¤¶È£»<0±íÊ¾´íÎó£»
+				 * è¡¨ç¤ºå°†chainè½¬æ¢ä¸ºcsf_csfstring
+				 * è¿”å›ï¼š>=0è¡¨ç¤ºå®é™…æ•°æ®çš„é•¿åº¦ï¼›<0è¡¨ç¤ºé”™è¯¯ï¼›
 				 * 
-				 * @param csfstr    ±íÊ¾ĞèÒª±»±£´æµÄcsf_csfstringr¶ÔÏó
+				 * @param csfstr    è¡¨ç¤ºéœ€è¦è¢«ä¿å­˜çš„csf_csfstringrå¯¹è±¡
 				 */
 				inline csf_int32 convert(csf_csfstring& csfstr) {
 
@@ -212,11 +212,11 @@ namespace csf
 					csfstr.length();
 				}
 				/**
-				 * ±íÊ¾½«chain×ª»»µ½Ö¸¶¨µÄÄÚ´æÖĞ
-				 * ·µ»Ø£º>=0±íÊ¾Êµ¼ÊÊı¾İµÄ³¤¶È£»<0±íÊ¾´íÎó£»
+				 * è¡¨ç¤ºå°†chainè½¬æ¢åˆ°æŒ‡å®šçš„å†…å­˜ä¸­
+				 * è¿”å›ï¼š>=0è¡¨ç¤ºå®é™…æ•°æ®çš„é•¿åº¦ï¼›<0è¡¨ç¤ºé”™è¯¯ï¼›
 				 * 
-				 * @param buf    ±íÊ¾ĞèÒª±»±£´æµÄÄÚ´æµØÖ·
-				 * @param len    ±íÊ¾ÄÚ´æ»º´æbufµÄ³¤¶È
+				 * @param buf    è¡¨ç¤ºéœ€è¦è¢«ä¿å­˜çš„å†…å­˜åœ°å€
+				 * @param len    è¡¨ç¤ºå†…å­˜ç¼“å­˜bufçš„é•¿åº¦
 				 */
 				inline csf_int32 convert(const csf_uchar* buf, const csf_uint32 len) {
 
@@ -240,10 +240,10 @@ namespace csf
 					return tmp_int_ret;
 				}
 				/**
-				 * ±íÊ¾Ìí¼ÓÒ»¸öcsf_csfstringµ½chainÖĞ¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎó¡£
+				 * è¡¨ç¤ºæ·»åŠ ä¸€ä¸ªcsf_csfstringåˆ°chainä¸­ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ã€‚
 				 * 
-				 * @param csfstr    ±íÊ¾ĞèÒªÌí¼ÓµÄcsf_csfstring
+				 * @param csfstr    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„csf_csfstring
 				 */
 				inline csf_int32 add(csf_csfstring& csfstr) {
 
@@ -254,11 +254,11 @@ namespace csf
 					return add(new csf_buffer(csfstr.get_buffer(), csfstr.length()));
 				}
 				/**
-				 * ±íÊ¾Ìí¼ÓÒ»¸öÄÚ´æÊı¾İµ½chainÖĞ¡£
-				 * ·µ»Ø£º0±íÊ¾³É¹¦£»<0±íÊ¾´íÎó¡£
+				 * è¡¨ç¤ºæ·»åŠ ä¸€ä¸ªå†…å­˜æ•°æ®åˆ°chainä¸­ã€‚
+				 * è¿”å›ï¼š0è¡¨ç¤ºæˆåŠŸï¼›<0è¡¨ç¤ºé”™è¯¯ã€‚
 				 * 
-				 * @param buf    ±íÊ¾ĞèÒªÌí¼ÓµÄÄÚ´æÊı¾İµØÖ·
-				 * @param len    ±íÊ¾ĞèÒªÌí¼ÓµÄÄÚ´æÊı¾İ³¤¶È
+				 * @param buf    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„å†…å­˜æ•°æ®åœ°å€
+				 * @param len    è¡¨ç¤ºéœ€è¦æ·»åŠ çš„å†…å­˜æ•°æ®é•¿åº¦
 				 */
 				inline csf_int32 add(const csf_uchar* buf, const csf_uint32 len) {
 
@@ -271,26 +271,26 @@ namespace csf
 
 			private:
 				/**
-				 * ±íÊ¾Êı¾İµÄÊµ¼Ê³¤¶È
+				 * è¡¨ç¤ºæ•°æ®çš„å®é™…é•¿åº¦
 				 */
 				csf::core::base::csf_atomic_uint32 m_length = 0;
 				/**
-				 * ±íÊ¾»º´æÁ´±íÊı¾İ£¬±£´æËùÓĞbuffer
+				 * è¡¨ç¤ºç¼“å­˜é“¾è¡¨æ•°æ®ï¼Œä¿å­˜æ‰€æœ‰buffer
 				 */
 				csf_list<csf_buffer*> m_chain;
 				/**
-				* ±íÊ¾Ïß³Ì°²È«Ê¹ÓÃµÄ»¥³âËøÄÚÈİ
+				* è¡¨ç¤ºçº¿ç¨‹å®‰å…¨ä½¿ç”¨çš„äº’æ–¥é”å†…å®¹
 				*/
 				csf_shared_mutex	 m_mutex;
 				/**
-				 * ±íÊ¾»º´æÁ´±íÊı¾İ£¬±£´æËùÓĞbuffer
+				 * è¡¨ç¤ºç¼“å­˜é“¾è¡¨æ•°æ®ï¼Œä¿å­˜æ‰€æœ‰buffer
 				 */
 				inline csf_list<csf_buffer*>& get_chain() {
 
 					return m_chain;
 				}
 				/**
-				 * ±íÊ¾»º´æÁ´±íÊı¾İ£¬±£´æËùÓĞbuffer
+				 * è¡¨ç¤ºç¼“å­˜é“¾è¡¨æ•°æ®ï¼Œä¿å­˜æ‰€æœ‰buffer
 				 * 
 				 * @param newVal
 				 */

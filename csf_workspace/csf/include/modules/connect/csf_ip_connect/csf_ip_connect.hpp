@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 01-10ÔÂ-2018 15:10:39
+*Date: 01-10æœˆ-2018 15:10:39
 *
-*Description: Class(csf_ip_connect) ±íÊ¾IPÀàĞÍµÄÁ¬½ÓÀà
+*Description: Class(csf_ip_connect) è¡¨ç¤ºIPç±»å‹çš„è¿æ¥ç±»
 *
 *Others:
 *
@@ -35,23 +35,23 @@ namespace csf
 		namespace connect
 		{
 			/************************************************************************/
-			/* ±íÊ¾ip_connectµÄÃèÊöĞÅÏ¢µÄ»º´æ´óĞ¡£¬ÊıÖµÄ¬ÈÏÎª£º128						*/
+			/* è¡¨ç¤ºip_connectçš„æè¿°ä¿¡æ¯çš„ç¼“å­˜å¤§å°ï¼Œæ•°å€¼é»˜è®¤ä¸ºï¼š128						*/
 			/************************************************************************/
 			#define csf_ip_connect_format_buffer_size							128
 			/**
-			 * ±íÊ¾IPÀàĞÍµÄÁ¬½ÓÀà
+			 * è¡¨ç¤ºIPç±»å‹çš„è¿æ¥ç±»
 			 * @author f
 			 * @version 1.0
-			 * @updated 01-10ÔÂ-2018 15:12:05
+			 * @updated 01-10æœˆ-2018 15:12:05
 			 */
 			class csf_ip_connect : public csf::core::module::connect::csf_connect
 			{
 
 			public:
 				/**
-				* ¸ù¾İcsf_ip_connect_factory´´½¨Ò»¸öÍøÂçÌ×½Ó×Ö
+				* æ ¹æ®csf_ip_connect_factoryåˆ›å»ºä¸€ä¸ªç½‘ç»œå¥—æ¥å­—
 				*
-				* @param factory    ±íÊ¾´´½¨ÍøÂçÌ×½Ó×ÖµÄ¹¤³§Àà¶ÔÏó
+				* @param factory    è¡¨ç¤ºåˆ›å»ºç½‘ç»œå¥—æ¥å­—çš„å·¥å‚ç±»å¯¹è±¡
 				*/
 				inline explicit csf_ip_connect(csf_ip_connect_factory& factory, csf_connect_type type)
 					: csf_connect(factory, type)
@@ -60,9 +60,9 @@ namespace csf
 				}
 				virtual ~csf_ip_connect();
 				/**
-				* ±íÊ¾Ô¶³ÌµÄÖ÷»úµØÖ·
+				* è¡¨ç¤ºè¿œç¨‹çš„ä¸»æœºåœ°å€
 				*
-				* @param new_value    ±íÊ¾url×Ö·û´®ÄÚÈİ
+				* @param new_value    è¡¨ç¤ºurlå­—ç¬¦ä¸²å†…å®¹
 				*/
 				inline virtual csf_int32 set_remote_url(csf_string new_value) {
 
@@ -71,9 +71,9 @@ namespace csf
 					//return csf_succeed;
 				}
 				/**
-				* ±íÊ¾Ô¶³ÌÍøÂçµØÖ·
+				* è¡¨ç¤ºè¿œç¨‹ç½‘ç»œåœ°å€
 				*
-				* @param new_value    ±íÊ¾url×Ö·û´®ÄÚÈİ
+				* @param new_value    è¡¨ç¤ºurlå­—ç¬¦ä¸²å†…å®¹
 				*/
 				inline virtual csf_int32 set_remote_url(csf::core::module::connect::csf_url& new_value) {
 
@@ -85,9 +85,9 @@ namespace csf
 					return csf_succeed;
 				}
 				/**
-				* ±íÊ¾±¾µØµÄÖ÷»úµØÖ·
+				* è¡¨ç¤ºæœ¬åœ°çš„ä¸»æœºåœ°å€
 				*
-				* @param new_value    ±íÊ¾url×Ö·û´®ÄÚÈİ
+				* @param new_value    è¡¨ç¤ºurlå­—ç¬¦ä¸²å†…å®¹
 				*/
 				inline virtual csf_int32 set_local_url(csf_string new_value) {
 
@@ -96,9 +96,9 @@ namespace csf
 					//return csf_succeed;
 				}
 				/**
-				* ±íÊ¾±¾µØÍøÂçµØÖ·
+				* è¡¨ç¤ºæœ¬åœ°ç½‘ç»œåœ°å€
 				*
-				* @param new_value    ±íÊ¾url×Ö·û´®ÄÚÈİ
+				* @param new_value    è¡¨ç¤ºurlå­—ç¬¦ä¸²å†…å®¹
 				*/
 				inline virtual csf_int32 set_local_url(csf::core::module::connect::csf_url& new_value) {
 
@@ -110,39 +110,39 @@ namespace csf
 					return csf_succeed;
 				}
 				/**
-				* ±íÊ¾Ô¶³ÌÍøÂçµØÖ·
+				* è¡¨ç¤ºè¿œç¨‹ç½‘ç»œåœ°å€
 				*/
 				inline virtual const csf_url& get_remote_url() const {
 
 					return m_remote_url;
 				}
 				/**
-				* ±íÊ¾±¾µØÍøÂçµØÖ·
+				* è¡¨ç¤ºæœ¬åœ°ç½‘ç»œåœ°å€
 				*/
 				inline virtual const csf_url& get_local_url() const {
 
 					return m_local_url;
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£º
-				*    ´¦ÀíÒì²½Á¬½Ó»Øµ÷º¯Êı
-				* ·µ»Ø£º
-				*    0   £º±íÊ¾³É¹¦£»
-				*    ·Ç0 £º±íÊ¾Ê§°Ü
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼š
+				*    å¤„ç†å¼‚æ­¥è¿æ¥å›è°ƒå‡½æ•°
+				* è¿”å›ï¼š
+				*    0   ï¼šè¡¨ç¤ºæˆåŠŸï¼›
+				*    é0 ï¼šè¡¨ç¤ºå¤±è´¥
 				*
-				* @param connect    ±íÊ¾´¦ÀíµÄÍøÂçÁ¬½Ó¶ÔÏó
-				* @param callback    ±íÊ¾Òì³£´¦Àí¾ä±úĞÅÏ¢
-				* @param error_code    ±íÊ¾boostµÄ´íÎóĞÅÏ¢
+				* @param connect    è¡¨ç¤ºå¤„ç†çš„ç½‘ç»œè¿æ¥å¯¹è±¡
+				* @param callback    è¡¨ç¤ºå¼‚å¸¸å¤„ç†å¥æŸ„ä¿¡æ¯
+				* @param error_code    è¡¨ç¤ºboostçš„é”™è¯¯ä¿¡æ¯
 				*/
 				inline csf_int32 async_connect_callback(csf_connect_ptr connect_ptr
 					, const csf_connect_callback& callback
 					, const boost::system::error_code& error_code) {
 
-					//¸üĞÂÒ»ÏÂ±¾µØµÄµØÖ·ĞÅÏ¢
+					//æ›´æ–°ä¸€ä¸‹æœ¬åœ°çš„åœ°å€ä¿¡æ¯
 					connect_ptr->get_local_url();
 
-					//Èç¹û´íÎó£¬ÔòÉèÖÃ´íÎóĞÅÏ¢
-					//ÕıÈ·Óë·ñ¶¼´òÓ¡ĞÅÏ¢
+					//å¦‚æœé”™è¯¯ï¼Œåˆ™è®¾ç½®é”™è¯¯ä¿¡æ¯
+					//æ­£ç¡®ä¸å¦éƒ½æ‰“å°ä¿¡æ¯
 					if (error_code) {
 						set_error(csf_connect_error(error_code.value()
 							, boost::system::system_error(error_code).what()));
@@ -163,29 +163,29 @@ namespace csf
 						, csf_ip_connect_error(error_code));
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£ºĞ´Èëcsf_bufferÄÚÈİ¡£
-				* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå†™å…¥csf_bufferå†…å®¹ã€‚
+				* è¿”å›ï¼šå°äºç­‰äº0è¡¨ç¤ºå¤±è´¥ï¼›å¤§äº0è¡¨ç¤ºæˆåŠŸå†™å…¥çš„æ•°æ®é•¿åº¦ï¼›
 				*
-				* @param buffer    ±íÊ¾ĞèÒª·¢ËÍµÄÄÚÈİ»º´æ
-				* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+				* @param buffer    è¡¨ç¤ºéœ€è¦å‘é€çš„å†…å®¹ç¼“å­˜
+				* @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 				*/
 				virtual csf_int32 write(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr);
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£º¶ÁÈ¡Êı¾İ²¢´æÔÚÖ¸¶¨»º´æÎ»ÖÃ¡£
-				* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈ¡µÄÊı¾İ³¤¶È£»
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šè¯»å–æ•°æ®å¹¶å­˜åœ¨æŒ‡å®šç¼“å­˜ä½ç½®ã€‚
+				* è¿”å›ï¼šå°äºç­‰äº0è¡¨ç¤ºå¤±è´¥ï¼›å¤§äº0è¡¨ç¤ºæˆåŠŸè¯»å–çš„æ•°æ®é•¿åº¦ï¼›
 				*
-				* @param buffer    ±íÊ¾¶ÁÈ¡Êı¾İ´æÔÚµÄ»º´æ¶ÔÏó
-				* @param callback    ±íÊ¾¶ÁÈ¡µÄ»Øµ÷º¯Êı
+				* @param buffer    è¡¨ç¤ºè¯»å–æ•°æ®å­˜åœ¨çš„ç¼“å­˜å¯¹è±¡
+				* @param callback    è¡¨ç¤ºè¯»å–çš„å›è°ƒå‡½æ•°
 				*/
 				virtual csf_int32 read(csf_connect_buffer<csf_buffer>& buffer, const csf_connect_callback& callback = csf_nullptr);
 			protected:
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£ºÕë¶Ô´íÎó»òÒì³£µÄ´¦Àí
-				* ·µ»Ø£º0±íÊ¾´¦Àí³É¹¦£»·Ç0±íÊ¾´¦ÀíÊ§°Ü
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šé’ˆå¯¹é”™è¯¯æˆ–å¼‚å¸¸çš„å¤„ç†
+				* è¿”å›ï¼š0è¡¨ç¤ºå¤„ç†æˆåŠŸï¼›é0è¡¨ç¤ºå¤„ç†å¤±è´¥
 				*
-				* @param connect_ptr    ±íÊ¾´¦ÀíµÄÍøÂçÁ¬½Ó¶ÔÏó
-				* @param callback    ±íÊ¾Òì³£´¦Àí¾ä±úĞÅÏ¢
-				* @param error_code    ±íÊ¾Òì³£ĞÅÏ¢ÄÚÈİ
+				* @param connect_ptr    è¡¨ç¤ºå¤„ç†çš„ç½‘ç»œè¿æ¥å¯¹è±¡
+				* @param callback    è¡¨ç¤ºå¼‚å¸¸å¤„ç†å¥æŸ„ä¿¡æ¯
+				* @param error_code    è¡¨ç¤ºå¼‚å¸¸ä¿¡æ¯å†…å®¹
 				*/
 				inline csf_int32 async_callback(csf_connect_ptr connect_ptr
 					, const csf_connect_callback& callback
@@ -210,12 +210,12 @@ namespace csf
 					return csf_succeed;
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£ºÕë¶Ô´íÎó»òÒì³£µÄ´¦Àí
-				* ·µ»Ø£º0±íÊ¾´¦Àí³É¹¦£»·Ç0±íÊ¾´¦ÀíÊ§°Ü
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šé’ˆå¯¹é”™è¯¯æˆ–å¼‚å¸¸çš„å¤„ç†
+				* è¿”å›ï¼š0è¡¨ç¤ºå¤„ç†æˆåŠŸï¼›é0è¡¨ç¤ºå¤„ç†å¤±è´¥
 				*
-				* @param connect_ptr    ±íÊ¾´¦ÀíµÄÍøÂçÁ¬½Ó¶ÔÏó
-				* @param callback    ±íÊ¾Òì³£´¦Àí¾ä±úĞÅÏ¢
-				* @param error_code    ±íÊ¾Òì³£ĞÅÏ¢ÄÚÈİ
+				* @param connect_ptr    è¡¨ç¤ºå¤„ç†çš„ç½‘ç»œè¿æ¥å¯¹è±¡
+				* @param callback    è¡¨ç¤ºå¼‚å¸¸å¤„ç†å¥æŸ„ä¿¡æ¯
+				* @param error_code    è¡¨ç¤ºå¼‚å¸¸ä¿¡æ¯å†…å®¹
 				*/
 				inline csf_int32 exception_callback(csf_connect_ptr connect_ptr
 					, const csf_connect_callback& callback
@@ -224,14 +224,14 @@ namespace csf
 					return async_callback(connect_ptr, callback, error_code);
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£º´¦ÀíÒì²½Ğ´´¦Àí»Øµ÷º¯Êı
-				* ·µ»Ø£º0±íÊ¾´¦Àí³É¹¦£»·Ç0±íÊ¾´¦ÀíÊ§°Ü
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¤„ç†å¼‚æ­¥å†™å¤„ç†å›è°ƒå‡½æ•°
+				* è¿”å›ï¼š0è¡¨ç¤ºå¤„ç†æˆåŠŸï¼›é0è¡¨ç¤ºå¤„ç†å¤±è´¥
 				*
-				* @param buffer		 ±íÊ¾ÄÚÈİµÄ»º´æ
-				* @param connect_ptr ±íÊ¾µ±Ç°µÄÍøÂçÁ¬½Ó¶ÔÏó
-				* @param callback    ±íÊ¾Òì³£´¦Àí¾ä±úĞÅÏ¢
-				* @param error_code  ±íÊ¾boostµÄ´íÎóĞÅÏ¢
-				* @param length		±íÊ¾µ±Ç°Êµ¼ÊĞ´µÄ»º´æ³¤¶È
+				* @param buffer		 è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜
+				* @param connect_ptr è¡¨ç¤ºå½“å‰çš„ç½‘ç»œè¿æ¥å¯¹è±¡
+				* @param callback    è¡¨ç¤ºå¼‚å¸¸å¤„ç†å¥æŸ„ä¿¡æ¯
+				* @param error_code  è¡¨ç¤ºboostçš„é”™è¯¯ä¿¡æ¯
+				* @param length		è¡¨ç¤ºå½“å‰å®é™…å†™çš„ç¼“å­˜é•¿åº¦
 				*/
 				csf_bool async_write_callback(csf_connect_buffer<csf_buffer>& buffer
 					, csf_connect_ptr connect_ptr
@@ -239,14 +239,14 @@ namespace csf
 					, const boost::system::error_code& error_code
 					, csf_uint32 length);
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£º´¦ÀíÒì²½¶Á´¦Àí»Øµ÷º¯Êı
-				* ·µ»Ø£º0±íÊ¾´¦Àí³É¹¦£»·Ç0±íÊ¾´¦ÀíÊ§°Ü
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¤„ç†å¼‚æ­¥è¯»å¤„ç†å›è°ƒå‡½æ•°
+				* è¿”å›ï¼š0è¡¨ç¤ºå¤„ç†æˆåŠŸï¼›é0è¡¨ç¤ºå¤„ç†å¤±è´¥
 				*
-				* @param buffer		 ±íÊ¾ÄÚÈİµÄ»º´æ
-				* @param connect_ptr ±íÊ¾µ±Ç°µÄÍøÂçÁ¬½Ó¶ÔÏó
-				* @param callback    ±íÊ¾Òì³£´¦Àí¾ä±úĞÅÏ¢
-				* @param error_code  ±íÊ¾boostµÄ´íÎóĞÅÏ¢
-				* @param length   ±íÊ¾µ±Ç°Êµ¼ÊĞ´µÄ»º´æ³¤¶È
+				* @param buffer		 è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜
+				* @param connect_ptr è¡¨ç¤ºå½“å‰çš„ç½‘ç»œè¿æ¥å¯¹è±¡
+				* @param callback    è¡¨ç¤ºå¼‚å¸¸å¤„ç†å¥æŸ„ä¿¡æ¯
+				* @param error_code  è¡¨ç¤ºboostçš„é”™è¯¯ä¿¡æ¯
+				* @param length   è¡¨ç¤ºå½“å‰å®é™…å†™çš„ç¼“å­˜é•¿åº¦
 				*/
 				csf_bool async_read_callback(csf_connect_buffer<csf_buffer>& buffer
 					, csf_connect_ptr connect_ptr
@@ -254,18 +254,18 @@ namespace csf
 					, const boost::system::error_code& error_code
 					, csf_uint32 length);
 				/**
-				* ±íÊ¾Ğ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ¡£
-				* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+				* è¡¨ç¤ºå†™å…¥æŒ‡å®šç¼“å­˜çš„å†…å®¹ã€‚
+				* è¿”å›ï¼šå°äºç­‰äº0è¡¨ç¤ºå¤±è´¥ï¼›å¤§äº0è¡¨ç¤ºæˆåŠŸå†™å…¥çš„æ•°æ®é•¿åº¦ï¼›
 				*
-				* @param buffer    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-				* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+				* @param buffer    è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜åœ°å€
+				* @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 				*/
 				/**
-				* ±íÊ¾Ğ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ¡£
-				* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+				* è¡¨ç¤ºå†™å…¥æŒ‡å®šç¼“å­˜çš„å†…å®¹ã€‚
+				* è¿”å›ï¼šå°äºç­‰äº0è¡¨ç¤ºå¤±è´¥ï¼›å¤§äº0è¡¨ç¤ºæˆåŠŸå†™å…¥çš„æ•°æ®é•¿åº¦ï¼›
 				*
-				* @param buffer    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-				* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+				* @param buffer    è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜åœ°å€
+				* @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 				*/
 				virtual csf_int32 async_write(csf_connect_buffer<csf_buffer>& buffer
 					, const csf_connect_callback& callback = csf_nullptr) {
@@ -273,11 +273,11 @@ namespace csf
 					return 0;
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£ºÒì²½¶ÁÈ¡Êı¾İ£¬²¢·ÅÈëÖ¸¶¨»º´æ¡£
-				* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈëµÄÊı¾İ³¤¶È£»
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šå¼‚æ­¥è¯»å–æ•°æ®ï¼Œå¹¶æ”¾å…¥æŒ‡å®šç¼“å­˜ã€‚
+				* è¿”å›ï¼šå°äºç­‰äº0è¡¨ç¤ºå¤±è´¥ï¼›å¤§äº0è¡¨ç¤ºæˆåŠŸè¯»å…¥çš„æ•°æ®é•¿åº¦ï¼›
 				*
-				* @param buffer    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-				* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+				* @param buffer    è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜åœ°å€
+				* @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 				*/
 				virtual csf_int32 async_read(csf_connect_buffer<csf_buffer>& buffer
 					, const csf_connect_callback& callback = csf_nullptr) {
@@ -285,11 +285,11 @@ namespace csf
 					return 0;
 				}
 				/**
-				* ±íÊ¾Ğ´ÈëÖ¸¶¨»º´æµÄÄÚÈİ¡£
-				* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦Ğ´ÈëµÄÊı¾İ³¤¶È£»
+				* è¡¨ç¤ºå†™å…¥æŒ‡å®šç¼“å­˜çš„å†…å®¹ã€‚
+				* è¿”å›ï¼šå°äºç­‰äº0è¡¨ç¤ºå¤±è´¥ï¼›å¤§äº0è¡¨ç¤ºæˆåŠŸå†™å…¥çš„æ•°æ®é•¿åº¦ï¼›
 				*
-				* @param buffer    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-				* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+				* @param buffer    è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜åœ°å€
+				* @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 				*/
 				virtual csf_int32 sync_write(csf_connect_buffer<csf_buffer>& buffer
 					, const csf_connect_callback& callback = csf_nullptr) {
@@ -297,11 +297,11 @@ namespace csf
 					return 0;
 				}
 				/**
-				* Ö÷Òª¹¦ÄÜÊÇ£ºÍ¬²½¶ÁÈ¡Êı¾İ£¬²¢·ÅÈëÖ¸¶¨»º´æ¡£
-				* ·µ»Ø£ºĞ¡ÓÚµÈÓÚ0±íÊ¾Ê§°Ü£»´óÓÚ0±íÊ¾³É¹¦¶ÁÈëµÄÊı¾İ³¤¶È£»
+				* ä¸»è¦åŠŸèƒ½æ˜¯ï¼šåŒæ­¥è¯»å–æ•°æ®ï¼Œå¹¶æ”¾å…¥æŒ‡å®šç¼“å­˜ã€‚
+				* è¿”å›ï¼šå°äºç­‰äº0è¡¨ç¤ºå¤±è´¥ï¼›å¤§äº0è¡¨ç¤ºæˆåŠŸè¯»å…¥çš„æ•°æ®é•¿åº¦ï¼›
 				*
-				* @param buffer    ±íÊ¾ÄÚÈİµÄ»º´æµØÖ·
-				* @param callback    ±íÊ¾ĞèÒª·µ»ØµÄ»Øµ÷º¯Êı
+				* @param buffer    è¡¨ç¤ºå†…å®¹çš„ç¼“å­˜åœ°å€
+				* @param callback    è¡¨ç¤ºéœ€è¦è¿”å›çš„å›è°ƒå‡½æ•°
 				*/
 				virtual csf_int32 sync_read(csf_connect_buffer<csf_buffer>& buffer
 					, const csf_connect_callback& callback = csf_nullptr) {
@@ -309,14 +309,14 @@ namespace csf
 					return 0;
 				}
 				/**
-				* ±íÊ¾Á¬½ÓĞÅÏ¢µÄ¸ñÊ½»¯×Ö·û´®
+				* è¡¨ç¤ºè¿æ¥ä¿¡æ¯çš„æ ¼å¼åŒ–å­—ç¬¦ä¸²
 				*/
 				inline csf::core::base::csf_csfstring& get_format() {
 
 					return m_format;
 				}
 				/**
-				* ±íÊ¾Á¬½ÓĞÅÏ¢µÄ¸ñÊ½»¯×Ö·û´®
+				* è¡¨ç¤ºè¿æ¥ä¿¡æ¯çš„æ ¼å¼åŒ–å­—ç¬¦ä¸²
 				*
 				* @param new_value
 				*/
@@ -339,15 +339,15 @@ namespace csf
 				}
 			private:
 				/**
-				* ±íÊ¾Ô¶³ÌÍøÂçµØÖ·
+				* è¡¨ç¤ºè¿œç¨‹ç½‘ç»œåœ°å€
 				*/
 				csf::modules::connect::csf_ip_url m_remote_url;
 				/**
-				* ±íÊ¾±¾µØÍøÂçµØÖ·
+				* è¡¨ç¤ºæœ¬åœ°ç½‘ç»œåœ°å€
 				*/
 				csf::modules::connect::csf_ip_url m_local_url;
 				/**
-				* ±íÊ¾Á¬½ÓĞÅÏ¢µÄ¸ñÊ½»¯×Ö·û´®
+				* è¡¨ç¤ºè¿æ¥ä¿¡æ¯çš„æ ¼å¼åŒ–å­—ç¬¦ä¸²
 				*/
 				csf::core::base::csf_csfstring m_format;
 

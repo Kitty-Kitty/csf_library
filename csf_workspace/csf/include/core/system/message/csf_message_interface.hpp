@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 27-6ÔÂ-2018 17:28:44
+*Date: 27-6æœˆ-2018 17:28:44
 *
 *Description: Interface(csf_message_interface)
 *
@@ -32,10 +32,10 @@ namespace csf
 			namespace message
 			{
 				/**
-				 * ±íÊ¾ÏµÍ³Ê¹ÓÃµÄÏûÏ¢´¦Àí½Ó¿Ú
+				 * è¡¨ç¤ºç³»ç»Ÿä½¿ç”¨çš„æ¶ˆæ¯å¤„ç†æ¥å£
 				 * @author f
 				 * @version 1.0
-				 * @created 27-6ÔÂ-2018 17:28:44
+				 * @created 27-6æœˆ-2018 17:28:44
 				 */
 				class csf_message_interface
 				{
@@ -50,21 +50,21 @@ namespace csf
 					}
 
 					/**
-					 * ±íÊ¾·¢ËÍÒ»¸ömessageÄÚÈİ
+					 * è¡¨ç¤ºå‘é€ä¸€ä¸ªmessageå†…å®¹
 					 * 
-					 * @param message    ±íÊ¾Ìí¼ÓµÄÏûÏ¢ÄÚÈİ
+					 * @param message    è¡¨ç¤ºæ·»åŠ çš„æ¶ˆæ¯å†…å®¹
 					 */
 					virtual csf_int32 post(const csf_message& message) =0;
 					/**
-					 * ¸ù¾İÀàĞÍ¡¢»Øµ÷º¯ÊıºÍĞÅÏ¢ÄÚÈİ´´½¨ÏûÏ¢
+					 * æ ¹æ®ç±»å‹ã€å›è°ƒå‡½æ•°å’Œä¿¡æ¯å†…å®¹åˆ›å»ºæ¶ˆæ¯
 					 * 
-					 * @param type    ±íÊ¾ÏûÏ¢ÀàĞÍ
-					 * @param callback    ±íÊ¾»Øµ÷º¯Êı
-					 * @param element    ±íÊ¾ÏûÏ¢ÄÚÈİ
+					 * @param type    è¡¨ç¤ºæ¶ˆæ¯ç±»å‹
+					 * @param callback    è¡¨ç¤ºå›è°ƒå‡½æ•°
+					 * @param element    è¡¨ç¤ºæ¶ˆæ¯å†…å®¹
 					 */
 					virtual csf_int32 post(const csf_message::csf_message_type type, const csf::core::system::message::csf_message_callback callback, const csf_element& element) =0;
 					/**
-					 * ±íÊ¾µ¯³öÏûÏ¢ÄÚÈİ
+					 * è¡¨ç¤ºå¼¹å‡ºæ¶ˆæ¯å†…å®¹
 					 */
 					virtual csf::core::system::message::csf_message pop() =0;
 

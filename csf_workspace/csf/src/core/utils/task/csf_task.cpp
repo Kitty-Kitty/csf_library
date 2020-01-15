@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 19-7ÔÂ-2018 20:11:50
+*Date: 19-7æœˆ-2018 20:11:50
 *
-*Description: Class(csf_task) ±íÊ¾¶¨Ê±ÈÎÎñ
+*Description: Class(csf_task) è¡¨ç¤ºå®šæ—¶ä»»åŠ¡
 *
 *Others:
 *
@@ -46,14 +46,14 @@ csf_task::~csf_task() {
 
 
 /**
- * ¸ù¾İtaskµÄÀàĞÍºÍÀàĞÍ´´½¨Ò»¸öÈÎÎñ
+ * æ ¹æ®taskçš„ç±»å‹å’Œç±»å‹åˆ›å»ºä¸€ä¸ªä»»åŠ¡
  * 
- * @param manager    ±íÊ¾ÈÎÎñ¹ÜÀíÆ÷µÄµØÖ·
- * @param type    ±íÊ¾ÀàĞÍÊıÖµ
- * @param offset    ±íÊ¾ÈÎÎñ¼ä¸ôÊ±¼ä
- * @param interval    ÈÎÎñÖ´ĞĞµÄ¼ä¸ôÊ±¼ä
- * @param callback    ÈÎÎñµÄÖ´ĞĞ»Øµ÷º¯Êı
- * @param delete_callback    ÈÎÎñÉ¾³ıµÄÖ´ĞĞ»Øµ÷º¯Êı
+ * @param manager    è¡¨ç¤ºä»»åŠ¡ç®¡ç†å™¨çš„åœ°å€
+ * @param type    è¡¨ç¤ºç±»å‹æ•°å€¼
+ * @param offset    è¡¨ç¤ºä»»åŠ¡é—´éš”æ—¶é—´
+ * @param interval    ä»»åŠ¡æ‰§è¡Œçš„é—´éš”æ—¶é—´
+ * @param callback    ä»»åŠ¡çš„æ‰§è¡Œå›è°ƒå‡½æ•°
+ * @param delete_callback    ä»»åŠ¡åˆ é™¤çš„æ‰§è¡Œå›è°ƒå‡½æ•°
  */
 csf_task::csf_task(const csf_task_manager* manager, const csf_task_type type, const csf_time offset, const csf_time interval, const csf_task_callback callback, const csf_task_delete_callback delete_callback) {
 
@@ -61,7 +61,7 @@ csf_task::csf_task(const csf_task_manager* manager, const csf_task_type type, co
 
 
 /**
- * ±íÊ¾´¦Àí½Ó¿Ú£¬µ±Ö»ÓĞis_process·µ»Øtrueºó²ÅÄÜprocess¡£
+ * è¡¨ç¤ºå¤„ç†æ¥å£ï¼Œå½“åªæœ‰is_processè¿”å›trueåæ‰èƒ½processã€‚
  */
 csf_int32 csf_task::process() {
 
@@ -70,7 +70,7 @@ csf_int32 csf_task::process() {
 
 
 /**
- * ±íÊ¾ÊÇ·ñ½øĞĞ´¦Àí,Èç¹ûis_process·µ»Øtrue£¬²ÅÄÜÖ´ĞĞprocess¡£
+ * è¡¨ç¤ºæ˜¯å¦è¿›è¡Œå¤„ç†,å¦‚æœis_processè¿”å›trueï¼Œæ‰èƒ½æ‰§è¡Œprocessã€‚
  */
 csf_bool csf_task::is_process() {
 
@@ -79,7 +79,7 @@ csf_bool csf_task::is_process() {
 
 
 /**
- * ÅĞ¶ÏÊÇ·ñĞèÒªÉ¾³ı£¬Èç¹ûis_delete·µ»ØtrueÔòÉ¾³ıtask¡£
+ * åˆ¤æ–­æ˜¯å¦éœ€è¦åˆ é™¤ï¼Œå¦‚æœis_deleteè¿”å›trueåˆ™åˆ é™¤taskã€‚
  */
 csf_bool csf_task::is_delete() {
 
@@ -88,7 +88,7 @@ csf_bool csf_task::is_delete() {
 
 
 /**
- * ±íÊ¾ÈÎÎñËùÊôµÄÈÎÎñ¹ÜÀíÆ÷
+ * è¡¨ç¤ºä»»åŠ¡æ‰€å±çš„ä»»åŠ¡ç®¡ç†å™¨
  */
 csf_task_manager* csf_task::get_task_manager() {
 
@@ -97,7 +97,7 @@ csf_task_manager* csf_task::get_task_manager() {
 
 
 /**
- * ±íÊ¾ÈÎÎñËùÊôµÄÈÎÎñ¹ÜÀíÆ÷
+ * è¡¨ç¤ºä»»åŠ¡æ‰€å±çš„ä»»åŠ¡ç®¡ç†å™¨
  * 
  * @param newVal
  */
@@ -108,7 +108,7 @@ void csf_task::set_task_manager(const csf_task_manager* newVal) {
 
 
 /**
- * ±íÊ¾´¦Àí½Ó¿Ú£¬µ±Ö»ÓĞis_delete·µ»Øtrueºó²ÅÄÜprocess_delete¡£
+ * è¡¨ç¤ºå¤„ç†æ¥å£ï¼Œå½“åªæœ‰is_deleteè¿”å›trueåæ‰èƒ½process_deleteã€‚
  */
 csf_int32 csf_task::process_delete() {
 

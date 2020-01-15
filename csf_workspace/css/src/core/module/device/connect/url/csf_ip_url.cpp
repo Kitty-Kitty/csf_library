@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,7 +8,7 @@
 *
 *Version: 1.0
 *
-*Date: 11-7ÔÂ-2018 22:36:10
+*Date: 11-7æœˆ-2018 22:36:10
 *
 *Description: Class(csf_ip_url) 
 *
@@ -39,9 +39,9 @@ csf_ip_url::~csf_ip_url() {
 
 
 /**
- * ±íÊ¾½âÎöµØÖ·º¯Êı
+ * è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
  * 
- * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+ * @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
  */
 csf_int32 csf_ip_url::parse(const csf_string& url) {
 
@@ -50,9 +50,9 @@ csf_int32 csf_ip_url::parse(const csf_string& url) {
 
 
 /**
- * ±íÊ¾½âÎöµØÖ·º¯Êı
+ * è¡¨ç¤ºè§£æåœ°å€å‡½æ•°
  * 
- * @param url    ±íÊ¾urlµØÖ·×Ö·û´®Êı¾İ
+ * @param url    è¡¨ç¤ºurlåœ°å€å­—ç¬¦ä¸²æ•°æ®
  */
 csf_int32 csf_ip_url::parse(const csf_char* url) {
 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+ï»¿/*******************************************************************************
 *
 *Copyright: armuxinxian@aliyun.com
 *
@@ -8,9 +8,9 @@
 *
 *Version: 1.0
 *
-*Date: 06-7ÔÂ-2018 19:29:31
+*Date: 06-7æœˆ-2018 19:29:31
 *
-*Description: Class(csf_attribute_manager)±íÊ¾Ä£¿éµÄÊôĞÔ¹ÜÀíÆ÷£¬Ö÷ÒªÌá¹©Ä£¿éÅäÖÃÊôĞÔÍ³Ò»¹ÜÀí£¬°üÀ¨Ôö¡¢É¾¡¢²é¡¢¸ÄµÈ¡£
+*Description: Class(csf_attribute_manager)è¡¨ç¤ºæ¨¡å—çš„å±æ€§ç®¡ç†å™¨ï¼Œä¸»è¦æä¾›æ¨¡å—é…ç½®å±æ€§ç»Ÿä¸€ç®¡ç†ï¼ŒåŒ…æ‹¬å¢ã€åˆ ã€æŸ¥ã€æ”¹ç­‰ã€‚
 *
 *Others:
 *
@@ -24,25 +24,25 @@ using csf::core::system::attribute::csf_attribute_manager;
 
 
 /**
-* º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_managerÖĞÉ¾³ıÒ»¸öÊôĞÔ¡£
-* ·µ»Ø£ºtrue±íÊ¾É¾³ı³É¹¦£¨²»´æÔÚ¸ÃÃû³ÆÊôĞÔÄ¬ÈÏ·µ»Ø³É¹¦£©£»false±íÊ¾Ê§°Ü¡£
+* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerä¸­åˆ é™¤ä¸€ä¸ªå±æ€§ã€‚
+* è¿”å›ï¼štrueè¡¨ç¤ºåˆ é™¤æˆåŠŸï¼ˆä¸å­˜åœ¨è¯¥åç§°å±æ€§é»˜è®¤è¿”å›æˆåŠŸï¼‰ï¼›falseè¡¨ç¤ºå¤±è´¥ã€‚
 *
-* @param name    ±íÊ¾ĞèÒªÉ¾³ıµÄÊôĞÔÃû³Æ
+* @param name    è¡¨ç¤ºéœ€è¦åˆ é™¤çš„å±æ€§åç§°
 */
 csf_bool csf_attribute_manager::del(const csf_char* name) {
 
 	csf_unordered_map<csf_string, csf_attribute*>::iterator		tmp_iter;
 
-	//ºËÑéÃû³ÆÊı¾İµÄºÏ·¨ĞÔ
+	//æ ¸éªŒåç§°æ•°æ®çš„åˆæ³•æ€§
 	if (!name || csf_strlen(name) <= 0) {
 		return csf_false;
 	}
 
-	//²éÑ¯¸ÃÃû³ÆÊôĞÔÊÇ·ñÒÑ¾­´æÔÚ£¬Èç¹ûÒÑ¾­´æÔÚÔò·µ»ØÊ§°Ü
+	//æŸ¥è¯¢è¯¥åç§°å±æ€§æ˜¯å¦å·²ç»å­˜åœ¨ï¼Œå¦‚æœå·²ç»å­˜åœ¨åˆ™è¿”å›å¤±è´¥
 	tmp_iter = get_attributes().find(name);
 	if (tmp_iter != get_attributes().end()) {
 
-		//Ïú»Ù¶ÔÏó£¬ÊÍ·Å×ÊÔ´
+		//é”€æ¯å¯¹è±¡ï¼Œé‡Šæ”¾èµ„æº
 		if (tmp_iter->second) {
 			delete (tmp_iter->second);
 		}
@@ -54,21 +54,21 @@ csf_bool csf_attribute_manager::del(const csf_char* name) {
 
 
 /**
-* º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_managerÖĞ²éÑ¯Ò»¸öÊôĞÔ¡£
-* ·µ»Ø£ºÒ»¸öÊôĞÔ¶ÔÏó¡£
+* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerä¸­æŸ¥è¯¢ä¸€ä¸ªå±æ€§ã€‚
+* è¿”å›ï¼šä¸€ä¸ªå±æ€§å¯¹è±¡ã€‚
 *
-* @param name    ±íÊ¾ĞèÒªµÄÊôĞÔÃû³Æ
+* @param name    è¡¨ç¤ºéœ€è¦çš„å±æ€§åç§°
 */
 const csf_attribute& csf_attribute_manager::find(const csf_char* name) {
 
 	csf_unordered_map<csf_string, csf_attribute*>::iterator		tmp_iter;
 
-	//ºËÑéÃû³ÆÊı¾İµÄºÏ·¨ĞÔ
+	//æ ¸éªŒåç§°æ•°æ®çš„åˆæ³•æ€§
 	if (!name || csf_strlen(name) <= 0) {
 		return csf_attribute::get_null();
 	}
 
-	//²éÑ¯¸ÃÃû³ÆÊôĞÔÊÇ·ñÒÑ¾­´æÔÚ£¬Èç¹ûÒÑ¾­´æÔÚÔò·µ»ØÊ§°Ü
+	//æŸ¥è¯¢è¯¥åç§°å±æ€§æ˜¯å¦å·²ç»å­˜åœ¨ï¼Œå¦‚æœå·²ç»å­˜åœ¨åˆ™è¿”å›å¤±è´¥
 	tmp_iter = get_attributes().find(name);
 	if (tmp_iter != get_attributes().end()) {
 		if (tmp_iter->second) {
@@ -80,10 +80,10 @@ const csf_attribute& csf_attribute_manager::find(const csf_char* name) {
 }
 
 /**
-* º¯Êı¹¦ÄÜÎª£º¸ù¾İÃû³Æ´Óattribute_managerÖĞ²éÑ¯Ò»¸öÊôĞÔ²¢·µ»ØÊôĞÔÄÚÈİ¡£
-* ·µ»Ø£º×Ö·û´®ÄÚÈİ¡£
+* å‡½æ•°åŠŸèƒ½ä¸ºï¼šæ ¹æ®åç§°ä»attribute_managerä¸­æŸ¥è¯¢ä¸€ä¸ªå±æ€§å¹¶è¿”å›å±æ€§å†…å®¹ã€‚
+* è¿”å›ï¼šå­—ç¬¦ä¸²å†…å®¹ã€‚
 *
-* @param name    ±íÊ¾ĞèÒªµÄÊôĞÔÃû³Æ
+* @param name    è¡¨ç¤ºéœ€è¦çš„å±æ€§åç§°
 */
 csf_string csf_attribute_manager::get_content(const csf_char* name) {
 
