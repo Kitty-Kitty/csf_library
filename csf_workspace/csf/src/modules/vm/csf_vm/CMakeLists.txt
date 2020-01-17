@@ -57,7 +57,7 @@ FOREACH(SUB_SRC_DIRECTORY ${SUB_SRC_DIRECTORIES})
 ENDFOREACH()
 
 
-#ìí?óboostoê￡??a??error: ??current_exception?ˉ is not a member of ??std?ˉ?êìa
+#添加宏定义，解决编译错误
 ADD_DEFINITIONS(-DBOOST_ASIO_DISABLE_STD_FUTURE)
 
 #add module app
@@ -76,7 +76,7 @@ TARGET_LINK_LIBRARIES(${CSF_MODULE_TARGET_NAME}
 
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "--------------------------------------------------------------")
-MESSAGE(STATUS "build [ app ] project[ ${CSF_MODULE_TARGET_NAME} ]")
-MESSAGE(STATUS "build [ app ] version[ ${CSF_MODULE_TARGET_NAME}-v${CSF_MODULE_LIBRARY_VERSION} ]")
+MESSAGE(STATUS "build [ vm ] project[ ${CSF_MODULE_TARGET_NAME} ]")
+MESSAGE(STATUS "build [ vm ] version[ ${CSF_MODULE_TARGET_NAME}-v${CSF_MODULE_LIBRARY_VERSION} ]")
 MESSAGE(STATUS "build executable:[ ${CSF_MODULE_TARGET_NAME} ]")
 MESSAGE(STATUS "--------------------------------------------------------------")

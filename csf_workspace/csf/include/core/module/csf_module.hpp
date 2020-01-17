@@ -53,17 +53,21 @@ namespace csf
 				enum csf_module_type
 				{
 					/**
+					 * 表示虚拟机vm模块类型数值
+					 */
+					csf_module_type_vm = 0x01000000,
+					/**
 					* 表示app模块类型数值
 					*/
-					csf_module_type_app = 0x01000000,
+					csf_module_type_app = 0x02000000,
 					/**
 					* 表示device模块类型数值
 					*/
-					csf_module_type_device = 0x02000000,
+					csf_module_type_device = 0x04000000,
 					/**
 					* 表示device_io模块类型数值
 					*/
-					csf_module_type_device_io = 0x04000000,
+					csf_module_type_device_io = 0x08000000,
 					/**
 					* 表示未知的模块类型
 					*/

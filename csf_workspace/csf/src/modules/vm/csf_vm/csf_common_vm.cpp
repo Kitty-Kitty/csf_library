@@ -70,14 +70,15 @@ csf::core::base::csf_int32 csf_common_vm::init(const csf_configure_manager * con
 		return csf_failure;
 	}
 
-	//表示保存当前app信息到指定文件中
-	tmp_bool_ret = save_information();
+	//解析配置文件，将所有信息保存到configure_manager中
+	//
+	tmp_bool_ret = init_configure_manager(get_config_mg(), get_root_configure_file());
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
 
-	//解析配置文件，将所有信息保存到configure_manager中
-	tmp_bool_ret = init_configure_manager(get_config_mg(), get_root_configure_file());
+	//表示保存当前app信息到指定文件中
+	tmp_bool_ret = save_information();
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}

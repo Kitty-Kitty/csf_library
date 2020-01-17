@@ -23,6 +23,7 @@
 
 #include<stdio.h>
 #if defined(__linux__)
+#include <time.h>
 #include <sys/time.h>
 #endif
 #if defined(WIN32)

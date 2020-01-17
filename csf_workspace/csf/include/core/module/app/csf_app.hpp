@@ -282,7 +282,7 @@ namespace csf
 				inline csf_bool add_device(const csf_char* mid, const csf_device* device) {
 
 					if (!device || !mid || csf_strlen(mid) <= 0) {
-						return csf_nullptr;
+						return csf_false;
 					}
 
 					return  add_device(csf_string(mid), device);
@@ -303,7 +303,7 @@ namespace csf
 				inline csf_bool del_device(const csf_char* mid) {
 
 					if (!mid || csf_strlen(mid) <= 0) {
-						return csf_nullptr;
+						return csf_false;
 					}
 
 					return del_device(csf_string(mid));

@@ -23,8 +23,8 @@ nfs服务指令：
 	systemctl start rpcbind nfs-server
 
 编译程序 :
-	cmake -DPLATFORM="hisiv500"  -DDEBUG_MODE=OFF ..
-	cmake -DPLATFORM="hisiv500"  -DDEBUG_MODE=ON ..
+	cmake -DPLATFORM="hisiv500"  -DDEBUG_MODE=OFF -DFLAGS="-march=armv5te -mfloat-abi=soft -mcpu=arm926ej-s"  ..
+	cmake -DPLATFORM="hisiv500"  -DDEBUG_MODE=ON -DFLAGS="-march=armv5te -mfloat-abi=soft -mcpu=arm926ej-s"  ..
 
 
 	cmake ../ -DCMAKE_BUILD_TYPE=Debug
@@ -86,6 +86,8 @@ gdb 使用设置non-stop模式：
 
 ./configure --target=arm-hisiv500-linux  --prefix=/home/f/project/arm/hisiv500/packages/gdb-8.3_arm-hisiv500-linux
 
+
+CFLAGS=" -mcpu=arm926ej-s " CXXFLAGS=" -mcpu=arm926ej-s "  ./configure --target=arm-hisiv500-linux --host=arm-hisiv500-linux   --prefix=/home/f/project/arm/hisiv500/csf_library/csf_workspace/csf/third-party/lib/arm/hisiv500/fdk-aac-2.0.1
 
 ./configure --target=arm-hisiv500-linux --host=arm-hisiv500-linux   --prefix=/home/f/project/arm/hisiv500/packages/gdb-8.3_arm-hisiv500-linux
 

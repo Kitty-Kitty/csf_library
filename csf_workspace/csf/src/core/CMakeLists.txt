@@ -34,13 +34,40 @@ ADD_LIBRARY(${CSF_PROJECT_LIBRARY_STATIC_NAME} STATIC $<TARGET_OBJECTS:CSF_PROJE
 
 ADD_DEFINITIONS(-DBOOST_ASIO_DISABLE_STD_FUTURE)
 
+#设置boost的后缀名称
+SET(BOOST_PLATFORM_NAME "")
 IF(DEBUG_MODE)        #cmake -D DEBUG_MODE=ON ../
-	#SET(BOOST_PLATFORM_NAME "-gcc-mt-d-1_65")
-	SET(BOOST_PLATFORM_NAME "-gcc49-mt-sd-a32-1_69")
+  #SET(BOOST_PLATFORM_NAME "-gcc-mt-d-1_65")
+  #SET(BOOST_PLATFORM_NAME "-gcc49-mt-sd-a32-1_69")
+  EXECUTE_PROCESS(
+    COMMAND find ${CSF_THIRD_PARTY_ROOT_DIR} -name "libboost_date_time*-sd-*.a" -type f -printf "%f\n"
+    COMMAND head -n 1
+    COMMAND awk -F "time" "{print $2}"
+    COMMAND awk -F "." "{print $1}"
+    OUTPUT_VARIABLE BOOST_PLATFORM_NAME
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
 ELSE()
-	#SET(BOOST_PLATFORM_NAME "-gcc-mt-1_65")
-	#SET(BOOST_PLATFORM_NAME "-gcc49-mt-a32-1_69")
-	SET(BOOST_PLATFORM_NAME "-gcc49-mt-s-a32-1_69")
+  #SET(BOOST_PLATFORM_NAME "-gcc-mt-1_65")
+  #SET(BOOST_PLATFORM_NAME "-gcc49-mt-a32-1_69")
+  #SET(BOOST_PLATFORM_NAME "-gcc49-mt-s-a32-1_69")
+    EXECUTE_PROCESS(
+    COMMAND find ${CSF_THIRD_PARTY_ROOT_DIR} -name "libboost_date_time*-s-*.a" -type f -printf "%f\n"
+    COMMAND head -n 1
+    COMMAND awk -F "time" "{print $2}"
+    COMMAND awk -F "." "{print $1}"
+    OUTPUT_VARIABLE BOOST_PLATFORM_NAME
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+
+ENDIF()
+
+IF( BOOST_PLATFORM_NAME )
+  MESSAGE(STATUS "boost libraries type[${BOOST_PLATFORM_NAME}]")
+ELSE()
+  MESSAGE(WARNING "boost libraries type[ null ]")
+  MESSAGE(FATAL_ERROR "not found boost libraries. check your[third-party] configure.")
+  RETURN()
 ENDIF()
 
 #libboost_log_setup${BOOST_PLATFORM_NAME}.a 
@@ -56,6 +83,23 @@ SET(BOOST_LIBRARIES
 		libboost_atomic${BOOST_PLATFORM_NAME}.a
 )
 
+#打印使用的boost库列表，方便问题查询
+LIST(LENGTH BOOST_LIBRARIES RETURN_LIST_LENGTH)
+SET(TMP_LIBRARY_COUNT 0)
+IF(RETURN_LIST_LENGTH GREATER 0)
+  #MATH(EXPR RETURN_LIST_LENGTH "${RETURN_LIST_LENGTH}-1")
+  MESSAGE(STATUS "boost libraries[ ${RETURN_LIST_LENGTH} ]:")
+  MESSAGE(STATUS "--------------------------------------------------------------")
+
+  FOREACH(tmp_library ${BOOST_LIBRARIES})
+	MATH(EXPR TMP_LIBRARY_COUNT "${TMP_LIBRARY_COUNT}+1")
+	MESSAGE(STATUS "[${TMP_LIBRARY_COUNT}/${RETURN_LIST_LENGTH}] ${tmp_library}")
+  ENDFOREACH(tmp_library)
+
+  MESSAGE(STATUS "--------------------------------------------------------------")
+ELSE()
+  MESSAGE(WARNING "not found boost libraries. check your[third-party] configure.")
+ENDIF()
 #SET(CSF_GLOBAL_BOOST_LIBRARIES ${BOOST_LIBRARIES} PARENT_SCOPE)
 
 SET(CSF_PROJECT_TARGET_LINK_LIBRARIES

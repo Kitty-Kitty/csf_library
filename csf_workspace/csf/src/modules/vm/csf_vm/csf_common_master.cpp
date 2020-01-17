@@ -19,6 +19,7 @@
 *******************************************************************************/
 
 #include "csf_common_master.hpp"
+#include "csf_common_vm.hpp"
 #include "csf_vm_option.hpp"
 
 using csf::modules::vm::csf_common_master;
@@ -159,7 +160,7 @@ csf_bool csf_common_master::init_shared_memory() {
 		, "master_%s", get_name().c_str());
 
 	//这里"csf_sizeof(csf_vm) * 2"主要为了分配充足的共享空间，避免空间不足而错误
-	tmp_int_ret = get_sm().create(tmp_buf, csf_sizeof(csf_vm) * 2);
+	tmp_int_ret = get_sm().create(tmp_buf, csf_sizeof(csf_common_vm) * 2);
 	if (csf_failure == tmp_int_ret) {
 		return csf_false;
 	}
@@ -196,7 +197,7 @@ csf::core::base::csf_int32 csf_common_master::start() {
 	}
 
 	//在共享内存中创建虚拟机对象
-	set_vm(get_sm().create_object<csf_vm>(get_name()));
+	set_vm(get_sm().create_object<csf_common_vm>(get_name()));
 	if (csf_nullptr == get_vm()) {
 		csf_log(error
 			, "create_object() [%s : null] failed!"

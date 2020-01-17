@@ -16,9 +16,9 @@
 *
 *History:
 *******************************************************************************/
-#ifdef __linux__
-#pragma GCC diagnostic error "-std=c++11"
-#endif
+//#ifdef __linux__
+//#pragma GCC diagnostic error "-std=c++11"
+//#endif
 
 #if !defined(_CSF_ATOMIC_H_)
 #define _CSF_ATOMIC_H_

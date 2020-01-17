@@ -15,7 +15,7 @@ static int h264_parse_nalu_header(uint8_t *data, int len, int *hdrsize)
     int  i;
     for (i=0; i<4 && i<len && !data[i]; i++);
     if (i < 2 || i == 4 || data[i] != 0x01 || ++i >= len) {
-        printf("failed to find h264 frame data[%d] = %02x !\n", i, data[i]);
+        //printf("failed to find h264 frame data[%d] = %02x !\n", i, data[i]);
         return -1;
     }
     *hdrsize = i;

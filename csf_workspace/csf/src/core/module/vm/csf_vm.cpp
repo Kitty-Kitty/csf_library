@@ -27,6 +27,7 @@ using csf::core::module::csf_vm;
 csf_vm::csf_vm()
 	: m_slaves{csf_nullptr, } {
 
+	set_type(csf_module_type_vm);
 }
 
 

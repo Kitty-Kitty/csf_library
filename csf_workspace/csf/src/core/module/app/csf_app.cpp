@@ -366,7 +366,7 @@ csf_device* csf_app::find_device(const csf_string& mid) {
 
 
 	if (mid.empty()) {
-		return csf_false;
+		return csf_nullptr;
 	}
 
 	csf_shared_lock<decltype(m_devices_mutex)>			tmp_lock(m_devices_mutex);
