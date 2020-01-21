@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vm_configure>
+  
+  <!--表示当前虚拟机的名称-->
+  <name>csf_vm</name>
+    
+  <!--表示伺服程序列表-->
+  <slaves>
+    <!--伺服程序信息-->
+    <slave>
+      <name>ec_app</name>
+      <command>/home/f/project/cplusplus/csf_library/csf_workspace/build/ec/debug/ec_app/ec_app</command>
+      <arguments> -f /home/f/project/cplusplus/csf_library/csf_workspace/build/ec/debug/config/csf_configs.xml  -t xml</arguments>
+    </slave>
+
+  </slaves>
+  
+</vm_configure>

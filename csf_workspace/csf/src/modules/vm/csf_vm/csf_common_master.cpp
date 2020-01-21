@@ -174,7 +174,32 @@ csf_bool csf_common_master::init_shared_memory() {
  */
 csf::core::base::csf_int32 csf_common_master::init() {
 
-	return csf_master::init();
+	csf_bool			tmp_bool_ret = csf_false;
+	csf_int32			tmp_int_ret = csf_failure;
+	csf_common_vm		tmp_vm;
+	csf_vm_option		tmp_vm_option(tmp_vm);
+
+
+	//解析程序运行参数
+	if (!tmp_vm_option.get_option(get_argc(), get_argv())) {
+		return 0;
+	}
+
+	//初始化虚拟机对象
+	tmp_int_ret = tmp_vm.init(csf_nullptr);
+	if (csf_failure == tmp_int_ret) {
+		return csf_failure;
+	}
+
+	//获取虚拟机的名称
+	if (tmp_vm.get_name().empty()) {
+		return csf_failure;
+	}
+	else {
+		set_name(tmp_vm.get_name());
+	}
+
+	return csf_succeed;
 }
 
 

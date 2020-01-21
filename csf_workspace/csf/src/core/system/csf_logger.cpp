@@ -20,6 +20,7 @@
 #include "csf_logger.hpp"
 #include "csf_attribute_include.h"
 #include "csf_attribute_exception_critical.hpp"
+#include <boost/filesystem.hpp>
 
 using csf::core::system::csf_logger;
 using csf::core::system::attribute::csf_attribute_manager;
@@ -133,6 +134,7 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 	csf_string						tmp_string_ret = "";
 	csf_string						tmp_string_level = "";
 	csf_logger_level				tmp_level = csf_logger_level::csf_logger_level_notice;
+	csf_char						tmp_path_buffer[2048] = { 0, };
 
 
 	//校验各种配置信息的合法性
@@ -214,15 +216,31 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 	//优先使用日志配置文件中的日志保存地址。如果该路径为空，则使用已经配置程序指定目录
 	//如果日志没有配置任何路径信息，则日志系统无法正常工作
 	tmp_string_ret = ((csf_attribute_manager*)get_attribute_manager())->get_value<csf_attribute_string>(CSF_LOGGER_ATTRIBUTE_NAME(path));
-	if (!tmp_string_ret.empty()) {
-		set_path(tmp_string_ret);
+	if (tmp_string_ret.empty()) {
+		//如果没有配置日志目录，则采用程序当前的工件目录作为日志的目录
+		boost::filesystem::path tmp_cp = boost::filesystem::current_path();
+		csf_snprintf(tmp_path_buffer
+			, csf_sizeof(tmp_path_buffer)
+			, "%s%c%s%c"
+			, boost::filesystem::current_path().string().c_str()
+			, boost::filesystem::path::preferred_separator
+			, CSF_LOGGER_DIRECTORY_NAME
+			, boost::filesystem::path::preferred_separator
+		);
+
+		set_path(tmp_path_buffer);
 	}
 	else {
-		if (get_path().empty()) {
-			csf_log_ex(critical, csf_log_code_critical
-				, "logger path is null error.");
-			return csf_failure;
-		}
+		csf_snprintf(tmp_path_buffer
+			, csf_sizeof(tmp_path_buffer)
+			, "%s%c%s%c"
+			, tmp_string_ret.c_str()
+			, boost::filesystem::path::preferred_separator
+			, CSF_LOGGER_DIRECTORY_NAME
+			, boost::filesystem::path::preferred_separator
+		);
+
+		set_path(tmp_path_buffer);
 	}
 
 	//设置各种空间参数信息
@@ -255,12 +273,9 @@ csf::core::base::csf_int32 csf_logger::init(const csf_configure_manager * conf_m
 csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_mg) {
 
 	std::string				tmp_log_file_name = "";
-	std::string				tmp_log_path = "";
 
 
-	tmp_log_path = get_path() + CSF_LOGGER_DIRECTORY_NAME;
-	tmp_log_file_name = tmp_log_path + get_file_name_format();
-
+	tmp_log_file_name = get_path() + get_file_name_format();
 	try	{
 		//text_ostream_backend 
 		boost::shared_ptr<text_sink> tmp_text_sink_ptr(new text_sink);
@@ -298,8 +313,8 @@ csf::core::base::csf_int32 csf_logger::start(const csf_configure_manager * conf_
 
 		// Set up where the rotated files will be stored
 		tmp_file_sink_ptr->locked_backend()->set_file_collector(boost::log::sinks::file::make_collector(
-			boost::log::keywords::target = tmp_log_path,						 // where to store rotated files
-			boost::log::keywords::max_size = get_stored_max_size(),              // maximum total size of the stored files, in bytes
+			boost::log::keywords::target = get_path(),							// where to store rotated files
+			boost::log::keywords::max_size = get_stored_max_size(),             // maximum total size of the stored files, in bytes
 			boost::log::keywords::min_free_space = get_disk_min_free_size()     // minimum free space on the drive, in bytes
 		));
 		// Upon restart, scan the target directory for files matching the file_name pattern

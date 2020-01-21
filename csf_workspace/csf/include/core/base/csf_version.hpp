@@ -105,6 +105,13 @@ namespace csf
 				inline virtual ~_csf_version_() {
 
 				}
+				/**
+				* 模块的名称
+				*/
+				inline csf::core::base::csf_string get_name() {
+
+					return m_name;
+				}
 				inline csf_string & get_build() {
 
 					return m_build;
@@ -328,13 +335,6 @@ namespace csf
 
 					// 					csf_strncpy(m_format, new_value
 					// 						, csf_strlen(new_value) < csf_sizeof(m_format) ? csf_strlen(new_value) : csf_sizeof(m_format));
-				}
-				/**
-				* 模块的名称
-				*/
-				inline csf::core::base::csf_string get_name() {
-
-					return m_name;
 				}
 				/**
 				* 模块的名称

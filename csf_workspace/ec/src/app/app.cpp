@@ -36,10 +36,6 @@ int main(int argc, char** argv)
 	//csf::core::module::csf_app			tmp_app("E:\\project_work\\arm_project\\kitty\\project\\trunk\\csf_library\\csf_workspace\\ec\\config\\csf_configs.xml", "xml");
 
 
-	//模拟实现程序段错误
-	//csf_int32			*tmp_value = NULL;
-	//csf_int32			tmp_dest = *tmp_value;
-
 	//设置app的版本信息
 	tmp_app.get_version().set_version(
 		csf_ec_version
@@ -74,6 +70,10 @@ int main(int argc, char** argv)
 
 	while (csf_true) {
 		csf_msleep(10000);
+
+		//模拟实现程序段错误
+		csf_int32			*tmp_value = NULL;
+		csf_int32			tmp_dest = *tmp_value;
 	}
 	printf("hello world!\r\n");
 	return 0;

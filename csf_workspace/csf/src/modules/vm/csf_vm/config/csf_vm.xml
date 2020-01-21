@@ -8,9 +8,16 @@
   <slaves>
     <!--伺服程序信息-->
     <slave>
+      <!--表示伺服程序的名称-->
       <name>ec_app</name>
+      <!--表示伺服程序的执行指令-->
       <command>E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\csf\platform\win32\x64\Debug\ec_app.exe</command>
+      <!--表示伺服程序执行指令的运行参数-->
       <arguments> -f E:\project_work\arm_project\kitty\project\trunk\csf_library\csf_workspace\ec\config\csf_configs.xml  -t xml</arguments>
+      <!--表示伺服程序是否守护，取值(yes/no)-->
+      <deamon>yes</deamon>
+      <!--表示伺服程序守护间隔时间，取值()-->
+      <interval>5s</interval>
     </slave>
 
   </slaves>

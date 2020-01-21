@@ -202,11 +202,7 @@ namespace csf
 			/**
 			* 表示logger的目录名称
 			*/
-#ifdef WIN32
-			#define CSF_LOGGER_DIRECTORY_NAME								"log\\"
-#else
-			#define CSF_LOGGER_DIRECTORY_NAME								"log/"
-#endif
+			#define CSF_LOGGER_DIRECTORY_NAME								"log"
 			
 			/**
 			 * 表示日志系统内容

@@ -60,8 +60,8 @@ namespace csf
 					*/
 					inline explicit csf_connect_buffer(const csf_uint32 len)
 						: csf_connect_buffer(new ValueType(len), len) {
-						m_is_free(csf_true);
 
+						m_is_free = csf_true;
 					}
 					/**
 					* 主要功能是：根据buufer对象和对应长度创建csf_connect_buffer

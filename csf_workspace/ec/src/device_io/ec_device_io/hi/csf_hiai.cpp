@@ -925,7 +925,7 @@ bool csf_hiai::start_coder_thread(csf_hiadev* hichannel) {
 	csf_log(notice, "create thread[%p] succeed!", get_thread());
 #endif
 
-#if WIN32
+#if FILE_TEST
 	//创建线程
 	set_thread(new csf_thread(csf_bind(&csf_hiai::test_coder_thread_process, this, this)));
 
@@ -1058,7 +1058,7 @@ bool csf_hiai::coder_thread_process(csf_hiadev* hichannel) {
 	return true;
 }
 
-
+#ifdef FILE_TEST
 /**
 * 功能：
 *    测试编解码线程处理函数
@@ -1097,12 +1097,14 @@ bool csf_hiai::test_coder_thread_process(csf_hiadev* hichannel) {
 	}
 
 	//如果没有视频，则休眠等待
-	csf::core::utils::time::sleep_time::sleep_ms(1000);
+	//csf::core::utils::time::sleep_time::sleep_ms(1000);
+	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	csf_log(warning, "insert a test object");
 
 	return true;
 }
 
+#endif
 /**
  * 功能：
  *    绑定设备和编码器设备

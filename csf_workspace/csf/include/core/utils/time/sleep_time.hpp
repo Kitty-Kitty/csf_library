@@ -25,6 +25,7 @@
 #if defined(__linux__)
 #include <time.h>
 #include <sys/time.h>
+#include <unistd.h>
 #endif
 #if defined(WIN32)
 #include <windows.h>
@@ -91,7 +92,7 @@ namespace csf
 					 * 
 					 * @param s    表示当前休眠秒数
 					 */
-					static void sleep(unsigned int s) {
+					static void sleep_s(unsigned int s) {
 						#if defined(__linux__)
 							sleep(s);
 						#endif

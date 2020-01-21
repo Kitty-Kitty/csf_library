@@ -26,6 +26,9 @@
 #include "hiaudio_aiconf.hpp"
 
 //#define HISIV_AAC
+#ifdef WIN32
+#define FILE_TEST 1
+#endif
 
 namespace ec
 {
@@ -266,6 +269,7 @@ namespace ec
 			 * @param hichannel    表示当前的csf_hiadev设备对象指针
 			 */
 			virtual bool coder_thread_process(csf_hiadev* hichannel);
+#ifdef FILE_TEST
 			/**
 			* 功能：
 			*    测试编解码线程处理函数
@@ -276,6 +280,7 @@ namespace ec
 			* @param hichannel    表示当前的csf_hiadev设备对象指针
 			*/
 			virtual bool test_coder_thread_process(csf_hiadev* hichannel);
+#endif
 			/**
 			 * 功能：
 			 *    绑定设备和编码器设备

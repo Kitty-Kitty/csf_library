@@ -28,8 +28,7 @@
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/lock_guard.hpp>
-#include <boost/config/abi_prefix.hpp>
-
+//#include <boost/config/abi_prefix.hpp>
 
 using namespace csf::core::base;
 

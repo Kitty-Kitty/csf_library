@@ -19,6 +19,7 @@
 *******************************************************************************/
 
 #include <boost/bind.hpp>
+#include "sleep_time.hpp"
 #include "csf_common_vm.hpp"
 #include "csf_common_slave.hpp"
 #include "csf_platform.hpp"
@@ -47,7 +48,7 @@ csf_common_vm::~csf_common_vm() {
  * 返回：
  *    0   ：表示成功
  *    非0 ：表示失败
- * 
+ *
  * @param conf_mg    表示配置文件信息
  */
 csf::core::base::csf_int32 csf_common_vm::init(const csf_configure_manager * conf_mg) {
@@ -95,6 +96,9 @@ csf::core::base::csf_int32 csf_common_vm::init(const csf_configure_manager * con
 		return csf_failure;
 	}
 
+	//设置虚拟机的pid
+	set_vm_pid(csf::core::system::platform::csf_platform::get_pid());
+
 	return csf_succeed;
 }
 
@@ -105,7 +109,7 @@ csf::core::base::csf_int32 csf_common_vm::init(const csf_configure_manager * con
  * 返回：
  *    0   ：表示成功
  *    非0 ：表示失败
- * 
+ *
  * @param conf_mg    表示配置文件信息
  */
 csf::core::base::csf_int32 csf_common_vm::start(const csf_configure_manager * conf_mg) {
@@ -131,14 +135,23 @@ csf::core::base::csf_int32 csf_common_vm::start(const csf_configure_manager * co
 		return csf_failure;
 	}
 
+	//启动子进程守护处理线程
+	tmp_bool_ret = start_deamon_thread_pool();
+	if (csf_false == tmp_bool_ret) {
+		return csf_failure;
+	}
+
+	//启动子进程退出信号处理线程
+	tmp_bool_ret = start_io_context_thread_pool();
+	if (csf_false == tmp_bool_ret) {
+		return csf_failure;
+	}
+
 	//启动所有已经配置的虚拟机
 	tmp_bool_ret = start_slaves();
 	if (csf_false == tmp_bool_ret) {
 		return csf_failure;
 	}
-
-	//启动服务
-	get_ioctx().run();
 
 	return 0;
 }
@@ -150,14 +163,25 @@ csf::core::base::csf_int32 csf_common_vm::start(const csf_configure_manager * co
  * 返回：
  *    0   ：表示成功
  *    非0 ：表示失败
- * 
+ *
  * @param conf_mg    表示配置文件信息
  */
 csf::core::base::csf_int32 csf_common_vm::stop(const csf_configure_manager * conf_mg) {
 
-
 	csf_bool							tmp_bool_ret = csf_false;
 
+
+	//停止子进程退出信号处理线程
+	tmp_bool_ret = stop_io_context_thread_pool();
+	if (csf_false == tmp_bool_ret) {
+		return csf_failure;
+	}
+
+	//停止子进程守护处理线程
+	tmp_bool_ret = stop_deamon_thread_pool();
+	if (csf_false == tmp_bool_ret) {
+		return csf_failure;
+	}
 
 	//停止所有已经配置的虚拟机
 	tmp_bool_ret = stop_slaves();
@@ -167,7 +191,6 @@ csf::core::base::csf_int32 csf_common_vm::stop(const csf_configure_manager * con
 
 	//销毁共享内存
 	get_sm().destroy();
-
 
 	return 0;
 }
@@ -184,6 +207,7 @@ csf_bool csf_common_vm::init_shared_memory() {
 
 
 	csf_int32			tmp_int_ret = csf_failure;
+	csf_uint32			tmp_size = csf_sizeof(csf_common_slave) * csf_ary_size(m_slaves) * 2;
 	csf_char			tmp_buf[128] = { 0, };
 
 
@@ -192,10 +216,24 @@ csf_bool csf_common_vm::init_shared_memory() {
 		, csf_sizeof(tmp_buf)
 		, "%s", get_name().c_str());
 
-	//这里"csf_sizeof(csf_slave) * csf_ary_size(m_slaves) * 2"主要为了分配充足的共享空间，避免空间不足而错误
-	tmp_int_ret = get_sm().create(tmp_buf, csf_sizeof(csf_slave) * csf_ary_size(m_slaves) * 2);
+	//这里"csf_sizeof(csf_common_slave) * csf_ary_size(m_slaves) * 2"主要为了分配充足的共享空间，避免空间不足而错误
+	tmp_int_ret = get_sm().create(tmp_buf, tmp_size);
 	if (csf_failure == tmp_int_ret) {
+		csf_log_ex(critical
+			, csf_log_code_critical
+			, "create share memory[%s : %d] failed!"
+			, tmp_buf
+			, tmp_size
+		);
 		return csf_false;
+	}
+	else {
+		csf_log_ex(notice
+			, csf_log_code_notice
+			, "create share memory[%s : %d] succeed!"
+			, tmp_buf
+			, tmp_size
+		);
 	}
 
 	return csf_true;
@@ -208,7 +246,7 @@ csf_bool csf_common_vm::init_shared_memory() {
  * 返回：
  *    true  ：  表示成功；
  *   false  ：  表示失败；
- * 
+ *
  * @param element    表示当前需要启动的伺服信息
  */
 csf_bool csf_common_vm::start_slave(csf_element& element) {
@@ -218,10 +256,10 @@ csf_bool csf_common_vm::start_slave(csf_element& element) {
 		return csf_false;
 	}
 
-	csf_string		tmp_name = element.find_child("name").get_content();
-	csf_string		tmp_command = element.find_child("command").get_content();
-	csf_string		tmp_arguments = element.find_child("arguments").get_content();
-	csf_slave		*tmp_slave = csf_nullptr;
+	csf_string			tmp_name = element.find_child("name").get_content();
+	csf_string			tmp_command = element.find_child("command").get_content();
+	csf_string			tmp_arguments = element.find_child("arguments").get_content();
+	csf_common_slave	*tmp_slave = csf_nullptr;
 
 
 	//如果名称或指令为空，则表示配置错误
@@ -235,7 +273,7 @@ csf_bool csf_common_vm::start_slave(csf_element& element) {
 	}
 
 	//创建slave内存对象
-	tmp_slave = get_sm().create_object<csf_slave>(tmp_name);
+	tmp_slave = get_sm().create_object<csf_common_slave>(tmp_name);
 	if (csf_nullptr == tmp_slave) {
 		csf_log(error
 			, "create slave[ name:%s | command:%s ] instance error!"
@@ -245,6 +283,8 @@ csf_bool csf_common_vm::start_slave(csf_element& element) {
 		return csf_false;
 	}
 	else {
+		insert_slave(tmp_slave);
+
 		csf_log(notice
 			, "create slave[ name:%s | command:%s ] instance succeed!"
 			, tmp_name.c_str()
@@ -253,6 +293,7 @@ csf_bool csf_common_vm::start_slave(csf_element& element) {
 	}
 
 	//设置slave对象数据
+	tmp_slave->set_common_vm(this);
 	tmp_slave->set_name(tmp_name);
 	tmp_slave->set_command(tmp_command);
 	tmp_slave->set_arguments(tmp_arguments);
@@ -270,7 +311,6 @@ csf_bool csf_common_vm::start_slave(csf_element& element) {
  *   false  ：  表示失败；
  */
 csf_bool csf_common_vm::start_slaves() {
-
 
 	csf_element			tmp_slave_elements = get_config_mg().find_element(
 		csf_list<csf_string>({ "vm_configure", "slaves" }));
@@ -291,13 +331,111 @@ csf_bool csf_common_vm::start_slaves() {
 }
 
 
+#ifdef __linux__
+
+/**
+ * 功能：
+ *    处理已经退出的进程队列中伺服对象，实现伺服进程的守护。
+ * 返回：
+ *    true  ：  表示成功；
+ *   false  ：  表示失败；
+ */
+csf_bool csf_common_vm::deamon_slaves() {
+
+	for (int i = 0; i < csf_ary_size(m_slaves); i++) {
+
+		if (csf_nullptr == m_slaves[i]) {
+			continue;
+		}
+
+		if (static_cast<csf_common_slave*>(m_slaves[i])->get_signal() <= 0) {
+			continue;
+		}
+		
+		//针对对象进行守护处理
+		deamon_slave(m_slaves[i]);
+	}	
+
+	return csf_true;
+}
+#else
+/**
+ * 功能：
+ *    处理已经退出的进程队列中伺服对象，实现伺服进程的守护。
+ * 返回：
+ *    true  ：  表示成功；
+ *   false  ：  表示失败；
+ */
+csf_bool csf_common_vm::deamon_slaves() {
+
+	csf_slave			*tmp_common_slave = csf_nullptr;
+
+
+	while (get_deque().pop_front(tmp_common_slave)) {
+
+		if (!tmp_common_slave) {
+			break;
+		}
+
+		//针对对象进行守护处理
+		deamon_slave(tmp_common_slave);
+	}
+
+	return csf_true;
+}
+#endif
+
+
+/**
+ * 功能：
+ *    实现伺服进程的守护
+ * 返回：
+ *   true  ：  表示成功；
+ *   false ：  表示失败；
+ *
+ * @param slave    表示伺服信息对象
+ */
+csf_bool csf_common_vm::deamon_slave(csf_slave* slave) {
+
+	//如果不需要守护重启，则退出
+	if (csf_false == static_cast<csf_common_slave*>(slave)->is_deamon()) {
+		csf_log(notice
+			, "slave[%s] don't deamon to restart. %s"
+			, slave->get_name().c_str()
+			, slave->to_string().c_str()
+		);
+		return csf_true;
+	}
+	else {
+		static_cast<csf_common_slave*>(slave)->destroy_child();
+	}
+
+	if (start_slave(slave)) {
+		csf_log(notice
+			, "restart slave[%s] succeed! %s"
+			, slave->get_name().c_str()
+			, slave->to_string().c_str()
+		);
+	}
+	else {
+		csf_log(error
+			, "restart slave[%s] failed! %s"
+			, slave->get_name().c_str()
+			, slave->to_string().c_str()
+		);
+		return csf_false;
+	}
+	return csf_true;
+}
+
+
 /**
  * 功能：
  *    根据名称停止指定的私服程序
  * 返回：
  *    true  ：  表示成功；
  *   false  ：  表示失败；
- * 
+ *
  * @param name    表示当前需要停止的伺服名称
  */
 csf_bool csf_common_vm::stop_slave(csf_string& name) {
@@ -325,7 +463,7 @@ csf_bool csf_common_vm::stop_slaves() {
  * 返回：
  *    非null  ：  表示查找到的伺服对象；
  *      null  ：  表示不存在指定的伺服对象；
- * 
+ *
  * @param name    表示伺服名称
  */
 csf_slave* csf_common_vm::find_slave(csf_string& name) {
@@ -339,28 +477,69 @@ csf_slave* csf_common_vm::find_slave(csf_string& name) {
  *    表示进程信号处理函数
  * 返回：
  *    无
- * 
+ *
  * @param ec    表示错误码
  * @param signal    表示进程当前接收到的信号数值
  */
 void csf_common_vm::signal_handler(boost::system::error_code ec, int signal) {
 
+#ifdef __linux__
 	csf_log(warning
-		, "get signal handler. signal[%d] error_code[%d] : %s"
+		, "get signal[%d : %s] error_code[%d : %s]."
+		, signal
+		, strsignal(signal)
+		, ec.value()
+		, boost::system::system_error(ec).what()
+	);
+#else
+	csf_log(warning
+		, "get signal[%d] error_code[%d : %s]."
 		, signal
 		, ec.value()
 		, boost::system::system_error(ec).what()
 	);
+	//deamon_slaves();
+#endif
 
 	switch (signal) {
 	case SIGINT:
+	{
 		std::cout << "SIGNINT" << std::endl;
-		break;
+	}
+	break;
 	case SIGTERM:
+	{
 		std::cout << "SIGNTERM" << std::endl;
-		break;
+	}
+	break;
+#ifdef __linux__
+	case SIGCHLD:
+	{
+		std::cout << "SIGCHLD" << std::endl;
+#if 0
+		static_cast<csf_common_slave*>(m_slaves[0])->destroy_child();
+
+		for (int i = 0; i < csf_ary_size(m_slaves); i++) {
+			if (m_slaves[i]) {
+				static_cast<csf_common_slave*>(m_slaves[i])->destroy_child();
+			}
+		}
+
+		//deamon_slaves();
+		pid_t			tmp_pid = 0;
+		int				stat = 0;
+		//循环调用waitpid，尽量避免不出现僵尸进程而导致子进程不被重新创建问题
+		while ((tmp_pid = waitpid(-1, &stat, WNOHANG)) > 0) {
+			printf("child %d terminated\n", tmp_pid);
+		}
+#endif
+	}
+	break;
+#endif
 	default:
-		break;
+	{
+	}
+	break;
 	}
 }
 
@@ -371,12 +550,12 @@ void csf_common_vm::signal_handler(boost::system::error_code ec, int signal) {
  * 返回：
  *   true  ：  表示成功；
  *   false ：  表示失败；
- * 
+ *
  * @param name    表示伺服名称
  */
 csf_bool csf_common_vm::start_slave(csf_string& name) {
 
-	return csf_vm::stop_slave(name);
+	return csf_vm::start_slave(name);
 }
 
 
@@ -386,12 +565,54 @@ csf_bool csf_common_vm::start_slave(csf_string& name) {
  * 返回：
  *   true  ：  表示成功；
  *   false ：  表示失败；
- * 
+ *
  * @param slave    表示伺服信息对象
  */
 csf_bool csf_common_vm::start_slave(csf_slave* slave) {
 
+	csf_int32			tmp_int_return = csf_failure;
 
+
+	if (csf_nullptr == slave) {
+		return csf_false;
+	}
+	csf_common_slave	*tmp_common_slave = (csf_common_slave*)slave;
+
+
+	//初始化伺服对象
+	tmp_int_return = tmp_common_slave->init();
+	if (csf_failure == tmp_int_return) {
+		csf_log(error
+			, "init slave failed! %s"
+			, tmp_common_slave->to_string().c_str()
+		);
+		return csf_false;
+	}
+	else {
+		csf_log(notice
+			, "init slave succeed! %s"
+			, tmp_common_slave->to_string().c_str()
+		);
+	}
+
+	//运行伺服对象
+	tmp_int_return = tmp_common_slave->start();
+	if (csf_failure == tmp_int_return) {
+		csf_log(error
+			, "start slave failed! %s"
+			, tmp_common_slave->to_string().c_str()
+		);
+		return csf_false;
+	}
+	else {
+		csf_log(notice
+			, "start slave succeed! %s"
+			, tmp_common_slave->to_string().c_str()
+		);
+	}
+	return csf_true;
+
+#if 0
 	if (csf_nullptr == slave) {
 		return csf_false;
 	}
@@ -509,6 +730,9 @@ csf_bool csf_common_vm::start_slave(csf_slave* slave) {
 	//boost::process::child  tmp_ch = tmp_child;
 
 	return csf_true;
+
+#endif
+
 }
 
 
@@ -518,12 +742,37 @@ csf_bool csf_common_vm::start_slave(csf_slave* slave) {
  * 返回：
  *   true  ：  表示成功；
  *   false ：  表示失败；
- * 
+ *
  * @param slave    表示伺服信息对象
  */
 csf_bool csf_common_vm::stop_slave(csf_slave* slave) {
 
+	csf_int32			tmp_int_return = csf_failure;
 
+
+	if (csf_nullptr == slave) {
+		return csf_false;
+	}
+	csf_common_slave	*tmp_common_slave = (csf_common_slave*)slave;
+
+
+	//初始化伺服对象
+	tmp_int_return = tmp_common_slave->stop();
+	if (csf_failure == tmp_int_return) {
+		csf_log(error
+			, "stop slave failed! %s"
+			, tmp_common_slave->to_string().c_str()
+		);
+		return csf_false;
+	}
+	else {
+		csf_log(notice
+			, "stop slave succeed! %s"
+			, tmp_common_slave->to_string().c_str()
+		);
+	}
+
+#if 0
 	if (csf_nullptr == slave || !slave->get_pid()) {
 		return csf_false;
 	}
@@ -549,6 +798,7 @@ csf_bool csf_common_vm::stop_slave(csf_slave* slave) {
 			, slave->to_string().c_str()
 		);
 	}
+#endif
 
 	return csf_true;
 }
@@ -560,7 +810,7 @@ csf_bool csf_common_vm::stop_slave(csf_slave* slave) {
  * 返回：
  *   true  ：  表示成功；
  *   false ：  表示失败；
- * 
+ *
  * @param slave    表示伺服信息对象
  */
 csf_bool csf_common_vm::insert_slave(csf_slave* slave) {
@@ -584,9 +834,26 @@ csf_bool csf_common_vm::start_signals_process() {
 	get_signals().add(SIGINT);
 	get_signals().add(SIGTERM);
 	get_signals().add(SIGABRT);
+#ifdef __linux__
+
+	get_signals().add(SIGQUIT);
+	get_signals().add(SIGILL);
+	get_signals().add(SIGTRAP);
+	//get_signals().add(SIGKILL);
+	get_signals().add(SIGIOT);
+	get_signals().add(SIGBUS);
+	get_signals().add(SIGFPE);
+	get_signals().add(SIGCHLD);
+
+#endif
 
 	// Start an asynchronous wait for one of the signals to occur.
-	get_signals().async_wait(boost::bind(&csf_common_vm::signal_handler, this, boost::placeholders::_1, boost::placeholders::_2));
+	//get_signals().async_wait(boost::bind(&csf_common_vm::signal_handler, this, boost::placeholders::_1, boost::placeholders::_2));
+
+	csf_log_ex(notice
+		, csf_log_code_notice
+		, "signal process succeed!"
+	);
 
 	return csf_true;
 }
@@ -604,6 +871,132 @@ csf_bool csf_common_vm::stop_signals_process() {
 	get_signals().cancel();
 
 	return csf_true;
+}
+
+
+/**
+ * 功能：
+ *    该函数主要用于处理子进程队列
+ * 返回：
+ *    true  :  表示成功；
+ *    false :  表示失败。
+ */
+csf_void csf_common_vm::deamon_thread_process() {
+
+	csf_slave			*tmp_common_slave = csf_nullptr;
+
+
+	if (get_deque().size() <= 0) {
+		//如果没有视频，则休眠等待
+		//csf::core::utils::time::sleep_time::sleep_s(1);
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+	}
+	else {
+		if (get_deque().pop_front(tmp_common_slave)) {
+			if (tmp_common_slave) {
+				//针对对象进行守护处理
+				deamon_slave(tmp_common_slave);
+			}
+		}
+	}
+}
+
+
+/**
+ * 功能：
+ *    该函数主要用于启动守护处理线程池
+ * 返回：
+ *    true  :  表示成功；
+ *    false :  表示失败。
+ */
+csf_bool csf_common_vm::start_deamon_thread_pool() {
+
+	//在线程组中运行2个线程，用于处理子进程的守护
+	get_deamon_thread_pool().start(2, csf_bind(&csf_common_vm::deamon_thread_process, this));
+
+	csf_log(notice
+		, "start deamon thread pool[%d] succeed!"
+		, get_deamon_thread_pool().get_thread_number());
+
+	return csf_true;
+}
+
+
+/**
+ * 功能：
+ *    该函数主要用于停止守护处理线程池
+ * 返回：
+ *    true  :  表示成功；
+ *    false :  表示失败。
+ */
+csf_bool csf_common_vm::stop_deamon_thread_pool() {
+
+	get_deamon_thread_pool().stop();
+
+	csf_log(notice
+		, "stop deamon thread pool[%d] succeed!"
+		, get_deamon_thread_pool().get_thread_number());
+
+	return csf_true;
+}
+
+
+/**
+ * 功能：
+ *    该函数主要用于启动处理子进程退出信号的线程池
+ * 返回：
+ *    true  :  表示成功；
+ *    false :  表示失败。
+ */
+csf_bool csf_common_vm::start_io_context_thread_pool() {
+
+	//在线程组中运行2个线程，用于处理子进程退出信号
+	get_io_context_thread_pool().start(2, csf_bind(&csf_common_vm::io_context_thread_process, this));
+
+	csf_log(notice
+		, "start io_context thread pool[%d] succeed!"
+		, get_io_context_thread_pool().get_thread_number());
+
+	return csf_true;
+}
+
+
+/**
+ * 功能：
+ *    该函数主要用于停止处理子进程退出信号的线程池
+ * 返回：
+ *    true  :  表示成功；
+ *    false :  表示失败。
+ */
+csf_bool csf_common_vm::stop_io_context_thread_pool() {
+
+	get_io_context_thread_pool().stop();
+
+	csf_log(notice
+		, "stop io_context thread pool[%d] succeed!"
+		, get_io_context_thread_pool().get_thread_number());
+
+	return csf_true;
+}
+
+
+/**
+ * 功能：
+ *    该函数主要用于处理子进程退出信号队列
+ * 返回：
+ *    true  :  表示成功；
+ *    false :  表示失败。
+ */
+csf_void csf_common_vm::io_context_thread_process() {
+
+	//重置io_context状态
+	get_ioctx().reset();
+	//添加信号处理事件
+	get_signals().async_wait(boost::bind(&csf_common_vm::signal_handler, this, boost::placeholders::_1, boost::placeholders::_2));
+	//启动服务
+	get_ioctx().run();
+
+	//start_signals_process();
 }
 
 

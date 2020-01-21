@@ -471,7 +471,7 @@ csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory&
 	if (element.is_null()) {
 		csf_log_ex(warning, csf_log_code_warning
 			, "element is null");
-		return csf_false;
+		return m_null_connect_ptr;
 	}
 
 	//判断当前是否为listen节点，如果是则添加连接监听对象
@@ -480,7 +480,7 @@ csf_connect_ptr csf_connect_factory_manager::create_connect(csf_connect_factory&
 			, "not element[%s] not [%s]"
 			, element.get_name().c_str()
 			, CSF_CONFIGURE_STRING(listen));
-		return csf_false;
+		return m_null_connect_ptr;
 	}
 
 	//根据csf_connect:connect_type连接类型名称，查询配置。根据查找到的类型创建连接对象

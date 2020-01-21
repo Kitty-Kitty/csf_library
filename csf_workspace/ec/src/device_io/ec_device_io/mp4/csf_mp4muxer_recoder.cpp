@@ -236,7 +236,8 @@ bool csf_mp4muxer_recoder::thread_process(csf_mp4recoder* recoder) {
 		tmp_video_mdframe_ptr = tmp_video_mdslot->pop_frame();
 		if (!tmp_video_mdframe_ptr) {
 			//如果没有视频，则休眠等待
-			csf::core::utils::time::sleep_time::sleep_ms(10);
+			//csf::core::utils::time::sleep_time::sleep_ms(10);
+			std::this_thread::sleep_for(std::chrono::milliseconds(10));
 			continue;
 		}
 		else {

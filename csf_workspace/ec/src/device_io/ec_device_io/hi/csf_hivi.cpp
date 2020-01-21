@@ -737,7 +737,8 @@ bool csf_hivi::test_coder_thread_process(csf_hivdev* hichannel)
 #endif
 
 	//如果没有视频，则休眠等待
-	csf::core::utils::time::sleep_time::sleep_ms(1000);
+	//csf::core::utils::time::sleep_time::sleep_ms(1000);
+	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	csf_log(warning, "insert a test object");
 
 
@@ -785,7 +786,8 @@ bool csf_hivi::test_coder_thread_process(csf_hivdev* hichannel)
 			, total_length - h264_size
 			, frame_count);
 		
-		csf::core::utils::time::sleep_time::sleep_ms(30);
+		//csf::core::utils::time::sleep_time::sleep_ms(30);
+		std::this_thread::sleep_for(std::chrono::milliseconds(30));
 	}
 
 	//get_thread()->stop();
